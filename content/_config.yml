@@ -5,7 +5,7 @@
 
 #######################################################################################
 # Book settings
-title                       : An Introduction to Transparent Machine Learning  
+title                       : Transparent ML Intro
 author                      : Haiping Lu and Shuo Zhou # The author of the book
 copyright                   : "2022"  # Copyright year to be placed in the footer
 logo                        : logo.png  # A path to the book logo
