@@ -4,8 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Markdown Files &#8212; My sample book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Markdown Files &#8212; My Book</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -96,7 +97,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">My sample book</h1>
+      <h1 class="site-logo" id="site-title">My Book</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -201,7 +202,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/haipinglu/My Book"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -218,7 +219,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmarkdown.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/haipinglu/My Book/issues/new?title=Issue%20on%20page%20%2Fmarkdown.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -311,19 +312,31 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sample-roles-and-directives">
-   Sample Roles and Directives
+  <a class="reference internal nav-link" href="#what-are-roles-and-directives">
+   What are roles and directives?
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#citations">
-   Citations
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learn-more">
-   Learn more
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-a-directive">
+     Using a directive
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-a-role">
+     Using a role
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-a-citation">
+     Adding a citation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#executing-code-in-your-markdown-files">
+     Executing code in your markdown files
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -350,19 +363,31 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sample-roles-and-directives">
-   Sample Roles and Directives
+  <a class="reference internal nav-link" href="#what-are-roles-and-directives">
+   What are roles and directives?
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#citations">
-   Citations
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learn-more">
-   Learn more
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-a-directive">
+     Using a directive
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-a-role">
+     Using a role
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-a-citation">
+     Adding a citation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#executing-code-in-your-markdown-files">
+     Executing code in your markdown files
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -374,38 +399,69 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="markdown-files">
+  <section class="tex2jax_ignore mathjax_ignore" id="markdown-files">
 <h1>Markdown Files<a class="headerlink" href="#markdown-files" title="Permalink to this headline">#</a></h1>
 <p>Whether you write your book’s content in Jupyter Notebooks (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>) or
 in regular markdown files (<code class="docutils literal notranslate"><span class="pre">.md</span></code>), you’ll write in the same flavor of markdown
-called <strong>MyST Markdown</strong>.
-This is a simple file to help you get started and show off some syntax.</p>
-<div class="section" id="what-is-myst">
+called <strong>MyST Markdown</strong>.</p>
+<section id="what-is-myst">
 <h2>What is MyST?<a class="headerlink" href="#what-is-myst" title="Permalink to this headline">#</a></h2>
 <p>MyST stands for “Markedly Structured Text”. It
 is a slight variation on a flavor of markdown called “CommonMark” markdown,
 with small syntax extensions to allow you to write <strong>roles</strong> and <strong>directives</strong>
 in the Sphinx ecosystem.</p>
-<p>For more about MyST, see <a class="reference external" href="https://jupyterbook.org/content/myst.html">the MyST Markdown Overview</a>.</p>
-</div>
-<div class="section" id="sample-roles-and-directives">
-<h2>Sample Roles and Directives<a class="headerlink" href="#sample-roles-and-directives" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="what-are-roles-and-directives">
+<h2>What are roles and directives?<a class="headerlink" href="#what-are-roles-and-directives" title="Permalink to this headline">#</a></h2>
 <p>Roles and directives are two of the most powerful tools in Jupyter Book. They
 are kind of like functions, but written in a markup language. They both
 serve a similar purpose, but <strong>roles are written in one line</strong>, whereas
 <strong>directives span many lines</strong>. They both accept different kinds of inputs,
 and what they do with those inputs depends on the specific role or directive
 that is being called.</p>
-<p>Here is a “note” directive:</p>
+<section id="using-a-directive">
+<h3>Using a directive<a class="headerlink" href="#using-a-directive" title="Permalink to this headline">#</a></h3>
+<p>At its simplest, you can insert a directive into your book’s content like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{mydirectivename}
+My directive content
+```
+</pre></div>
+</div>
+<p>This will only work if a directive with name <code class="docutils literal notranslate"><span class="pre">mydirectivename</span></code> already exists
+(which it doesn’t). There are many pre-defined directives associated with
+Jupyter Book. For example, to insert a note box into your content, you can
+use the following directive:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{note}
+Here is a note
+```
+</pre></div>
+</div>
+<p>This results in:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Here is a note</p>
 </div>
-<p>It will be rendered in a special box when you build your book.</p>
-<p>Here is an inline directive to refer to a document: <a class="reference internal" href="markdown-notebooks.html"><span class="doc">Notebooks with MyST Markdown</span></a>.</p>
+<p>In your built book.</p>
+<p>For more information on writing directives, see the
+<a class="reference external" href="https://myst-parser.readthedocs.io/">MyST documentation</a>.</p>
+</section>
+<section id="using-a-role">
+<h3>Using a role<a class="headerlink" href="#using-a-role" title="Permalink to this headline">#</a></h3>
+<p>Roles are very similar to directives, but they are less-complex and written
+entirely on one line. You can insert a role into your book’s content with
+this pattern:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Some content {rolename}`and here is my role&#39;s content!`
+</pre></div>
 </div>
-<div class="section" id="citations">
-<h2>Citations<a class="headerlink" href="#citations" title="Permalink to this headline">#</a></h2>
+<p>Again, roles will only work if <code class="docutils literal notranslate"><span class="pre">rolename</span></code> is a valid role’s name. For example,
+the <code class="docutils literal notranslate"><span class="pre">doc</span></code> role can be used to refer to another page in your book. You can
+refer directly to another page by its relative path. For example, the
+role syntax <code class="docutils literal notranslate"><span class="pre">{doc}`intro`</span></code> will result in: <a class="reference internal" href="intro.html"><span class="doc">Welcome to your Jupyter Book</span></a>.</p>
+<p>For more information on writing roles, see the
+<a class="reference external" href="https://myst-parser.readthedocs.io/">MyST documentation</a>.</p>
+</section>
+<section id="adding-a-citation">
+<h3>Adding a citation<a class="headerlink" href="#adding-a-citation" title="Permalink to this headline">#</a></h3>
 <p>You can also cite references that are stored in a <code class="docutils literal notranslate"><span class="pre">bibtex</span></code> file. For example,
 the following syntax: <code class="docutils literal notranslate"><span class="pre">{cite}`holdgraf_evidence_2014`</span></code> will render like
 this: <span id="id1">[<a class="reference internal" href="#id3" title="Christopher Ramsay Holdgraf, Wendy de Heer, Brian N. Pasley, and Robert T. Knight. Evidence for Predictive Coding in Human Auditory Cortex. In International Conference on Cognitive Neuroscience. Brisbane, Australia, Australia, 2014. Frontiers in Neuroscience.">HdHPK14</a>]</span>.</p>
@@ -414,6 +470,11 @@ The <code class="docutils literal notranslate"><span class="pre">{bibliography}<
 render properly.
 For example, if the references for your book are stored in <code class="docutils literal notranslate"><span class="pre">references.bib</span></code>,
 then the bibliography is inserted with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{bibliography}
+```
+</pre></div>
+</div>
+<p>Resulting in a rendered bibliography that looks like:</p>
 <div class="docutils container" id="id2">
 <dl class="citation">
 <dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">HdHPK14</a></span></dt>
@@ -421,13 +482,32 @@ then the bibliography is inserted with:</p>
 </dd>
 </dl>
 </div>
+</section>
+<section id="executing-code-in-your-markdown-files">
+<h3>Executing code in your markdown files<a class="headerlink" href="#executing-code-in-your-markdown-files" title="Permalink to this headline">#</a></h3>
+<p>If you’d like to include computational content inside these markdown files,
+you can use MyST Markdown to define cells that will be executed when your
+book is built. Jupyter Book uses <em>jupytext</em> to do this.</p>
+<p>First, add Jupytext metadata to the file. For example, to add Jupytext metadata
+to this markdown page, run this command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">myst</span> <span class="n">init</span> <span class="n">markdown</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
 </div>
-<div class="section" id="learn-more">
-<h2>Learn more<a class="headerlink" href="#learn-more" title="Permalink to this headline">#</a></h2>
-<p>This is just a simple starter to get you started.
-You can learn a lot more at <a class="reference external" href="https://jupyterbook.org">jupyterbook.org</a>.</p>
+<p>Once a markdown file has Jupytext metadata in it, you can add the following
+directive to run the code at build time:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{code-cell}
+print(&quot;Here is some code to execute&quot;)
+```
+</pre></div>
 </div>
-</div>
+<p>When your book is built, the contents of any <code class="docutils literal notranslate"><span class="pre">{code-cell}</span></code> blocks will be
+executed with your default Jupyter kernel, and their outputs will be displayed
+in-line with the rest of your content.</p>
+<p>For more information about executing computational content with Jupyter Book,
+see <a class="reference external" href="https://myst-nb.readthedocs.io/">The MyST-NB documentation</a>.</p>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -477,7 +557,7 @@ You can learn a lot more at <a class="reference external" href="https://jupyterb
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By The Jupyter Book Community<br/>
+    By Haiping Lu<br/>
   
       &copy; Copyright 2022.<br/>
 </p>
