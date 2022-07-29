@@ -5,8 +5,8 @@
 
 #######################################################################################
 # Book settings
-title                       : My Book  # The title of the book. Will be placed in the left navbar.
-author                      : Haiping Lu  # The author of the book
+title                       : An Introduction to Transparent Machine Learning  
+author                      : Haiping Lu and Shuo Zhou # The author of the book
 copyright                   : "2022"  # Copyright year to be placed in the footer
 logo                        : logo.png  # A path to the book logo
 
