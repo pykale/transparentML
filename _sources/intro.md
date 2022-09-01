@@ -1,10 +1,12 @@
 # An Introduction to Transparent Machine Learning
 
+Version (status): pre-alpha (design and development)
+
 ## Course overview
 
 This self-paced online learning course aims to introduce essential materials on transparent machine learning for learners of diverse backgrounds to understand and apply transparent machine learning in real-world applications with confidence and trust, targeting a missing gap in the online educational space.
 
-## Learning objectives
+## Learning objectives [LOs]
 
 By the end of the course, a learner will be able to demonstrate the ability to
 
@@ -22,6 +24,7 @@ Learners from diverse backgrounds, preferably with knowledge and skills of basic
 
 ## Course outline (subject to change and revision)
 
+- Prerequisites: Basic mathematics and Python programming for machine learning
 - Lecture 1: [System and Process] Introduction to machine learning and AI transparency
   - Lab 1: Introduction to Python ecosystem software for machine learning and data analysis pipeline
 
