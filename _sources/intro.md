@@ -67,6 +67,7 @@ This course is developed by [Haiping Lu](https://haipinglu.github.io/), a Senior
 - Code
   - [ISL_python: An Introduction to Statistical Learning with Applications in PYTHON](https://github.com/qx0731/Sharing_ISL_python)
   - [ISLR-python](https://github.com/JWarmenhoven/ISLR-python)
+  - [python-novice-gapminder](https://github.com/swcarpentry/python-novice-gapminder/tree/gh-pages/_episodes)
 - Course
   - [Scikit-learn course](https://inria.github.io/scikit-learn-mooc/index.html)
   - [MIMIC WFDB Tutorials](https://wfdb.io/mimic_wfdb_tutorials/) 
