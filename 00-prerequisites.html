@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Topic 0: Prerequisites &#8212; Transparent ML Intro</title>
+    <title>Topic 00: Prerequisites &#8212; Transparent ML Intro</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -116,7 +116,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Topic 0: Prerequisites
+   Topic 00: Prerequisites
   </a>
  </li>
  <li class="toctree-l1">
@@ -367,57 +367,59 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Topic 0: Prerequisites
+   Topic 00: Prerequisites
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview">
    0.0 Overview
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python">
-   0.1 Python
-  </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#running">
-     0.1.1 Running
+    <a class="reference internal nav-link" href="#python">
+     0.1 Python
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#running">
+       0.1.1 Running
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#x-exercises">
+       0.1.x Exercises
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#numpy">
+     0.2 NumPy
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercises">
+       0.2.1 Exercises
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#y-quiz">
+     0.y Quiz
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#x-exercises">
-     0.1.x Exercises
+    <a class="reference internal nav-link" href="#z-summary">
+     0.z Summary
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-references-and-further-reading">
+     0.a References and further reading
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#numpy">
-   0.2 NumPy
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercises">
-     0.2.1 Exercises
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#y-quiz">
-   0.y Quiz
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#z-summary">
-   0.z Summary
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-references-and-further-reading">
-   0.a References and further reading
-  </a>
  </li>
 </ul>
 
@@ -428,7 +430,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Topic 0: Prerequisites</h1>
+                <h1>Topic 00: Prerequisites</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -440,57 +442,59 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Topic 0: Prerequisites
+   Topic 00: Prerequisites
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview">
    0.0 Overview
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python">
-   0.1 Python
-  </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#running">
-     0.1.1 Running
+    <a class="reference internal nav-link" href="#python">
+     0.1 Python
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#running">
+       0.1.1 Running
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#x-exercises">
+       0.1.x Exercises
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#numpy">
+     0.2 NumPy
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercises">
+       0.2.1 Exercises
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#y-quiz">
+     0.y Quiz
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#x-exercises">
-     0.1.x Exercises
+    <a class="reference internal nav-link" href="#z-summary">
+     0.z Summary
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-references-and-further-reading">
+     0.a References and further reading
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#numpy">
-   0.2 NumPy
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercises">
-     0.2.1 Exercises
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#y-quiz">
-   0.y Quiz
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#z-summary">
-   0.z Summary
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-references-and-further-reading">
-   0.a References and further reading
-  </a>
  </li>
 </ul>
 
@@ -502,8 +506,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="topic-0-prerequisites">
-<h1>Topic 0: Prerequisites<a class="headerlink" href="#topic-0-prerequisites" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="topic-00-prerequisites">
+<h1>Topic 00: Prerequisites<a class="headerlink" href="#topic-00-prerequisites" title="Permalink to this headline">#</a></h1>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="overview">
 <h1>0.0 Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h1>
@@ -518,40 +522,40 @@ title="Print to PDF"
 </ul>
 <p>Intro paragraph</p>
 <p><strong>Each section</strong> should take no more than 30 minutes to complete.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="python">
-<h1>0.1 Python<a class="headerlink" href="#python" title="Permalink to this headline">#</a></h1>
+<section id="python">
+<h2>0.1 Python<a class="headerlink" href="#python" title="Permalink to this headline">#</a></h2>
 <section id="running">
-<h2>0.1.1 Running<a class="headerlink" href="#running" title="Permalink to this headline">#</a></h2>
+<h3>0.1.1 Running<a class="headerlink" href="#running" title="Permalink to this headline">#</a></h3>
 </section>
 <section id="x-exercises">
-<h2>0.1.x Exercises<a class="headerlink" href="#x-exercises" title="Permalink to this headline">#</a></h2>
+<h3>0.1.x Exercises<a class="headerlink" href="#x-exercises" title="Permalink to this headline">#</a></h3>
 <p>min 3 max 5</p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="numpy">
-<h1>0.2 NumPy<a class="headerlink" href="#numpy" title="Permalink to this headline">#</a></h1>
+<section id="numpy">
+<h2>0.2 NumPy<a class="headerlink" href="#numpy" title="Permalink to this headline">#</a></h2>
 <section id="exercises">
-<h2>0.2.1 Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<h3>0.2.1 Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h3>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="y-quiz">
-<h1>0.y Quiz<a class="headerlink" href="#y-quiz" title="Permalink to this headline">#</a></h1>
+<section id="y-quiz">
+<h2>0.y Quiz<a class="headerlink" href="#y-quiz" title="Permalink to this headline">#</a></h2>
 <p><em>Not for now. To finish in the next cycle.</em> Complete <a class="reference external" href="https://forms.gle/8Q5Z7Z7Z7Z7Z7Z7Z7">Quiz 0</a> to check your understanding of this topic. You are advised to score at least 50% to proceed to the next topic.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="z-summary">
-<h1>0.z Summary<a class="headerlink" href="#z-summary" title="Permalink to this headline">#</a></h1>
+<section id="z-summary">
+<h2>0.z Summary<a class="headerlink" href="#z-summary" title="Permalink to this headline">#</a></h2>
 <p>In this topic, you learned how to:</p>
 <ul class="simple">
 <li><p>Use …</p></li>
 </ul>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="a-references-and-further-reading">
-<h1>0.a References and further reading<a class="headerlink" href="#a-references-and-further-reading" title="Permalink to this headline">#</a></h1>
+<section id="a-references-and-further-reading">
+<h2>0.a References and further reading<a class="headerlink" href="#a-references-and-further-reading" title="Permalink to this headline">#</a></h2>
 <p>This material is based on the following resources:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.python.org/">Python</a></p></li>
 </ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
