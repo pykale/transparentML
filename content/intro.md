@@ -1,6 +1,8 @@
 # An Introduction to Transparent Machine Learning
 
-Version (status): pre-alpha (design and development)
+```{note}
+Version (status): pre-alpha (under design and development)
+```
 
 ## Course overview
 
@@ -62,8 +64,8 @@ This course is developed by [Haiping Lu](https://haipinglu.github.io/), a Senior
 ## References
 
 - Book
-  - James G, Witten D, Hastie T, Tibshirani R. [An Introduction to Statistical Learning](https://www.statlearning.com/), Second Edition,  Springer, 2021. [PDF](https://hastie.su.domains/ISLR2/ISLRv2_website.pdf)
-  - Ostmann F, Dorobantu C. [AI in Financial Services](https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf), Alan Turing Institute, 2021.
+  - James G, Witten D, Hastie T, Tibshirani R. [An Introduction to Statistical Learning](https://www.statlearning.com/), Second Edition,  Springer, 2021. [PDF](https://hastie.su.domains/ISLR2/ISLRv2_website.pdf) {cite}`james2021statistical`
+  - Ostmann F, Dorobantu C. [AI in Financial Services](https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf), Alan Turing Institute, 2021. {cite}`ostmann2021ai`
 - Code
   - [ISL_python: An Introduction to Statistical Learning with Applications in PYTHON](https://github.com/qx0731/Sharing_ISL_python)
   - [ISLR-python](https://github.com/JWarmenhoven/ISLR-python)
@@ -78,6 +80,9 @@ This course is developed by [Haiping Lu](https://haipinglu.github.io/), a Senior
   - [Good practice by design](https://onlinelearning.london.ac.uk/2020/06/08/good-practice-by-design/)
   - [Planning your online module (DIY, lockdown style)](https://onlinelearning.london.ac.uk/2020/05/24/planning-your-online-module-diy-lockdown-style/)
 
-## Acknowledgements
+## Acknowledgements and bibliography
 
 This development is supported by the [Funding call for online learning courses in responsible AI](https://www.turing.ac.uk/funding-call-online-learning-courses-responsible-ai) from the [Alan Turing Institute](https://www.turing.ac.uk/).
+
+```{bibliography}
+```
