@@ -4,8 +4,8 @@
 format: jb-book
 root: intro
 chapters:
-- file: prerequisites
-- file: intro-ml-ai-transparency
+- file: 00-prerequisites
+- file: 01-intro-ml-ai-transparency
 
 # - file: markdown
 # - file: notebooks
