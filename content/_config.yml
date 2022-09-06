@@ -1,6 +1,6 @@
 #######################################################################################
 # A default configuration that will be loaded for all jupyter books
-# See the documentation for help and more options: 
+# See the documentation for help and more options:
 # https://jupyterbook.org/customize/config.html
 
 #######################################################################################
@@ -41,5 +41,5 @@ html:
 # See https://jupyterbook.org/en/stable/interactive/launchbuttons.html
 launch_buttons:
 # Google Colab links will only work for pages that have the .ipynb extension.
-  colab_url: "https://colab.research.google.com" 
-  binderhub_url: "https://mybinder.org" 
+  colab_url: "https://colab.research.google.com"
+  binderhub_url: "https://mybinder.org"
