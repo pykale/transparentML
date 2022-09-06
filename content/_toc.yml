@@ -2,17 +2,16 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: toc
+root: index
+title: Introduction
 parts:
-- chapters:
-  - file: index
-    title: Introduction
 - caption: Basics
   chapters:
   - file: 00-prerequisites
     title: Prerequisites
   - file: 01-intro-ml-ai-transparency
     title: Intro to ML & AI Transparency
+# - caption: Advanced
 
 # - file: markdown
 # - file: notebooks
