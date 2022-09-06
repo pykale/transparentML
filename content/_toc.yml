@@ -10,8 +10,9 @@ parts:
 - caption: Basics
   chapters:
   - file: 00-prerequisites
-    title: First Notebook
+    title: 0: Prerequisites
   - file: 01-intro-ml-ai-transparency
+    title: 1: Intro to ML & AI Transparency
 
 # - file: markdown
 # - file: notebooks
