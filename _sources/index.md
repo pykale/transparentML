@@ -1,10 +1,12 @@
-# An Introduction to Transparent Machine Learning
+# Overview
+
+An Introduction to Transparent Machine Learning
 
 ```{note}
 Version (status): pre-alpha (under design and development)
 ```
 
-## Course overview
+## An Introduction to Transparent Machine Learning
 
 This self-paced online learning course aims to introduce essential materials on transparent machine learning for learners of diverse backgrounds to understand and apply transparent machine learning in real-world applications with confidence and trust, targeting a missing gap in the online educational space.
 
@@ -48,10 +50,10 @@ Learners from diverse backgrounds, preferably with knowledge and skills of basic
 - Lecture 7: [System] Decision trees and random forest
   - Lab 7: Classification/regression trees and random forests for car seat sale and house value prediction
 
-- Lecture 8: [System] Naive Bayes, generalised linear models, and support vector machines 
+- Lecture 8: [System] Naive Bayes, generalised linear models, and support vector machines
   - Lab 8: Naive Bayes, GLM, and SVM for wage and cancer subtype prediction
 
-- Lecture 9: [System] Principal component analysis and k-means clustering 
+- Lecture 9: [System] Principal component analysis and k-means clustering
   - Lab 9: Dimension reduction and clustering for genomic data analysis
 
 - Lecture 10: [System] Deep learning with convolutional/recurrent neural networks*
@@ -72,7 +74,7 @@ This course is developed by [Haiping Lu](https://haipinglu.github.io/), a Senior
   - [python-novice-gapminder](https://github.com/swcarpentry/python-novice-gapminder/tree/gh-pages/_episodes)
 - Course
   - [Scikit-learn course](https://inria.github.io/scikit-learn-mooc/index.html)
-  - [MIMIC WFDB Tutorials](https://wfdb.io/mimic_wfdb_tutorials/) 
+  - [MIMIC WFDB Tutorials](https://wfdb.io/mimic_wfdb_tutorials/)
   - [Machine Learning and Adaptive Intelligence - University of Sheffield](https://github.com/maalvarezl/MLAI)
   - [Scalable Machine Learning - University of Sheffield](https://github.com/haipinglu/ScalableML)
 
