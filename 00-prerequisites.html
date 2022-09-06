@@ -386,8 +386,13 @@ title="Print to PDF"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#data-types">
-       Data Types
+      <a class="reference internal nav-link" href="#variable-naming">
+       Variable Naming
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#variable-types">
+       Variable Types
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -488,8 +493,13 @@ title="Print to PDF"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#data-types">
-       Data Types
+      <a class="reference internal nav-link" href="#variable-naming">
+       Variable Naming
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#variable-types">
+       Variable Types
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -571,26 +581,30 @@ title="Print to PDF"
 <h2>0.0 Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
 <p><strong>Expected time to complete</strong>: 3 hours</p>
 <p><strong>Question</strong>: What do you need to know before starting this course?</p>
-<p><strong>Objectives</strong></p>
+<div class="admonition-objectives admonition">
+<p class="admonition-title">Objectives</p>
 <ul class="simple">
 <li><p>Write computer programs in Python</p></li>
 <li><p>Compute with NumPy arrays</p></li>
 <li><p>Analyse tabular data using <code class="docutils literal notranslate"><span class="pre">pandas</span></code></p></li>
 <li><p>Plot data using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></p></li>
 </ul>
+</div>
 <p>Intro paragraph</p>
 <p><strong>Each section</strong> should take no more than 30 minutes to complete.</p>
 </section>
 <section id="python">
 <h2>0.1 Python<a class="headerlink" href="#python" title="Permalink to this headline">#</a></h2>
 <p><strong>Running</strong></p>
-<p>Following the example in the .gif below, launch the notebook in Google Colab or Binder.</p>
+<p>Following the .gif below, click the rocket button to launch this page as an interactive notebook in Google Colab or Binder.</p>
 <p><img alt="Alt Text" src="https://source-separation.github.io/tutorial/_images/run_cloud.gif" /></p>
 <!-- 
 https://youtu.be/seKOq-VMJgY?t=1082 -->
 <p>Click the <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">Cell</span></code> button or press the keyboard shortcut <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">Enter</span></code> to execute the code in a cell.</p>
 <section id="variables">
 <h3>0.1.1 Variables<a class="headerlink" href="#variables" title="Permalink to this headline">#</a></h3>
+<section id="variable-naming">
+<h4>Variable Naming<a class="headerlink" href="#variable-naming" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>Variables are names for values.</p></li>
 <li><p>In Python the <code class="docutils literal notranslate"><span class="pre">=</span></code> symbol assigns the value on the right to the name on the left.</p></li>
@@ -614,8 +628,9 @@ https://youtu.be/seKOq-VMJgY?t=1082 -->
 </div>
 <p><strong>Variables must be created before they are used</strong></p>
 <p>If a variable doesn’t exist yet, or if the name has been mis-spelled, Python reports an error.</p>
-<section id="data-types">
-<h4>Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="variable-types">
+<h4>Variable Types<a class="headerlink" href="#variable-types" title="Permalink to this headline">#</a></h4>
 <p><strong>Numbers</strong></p>
 <ul class="simple">
 <li><p>Integers (e.g., <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code>, <code class="docutils literal notranslate"><span class="pre">3</span></code>) and floating point numbers (e.g., <code class="docutils literal notranslate"><span class="pre">1.0</span></code>, <code class="docutils literal notranslate"><span class="pre">2.5</span></code>, <code class="docutils literal notranslate"><span class="pre">3.14159</span></code>) are the two main numeric types in Python.</p></li>
@@ -642,7 +657,7 @@ https://youtu.be/seKOq-VMJgY?t=1082 -->
 <li><p>Indices are numbered from 0.</p></li>
 <li><p>Use the position’s index in square brackets to get the character at that position.</p></li>
 </ul>
-<div class="cell docutils container">
+<div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">string_variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
@@ -663,7 +678,7 @@ https://youtu.be/seKOq-VMJgY?t=1082 -->
 <li><p>The difference between <code class="docutils literal notranslate"><span class="pre">stop</span></code> and <code class="docutils literal notranslate"><span class="pre">start</span></code> is the slice’s length.</p></li>
 <li><p>Taking a slice does not change the contents of the original string. Instead, taking a slice returns a copy of part of the original string.</p></li>
 </ul>
-<div class="cell docutils container">
+<div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">string_variable</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
@@ -679,7 +694,7 @@ https://youtu.be/seKOq-VMJgY?t=1082 -->
 <section id="calculations">
 <h4>Calculations<a class="headerlink" href="#calculations" title="Permalink to this headline">#</a></h4>
 <p>Variables can be used in calculations as if they were values</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
@@ -701,7 +716,7 @@ https://youtu.be/seKOq-VMJgY?t=1082 -->
 <li><p><code class="docutils literal notranslate"><span class="pre">print</span></code> is a Python built-in function displays the value of an expression.</p></li>
 <li><p>Provide values to the function (i.e., the things to print) in parentheses.</p></li>
 </ul>
-<div class="cell docutils container">
+<div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">string_variable</span><span class="p">)</span>
 </pre></div>
@@ -713,7 +728,7 @@ https://youtu.be/seKOq-VMJgY?t=1082 -->
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">string_variable</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
@@ -725,7 +740,7 @@ https://youtu.be/seKOq-VMJgY?t=1082 -->
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">string_variable</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
 </pre></div>
@@ -737,7 +752,7 @@ https://youtu.be/seKOq-VMJgY?t=1082 -->
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;+ 1 =&quot;</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -755,7 +770,7 @@ https://youtu.be/seKOq-VMJgY?t=1082 -->
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">type</span></code> function returns the type of an expression.</p></li>
 </ul>
-<div class="cell docutils container">
+<div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">string_variable</span><span class="p">)</span>
 </pre></div>
@@ -767,7 +782,7 @@ https://youtu.be/seKOq-VMJgY?t=1082 -->
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
