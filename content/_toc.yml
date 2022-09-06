@@ -3,11 +3,15 @@
 
 format: jb-book
 root: intro
-caption: BASICS
-chapters:
-- file: 00-prerequisites
-- file: 01-intro-ml-ai-transparency
-caption: ADVANCED
+parts:
+- chapters:
+  - file: intro
+    title: Introduction
+- caption: Basics
+  chapters:
+  - file: 00-prerequisites
+    title: First Notebook
+  - file: 01-intro-ml-ai-transparency
 
 # - file: markdown
 # - file: notebooks
