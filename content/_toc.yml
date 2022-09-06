@@ -5,7 +5,7 @@ format: jb-book
 root: toc
 parts:
 - chapters:
-  - file: intro
+  - file: index
     title: Introduction
 - caption: Basics
   chapters:
