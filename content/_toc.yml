@@ -5,10 +5,11 @@ format: jb-book
 root: index
 title: Introduction
 parts:
+- file: 00-prerequisites
+  title: Prerequisites
 - caption: Basics
+  numbered: true
   chapters:
-  - file: 00-prerequisites
-    title: Prerequisites
   - file: 01-intro-ml-ai-transparency
     title: Intro to ML & AI Transparency
 # - caption: Advanced (for second half)

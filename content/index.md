@@ -24,7 +24,9 @@ By the end of the course, a learner will be able to demonstrate the ability to
 
 Learners from diverse backgrounds, preferably with knowledge and skills of basic mathematics (particularly probability and linear algebra) and Python programming for machine learning.
 
-## Course outline (subject to change and revision)
+## Course outline and structure (subject to change)
+
+This course is organized into 11 topics, including prerequisites. Each topic has a number of sections. Each section should take no more than 30 minutes to complete, ending with an exercise. Each topic will have a quiz for assessment.
 
 - Prerequisites: Basic mathematics and Python programming for machine learning
 - Lecture 1: [System and Process] Introduction to machine learning and AI transparency
