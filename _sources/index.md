@@ -4,8 +4,8 @@
 
 This self-paced online learning course aims to introduce essential materials on transparent machine learning for learners of diverse backgrounds to understand and apply transparent machine learning in real-world applications with confidence and trust, targeting a missing gap in the online educational space.
 
-```{note}
-Version: pre-alpha (under design & development)
+```{admonition} Version
+Pre-alpha: under design and development
 ```
 
 ## Learning objectives [LOs]
