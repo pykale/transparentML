@@ -11,7 +11,9 @@ parts:
     title: Prerequisites
   - file: 01-intro-ml-ai-transparency
     title: Intro to ML & AI Transparency
-# - caption: Advanced
+# - caption: Advanced (for second half)
+
+# - caption: Appendix (for installation etc)
 
 # - file: markdown
 # - file: notebooks
