@@ -5,8 +5,9 @@ format: jb-book
 root: index
 title: Introduction
 parts:
-- file: 00-prerequisites
-  title: Prerequisites
+- chapters:
+  - file: 00-prerequisites
+    title: Prerequisites
 - caption: Basics
   numbered: true
   chapters:
