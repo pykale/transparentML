@@ -6,11 +6,11 @@ root: index
 title: Introduction
 parts:
 - chapters:
-  - file: content/00-prerequisites
+  - file: 00-prerequisites
 - caption: Basics
   numbered: true
   chapters:
-  - file: content/01-intro-ml-ai-transparency
+  - file: 01-intro-ml-ai-transparency
     title: Intro to ML & AI Transparency
 # - caption: Advanced (for second half)
 
