@@ -26,7 +26,7 @@ Learners from diverse backgrounds, preferably with knowledge and skills of basic
 
 ## Course outline and structure (subject to change)
 
-This course is organized into 11 topics, including prerequisites. Each topic has a number of sections. Each section should take no more than 30 minutes to complete, ending with an exercise. Each topic will have a quiz for assessment.
+This course is organized into 10 topics, plus prerequisites. Each topic has a number of sections. Each section should take no more than 30 minutes to complete, ending with an exercise. Each topic will have a quiz for assessment.
 
 - Prerequisites: Basic mathematics and Python programming for machine learning
 - Lecture 1: [System and Process] Introduction to machine learning and AI transparency
@@ -73,7 +73,9 @@ This course is developed by [Haiping Lu](https://haipinglu.github.io/), a Senior
   - [ISLR-python](https://github.com/JWarmenhoven/ISLR-python)
   - [python-novice-gapminder](https://github.com/swcarpentry/python-novice-gapminder/tree/gh-pages/_episodes)
 - Course
-  - [Scikit-learn course](https://inria.github.io/scikit-learn-mooc/index.html)
+  - [Scikit-learn Course](https://inria.github.io/scikit-learn-mooc/index.html)
+  - [Deep Learning for Molecules & Materials](https://dmol.pub/)
+  - [Coding for Economists](https://aeturrell.github.io/coding-for-economists/)
   - [MIMIC WFDB Tutorials](https://wfdb.io/mimic_wfdb_tutorials/)
   - [Machine Learning and Adaptive Intelligence - University of Sheffield](https://github.com/maalvarezl/MLAI)
   - [Scalable Machine Learning - University of Sheffield](https://github.com/haipinglu/ScalableML)
