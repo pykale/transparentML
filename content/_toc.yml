@@ -7,7 +7,7 @@ title: Introduction
 parts:
 - chapters:
   - file: 00-prerequisites
-    title: Prerequisites
+    title: "0. Prerequisites"
 - caption: Basics
   numbered: true
   chapters:
