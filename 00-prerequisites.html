@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>0: Prerequisites &#8212; Transparent ML Intro</title>
+    <title>Prerequisites &#8212; Transparent ML Intro</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -116,7 +116,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   0: Prerequisites
+   Prerequisites
   </a>
  </li>
 </ul>
@@ -373,18 +373,28 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python">
-   0.1 Python
+  <a class="reference internal nav-link" href="#basic-linear-algebra">
+   Basic Linear Algebra
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-probability-and-statistics">
+   Basic Probability and Statistics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-python-programming">
+   Basic Python Programming
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#variables">
-     0.1.1 Variables
+     Variables
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#variable-naming">
-       Variable Naming
+      <a class="reference internal nav-link" href="#basics">
+       Basics
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -406,7 +416,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#built-in-functions">
-     0.1.2 Built-in Functions
+     Built-in Functions
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
@@ -422,37 +432,37 @@ title="Print to PDF"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#x-exercises">
-     0.1.x Exercises
+    <a class="reference internal nav-link" href="#exercises">
+     Exercises
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#numpy">
-   0.2 NumPy
+   NumPy
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercises">
-     0.2.1 Exercises
+    <a class="reference internal nav-link" href="#id1">
+     Exercises
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#y-quiz">
-   0.y Quiz
+  <a class="reference internal nav-link" href="#quiz">
+   Quiz
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#z-summary">
-   0.z Summary
+  <a class="reference internal nav-link" href="#summary">
+   Summary
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-references-and-further-reading">
-   0.a References and further reading
+  <a class="reference internal nav-link" href="#references-and-further-reading">
+   References and further reading
   </a>
  </li>
 </ul>
@@ -464,7 +474,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>0: Prerequisites</h1>
+                <h1>Prerequisites</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -475,18 +485,28 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python">
-   0.1 Python
+  <a class="reference internal nav-link" href="#basic-linear-algebra">
+   Basic Linear Algebra
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-probability-and-statistics">
+   Basic Probability and Statistics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-python-programming">
+   Basic Python Programming
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#variables">
-     0.1.1 Variables
+     Variables
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#variable-naming">
-       Variable Naming
+      <a class="reference internal nav-link" href="#basics">
+       Basics
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -508,7 +528,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#built-in-functions">
-     0.1.2 Built-in Functions
+     Built-in Functions
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
@@ -524,37 +544,37 @@ title="Print to PDF"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#x-exercises">
-     0.1.x Exercises
+    <a class="reference internal nav-link" href="#exercises">
+     Exercises
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#numpy">
-   0.2 NumPy
+   NumPy
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercises">
-     0.2.1 Exercises
+    <a class="reference internal nav-link" href="#id1">
+     Exercises
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#y-quiz">
-   0.y Quiz
+  <a class="reference internal nav-link" href="#quiz">
+   Quiz
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#z-summary">
-   0.z Summary
+  <a class="reference internal nav-link" href="#summary">
+   Summary
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-references-and-further-reading">
-   0.a References and further reading
+  <a class="reference internal nav-link" href="#references-and-further-reading">
+   References and further reading
   </a>
  </li>
 </ul>
@@ -568,12 +588,13 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="prerequisites">
-<h1>0: Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">#</a></h1>
+<h1>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">#</a></h1>
 <p><strong>Expected time to complete</strong>: 3 hours</p>
 <p><strong>Question</strong>: What do you need to know before starting this course?</p>
 <div class="admonition-objectives admonition">
 <p class="admonition-title">Objectives</p>
 <ul class="simple">
+<li><p>Understand basic mathematical concepts required for this course</p></li>
 <li><p>Write computer programs in Python</p></li>
 <li><p>Compute with NumPy arrays</p></li>
 <li><p>Analyse tabular data using <code class="docutils literal notranslate"><span class="pre">pandas</span></code></p></li>
@@ -581,8 +602,14 @@ title="Print to PDF"
 </ul>
 </div>
 <p>Intro paragraph to complete.</p>
-<section id="python">
-<h2>0.1 Python<a class="headerlink" href="#python" title="Permalink to this headline">#</a></h2>
+<section id="basic-linear-algebra">
+<h2>Basic Linear Algebra<a class="headerlink" href="#basic-linear-algebra" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="basic-probability-and-statistics">
+<h2>Basic Probability and Statistics<a class="headerlink" href="#basic-probability-and-statistics" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="basic-python-programming">
+<h2>Basic Python Programming<a class="headerlink" href="#basic-python-programming" title="Permalink to this headline">#</a></h2>
 <p><strong>Running</strong></p>
 <p>Following the .gif below, click the rocket symbol (<i class="fas fa-rocket"></i>) to launch this page as an interactive notebook in Google Colab (faster but requiring a Google account) or Binder.</p>
 <p><img alt="Alt Text" src="https://source-separation.github.io/tutorial/_images/run_cloud.gif" /></p>
@@ -590,9 +617,12 @@ title="Print to PDF"
 https://youtu.be/seKOq-VMJgY?t=1082 -->
 <p>Click the <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">Cell</span></code> button or press the keyboard shortcut <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">Enter</span></code> to execute the code in a cell.</p>
 <section id="variables">
-<h3>0.1.1 Variables<a class="headerlink" href="#variables" title="Permalink to this headline">#</a></h3>
-<section id="variable-naming">
-<h4>Variable Naming<a class="headerlink" href="#variable-naming" title="Permalink to this headline">#</a></h4>
+<h3>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">#</a></h3>
+<section id="basics">
+<h4>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">#</a></h4>
+<!-- ```{code-cell} ipython3
+a = 1
+``` -->
 <ul class="simple">
 <li><p>Variables are names for values.</p></li>
 <li><p>In Python the <code class="docutils literal notranslate"><span class="pre">=</span></code> symbol assigns the value on the right to the name on the left.</p></li>
@@ -614,32 +644,138 @@ https://youtu.be/seKOq-VMJgY?t=1082 -->
 </div>
 </div>
 </div>
-<p><strong>Variables must be created before they are used</strong></p>
-<p>If a variable doesn’t exist yet, or if the name has been mis-spelled, Python reports an error.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Variables must be created before they are used. If a variable doesn’t exist yet, or if the name has been mis-spelled, Python reports an error.</p>
+</div>
 </section>
 <section id="variable-types">
 <h4>Variable Types<a class="headerlink" href="#variable-types" title="Permalink to this headline">#</a></h4>
-<p><strong>Numbers</strong></p>
 <ul class="simple">
+<li><p><em>Numbers</em></p>
+<ul>
 <li><p>Integers (e.g., <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code>, <code class="docutils literal notranslate"><span class="pre">3</span></code>) and floating point numbers (e.g., <code class="docutils literal notranslate"><span class="pre">1.0</span></code>, <code class="docutils literal notranslate"><span class="pre">2.5</span></code>, <code class="docutils literal notranslate"><span class="pre">3.14159</span></code>) are the two main numeric types in Python.</p></li>
 </ul>
-<p><strong>Strings</strong></p>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">z</span> <span class="o">=</span> <span class="mf">3.14</span>
+</pre></div>
+</div>
+</div>
+</div>
 <ul class="simple">
+<li><p><em>Strings</em></p>
+<ul>
 <li><p>Strings are sequences of characters.</p></li>
 <li><p>Strings are created by enclosing characters in single quotes (<code class="docutils literal notranslate"><span class="pre">'...'</span></code>) or double quotes (<code class="docutils literal notranslate"><span class="pre">&quot;...&quot;</span></code>).</p></li>
+<li><p>Strings can be concatenated (glued together) with the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator, and repeated with <code class="docutils literal notranslate"><span class="pre">*</span></code>.</p></li>
 </ul>
-<p><strong>Booleans</strong></p>
+</li>
+</ul>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">string_variable</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="s2">&quot;Python is fun!&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Hello world Python is fun!&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">*</span> <span class="n">string_variable</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Hello worldHello worldHello world&#39;
+</pre></div>
+</div>
+</div>
+</div>
 <ul class="simple">
+<li><p><em>Booleans</em></p>
+<ul>
 <li><p>Booleans are either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p>Booleans are often used in <code class="docutils literal notranslate"><span class="pre">if</span></code> statements to control the flow of a program, or used in <code class="docutils literal notranslate"><span class="pre">while</span></code> or <code class="docutils literal notranslate"><span class="pre">for</span></code> loops to control the number of times a loop is executed.</p></li>
 </ul>
-<p><strong>None</strong></p>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_int_variable</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">if</span> <span class="n">create_int_variable</span><span class="p">:</span>
+    <span class="n">new_int_variable</span> <span class="o">=</span> <span class="mi">123</span>
+</pre></div>
+</div>
+</div>
+</div>
 <ul class="simple">
+<li><p><em>None</em></p>
+<ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">None</span></code> is a special value that represents the absence of a value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code> is the only value of the type <code class="docutils literal notranslate"><span class="pre">NoneType</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code> is frequently used to represent the absence of a value, as when default arguments are not passed to a function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code> is also frequently returned by functions that don’t explicitly return anything in order to explicitly signal the absence of a return value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code> is a singleton object, there is only one <code class="docutils literal notranslate"><span class="pre">None</span></code> object and it is unique.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code> is immutable, it cannot be changed in any way.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code> is comparable to any other object using the <code class="docutils literal notranslate"><span class="pre">is</span></code> operator, but it is never equal to any other object using the <code class="docutils literal notranslate"><span class="pre">==</span></code> operator.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code> is a singleton object, there is only one <code class="docutils literal notranslate"><span class="pre">None</span></code> object and it is unique.</p></li>
 </ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p><em>Lists</em></p>
+<ul>
+<li><p>Lists are ordered sequences of values.</p></li>
+<li><p>Lists are created by enclosing values in square brackets (<code class="docutils literal notranslate"><span class="pre">[...]</span></code>).</p></li>
+<li><p>Lists can contain values of different types.</p></li>
+<li><p>Lists can be indexed and sliced.</p></li>
+<li><p>Lists can be nested.</p></li>
+<li><p>Lists are mutable.</p></li>
+<li><p>Lists are dynamic.</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p><em>Dictionaries</em></p>
+<ul class="simple">
+<li><p>Dictionaries are unordered sets of key: value pairs.</p></li>
+<li><p>Dictionaries are created by enclosing pairs in curly braces (<code class="docutils literal notranslate"><span class="pre">{...}</span></code>).</p></li>
+<li><p>Dictionaries can contain values of different types.</p></li>
+<li><p>Dictionaries are indexed by keys, which can be any immutable type; strings and numbers can always be keys.</p></li>
+<li><p>Dictionaries are mutable.</p></li>
+<li><p>Dictionaries are dynamic.</p></li>
+<li><p>Dictionaries have no concept of order among elements.</p></li>
+<li><p>Dictionaries are sometimes found in other languages as “associative memories” or “associative arrays”.</p></li>
+<li><p>Dictionaries are sometimes found in other languages as “hashes”.</p></li>
+<li><p>Dictionaries are sometimes found in other languages as “maps”.</p></li>
+<li><p>Dictionaries are sometimes found in other languages as “hash tables”.</p></li>
+<li><p>Dictionaries are sometimes found in other languages as “associative lists”.</p></li>
+</ul>
+</li>
+<li><p><em>Tuples</em></p>
+<ul class="simple">
+<li><p>Tuples are ordered sequences of values.</p></li>
+<li><p>Tuples are created by enclosing values in parentheses (<code class="docutils literal notranslate"><span class="pre">(...)</span></code>).</p></li>
+<li><p>Tuples can contain values of different types.</p></li>
+<li><p>Tuples can be indexed and sliced.</p></li>
+</ul>
+</li>
+</ol>
+<!-- 8. _Sets_
+1. _Frozensets_
+2.  _Bytes_ -->
 </section>
 <section id="indexing-and-slicing">
 <h4>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">#</a></h4>
-<p>Indexing is used to access a single element of a sequence (e.g., a string or a list).</p>
+<p>Indexing is used to access a single element of a sequence (e.g., a string, a list, or a tuple).</p>
 <ul class="simple">
 <li><p>Each position in the string (first, second, etc.) is given a number. This number is called an index or sometimes a subscript.</p></li>
 <li><p>Indices are numbered from 0.</p></li>
@@ -697,7 +833,7 @@ https://youtu.be/seKOq-VMJgY?t=1082 -->
 </section>
 </section>
 <section id="built-in-functions">
-<h3>0.1.2 Built-in Functions<a class="headerlink" href="#built-in-functions" title="Permalink to this headline">#</a></h3>
+<h3>Built-in Functions<a class="headerlink" href="#built-in-functions" title="Permalink to this headline">#</a></h3>
 <section id="print">
 <h4>Print<a class="headerlink" href="#print" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
@@ -784,30 +920,30 @@ https://youtu.be/seKOq-VMJgY?t=1082 -->
 </div>
 </section>
 </section>
-<section id="x-exercises">
-<h3>0.1.x Exercises<a class="headerlink" href="#x-exercises" title="Permalink to this headline">#</a></h3>
+<section id="exercises">
+<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h3>
 <p>min 3 max 5</p>
 </section>
 </section>
 <section id="numpy">
-<h2>0.2 NumPy<a class="headerlink" href="#numpy" title="Permalink to this headline">#</a></h2>
-<section id="exercises">
-<h3>0.2.1 Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h3>
+<h2>NumPy<a class="headerlink" href="#numpy" title="Permalink to this headline">#</a></h2>
+<section id="id1">
+<h3>Exercises<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 </section>
 </section>
-<section id="y-quiz">
-<h2>0.y Quiz<a class="headerlink" href="#y-quiz" title="Permalink to this headline">#</a></h2>
+<section id="quiz">
+<h2>Quiz<a class="headerlink" href="#quiz" title="Permalink to this headline">#</a></h2>
 <p><em>Not for now. To finish in the next cycle.</em> Complete <a class="reference external" href="https://forms.gle/8Q5Z7Z7Z7Z7Z7Z7Z7">Quiz 0</a> to check your understanding of this topic. You are advised to score at least 50% to proceed to the next topic.</p>
 </section>
-<section id="z-summary">
-<h2>0.z Summary<a class="headerlink" href="#z-summary" title="Permalink to this headline">#</a></h2>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>In this topic, you learned how to:</p>
 <ul class="simple">
 <li><p>Use …</p></li>
 </ul>
 </section>
-<section id="a-references-and-further-reading">
-<h2>0.a References and further reading<a class="headerlink" href="#a-references-and-further-reading" title="Permalink to this headline">#</a></h2>
+<section id="references-and-further-reading">
+<h2>References and further reading<a class="headerlink" href="#references-and-further-reading" title="Permalink to this headline">#</a></h2>
 <p>This material is based on the following resources:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.python.org/">Python</a></p></li>
