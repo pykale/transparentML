@@ -3,10 +3,14 @@ repos:
     rev: v4.0.1
     hooks:
       - id: trailing-whitespace
+        exclude: ^data/
       - id: check-yaml
       - id: end-of-file-fixer
+        exclude: ^data/
       - id: mixed-line-ending
+        exclude: ^data/
       - id: check-added-large-files
+        args: ['--maxkb=9000']
   - repo: https://github.com/kynan/nbstripout
     rev: 0.4.0
     hooks:
