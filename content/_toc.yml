@@ -10,8 +10,8 @@ parts:
 - caption: Basics
   numbered: true
   chapters:
-  - file: 01-intro-ml-ai-transparency
-    title: Intro to ML & AI Transparency
+  - file: 01-ml-transparency
+    title: Intro ML & Transparency
 # - caption: Advanced (for second half)
 
 # - caption: Appendix (for installation etc)
