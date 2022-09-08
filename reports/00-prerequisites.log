@@ -20,7 +20,7 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 import pandas as pd
 import urllib
 
-data_url = "https://github.com/pykale/transparentML/blob/main/data/Auto.csv?raw=true"
+data_url = "https://github.com/pykale/transparentML/raw/main/data/Auto.csv"
 # res = urllib.urlopen(data_url)
 Auto = pd.read_csv(data_url, header=0, na_values="?")
 # we could use .head to see the first few rows (default = 5) of the data
@@ -32,7 +32,7 @@ Auto.head()
 Cell [0;32mIn [52], line 1[0m
 [0;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
 [1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01murllib[39;00m
-[1;32m      4[0m data_url [38;5;241m=[39m [38;5;124m"[39m[38;5;124mhttps://github.com/pykale/transparentML/blob/main/data/Auto.csv?raw=true[39m[38;5;124m"[39m
+[1;32m      4[0m data_url [38;5;241m=[39m [38;5;124m"[39m[38;5;124mhttps://github.com/pykale/transparentML/raw/main/data/Auto.csv[39m[38;5;124m"[39m
 
 [0;31mModuleNotFoundError[0m: No module named 'pandas'
 ModuleNotFoundError: No module named 'pandas'
