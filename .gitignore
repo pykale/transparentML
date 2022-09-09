@@ -136,4 +136,4 @@ plots/
 .idea/
 
 # pdf files
-.pdf
+*.pdf
