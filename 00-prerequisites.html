@@ -696,14 +696,24 @@ title="Print to PDF"
 <h2>Fundamental of linear algebra and notations<a class="headerlink" href="#fundamental-of-linear-algebra-and-notations" title="Permalink to this headline">#</a></h2>
 <section id="scalars-vectors-matrices-and-basic-operations">
 <h3>Scalars, vectors, matrices, and basic operations<a class="headerlink" href="#scalars-vectors-matrices-and-basic-operations" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
+<ul>
 <li><p>Scalars: a scalar is a single number. In this course, if not specified, scalers are denoted by lowercase letters, e.g. <span class="math notranslate nohighlight">\(x = 3.14\)</span>. When introducing a scaler, we will specify its type, e.g. <span class="math notranslate nohighlight">\(x \in \mathbb{R}\)</span>, where <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is the set of real numbers.</p></li>
-<li><p>Vectors: a vector is an array of numbers, which are arranged in order. Usually we denote vectors as lowercase letters in bold, e.g. $<span class="math notranslate nohighlight">\(\mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\\vdots\\ x_n \end{bmatrix}.\)</span><span class="math notranslate nohighlight">\( The elements of the vector can be accessed by their index, and denoted as a scaler with a subscript, e.g. \)</span>x_1<span class="math notranslate nohighlight">\( is the first element of \)</span>\mathbf{x}<span class="math notranslate nohighlight">\(. We can also index a set of elements of a vector. For example, we can define the set \)</span> S = {2, 4} <span class="math notranslate nohighlight">\( and then access the 2nd and 4th elements of \)</span>\mathbf{x}<span class="math notranslate nohighlight">\( by \)</span>S<span class="math notranslate nohighlight">\(, i.e. \)</span>\mathbf{x}<em>S = \begin{bmatrix} x_2 \ x_4 \end{bmatrix}<span class="math notranslate nohighlight">\(. We can also index a set of elements of a vector by a boolean array, e.g. \)</span>\mathbf{x}</em>{\mathbf{b}} = \begin{bmatrix} x_1 \ x_3 \end{bmatrix}<span class="math notranslate nohighlight">\(, where \)</span>\mathbf{b} = \begin{bmatrix} True \ False \ True \ \vdots\ False \end{bmatrix}<span class="math notranslate nohighlight">\(.
-When introducing a vector, we will specify its type, e.g. if each element in \)</span>\mathbf{x}<span class="math notranslate nohighlight">\( is in \)</span>\mathbb{R}<span class="math notranslate nohighlight">\(, we can say \)</span>\mathbf{x} \in \mathbb{R}^n<span class="math notranslate nohighlight">\(, where \)</span>\mathbb{R}^n<span class="math notranslate nohighlight">\( is the set of \)</span>n$-dimensional real vectors.</p></li>
+<li><p>Vectors: a vector is an array of numbers, which are arranged in order. Usually we denote vectors as lowercase letters in bold, e.g.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \mathbf{x} = \left[ \begin{array}{c} x_1 \\ x_2 \\ \vdots \\ x_n \end{array}\right].
+  \end{split}\]</div>
+<p>The elements of the vector can be accessed by their index, and denoted as a scaler with a subscript, e.g. <span class="math notranslate nohighlight">\(x_1\)</span> is the first element of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>. We can also index a set of elements of a vector. For example, we can define the set <span class="math notranslate nohighlight">\( S = {2, 4} \)</span> and then access the 2nd and 4th elements of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> by <span class="math notranslate nohighlight">\(S\)</span>, i.e. <span class="math notranslate nohighlight">\(\mathbf{x}_S = \begin{bmatrix} x_2 \\ x_4 \end{bmatrix}\)</span>. We can also index a set of elements of a vector by a boolean array, e.g. <span class="math notranslate nohighlight">\(\mathbf{x}_{\mathbf{b}} = \begin{bmatrix} x_1 \\ x_3 \end{bmatrix}\)</span>, where <span class="math notranslate nohighlight">\(\mathbf{b} = \begin{bmatrix} True \\ False \\ True \\ \vdots\\ False \end{bmatrix}\)</span>. When introducing a vector, we will specify its type, e.g. if each element in <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is in <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>, we can say <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^n\)</span>, where <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> is the set of <span class="math notranslate nohighlight">\(n\)</span>-dimensional real vectors.</p>
+</li>
 </ul>
 <!-- Sometimes we need to index the elements of a vector by their position, e.g. $x_1$ is the first element of $\mathbf{x}$, $x_2$ is the second element of $\mathbf{x}$, and so on. In this case, we can use the following notations: -->
 <ul>
-<li><p>Matrices: a matrix is a 2D array of numbers. Typically we denote matrices as uppercase letters in bold, e.g. $<span class="math notranslate nohighlight">\(\mathbf{X} = \begin{bmatrix} x_{1,1} &amp; x_{1,2} &amp; x_{1,3} \\ x_{2,1} &amp; x_{2,2} &amp; x_{2,3} \\ x_{3,1} &amp; x_{3,2} &amp; x_{3,3} \end{bmatrix}.\)</span><span class="math notranslate nohighlight">\( If a real valued matrix \)</span>\mathbf{X}<span class="math notranslate nohighlight">\( has \)</span>m<span class="math notranslate nohighlight">\( rows and \)</span>n<span class="math notranslate nohighlight">\( columns, we can say \)</span>\mathbf{X} \in \mathbb{R}^{m \times n}$.</p>
+<li><p>Matrices: a matrix is a 2D array of numbers. Typically we denote matrices as uppercase letters in bold, e.g.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \mathbf{X} = \begin{bmatrix} x_{1,1} &amp; x_{1,2} &amp; x_{1,3} \\ x_{2,1} &amp; x_{2,2} &amp; x_{2,3} \\ x_{3,1} &amp; x_{3,2} &amp; x_{3,3} \end{bmatrix}.
+  \end{split}\]</div>
+<p>If a real valued matrix <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> has <span class="math notranslate nohighlight">\(m\)</span> rows and <span class="math notranslate nohighlight">\(n\)</span> columns, we can say <span class="math notranslate nohighlight">\(\mathbf{X} \in \mathbb{R}^{m \times n}\)</span>.</p>
  <!-- We can also index a set of elements of a matrix. For example, we can define the set $ S = {2, 4} $ and then access the 2nd and 4th rows of $\mathbf{X}$ by $S$, i.e. $\mathbf{X}_S = \begin{bmatrix} x_{2,1} & x_{2,2} & x_{2,3} \\ x_{4,1} & x_{4,2} & x_{4,3} \end{bmatrix}$. We can also index a set of elements of a matrix by a boolean array, e.g. $\mathbf{X}_{\mathbf{b}} = \begin{bmatrix} x_{1,1} & x_{1,2} & x_{1,3} \\ x_{3,1} & x_{3,2} & x_{3,3} \end{bmatrix}$, where $\mathbf{b} = \begin{bmatrix} True \\ False \\ True \\ \vdots\\ False \end{bmatrix}$.  -->  
 <p>We usually identify an element of a matrix as a scaler with its row and column indices, e.g. <span class="math notranslate nohighlight">\(x_{2,3}\)</span> is the element in the 2nd row and 3rd column of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>. We can also access a row of a matrix by writing “:” for the coordinate of columns, e.g. <span class="math notranslate nohighlight">\(\mathbf{x}_{2, :}\)</span> is the 2nd row of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>. We can also access columns of a matrix in the same way, e.g.,  <span class="math notranslate nohighlight">\(\mathbf{x}_{:,3}\)</span> is the 3rd column of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>.</p>
 </li>
@@ -711,9 +721,19 @@ When introducing a vector, we will specify its type, e.g. if each element in \)<
 <!-- - Tensors: a tensor is an array of numbers arranged on a regular grid with a variable number of axes, e.g. $$\mathbf{X} = \begin{bmatrix} x_{1,1,1} & x_{1,1,2} & x_{1,1,3} \\ x_{1,2,1} & x_{1,2,2} & x_{1,2,3} \\ x_{1,3,1} & x_{1,3,2} & x_{1,3,3} \end{bmatrix}.$$ -->
 <p><strong>Operation</strong></p>
 <ol class="simple">
-<li><p>Addition and subtraction: $<span class="math notranslate nohighlight">\(\mathbf{C} = \mathbf{A} + \mathbf{B}\)</span>$</p></li>
-<li><p>Transpose: $<span class="math notranslate nohighlight">\(\mathbf{A}^\top\)</span>$</p></li>
+<li><p>Addition and subtraction:</p></li>
 </ol>
+<div class="math notranslate nohighlight">
+\[
+    \mathbf{C} = \mathbf{A} + \mathbf{B}
+  \]</div>
+<ol class="simple">
+<li><p>Transpose:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+    \mathbf{A}^\top
+  \]</div>
 </section>
 <section id="matrix-vector-multiplication">
 <h3>Matrix/vector multiplication<a class="headerlink" href="#matrix-vector-multiplication" title="Permalink to this headline">#</a></h3>
@@ -747,6 +767,10 @@ https://youtu.be/seKOq-VMJgY?t=1082 -->
 </li>
 </ul>
 <p>Try the following code in the cell below to assign <code class="docutils literal notranslate"><span class="pre">1</span></code> to a variable <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;hello</span> <span class="pre">world&quot;</span></code> to a variable <code class="docutils literal notranslate"><span class="pre">string_varible</span></code>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\\vdots\\ x_n \end{bmatrix}.
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
@@ -1257,11 +1281,11 @@ loop:  2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0 7 1 3 5]
-[[0.44045907 0.73453561 0.00879198]
- [0.20630987 0.74714471 0.73546178]]
-[-1.15190991 -0.16952327  0.50554851 -0.74951316  0.72134367]
-[18.78702917 19.67608467 20.47810935 19.31210805 20.80583458]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[6 8 8 0 9]
+[[0.1028297  0.05210121 0.96125311]
+ [0.08965275 0.71432475 0.0450033 ]]
+[ 0.18677844 -0.00209306  0.9300831   0.02539654  0.12891066]
+[20.22255142 20.04198727 21.01667383 19.96899197 20.14621065]
 </pre></div>
 </div>
 </div>
@@ -1595,7 +1619,7 @@ The min value of the array x is:  9
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/00-prerequisites_69_0.png" src="_images/00-prerequisites_69_0.png" />
+<img alt="_images/00-prerequisites_70_0.png" src="_images/00-prerequisites_70_0.png" />
 </div>
 </div>
 <div class="cell tag_hide-output docutils container">
@@ -1709,7 +1733,7 @@ z                     float       3.14
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/00-prerequisites_75_0.png" src="_images/00-prerequisites_75_0.png" />
+<img alt="_images/00-prerequisites_76_0.png" src="_images/00-prerequisites_76_0.png" />
 </div>
 </div>
 <div class="cell tag_hide-output docutils container">
@@ -1722,7 +1746,7 @@ z                     float       3.14
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/00-prerequisites_76_0.png" src="_images/00-prerequisites_76_0.png" />
+<img alt="_images/00-prerequisites_77_0.png" src="_images/00-prerequisites_77_0.png" />
 </div>
 </div>
 <div class="cell tag_hide-output docutils container">
@@ -1737,7 +1761,7 @@ z                     float       3.14
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/00-prerequisites_77_0.png" src="_images/00-prerequisites_77_0.png" />
+<img alt="_images/00-prerequisites_78_0.png" src="_images/00-prerequisites_78_0.png" />
 </div>
 </div>
 </section>
@@ -2074,7 +2098,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/00-prerequisites_86_0.png" src="_images/00-prerequisites_86_0.png" />
+<img alt="_images/00-prerequisites_87_0.png" src="_images/00-prerequisites_87_0.png" />
 </div>
 </div>
 <div class="cell tag_hide-output docutils container">
@@ -2086,7 +2110,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/00-prerequisites_87_0.png" src="_images/00-prerequisites_87_0.png" />
+<img alt="_images/00-prerequisites_88_0.png" src="_images/00-prerequisites_88_0.png" />
 </div>
 </div>
 <div class="cell tag_hide-output docutils container">
