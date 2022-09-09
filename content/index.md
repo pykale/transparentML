@@ -79,6 +79,7 @@ This course is developed by [Haiping Lu](https://haipinglu.github.io/), a Senior
   - [Deep Learning for Molecules & Materials](https://dmol.pub/)
   - [Coding for Economists](https://aeturrell.github.io/coding-for-economists/)
   - [MIMIC WFDB Tutorials](https://wfdb.io/mimic_wfdb_tutorials/)
+  - [Jupyter Guide to Linear Algebra](https://bvanderlei.github.io/jupyter-guide-to-linear-algebra/intro.html)
   - [Machine Learning and Adaptive Intelligence - University of Sheffield](https://github.com/maalvarezl/MLAI)
   - [Scalable Machine Learning - University of Sheffield](https://github.com/haipinglu/ScalableML)
 
