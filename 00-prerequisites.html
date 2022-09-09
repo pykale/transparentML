@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="1. Intro: Machine Learning &amp; Transparency" href="01-ml-transparency.html" />
@@ -373,9 +375,26 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basic-linear-algebra">
-   Basic linear algebra
+  <a class="reference internal nav-link" href="#fundamental-of-linear-algebra-and-notations">
+   Fundamental of linear algebra and notations
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scalars-vectors-matrices-and-basic-operations">
+     Scalars, vectors, matrices, and basic operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matrix-vector-multiplication">
+     Matrix/vector multiplication
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matrix-inverse">
+     Matrix inverse
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basic-python-programming">
@@ -512,9 +531,26 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basic-linear-algebra">
-   Basic linear algebra
+  <a class="reference internal nav-link" href="#fundamental-of-linear-algebra-and-notations">
+   Fundamental of linear algebra and notations
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scalars-vectors-matrices-and-basic-operations">
+     Scalars, vectors, matrices, and basic operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matrix-vector-multiplication">
+     Matrix/vector multiplication
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matrix-inverse">
+     Matrix inverse
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basic-python-programming">
@@ -656,8 +692,35 @@ title="Print to PDF"
 </div>
 <p><strong>Expected time to complete</strong>: 3 hours</p>
 <p>Intro paragraph to complete.</p>
-<section id="basic-linear-algebra">
-<h2>Basic linear algebra<a class="headerlink" href="#basic-linear-algebra" title="Permalink to this headline">#</a></h2>
+<section id="fundamental-of-linear-algebra-and-notations">
+<h2>Fundamental of linear algebra and notations<a class="headerlink" href="#fundamental-of-linear-algebra-and-notations" title="Permalink to this headline">#</a></h2>
+<section id="scalars-vectors-matrices-and-basic-operations">
+<h3>Scalars, vectors, matrices, and basic operations<a class="headerlink" href="#scalars-vectors-matrices-and-basic-operations" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Scalars: a scalar is a single number. In this course, if not specified, scalers are denoted by lowercase letters, e.g. <span class="math notranslate nohighlight">\(x = 3.14\)</span>. When introducing a scaler, we will specify its type, e.g. <span class="math notranslate nohighlight">\(x \in \mathbb{R}\)</span>, where <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is the set of real numbers.</p></li>
+<li><p>Vectors: a vector is an array of numbers, which are arranged in order. Usually we denote vectors as lowercase letters in bold, e.g. $<span class="math notranslate nohighlight">\(\mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\\vdots\\ x_n \end{bmatrix}.\)</span><span class="math notranslate nohighlight">\( The elements of the vector can be accessed by their index, and denoted as a scaler with a subscript, e.g. \)</span>x_1<span class="math notranslate nohighlight">\( is the first element of \)</span>\mathbf{x}<span class="math notranslate nohighlight">\(. We can also index a set of elements of a vector. For example, we can define the set \)</span> S = {2, 4} <span class="math notranslate nohighlight">\( and then access the 2nd and 4th elements of \)</span>\mathbf{x}<span class="math notranslate nohighlight">\( by \)</span>S<span class="math notranslate nohighlight">\(, i.e. \)</span>\mathbf{x}<em>S = \begin{bmatrix} x_2 \ x_4 \end{bmatrix}<span class="math notranslate nohighlight">\(. We can also index a set of elements of a vector by a boolean array, e.g. \)</span>\mathbf{x}</em>{\mathbf{b}} = \begin{bmatrix} x_1 \ x_3 \end{bmatrix}<span class="math notranslate nohighlight">\(, where \)</span>\mathbf{b} = \begin{bmatrix} True \ False \ True \ \vdots\ False \end{bmatrix}<span class="math notranslate nohighlight">\(.
+When introducing a vector, we will specify its type, e.g. if each element in \)</span>\mathbf{x}<span class="math notranslate nohighlight">\( is in \)</span>\mathbb{R}<span class="math notranslate nohighlight">\(, we can say \)</span>\mathbf{x} \in \mathbb{R}^n<span class="math notranslate nohighlight">\(, where \)</span>\mathbb{R}^n<span class="math notranslate nohighlight">\( is the set of \)</span>n$-dimensional real vectors.</p></li>
+</ul>
+<!-- Sometimes we need to index the elements of a vector by their position, e.g. $x_1$ is the first element of $\mathbf{x}$, $x_2$ is the second element of $\mathbf{x}$, and so on. In this case, we can use the following notations: -->
+<ul>
+<li><p>Matrices: a matrix is a 2D array of numbers. Typically we denote matrices as uppercase letters in bold, e.g. $<span class="math notranslate nohighlight">\(\mathbf{X} = \begin{bmatrix} x_{1,1} &amp; x_{1,2} &amp; x_{1,3} \\ x_{2,1} &amp; x_{2,2} &amp; x_{2,3} \\ x_{3,1} &amp; x_{3,2} &amp; x_{3,3} \end{bmatrix}.\)</span><span class="math notranslate nohighlight">\( If a real valued matrix \)</span>\mathbf{X}<span class="math notranslate nohighlight">\( has \)</span>m<span class="math notranslate nohighlight">\( rows and \)</span>n<span class="math notranslate nohighlight">\( columns, we can say \)</span>\mathbf{X} \in \mathbb{R}^{m \times n}$.</p>
+ <!-- We can also index a set of elements of a matrix. For example, we can define the set $ S = {2, 4} $ and then access the 2nd and 4th rows of $\mathbf{X}$ by $S$, i.e. $\mathbf{X}_S = \begin{bmatrix} x_{2,1} & x_{2,2} & x_{2,3} \\ x_{4,1} & x_{4,2} & x_{4,3} \end{bmatrix}$. We can also index a set of elements of a matrix by a boolean array, e.g. $\mathbf{X}_{\mathbf{b}} = \begin{bmatrix} x_{1,1} & x_{1,2} & x_{1,3} \\ x_{3,1} & x_{3,2} & x_{3,3} \end{bmatrix}$, where $\mathbf{b} = \begin{bmatrix} True \\ False \\ True \\ \vdots\\ False \end{bmatrix}$.  -->  
+<p>We usually identify an element of a matrix as a scaler with its row and column indices, e.g. <span class="math notranslate nohighlight">\(x_{2,3}\)</span> is the element in the 2nd row and 3rd column of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>. We can also access a row of a matrix by writing “:” for the coordinate of columns, e.g. <span class="math notranslate nohighlight">\(\mathbf{x}_{2, :}\)</span> is the 2nd row of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>. We can also access columns of a matrix in the same way, e.g.,  <span class="math notranslate nohighlight">\(\mathbf{x}_{:,3}\)</span> is the 3rd column of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>.</p>
+</li>
+</ul>
+<!-- - Tensors: a tensor is an array of numbers arranged on a regular grid with a variable number of axes, e.g. $$\mathbf{X} = \begin{bmatrix} x_{1,1,1} & x_{1,1,2} & x_{1,1,3} \\ x_{1,2,1} & x_{1,2,2} & x_{1,2,3} \\ x_{1,3,1} & x_{1,3,2} & x_{1,3,3} \end{bmatrix}.$$ -->
+<p><strong>Operation</strong></p>
+<ol class="simple">
+<li><p>Addition and subtraction: $<span class="math notranslate nohighlight">\(\mathbf{C} = \mathbf{A} + \mathbf{B}\)</span>$</p></li>
+<li><p>Transpose: $<span class="math notranslate nohighlight">\(\mathbf{A}^\top\)</span>$</p></li>
+</ol>
+</section>
+<section id="matrix-vector-multiplication">
+<h3>Matrix/vector multiplication<a class="headerlink" href="#matrix-vector-multiplication" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="matrix-inverse">
+<h3>Matrix inverse<a class="headerlink" href="#matrix-inverse" title="Permalink to this headline">#</a></h3>
+</section>
 </section>
 <section id="basic-python-programming">
 <h2>Basic python programming<a class="headerlink" href="#basic-python-programming" title="Permalink to this headline">#</a></h2>
@@ -1194,11 +1257,11 @@ loop:  2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[7 0 9 5 6]
-[[0.3905691  0.36992378 0.61409378]
- [0.87487202 0.01709683 0.78641989]]
-[-0.75686752  0.37855974 -1.40094805  0.23429235  0.17917755]
-[19.15686255 20.50591264 18.54547805 20.12158555 20.18759235]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0 7 1 3 5]
+[[0.44045907 0.73453561 0.00879198]
+ [0.20630987 0.74714471 0.73546178]]
+[-1.15190991 -0.16952327  0.50554851 -0.74951316  0.72134367]
+[18.78702917 19.67608467 20.47810935 19.31210805 20.80583458]
 </pre></div>
 </div>
 </div>
@@ -2486,13 +2549,13 @@ dtype: int64
 <h2>References and further reading<a class="headerlink" href="#references-and-further-reading" title="Permalink to this headline">#</a></h2>
 <p>This material is based on the following resources:</p>
 <ul class="simple">
+<li><p>Goodfellow, I., Bengio, Y., &amp; Courville, A. (2016). <a class="reference external" href="https://www.deeplearningbook.org/">Deep Learning</a>. MIT press.</p></li>
 <li><p><a class="reference external" href="https://www.python.org/">Python</a></p></li>
 <li><p><a class="reference external" href="https://numpy.org/">NumPy</a></p></li>
 <li><p><a class="reference external" href="https://pandas.pydata.org/">Pandas</a></p></li>
 <li><p><a class="reference external" href="https://matplotlib.org/">Matplotlib</a></p></li>
-<li><p>Coursera online course <a class="reference external" href="https://www.coursera.org/learn/python">Programming for Everybody (Getting Started with Python)</a></p></li>
 </ul>
-</section>
+<!-- - Coursera online course [Programming for Everybody (Getting Started with Python)](https://www.coursera.org/learn/python) --></section>
 </section>
 
     <script type="text/x-thebe-config">
