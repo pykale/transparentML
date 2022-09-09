@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1. Intro: Machine Learning &amp; Transparency &#8212; Transparent ML Intro</title>
+    <title>1. Intro to Machine Learning &amp; Transparency &#8212; Transparent ML Intro</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -372,35 +372,80 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-and-prediction-problems">
-   1.1. Data and prediction problems
+  <a class="reference internal nav-link" href="#data-and-machine-learning-problems">
+   1.1. Data and machine learning problems
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine">
-   1.2. Machine
+  <a class="reference internal nav-link" href="#machine-learning-ingredients">
+   1.2. Machine learning ingredients
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-systems">
+   1.3. Machine learning systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-models">
+   1.4. Machine learning models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-tasks">
+   1.5. Machine learning tasks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-evaluation">
+   1.6. Machine learning evaluation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-deployment">
+   1.7. Machine learning deployment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-ethics">
+   1.8. Machine learning ethics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-interpretability">
+   1.9. Machine learning interpretability
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-transparency">
+   1.10. Machine learning transparency
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-reproducibility">
+   1.11. Machine learning reproducibility
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercises">
-     1.2.1. Exercises
+     1.11.1. Exercises
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#quiz">
-   1.3. Quiz
+   1.12. Quiz
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   1.4. Summary
+   1.13. Summary
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references-and-further-reading">
-   1.5. References and further reading
+   1.14. References and further reading
   </a>
  </li>
 </ul>
@@ -412,7 +457,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Intro: Machine Learning & Transparency</h1>
+                <h1>Intro to Machine Learning & Transparency</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -423,35 +468,80 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-and-prediction-problems">
-   1.1. Data and prediction problems
+  <a class="reference internal nav-link" href="#data-and-machine-learning-problems">
+   1.1. Data and machine learning problems
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine">
-   1.2. Machine
+  <a class="reference internal nav-link" href="#machine-learning-ingredients">
+   1.2. Machine learning ingredients
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-systems">
+   1.3. Machine learning systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-models">
+   1.4. Machine learning models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-tasks">
+   1.5. Machine learning tasks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-evaluation">
+   1.6. Machine learning evaluation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-deployment">
+   1.7. Machine learning deployment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-ethics">
+   1.8. Machine learning ethics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-interpretability">
+   1.9. Machine learning interpretability
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-transparency">
+   1.10. Machine learning transparency
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-reproducibility">
+   1.11. Machine learning reproducibility
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercises">
-     1.2.1. Exercises
+     1.11.1. Exercises
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#quiz">
-   1.3. Quiz
+   1.12. Quiz
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   1.4. Summary
+   1.13. Summary
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references-and-further-reading">
-   1.5. References and further reading
+   1.14. References and further reading
   </a>
  </li>
 </ul>
@@ -464,26 +554,26 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="intro-machine-learning-transparency">
-<h1><span class="section-number">1. </span>Intro: Machine Learning &amp; Transparency<a class="headerlink" href="#intro-machine-learning-transparency" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="intro-to-machine-learning-transparency">
+<h1><span class="section-number">1. </span>Intro to Machine Learning &amp; Transparency<a class="headerlink" href="#intro-to-machine-learning-transparency" title="Permalink to this headline">#</a></h1>
 <p><strong>Question</strong>: What is machine learning and what is AI transparency?</p>
 <div class="admonition-objectives admonition">
 <p class="admonition-title">Objectives</p>
 <ul class="simple">
 <li><p>Understand real-world datasets used in this course</p></li>
-<li><p>Understand key ingredients of machine learning</p></li>
-<li><p>Understand the process in machine learning</p></li>
+<li><p>Understand components of typical machine learning systems</p></li>
+<li><p>Understand steps in typical machine learning processes</p></li>
 <li><p>Understand AI transparency definition &amp; taxonomy</p></li>
 </ul>
 </div>
 <p><strong>Expected time to complete</strong>: 4 hours</p>
-<p>Machine learning takes data as input and produces a model as output. The model is a mathematical representation of the data. The model can be used to make predictions on new data. The model can also be used to explain the data. In this chapter, we will learn about the key ingredients of machine learning and the process of machine learning. We will also learn about the definition and taxonomy of AI transparency. We will start with the real-world datasets used in this course to see how machine learning can be used in real-world.</p>
+<p>Machine learning takes data as input and produces a model as output. The model is a mathematical representation of the data. The model can be used to make predictions on new data. The model can also be used to explain the data. In this chapter, we will learn about the components of typical machine learning systems and steps in typical machine learning processes. We will also learn about the definition and taxonomy of AI transparency. We will start with the real-world datasets used in this course to see how machine learning can be used in real-world.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you do not have prior knowledge/experience with linear algebra, Python programming, and probability and statistics, please go through <a class="reference internal" href="00-prerequisites.html"><span class="doc">Prerequisites</span></a> before starting this course.</p>
 </div>
-<section id="data-and-prediction-problems">
-<h2><span class="section-number">1.1. </span>Data and prediction problems<a class="headerlink" href="#data-and-prediction-problems" title="Permalink to this headline">#</a></h2>
+<section id="data-and-machine-learning-problems">
+<h2><span class="section-number">1.1. </span>Data and machine learning problems<a class="headerlink" href="#data-and-machine-learning-problems" title="Permalink to this headline">#</a></h2>
 <p>In this course, we will use real-world datasets to introduce machine learning from the perspective of AI transparency. We will use the following datasets from the textbook. You can click on the name of the dataset to see the actual data.</p>
 <div class="admonition-task admonition">
 <p class="admonition-title">Task</p>
@@ -494,7 +584,7 @@ title="Print to PDF"
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
 <th class="head"><p>Data provided</p></th>
-<th class="head"><p>Prediction problem</p></th>
+<th class="head"><p>Machine learning problem</p></th>
 </tr>
 </thead>
 <tbody>
@@ -548,7 +638,7 @@ title="Print to PDF"
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://en.wikipedia.org/wiki/NCI-60">NCI60</a></p></td>
 <td><p>Gene expression measurements for 64 cancer cell lines.</p></td>
-<td><p>Predict the cancer type for a cell line.</p></td>
+<td><p>Find clusters or groups among the cell lines for personalised treatment.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/OJ.csv">OJ</a></p></td>
 <td><p>Sales information for Citrus Hill and Minute Maid orange juice.</p></td>
@@ -564,7 +654,7 @@ title="Print to PDF"
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Smarket.csv">Smarket</a></p></td>
 <td><p>Daily percentage returns for S&amp;P 500 over a 5-year period.</p></td>
-<td><p>Predict the returns of S&amp;P 500.</p></td>
+<td><p>Predict whether the stock index with increase or decrease.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/USArrests.csv">USArrests</a></p></td>
 <td><p>Crime statistics per 100,000 residents in 50 states of USA.</p></td>
@@ -585,26 +675,53 @@ title="Print to PDF"
   - Predict the returns of a stock. -->
 <p>The above datasets show the diverse range of problems that machine learning can solve, which shows only the tip of the iceberg actually.</p>
 </section>
-<section id="machine">
-<h2><span class="section-number">1.2. </span>Machine<a class="headerlink" href="#machine" title="Permalink to this headline">#</a></h2>
+<section id="machine-learning-ingredients">
+<h2><span class="section-number">1.2. </span>Machine learning ingredients<a class="headerlink" href="#machine-learning-ingredients" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="machine-learning-systems">
+<h2><span class="section-number">1.3. </span>Machine learning systems<a class="headerlink" href="#machine-learning-systems" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="machine-learning-models">
+<h2><span class="section-number">1.4. </span>Machine learning models<a class="headerlink" href="#machine-learning-models" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="machine-learning-tasks">
+<h2><span class="section-number">1.5. </span>Machine learning tasks<a class="headerlink" href="#machine-learning-tasks" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="machine-learning-evaluation">
+<h2><span class="section-number">1.6. </span>Machine learning evaluation<a class="headerlink" href="#machine-learning-evaluation" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="machine-learning-deployment">
+<h2><span class="section-number">1.7. </span>Machine learning deployment<a class="headerlink" href="#machine-learning-deployment" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="machine-learning-ethics">
+<h2><span class="section-number">1.8. </span>Machine learning ethics<a class="headerlink" href="#machine-learning-ethics" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="machine-learning-interpretability">
+<h2><span class="section-number">1.9. </span>Machine learning interpretability<a class="headerlink" href="#machine-learning-interpretability" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="machine-learning-transparency">
+<h2><span class="section-number">1.10. </span>Machine learning transparency<a class="headerlink" href="#machine-learning-transparency" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="machine-learning-reproducibility">
+<h2><span class="section-number">1.11. </span>Machine learning reproducibility<a class="headerlink" href="#machine-learning-reproducibility" title="Permalink to this headline">#</a></h2>
 <section id="exercises">
-<h3><span class="section-number">1.2.1. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.11.1. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h3>
 <p>min 3 max 5</p>
 </section>
 </section>
 <section id="quiz">
-<h2><span class="section-number">1.3. </span>Quiz<a class="headerlink" href="#quiz" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.12. </span>Quiz<a class="headerlink" href="#quiz" title="Permalink to this headline">#</a></h2>
 <p><em>Not for now. To finish in the next cycle.</em> Complete <a class="reference external" href="https://forms.gle/8Q5Z7Z7Z7Z7Z7Z7Z7">Quiz</a> to check your understanding of this topic. You are advised to score at least 50% to proceed to the next topic.</p>
 </section>
 <section id="summary">
-<h2><span class="section-number">1.4. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.13. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>In this topic, you learned how to:</p>
 <ul class="simple">
 <li><p>Use …</p></li>
 </ul>
 </section>
 <section id="references-and-further-reading">
-<h2><span class="section-number">1.5. </span>References and further reading<a class="headerlink" href="#references-and-further-reading" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.14. </span>References and further reading<a class="headerlink" href="#references-and-further-reading" title="Permalink to this headline">#</a></h2>
 <p>This material is based on the following resources:</p>
 <ul class="simple">
 <li><p>Reference 1</p></li>

@@ -1,8 +1,6 @@
 # Overview
 
-## An Introduction to Transparent Machine Learning
-
-This self-paced online learning course aims to introduce essential materials on transparent machine learning for learners of diverse backgrounds to understand and apply transparent machine learning in real-world applications with confidence and trust, targeting a missing gap in the online educational space. It is an adaptation of the book [An Introduction to Statistical Learning with Applications in R](https://www.statlearning.com/) (Second Edition {cite}`james2021statistical`) by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani, from the perspective of AI transparency detailed in the [AI in Financial Services](https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf) report {cite}`ostmann2021ai` by Florian Ostmann and Cosmina Dorobantu, the [Alan Turing Institute](https://www.turing.ac.uk/).
+Welcome to **An Introduction to Transparent Machine Learning**. This self-paced online learning course aims to introduce essential materials on transparent machine learning for learners of diverse backgrounds to understand and apply transparent machine learning in real-world applications with confidence and trust, targeting a missing gap in the online educational space. It is an adaptation of the book [An Introduction to Statistical Learning with Applications in R](https://www.statlearning.com/) (Second Edition {cite}`james2021statistical`) by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani, from the perspective of AI transparency detailed in the [AI in Financial Services](https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf) report {cite}`ostmann2021ai` by Florian Ostmann and Cosmina Dorobantu, the [Alan Turing Institute](https://www.turing.ac.uk/).
 
 ```{admonition} Version
 Pre-alpha: under design and development
