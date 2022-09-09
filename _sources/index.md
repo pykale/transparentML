@@ -24,9 +24,13 @@ By the end of the course, a learner will be able to demonstrate the ability to
 
 Learners from diverse backgrounds, preferably with knowledge and skills of basic mathematics (particularly probability and linear algebra) and Python programming for machine learning.
 
-## Course outline and structure (subject to change)
+## How to go through the course
 
-This course is organized as a [Jupyter Book](https://jupyterbook.org/) consisting of 10 chapters, plus prerequisites. Each chapter has a number of sections. Each section should take no more than 30 minutes to complete, ending with an exercise. Each chapter will have a quiz for assessment.
+The course is designed to be self-paced and self-directed. The course materials are organised into a [Jupyter Book](https://jupyterbook.org/) consisting of 10 chapters, plus prerequisites. Each chapter has a number of sections. Each section is a self-contained unit of learning and should take no more than 30 minutes to complete, ending with an exercise. Each chapter will have a quiz for assessment. For each chapter, we suggest you to go through the materials of each section in the browse (html) first and then launch (via <i class="fas fa-rocket"></i>) the corresponding Jupyter notebook to run the code and complete the exercises. _Optional: You can also download the Jupyter notebooks and [run them locally on your machine](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html) after [installation](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/install.html)._
+
+The course is designed to be completed in 40 hours, but you can take as long as you need to complete the course.
+
+## Course outline and structure (subject to change)
 
 - Prerequisites: Basic mathematics and Python programming for machine learning
 - Chapter 1: [System and Process] Introduction to machine learning and AI transparency
