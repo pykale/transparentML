@@ -134,3 +134,6 @@ plots/
 
 # Pycharm
 .idea/
+
+# pdf files
+.pdf
