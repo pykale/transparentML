@@ -832,11 +832,9 @@ https://youtu.be/seKOq-VMJgY?t=1082 -->
 </li>
 </ul>
 <p>Try the following code in the cell below to assign <code class="docutils literal notranslate"><span class="pre">1</span></code> to a variable <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;hello</span> <span class="pre">world&quot;</span></code> to a variable <code class="docutils literal notranslate"><span class="pre">string_varible</span></code>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<!-- $$
   \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\\vdots\\ x_n \end{bmatrix}.
-\end{split}\]</div>
-<div class="cell docutils container">
+$$ --><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">string_variable</span> <span class="o">=</span> <span class="s2">&quot;Hello world&quot;</span>
@@ -1342,11 +1340,11 @@ loop:  2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[8 4 8 5 6]
-[[0.89169906 0.12330592 0.26084495]
- [0.49458584 0.43034591 0.70822772]]
-[-0.91853505  0.52922334 -0.3048912  -1.16181475  1.61728566]
-[19.12898756 20.56333136 19.69559785 18.80704424 21.5974547 ]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4 2 9 0 8]
+[[0.27398957 0.20292677 0.16864338]
+ [0.07398158 0.37081178 0.57534549]]
+[-0.88486111  0.06706272  1.12963528 -0.1071923  -0.6337099 ]
+[19.18690336 20.166597   21.0623974  19.81116816 19.39083964]
 </pre></div>
 </div>
 </div>
@@ -1364,14 +1362,14 @@ loop:  2
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1.0856306   0.99734545  0.2829785  -1.50629471 -0.57860025]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 </div>
 </section>
 <section id="basic-operations">
 <h4>Basic operations<a class="headerlink" href="#basic-operations" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>Add a scalar to an array, or multiply an array by a scalar.</p></li>
+</ul>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Matrix</span>
@@ -1397,12 +1395,41 @@ loop:  2
 </div>
 </div>
 </div>
+<ul class="simple">
+<li><p>Add or multiply two arrays of the same size element-wise.</p></li>
+</ul>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.9807642  2.68482974]
+ [3.4809319  4.39211752]]
+[[0.9807642  1.36965948]
+ [1.4427957  1.56847007]]
+[[0.9807642  1.36965948]
+ [1.4427957  1.56847007]]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Matrix multiplication.</p></li>
+</ul>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inner product</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1415,9 +1442,9 @@ loop:  2
 </div>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">d</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1464,10 +1491,10 @@ loop:  2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean value of the array x is:  3.4
-The median value of the array x is:  1.0
-The standard deviation of the array x is:  3.49857113690718
-The variance of the array x is:  12.239999999999998
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean value of the array x is:  3.2
+The median value of the array x is:  3.0
+The standard deviation of the array x is:  3.3105890714493698
+The variance of the array x is:  10.96
 The max value of the array x is:  0
 The min value of the array x is:  9
 </pre></div>
@@ -1619,7 +1646,7 @@ The min value of the array x is:  9
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="p">:]</span>
 </pre></div>
@@ -1632,7 +1659,7 @@ The min value of the array x is:  9
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we do not specify the row or column, the default is the for the row</span>
 <span class="n">A</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
@@ -1646,7 +1673,7 @@ The min value of the array x is:  9
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we use .shape to get the shape of the matrix</span>
 <span class="n">A</span><span class="o">.</span><span class="n">shape</span>
@@ -1683,7 +1710,7 @@ The min value of the array x is:  9
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/00-prerequisites_72_0.png" src="_images/00-prerequisites_72_0.png" />
+<img alt="_images/00-prerequisites_75_0.png" src="_images/00-prerequisites_75_0.png" />
 </div>
 </div>
 <div class="cell tag_hide-output docutils container">
@@ -1763,10 +1790,11 @@ A                     ndarray     4x4: 16 elems, type `int64`, 128 bytes
 X                     ndarray     50x50: 2500 elems, type `float64`, 20000 bytes
 Y                     ndarray     50x50: 2500 elems, type `float64`, 20000 bytes
 a                     ndarray     2x2: 4 elems, type `int64`, 32 bytes
-b                     ndarray     2x3: 6 elems, type `int64`, 48 bytes
-c                     ndarray     2: 2 elems, type `int64`, 16 bytes
+b                     ndarray     2x2: 4 elems, type `float64`, 32 bytes
+c                     ndarray     2x3: 6 elems, type `int64`, 48 bytes
 cm                    module      &lt;module &#39;matplotlib.cm&#39; f&lt;...&gt;ckages/matplotlib/cm.py&#39;&gt;
 create_int_variable   bool        True
+d                     ndarray     2: 2 elems, type `int64`, 16 bytes
 i                     int         2
 ind                   ndarray     4: 4 elems, type `bool`, 4 bytes
 keyword               module      &lt;module &#39;keyword&#39; from &#39;/&lt;...&gt;ib/python3.8/keyword.py&#39;&gt;
@@ -1797,7 +1825,7 @@ z                     float       3.14
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/00-prerequisites_78_0.png" src="_images/00-prerequisites_78_0.png" />
+<img alt="_images/00-prerequisites_81_0.png" src="_images/00-prerequisites_81_0.png" />
 </div>
 </div>
 <div class="cell tag_hide-output docutils container">
@@ -1810,7 +1838,7 @@ z                     float       3.14
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/00-prerequisites_79_0.png" src="_images/00-prerequisites_79_0.png" />
+<img alt="_images/00-prerequisites_82_0.png" src="_images/00-prerequisites_82_0.png" />
 </div>
 </div>
 <div class="cell tag_hide-output docutils container">
@@ -1825,7 +1853,7 @@ z                     float       3.14
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/00-prerequisites_80_0.png" src="_images/00-prerequisites_80_0.png" />
+<img alt="_images/00-prerequisites_83_0.png" src="_images/00-prerequisites_83_0.png" />
 </div>
 </div>
 </section>
@@ -2162,7 +2190,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/00-prerequisites_89_0.png" src="_images/00-prerequisites_89_0.png" />
+<img alt="_images/00-prerequisites_92_0.png" src="_images/00-prerequisites_92_0.png" />
 </div>
 </div>
 <div class="cell tag_hide-output docutils container">
@@ -2174,7 +2202,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/00-prerequisites_90_0.png" src="_images/00-prerequisites_90_0.png" />
+<img alt="_images/00-prerequisites_93_0.png" src="_images/00-prerequisites_93_0.png" />
 </div>
 </div>
 <div class="cell tag_hide-output docutils container">
@@ -2625,9 +2653,13 @@ dtype: int64
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
-<p>In this topic, you learned how to:</p>
+<p>In this topic, you learned:</p>
 <ul class="simple">
-<li><p>Use …</p></li>
+<li><p>Basic linear algebra and matrix operations</p></li>
+<li><p>Basic Python syntax</p></li>
+<li></li>
+<li><p>Install Python and Jupyter Notebook</p></li>
+<li></li>
 </ul>
 </section>
 <section id="references-and-further-reading">
