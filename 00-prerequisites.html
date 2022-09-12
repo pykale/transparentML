@@ -380,8 +380,8 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#scalars-vectors-matrices-and-basic-operations">
-     Scalars, vectors, matrices, and basic operations
+    <a class="reference internal nav-link" href="#scalars-vectors-matrices">
+     Scalars, vectors, matrices
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -392,6 +392,11 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#special-matrices">
      Special matrices
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercises">
+     Exercises
     </a>
    </li>
   </ul>
@@ -434,11 +439,6 @@ title="Print to PDF"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercises">
-     Exercises
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#basic-matrices-arrays-operations">
      Basic matrices/arrays operations
     </a>
@@ -460,7 +460,12 @@ title="Print to PDF"
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#indexing-in-numpy">
-       Indexing in NumPy
+       Indexing in
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         NumPy
+        </span>
+       </code>
       </a>
      </li>
     </ul>
@@ -524,8 +529,8 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#scalars-vectors-matrices-and-basic-operations">
-     Scalars, vectors, matrices, and basic operations
+    <a class="reference internal nav-link" href="#scalars-vectors-matrices">
+     Scalars, vectors, matrices
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -536,6 +541,11 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#special-matrices">
      Special matrices
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercises">
+     Exercises
     </a>
    </li>
   </ul>
@@ -578,11 +588,6 @@ title="Print to PDF"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercises">
-     Exercises
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#basic-matrices-arrays-operations">
      Basic matrices/arrays operations
     </a>
@@ -604,7 +609,12 @@ title="Print to PDF"
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#indexing-in-numpy">
-       Indexing in NumPy
+       Indexing in
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         NumPy
+        </span>
+       </code>
       </a>
      </li>
     </ul>
@@ -661,7 +671,7 @@ title="Print to PDF"
 <ul class="simple">
 <li><p>Understand basic mathematical concepts required for this course</p></li>
 <li><p>Write computer programs in Python</p></li>
-<li><p>Compute with NumPy arrays</p></li>
+<li><p>Compute with <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> arrays</p></li>
 <li><p>Analyse tabular data using <code class="docutils literal notranslate"><span class="pre">pandas</span></code></p></li>
 <li><p>Plot data using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></p></li>
 </ul>
@@ -671,8 +681,8 @@ title="Print to PDF"
 <section id="linear-algebra-and-notations">
 <h2>Linear algebra and notations<a class="headerlink" href="#linear-algebra-and-notations" title="Permalink to this headline">#</a></h2>
 <p>This section introduces the basic concepts of linear algebra and notations used in this course. The concepts are introduced in a self-contained manner, and you can skip this section if you are already familiar with the concepts.</p>
-<section id="scalars-vectors-matrices-and-basic-operations">
-<h3>Scalars, vectors, matrices, and basic operations<a class="headerlink" href="#scalars-vectors-matrices-and-basic-operations" title="Permalink to this headline">#</a></h3>
+<section id="scalars-vectors-matrices">
+<h3>Scalars, vectors, matrices<a class="headerlink" href="#scalars-vectors-matrices" title="Permalink to this headline">#</a></h3>
 <ul>
 <li><p>Scalars: a scalar is a single number. In this course, if not specified, scalers are denoted by lowercase letters, e.g. <span class="math notranslate nohighlight">\(x = 3.14\)</span>. When introducing a scaler, we will specify its type, e.g. <span class="math notranslate nohighlight">\(x \in \mathbb{R}\)</span>, where <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is the set of real numbers.</p></li>
 <li><p>Vectors: a vector is an array of numbers, which are arranged in order. Usually we denote vectors as lowercase letters in bold, e.g.</p>
@@ -707,39 +717,44 @@ $$  -->
 <section id="operations-on-matrices">
 <h3>Operations on matrices<a class="headerlink" href="#operations-on-matrices" title="Permalink to this headline">#</a></h3>
 <ul>
-<li><p>Addition and subtraction: we can add or subtract two matrices with the same shape. The result is that all corresponding entries are added, i.e.
-$<span class="math notranslate nohighlight">\(
-  (\mathbf{X} + \mathbf{Y})_{i, j} = x_{i, j} + y_{i, j}.
-\)</span>$</p></li>
-<li><p>Multiplication:</p>
-<ul class="simple">
-<li><p>A matrix <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> can be multiplied by a scaler <span class="math notranslate nohighlight">\(\alpha\)</span>, i.e.</p></li>
-</ul>
+<li><p>A matrix <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> can be multiplied by a scaler <span class="math notranslate nohighlight">\(\alpha\)</span> or add a scaler to a matrix:</p>
 <div class="math notranslate nohighlight">
 \[
-    (\alpha\mathbf{X})_{i, j}  =  \alpha x_{i,j}.
-   \]</div>
-<ul class="simple">
-<li><p>If the number of columns of matrix <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> is equal to the number of rows of matrix <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span>, the matrices can be multiplied in the order <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span>. The result will be a new matrix <span class="math notranslate nohighlight">\(\mathbf{XY}\)</span>, that has the same number of rows as <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> and the same number of columns as <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span>. The entries <span class="math notranslate nohighlight">\(\mathbf{XY}_{i,j}\)</span> will be the following combination of the entries of row <span class="math notranslate nohighlight">\(i\)</span> of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> and column <span class="math notranslate nohighlight">\(j\)</span> of <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span>, i.e.</p></li>
+    (\alpha\mathbf{X})_{i, j}  =  \alpha x_{i,j}, \text{ and } (\mathbf{X} + \alpha)_{i, j}  =  x_{i,j} + \alpha.
+  \]</div>
+</li>
+<li><p>Addition and subtraction: we can add or subtract two matrices with the same shape. The result is that all corresponding entries are added, i.e.</p>
+<div class="math notranslate nohighlight">
+\[
+    (\mathbf{X} + \mathbf{Y})_{i, j} = x_{i, j} + y_{i, j}.
+  \]</div>
+</li>
+<li><p>Matrix multiplication: If the number of columns of matrix <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> is equal to the number of rows of matrix <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span>, the matrices can be multiplied in the order <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span>. The result will be a new matrix <span class="math notranslate nohighlight">\(\mathbf{XY}\)</span>, that has the same number of rows as <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> and the same number of columns as <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span>. The entries <span class="math notranslate nohighlight">\(\mathbf{XY}_{i,j}\)</span> will be the following combination of the entries of row <span class="math notranslate nohighlight">\(i\)</span> of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> and column <span class="math notranslate nohighlight">\(j\)</span> of <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span>, i.e.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
     \mathbf{XY}_{i,j} = \sum_{k=1}^n x_{i,k} y_{k,j}.
   \]</div>
-</li>
+<ul class="simple">
+<li><p>Element-wise multiplication: we can also multiply two matrices with the same shape element-wise, i.e.</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[
+    (\mathbf{X} \odot \mathbf{Y})_{i, j} = x_{i, j} y_{i, j},
+  \]</div>
+<p>where <span class="math notranslate nohighlight">\(\odot\)</span> is the symbol for element-wise multiplication, and <span class="math notranslate nohighlight">\(\mathbf{X} \odot \mathbf{Y}\)</span> is also called the Hadamard product of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span>.</p>
 <p><strong>Examples</strong></p>
 <ul>
+<li><p>The multiplication of a number and a matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    2  \begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{bmatrix} = \begin{bmatrix} 2 \times 1 &amp; 2 \times 2 \\ 2 \times 3 &amp; 2 \times 4 \end{bmatrix} = \begin{bmatrix} 2 &amp; 4 \\ 6 &amp; 8 \end{bmatrix}.\end{split}\]</div>
+</li>
 <li><p>The sum of two matrices of the same shape</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{bmatrix} + \begin{bmatrix} 5 &amp; 6 \\ 7 &amp; 8 \end{bmatrix} = \begin{bmatrix} 1 + 5 &amp; 2 + 6 \\ 3 + 7 &amp; 4 + 8 \end{bmatrix} = \begin{bmatrix} 6 &amp; 8 \\ 10 &amp; 12 \end{bmatrix}.
   \end{split}\]</div>
-</li>
-<li><p>The multiplication of a number and a matrix</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-    2  \begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{bmatrix} = \begin{bmatrix} 2 \times 1 &amp; 2 \times 2 \\ 2 \times 3 &amp; 2 \times 4 \end{bmatrix} = \begin{bmatrix} 2 &amp; 4 \\ 6 &amp; 8 \end{bmatrix}.\end{split}\]</div>
 </li>
 <li><p>The multiplication of two matrices:</p>
 <div class="math notranslate nohighlight">
@@ -786,6 +801,10 @@ $<span class="math notranslate nohighlight">\(
 </li>
 <li><p>An <strong>Orthogonal</strong> matrix is a square matrix whose columns are mutually orthogonal and have unit length, i.e. <span class="math notranslate nohighlight">\(\mathbf{X}^\top \mathbf{X} = \mathbf{X} \mathbf{X}^\top = \mathbf{I}\)</span>, where <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> is the identity matrix.</p></li>
 </ul>
+</section>
+<section id="exercises">
+<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h3>
+<p>min 3 max 5</p>
 </section>
 </section>
 <section id="basic-python-programming">
@@ -1249,10 +1268,6 @@ loop:  2
 </div>
 </section>
 </section>
-<section id="exercises">
-<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h3>
-<p>min 3 max 5</p>
-</section>
 <section id="basic-matrices-arrays-operations">
 <h3>Basic matrices/arrays operations<a class="headerlink" href="#basic-matrices-arrays-operations" title="Permalink to this headline">#</a></h3>
 <p>In python we can use the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> package to perform basic matrix operations. The <code class="docutils literal notranslate"><span class="pre">numpy</span></code> package is a fundamental package for scientific computing with Python. It contains among other things:</p>
@@ -1327,11 +1342,11 @@ loop:  2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[9 3 3 9 9]
-[[0.57721988 0.59396922 0.06614992]
- [0.95603656 0.12759391 0.66047081]]
-[ 0.58380448 -0.22035984 -0.69936866 -0.9437742  -0.1384891 ]
-[20.51024915 19.63526124 19.31434355 18.84406654 19.90467102]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[8 4 8 5 6]
+[[0.89169906 0.12330592 0.26084495]
+ [0.49458584 0.43034591 0.70822772]]
+[-0.91853505  0.52922334 -0.3048912  -1.16181475  1.61728566]
+[19.12898756 20.56333136 19.69559785 18.80704424 21.5974547 ]
 </pre></div>
 </div>
 </div>
@@ -1347,6 +1362,9 @@ loop:  2
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1.0856306   0.99734545  0.2829785  -1.50629471 -0.57860025]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -1458,7 +1476,7 @@ The min value of the array x is:  9
 </div>
 </section>
 <section id="indexing-in-numpy">
-<h4>Indexing in NumPy<a class="headerlink" href="#indexing-in-numpy" title="Permalink to this headline">#</a></h4>
+<h4>Indexing in <code class="docutils literal notranslate"><span class="pre">NumPy</span></code><a class="headerlink" href="#indexing-in-numpy" title="Permalink to this headline">#</a></h4>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
@@ -2618,6 +2636,7 @@ dtype: int64
 <ul class="simple">
 <li><p>Goodfellow, I., Bengio, Y., &amp; Courville, A. (2016). <a class="reference external" href="https://www.deeplearningbook.org/">Deep Learning</a>. MIT press.</p></li>
 <li><p><a class="reference external" href="https://bvanderlei.github.io/jupyter-guide-to-linear-algebra/intro.html">Jupyter Guide to Linear Algebra</a></p></li>
+<li><p><a class="reference external" href="https://github.com/qx0731/Sharing_ISL_python">ISL_python: An Introduction to Statistical Learning with Applications in PYTHON</a></p></li>
 <li><p><a class="reference external" href="https://www.python.org/">Python</a></p></li>
 <li><p><a class="reference external" href="https://numpy.org/">NumPy</a></p></li>
 <li><p><a class="reference external" href="https://pandas.pydata.org/">Pandas</a></p></li>
