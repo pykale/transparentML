@@ -4,13 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prerequisites &#8212; Transparent ML Intro</title>
     
-  <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -20,16 +18,20 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
+    
+      
+
+    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -37,13 +39,12 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -63,21 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
-
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -86,10 +73,9 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -107,15 +93,14 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="index.html">
-                    Overview
-                </a>
-            </li>
-        </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   Overview
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Prerequisites
@@ -136,17 +121,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
-    </div>
-    <div id="rtd-footer-container"></div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
 </div>
 
 
@@ -154,226 +134,101 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="header-article row sticky-top noprint">
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
         
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/00-prerequisites.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/00-prerequisites.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_colab.png">
-  </span>
-<span class="headerbtn__text-container">Colab</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/pykale/transparentML"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F00-prerequisites.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/pykale/transparentML/edit/main/content/00-prerequisites.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/00-prerequisites.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/00-prerequisites.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/pykale/transparentML"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F00-prerequisites.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/00-prerequisites.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/00-prerequisites.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/00-prerequisites.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#linear-algebra-and-notations">
    Linear algebra and notations
@@ -521,11 +376,12 @@ title="Print to PDF"
  </li>
 </ul>
 
-    </nav>
-</div>
+            </nav>
+        </div>
     </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Prerequisites</h1>
@@ -689,12 +545,11 @@ title="Print to PDF"
                     </div>
                 </div>
             </div>
-            <main id="main-content" role="main">
-                
+            
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="prerequisites">
-<h1>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="prerequisites">
+<h1>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h1>
 <!-- **Question**: What do you need to know before starting this course? -->
 <div class="admonition-objectives admonition">
 <p class="admonition-title">Objectives</p>
@@ -708,11 +563,11 @@ title="Print to PDF"
 </div>
 <p><strong>Expected time to complete</strong>: 3 hours</p>
 <p>Intro paragraph to complete.</p>
-<section id="linear-algebra-and-notations">
-<h2>Linear algebra and notations<a class="headerlink" href="#linear-algebra-and-notations" title="Permalink to this headline">#</a></h2>
+<div class="section" id="linear-algebra-and-notations">
+<h2>Linear algebra and notations<a class="headerlink" href="#linear-algebra-and-notations" title="Permalink to this headline">¶</a></h2>
 <p>This section introduces the basic concepts of linear algebra and notations used in this course. The concepts are introduced in a self-contained manner, and you can skip this section if you are already familiar with the concepts.</p>
-<section id="scalars-vectors-and-matrices">
-<h3>Scalars, vectors, and matrices<a class="headerlink" href="#scalars-vectors-and-matrices" title="Permalink to this headline">#</a></h3>
+<div class="section" id="scalars-vectors-and-matrices">
+<h3>Scalars, vectors, and matrices<a class="headerlink" href="#scalars-vectors-and-matrices" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>Scalars: a scalar is a single number. In this course, if not specified, scalers are denoted by lowercase letters, e.g. <span class="math notranslate nohighlight">\(x = 3.14\)</span>. When introducing a scaler, we will specify its type, e.g. <span class="math notranslate nohighlight">\(x \in \mathbb{R}\)</span>, where <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is the set of real numbers.</p></li>
 <li><p>Vectors: a vector is an array of numbers, which are arranged in order. Usually we denote vectors as lowercase letters in bold, e.g.</p>
@@ -743,9 +598,9 @@ $$  -->
 </li>
 </ul>
 <!-- - Tensors: a tensor is an array of numbers arranged on a regular grid with a variable number of axes, e.g. $$\mathbf{X} = \begin{bmatrix} x_{1,1,1} & x_{1,1,2} & x_{1,1,3} \\ x_{1,2,1} & x_{1,2,2} & x_{1,2,3} \\ x_{1,3,1} & x_{1,3,2} & x_{1,3,3} \end{bmatrix}.$$ -->
-</section>
-<section id="operations-on-matrices">
-<h3>Operations on matrices<a class="headerlink" href="#operations-on-matrices" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="operations-on-matrices">
+<h3>Operations on matrices<a class="headerlink" href="#operations-on-matrices" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>A matrix <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> can be multiplied by a scaler <span class="math notranslate nohighlight">\(\alpha\)</span> or add a scaler to a matrix:</p>
 <div class="math notranslate nohighlight">
@@ -805,9 +660,9 @@ $$  -->
 <li><p><span class="math notranslate nohighlight">\(\mathbf{X} (\mathbf{Y} \mathbf{Z}) = (\mathbf{X} \mathbf{Y}) \mathbf{Z}\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{X} (\mathbf{Y} + \mathbf{Z}) = \mathbf{X} \mathbf{Y} + \mathbf{X} \mathbf{Z}\)</span>.</p></li>
 </ul>
-</section>
-<section id="special-matrices">
-<h3>Special matrices<a class="headerlink" href="#special-matrices" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="special-matrices">
+<h3>Special matrices<a class="headerlink" href="#special-matrices" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p><strong>Diagonal</strong> matrices contain non-zero elements only on the diagonal, i.e. <span class="math notranslate nohighlight">\(x_{i,j} = 0\)</span> for <span class="math notranslate nohighlight">\(i \neq j\)</span>. For example, the following matrix is a diagonal matrix:</p>
 <div class="math notranslate nohighlight">
@@ -836,24 +691,24 @@ $$  -->
 </li>
 <li><p>An <strong>Orthogonal</strong> matrix is a square matrix whose columns are mutually orthogonal and have unit length, i.e. <span class="math notranslate nohighlight">\(\mathbf{X}^\top \mathbf{X} = \mathbf{X} \mathbf{X}^\top = \mathbf{I}\)</span>, where <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> is the identity matrix.</p></li>
 </ul>
-</section>
-<section id="exercises">
-<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="exercises">
+<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h3>
 <p>min 3 max 5</p>
-</section>
-</section>
-<section id="basic-python-programming">
-<h2>Basic python programming<a class="headerlink" href="#basic-python-programming" title="Permalink to this headline">#</a></h2>
+</div>
+</div>
+<div class="section" id="basic-python-programming">
+<h2>Basic python programming<a class="headerlink" href="#basic-python-programming" title="Permalink to this headline">¶</a></h2>
 <p><strong>Running</strong></p>
 <p>Following the .gif below, click the rocket symbol (<i class="fas fa-rocket"></i>) to launch this page as an interactive notebook in Google Colab (faster but requiring a Google account) or Binder.</p>
 <p><img alt="Alt Text" src="https://source-separation.github.io/tutorial/_images/run_cloud.gif" /></p>
 <!-- 
 https://youtu.be/seKOq-VMJgY?t=1082 -->
 <p>Click the <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">Cell</span></code> button or press the keyboard shortcut <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">Enter</span></code> to execute the code in a cell.</p>
-<section id="variable-and-expressions">
-<h3>Variable and expressions<a class="headerlink" href="#variable-and-expressions" title="Permalink to this headline">#</a></h3>
-<section id="creating-variables">
-<h4>Creating variables<a class="headerlink" href="#creating-variables" title="Permalink to this headline">#</a></h4>
+<div class="section" id="variable-and-expressions">
+<h3>Variable and expressions<a class="headerlink" href="#variable-and-expressions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="creating-variables">
+<h4>Creating variables<a class="headerlink" href="#creating-variables" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>In Python variables are names to store values.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">=</span></code> symbol assigns the value on the right to the name on the left.</p></li>
@@ -934,9 +789,9 @@ $$ --><div class="cell docutils container">
 </div>
 </div>
 </div>
-</section>
-<section id="for-loop-and-if-statement">
-<h4>For loop and if statement<a class="headerlink" href="#for-loop-and-if-statement" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="for-loop-and-if-statement">
+<h4>For loop and if statement<a class="headerlink" href="#for-loop-and-if-statement" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">for</span></code> loop is used to iterate over a sequence (e.g. a string) or other iterable objects.</p></li>
 </ul>
@@ -1025,9 +880,9 @@ d
 </div>
 </div>
 </div>
-</section>
-<section id="built-in-functions">
-<h4>Built-in functions<a class="headerlink" href="#built-in-functions" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="built-in-functions">
+<h4>Built-in functions<a class="headerlink" href="#built-in-functions" title="Permalink to this headline">¶</a></h4>
 <p>There are many built-in functions in Python. For example, the <code class="docutils literal notranslate"><span class="pre">print</span></code> that has been used in the above section. This section introduces some common built-in functions:</p>
 <p><strong>Print</strong></p>
 <ul class="simple">
@@ -1115,9 +970,9 @@ loop:  2
 </div>
 </div>
 </div>
-</section>
-<section id="variable-types">
-<h4>Variable types<a class="headerlink" href="#variable-types" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="variable-types">
+<h4>Variable types<a class="headerlink" href="#variable-types" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p><em>Numbers</em></p>
 <ul>
@@ -1328,9 +1183,9 @@ loop:  2
 </div>
 </div>
 </div>
-</section>
-<section id="indexing-and-slicing">
-<h4>Indexing and slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="indexing-and-slicing">
+<h4>Indexing and slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">¶</a></h4>
 <p>Indexing is used to access a single element of a sequence (e.g., a string, a list, or a tuple).</p>
 <ul class="simple">
 <li><p>Each position in the string (first, second, etc.) is given a number. This number is called an index or sometimes a subscript.</p></li>
@@ -1414,9 +1269,9 @@ loop:  2
 </div>
 </div>
 </div>
-</section>
-<section id="calculations">
-<h4>Calculations<a class="headerlink" href="#calculations" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="calculations">
+<h4>Calculations<a class="headerlink" href="#calculations" title="Permalink to this headline">¶</a></h4>
 <p>Variables can be used in calculations as if they were values</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
@@ -1430,10 +1285,10 @@ loop:  2
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="basic-matrices-arrays-operations">
-<h3>Basic matrices/arrays operations<a class="headerlink" href="#basic-matrices-arrays-operations" title="Permalink to this headline">#</a></h3>
+</div>
+</div>
+<div class="section" id="basic-matrices-arrays-operations">
+<h3>Basic matrices/arrays operations<a class="headerlink" href="#basic-matrices-arrays-operations" title="Permalink to this headline">¶</a></h3>
 <p>In python we can use the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> package to perform basic matrix operations. The <code class="docutils literal notranslate"><span class="pre">numpy</span></code> package is a fundamental package for scientific computing with Python. It contains among other things:</p>
 <ul class="simple">
 <li><p>a powerful N-dimensional array object</p></li>
@@ -1443,8 +1298,8 @@ loop:  2
 <li><p>key tools for working with numerical data in Python</p></li>
 <li><p>support for large, multi-dimensional arrays and matrices</p></li>
 </ul>
-<section id="creating-arrays">
-<h4>Creating arrays<a class="headerlink" href="#creating-arrays" title="Permalink to this headline">#</a></h4>
+<div class="section" id="creating-arrays">
+<h4>Creating arrays<a class="headerlink" href="#creating-arrays" title="Permalink to this headline">¶</a></h4>
 <p>Create a matrix using <code class="docutils literal notranslate"><span class="pre">list</span></code></p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
@@ -1532,7 +1387,9 @@ loop:  2
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 2 3 4 5 6]
-[[1 2 3]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 2 3]
  [4 5 6]]
 </pre></div>
 </div>
@@ -1559,11 +1416,11 @@ loop:  2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3 2 6 5 4]
-[[0.67762148 0.07183765 0.14359268]
- [0.37012743 0.05011927 0.59753265]]
-[-0.04007811 -1.30919621  0.08590182  0.58021077  1.65714067]
-[19.97250833 18.66348815 20.08781046 20.65445988 21.78337171]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3 8 0 2 8]
+[[0.74060965 0.05115769 0.29068322]
+ [0.21277466 0.76245773 0.89323237]]
+[-2.05587169  0.05967625  1.45378789  0.70587559 -2.42936227]
+[17.85639001 20.07332971 21.48485217 20.57322717 17.63858885]
 </pre></div>
 </div>
 </div>
@@ -1583,9 +1440,9 @@ loop:  2
 </div>
 </div>
 </div>
-</section>
-<section id="basic-matrix-operations">
-<h4>Basic matrix operations<a class="headerlink" href="#basic-matrix-operations" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="basic-matrix-operations">
+<h4>Basic matrix operations<a class="headerlink" href="#basic-matrix-operations" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>Transpose</p></li>
 </ul>
@@ -1605,9 +1462,7 @@ loop:  2
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 2]
  [3 4]]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 3]
+[[1 3]
  [2 4]]
 [[1 3]
  [2 4]]
@@ -1700,9 +1555,9 @@ loop:  2
 </div>
 </div>
 </div>
-</section>
-<section id="statistics-with-numpy">
-<h4>Statistics with NumPy<a class="headerlink" href="#statistics-with-numpy" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="statistics-with-numpy">
+<h4>Statistics with NumPy<a class="headerlink" href="#statistics-with-numpy" title="Permalink to this headline">¶</a></h4>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
@@ -1747,9 +1602,9 @@ The min value of the array x is:  9
 </div>
 </div>
 </div>
-</section>
-<section id="indexing-in-numpy">
-<h4>Indexing in <code class="docutils literal notranslate"><span class="pre">NumPy</span></code><a class="headerlink" href="#indexing-in-numpy" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="indexing-in-numpy">
+<h4>Indexing in <code class="docutils literal notranslate"><span class="pre">NumPy</span></code><a class="headerlink" href="#indexing-in-numpy" title="Permalink to this headline">¶</a></h4>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
@@ -1919,10 +1774,10 @@ The min value of the array x is:  9
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="graphics">
-<h3>Graphics<a class="headerlink" href="#graphics" title="Permalink to this headline">#</a></h3>
+</div>
+</div>
+<div class="section" id="graphics">
+<h3>Graphics<a class="headerlink" href="#graphics" title="Permalink to this headline">¶</a></h3>
 <p>In python, matplotlib is the most used library for plot matplotlib.pyplot is a collection of command style functions that make matplotlib work like MATLAB. The <code class="docutils literal notranslate"><span class="pre">pyplot.plot()</span></code> function is used to plot lines, and the <code class="docutils literal notranslate"><span class="pre">pyplot.scatter()</span></code> function is used to plot points. The <code class="docutils literal notranslate"><span class="pre">pyplot.plot()</span></code> and <code class="docutils literal notranslate"><span class="pre">pyplot.scatter()</span></code> will generate an output figure object, which can be displayed by the <code class="docutils literal notranslate"><span class="pre">pyplot.show()</span></code>. In addition, the <code class="docutils literal notranslate"><span class="pre">pyplot.savefig()</span></code> function can be used to save the figure object to a file.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
@@ -2099,11 +1954,11 @@ z                     float       3.14
 <img alt="_images/00-prerequisites_112_0.png" src="_images/00-prerequisites_112_0.png" />
 </div>
 </div>
-</section>
-<section id="loading-data">
-<h3>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this headline">#</a></h3>
-<section id="data-frame-and-basic-operations">
-<h4>Data frame and basic operations<a class="headerlink" href="#data-frame-and-basic-operations" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="loading-data">
+<h3>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="data-frame-and-basic-operations">
+<h4>Data frame and basic operations<a class="headerlink" href="#data-frame-and-basic-operations" title="Permalink to this headline">¶</a></h4>
 <p>In Python, Pandas is a common used module to read from file into a data frame. I downloaded the Auto.csv from the book website. First, take a look at the csv file. There are headers, missing value is marked by ‘?’. The data is separated by comma. We can use the <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function to read the csv file into a data frame. The <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function has many parameters, we can use <code class="docutils literal notranslate"><span class="pre">?</span></code> to get the documentation of the function.</p>
 <p>The following code shows how to read the csv file “Auto.csv” in the text book into a data frame <code class="docutils literal notranslate"><span class="pre">auto_df</span></code>.</p>
 <div class="cell tag_hide-output docutils container">
@@ -2797,9 +2652,9 @@ dtype: int64
 </div>
 </div>
 </div>
-</section>
-<section id="visualising-data">
-<h4>Visualising data<a class="headerlink" href="#visualising-data" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="visualising-data">
+<h4>Visualising data<a class="headerlink" href="#visualising-data" title="Permalink to this headline">¶</a></h4>
 <p>Refer a column of data frame by name, by using a <code class="docutils literal notranslate"><span class="pre">.column_name</span></code>. See the options in plt.plot for more.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
@@ -2824,10 +2679,10 @@ dtype: int64
 <img alt="_images/00-prerequisites_137_0.png" src="_images/00-prerequisites_137_0.png" />
 </div>
 </div>
-</section>
-</section>
-<section id="id1">
-<h3>Exercises<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Exercises<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <!-- ## Basic probability and statistics 
 
 ### Probability
@@ -2836,14 +2691,14 @@ dtype: int64
 - Conditional probability
 - Joint probability
 -->
-</section>
-</section>
-<section id="quiz">
-<h2>Quiz<a class="headerlink" href="#quiz" title="Permalink to this headline">#</a></h2>
+</div>
+</div>
+<div class="section" id="quiz">
+<h2>Quiz<a class="headerlink" href="#quiz" title="Permalink to this headline">¶</a></h2>
 <p><em>Not for now. To finish in the next cycle.</em> Complete <a class="reference external" href="https://forms.gle/8Q5Z7Z7Z7Z7Z7Z7Z7">Quiz 0</a> to check your understanding of this topic. You are advised to score at least 50% to proceed to the next topic.</p>
-</section>
-<section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>In this topic, you learned:</p>
 <ul class="simple">
 <li><p>Basic linear algebra and matrix operations</p></li>
@@ -2851,9 +2706,9 @@ dtype: int64
 <li><p>Using <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code> packages to perform basic matrix operations and data analysis</p></li>
 <li><p>Using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> package to plot graphics</p></li>
 </ul>
-</section>
-<section id="references-and-further-reading">
-<h2>References and further reading<a class="headerlink" href="#references-and-further-reading" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="references-and-further-reading">
+<h2>References and further reading<a class="headerlink" href="#references-and-further-reading" title="Permalink to this headline">¶</a></h2>
 <p>This material is based on the following resources:</p>
 <ul class="simple">
 <li><p>Goodfellow, I., Bengio, Y., &amp; Courville, A. (2016). <a class="reference external" href="https://www.deeplearningbook.org/">Deep Learning</a>. MIT press.</p></li>
@@ -2864,8 +2719,8 @@ dtype: int64
 <li><p><a class="reference external" href="https://pandas.pydata.org/">Pandas</a></p></li>
 <li><p><a class="reference external" href="https://matplotlib.org/">Matplotlib</a></p></li>
 </ul>
-<!-- - Coursera online course [Programming for Everybody (Getting Started with Python)](https://www.coursera.org/learn/python) --></section>
-</section>
+<!-- - Coursera online course [Programming for Everybody (Getting Started with Python)](https://www.coursera.org/learn/python) --></div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -2889,11 +2744,9 @@ dtype: int64
 
               </div>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="index.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -2909,28 +2762,24 @@ dtype: int64
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            </footer>
+            
         </div>
     </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Haiping Lu and Shuo Zhou<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+    <footer class="footer">
+  <p>
     
-</div>
+      By Haiping Lu and Shuo Zhou<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
 
 
       </div>
     </div>
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
   </body>
 </html>
