@@ -42,6 +42,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -433,89 +434,81 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#machine-learning-methods">
-     1.3.3. Machine learning methods
+    <a class="reference internal nav-link" href="#machine-learning-models">
+     1.3.3. Machine learning models
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning-models">
-   1.4. Machine learning models
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning-tasks">
-   1.5. Machine learning tasks
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning-evaluation">
-   1.6. Machine learning evaluation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#machine-learning-process">
-   1.7. Machine learning process
+   1.4. Machine learning process
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#typical-steps">
-     1.7.1. Typical steps
+     1.4.1. Typical steps
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#machine-learning-deployment">
-     1.7.2. Machine learning deployment
+     1.4.2. Machine learning deployment
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#machine-learning-reproducibility">
-     1.7.3. Machine learning reproducibility
+     1.4.3. Machine learning reproducibility
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ai-transparency">
-   1.8. AI transparency
+   1.5. AI transparency
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#machine-learning-ethics">
-     1.8.1. Machine learning ethics
+     1.5.1. Machine learning ethics
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#machine-learning-interpretability">
-     1.8.2. Machine learning interpretability
+     1.5.2. Machine learning interpretability
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#machine-learning-transparency">
-     1.8.3. Machine learning transparency
+     1.5.3. Machine learning transparency
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classification-with-k-nearest-neighbors-knn">
+   1.6. Classification with K-Nearest Neighbors (KNN)
+  </a>
+  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     1.8.4. Exercises
+     1.6.1. Exercises
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#quiz">
-   1.9. Quiz
+   1.7. Quiz
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   1.10. Summary
+   1.8. Summary
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references-and-further-reading">
-   1.11. References and further reading
+   1.9. References and further reading
   </a>
  </li>
 </ul>
@@ -597,89 +590,81 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#machine-learning-methods">
-     1.3.3. Machine learning methods
+    <a class="reference internal nav-link" href="#machine-learning-models">
+     1.3.3. Machine learning models
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning-models">
-   1.4. Machine learning models
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning-tasks">
-   1.5. Machine learning tasks
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning-evaluation">
-   1.6. Machine learning evaluation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#machine-learning-process">
-   1.7. Machine learning process
+   1.4. Machine learning process
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#typical-steps">
-     1.7.1. Typical steps
+     1.4.1. Typical steps
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#machine-learning-deployment">
-     1.7.2. Machine learning deployment
+     1.4.2. Machine learning deployment
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#machine-learning-reproducibility">
-     1.7.3. Machine learning reproducibility
+     1.4.3. Machine learning reproducibility
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ai-transparency">
-   1.8. AI transparency
+   1.5. AI transparency
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#machine-learning-ethics">
-     1.8.1. Machine learning ethics
+     1.5.1. Machine learning ethics
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#machine-learning-interpretability">
-     1.8.2. Machine learning interpretability
+     1.5.2. Machine learning interpretability
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#machine-learning-transparency">
-     1.8.3. Machine learning transparency
+     1.5.3. Machine learning transparency
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classification-with-k-nearest-neighbors-knn">
+   1.6. Classification with K-Nearest Neighbors (KNN)
+  </a>
+  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     1.8.4. Exercises
+     1.6.1. Exercises
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#quiz">
-   1.9. Quiz
+   1.7. Quiz
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   1.10. Summary
+   1.8. Summary
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references-and-further-reading">
-   1.11. References and further reading
+   1.9. References and further reading
   </a>
  </li>
 </ul>
@@ -844,7 +829,7 @@ title="Print to PDF"
 <section id="machine-learning-problems">
 <h3><span class="section-number">1.2.2. </span>Machine learning problems<a class="headerlink" href="#machine-learning-problems" title="Permalink to this headline">#</a></h3>
 <p>Machine learning problems can be broadly classified into two categories: <strong>supervised learning</strong> and <strong>unsupervised learning</strong>. In supervised learning, the data is labelled, and the goal is to predict or estimate the label for new data. In unsupervised learning, the data is not labelled, and the goal is to find patterns, such as relationships or structures, in the data. Machine learning models can generate two types of outputs: discrete and continuous. Discrete outputs are categorical, such as the class of an image. Continuous outputs are numerical, such as the price of a house.</p>
-<p>Thus, supervised learning can be further divided into classification and regression. In <strong>classification</strong>, the output is a discrete (e.g. categorical or qualitative) value, such as a category or a class. In <strong>regression</strong>, the output is a continuous (e.g. quantitative) value, such as a number or a probability. Unsupervised learning can be further divided into clustering and dimensionality reduction. In <strong>clustering</strong>, the goal is to find groups of similar data points so the output is a discrete value, such as a cluster index. In <strong>dimensionality reduction</strong>, the goal is to find a lower-dimensional representation of the data so the output is of continuous values, such as a vector.</p>
+<p>Thus, supervised learning can be further divided into classification and regression. In <strong>classification</strong>, the output is a discrete (e.g. categorical or <em>qualitative</em>) value, such as a category or a class. In <strong>regression</strong>, the output is a continuous (e.g. <em>quantitative</em>) value, such as a number or a probability. Unsupervised learning can be further divided into clustering and dimensionality reduction. In <strong>clustering</strong>, the goal is to find groups of similar data points so the output is a discrete value, such as a cluster index. In <strong>dimensionality reduction</strong>, the goal is to find a lower-dimensional representation of the data so the output is of continuous values, such as a vector.</p>
 <p>The following table shows the different types of machine learning problems in the context of the above definitions.</p>
 <table class="colwidths-auto table" id="mlproblems-table">
 <caption><span class="caption-number">Table 1.2 </span><span class="caption-text">Supervised and unsupervised machine learning</span><a class="headerlink" href="#mlproblems-table" title="Permalink to this table">#</a></caption>
@@ -887,7 +872,7 @@ title="Print to PDF"
 <section id="basic-notations">
 <h3><span class="section-number">1.3.1. </span>Basic notations<a class="headerlink" href="#basic-notations" title="Permalink to this headline">#</a></h3>
 <p>We use notations slightly different from those in the textbook to reduce the cognitive load (hopefully). We use <span class="math notranslate nohighlight">\(N\)</span> to represent the number of <strong>samples</strong>, i.e. distinct data points or observations. We use <span class="math notranslate nohighlight">\(D\)</span> to represent the number of <strong>features</strong>, i.e. distinct variables or attributes that are available for learning a model,
-also known as the <strong>dimensionality</strong>. We use <span class="math notranslate nohighlight">\(C\)</span> to represent the number of <strong>classes</strong>, i.e. distinct categories or labels. We use <span class="math notranslate nohighlight">\(\mathbf{x}_n\)</span> to represent the <span class="math notranslate nohighlight">\(n\)</span>-th sample, where <span class="math notranslate nohighlight">\(n = 1, 2, \ldots, N\)</span>. We use <span class="math notranslate nohighlight">\(x_{nd}\)</span> to represent the <span class="math notranslate nohighlight">\(d\)</span>-th feature of the <span class="math notranslate nohighlight">\(n\)</span>-th sample, where <span class="math notranslate nohighlight">\(d = 1, 2, \ldots, D\)</span>. We use <span class="math notranslate nohighlight">\(y_n\)</span> to represent the label of the <span class="math notranslate nohighlight">\(n\)</span>-th sample, where <span class="math notranslate nohighlight">\(y_n \in \{1, 2, \ldots, C\}\)</span>. We use <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> to represent the <strong>feature matrix</strong>, also know as the <strong>data matrix</strong>, where <span class="math notranslate nohighlight">\(\mathbf{X} = \{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_N\}\)</span>. We use <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> to represent the label vector, where <span class="math notranslate nohighlight">\(\mathbf{y} = \{y_1, y_2, \ldots, y_N\}\)</span>. We use <span class="math notranslate nohighlight">\(\mathbf{W}\)</span> to represent the <strong>weight matrix</strong>, where <span class="math notranslate nohighlight">\(\mathbf{W} = \{\mathbf{w}_1, \mathbf{w}_2, \ldots, \mathbf{w}_C\}\)</span>. We use <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> to represent the <strong>bias vector</strong>, where <span class="math notranslate nohighlight">\(\mathbf{b} = \{b_1, b_2, \ldots, b_C\}\)</span>. We use <span class="math notranslate nohighlight">\(\mathbf{z}_n\)</span> to represent the linear combination of the <span class="math notranslate nohighlight">\(n\)</span>-th sample, where <span class="math notranslate nohighlight">\(\mathbf{z}_n = \mathbf{W} \mathbf{x}_n + \mathbf{b}\)</span>.</p>
+also known as the <strong>dimensionality</strong>. We use <span class="math notranslate nohighlight">\(C\)</span> to represent the number of <strong>classes</strong>, i.e. distinct categories or labels. We use <span class="math notranslate nohighlight">\(\mathbf{x}_n\)</span> to represent the <span class="math notranslate nohighlight">\(n\)</span>-th sample, where <span class="math notranslate nohighlight">\(n = 1, 2, \ldots, N\)</span>. We use <span class="math notranslate nohighlight">\(x_{nd}\)</span> to represent the <span class="math notranslate nohighlight">\(d\)</span>-th feature of the <span class="math notranslate nohighlight">\(n\)</span>-th sample, where <span class="math notranslate nohighlight">\(d = 1, 2, \ldots, D\)</span>. We use <span class="math notranslate nohighlight">\(y_n\)</span> to represent the label of the <span class="math notranslate nohighlight">\(n\)</span>-th sample, where <span class="math notranslate nohighlight">\(y_n \in \{1, 2, \ldots, C\}\)</span>. We use <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> to represent the <strong>feature matrix</strong>, also know as the <strong>data matrix</strong>, where <span class="math notranslate nohighlight">\(\mathbf{X} = [\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_N]\)</span>. We use <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> to represent the label vector, where <span class="math notranslate nohighlight">\(\mathbf{y} = [y_1, y_2, \ldots, y_N]^\top\)</span>. We use <span class="math notranslate nohighlight">\(\mathbf{W}\)</span> to represent the <strong>weight matrix</strong>, where <span class="math notranslate nohighlight">\(\mathbf{W} = [\mathbf{w}_1, \mathbf{w}_2, \ldots, \mathbf{w}_C]\)</span>. We use <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> to represent the <strong>bias vector</strong>, where <span class="math notranslate nohighlight">\(\mathbf{b} = [b_1, b_2, \ldots, b_C]^\top\)</span>. We use <span class="math notranslate nohighlight">\(\mathbf{z}_n\)</span> to represent the linear combination of the <span class="math notranslate nohighlight">\(n\)</span>-th sample, where <span class="math notranslate nohighlight">\(\mathbf{z}_n = \mathbf{W} \mathbf{x}_n + \mathbf{b}\)</span>.</p>
  <!-- We use $\mathbf{a}_n$ to represent the activation of the $n$-th sample, where $\mathbf{a}_n = \sigma(\mathbf{z}_n)$. We use $\mathbf{Z}$ to represent the linear combination matrix, where $\mathbf{Z} = \{\mathbf{z}_1, \mathbf{z}_2, \ldots, \mathbf{z}_N\}$. We use $\mathbf{A}$ to represent the activation matrix, where $\mathbf{A} = \{\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_N\}$. We use $\mathbf{Z}^T$ to represent the transpose of the linear combination matrix, where $\mathbf{Z}^T = \{\mathbf{z}_1^T, \mathbf{z}_2^T, \ldots, \mathbf{z}_N^T\}$. We use $\mathbf{A}^T$ to represent the transpose of the activation matrix, where $\mathbf{A}^T = \{\mathbf{a}_1^T, \mathbf{a}_2^T, \ldots, \mathbf{a}_N^T\}$. -->
 </section>
 <section id="machine-learning-ingredients">
@@ -895,21 +880,31 @@ also known as the <strong>dimensionality</strong>. We use <span class="math notr
 <p>Machine learning systems are composed of three main ingredients: <strong>data</strong>, <strong>model</strong>, and <strong>loss function</strong>. The data is the input to the machine learning system. The model is the core of the machine learning system. The loss function is the output of the machine learning system. The following figure shows the three ingredients of a machine learning system.</p>
 <p>A typical machine learning system is composed of the following ingredients:</p>
 <ul class="simple">
-<li><p><strong>Sample</strong>: a data point or observation <span class="math notranslate nohighlight">\(\mathbf{x}_n\)</span>, with <span class="math notranslate nohighlight">\(n = 1, 2, \ldots, N\)</span>, where <span class="math notranslate nohighlight">\(N\)</span> is the total number of samples.</p></li>
+<li><p><strong>Data/sample</strong>: a data point or observation <span class="math notranslate nohighlight">\(\mathbf{x}_n\)</span>, with <span class="math notranslate nohighlight">\(n = 1, 2, \ldots, N\)</span>, where <span class="math notranslate nohighlight">\(N\)</span> is the total number of samples.</p></li>
 <li><p><strong>Feature</strong>: each sample vector <span class="math notranslate nohighlight">\(\mathbf{x}_n\)</span> has <span class="math notranslate nohighlight">\(D\)</span> features as its representation, i.e. <span class="math notranslate nohighlight">\(D\)</span> variables or attributes that are available for learning a model.</p></li>
 <li><p><strong>Prediction</strong>: each sample will have a prediction <span class="math notranslate nohighlight">\(\hat{y}_n\)</span> as its output.</p></li>
 <li><p><strong>Label</strong>: only in supervised learning, each sample will have a label <span class="math notranslate nohighlight">\(y_n\)</span> as its ground truth. In classification, <span class="math notranslate nohighlight">\(y_n \in \{1, 2, \ldots, C\}\)</span>, where <span class="math notranslate nohighlight">\(C\)</span> is the total number of classes.</p></li>
 <li><p><strong>Labeled dataset</strong>: a set of <span class="math notranslate nohighlight">\(N\)</span> tuples of the form <span class="math notranslate nohighlight">\((\mathbf{x}_n, y_n)\)</span>, where <span class="math notranslate nohighlight">\(n = 1, 2, \ldots, N\)</span>.</p></li>
 <li><p><strong>Unlabeled dataset</strong>: a set of <span class="math notranslate nohighlight">\(N\)</span> samples <span class="math notranslate nohighlight">\(\mathbf{x}_n\)</span>, where <span class="math notranslate nohighlight">\(n = 1, 2, \ldots, N\)</span>.</p></li>
-<li><p><strong>Model</strong>: a function <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> (the <strong>objective function</strong>) that maps a sample <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> to an output <span class="math notranslate nohighlight">\(\hat{y}\)</span>. In classification, <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> maps a sample <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> to a class label <span class="math notranslate nohighlight">\(\hat{y} \in \{1, 2, \ldots, C\}\)</span>. In regression, <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> maps a sample <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> to a real number <span class="math notranslate nohighlight">\(\hat{y}\)</span>. In clustering, <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> maps a sample <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> to a cluster label <span class="math notranslate nohighlight">\(\hat{y} \in \{1, 2, \ldots, C\}\)</span>. In dimensionality reduction, <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> maps a sample <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> to a low-dimensional vector <span class="math notranslate nohighlight">\(\hat{\mathbf{y}}\)</span>.</p></li>
-<li><p><strong>Loss function</strong>: a function <span class="math notranslate nohighlight">\(L(y, \hat{y})\)</span> (also known as <strong>error function</strong>) that measures the difference between the predicted output <span class="math notranslate nohighlight">\(\hat{y}\)</span> and the true or desired output <span class="math notranslate nohighlight">\(y\)</span> in supervised learning, or a function <span class="math notranslate nohighlight">\(L(y)\)</span> that measures some desired property (or properties) of the output in unsupervised learning. In classification, <span class="math notranslate nohighlight">\(L(y, \hat{y})\)</span> measures the difference between the predicted class label <span class="math notranslate nohighlight">\(\hat{y}\)</span> and the true class label <span class="math notranslate nohighlight">\(y\)</span>. In regression, <span class="math notranslate nohighlight">\(L(y, \hat{y})\)</span> measures the difference between the predicted real number <span class="math notranslate nohighlight">\(\hat{y}\)</span> and the true real number <span class="math notranslate nohighlight">\(y\)</span>. In clustering, <span class="math notranslate nohighlight">\(L(y)\)</span> typically measures the coherence and separation of clusters. In dimensionality reduction, <span class="math notranslate nohighlight">\(L(y)\)</span> typically measures the preservation of information in the input <span class="math notranslate nohighlight">\(\{\mathbf{x}_n\}\)</span>.</p></li>
+<li><p><strong>Model</strong>: a function <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> (the <strong>objective function</strong>) that maps a sample <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> to an output <span class="math notranslate nohighlight">\(\hat{y}\)</span>. This is the <em>focus</em> of machine learning. The objective of machine learning is to estimate a good model <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span>. In classification, <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> maps a sample <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> to a class label <span class="math notranslate nohighlight">\(\hat{y} \in \{1, 2, \ldots, C\}\)</span>. In regression, <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> maps a sample <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> to a real number <span class="math notranslate nohighlight">\(\hat{y}\)</span>. In clustering, <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> maps a sample <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> to a cluster label <span class="math notranslate nohighlight">\(\hat{y} \in \{1, 2, \ldots, C\}\)</span>. In dimensionality reduction, <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> maps a sample <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> to a low-dimensional vector <span class="math notranslate nohighlight">\(\hat{\mathbf{y}}\)</span>.</p>
+<ul>
+<li><p><strong>Hyperparameters</strong>: the high-level parameters of a model that typically need to be <em>specified</em> before learning a model. These hyperparameters will determine the model structure/architecture. For example, the number of layers, the number of neurons in each layer, the activation function, the loss function, the optimizer, etc.</p></li>
+<li><p><strong>Parameters</strong>: the model parameters are the specific realisation of a model to be <em>learned</em> during training, such as the weights and biases <span class="math notranslate nohighlight">\(\mathbf{W}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>. In machine learning, it is common to denote all parameters as <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span>.</p></li>
+</ul>
+</li>
+<li><p><strong>Loss function</strong>: a function <span class="math notranslate nohighlight">\(L(y, \hat{y})\)</span> (also known as <strong>error function</strong>) that measures the difference between the predicted output <span class="math notranslate nohighlight">\(\hat{y}\)</span> and the true or desired output <span class="math notranslate nohighlight">\(y\)</span> in supervised learning, or a function <span class="math notranslate nohighlight">\(L(y)\)</span> that measures some desired property (or properties) of the output in unsupervised learning. In classification, <span class="math notranslate nohighlight">\(L(y, \hat{y})\)</span> measures the difference between the predicted class label <span class="math notranslate nohighlight">\(\hat{y}\)</span> and the true class label <span class="math notranslate nohighlight">\(y\)</span>. In regression, <span class="math notranslate nohighlight">\(L(y, \hat{y})\)</span> measures the difference between the predicted real number <span class="math notranslate nohighlight">\(\hat{y}\)</span> and the true real number <span class="math notranslate nohighlight">\(y\)</span>. In clustering, <span class="math notranslate nohighlight">\(L(y)\)</span> typically measures the coherence and separation of clusters. In dimensionality reduction, <span class="math notranslate nohighlight">\(L(y)\)</span> typically measures the preservation of information in the input <span class="math notranslate nohighlight">\(\{\mathbf{x}_n\}\)</span>.</p>
+<ul>
+<li><p><strong>Evaluation metric/measure</strong>: an evaluation (or error) metric (or measure) is needed for a loss function <span class="math notranslate nohighlight">\(L(y, \hat{y})\)</span> or <span class="math notranslate nohighlight">\(\hat{y}\)</span> to be useful. For example, in classification, the evaluation metric is typically the accuracy, which is a function of the predicted label <span class="math notranslate nohighlight">\(\hat{y}\)</span> and the true label <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+</ul>
+</li>
+<li><p><strong>learning/optimization algorithm</strong>: an algorithm that finds the best model <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> by minimizing the loss function <span class="math notranslate nohighlight">\(L(y, \hat{y})\)</span> or <span class="math notranslate nohighlight">\(\hat{y}\)</span>. Nowadays, the optimization algorithms are typically available in libraries (software packages) and do not need to be implemented by the user. The optimization algorithms are typically iterative algorithms that iteratively update the model parameters to minimize the loss function. The optimization algorithms are typically <em>black boxes</em> to the user. The user only needs to specify the loss function <span class="math notranslate nohighlight">\(L(y, \hat{y})\)</span> or <span class="math notranslate nohighlight">\(\hat{y}\)</span> and the optimization algorithm will find the best model <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span>.</p></li>
 </ul>
 </section>
-<section id="machine-learning-methods">
-<h3><span class="section-number">1.3.3. </span>Machine learning methods<a class="headerlink" href="#machine-learning-methods" title="Permalink to this headline">#</a></h3>
-<p>This course focuses on machine learning methods that are most widely used in practice, while NOT aiming to be exhaustive in covering all the methods. The following table shows the machine learning methods that we will cover in this course.</p>
+<section id="machine-learning-models">
+<h3><span class="section-number">1.3.3. </span>Machine learning models<a class="headerlink" href="#machine-learning-models" title="Permalink to this headline">#</a></h3>
+<p>This course focuses on machine learning models (or methods) that are most widely used in practice, while NOT aiming to be exhaustive in covering all the models. The following table shows the machine learning models that we will cover in this course.</p>
 <table class="colwidths-auto table" id="mlmethods-table">
-<caption><span class="caption-number">Table 1.3 </span><span class="caption-text">Machine learning methods </span><a class="headerlink" href="#mlmethods-table" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 1.3 </span><span class="caption-text">Machine learning models/methods </span><a class="headerlink" href="#mlmethods-table" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Method</p></th>
 <th class="head"><p>Description</p></th>
@@ -951,57 +946,60 @@ also known as the <strong>dimensionality</strong>. We use <span class="math notr
 </tr>
 </tbody>
 </table>
-<p>No single method will perform well in all possible scenarios. Therefore, it is important to understand the assumptions and trade-offs of each method so that you can choose the right method for a given problem.</p>
+<p>No single model will perform well in all possible scenarios. Therefore, it is important to understand the assumptions and trade-offs of each model so that you can choose the right model for a given problem.</p>
 </section>
-</section>
-<section id="machine-learning-models">
-<h2><span class="section-number">1.4. </span>Machine learning models<a class="headerlink" href="#machine-learning-models" title="Permalink to this headline">#</a></h2>
-</section>
-<section id="machine-learning-tasks">
-<h2><span class="section-number">1.5. </span>Machine learning tasks<a class="headerlink" href="#machine-learning-tasks" title="Permalink to this headline">#</a></h2>
-</section>
-<section id="machine-learning-evaluation">
-<h2><span class="section-number">1.6. </span>Machine learning evaluation<a class="headerlink" href="#machine-learning-evaluation" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="machine-learning-process">
-<h2><span class="section-number">1.7. </span>Machine learning process<a class="headerlink" href="#machine-learning-process" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.4. </span>Machine learning process<a class="headerlink" href="#machine-learning-process" title="Permalink to this headline">#</a></h2>
 <p>The process of building, using and maintaining a machine learning system is</p>
 <section id="typical-steps">
-<h3><span class="section-number">1.7.1. </span>Typical steps<a class="headerlink" href="#typical-steps" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.4.1. </span>Typical steps<a class="headerlink" href="#typical-steps" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p><strong>Data collection</strong>: Collect data from the real world.</p></li>
 <li></li>
 </ol>
 </section>
 <section id="machine-learning-deployment">
-<h3><span class="section-number">1.7.2. </span>Machine learning deployment<a class="headerlink" href="#machine-learning-deployment" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.4.2. </span>Machine learning deployment<a class="headerlink" href="#machine-learning-deployment" title="Permalink to this headline">#</a></h3>
 </section>
 <section id="machine-learning-reproducibility">
-<h3><span class="section-number">1.7.3. </span>Machine learning reproducibility<a class="headerlink" href="#machine-learning-reproducibility" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.4.3. </span>Machine learning reproducibility<a class="headerlink" href="#machine-learning-reproducibility" title="Permalink to this headline">#</a></h3>
 </section>
 </section>
 <section id="ai-transparency">
-<h2><span class="section-number">1.8. </span>AI transparency<a class="headerlink" href="#ai-transparency" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.5. </span>AI transparency<a class="headerlink" href="#ai-transparency" title="Permalink to this headline">#</a></h2>
+<p>In general, linear models allow for a more interpretable (but less flexible) model, while non-linear models allow for a more flexible (but less interpretable) model.</p>
 <section id="machine-learning-ethics">
-<h3><span class="section-number">1.8.1. </span>Machine learning ethics<a class="headerlink" href="#machine-learning-ethics" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.5.1. </span>Machine learning ethics<a class="headerlink" href="#machine-learning-ethics" title="Permalink to this headline">#</a></h3>
 </section>
 <section id="machine-learning-interpretability">
-<h3><span class="section-number">1.8.2. </span>Machine learning interpretability<a class="headerlink" href="#machine-learning-interpretability" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.5.2. </span>Machine learning interpretability<a class="headerlink" href="#machine-learning-interpretability" title="Permalink to this headline">#</a></h3>
+<p>A trade-off between model flexibility and interpretability is shown in the figure below.</p>
+<figure class="align-default" id="fig-trade-off-interpretable-flexible">
+<a class="reference internal image-reference" href="../images/fig2_7.png"><img alt="../images/fig2_7.png" src="../images/fig2_7.png" style="height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.2 </span><span class="caption-text">A trade-off between model flexibility and interpretability.</span><a class="headerlink" href="#fig-trade-off-interpretable-flexible" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="machine-learning-transparency">
-<h3><span class="section-number">1.8.3. </span>Machine learning transparency<a class="headerlink" href="#machine-learning-transparency" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.5.3. </span>Machine learning transparency<a class="headerlink" href="#machine-learning-transparency" title="Permalink to this headline">#</a></h3>
 </section>
+</section>
+<section id="classification-with-k-nearest-neighbors-knn">
+<h2><span class="section-number">1.6. </span>Classification with K-Nearest Neighbors (KNN)<a class="headerlink" href="#classification-with-k-nearest-neighbors-knn" title="Permalink to this headline">#</a></h2>
+<p>We adapt the <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/neighbors/plot_classification.html#sphx-glr-auto-examples-neighbors-plot-classification-py">KNN example from scikit-learn</a> to illustrate the use of KNN for classification.</p>
 <section id="id1">
-<h3><span class="section-number">1.8.4. </span>Exercises<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.6.1. </span>Exercises<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <p>min 3 max 5</p>
 </section>
 </section>
 <section id="quiz">
-<h2><span class="section-number">1.9. </span>Quiz<a class="headerlink" href="#quiz" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.7. </span>Quiz<a class="headerlink" href="#quiz" title="Permalink to this headline">#</a></h2>
 <p><em>Not for now. To finish in the next cycle.</em> Complete <a class="reference external" href="https://forms.gle/8Q5Z7Z7Z7Z7Z7Z7Z7">Quiz</a> to check your understanding of this topic. You are advised to score at least 50% to proceed to the next topic.</p>
 </section>
 <section id="summary">
-<h2><span class="section-number">1.10. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.8. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>Machine learning automates the process of learning a model from data that captures hidden patterns or relationship to help us make intelligent, data-driven predictions or decisions. It has been proven to be very useful in many applications, such as image recognition, speech recognition, natural language processing, and many more. Understanding and applying machine learning through this course will help you to acquire essential skills for solving many real-world problems.</p>
 <p>In this topic, you learned:</p>
 <ul class="simple">
@@ -1010,7 +1008,7 @@ also known as the <strong>dimensionality</strong>. We use <span class="math notr
 </ul>
 </section>
 <section id="references-and-further-reading">
-<h2><span class="section-number">1.11. </span>References and further reading<a class="headerlink" href="#references-and-further-reading" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.9. </span>References and further reading<a class="headerlink" href="#references-and-further-reading" title="Permalink to this headline">#</a></h2>
 <p>This material is based on the following resources:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/microsoft/ML-For-Beginners">Machine Learning for Beginners - A Curriculum</a>, Microsoft</p></li>
