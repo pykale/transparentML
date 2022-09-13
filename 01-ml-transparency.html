@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1. Intro to Machine Learning &amp; Transparency &#8212; Transparent ML Intro</title>
+    <title>1. Intro: Machine Learning &amp; Transparency &#8212; Transparent ML Intro</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Prerequisites" href="00-prerequisites.html" />
@@ -372,36 +374,70 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-and-machine-learning-problems">
-   1.1. Data and machine learning problems
+  <a class="reference internal nav-link" href="#what-is-machine-learning">
+   1.1. What is machine learning?
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#real-world-datasets-in-this-course">
-     1.1.1. Real-world datasets in this course
+    <a class="reference internal nav-link" href="#human-learning">
+     1.1.1. Human learning
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#machine-learning-problems">
-     1.1.2. Machine learning problems
+    <a class="reference internal nav-link" href="#a-definition-of-machine-learning">
+     1.1.2. A definition of machine learning
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercises">
-     1.1.3. Exercises
+    <a class="reference internal nav-link" href="#ai-machine-learning-and-deep-learning">
+     1.1.3. AI, machine learning, and deep learning
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning-ingredients">
-   1.2. Machine learning ingredients
+  <a class="reference internal nav-link" href="#data-and-machine-learning-problems">
+   1.2. Data and machine learning problems
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#real-world-datasets-in-this-course">
+     1.2.1. Real-world datasets in this course
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-problems">
+     1.2.2. Machine learning problems
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercises">
+     1.2.3. Exercises
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#machine-learning-systems">
    1.3. Machine learning systems
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-notations">
+     1.3.1. Basic notations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-ingredients">
+     1.3.2. Machine learning ingredients
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-methods">
+     1.3.3. Machine learning methods
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#machine-learning-models">
@@ -419,55 +455,67 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning-deployment">
-   1.7. Machine learning deployment
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning-ethics">
-   1.8. Machine learning ethics
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning-interpretability">
-   1.9. Machine learning interpretability
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning-transparency">
-   1.10. Machine learning transparency
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning-reproducibility">
-   1.11. Machine learning reproducibility
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ai-machine-learning-and-deep-learning">
-   1.12. AI, machine learning, and deep learning
+  <a class="reference internal nav-link" href="#machine-learning-process">
+   1.7. Machine learning process
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#typical-steps">
+     1.7.1. Typical steps
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-deployment">
+     1.7.2. Machine learning deployment
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-reproducibility">
+     1.7.3. Machine learning reproducibility
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ai-transparency">
+   1.8. AI transparency
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-ethics">
+     1.8.1. Machine learning ethics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-interpretability">
+     1.8.2. Machine learning interpretability
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-transparency">
+     1.8.3. Machine learning transparency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     1.12.1. Exercises
+     1.8.4. Exercises
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#quiz">
-   1.13. Quiz
+   1.9. Quiz
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   1.14. Summary
+   1.10. Summary
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references-and-further-reading">
-   1.15. References and further reading
+   1.11. References and further reading
   </a>
  </li>
 </ul>
@@ -479,7 +527,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Intro to Machine Learning & Transparency</h1>
+                <h1>Intro: Machine Learning & Transparency</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -490,36 +538,70 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-and-machine-learning-problems">
-   1.1. Data and machine learning problems
+  <a class="reference internal nav-link" href="#what-is-machine-learning">
+   1.1. What is machine learning?
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#real-world-datasets-in-this-course">
-     1.1.1. Real-world datasets in this course
+    <a class="reference internal nav-link" href="#human-learning">
+     1.1.1. Human learning
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#machine-learning-problems">
-     1.1.2. Machine learning problems
+    <a class="reference internal nav-link" href="#a-definition-of-machine-learning">
+     1.1.2. A definition of machine learning
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercises">
-     1.1.3. Exercises
+    <a class="reference internal nav-link" href="#ai-machine-learning-and-deep-learning">
+     1.1.3. AI, machine learning, and deep learning
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning-ingredients">
-   1.2. Machine learning ingredients
+  <a class="reference internal nav-link" href="#data-and-machine-learning-problems">
+   1.2. Data and machine learning problems
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#real-world-datasets-in-this-course">
+     1.2.1. Real-world datasets in this course
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-problems">
+     1.2.2. Machine learning problems
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercises">
+     1.2.3. Exercises
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#machine-learning-systems">
    1.3. Machine learning systems
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-notations">
+     1.3.1. Basic notations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-ingredients">
+     1.3.2. Machine learning ingredients
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-methods">
+     1.3.3. Machine learning methods
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#machine-learning-models">
@@ -537,55 +619,67 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning-deployment">
-   1.7. Machine learning deployment
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning-ethics">
-   1.8. Machine learning ethics
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning-interpretability">
-   1.9. Machine learning interpretability
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning-transparency">
-   1.10. Machine learning transparency
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning-reproducibility">
-   1.11. Machine learning reproducibility
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ai-machine-learning-and-deep-learning">
-   1.12. AI, machine learning, and deep learning
+  <a class="reference internal nav-link" href="#machine-learning-process">
+   1.7. Machine learning process
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#typical-steps">
+     1.7.1. Typical steps
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-deployment">
+     1.7.2. Machine learning deployment
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-reproducibility">
+     1.7.3. Machine learning reproducibility
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ai-transparency">
+   1.8. AI transparency
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-ethics">
+     1.8.1. Machine learning ethics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-interpretability">
+     1.8.2. Machine learning interpretability
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-transparency">
+     1.8.3. Machine learning transparency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     1.12.1. Exercises
+     1.8.4. Exercises
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#quiz">
-   1.13. Quiz
+   1.9. Quiz
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   1.14. Summary
+   1.10. Summary
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references-and-further-reading">
-   1.15. References and further reading
+   1.11. References and further reading
   </a>
  </li>
 </ul>
@@ -598,9 +692,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="intro-to-machine-learning-transparency">
-<h1><span class="section-number">1. </span>Intro to Machine Learning &amp; Transparency<a class="headerlink" href="#intro-to-machine-learning-transparency" title="Permalink to this headline">#</a></h1>
-<p><strong>Question</strong>: What is machine learning and what is AI transparency?</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="intro-machine-learning-transparency">
+<h1><span class="section-number">1. </span>Intro: Machine Learning &amp; Transparency<a class="headerlink" href="#intro-machine-learning-transparency" title="Permalink to this headline">#</a></h1>
+<!-- **Question**: What is machine learning and what is AI transparency? -->
 <div class="admonition-objectives admonition">
 <p class="admonition-title">Objectives</p>
 <ul class="simple">
@@ -611,19 +705,47 @@ title="Print to PDF"
 </ul>
 </div>
 <p><strong>Expected time to complete</strong>: 4 hours</p>
-<p>Machine learning takes data as <strong>input</strong> to learn a <strong>model</strong>, a mathematical representation of the data. This learned model can take new data as input to generate <strong>output</strong> for making predictions on the new data or for exploring/explaining the new data. In this chapter, we will learn about the components of typical machine learning systems and steps in typical machine learning processes. We will also learn about the definition and taxonomy of AI transparency. We will start with the real-world datasets used in this course to see how machine learning can be used in real-world.</p>
+<p>In this chapter, we will learn about the components of typical machine learning systems and steps in typical machine learning processes. We will also learn about the definition and taxonomy of AI transparency. We will start with the real-world datasets used in this course to see how machine learning can be used in real-world.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you do not have prior knowledge/experience with linear algebra, Python programming, and probability and statistics, please go through <a class="reference internal" href="00-prerequisites.html"><span class="doc">Prerequisites</span></a> before starting this course.</p>
 </div>
+<section id="what-is-machine-learning">
+<h2><span class="section-number">1.1. </span>What is machine learning?<a class="headerlink" href="#what-is-machine-learning" title="Permalink to this headline">#</a></h2>
+<section id="human-learning">
+<h3><span class="section-number">1.1.1. </span>Human learning<a class="headerlink" href="#human-learning" title="Permalink to this headline">#</a></h3>
+<p>Learning is familiar to humans (and animals), as a continuous process that starts from birth and continues throughout life. A human child (and adult) learns new things, acquire new skills, and improve existing skills to survive and thrive in the surrounding world. A child’s brain and senses perceive the facts of their surroundings to gradually learn the hidden patterns of life that help the child to craft logical rules to identify learned patterns and predict future events.</p>
+<p>Learning is a process of acquiring new knowledge, skills, and behaviors. Learning can be divided into two categories: <strong>acquisition</strong> and <strong>performance</strong>. Acquisition is the process of acquiring new knowledge, skills, and behaviors. Performance is the process of using the acquired knowledge, skills, and behaviors to achieve a goal. Learning can be defined as a change in behavior or knowledge that results from experience. We learn from our experiences and we learn from others. For example, we learn to walk by watching others walk, we learn to speak by listening to others speak, we learn to drive by watching others drive, and we learn to cook by watching others cook.</p>
+<p>You may have already known, since you are here, that machine can also learn, from their experiences, and from others. That is the subject of this course.</p>
+</section>
+<section id="a-definition-of-machine-learning">
+<h3><span class="section-number">1.1.2. </span>A definition of machine learning<a class="headerlink" href="#a-definition-of-machine-learning" title="Permalink to this headline">#</a></h3>
+<blockquote>
+<div><p>Machine learning learns a model from data.</p>
+</div></blockquote>
+<p>Machine learning takes <strong>data</strong> as <strong>input</strong> to learn a <strong>model</strong>, a mathematical representation of the data. This learning process is called the <strong>training</strong> phase and the data used in training is called the <strong>training data</strong>. After training, the learned model can take new data, the <strong>test data</strong>, as input to generate <strong>output</strong> for making predictions on the test data or for exploring/explaining the test data, which is the <strong>test</strong> phase.</p>
+<p>The above definition is the one we will use in this course for clarity, loosely inspired by how the human brain learns certain things based on the data it perceives from the outside world. From this definition, we can see machine learning as a set of <strong>software</strong> tools for <strong>modelling</strong> and <strong>understanding</strong> complex <strong>datasets</strong>. You may find various definitions of machine learning elsewhere. For example, machine learning, from a systems perspective, is defined as the creation of automated systems that can learn hidden patterns from data to aid in making intelligent decisions.</p>
+</section>
+<section id="ai-machine-learning-and-deep-learning">
+<h3><span class="section-number">1.1.3. </span>AI, machine learning, and deep learning<a class="headerlink" href="#ai-machine-learning-and-deep-learning" title="Permalink to this headline">#</a></h3>
+<p>Besides machine learning (ML), you may have also heard about artificial intelligence (AI), deep learning, and data science. Some use these terms interchangeably, but they are not the same, as shown in the figure below.</p>
+<figure class="align-default" id="fig-ai-ml-ds">
+<a class="reference internal image-reference" href="https://github.com/microsoft/ML-For-Beginners/raw/main/1-Introduction/1-intro-to-ML/images/ai-ml-ds.png"><img alt="https://github.com/microsoft/ML-For-Beginners/raw/main/1-Introduction/1-intro-to-ML/images/ai-ml-ds.png" src="https://github.com/microsoft/ML-For-Beginners/raw/main/1-Introduction/1-intro-to-ML/images/ai-ml-ds.png" style="height: 250px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">The relationships between AI, ML, deep learning, and data science, by <a class="reference external" href="https://twitter.com/jenlooper">Jen Looper</a> adapted from <a class="reference external" href="https://softwareengineering.stackexchange.com/questions/366996/distinction-between-ai-ml-neural-networks-deep-learning-and-data-mining">stackexchange</a> (can be redrawn by us later).</span><a class="headerlink" href="#fig-ai-ml-ds" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>AI</strong> is a broad field of study that aims to create intelligent machines that can perform tasks that normally require human intelligence. There are multiple ways to achieve AI, and machine learning is one of them. As defined above, machine learning is a subfield of AI that machines acquire their experiences from data, in the form of a mathematical model. There are multiple ways of machine learning, and deep learning is one of them. <strong>Deep learning</strong> is a subfield of machine learning that uses deep (i.e. many layers) neural networks to learn from data. <strong>Data science</strong> is a broad field of study that uses scientific methods, processes, algorithms, and systems to extract knowledge and insights from data, not necessarily in the form of a mathematical model as machine learning does.</p>
+</section>
+</section>
 <section id="data-and-machine-learning-problems">
-<h2><span class="section-number">1.1. </span>Data and machine learning problems<a class="headerlink" href="#data-and-machine-learning-problems" title="Permalink to this headline">#</a></h2>
-<p>This section introduces the real-world datasets used in this course. We will also learn about the machine learning problems that can be solved using these datasets.</p>
+<h2><span class="section-number">1.2. </span>Data and machine learning problems<a class="headerlink" href="#data-and-machine-learning-problems" title="Permalink to this headline">#</a></h2>
+<p>This section introduces the real-world datasets used in this course. We will also learn about the machine learning problems that can be solved using these datasets. Before we talk about the datasets, let’s first define what machine learning is.</p>
 <section id="real-world-datasets-in-this-course">
-<h3><span class="section-number">1.1.1. </span>Real-world datasets in this course<a class="headerlink" href="#real-world-datasets-in-this-course" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.2.1. </span>Real-world datasets in this course<a class="headerlink" href="#real-world-datasets-in-this-course" title="Permalink to this headline">#</a></h3>
 <p>In this course, we will use real-world datasets to introduce machine learning from the perspective of AI transparency. We will use the following datasets from the textbook. You can click on the name of the dataset to see the actual data.</p>
 <table class="colwidths-auto table" id="datasets-table">
-<caption><span class="caption-number">Table 1.1 </span><span class="caption-text">Datasets used in this course, from the textbook</span><a class="headerlink" href="#datasets-table" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 1.1 </span><span class="caption-text">Datasets used in this course, from the textbook (to refine)</span><a class="headerlink" href="#datasets-table" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
 <th class="head"><p>Data provided</p></th>
@@ -716,12 +838,13 @@ title="Print to PDF"
 <!-- * - [NYSE](https://github.com/pykale/transparentML/blob/main/data/.csv)  
   - Returns, volatility, and volume for the New York Stock Exchange.
   - Predict the returns of a stock. -->
-<p>The above datasets show the diverse range of problems that machine learning can solve, which shows only the tip of the iceberg actually. Next, let us learn about the machine learning problems in their typical definitions.</p>
+<p>The above datasets show the diverse range of problems that machine learning can solve, which shows only the tip of the iceberg actually. Applications of machine learning are everywhere, from healthcare to finance, from manufacturing to agriculture, from transportation to education, and so on. The datasets used in this course are from the textbook, which is a good starting point for learning about machine learning. However, you can also find many other datasets online, such as <a class="reference external" href="https://www.kaggle.com/datasets">Kaggle</a>, <a class="reference external" href="https://archive.ics.uci.edu/ml/index.php">UCI Machine Learning Repository</a>, <a class="reference external" href="https://www.openml.org/">OpenML</a>, <a class="reference external" href="https://datasetsearch.research.google.com/">Google Dataset Search</a>, and so on.</p>
+<p>Next, let us learn about the machine learning problems in their typical definitions.</p>
 </section>
 <section id="machine-learning-problems">
-<h3><span class="section-number">1.1.2. </span>Machine learning problems<a class="headerlink" href="#machine-learning-problems" title="Permalink to this headline">#</a></h3>
-<p>Machine learning problems can be broadly classified into two categories: <strong>supervised learning</strong> and <strong>unsupervised learning</strong>. In supervised learning, the data is labelled, and the goal is to predict the label for new data. In unsupervised learning, the data is not labelled, and the goal is to find patterns in the data. Machine learning models can generate two types of outputs: discrete and continuous. Discrete outputs are categorical, such as the class of an image. Continuous outputs are numerical, such as the price of a house.</p>
-<p>Thus, supervised learning can be further divided into classification and regression. In <strong>classification</strong>, the output is a discrete value, such as a label or a class. In <strong>regression</strong>, the output is a continuous value, such as a number or a probability. Unsupervised learning can be further divided into clustering and dimensionality reduction. In <strong>clustering</strong>, the goal is to find groups of similar data points so the output is a discrete value, such as a cluster index. In <strong>dimensionality reduction</strong>, the goal is to find a lower-dimensional representation of the data so the output is of continuous values, such as a vector.</p>
+<h3><span class="section-number">1.2.2. </span>Machine learning problems<a class="headerlink" href="#machine-learning-problems" title="Permalink to this headline">#</a></h3>
+<p>Machine learning problems can be broadly classified into two categories: <strong>supervised learning</strong> and <strong>unsupervised learning</strong>. In supervised learning, the data is labelled, and the goal is to predict or estimate the label for new data. In unsupervised learning, the data is not labelled, and the goal is to find patterns, such as relationships or structures, in the data. Machine learning models can generate two types of outputs: discrete and continuous. Discrete outputs are categorical, such as the class of an image. Continuous outputs are numerical, such as the price of a house.</p>
+<p>Thus, supervised learning can be further divided into classification and regression. In <strong>classification</strong>, the output is a discrete (e.g. categorical or qualitative) value, such as a category or a class. In <strong>regression</strong>, the output is a continuous (e.g. quantitative) value, such as a number or a probability. Unsupervised learning can be further divided into clustering and dimensionality reduction. In <strong>clustering</strong>, the goal is to find groups of similar data points so the output is a discrete value, such as a cluster index. In <strong>dimensionality reduction</strong>, the goal is to find a lower-dimensional representation of the data so the output is of continuous values, such as a vector.</p>
 <p>The following table shows the different types of machine learning problems in the context of the above definitions.</p>
 <table class="colwidths-auto table" id="mlproblems-table">
 <caption><span class="caption-number">Table 1.2 </span><span class="caption-text">Supervised and unsupervised machine learning</span><a class="headerlink" href="#mlproblems-table" title="Permalink to this table">#</a></caption>
@@ -744,7 +867,7 @@ title="Print to PDF"
 </table>
 </section>
 <section id="exercises">
-<h3><span class="section-number">1.1.3. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.2.3. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h3>
 <ol>
 <li><p>Choose three or more datasets of your interest from <a class="reference internal" href="#datasets-table"><span class="std std-numref">Table 1.1</span></a>. Click on the name of each chosen dataset to explore and get a sense of the data. You may not be able to get a beautiful view or a view at all for those larger ones. Write down the possible machine learning problems using terminology in <a class="reference internal" href="#mlproblems-table"><span class="std std-numref">Table 1.2</span></a> that can be solved using each of your chosen dataset. Click below for a sample answer.</p>
 <div class="toggle docutils container">
@@ -759,11 +882,77 @@ title="Print to PDF"
 </ol>
 </section>
 </section>
-<section id="machine-learning-ingredients">
-<h2><span class="section-number">1.2. </span>Machine learning ingredients<a class="headerlink" href="#machine-learning-ingredients" title="Permalink to this headline">#</a></h2>
-</section>
 <section id="machine-learning-systems">
 <h2><span class="section-number">1.3. </span>Machine learning systems<a class="headerlink" href="#machine-learning-systems" title="Permalink to this headline">#</a></h2>
+<section id="basic-notations">
+<h3><span class="section-number">1.3.1. </span>Basic notations<a class="headerlink" href="#basic-notations" title="Permalink to this headline">#</a></h3>
+<p>We use notations slightly different from those in the textbook to reduce the cognitive load (hopefully). We use <span class="math notranslate nohighlight">\(N\)</span> to represent the number of <strong>samples</strong>, i.e. distinct data points or observations. We use <span class="math notranslate nohighlight">\(D\)</span> to represent the number of <strong>features</strong>, i.e. distinct variables or attributes that are available for learning a model,
+also known as the <strong>dimensionality</strong>. We use <span class="math notranslate nohighlight">\(C\)</span> to represent the number of <strong>classes</strong>, i.e. distinct categories or labels. We use <span class="math notranslate nohighlight">\(\mathbf{x}_n\)</span> to represent the <span class="math notranslate nohighlight">\(n\)</span>-th sample, where <span class="math notranslate nohighlight">\(n = 1, 2, \ldots, N\)</span>. We use <span class="math notranslate nohighlight">\(x_{nd}\)</span> to represent the <span class="math notranslate nohighlight">\(d\)</span>-th feature of the <span class="math notranslate nohighlight">\(n\)</span>-th sample, where <span class="math notranslate nohighlight">\(d = 1, 2, \ldots, D\)</span>. We use <span class="math notranslate nohighlight">\(y_n\)</span> to represent the label of the <span class="math notranslate nohighlight">\(n\)</span>-th sample, where <span class="math notranslate nohighlight">\(y_n \in \{1, 2, \ldots, C\}\)</span>. We use <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> to represent the <strong>feature matrix</strong>, also know as the <strong>data matrix</strong>, where <span class="math notranslate nohighlight">\(\mathbf{X} = \{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_N\}\)</span>. We use <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> to represent the label vector, where <span class="math notranslate nohighlight">\(\mathbf{y} = \{y_1, y_2, \ldots, y_N\}\)</span>. We use <span class="math notranslate nohighlight">\(\mathbf{W}\)</span> to represent the <strong>weight matrix</strong>, where <span class="math notranslate nohighlight">\(\mathbf{W} = \{\mathbf{w}_1, \mathbf{w}_2, \ldots, \mathbf{w}_C\}\)</span>. We use <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> to represent the <strong>bias vector</strong>, where <span class="math notranslate nohighlight">\(\mathbf{b} = \{b_1, b_2, \ldots, b_C\}\)</span>. We use <span class="math notranslate nohighlight">\(\mathbf{z}_n\)</span> to represent the linear combination of the <span class="math notranslate nohighlight">\(n\)</span>-th sample, where <span class="math notranslate nohighlight">\(\mathbf{z}_n = \mathbf{W} \mathbf{x}_n + \mathbf{b}\)</span>.</p>
+ <!-- We use $\mathbf{a}_n$ to represent the activation of the $n$-th sample, where $\mathbf{a}_n = \sigma(\mathbf{z}_n)$. We use $\mathbf{Z}$ to represent the linear combination matrix, where $\mathbf{Z} = \{\mathbf{z}_1, \mathbf{z}_2, \ldots, \mathbf{z}_N\}$. We use $\mathbf{A}$ to represent the activation matrix, where $\mathbf{A} = \{\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_N\}$. We use $\mathbf{Z}^T$ to represent the transpose of the linear combination matrix, where $\mathbf{Z}^T = \{\mathbf{z}_1^T, \mathbf{z}_2^T, \ldots, \mathbf{z}_N^T\}$. We use $\mathbf{A}^T$ to represent the transpose of the activation matrix, where $\mathbf{A}^T = \{\mathbf{a}_1^T, \mathbf{a}_2^T, \ldots, \mathbf{a}_N^T\}$. -->
+</section>
+<section id="machine-learning-ingredients">
+<h3><span class="section-number">1.3.2. </span>Machine learning ingredients<a class="headerlink" href="#machine-learning-ingredients" title="Permalink to this headline">#</a></h3>
+<p>Machine learning systems are composed of three main ingredients: <strong>data</strong>, <strong>model</strong>, and <strong>loss function</strong>. The data is the input to the machine learning system. The model is the core of the machine learning system. The loss function is the output of the machine learning system. The following figure shows the three ingredients of a machine learning system.</p>
+<p>A typical machine learning system is composed of the following ingredients:</p>
+<ul class="simple">
+<li><p><strong>Sample</strong>: a data point or observation <span class="math notranslate nohighlight">\(\mathbf{x}_n\)</span>, with <span class="math notranslate nohighlight">\(n = 1, 2, \ldots, N\)</span>, where <span class="math notranslate nohighlight">\(N\)</span> is the total number of samples.</p></li>
+<li><p><strong>Feature</strong>: each sample vector <span class="math notranslate nohighlight">\(\mathbf{x}_n\)</span> has <span class="math notranslate nohighlight">\(D\)</span> features as its representation, i.e. <span class="math notranslate nohighlight">\(D\)</span> variables or attributes that are available for learning a model.</p></li>
+<li><p><strong>Prediction</strong>: each sample will have a prediction <span class="math notranslate nohighlight">\(\hat{y}_n\)</span> as its output.</p></li>
+<li><p><strong>Label</strong>: only in supervised learning, each sample will have a label <span class="math notranslate nohighlight">\(y_n\)</span> as its ground truth. In classification, <span class="math notranslate nohighlight">\(y_n \in \{1, 2, \ldots, C\}\)</span>, where <span class="math notranslate nohighlight">\(C\)</span> is the total number of classes.</p></li>
+<li><p><strong>Labeled dataset</strong>: a set of <span class="math notranslate nohighlight">\(N\)</span> tuples of the form <span class="math notranslate nohighlight">\((\mathbf{x}_n, y_n)\)</span>, where <span class="math notranslate nohighlight">\(n = 1, 2, \ldots, N\)</span>.</p></li>
+<li><p><strong>Unlabeled dataset</strong>: a set of <span class="math notranslate nohighlight">\(N\)</span> samples <span class="math notranslate nohighlight">\(\mathbf{x}_n\)</span>, where <span class="math notranslate nohighlight">\(n = 1, 2, \ldots, N\)</span>.</p></li>
+<li><p><strong>Model</strong>: a function <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> (the <strong>objective function</strong>) that maps a sample <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> to an output <span class="math notranslate nohighlight">\(\hat{y}\)</span>. In classification, <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> maps a sample <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> to a class label <span class="math notranslate nohighlight">\(\hat{y} \in \{1, 2, \ldots, C\}\)</span>. In regression, <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> maps a sample <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> to a real number <span class="math notranslate nohighlight">\(\hat{y}\)</span>. In clustering, <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> maps a sample <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> to a cluster label <span class="math notranslate nohighlight">\(\hat{y} \in \{1, 2, \ldots, C\}\)</span>. In dimensionality reduction, <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> maps a sample <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> to a low-dimensional vector <span class="math notranslate nohighlight">\(\hat{\mathbf{y}}\)</span>.</p></li>
+<li><p><strong>Loss function</strong>: a function <span class="math notranslate nohighlight">\(L(y, \hat{y})\)</span> (also known as <strong>error function</strong>) that measures the difference between the predicted output <span class="math notranslate nohighlight">\(\hat{y}\)</span> and the true or desired output <span class="math notranslate nohighlight">\(y\)</span> in supervised learning, or a function <span class="math notranslate nohighlight">\(L(y)\)</span> that measures some desired property (or properties) of the output in unsupervised learning. In classification, <span class="math notranslate nohighlight">\(L(y, \hat{y})\)</span> measures the difference between the predicted class label <span class="math notranslate nohighlight">\(\hat{y}\)</span> and the true class label <span class="math notranslate nohighlight">\(y\)</span>. In regression, <span class="math notranslate nohighlight">\(L(y, \hat{y})\)</span> measures the difference between the predicted real number <span class="math notranslate nohighlight">\(\hat{y}\)</span> and the true real number <span class="math notranslate nohighlight">\(y\)</span>. In clustering, <span class="math notranslate nohighlight">\(L(y)\)</span> typically measures the coherence and separation of clusters. In dimensionality reduction, <span class="math notranslate nohighlight">\(L(y)\)</span> typically measures the preservation of information in the input <span class="math notranslate nohighlight">\(\{\mathbf{x}_n\}\)</span>.</p></li>
+</ul>
+</section>
+<section id="machine-learning-methods">
+<h3><span class="section-number">1.3.3. </span>Machine learning methods<a class="headerlink" href="#machine-learning-methods" title="Permalink to this headline">#</a></h3>
+<p>This course focuses on machine learning methods that are most widely used in practice, while NOT aiming to be exhaustive in covering all the methods. The following table shows the machine learning methods that we will cover in this course.</p>
+<table class="colwidths-auto table" id="mlmethods-table">
+<caption><span class="caption-number">Table 1.3 </span><span class="caption-text">Machine learning methods </span><a class="headerlink" href="#mlmethods-table" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Linear regression</strong></p></td>
+<td><p>A linear model for regression.</p></td>
+<td><p>Predicting the price of a house.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Logistic regression</strong></p></td>
+<td><p>A linear model for classification.</p></td>
+<td><p>Predicting whether a customer will default on a credit card payment.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Support vector machine</strong></p></td>
+<td><p>A non-linear model for classification.</p></td>
+<td><p>Predicting whether a customer will default on a credit card payment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Decision tree</strong></p></td>
+<td><p>A non-linear model for classification and regression.</p></td>
+<td><p>Predicting whether a customer will default on a credit card payment.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Random forest</strong></p></td>
+<td><p>An ensemble of decision trees for classification and regression.</p></td>
+<td><p>Predicting whether a customer will default on a credit card payment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Neural network</strong></p></td>
+<td><p>A non-linear model for classification and regression.</p></td>
+<td><p>Predicting whether a customer will default on a credit card payment.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>K-means</strong></p></td>
+<td><p>A clustering algorithm.</p></td>
+<td><p>Finding groups of similar customers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Principal component analysis</strong></p></td>
+<td><p>A dimensionality reduction algorithm.</p></td>
+<td><p>Finding the most important features of a dataset.</p></td>
+</tr>
+</tbody>
+</table>
+<p>No single method will perform well in all possible scenarios. Therefore, it is important to understand the assumptions and trade-offs of each method so that you can choose the right method for a given problem.</p>
+</section>
 </section>
 <section id="machine-learning-models">
 <h2><span class="section-number">1.4. </span>Machine learning models<a class="headerlink" href="#machine-learning-models" title="Permalink to this headline">#</a></h2>
@@ -774,44 +963,58 @@ title="Print to PDF"
 <section id="machine-learning-evaluation">
 <h2><span class="section-number">1.6. </span>Machine learning evaluation<a class="headerlink" href="#machine-learning-evaluation" title="Permalink to this headline">#</a></h2>
 </section>
+<section id="machine-learning-process">
+<h2><span class="section-number">1.7. </span>Machine learning process<a class="headerlink" href="#machine-learning-process" title="Permalink to this headline">#</a></h2>
+<p>The process of building, using and maintaining a machine learning system is</p>
+<section id="typical-steps">
+<h3><span class="section-number">1.7.1. </span>Typical steps<a class="headerlink" href="#typical-steps" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p><strong>Data collection</strong>: Collect data from the real world.</p></li>
+<li></li>
+</ol>
+</section>
 <section id="machine-learning-deployment">
-<h2><span class="section-number">1.7. </span>Machine learning deployment<a class="headerlink" href="#machine-learning-deployment" title="Permalink to this headline">#</a></h2>
-</section>
-<section id="machine-learning-ethics">
-<h2><span class="section-number">1.8. </span>Machine learning ethics<a class="headerlink" href="#machine-learning-ethics" title="Permalink to this headline">#</a></h2>
-</section>
-<section id="machine-learning-interpretability">
-<h2><span class="section-number">1.9. </span>Machine learning interpretability<a class="headerlink" href="#machine-learning-interpretability" title="Permalink to this headline">#</a></h2>
-</section>
-<section id="machine-learning-transparency">
-<h2><span class="section-number">1.10. </span>Machine learning transparency<a class="headerlink" href="#machine-learning-transparency" title="Permalink to this headline">#</a></h2>
+<h3><span class="section-number">1.7.2. </span>Machine learning deployment<a class="headerlink" href="#machine-learning-deployment" title="Permalink to this headline">#</a></h3>
 </section>
 <section id="machine-learning-reproducibility">
-<h2><span class="section-number">1.11. </span>Machine learning reproducibility<a class="headerlink" href="#machine-learning-reproducibility" title="Permalink to this headline">#</a></h2>
+<h3><span class="section-number">1.7.3. </span>Machine learning reproducibility<a class="headerlink" href="#machine-learning-reproducibility" title="Permalink to this headline">#</a></h3>
 </section>
-<section id="ai-machine-learning-and-deep-learning">
-<h2><span class="section-number">1.12. </span>AI, machine learning, and deep learning<a class="headerlink" href="#ai-machine-learning-and-deep-learning" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="ai-transparency">
+<h2><span class="section-number">1.8. </span>AI transparency<a class="headerlink" href="#ai-transparency" title="Permalink to this headline">#</a></h2>
+<section id="machine-learning-ethics">
+<h3><span class="section-number">1.8.1. </span>Machine learning ethics<a class="headerlink" href="#machine-learning-ethics" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="machine-learning-interpretability">
+<h3><span class="section-number">1.8.2. </span>Machine learning interpretability<a class="headerlink" href="#machine-learning-interpretability" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="machine-learning-transparency">
+<h3><span class="section-number">1.8.3. </span>Machine learning transparency<a class="headerlink" href="#machine-learning-transparency" title="Permalink to this headline">#</a></h3>
+</section>
 <section id="id1">
-<h3><span class="section-number">1.12.1. </span>Exercises<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.8.4. </span>Exercises<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <p>min 3 max 5</p>
 </section>
 </section>
 <section id="quiz">
-<h2><span class="section-number">1.13. </span>Quiz<a class="headerlink" href="#quiz" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.9. </span>Quiz<a class="headerlink" href="#quiz" title="Permalink to this headline">#</a></h2>
 <p><em>Not for now. To finish in the next cycle.</em> Complete <a class="reference external" href="https://forms.gle/8Q5Z7Z7Z7Z7Z7Z7Z7">Quiz</a> to check your understanding of this topic. You are advised to score at least 50% to proceed to the next topic.</p>
 </section>
 <section id="summary">
-<h2><span class="section-number">1.14. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
-<p>In this topic, you learned how to:</p>
+<h2><span class="section-number">1.10. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<p>Machine learning automates the process of learning a model from data that captures hidden patterns or relationship to help us make intelligent, data-driven predictions or decisions. It has been proven to be very useful in many applications, such as image recognition, speech recognition, natural language processing, and many more. Understanding and applying machine learning through this course will help you to acquire essential skills for solving many real-world problems.</p>
+<p>In this topic, you learned:</p>
 <ul class="simple">
-<li><p>Use …</p></li>
+<li><p>Machine learning learns a model from data to make predictions or decisions.</p></li>
+<li></li>
 </ul>
 </section>
 <section id="references-and-further-reading">
-<h2><span class="section-number">1.15. </span>References and further reading<a class="headerlink" href="#references-and-further-reading" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.11. </span>References and further reading<a class="headerlink" href="#references-and-further-reading" title="Permalink to this headline">#</a></h2>
 <p>This material is based on the following resources:</p>
 <ul class="simple">
-<li><p>Reference 1</p></li>
+<li><p><a class="reference external" href="https://github.com/microsoft/ML-For-Beginners">Machine Learning for Beginners - A Curriculum</a>, Microsoft</p></li>
+<li><p><a class="reference external" href="https://dmol.pub/">Deep Learning for Molecules &amp; Materials</a></p></li>
 </ul>
 </section>
 </section>
