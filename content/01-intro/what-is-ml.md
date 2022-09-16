@@ -1,4 +1,3 @@
-
 ## What is machine learning?
 
 ### Human learning
@@ -31,3 +30,7 @@ The relationships between AI, ML, deep learning, and data science, by [Jen Loope
 ```
 
 **AI** is a broad field of study that aims to create intelligent machines that can perform tasks that normally require human intelligence. There are multiple ways to achieve AI, and machine learning is one of them. As defined above, machine learning is a subfield of AI that machines acquire their experiences from data, in the form of a mathematical model. There are multiple ways of machine learning, and deep learning is one of them. **Deep learning** is a subfield of machine learning that uses deep (i.e. many layers) neural networks to learn from data. **Data science** is a broad field of study that uses scientific methods, processes, algorithms, and systems to extract knowledge and insights from data, not necessarily in the form of a mathematical model as machine learning does.
+
+### Exercises
+
+min 3 max 5

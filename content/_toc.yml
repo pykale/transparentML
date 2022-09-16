@@ -13,6 +13,8 @@ parts:
       title: Linear algebra
     - file: 00-prereq/basic-python
       title: Python basics
+    - file: 00-prereq/quiz-sum-ref
+      title: Quiz & summary
 - caption: Basics
   numbered: true
   chapters:
@@ -34,7 +36,7 @@ parts:
     - file: 01-intro/ml-models
       title: ML models
     - file: 01-intro/quiz-sum-ref
-      title: Quiz summary & references
+      title: Quiz & summary
 - caption: Appendix
   numbered: false
   chapters:
