@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Intro to Machine Learning &amp; Transparency" href="../01-intro/overview.html" />
+    <link rel="next" title="Quiz" href="quiz-sum-ref.html" />
     <link rel="prev" title="Linear algebra and notations" href="linear-algebra-and-notations.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -116,7 +116,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Basic python programming
+     Python basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quiz-sum-ref.html">
+     Quiz
     </a>
    </li>
   </ul>
@@ -175,7 +180,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../01-intro/quiz-sum-ref.html">
-     1.8. Exercises
+     1.8. Quiz
     </a>
    </li>
   </ul>
@@ -308,122 +313,100 @@ const thebe_selector_output = ".output, .cell_output"
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Basic python programming
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variable-and-expressions">
+   Variable and expressions
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#variable-and-expressions">
-     Variable and expressions
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#creating-variables">
-       Creating variables
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#for-loop-and-if-statement">
-       For loop and if statement
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#built-in-functions">
-       Built-in functions
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#variable-types">
-       Variable types
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#indexing-and-slicing">
-       Indexing and slicing
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#calculations">
-       Calculations
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#basic-matrices-arrays-operations">
-     Basic matrices/arrays operations
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#creating-arrays">
-       Creating arrays
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#basic-matrix-operations">
-       Basic matrix operations
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#statistics-with-numpy">
-       Statistics with NumPy
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#indexing-in-numpy">
-       Indexing in
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         NumPy
-        </span>
-       </code>
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#graphics">
-     Graphics
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-variables">
+     Creating variables
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#loading-data">
-     Loading Data
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#for-loop-and-if-statement">
+     For loop and if statement
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#data-frame-and-basic-operations">
-       Data frame and basic operations
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#visualising-data">
-       Visualising data
-      </a>
-     </li>
-    </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercises">
-     Exercises
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#built-in-functions">
+     Built-in functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variable-types">
+     Variable types
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-and-slicing">
+     Indexing and slicing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculations">
+     Calculations
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quiz">
-   Quiz
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-matrices-arrays-operations">
+   Basic matrices/arrays operations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-arrays">
+     Creating arrays
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-matrix-operations">
+     Basic matrix operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistics-with-numpy">
+     Statistics with NumPy
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-in-numpy">
+     Indexing in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       NumPy
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graphics">
+   Graphics
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-data">
+   Loading Data
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-frame-and-basic-operations">
+     Data frame and basic operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualising-data">
+     Visualising data
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references-and-further-reading">
-   References and further reading
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
   </a>
  </li>
 </ul>
@@ -446,122 +429,100 @@ const thebe_selector_output = ".output, .cell_output"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Basic python programming
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variable-and-expressions">
+   Variable and expressions
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#variable-and-expressions">
-     Variable and expressions
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#creating-variables">
-       Creating variables
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#for-loop-and-if-statement">
-       For loop and if statement
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#built-in-functions">
-       Built-in functions
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#variable-types">
-       Variable types
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#indexing-and-slicing">
-       Indexing and slicing
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#calculations">
-       Calculations
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#basic-matrices-arrays-operations">
-     Basic matrices/arrays operations
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#creating-arrays">
-       Creating arrays
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#basic-matrix-operations">
-       Basic matrix operations
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#statistics-with-numpy">
-       Statistics with NumPy
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#indexing-in-numpy">
-       Indexing in
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         NumPy
-        </span>
-       </code>
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#graphics">
-     Graphics
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-variables">
+     Creating variables
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#loading-data">
-     Loading Data
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#for-loop-and-if-statement">
+     For loop and if statement
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#data-frame-and-basic-operations">
-       Data frame and basic operations
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#visualising-data">
-       Visualising data
-      </a>
-     </li>
-    </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercises">
-     Exercises
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#built-in-functions">
+     Built-in functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variable-types">
+     Variable types
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-and-slicing">
+     Indexing and slicing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculations">
+     Calculations
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quiz">
-   Quiz
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-matrices-arrays-operations">
+   Basic matrices/arrays operations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-arrays">
+     Creating arrays
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-matrix-operations">
+     Basic matrix operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistics-with-numpy">
+     Statistics with NumPy
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-in-numpy">
+     Indexing in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       NumPy
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graphics">
+   Graphics
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-data">
+   Loading Data
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-frame-and-basic-operations">
+     Data frame and basic operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualising-data">
+     Visualising data
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references-and-further-reading">
-   References and further reading
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
   </a>
  </li>
 </ul>
@@ -1233,6 +1194,9 @@ loop:  2
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1  2  3  4  5  6  7  8  9 10]
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell tag_hide-output docutils container">
@@ -1290,11 +1254,11 @@ loop:  2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0 0 9 3 5]
-[[0.37719132 0.95787105 0.40093967]
- [0.63049328 0.04925849 0.40606425]]
-[-0.22213626  0.80047509  1.01235598  2.09964303 -1.45929709]
-[19.6833177  20.76720835 20.85078275 21.9601872  18.56456756]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[7 9 6 4 0]
+[[0.8384148  0.8834051  0.57211001]
+ [0.34090705 0.72901309 0.3129334 ]]
+[ 0.29960912 -0.02537902  0.25532303 -0.92510295  1.22125235]
+[20.29352119 19.93723635 20.38061326 19.14686453 21.04157925]
 </pre></div>
 </div>
 </div>
@@ -1673,7 +1637,7 @@ The min value of the array x is:  9
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/basic-python_95_0.png" src="../_images/basic-python_95_0.png" />
+<img alt="../_images/basic-python_94_0.png" src="../_images/basic-python_94_0.png" />
 </div>
 </div>
 <p>Use <code class="docutils literal notranslate"><span class="pre">plt.scatter?</span></code> and <code class="docutils literal notranslate"><span class="pre">plt.plot?</span></code> to see the documentation of these functions.</p>
@@ -1768,7 +1732,7 @@ z                     float       3.14
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/basic-python_103_0.png" src="../_images/basic-python_103_0.png" />
+<img alt="../_images/basic-python_102_0.png" src="../_images/basic-python_102_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1794,7 +1758,7 @@ z                     float       3.14
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/basic-python_106_0.png" src="../_images/basic-python_106_0.png" />
+<img alt="../_images/basic-python_105_0.png" src="../_images/basic-python_105_0.png" />
 </div>
 </div>
 <p>This figure is also known as heatmap. In Python, there is another package called <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> that can be used to create heatmap.</p>
@@ -1808,7 +1772,7 @@ z                     float       3.14
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/basic-python_108_0.png" src="../_images/basic-python_108_0.png" />
+<img alt="../_images/basic-python_107_0.png" src="../_images/basic-python_107_0.png" />
 </div>
 </div>
 <p>For more information please use <code class="docutils literal notranslate"><span class="pre">sns.heatmap?</span></code> to see the documentation of the <code class="docutils literal notranslate"><span class="pre">sns.heatmap()</span></code> function.</p>
@@ -1825,7 +1789,7 @@ z                     float       3.14
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/basic-python_110_0.png" src="../_images/basic-python_110_0.png" />
+<img alt="../_images/basic-python_109_0.png" src="../_images/basic-python_109_0.png" />
 </div>
 </div>
 </div>
@@ -2538,7 +2502,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/basic-python_133_0.png" src="../_images/basic-python_133_0.png" />
+<img alt="../_images/basic-python_132_0.png" src="../_images/basic-python_132_0.png" />
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">.hist()</span></code> method can get the histogram of certain variables. Specify the argument <code class="docutils literal notranslate"><span class="pre">column</span></code> to get the histogram of a certain variable.</p>
@@ -2550,7 +2514,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/basic-python_135_0.png" src="../_images/basic-python_135_0.png" />
+<img alt="../_images/basic-python_134_0.png" src="../_images/basic-python_134_0.png" />
 </div>
 </div>
 </div>
@@ -2567,33 +2531,6 @@ dtype: int64
 -->
 </div>
 </div>
-<div class="section" id="quiz">
-<h1>Quiz<a class="headerlink" href="#quiz" title="Permalink to this headline">¶</a></h1>
-<p><em>Not for now. To finish in the next cycle.</em> Complete <a class="reference external" href="https://forms.gle/8Q5Z7Z7Z7Z7Z7Z7Z7">Quiz 0</a> to check your understanding of this topic. You are advised to score at least 50% to proceed to the next topic.</p>
-</div>
-<div class="section" id="summary">
-<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
-<p>In this topic, you learned:</p>
-<ul class="simple">
-<li><p>Basic linear algebra and matrix operations</p></li>
-<li><p>Basic Python syntax</p></li>
-<li><p>Using <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code> packages to perform basic matrix operations and data analysis</p></li>
-<li><p>Using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> package to plot graphics</p></li>
-</ul>
-</div>
-<div class="section" id="references-and-further-reading">
-<h1>References and further reading<a class="headerlink" href="#references-and-further-reading" title="Permalink to this headline">¶</a></h1>
-<p>This material is based on the following resources:</p>
-<ul class="simple">
-<li><p>Goodfellow, I., Bengio, Y., &amp; Courville, A. (2016). <a class="reference external" href="https://www.deeplearningbook.org/">Deep Learning</a>. MIT press.</p></li>
-<li><p><a class="reference external" href="https://bvanderlei.github.io/jupyter-guide-to-linear-algebra/intro.html">Jupyter Guide to Linear Algebra</a></p></li>
-<li><p><a class="reference external" href="https://github.com/qx0731/Sharing_ISL_python">ISL_python: An Introduction to Statistical Learning with Applications in PYTHON</a></p></li>
-<li><p><a class="reference external" href="https://www.python.org/">Python</a></p></li>
-<li><p><a class="reference external" href="https://numpy.org/">NumPy</a></p></li>
-<li><p><a class="reference external" href="https://pandas.pydata.org/">Pandas</a></p></li>
-<li><p><a class="reference external" href="https://matplotlib.org/">Matplotlib</a></p></li>
-</ul>
-<!-- - Coursera online course [Programming for Everybody (Getting Started with Python)](https://www.coursera.org/learn/python) --></div>
 
     <script type="text/x-thebe-config">
     {
@@ -2627,10 +2564,10 @@ dtype: int64
             <p class="prev-next-title">Linear algebra and notations</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../01-intro/overview.html" title="next page">
+    <a class='right-next' id="next-link" href="quiz-sum-ref.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Intro to Machine Learning &amp; Transparency</p>
+        <p class="prev-next-title">Quiz</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
