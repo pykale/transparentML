@@ -5,21 +5,47 @@ format: jb-book
 root: index
 title: Introduction
 parts:
-- caption: Prerequisites
-  chapters:
-  - file: prerequisites/overview
-    title: prerequisites
+- chapters:
+  - file: 00-prereq/overview
+    title: Prerequisites
     sections:
-    - file: prerequisites/linear-algebra-and-notations
-    - file: prerequisites/basic-python
+    - file: 00-prereq/linear-algebra-and-notations
+      title: Linear algebra
+    - file: 00-prereq/basic-python
+      title: Python basics
 - caption: Basics
   numbered: true
   chapters:
-  - file: 01-ml-transparency
+  - file: 01-intro/overview
     title: Intro ML & Transparency
+    sections:
+    - file: 01-intro/what-is-ml
+      title: What is ML?
+    - file: 01-intro/ml-systems
+      title: ML systems
+    - file: 01-intro/ml-process
+      title: ML process
+    - file: 01-intro/ml-transp
+      title: ML transparency
+    - file: 01-intro/knn
+      title: KNN
+    - file: 01-intro/data-problems
+      title: Datasets
+    - file: 01-intro/ml-models
+      title: ML models
+    - file: 01-intro/quiz-sum-ref
+      title: Quiz summary & references
+- caption: Appendix
+  numbered: false
+  chapters:
+  - file: appendix/system-transp
+    title: System transparency
+  - file: appendix/process-transp
+    title: Process transparency
+
 # - caption: Advanced (for second half)
 
-# - caption: Appendix (for installation etc)
+
 
 # - file: markdown
 # - file: notebooks
