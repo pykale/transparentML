@@ -457,8 +457,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ingredients-transparency">
+     1.8.1. Ingredients &amp; transparency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-iris-classification">
+     1.8.2. Example: Iris classification
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id14">
-     1.8.1. Exercises
+     1.8.3. Exercises
     </a>
    </li>
   </ul>
@@ -727,8 +737,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ingredients-transparency">
+     1.8.1. Ingredients &amp; transparency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-iris-classification">
+     1.8.2. Example: Iris classification
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id14">
-     1.8.1. Exercises
+     1.8.3. Exercises
     </a>
    </li>
   </ul>
@@ -1363,10 +1383,94 @@ in addressing each of the six areas of concern as in <a class="reference interna
 </div>
 <div class="section" id="k-nearest-neighbors-knn-classification">
 <h2><span class="section-number">1.8. </span>K-Nearest Neighbors (KNN) classification<a class="headerlink" href="#k-nearest-neighbors-knn-classification" title="Permalink to this headline">¶</a></h2>
+<p>The K-Nearest Neighbors (KNN) algorithm is a supervised learning algorithm. It is a <em>non-parametric</em> method used for classification and regression. In both cases, the input consists of the <span class="math notranslate nohighlight">\(k\)</span> closest training examples in the feature space. The output depends on whether KNN is used for classification or regression. Here, we focus on the classification case.</p>
+<div class="section" id="ingredients-transparency">
+<h3><span class="section-number">1.8.1. </span>Ingredients &amp; transparency<a class="headerlink" href="#ingredients-transparency" title="Permalink to this headline">¶</a></h3>
+<p>For all machine learning models covered in this course, we aim to talk about their ingredients and transparency in a standard way to facilitate understanding their similarities and differences. For transparency, we will focus on the system transparency, i.e. system logic. Process transparency is not specific to ML models and it will be discussed when we cover the ML process/lifecycle.</p>
+<p>The ingredients of a KNN model are the training data. The transparency of a KNN model is the distance between the test point and the training points.</p>
+<div class="admonition-ingredients admonition">
+<p class="admonition-title">Ingredients</p>
+<p>Input: training data
+Label: class</p>
+</div>
+<div class="admonition-transparency admonition">
+<p class="admonition-title">Transparency</p>
+<p>System logic: distance between test point and training points</p>
+</div>
+</div>
+<div class="section" id="example-iris-classification">
+<h3><span class="section-number">1.8.2. </span>Example: Iris classification<a class="headerlink" href="#example-iris-classification" title="Permalink to this headline">¶</a></h3>
 <p>We adapt the <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/neighbors/plot_classification.html#sphx-glr-auto-examples-neighbors-plot-classification-py">KNN example from scikit-learn</a> to illustrate the use of KNN for classification.</p>
-<p>To be completed</p>
+<p>To do so, we use the Iris dataset, which is a classic dataset in machine learning and statistics. It is included in scikit-learn and we load it as follows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>```{admonition} Launch (&lt;i class=&quot;fas fa-rocket&quot;&gt;&lt;/i&gt;)
+Click the rocket symbol (&lt;i class=&quot;fas fa-rocket&quot;&gt;&lt;/i&gt;) to launch this page as an interactive notebook in Google Colab (faster but requiring a Google account) or Binder.
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">ListedColormap</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">neighbors</span><span class="p">,</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn.inspection</span> <span class="kn">import</span> <span class="n">DecisionBoundaryDisplay</span>
+
+<span class="n">n_neighbors</span> <span class="o">=</span> <span class="mi">15</span>
+
+<span class="c1"># import some data to play with</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+
+<span class="c1"># we only take the first two features. We could avoid this ugly</span>
+<span class="c1"># slicing by using a two-dim dataset</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
+
+<span class="c1"># Create color maps</span>
+<span class="n">cmap_light</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">([</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;cyan&quot;</span><span class="p">,</span> <span class="s2">&quot;cornflowerblue&quot;</span><span class="p">])</span>
+<span class="n">cmap_bold</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;darkorange&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;darkblue&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">weights</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span> <span class="s2">&quot;distance&quot;</span><span class="p">]:</span>
+    <span class="c1"># we create an instance of Neighbours Classifier and fit the data.</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">neighbors</span><span class="o">.</span><span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
+    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="n">_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="n">DecisionBoundaryDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span>
+        <span class="n">clf</span><span class="p">,</span>
+        <span class="n">X</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="n">cmap_light</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+        <span class="n">response_method</span><span class="o">=</span><span class="s2">&quot;predict&quot;</span><span class="p">,</span>
+        <span class="n">plot_method</span><span class="o">=</span><span class="s2">&quot;pcolormesh&quot;</span><span class="p">,</span>
+        <span class="n">xlabel</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="n">ylabel</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="n">shading</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Plot also the training points</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="n">hue</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">y</span><span class="p">],</span>
+        <span class="n">palette</span><span class="o">=</span><span class="n">cmap_bold</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span>
+        <span class="s2">&quot;3-Class classification (k = </span><span class="si">%i</span><span class="s2">, weights = &#39;</span><span class="si">%s</span><span class="s2">&#39;)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_neighbors</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/01-ml-transparency_7_0.png" src="_images/01-ml-transparency_7_0.png" />
+<img alt="_images/01-ml-transparency_7_1.png" src="_images/01-ml-transparency_7_1.png" />
+</div>
+</div>
+</div>
 <div class="section" id="id14">
-<h3><span class="section-number">1.8.1. </span>Exercises<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.8.3. </span>Exercises<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <p>min 3 max 5</p>
 </div>
 </div>
@@ -1390,6 +1494,16 @@ in addressing each of the six areas of concern as in <a class="reference interna
 <li><p><a class="reference external" href="https://github.com/microsoft/ML-For-Beginners">Machine Learning for Beginners - A Curriculum</a>, Microsoft</p></li>
 <li><p><a class="reference external" href="https://dmol.pub/">Deep Learning for Molecules &amp; Materials</a></p></li>
 </ul>
+<div class="docutils container" id="id15">
+<dl class="citation">
+<dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id7">JWHT21</a></span></dt>
+<dd><p>Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani. <em>An Introduction to Statistical Learning</em>. Springer, 2021. https://www.statlearning.com/.</p>
+</dd>
+<dt class="label" id="id17"><span class="brackets">OD21</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id3">3</a>,<a href="#id4">4</a>,<a href="#id5">5</a>,<a href="#id6">6</a>,<a href="#id8">7</a>,<a href="#id10">8</a>,<a href="#id11">9</a>,<a href="#id13">10</a>)</span></dt>
+<dd><p>Florian Ostmann and Cosmina Dorobantu. AI in financial services. <em>Alan Turing Institute. doi</em>, 2021. <a class="reference external" href="https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf">https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf</a>.</p>
+</dd>
+</dl>
+</div>
 </div>
 </div>
 
