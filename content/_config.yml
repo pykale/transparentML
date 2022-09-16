@@ -38,6 +38,7 @@ html:
   use_issues_button: true
   use_repository_button: true
   use_edit_page_button: true
+  use_multitoc_numbering: false
 
 # Add launch buttons
 # See https://jupyterbook.org/en/stable/interactive/launchbuttons.html

@@ -5,8 +5,13 @@ format: jb-book
 root: index
 title: Introduction
 parts:
-- chapters:
-  - file: 00-prerequisites
+- caption: Prerequisites
+  chapters:
+  - file: prerequisites/overview
+    title: prerequisites
+    sections:
+    - file: prerequisites/linear-algebra-and-notations
+    - file: prerequisites/basic-python
 - caption: Basics
   numbered: true
   chapters:
