@@ -13,6 +13,12 @@ parts:
       title: Linear algebra
     - file: 00-prereq/basic-python
       title: Python basics
+    - file: 00-prereq/Numerical-programming
+      title: Numerical programming
+    - file: 00-prereq/Graphics
+      title: Graphics
+    - file: 00-prereq/Loading-data
+      title: Loading data
     - file: 00-prereq/quiz-sum-ref
       title: Quiz & summary
 - caption: Basics
@@ -37,6 +43,11 @@ parts:
       title: ML models
     - file: 01-intro/quiz-sum-ref
       title: Quiz & summary
+  - file: 02-linear-reg/intro
+    title: Linear regression
+    sections:
+    - file: 02-linear-reg/linear-regression
+      title: Simple linear regression
 - caption: Appendix
   numbered: false
   chapters:
