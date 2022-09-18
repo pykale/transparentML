@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Content in Jupyter Book &#8212; Transparent ML Intro</title>
+    <title>2. Linear Regression &#8212; Transparent ML Intro</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,6 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.2. Simple linear regression" href="linear-regression.html" />
+    <link rel="prev" title="1.8. Quiz" href="../01-intro/quiz-sum-ref.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -145,7 +147,7 @@ const thebe_selector_output = ".output, .cell_output"
   Basics
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../01-intro/overview.html">
    1. Intro ML &amp; Transparency
@@ -198,18 +200,18 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../02-linear-reg/intro.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    2. Linear regression
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../02-linear-reg/linear-regression.html">
+    <a class="reference internal" href="linear-regression.html">
      2.2. Simple linear regression
     </a>
    </li>
@@ -273,7 +275,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/archives/content.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/02-linear-reg/intro.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -293,10 +295,10 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2Farchives/content.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F02-linear-reg/intro.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/archives/content.md"><button
+        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/02-linear-reg/intro.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -316,6 +318,19 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   2.1. Introduction
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -323,21 +338,61 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Content in Jupyter Book</h1>
+                <h1>Linear Regression</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   2.1. Introduction
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="content-in-jupyter-book">
-<h1>Content in Jupyter Book<a class="headerlink" href="#content-in-jupyter-book" title="Permalink to this headline">¶</a></h1>
-<p>There are many ways to write content in Jupyter Book. This short section
-covers a few tips for how to do so.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="linear-regression">
+<h1><span class="section-number">2. </span>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2><span class="section-number">2.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-objectives admonition">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Estimate the coefficients of a linear regression model.</p></li>
+<li><p>Assess (evaluate) linear regression models / coefficients.</p></li>
+<li><p>Interpret the coefficients of a linear regression model.</p></li>
+</ul>
+</div>
+<!-- Generated by Copilot -->
+<p>This chapter introduces the linear regression model, which is the most common model used in statistics and machine learning. The linear regression model is a linear model that assumes a linear relationship between the input variables <code class="docutils literal notranslate"><span class="pre">(X)</span></code> and the single output variable <code class="docutils literal notranslate"><span class="pre">(y)</span></code>. More specifically, that output <code class="docutils literal notranslate"><span class="pre">(y)</span></code> can be calculated from a linear combination of the input variables <code class="docutils literal notranslate"><span class="pre">(X)</span></code>. The coefficients of this linear combination are referred to as the model coefficients or model parameters. The linear regression model is a parametric model, meaning that the number of parameters that must be estimated from the data is the same as the number of input variables. The linear regression model is also a linear model, meaning that the model output <code class="docutils literal notranslate"><span class="pre">(y)</span></code> is a linear function of the model coefficients <code class="docutils literal notranslate"><span class="pre">(β)</span></code>. The linear regression model is a supervised learning model, meaning that it is trained on data that contains the input and output variables that we are interested in modelling. The linear regression model is a predictive modelling problem, meaning that we are interested in using the model to make predictions on new data. The linear regression model is a regression model, meaning that the output variable <code class="docutils literal notranslate"><span class="pre">(y)</span></code> is a real value, such as a price or a probability. The linear regression model is a simple model, meaning that it has a small number of parameters, and is easy to interpret. The linear regression model is a closed-form model, meaning that the model can be fit directly without the use of iterative optimization algorithms. The linear regression model is a model that can be used for both regression and classification predictive modelling problems. The linear regression model is a model that can be used for both regression and classification predictive modelling problems.</p>
+<!-- - [Load Datasets](#Load-Datasets)
+- [3.1 Simple Linear Regression](#3.1-Simple-Linear-Regression)
+- [3.2 Multiple Linear Regression](#3.2-Multiple-Linear-Regression)
+- [3.3 Other Considerations in the Regression Model](#3.3-Other-Considerations-in-the-Regression-Model) -->
+<p>This chapter will explain linear regression using the example of analysing <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> data. The <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> dataset contains sales revenue generated with respect to advertisement spends across multiple channels (TV, radio, newspaper) for a single product in a single market. The goal is to predict sales revenue based on the advertisement spends. By analysing this dataset, we will try to answer the 7 following questions:</p>
+<ol class="simple">
+<li><p>Is there a relationship between advertising budget and sales?</p></li>
+<li><p>How strong is the relationship between advertising budget and sales?</p></li>
+<li><p>Which media are associated with sales?</p></li>
+<li><p>How large is the association between each medium and sales?</p></li>
+<li><p>How accurately can we predict future sales?</p></li>
+<li><p>Is the relationship linear?</p></li>
+<li><p>Is there synergy among the advertising media?</p></li>
+</ol>
+</div>
+<div class="toctree-wrapper compound">
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -353,7 +408,7 @@ covers a few tips for how to do so.</p>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./archives"
+            path: "./02-linear-reg"
         },
         predefinedOutput: true
     }
@@ -364,7 +419,21 @@ covers a few tips for how to do so.</p>
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../01-intro/quiz-sum-ref.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1.8. </span>Quiz</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="linear-regression.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.2. </span>Simple linear regression</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
