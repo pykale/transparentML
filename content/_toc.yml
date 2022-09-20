@@ -41,6 +41,7 @@ parts:
       title: Datasets
     - file: 01-intro/ml-models
       title: ML models
+    - file: 01-intro/organisation
     - file: 01-intro/quiz-sum-ref
       title: Quiz & summary
   - file: 02-linear-reg/intro

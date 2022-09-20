@@ -113,32 +113,6 @@ on system logic. Many of these methods are perturbation-based – relying on the
 changes in system outputs in response to changes in input values – and can be used without
 access to a formal representation of the system. This is out of the scope of this course and hence will _NOT_ be covered.
 
-
-#### Machine learning interpretability
-
-In general, linear models allow for a more interpretable (but less flexible) model, while non-linear models allow for a more flexible (but less interpretable) model.
-
-A trade-off between model flexibility and interpretability is shown in the figure below.
-
-```{figure} ../images/fig2_7.png
----
-height: 300px
-name: fig-trade-off-interpretable-flexible
----
-A trade-off between model flexibility and interpretability {cite}`james2021statistical`.
-```
-
-The decision to limit model complexity for the sake of interpretability is often portrayed as a tradeoff with model accuracy. You may find figures look like the above but replacing flexibility with accuracy. The basis for this argument is the assumption that more complex models have higher accuracy than simpler ones. Yet, this assumption is not always true. In many modelling contexts, interpretable models can be designed to achieve the same or comparable levels of accuracy as models that would be considered uninterpretable. Significant research efforts are underway to advance the field of _interpretable machine learning_. Over time, these research efforts can be expected to further reduce the range of contexts in which interpretability-accuracy tradeoffs are perceived to exist.
-
-Decisions in favour of interpretability do not necessarily come at the expense of
-accuracy. Where trade-offs between interpretability and accuracy do exist, it may be preferable
-to accept a lower level of accuracy in the interest of enabling direct interpretation by system
-developers and other relevant actors. Conversely, where uninterpretable models are being used,
-it is important to be mindful of the limitations of explainability methods. Ignoring these limitations
-risks having a false sense of understanding, potentially resulting in misplaced trust in ML systems
-and unexpected harmful outcomes. Governance arrangements play a key role when it comes to
-choosing appropriate types of models.
-
 #### Communicating system logic information
 System logic information is only useful if it is communicated to stakeholders in ways that are
 intelligible and meaningful.

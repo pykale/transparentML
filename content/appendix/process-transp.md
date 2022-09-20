@@ -100,7 +100,3 @@ In addition, recent years have seen growing support of initiatives to profession
 There is also an emerging literature on the role of auditors in examining system design, development, and deployment processes (including evaluation). In contrast to certification, auditors may verify process information at a more detailed level. ML system auditors can be internal or external to the firm that is employing a given ML system.
 
 Finally, growing research and development efforts are being dedicated to technical solutions that automate the generation and recording of process information. Software-generated ‘audit trails’ and related concepts can contribute to the reliability and verifiability of some types of process information, while at the same time reducing the cost of recording and making the information available to stakeholders.
-
-### Reproducibility of ML systems
-
-Reproducibility is more related to process transparency. Maybe to add later.

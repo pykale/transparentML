@@ -47,4 +47,28 @@ A typical machine learning system is composed of the following ingredients:
   - **Parameters**: the model parameters are the specific realisation of a model to be _learned_ during training, such as the weights and biases $\mathbf{W}$ and $\mathbf{b}$. In machine learning, it is common to denote all parameters as $\boldsymbol{\theta}$.
 - **Loss function**: a function $L(y, \hat{y})$ (also known as **error function**) that measures the difference between the predicted output $\hat{y}$ and the true or desired output $y$ in supervised learning, or a function $L(y)$ that measures some desired property (or properties) of the output in unsupervised learning. In classification, $L(y, \hat{y})$ measures the difference between the predicted class label $\hat{y}$ and the true class label $y$. In regression, $L(y, \hat{y})$ measures the difference between the predicted real number $\hat{y}$ and the true real number $y$. In clustering, $L(y)$ typically measures the coherence and separation of clusters. In dimensionality reduction, $L(y)$ typically measures the preservation of information in the input $\{\mathbf{x}_n\}$.
     - **Evaluation metric/measure**: an evaluation (or error) metric (or measure) is needed for a loss function $L(y, \hat{y})$ or $\hat{y}$ to be useful. For example, in classification, the evaluation metric is typically the accuracy, which is a function of the predicted label $\hat{y}$ and the true label $y$.
-- **learning/optimization algorithm**: an algorithm that finds the best model $f(\mathbf{x})$ by minimizing the loss function $L(y, \hat{y})$ or $\hat{y}$. Nowadays, the optimization algorithms are typically available in libraries (software packages) and do not need to be implemented by the user. The optimization algorithms are typically iterative algorithms that iteratively update the model parameters to minimize the loss function. The optimization algorithms are typically _black boxes_ to the user. The user only needs to specify the loss function $L(y, \hat{y})$ or $\hat{y}$ and the optimization algorithm will find the best model $f(\mathbf{x})$.
+- **learning/optimization algorithm**: an algorithm that finds (i.e. estimates) the best model $f(\mathbf{x})$ by minimizing the loss function $L(y, \hat{y})$ or $\hat{y}$. Nowadays, the optimization algorithms are typically available in libraries (software packages) and do not need to be implemented by the user. The optimization algorithms are typically iterative algorithms that iteratively update the model parameters to minimize the loss function. The optimization algorithms are typically _black boxes_ to the user. The user only needs to specify the loss function $L(y, \hat{y})$ or $\hat{y}$ and the optimization algorithm will find the best model $f(\mathbf{x})$.
+
+### Reproducibility of ML systems
+
+We follow the [definitions for reproducibility by The Turing Way](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions.html) as shown in Figure {numref}`reproducibility-mat`
+
+```{figure} https://the-turing-way.netlify.app/_images/reproducible-matrix.jpg
+---
+name: reproducibility-mat
+---
+How the Turing Way defines reproducible research {cite}`TheTuringWay` (maybe redraw later).
+```
+
+The Turing Way defines reproducible research as work that can be independently recreated from the same data and the same code that the original team used. The different dimensions of reproducible research in the figure above are further defined as:
+
+- **Reproducible**: A result is reproducible when the same analysis steps performed on the same dataset consistently produces the same answer.
+- **Replicable**: A result is replicable when the same analysis performed on different datasets produces qualitatively similar answers.
+- **Robust**: A result is robust when the same dataset is subjected to different analysis workflows to answer the same research question (for example one pipeline written in R and another written in Python) and a qualitatively similar or identical answer is produced. Robust results show that the work is not dependent on the specificities of the programming language chosen to perform the analysis.
+- **Generalisable**: Combining replicable and robust findings allow us to form generalisable results. Note that running an analysis on a different software implementation and with a different dataset does not provide generalised results. There will be many more steps to know how well the work applies to all the different aspects of the research question. Generalisation is an important step towards understanding that the result is not dependent on a particular dataset nor a particular version of the analysis pipeline.
+
+From the above, we can see that reproducibility is a minimal requirement for reproducible research.
+
+### Exercises
+
+To be completed in the next cycle

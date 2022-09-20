@@ -14,6 +14,9 @@ In this course, we will use real-world datasets to introduce machine learning fr
 * - Name
   - Data provided
   - Machine learning problem
+* - [Advertising](https://github.com/pykale/transparentML/blob/main/data/Advertising.csv)
+  - Sales, TV, radio, newspaper
+  - Predict sales based on TV, radio, and newspaper advertising
 * - [Auto](https://github.com/pykale/transparentML/blob/main/data/Auto.csv)
   - Gas mileage, horsepower, and other information for cars.
   - Predict gas mileage for a car.

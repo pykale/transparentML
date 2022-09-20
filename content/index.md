@@ -68,8 +68,9 @@ This course is developed by [Haiping Lu](https://haipinglu.github.io/), a Senior
 ## References
 
 - Book
-  - **The Textbook:** James G, Witten D, Hastie T, Tibshirani R. [An Introduction to Statistical Learning](https://www.statlearning.com/), Second Edition,  Springer, 2021. [PDF](https://hastie.su.domains/ISLR2/ISLRv2_website.pdf) {cite}`james2021statistical`
-  - Ostmann F, Dorobantu C. [AI in Financial Services](https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf), [Alan Turing Institute](https://www.turing.ac.uk/), 2021. {cite}`ostmann2021ai`
+  - **The Textbook:** James G, Witten D, Hastie T, Tibshirani R., [An Introduction to Statistical Learning](https://www.statlearning.com/), Second Edition,  Springer, 2021. [PDF](https://hastie.su.domains/ISLR2/ISLRv2_website.pdf) {cite}`james2021statistical`
+  - Ostmann F, Dorobantu C., [AI in Financial Services](https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf), [Alan Turing Institute](https://www.turing.ac.uk/), 2021. {cite}`ostmann2021ai`
+  - The Turing Way Community, [The Turing Way: A Handbook for Reproducible Data Science](https://the-turing-way.netlify.app/) {cite}`TheTuringWay`
 - Code
   - [ISL_python: An Introduction to Statistical Learning with Applications in PYTHON](https://github.com/qx0731/Sharing_ISL_python)
   - [ISLR-python](https://github.com/JWarmenhoven/ISLR-python)
