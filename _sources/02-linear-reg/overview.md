@@ -1,6 +1,8 @@
 # Linear Regression
 
-## Introduction
+```{admonition} Status
+Drafting
+```
 
 ```{admonition} Objectives
 - Estimate the coefficients of a linear regression model.
