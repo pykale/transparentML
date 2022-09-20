@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Graphics" href="Graphics.html" />
+    <link rel="next" title="Graphics" href="graphics.html" />
     <link rel="prev" title="Basic python programming" href="basic-python.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -125,12 +125,12 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Graphics.html">
+    <a class="reference internal" href="graphics.html">
      Graphics
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Loading-data.html">
+    <a class="reference internal" href="loading-data.html">
      Loading data
     </a>
    </li>
@@ -206,7 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../02-linear-reg/intro.html">
+  <a class="reference internal" href="../02-linear-reg/overview.html">
    2. Linear regression
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -216,7 +216,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../02-linear-reg/linear-regression.html">
+    <a class="reference internal" href="../02-linear-reg/simple-linear-regression.html">
      2.2. Simple linear regression
     </a>
    </li>
@@ -280,7 +280,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/00-prereq/Numerical-programming.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/00-prereq/numerical-programming.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -300,10 +300,10 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F00-prereq/Numerical-programming.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F00-prereq/numerical-programming.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/00-prereq/Numerical-programming.ipynb"><button
+        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/00-prereq/numerical-programming.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -323,7 +323,7 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/00-prereq/Numerical-programming.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/00-prereq/numerical-programming.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -331,7 +331,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/00-prereq/Numerical-programming.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/00-prereq/numerical-programming.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -566,11 +566,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3 9 0 7 8]
-[[0.49793446 0.72584772 0.4508105 ]
- [0.04588612 0.65122666 0.22964987]]
-[ 1.72437751  0.27992785 -0.47828455 -0.07715459  0.43255236]
-[21.80672097 20.18514361 19.42206995 20.02371604 20.22020364]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[7 4 8 4 0]
+[[0.93924844 0.79083253 0.17571285]
+ [0.98658668 0.21553051 0.23038855]]
+[-0.97513234  1.51339853  0.73668449  1.08907026 -1.54937026]
+[18.9456339  21.59697597 20.52234755 21.09166978 18.39151774]
 </pre></div>
 </div>
 </div>
@@ -970,7 +970,7 @@ The min value of the array x is:  9
             <p class="prev-next-title">Basic python programming</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Graphics.html" title="next page">
+    <a class='right-next' id="next-link" href="graphics.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Graphics</p>
