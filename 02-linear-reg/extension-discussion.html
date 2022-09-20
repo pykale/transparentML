@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2.2. Extensions and discussions &#8212; Transparent ML Intro</title>
+    <title>2.3. Extensions and discussions &#8212; Transparent ML Intro</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="System transparency" href="../appendix/system-transp.html" />
-    <link rel="prev" title="2.1. Simple linear regression" href="simple-linear-regression.html" />
+    <link rel="prev" title="2.2. Multiple Linear Regression" href="multi-linear-regression.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -220,9 +220,14 @@ const thebe_selector_output = ".output, .cell_output"
      2.1. Simple linear regression
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="multi-linear-regression.html">
+     2.2. Multiple linear regression
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     2.2. Extensions &amp; discussion
+     2.3. Extensions &amp; discussion
     </a>
    </li>
   </ul>
@@ -357,57 +362,57 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#figure-3-6">
-   2.2.1. Figure 3.6
+   2.3.1. Figure 3.6
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#table-3-7">
-   2.2.2. Table 3.7
+   2.3.2. Table 3.7
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#table-3-8">
-   2.2.3. Table 3.8
+   2.3.3. Table 3.8
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#table-3-9-interaction-variables">
-   2.2.4. Table 3.9 - Interaction Variables
+   2.3.4. Table 3.9 - Interaction Variables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#figure-3-7-interaction-between-qualitative-and-quantative-variables">
-   2.2.5. Figure 3.7 - Interaction between qualitative and quantative variables
+   2.3.5. Figure 3.7 - Interaction between qualitative and quantative variables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#figure-3-8-non-linear-relationships">
-   2.2.6. Figure 3.8 - Non-linear relationships
+   2.3.6. Figure 3.8 - Non-linear relationships
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#table-3-10">
-   2.2.7. Table 3.10
+   2.3.7. Table 3.10
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#figure-3-9">
-   2.2.8. Figure 3.9
+   2.3.8. Figure 3.9
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#figure-3-14">
-   2.2.9. Figure 3.14
+   2.3.9. Figure 3.14
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#figure-3-15">
-   2.2.10. Figure 3.15
+   2.3.10. Figure 3.15
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#variance-inflation-factor-page-102">
-   2.2.11. Variance Inflation Factor - page 102
+   2.3.11. Variance Inflation Factor - page 102
   </a>
  </li>
 </ul>
@@ -432,57 +437,57 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#figure-3-6">
-   2.2.1. Figure 3.6
+   2.3.1. Figure 3.6
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#table-3-7">
-   2.2.2. Table 3.7
+   2.3.2. Table 3.7
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#table-3-8">
-   2.2.3. Table 3.8
+   2.3.3. Table 3.8
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#table-3-9-interaction-variables">
-   2.2.4. Table 3.9 - Interaction Variables
+   2.3.4. Table 3.9 - Interaction Variables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#figure-3-7-interaction-between-qualitative-and-quantative-variables">
-   2.2.5. Figure 3.7 - Interaction between qualitative and quantative variables
+   2.3.5. Figure 3.7 - Interaction between qualitative and quantative variables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#figure-3-8-non-linear-relationships">
-   2.2.6. Figure 3.8 - Non-linear relationships
+   2.3.6. Figure 3.8 - Non-linear relationships
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#table-3-10">
-   2.2.7. Table 3.10
+   2.3.7. Table 3.10
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#figure-3-9">
-   2.2.8. Figure 3.9
+   2.3.8. Figure 3.9
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#figure-3-14">
-   2.2.9. Figure 3.14
+   2.3.9. Figure 3.14
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#figure-3-15">
-   2.2.10. Figure 3.15
+   2.3.10. Figure 3.15
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#variance-inflation-factor-page-102">
-   2.2.11. Variance Inflation Factor - page 102
+   2.3.11. Variance Inflation Factor - page 102
   </a>
  </li>
 </ul>
@@ -495,7 +500,7 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="section" id="extensions-and-discussions">
-<h1><span class="section-number">2.2. </span>Extensions and discussions<a class="headerlink" href="#extensions-and-discussions" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">2.3. </span>Extensions and discussions<a class="headerlink" href="#extensions-and-discussions" title="Permalink to this headline">¶</a></h1>
 <p>Firstly, we will import the required libraries and load the <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -518,7 +523,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1972/863918830.py:15: MatplotlibDeprecationWarning: The seaborn styles shipped by Matplotlib are deprecated since 3.6, as they no longer correspond to the styles shipped by seaborn. However, they will remain available as &#39;seaborn-v0_8-&lt;style&gt;&#39;. Alternatively, directly use the seaborn API instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1826/863918830.py:15: MatplotlibDeprecationWarning: The seaborn styles shipped by Matplotlib are deprecated since 3.6, as they no longer correspond to the styles shipped by seaborn. However, they will remain available as &#39;seaborn-v0_8-&lt;style&gt;&#39;. Alternatively, directly use the seaborn API instead.
   plt.style.use(&quot;seaborn-white&quot;)
 </pre></div>
 </div>
@@ -526,6 +531,17 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p><strong>Load Datasets</strong></p>
 <p>Datasets available on <a class="reference external" href="https://www.statlearning.com/resources-first-edition">https://www.statlearning.com/resources-first-edition</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Advertising.csv&quot;</span>
+
+<span class="n">advertising_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="n">data_url</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>  <span class="c1"># read Boston data as pandas data frame</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">credit_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Credit.csv&quot;</span>
@@ -650,7 +666,7 @@ memory usage: 30.6+ KB
 </div>
 </div>
 <div class="section" id="figure-3-6">
-<h2><span class="section-number">2.2.1. </span>Figure 3.6<a class="headerlink" href="#figure-3-6" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3.1. </span>Figure 3.6<a class="headerlink" href="#figure-3-6" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span>
@@ -660,15 +676,15 @@ memory usage: 30.6+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f10f08d5430&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fe9c8744280&gt;
 </pre></div>
 </div>
-<img alt="../_images/extension-discussion_6_1.png" src="../_images/extension-discussion_6_1.png" />
+<img alt="../_images/extension-discussion_7_1.png" src="../_images/extension-discussion_7_1.png" />
 </div>
 </div>
 </div>
 <div class="section" id="table-3-7">
-<h2><span class="section-number">2.2.2. </span>Table 3.7<a class="headerlink" href="#table-3-7" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3.2. </span>Table 3.7<a class="headerlink" href="#table-3-7" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Balance ~ Own&quot;</span><span class="p">,</span> <span class="n">credit_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -691,7 +707,7 @@ memory usage: 30.6+ KB
 </div>
 </div>
 <div class="section" id="table-3-8">
-<h2><span class="section-number">2.2.3. </span>Table 3.8<a class="headerlink" href="#table-3-8" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3.3. </span>Table 3.8<a class="headerlink" href="#table-3-8" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Balance ~ Ethnicity&quot;</span><span class="p">,</span> <span class="n">credit_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -719,7 +735,7 @@ memory usage: 30.6+ KB
 <span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
 
 <span class="ne">PatsyError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Balance ~ Ethnicity&quot;</span><span class="p">,</span> <span class="n">credit_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">est</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
@@ -832,7 +848,7 @@ memory usage: 30.6+ KB
 </div>
 </div>
 <div class="section" id="table-3-9-interaction-variables">
-<h2><span class="section-number">2.2.4. </span>Table 3.9 - Interaction Variables<a class="headerlink" href="#table-3-9-interaction-variables" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3.4. </span>Table 3.9 - Interaction Variables<a class="headerlink" href="#table-3-9-interaction-variables" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Sales ~ TV + Radio + TV*Radio&quot;</span><span class="p">,</span> <span class="n">advertising_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -843,7 +859,7 @@ memory usage: 30.6+ KB
 </div>
 </div>
 <div class="section" id="figure-3-7-interaction-between-qualitative-and-quantative-variables">
-<h2><span class="section-number">2.2.5. </span>Figure 3.7 - Interaction between qualitative and quantative variables<a class="headerlink" href="#figure-3-7-interaction-between-qualitative-and-quantative-variables" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3.5. </span>Figure 3.7 - Interaction between qualitative and quantative variables<a class="headerlink" href="#figure-3-7-interaction-between-qualitative-and-quantative-variables" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est1</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Balance ~ Income + Student2&quot;</span><span class="p">,</span> <span class="n">credit_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -900,7 +916,7 @@ memory usage: 30.6+ KB
 </div>
 </div>
 <div class="section" id="figure-3-8-non-linear-relationships">
-<h2><span class="section-number">2.2.6. </span>Figure 3.8 - Non-linear relationships<a class="headerlink" href="#figure-3-8-non-linear-relationships" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3.6. </span>Figure 3.8 - Non-linear relationships<a class="headerlink" href="#figure-3-8-non-linear-relationships" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># With Seaborn&#39;s regplot() you can easily plot higher order polynomials.</span>
@@ -942,7 +958,7 @@ memory usage: 30.6+ KB
 </div>
 </div>
 <div class="section" id="table-3-10">
-<h2><span class="section-number">2.2.7. </span>Table 3.10<a class="headerlink" href="#table-3-10" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3.7. </span>Table 3.10<a class="headerlink" href="#table-3-10" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="p">[</span><span class="s2">&quot;horsepower2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">auto_df</span><span class="o">.</span><span class="n">horsepower</span><span class="o">**</span><span class="mi">2</span>
@@ -961,7 +977,7 @@ memory usage: 30.6+ KB
 </div>
 </div>
 <div class="section" id="figure-3-9">
-<h2><span class="section-number">2.2.8. </span>Figure 3.9<a class="headerlink" href="#figure-3-9" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3.8. </span>Figure 3.9<a class="headerlink" href="#figure-3-9" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
@@ -1031,7 +1047,7 @@ memory usage: 30.6+ KB
 </div>
 </div>
 <div class="section" id="figure-3-14">
-<h2><span class="section-number">2.2.9. </span>Figure 3.14<a class="headerlink" href="#figure-3-14" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3.9. </span>Figure 3.14<a class="headerlink" href="#figure-3-14" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -1053,7 +1069,7 @@ memory usage: 30.6+ KB
 </div>
 </div>
 <div class="section" id="figure-3-15">
-<h2><span class="section-number">2.2.10. </span>Figure 3.15<a class="headerlink" href="#figure-3-15" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3.10. </span>Figure 3.15<a class="headerlink" href="#figure-3-15" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">credit_df</span><span class="o">.</span><span class="n">Balance</span>
@@ -1140,7 +1156,7 @@ memory usage: 30.6+ KB
 </div>
 </div>
 <div class="section" id="variance-inflation-factor-page-102">
-<h2><span class="section-number">2.2.11. </span>Variance Inflation Factor - page 102<a class="headerlink" href="#variance-inflation-factor-page-102" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3.11. </span>Variance Inflation Factor - page 102<a class="headerlink" href="#variance-inflation-factor-page-102" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est_Age</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Age ~ Rating + Limit&quot;</span><span class="p">,</span> <span class="n">credit_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -1182,11 +1198,11 @@ memory usage: 30.6+ KB
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="simple-linear-regression.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="multi-linear-regression.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2.1. </span>Simple linear regression</p>
+            <p class="prev-next-title"><span class="section-number">2.2. </span>Multiple Linear Regression</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../appendix/system-transp.html" title="next page">

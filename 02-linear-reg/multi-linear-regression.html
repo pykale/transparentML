@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Multiple Linear Regression &#8212; Transparent ML Intro</title>
+    <title>2.2. Multiple Linear Regression &#8212; Transparent ML Intro</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,6 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.3. Extensions and discussions" href="extension-discussion.html" />
+    <link rel="prev" title="2.1. Simple linear regression" href="simple-linear-regression.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -145,7 +147,7 @@ const thebe_selector_output = ".output, .cell_output"
   Basics
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../01-intro/overview.html">
    1. Intro ML &amp; Transparency
@@ -203,24 +205,29 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="overview.html">
    2. Linear regression
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="simple-linear-regression.html">
      2.1. Simple linear regression
     </a>
    </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.2. Multiple linear regression
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="extension-discussion.html">
-     2.2. Extensions &amp; discussion
+     2.3. Extensions &amp; discussion
     </a>
    </li>
   </ul>
@@ -355,22 +362,22 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#table-3-3-statsmodels">
-   Table 3.3 - Statsmodels
+   2.2.1. Table 3.3 - Statsmodels
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#table-3-4-3-6-statsmodels">
-   Table 3.4 &amp; 3.6 - Statsmodels
+   2.2.2. Table 3.4 &amp; 3.6 - Statsmodels
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#table-3-5-correlation-matrix">
-   Table 3.5 - Correlation Matrix
+   2.2.3. Table 3.5 - Correlation Matrix
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#figure-3-5-multiple-linear-regression">
-   Figure 3.5 - Multiple Linear Regression
+   2.2.4. Figure 3.5 - Multiple Linear Regression
   </a>
  </li>
 </ul>
@@ -395,22 +402,22 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#table-3-3-statsmodels">
-   Table 3.3 - Statsmodels
+   2.2.1. Table 3.3 - Statsmodels
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#table-3-4-3-6-statsmodels">
-   Table 3.4 &amp; 3.6 - Statsmodels
+   2.2.2. Table 3.4 &amp; 3.6 - Statsmodels
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#table-3-5-correlation-matrix">
-   Table 3.5 - Correlation Matrix
+   2.2.3. Table 3.5 - Correlation Matrix
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#figure-3-5-multiple-linear-regression">
-   Figure 3.5 - Multiple Linear Regression
+   2.2.4. Figure 3.5 - Multiple Linear Regression
   </a>
  </li>
 </ul>
@@ -423,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="section" id="multiple-linear-regression">
-<h1>Multiple Linear Regression<a class="headerlink" href="#multiple-linear-regression" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">2.2. </span>Multiple Linear Regression<a class="headerlink" href="#multiple-linear-regression" title="Permalink to this headline">¶</a></h1>
 <p>Import the required libraries and load the dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -446,7 +453,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2004/863918830.py:15: MatplotlibDeprecationWarning: The seaborn styles shipped by Matplotlib are deprecated since 3.6, as they no longer correspond to the styles shipped by seaborn. However, they will remain available as &#39;seaborn-v0_8-&lt;style&gt;&#39;. Alternatively, directly use the seaborn API instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1857/863918830.py:15: MatplotlibDeprecationWarning: The seaborn styles shipped by Matplotlib are deprecated since 3.6, as they no longer correspond to the styles shipped by seaborn. However, they will remain available as &#39;seaborn-v0_8-&lt;style&gt;&#39;. Alternatively, directly use the seaborn API instead.
   plt.style.use(&quot;seaborn-white&quot;)
 </pre></div>
 </div>
@@ -454,6 +461,17 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p><strong>Load Datasets</strong></p>
 <p>Datasets available on <a class="reference external" href="https://www.statlearning.com/resources-first-edition">https://www.statlearning.com/resources-first-edition</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Advertising.csv&quot;</span>
+
+<span class="n">advertising_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="n">data_url</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>  <span class="c1"># read Boston data as pandas data frame</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">credit_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Credit.csv&quot;</span>
@@ -578,7 +596,7 @@ memory usage: 30.6+ KB
 </div>
 </div>
 <div class="section" id="table-3-3-statsmodels">
-<h2>Table 3.3 - Statsmodels<a class="headerlink" href="#table-3-3-statsmodels" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2.1. </span>Table 3.3 - Statsmodels<a class="headerlink" href="#table-3-3-statsmodels" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Sales ~ Radio&quot;</span><span class="p">,</span> <span class="n">advertising_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -587,16 +605,17 @@ memory usage: 30.6+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Sales ~ Radio&quot;</span><span class="p">,</span> <span class="n">advertising_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">est</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-
-<span class="ne">NameError</span>: name &#39;advertising_df&#39; is not defined
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>    9.3116</td> <td>    0.563</td> <td>   16.542</td> <td> 0.000</td> <td>    8.202</td> <td>   10.422</td>
+</tr>
+<tr>
+  <th>Radio</th>     <td>    0.2025</td> <td>    0.020</td> <td>    9.921</td> <td> 0.000</td> <td>    0.162</td> <td>    0.243</td>
+</tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -605,10 +624,22 @@ memory usage: 30.6+ KB
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>   12.3514</td> <td>    0.621</td> <td>   19.876</td> <td> 0.000</td> <td>   11.126</td> <td>   13.577</td>
+</tr>
+<tr>
+  <th>Newspaper</th> <td>    0.0547</td> <td>    0.017</td> <td>    3.300</td> <td> 0.001</td> <td>    0.022</td> <td>    0.087</td>
+</tr>
+</table></div></div>
 </div>
 </div>
 <div class="section" id="table-3-4-3-6-statsmodels">
-<h2>Table 3.4 &amp; 3.6 - Statsmodels<a class="headerlink" href="#table-3-4-3-6-statsmodels" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2.2. </span>Table 3.4 &amp; 3.6 - Statsmodels<a class="headerlink" href="#table-3-4-3-6-statsmodels" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Sales ~ TV + Radio + Newspaper&quot;</span><span class="p">,</span> <span class="n">advertising_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -616,20 +647,139 @@ memory usage: 30.6+ KB
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>          <td>Sales</td>      <th>  R-squared:         </th> <td>   0.897</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.896</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   570.3</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Tue, 20 Sep 2022</td> <th>  Prob (F-statistic):</th> <td>1.58e-96</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>19:27:45</td>     <th>  Log-Likelihood:    </th> <td> -386.18</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   200</td>      <th>  AIC:               </th> <td>   780.4</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>   196</td>      <th>  BIC:               </th> <td>   793.6</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     3</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>    2.9389</td> <td>    0.312</td> <td>    9.422</td> <td> 0.000</td> <td>    2.324</td> <td>    3.554</td>
+</tr>
+<tr>
+  <th>TV</th>        <td>    0.0458</td> <td>    0.001</td> <td>   32.809</td> <td> 0.000</td> <td>    0.043</td> <td>    0.049</td>
+</tr>
+<tr>
+  <th>Radio</th>     <td>    0.1885</td> <td>    0.009</td> <td>   21.893</td> <td> 0.000</td> <td>    0.172</td> <td>    0.206</td>
+</tr>
+<tr>
+  <th>Newspaper</th> <td>   -0.0010</td> <td>    0.006</td> <td>   -0.177</td> <td> 0.860</td> <td>   -0.013</td> <td>    0.011</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td>60.414</td> <th>  Durbin-Watson:     </th> <td>   2.084</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.000</td> <th>  Jarque-Bera (JB):  </th> <td> 151.241</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td>-1.327</td> <th>  Prob(JB):          </th> <td>1.44e-33</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 6.332</td> <th>  Cond. No.          </th> <td>    454.</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
 </div>
 </div>
 <div class="section" id="table-3-5-correlation-matrix">
-<h2>Table 3.5 - Correlation Matrix<a class="headerlink" href="#table-3-5-correlation-matrix" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2.3. </span>Table 3.5 - Correlation Matrix<a class="headerlink" href="#table-3-5-correlation-matrix" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">advertising_df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TV</th>
+      <th>Radio</th>
+      <th>Newspaper</th>
+      <th>Sales</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>TV</th>
+      <td>1.000000</td>
+      <td>0.054809</td>
+      <td>0.056648</td>
+      <td>0.782224</td>
+    </tr>
+    <tr>
+      <th>Radio</th>
+      <td>0.054809</td>
+      <td>1.000000</td>
+      <td>0.354104</td>
+      <td>0.576223</td>
+    </tr>
+    <tr>
+      <th>Newspaper</th>
+      <td>0.056648</td>
+      <td>0.354104</td>
+      <td>1.000000</td>
+      <td>0.228299</td>
+    </tr>
+    <tr>
+      <th>Sales</th>
+      <td>0.782224</td>
+      <td>0.576223</td>
+      <td>0.228299</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </div>
 <div class="section" id="figure-3-5-multiple-linear-regression">
-<h2>Figure 3.5 - Multiple Linear Regression<a class="headerlink" href="#figure-3-5-multiple-linear-regression" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2.4. </span>Figure 3.5 - Multiple Linear Regression<a class="headerlink" href="#figure-3-5-multiple-linear-regression" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
@@ -643,6 +793,12 @@ memory usage: 30.6+ KB
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.18799423 0.04575482]
+2.9210999124051398
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -652,6 +808,73 @@ memory usage: 30.6+ KB
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Radio</th>
+      <th>TV</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>200.000000</td>
+      <td>200.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>23.264000</td>
+      <td>147.042500</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>14.846809</td>
+      <td>85.854236</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.700000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>9.975000</td>
+      <td>74.375000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>22.900000</td>
+      <td>149.750000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>36.525000</td>
+      <td>218.825000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>49.600000</td>
+      <td>296.400000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -689,6 +912,9 @@ memory usage: 30.6+ KB
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/multi-linear-regression_17_0.png" src="../_images/multi-linear-regression_17_0.png" />
+</div>
 </div>
 </div>
 </div>
@@ -717,7 +943,21 @@ memory usage: 30.6+ KB
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="simple-linear-regression.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2.1. </span>Simple linear regression</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="extension-discussion.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.3. </span>Extensions and discussions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
