@@ -49,6 +49,10 @@ parts:
     sections:
     - file: 02-linear-reg/simple-linear-regression
       title: Simple linear regression
+    - file: 02-linear-reg/multiple-linear-regression
+      title: Multiple linear regression
+    - file: 02-linear-reg/extension-discussion
+      title: Extensions & discussion
 - caption: Appendix
   numbered: false
   chapters:
