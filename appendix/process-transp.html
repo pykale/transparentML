@@ -189,12 +189,17 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../01-intro/ml-models.html">
-     1.7. ML models
+     1.7. Machine learning models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-intro/organisation.html">
+     1.9. Organisation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../01-intro/quiz-sum-ref.html">
-     1.8. Quiz
+     1.10. Quiz
     </a>
    </li>
   </ul>
@@ -337,11 +342,6 @@ const thebe_selector_output = ".output, .cell_output"
    How to manage such info?
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reproducibility-of-ml-systems">
-   Reproducibility of ML systems
-  </a>
- </li>
 </ul>
 
             </nav>
@@ -377,11 +377,6 @@ const thebe_selector_output = ".output, .cell_output"
    How to manage such info?
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reproducibility-of-ml-systems">
-   Reproducibility of ML systems
-  </a>
- </li>
 </ul>
 
                         </nav>
@@ -399,10 +394,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Why stakeholders can be interested in such information.</p></li>
 <li><p>How such information can be managed and communicated.</p></li>
 </ul>
-<p><a class="reference internal" href="#fig10-ai-transparency"><span class="std std-numref">Fig. 4</span></a> summarises process transparency in the three key questions above.</p>
+<p><a class="reference internal" href="#fig10-ai-transparency"><span class="std std-numref">Fig. 3</span></a> summarises process transparency in the three key questions above.</p>
 <div class="figure align-default" id="fig10-ai-transparency">
 <img alt="../_images/fig10-ai-transparency.png" src="../_images/fig10-ai-transparency.png" />
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">The what, why, and how of process transparency <span id="id1">[<a class="reference internal" href="../index.html#id7" title="Florian Ostmann and Cosmina Dorobantu. AI in financial services. Alan Turing Institute. doi, 2021. https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf.">Ostmann and Dorobantu, 2021</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#fig10-ai-transparency" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">The what, why, and how of process transparency <span id="id1">[<a class="reference internal" href="../index.html#id9" title="Florian Ostmann and Cosmina Dorobantu. AI in financial services. Alan Turing Institute. doi, 2021. https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf.">Ostmann and Dorobantu, 2021</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#fig10-ai-transparency" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="what-relevant-information">
 <h2>What relevant information?<a class="headerlink" href="#what-relevant-information" title="Permalink to this headline">¶</a></h2>
@@ -417,10 +412,10 @@ be recorded, managed, and made accessible in practice.</p>
 <li><p><strong>Different levels of information</strong>: In considering a given lifecycle phase, different levels of process information can be distinguished, corresponding to the kinds of questions that the information serves to answer.</p></li>
 </ul>
 <p>These two dimensions lead to a typology for process information whose general structure can be
-represented in the form of a matrix, as illustrated in <a class="reference internal" href="#fig11-ai-transparency"><span class="std std-numref">Fig. 5</span></a>.</p>
+represented in the form of a matrix, as illustrated in <a class="reference internal" href="#fig11-ai-transparency"><span class="std std-numref">Fig. 4</span></a>.</p>
 <div class="figure align-default" id="fig11-ai-transparency">
 <img alt="../_images/fig11-ai-transparency.png" src="../_images/fig11-ai-transparency.png" />
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Process transparency matrix <span id="id2">[<a class="reference internal" href="../index.html#id7" title="Florian Ostmann and Cosmina Dorobantu. AI in financial services. Alan Turing Institute. doi, 2021. https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf.">Ostmann and Dorobantu, 2021</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#fig11-ai-transparency" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Process transparency matrix <span id="id2">[<a class="reference internal" href="../index.html#id9" title="Florian Ostmann and Cosmina Dorobantu. AI in financial services. Alan Turing Institute. doi, 2021. https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf.">Ostmann and Dorobantu, 2021</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#fig11-ai-transparency" title="Permalink to this image">¶</a></p>
 </div>
 <p>Let us study the different levels of information below. For each lifecycle phase of an ML system, there are various aspects of information that can be of interest to internal or external stakeholders. These aspects of information can answer questions at different levels of abstraction. The following four levels of information can be distinguished, moving from more concrete to more abstract questions:</p>
 <ul class="simple">
@@ -430,10 +425,10 @@ represented in the form of a matrix, as illustrated in <a class="reference inter
 <li><p><strong>Information on adherence to norms and standards</strong> refers to compliance with norms or standards in the design, development, and deployment of an ML system. Such norms or standards may touch on substantive, procedural, or governance questions.</p></li>
 </ul>
 <p>The distinction between these four levels of information remains unaffected by the complexities of sourcing data for ML systems or technology supply chains. Where firms rely on third-party providers, all four levels of information can be applied to activities carried out within and outside the firm. Additionally, relevant governance information in such cases can include information about accountability structures and mechanisms that govern the relationship between third-party providers and the firm employing the ML system in question. These four levels of information, combined with the typology of lifecycle phases, lead to a more concrete version of the matrix we introduced at the beginning of this section to map out different types of process information.</p>
-<p><a class="reference internal" href="#fig12-ai-transparency"><span class="std std-numref">Fig. 6</span></a> incorporates specific categories into <a class="reference internal" href="#fig11-ai-transparency"><span class="std std-numref">Fig. 5</span></a>.</p>
+<p><a class="reference internal" href="#fig12-ai-transparency"><span class="std std-numref">Fig. 5</span></a> incorporates specific categories into <a class="reference internal" href="#fig11-ai-transparency"><span class="std std-numref">Fig. 4</span></a>.</p>
 <div class="figure align-default" id="fig12-ai-transparency">
 <img alt="../_images/fig12-ai-transparency.png" src="../_images/fig12-ai-transparency.png" />
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Detailed process transparency matrix <span id="id3">[<a class="reference internal" href="../index.html#id7" title="Florian Ostmann and Cosmina Dorobantu. AI in financial services. Alan Turing Institute. doi, 2021. https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf.">Ostmann and Dorobantu, 2021</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#fig12-ai-transparency" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Detailed process transparency matrix <span id="id3">[<a class="reference internal" href="../index.html#id9" title="Florian Ostmann and Cosmina Dorobantu. AI in financial services. Alan Turing Institute. doi, 2021. https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf.">Ostmann and Dorobantu, 2021</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#fig12-ai-transparency" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="why-such-info">
@@ -447,11 +442,11 @@ in addressing each of the six areas of concern as in <a class="reference interna
 <li><p><strong>System performance</strong>: Information about the content of system requirement specifications, about the quality and origin of data used during an ML system’s development or operation, or about validation procedures is crucial for understanding the effectiveness, reliability, and robustness of ML systems. This information can be of interest to those involved in or making decisions about the development and use of an ML system, as well as those seeking assurance about the system’sm performance (eg members of audit teams, board members, regulators or customers).</p></li>
 <li><p><strong>System compliance</strong>: Process information is crucial to assessing ML systems’ adherence to compliance requirements. For example, information about the quality of data used and system tests conducted is essential for a holistic understanding of potential risks of unlawful discrimination. Similarly, where ML systems use personal data, information about the provenance, content, and quality of this data is important for data protection assessments. Process information can be of interest to those ensuring system compliance or can demonstrate system compliance to stakeholders.</p></li>
 <li><p><strong>Competent use and human oversight</strong>: Information about an ML system’s intended purpose, system requirements specifications, or system performance measurements can be essential to ensuring competent use and preventing the inappropriate repurposing of ML systems. This information can also be crucial to determine what forms of human oversight are needed and to enable overseers to exercise their role effectively.</p></li>
-<li><p><strong>Providing explanations</strong>: Explanations of an ML system’s outputs can involve system logic information as well as process information. Indeed, a complete understanding of a particular decision requires both. <a class="reference internal" href="#fig13-ai-transparency"><span class="std std-numref">Fig. 7</span></a> illustrates this using the example of a loan eligibility decision. In terms of process information, decision recipients seeking to understand an outcome may want to know the content of the input data about them that an ML system used. This knowledge is a precondition, for example, for being able to identify erroneous decisions.</p></li>
+<li><p><strong>Providing explanations</strong>: Explanations of an ML system’s outputs can involve system logic information as well as process information. Indeed, a complete understanding of a particular decision requires both. <a class="reference internal" href="#fig13-ai-transparency"><span class="std std-numref">Fig. 6</span></a> illustrates this using the example of a loan eligibility decision. In terms of process information, decision recipients seeking to understand an outcome may want to know the content of the input data about them that an ML system used. This knowledge is a precondition, for example, for being able to identify erroneous decisions.</p></li>
 </ul>
 <div class="figure align-default" id="fig13-ai-transparency">
 <img alt="../_images/fig13-ai-transparency.png" src="../_images/fig13-ai-transparency.png" />
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">The combined relevance of process and system logic information in explaining system outputs <span id="id4">[<a class="reference internal" href="../index.html#id7" title="Florian Ostmann and Cosmina Dorobantu. AI in financial services. Alan Turing Institute. doi, 2021. https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf.">Ostmann and Dorobantu, 2021</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#fig13-ai-transparency" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">The combined relevance of process and system logic information in explaining system outputs <span id="id4">[<a class="reference internal" href="../index.html#id9" title="Florian Ostmann and Cosmina Dorobantu. AI in financial services. Alan Turing Institute. doi, 2021. https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf.">Ostmann and Dorobantu, 2021</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#fig13-ai-transparency" title="Permalink to this image">¶</a></p>
 </div>
 <ul class="simple">
 <li><p><strong>Responsiveness</strong>: Telling users about ways in which they can ask for information, help, or redress is important to reassure them of the existence of pathways for expressing such requests. In addition, internal stakeholders may need access to different forms of process information, such as the data used during an ML system’s operation, to be able to respond to customer requests. Finally, stakeholders seeking assurance about the responsible use of ML systems may be interested in information about how issues of responsiveness are managed.</p></li>
@@ -470,10 +465,6 @@ in addressing each of the six areas of concern as in <a class="reference interna
 <p><strong>Mechanisms for verifying process information</strong>: A third area of emerging work concerns the verifiability of process information for ML systems. This includes forms of independent certification for relevant norms and standards. Currently, declarations of adherence to norms and standards take the form of self-declared adherence (‘self-certification’). However, in some contexts, stakeholders may place greater trust in such declarations if they are supported by independently administered certification or labelling schemes.</p>
 <p>There is also an emerging literature on the role of auditors in examining system design, development, and deployment processes (including evaluation). In contrast to certification, auditors may verify process information at a more detailed level. ML system auditors can be internal or external to the firm that is employing a given ML system.</p>
 <p>Finally, growing research and development efforts are being dedicated to technical solutions that automate the generation and recording of process information. Software-generated ‘audit trails’ and related concepts can contribute to the reliability and verifiability of some types of process information, while at the same time reducing the cost of recording and making the information available to stakeholders.</p>
-</div>
-<div class="section" id="reproducibility-of-ml-systems">
-<h2>Reproducibility of ML systems<a class="headerlink" href="#reproducibility-of-ml-systems" title="Permalink to this headline">¶</a></h2>
-<p>Reproducibility is more related to process transparency. Maybe to add later.</p>
 </div>
 </div>
 

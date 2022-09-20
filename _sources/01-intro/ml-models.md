@@ -16,7 +16,7 @@ This course focuses on machine learning models (or methods) that are most widely
   - A linear model for classification.
   - Predicting whether a customer will default on a credit card payment.
 * - **Support vector machine**
-  - A non-linear model for classification.
+  - A kernel-based model for classification.
   - Predicting whether a customer will default on a credit card payment.
 * - **Decision tree**
   - A non-linear model for classification and regression.
@@ -28,11 +28,15 @@ This course focuses on machine learning models (or methods) that are most widely
   - A non-linear model for classification and regression.
   - Predicting whether a customer will default on a credit card payment.
 * - **K-means**
-  - A clustering algorithm.
+  - A clustering model.
   - Finding groups of similar customers.
 * - **Principal component analysis**
-  - A dimensionality reduction algorithm.
+  - A dimensionality reduction model.
   - Finding the most important features of a dataset.
 ```
 
 No single model will perform well in all possible scenarios. Therefore, it is important to understand the assumptions and trade-offs of each model so that you can choose the right model for a given problem.
+
+### Exercises
+
+To be completed in the next cycle

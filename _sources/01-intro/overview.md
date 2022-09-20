@@ -3,15 +3,19 @@
 <!-- **Question**: What is machine learning and what is AI transparency? -->
 
 ```{admonition} Objectives
-- Understand real-world datasets used in this course
-- Understand components of typical machine learning systems
-- Understand steps in typical machine learning processes
-- Understand AI transparency definition & taxonomy
+- Understand what is machine learning
+- Understand machine learning systems and processes
+- Understand machine learning transparency
+- Understand and use a basic KNN classifier
+```
+
+```{admonition} Status
+Ready for review and feedback
 ```
 
 **Expected time to complete**: 4 hours
 
-In this chapter, we will learn about the components of typical machine learning systems and steps in typical machine learning processes. We will also learn about the definition and taxonomy of AI transparency. We will start with the real-world datasets used in this course to see how machine learning can be used in real-world.
+In this chapter, we start with what is machine learning. We then discuss the system and process of machine learning. Next, we discuss the transparency of machine learning and go through a simple K-nearest neighbour (KNN) classifier. Finally, we list the real-world datasets to be used and machine learning models to be covered in this course, and introduce the organisation of the rest of the book.
 
 ```{note}
 If you do not have prior knowledge/experience with linear algebra, Python programming, and probability and statistics, please go through {doc}`Prerequisites <../00-prereq/overview>` before starting this course.

@@ -31,6 +31,16 @@ The relationships between AI, ML, deep learning, and data science, by [Jen Loope
 
 **AI** is a broad field of study that aims to create intelligent machines that can perform tasks that normally require human intelligence. There are multiple ways to achieve AI, and machine learning is one of them. As defined above, machine learning is a subfield of AI that machines acquire their experiences from data, in the form of a mathematical model. There are multiple ways of machine learning, and deep learning is one of them. **Deep learning** is a subfield of machine learning that uses deep (i.e. many layers) neural networks to learn from data. **Data science** is a broad field of study that uses scientific methods, processes, algorithms, and systems to extract knowledge and insights from data, not necessarily in the form of a mathematical model as machine learning does.
 
+### An motivating example
+
+Let us assume we are a consultant firm hired by a client to investigate the association between advertising and sales of a product. The [Advertising data set](https://github.com/pykale/transparentML/blob/main/data/Advertising.csv) consists of the sales of the product in 200 different markets, and advertising budgets for the product in each of those markets for three different media: TV, radio, and newspaper. You can click the link above to view the dataset.
+
+Our goal is to develop an accurate model that can be used to predict sales on the basis of the three media budgets so that our client can increase sales by adjust (limited)advertising budgets. In this setting, the advertising budgets are input variables or _features_ while sales is an output variable or _target_.
+
+Denote the three features as $x_1$ for TV, $x_2$ for radio, and $x_3$ for newspaper, and the target as $y$ for sales (e.g. quantity). Collectively, we denote the features as $\mathbf{x}= [x_1, x_2, x_3]^\top$ as a column vector. We can use the [dataset](https://github.com/pykale/transparentML/blob/main/data/Advertising.csv) to learn a model that can predict the sales $y$ based on the advertising budgets $\mathbf{x}$: $y = f(\mathbf{x})$.
+
+The function $f$ is called the **model** or **predictive function**. The model $f$ is learned from the data, which is called the **training data**. The training data consists of the features $\mathbf{x}$ and the target $y$ for each sample. In this case, the training data is a table with 200 rows and 4 columns, where each row is a sample and each column is a feature or a target. The first three columns are the features and the last column is the target.
+
 ### Exercises
 
-min 3 max 5
+To be completed in the next cycle

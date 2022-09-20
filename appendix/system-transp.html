@@ -192,12 +192,17 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../01-intro/ml-models.html">
-     1.7. ML models
+     1.7. Machine learning models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-intro/organisation.html">
+     1.9. Organisation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../01-intro/quiz-sum-ref.html">
-     1.8. Quiz
+     1.10. Quiz
     </a>
    </li>
   </ul>
@@ -378,11 +383,6 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#machine-learning-interpretability">
-     Machine learning interpretability
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#communicating-system-logic-information">
      Communicating system logic information
     </a>
@@ -462,11 +462,6 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#machine-learning-interpretability">
-     Machine learning interpretability
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#communicating-system-logic-information">
      Communicating system logic information
     </a>
@@ -493,7 +488,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Figure <a class="reference internal" href="#fig8-ai-transparency"><span class="std std-numref">Fig. 1</span></a> summarises system transparency in the three key questions above.</p>
 <div class="figure align-default" id="fig8-ai-transparency">
 <img alt="../_images/fig8-ai-transparency.png" src="../_images/fig8-ai-transparency.png" />
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">The what, why, and how of system transparency <span id="id1">[<a class="reference internal" href="../index.html#id7" title="Florian Ostmann and Cosmina Dorobantu. AI in financial services. Alan Turing Institute. doi, 2021. https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf.">Ostmann and Dorobantu, 2021</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#fig8-ai-transparency" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">The what, why, and how of system transparency <span id="id1">[<a class="reference internal" href="../index.html#id9" title="Florian Ostmann and Cosmina Dorobantu. AI in financial services. Alan Turing Institute. doi, 2021. https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf.">Ostmann and Dorobantu, 2021</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#fig8-ai-transparency" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="what-relevant-information">
 <h2>What relevant information?<a class="headerlink" href="#what-relevant-information" title="Permalink to this headline">¶</a></h2>
@@ -530,7 +525,7 @@ a decrease in or loss of model interpretability. It will generally be possible t
 <p>Access to system logic information can serve to address relevant concerns (e.g. ensuring trustworthiness and responsible use) as well as to provide assurance about possible concerns (e.g. demonstrating trustworthiness and responsible use), as shown in.</p>
 <div class="figure align-default" id="fig9-ai-transparency">
 <img alt="../_images/fig9-ai-transparency.png" src="../_images/fig9-ai-transparency.png" />
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Areas of concern related to system transparency <span id="id2">[<a class="reference internal" href="../index.html#id7" title="Florian Ostmann and Cosmina Dorobantu. AI in financial services. Alan Turing Institute. doi, 2021. https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf.">Ostmann and Dorobantu, 2021</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#fig9-ai-transparency" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Areas of concern related to system transparency <span id="id2">[<a class="reference internal" href="../index.html#id9" title="Florian Ostmann and Cosmina Dorobantu. AI in financial services. Alan Turing Institute. doi, 2021. https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf.">Ostmann and Dorobantu, 2021</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#fig9-ai-transparency" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="system-performance">
 <h3>System performance<a class="headerlink" href="#system-performance" title="Permalink to this headline">¶</a></h3>
@@ -586,24 +581,6 @@ on system logic. Many of these methods are perturbation-based – relying on the
 changes in system outputs in response to changes in input values – and can be used without
 access to a formal representation of the system. This is out of the scope of this course and hence will <em>NOT</em> be covered.</p></li>
 </ul>
-</div>
-<div class="section" id="machine-learning-interpretability">
-<h3>Machine learning interpretability<a class="headerlink" href="#machine-learning-interpretability" title="Permalink to this headline">¶</a></h3>
-<p>In general, linear models allow for a more interpretable (but less flexible) model, while non-linear models allow for a more flexible (but less interpretable) model.</p>
-<p>A trade-off between model flexibility and interpretability is shown in the figure below.</p>
-<div class="figure align-default" id="fig-trade-off-interpretable-flexible">
-<a class="reference internal image-reference" href="../_images/fig2_7.png"><img alt="../_images/fig2_7.png" src="../_images/fig2_7.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">A trade-off between model flexibility and interpretability <span id="id3">[<a class="reference internal" href="../index.html#id6" title="Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An Introduction to Statistical Learning. Springer, 2021. https://www.statlearning.com/.">James <em>et al.</em>, 2021</a>]</span>.</span><a class="headerlink" href="#fig-trade-off-interpretable-flexible" title="Permalink to this image">¶</a></p>
-</div>
-<p>The decision to limit model complexity for the sake of interpretability is often portrayed as a tradeoff with model accuracy. You may find figures look like the above but replacing flexibility with accuracy. The basis for this argument is the assumption that more complex models have higher accuracy than simpler ones. Yet, this assumption is not always true. In many modelling contexts, interpretable models can be designed to achieve the same or comparable levels of accuracy as models that would be considered uninterpretable. Significant research efforts are underway to advance the field of <em>interpretable machine learning</em>. Over time, these research efforts can be expected to further reduce the range of contexts in which interpretability-accuracy tradeoffs are perceived to exist.</p>
-<p>Decisions in favour of interpretability do not necessarily come at the expense of
-accuracy. Where trade-offs between interpretability and accuracy do exist, it may be preferable
-to accept a lower level of accuracy in the interest of enabling direct interpretation by system
-developers and other relevant actors. Conversely, where uninterpretable models are being used,
-it is important to be mindful of the limitations of explainability methods. Ignoring these limitations
-risks having a false sense of understanding, potentially resulting in misplaced trust in ML systems
-and unexpected harmful outcomes. Governance arrangements play a key role when it comes to
-choosing appropriate types of models.</p>
 </div>
 <div class="section" id="communicating-system-logic-information">
 <h3>Communicating system logic information<a class="headerlink" href="#communicating-system-logic-information" title="Permalink to this headline">¶</a></h3>

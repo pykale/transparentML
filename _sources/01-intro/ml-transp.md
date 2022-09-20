@@ -67,7 +67,7 @@ different aspects of system performance and compliance.
 
 Stakeholders’ transparency interests can differ even when their reasons for seeking information are the same. For example, a risk and compliance officer may seek information about an ML system for the same reasons and look for answers to the same questions as a different internal stakeholder (eg a customer service representative) or an external stakeholder (eg a member of the public). Each of these stakeholders, however, might expect different levels of detail.
 
-Figure {numref}`fig7-ai-transparency`7 summarises the three key questions of AI transparency so far.
+Figure {numref}`fig7-ai-transparency` summarises the three key questions of AI transparency so far.
 
 ```{figure} ../images/fig7-ai-transparency.png
 ---
@@ -76,7 +76,7 @@ name: fig7-ai-transparency
 Summary of the three key questions of transparency {cite}`ostmann2021ai` (maybe redraw later).
 ```
 
-#### Machine learning interpretability
+#### Interpretability-flexibility trade-off
 
 In general, linear models allow for a more interpretable (but less flexible) model, while non-linear models allow for a more flexible (but less interpretable) model.
 
@@ -101,8 +101,7 @@ risks having a false sense of understanding, potentially resulting in misplaced 
 and unexpected harmful outcomes. Governance arrangements play a key role when it comes to
 choosing appropriate types of models.
 
-
-### Trade-offs
+### Other trade-offs
 
 There can be reasons for not making some types of information about ML systems accessible to certain stakeholders. Such
 reasons often play a prominent role in discussions about the disclosure of information to external stakeholders in particular. The applicability of such countervailing reasons is context dependent. In particular, these reasons, where relevant, do not speak against the disclosure of system logic and process information in a wholesale manner. Instead, they typically apply to the disclosure of specific types of information (e.g. specific aspects of system logic information rather than all types of system logic information) to specific types of stakeholders (e.g. customers rather than all external stakeholders), for specific types of use cases.
@@ -116,3 +115,7 @@ Three other potential reasons are worth noting:
 - **Protecting personal data**: Certain forms of information disclosure can conflict with firms’ obligation to protect personal data. This includes, most obviously, the direct sharing of personal data – be it data used in the development or the operation of ML systems – in ways that violate data protection legislation. In addition, where ML systems are trained with personal data, it may be possible to infer protected personal information through, for example, model inversion or membership inference attacks. While concerns about such attacks only apply in limited circumstances, they can speak against the disclosure of certain aspects of system logic information to stakeholders.
 
 The applicability and implications of transparency trade-offs depend on context and vary between use cases. Regardless of the applicability of different countervailing reasons, large segments of the information that is of interest to stakeholders will remain unaffected.
+
+### Exercises
+
+To be completed in the next cycle

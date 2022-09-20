@@ -192,12 +192,17 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ml-models.html">
-     1.7. ML models
+     1.7. Machine learning models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="organisation.html">
+     1.9. Organisation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="quiz-sum-ref.html">
-     1.8. Quiz
+     1.10. Quiz
     </a>
    </li>
   </ul>
@@ -340,6 +345,16 @@ const thebe_selector_output = ".output, .cell_output"
    1.2.3. Machine learning ingredients
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reproducibility-of-ml-systems">
+   1.2.4. Reproducibility of ML systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   1.2.5. Exercises
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -373,6 +388,16 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#machine-learning-ingredients">
    1.2.3. Machine learning ingredients
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reproducibility-of-ml-systems">
+   1.2.4. Reproducibility of ML systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   1.2.5. Exercises
   </a>
  </li>
 </ul>
@@ -439,8 +464,28 @@ also known as the <strong>dimensionality</strong>. We use <span class="math notr
 <li><p><strong>Evaluation metric/measure</strong>: an evaluation (or error) metric (or measure) is needed for a loss function <span class="math notranslate nohighlight">\(L(y, \hat{y})\)</span> or <span class="math notranslate nohighlight">\(\hat{y}\)</span> to be useful. For example, in classification, the evaluation metric is typically the accuracy, which is a function of the predicted label <span class="math notranslate nohighlight">\(\hat{y}\)</span> and the true label <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
 </ul>
 </li>
-<li><p><strong>learning/optimization algorithm</strong>: an algorithm that finds the best model <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> by minimizing the loss function <span class="math notranslate nohighlight">\(L(y, \hat{y})\)</span> or <span class="math notranslate nohighlight">\(\hat{y}\)</span>. Nowadays, the optimization algorithms are typically available in libraries (software packages) and do not need to be implemented by the user. The optimization algorithms are typically iterative algorithms that iteratively update the model parameters to minimize the loss function. The optimization algorithms are typically <em>black boxes</em> to the user. The user only needs to specify the loss function <span class="math notranslate nohighlight">\(L(y, \hat{y})\)</span> or <span class="math notranslate nohighlight">\(\hat{y}\)</span> and the optimization algorithm will find the best model <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span>.</p></li>
+<li><p><strong>learning/optimization algorithm</strong>: an algorithm that finds (i.e. estimates) the best model <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> by minimizing the loss function <span class="math notranslate nohighlight">\(L(y, \hat{y})\)</span> or <span class="math notranslate nohighlight">\(\hat{y}\)</span>. Nowadays, the optimization algorithms are typically available in libraries (software packages) and do not need to be implemented by the user. The optimization algorithms are typically iterative algorithms that iteratively update the model parameters to minimize the loss function. The optimization algorithms are typically <em>black boxes</em> to the user. The user only needs to specify the loss function <span class="math notranslate nohighlight">\(L(y, \hat{y})\)</span> or <span class="math notranslate nohighlight">\(\hat{y}\)</span> and the optimization algorithm will find the best model <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span>.</p></li>
 </ul>
+</div>
+<div class="section" id="reproducibility-of-ml-systems">
+<h2><span class="section-number">1.2.4. </span>Reproducibility of ML systems<a class="headerlink" href="#reproducibility-of-ml-systems" title="Permalink to this headline">¶</a></h2>
+<p>We follow the <a class="reference external" href="https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions.html">definitions for reproducibility by The Turing Way</a> as shown in Figure <a class="reference internal" href="#reproducibility-mat"><span class="std std-numref">Fig. 1.2</span></a></p>
+<div class="figure align-default" id="reproducibility-mat">
+<img alt="https://the-turing-way.netlify.app/_images/reproducible-matrix.jpg" src="https://the-turing-way.netlify.app/_images/reproducible-matrix.jpg" />
+<p class="caption"><span class="caption-number">Fig. 1.2 </span><span class="caption-text">How the Turing Way defines reproducible research <span id="id1">[<a class="reference internal" href="../index.html#id7" title="The Turing Way Community, Becky Arnold, Louise Bowler, Sarah Gibson, Patricia Herterich, Rosie Higman, Anna Krystalli, Alexander Morley, Martin O'Reilly, Kirstie Whitaker, and others. The Turing way: a handbook for reproducible data science. Zenodo, 2022.">Community <em>et al.</em>, 2022</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#reproducibility-mat" title="Permalink to this image">¶</a></p>
+</div>
+<p>The Turing Way defines reproducible research as work that can be independently recreated from the same data and the same code that the original team used. The different dimensions of reproducible research in the figure above are further defined as:</p>
+<ul class="simple">
+<li><p><strong>Reproducible</strong>: A result is reproducible when the same analysis steps performed on the same dataset consistently produces the same answer.</p></li>
+<li><p><strong>Replicable</strong>: A result is replicable when the same analysis performed on different datasets produces qualitatively similar answers.</p></li>
+<li><p><strong>Robust</strong>: A result is robust when the same dataset is subjected to different analysis workflows to answer the same research question (for example one pipeline written in R and another written in Python) and a qualitatively similar or identical answer is produced. Robust results show that the work is not dependent on the specificities of the programming language chosen to perform the analysis.</p></li>
+<li><p><strong>Generalisable</strong>: Combining replicable and robust findings allow us to form generalisable results. Note that running an analysis on a different software implementation and with a different dataset does not provide generalised results. There will be many more steps to know how well the work applies to all the different aspects of the research question. Generalisation is an important step towards understanding that the result is not dependent on a particular dataset nor a particular version of the analysis pipeline.</p></li>
+</ul>
+<p>From the above, we can see that reproducibility is a minimal requirement for reproducible research.</p>
+</div>
+<div class="section" id="exercises">
+<h2><span class="section-number">1.2.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p>To be completed in the next cycle</p>
 </div>
 </div>
 

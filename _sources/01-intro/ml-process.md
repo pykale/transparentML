@@ -2,6 +2,8 @@
 
 Machine learning process can be described in terms of lifecycle phases. The phases of An ML system’s lifecycle are a number of analytically distinct activities throughout the stages of system design, development, and deployment. There is no universally agreed breakdown of lifecycle phases for ML systems. However, the following illustrative typology is suitable for a range of contexts and intersects with prominent lifecycle frameworks. Some of the activities below only apply to certain phases of ML systems.
 
+**(Add illustration figure here later)**
+
 ### Lifecycle phases for design & development:
 
 - **Business case and problem definition**: Establishing the need for the ML system and the tasks it is meant to perform.
@@ -24,3 +26,7 @@ The lifecycle phases capture activities that are conceptually distinct, but do n
 The volumes of data needed for ML systems and the complexity of technology supply chains mean that different activities across lifecycle phases are not always performed by actors within the same organisation. In contexts that involve third-party data providers, outsourcing different aspects of system design and development, or reliance on off-the-shelf tools, certain activities will be carried out by actors outside of the firm using the system.
 
 Indeed, some of these activities might not be carried out by human actors, but by ML systems: recent innovations make it possible to automate large sections of an ML system’s development. However, in any of these cases, the structure of lifecycle phases remains unaffected by this, as the fundamental steps in designing, developing, and deploying an ML system stay the same.
+
+### Exercises
+
+To be completed in the next cycle
