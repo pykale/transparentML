@@ -1,16 +1,14 @@
 # Intro to Machine Learning & Transparency
 
-<!-- **Question**: What is machine learning and what is AI transparency? -->
+```{admonition} Status
+Ready for review and feedback
+```
 
 ```{admonition} Objectives
 - Understand what is machine learning
 - Understand machine learning systems and processes
 - Understand machine learning transparency
 - Understand and use a basic KNN classifier
-```
-
-```{admonition} Status
-Ready for review and feedback
 ```
 
 **Expected time to complete**: 4 hours
