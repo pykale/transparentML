@@ -1,6 +1,10 @@
-# Overview
+# Prerequisites
 
 <!-- **Question**: What do you need to know before starting this course? -->
+
+```{admonition} Status
+Ready for review and feedback
+```
 
 ```{admonition} Objectives
 - Understand basic mathematical concepts required for this course
@@ -8,10 +12,6 @@
 - Compute with `NumPy` arrays
 - Analyse tabular data using `pandas`
 - Plot data using `matplotlib`
-```
-
-```{admonition} Status
-Ready for review and feedback
 ```
 
 **Expected time to complete**: 3 hours
