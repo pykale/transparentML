@@ -1,11 +1,11 @@
-# Title Title
+# Cross Validation and Bootstrap
 
 <!-- Capitalise initials. As compact as possible, prefer ONE line. -->
 <!-- We use **UK** English spelling. -->
 <!-- File names should be all lowercase, with words separated by hyphens (-), and no spaces.  Each chapter must include an "overview.md" and "quiz-sum-ref.md"-->
 
 ```{admonition} Status
-Drafting / Ready for review and feedback
+Drafting
 ```
 
 ```{admonition} Objectives
@@ -16,7 +16,7 @@ Drafting / Ready for review and feedback
 
 In this chapter, we will [... (intro paragraph)].
 
-## No cap initial
+<!-- ## No cap initial -->
 
 ```{admonition} Ingredients
 - Input: ...

@@ -53,6 +53,54 @@ parts:
       title: Multiple linear regression
     - file: 02-linear-reg/extension-discussion
       title: Extensions & discussion
+  - file: 03-logistic-reg/overview
+    title: Logistic regression
+    sections:
+    - file: 03-logistic-reg/quiz-sum-ref
+      title: Quiz & summary
+  - file: 04-cross-val-bootstrap/overview
+    title: Cross validation & bootstrap
+    sections:
+    - file: 04-cross-val-bootstrap/quiz-sum-ref
+      title: Quiz & summary
+  - file: 05-hypo-test-sw-dev/overview
+    title: Hypothesis testing & software dev
+    sections:
+    - file: 05-hypo-test-sw-dev/quiz-sum-ref
+      title: Quiz & summary
+- caption: Advanced
+  numbered: true
+  chapters:
+  - file: 06-ftr-select-shrink/overview
+    title: Feature selection & shrinkage
+    sections:
+    - file: 06-ftr-select-shrink/quiz-sum-ref
+      title: Quiz & summary
+  - file: 07-dec-trees-rnd-forest/overview
+    title: Decision trees & random forests
+    sections:
+    - file: 07-dec-trees-rnd-forest/quiz-sum-ref
+      title: Quiz & summary
+  - file: 08-nb-glm-svm/overview
+    title: Naive Bayes, GLM & SVM
+    sections:
+    - file: 08-nb-glm-svm/quiz-sum-ref
+      title: Quiz & summary
+  - file: 09-pca-kmeans/overview
+    title: PCA & K-means
+    sections:
+    - file: 09-pca-kmeans/quiz-sum-ref
+      title: Quiz & summary
+  - file: 10-deep-cnn-rnn/overview
+    title: Convolutional & recurrent NN
+    sections:
+    - file: 10-deep-cnn-rnn/quiz-sum-ref
+      title: Quiz & summary
+  - file: /overview
+    title:
+    sections:
+    - file: /quiz-sum-ref
+      title: Quiz & summary
 - caption: Appendix
   numbered: false
   chapters:

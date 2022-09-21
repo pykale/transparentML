@@ -13,7 +13,7 @@ logo                        : transparentml-logo.png  # A path to the book logo
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
+  execute_notebooks: cache
   timeout: 300
 
 
@@ -38,7 +38,7 @@ html:
   use_issues_button: true
   use_repository_button: true
   use_edit_page_button: true
-  use_multitoc_numbering: false
+  use_multitoc_numbering: true
 
 # Add launch buttons
 # See https://jupyterbook.org/en/stable/interactive/launchbuttons.html
