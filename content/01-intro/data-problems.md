@@ -50,6 +50,9 @@ In this course, we will use real-world datasets to introduce machine learning fr
 * - [Hitters](https://github.com/pykale/transparentML/blob/main/data/Hitters.csv)
   - Records and salaries for baseball players.
   - Predict the salary of a baseball player.
+* - [Iris](https://github.com/pykale/transparentML/blob/main/data/Iris.csv)
+  - Measurements of 150 iris flowers.
+  - Predict the species of an iris flower.
 * - [Khan](https://github.com/pykale/transparentML/blob/main/data/Khan.json)
   - Gene expression measurements for four cancer types.
   - Predict the cancer type for a patient.
