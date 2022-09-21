@@ -497,30 +497,40 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-transparency">
+   1.4.4. System transparency
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#process-transparency">
+   1.4.5. Process transparency
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#relevant-stakeholders">
-   1.4.4. Relevant stakeholders
+   1.4.6. Relevant stakeholders
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reasons-for-accessing-information">
-   1.4.5. Reasons for accessing information
+   1.4.7. Reasons for accessing information
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#interpretability-flexibility-trade-off">
-     1.4.5.1. Interpretability-flexibility trade-off
+     1.4.7.1. Interpretability-flexibility trade-off
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#other-trade-offs">
-   1.4.6. Other trade-offs
+   1.4.8. Other trade-offs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   1.4.7. Exercises
+   1.4.9. Exercises
   </a>
  </li>
 </ul>
@@ -559,30 +569,40 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-transparency">
+   1.4.4. System transparency
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#process-transparency">
+   1.4.5. Process transparency
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#relevant-stakeholders">
-   1.4.4. Relevant stakeholders
+   1.4.6. Relevant stakeholders
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reasons-for-accessing-information">
-   1.4.5. Reasons for accessing information
+   1.4.7. Reasons for accessing information
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#interpretability-flexibility-trade-off">
-     1.4.5.1. Interpretability-flexibility trade-off
+     1.4.7.1. Interpretability-flexibility trade-off
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#other-trade-offs">
-   1.4.6. Other trade-offs
+   1.4.8. Other trade-offs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   1.4.7. Exercises
+   1.4.9. Exercises
   </a>
  </li>
 </ul>
@@ -629,8 +649,27 @@ Transparency also acts as an enabler to other ML/AI ethics principles including 
 </ul>
 <p>In this course, we will study machine learning systems from the perspectives of these two forms of transparency.</p>
 </div>
+<div class="section" id="system-transparency">
+<h2><span class="section-number">1.4.4. </span>System transparency<a class="headerlink" href="#system-transparency" title="Permalink to this headline">¶</a></h2>
+<p>System transparency refers to access to information about the operational logic of a system. The most transparent systems are simple systems where system logic information can be inferred purely from a system’s formal
+representation. Three types of information are considered relevant for system transparency:</p>
+<blockquote>
+<div><p>(1) The input variables that a given system relies on: what are the types of information that the system uses in operation?</p>
+<p>(2) The way in which the system transforms inputs into outputs: what is the relationship between input variables and system results?</p>
+<p>(3) The conditions under which the system would produce a certain output: for what values of the input variables would the system return a specific value of interest?</p>
+</div></blockquote>
+</div>
+<div class="section" id="process-transparency">
+<h2><span class="section-number">1.4.5. </span>Process transparency<a class="headerlink" href="#process-transparency" title="Permalink to this headline">¶</a></h2>
+<p>Process transparency concerns access to any information about an ML system’s design, development, and deployment apart from the system’s logic. As with system logic information, such process information is important for addressing and providing assurance about concerns raised by AI systems. Correspondingly, there is a growing amount of work on how process information can be recorded, managed, and made accessible in practice.</p>
+<p>We can categorise process information regarding ML systems along two dimensions:</p>
+<ul class="simple">
+<li><p><strong>Different lifecycle phases</strong>: Process information can relate to (i) the design and development or (ii) the deployment of an ML system. In both areas, more specific lifecycle phases can be distinguished, each of them associated with unique aspects of information.</p></li>
+<li><p><strong>Different levels of information</strong>: In considering a given lifecycle phase, different levels of process information can be distinguished, corresponding to the kinds of questions that the information serves to answer.</p></li>
+</ul>
+</div>
 <div class="section" id="relevant-stakeholders">
-<h2><span class="section-number">1.4.4. </span>Relevant stakeholders<a class="headerlink" href="#relevant-stakeholders" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.4.6. </span>Relevant stakeholders<a class="headerlink" href="#relevant-stakeholders" title="Permalink to this headline">¶</a></h2>
 <p>The information that is relevant to a given stakeholder depends on the stakeholder’s role and the context. For example, a data scientist may need to know the details of the data collection process, while a data subject may need to know how their data is used. We can split those who may have an interest in system or process transparency into two categories:</p>
 <ul class="simple">
 <li><p><strong>Internal stakeholders</strong>: Those individuals who are involved in the design, development, and procurement of the ML system. Examples include data scientists, developers, and engineers. They also include individuals who make decisions about its deployment, operate the system, manage external communications, or perform corporate governance and oversight functions. Examples include members of development or procurement teams, risk and compliance teams, audit teams, senior management, company boards, operational teams using the ML system, and customer service teams.</p></li>
@@ -651,7 +690,7 @@ in <a class="reference internal" href="#fig6-ai-transparency"><span class="std s
 </div>
 </div>
 <div class="section" id="reasons-for-accessing-information">
-<h2><span class="section-number">1.4.5. </span>Reasons for accessing information<a class="headerlink" href="#reasons-for-accessing-information" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.4.7. </span>Reasons for accessing information<a class="headerlink" href="#reasons-for-accessing-information" title="Permalink to this headline">¶</a></h2>
 <p>As mentioned above, transparency is a <em>relative</em> concept. Not all types of information about an ML system will be equally important to all types of stakeholders. The reasons that underpin stakeholders’ interests in information about a given system (i.e. their ‘transparency interests’) are important in determining the types of information they may seek access to. When these reasons differ between stakeholders, the definition of what constitutes relevant information can change. For example, customers faced with an ML system used to make credit eligibility decisions may wish to understand the impact of, say, a 3% pay raise on their credit eligibility. The answer to this question can involve types of information that may not be relevant to the transparency interests, say, of regulators, which may be motivated by the goal of understanding
 different aspects of system performance and compliance.</p>
 <p>Stakeholders’ transparency interests can differ even when their reasons for seeking information are the same. For example, a risk and compliance officer may seek information about an ML system for the same reasons and look for answers to the same questions as a different internal stakeholder (eg a customer service representative) or an external stakeholder (eg a member of the public). Each of these stakeholders, however, might expect different levels of detail.</p>
@@ -661,7 +700,7 @@ different aspects of system performance and compliance.</p>
 <p class="caption"><span class="caption-number">Fig. 1.4 </span><span class="caption-text">Summary of the three key questions of transparency <span id="id4">[<a class="reference internal" href="../index.html#id9" title="Florian Ostmann and Cosmina Dorobantu. AI in financial services. Alan Turing Institute. doi, 2021. https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf.">Ostmann and Dorobantu, 2021</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#fig7-ai-transparency" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="interpretability-flexibility-trade-off">
-<h3><span class="section-number">1.4.5.1. </span>Interpretability-flexibility trade-off<a class="headerlink" href="#interpretability-flexibility-trade-off" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.4.7.1. </span>Interpretability-flexibility trade-off<a class="headerlink" href="#interpretability-flexibility-trade-off" title="Permalink to this headline">¶</a></h3>
 <p>In general, linear models allow for a more interpretable (but less flexible) model, while non-linear models allow for a more flexible (but less interpretable) model.</p>
 <p>A trade-off between model flexibility and interpretability is shown in the figure below.</p>
 <div class="figure align-default" id="fig-trade-off-interpretable-flexible">
@@ -680,7 +719,7 @@ choosing appropriate types of models.</p>
 </div>
 </div>
 <div class="section" id="other-trade-offs">
-<h2><span class="section-number">1.4.6. </span>Other trade-offs<a class="headerlink" href="#other-trade-offs" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.4.8. </span>Other trade-offs<a class="headerlink" href="#other-trade-offs" title="Permalink to this headline">¶</a></h2>
 <p>There can be reasons for not making some types of information about ML systems accessible to certain stakeholders. Such
 reasons often play a prominent role in discussions about the disclosure of information to external stakeholders in particular. The applicability of such countervailing reasons is context dependent. In particular, these reasons, where relevant, do not speak against the disclosure of system logic and process information in a wholesale manner. Instead, they typically apply to the disclosure of specific types of information (e.g. specific aspects of system logic information rather than all types of system logic information) to specific types of stakeholders (e.g. customers rather than all external stakeholders), for specific types of use cases.</p>
 <p>In addition, disclosing information that is irrelevant or excessively detailed in response to stakeholders’ questions may generate undue distrust. Avoiding ‘information overload’ is one possible reason against the disclosure of some types of information to certain stakeholders.</p>
@@ -693,7 +732,7 @@ reasons often play a prominent role in discussions about the disclosure of infor
 <p>The applicability and implications of transparency trade-offs depend on context and vary between use cases. Regardless of the applicability of different countervailing reasons, large segments of the information that is of interest to stakeholders will remain unaffected.</p>
 </div>
 <div class="section" id="exercises">
-<h2><span class="section-number">1.4.7. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.4.9. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <p>To be completed in the next cycle</p>
 </div>
 </div>

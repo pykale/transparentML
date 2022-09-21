@@ -526,13 +526,23 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#set-hyperparameter">
-     1.5.2.3. Set hyperparameter
+    <a class="reference internal nav-link" href="#hyperparameter-tuning">
+     1.5.2.3. Hyperparameter tuning
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#visulisation-in-2d">
      1.5.2.4. Visulisation in 2D
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-and-testing">
+     1.5.2.5. Training and testing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#observations">
+     1.5.2.6. Observations
     </a>
    </li>
   </ul>
@@ -583,13 +593,23 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#set-hyperparameter">
-     1.5.2.3. Set hyperparameter
+    <a class="reference internal nav-link" href="#hyperparameter-tuning">
+     1.5.2.3. Hyperparameter tuning
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#visulisation-in-2d">
      1.5.2.4. Visulisation in 2D
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-and-testing">
+     1.5.2.5. Training and testing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#observations">
+     1.5.2.6. Observations
     </a>
    </li>
   </ul>
@@ -668,16 +688,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="set-hyperparameter">
-<h3><span class="section-number">1.5.2.3. </span>Set hyperparameter<a class="headerlink" href="#set-hyperparameter" title="Permalink to this headline">¶</a></h3>
-<p>Here, we set the only one hyperparameter, the number of neighbors.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_neighbors</span> <span class="o">=</span> <span class="mi">15</span>
-</pre></div>
-</div>
-</div>
-</div>
+<div class="section" id="hyperparameter-tuning">
+<h3><span class="section-number">1.5.2.3. </span>Hyperparameter tuning<a class="headerlink" href="#hyperparameter-tuning" title="Permalink to this headline">¶</a></h3>
+<p>In the KNN model, there is only one hyperparameter, the number of neighbors <span class="math notranslate nohighlight">\(K\)</span>, which is <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>. We set it to 15. In the following, we will study the effect of this hyperparameter on the model performance by examining five different values of <span class="math notranslate nohighlight">\(K\)</span>.</p>
 </div>
 <div class="section" id="visulisation-in-2d">
 <h3><span class="section-number">1.5.2.4. </span>Visulisation in 2D<a class="headerlink" href="#visulisation-in-2d" title="Permalink to this headline">¶</a></h3>
@@ -686,28 +699,32 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="mf">0.02</span>  <span class="c1"># step size in the mesh</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="mf">0.02</span>  <span class="c1"># step size in the mesh</span>
 
 <span class="c1"># Create color maps</span>
 <span class="n">cmap_light</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">([</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;cyan&quot;</span><span class="p">,</span> <span class="s2">&quot;cornflowerblue&quot;</span><span class="p">])</span>
 <span class="n">cmap_bold</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;darkorange&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;darkblue&quot;</span><span class="p">]</span>
 
-<span class="k">for</span> <span class="n">weights</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span> <span class="s2">&quot;distance&quot;</span><span class="p">]:</span>
+<span class="c1"># Plot the decision boundary. For that, we will assign a color to each</span>
+<span class="c1"># point in the mesh [x_min, x_max]x[y_min, y_max].</span>
+<span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="training-and-testing">
+<h3><span class="section-number">1.5.2.5. </span>Training and testing<a class="headerlink" href="#training-and-testing" title="Permalink to this headline">¶</a></h3>
+<p>We create an instance of the KNN Classifier with each of the five <span class="math notranslate nohighlight">\(K\)</span> values and fit the data. Then we make prediction of class labels on values from the grid, all/most of them are not seen in the training. We store the prediction results with different colours for different classes to visualise the decision boundaries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n_neighbors</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">]:</span>
     <span class="c1"># we create an instance of Neighbours Classifier and fit the data.</span>
-    <span class="n">clf</span> <span class="o">=</span> <span class="n">neighbors</span><span class="o">.</span><span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">neighbors</span><span class="o">.</span><span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="p">)</span>
     <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-
-    <span class="c1"># Plot the decision boundary. For that, we will assign a color to each</span>
-    <span class="c1"># point in the mesh [x_min, x_max]x[y_min, y_max].</span>
-    <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
     <span class="n">Z</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
 
     <span class="c1"># Put the result into a color plot</span>
@@ -726,9 +743,7 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">xx</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">yy</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span>
-        <span class="s2">&quot;3-Class classification (k = </span><span class="si">%i</span><span class="s2">, weights = &#39;</span><span class="si">%s</span><span class="s2">&#39;)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_neighbors</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
-    <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;3-Class classification with $K$ = </span><span class="si">%i</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_neighbors</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
@@ -739,8 +754,21 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_output docutils container">
 <img alt="../_images/knn_9_0.png" src="../_images/knn_9_0.png" />
 <img alt="../_images/knn_9_1.png" src="../_images/knn_9_1.png" />
+<img alt="../_images/knn_9_2.png" src="../_images/knn_9_2.png" />
+<img alt="../_images/knn_9_3.png" src="../_images/knn_9_3.png" />
+<img alt="../_images/knn_9_4.png" src="../_images/knn_9_4.png" />
 </div>
 </div>
+</div>
+<div class="section" id="observations">
+<h3><span class="section-number">1.5.2.6. </span>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h3>
+<p>We can make the following observations from the above figures.</p>
+<ul class="simple">
+<li><p>We can see that the decision boundaries are not smooth. This is because the KNN model is a non-parametric model, which means that it does not make any assumption on the underlying data distribution. This is also the reason why the model is called <em>lazy</em>. KNN actually does not learn a discriminative function from the training data but memorises the training dataset instead. This is why the model is also called <em>instance-based</em>. The model makes prediction by comparing the test sample with all training samples and assigning the label that is most common among its <span class="math notranslate nohighlight">\(K\)</span> nearest neighbors.</p></li>
+<li><p>KNN is fully transparent in the sense that it is easy to understand the logic behind the model and we can answer the question of for what values of the input variables would the system return a specific value of interest. However, it is not efficient in terms of computational cost. The computational cost of KNN is <span class="math notranslate nohighlight">\(O(n)\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is the number of training samples. This is because the model needs to compute the distance between the test sample and all training samples. This is also the reason why KNN is not suitable for large datasets.</p></li>
+<li><p><strong>Bias-variance trade-off</strong>: When <span class="math notranslate nohighlight">\(K\)</span> = 1, the decision boundary is <em>overly flexible</em>. This corresponds to a classifier that has <em>low bias</em> but <em>very high variance</em>. As <span class="math notranslate nohighlight">\(K\)</span> grows, the method becomes <em>less flexible</em> and produces a decision boundary that is close to (piece-wise) linear. This corresponds to a <em>low-variance</em> but <em>high-bias</em> classifier. This trade-off is common in machine learning and we will discuss it in more details in the following sections. Typically, a <span class="math notranslate nohighlight">\(K\)</span> neither too big (e.g. 100) nor too small (e.g. 1), such as <span class="math notranslate nohighlight">\(K=5\)</span> will give the best performance. Choosing the correct level of flexibility (typically through <em>hyperparameter tuning</em> after selecting a model) is critical to the success of any machine learning method.</p></li>
+</ul>
+<p>Despite the fact that it is a very simple approach, KNN can often produce classifiers with good performance. This is because the decision boundary is very flexible and can adapt to the data distribution. However, it is not suitable for large datasets because of its high computational cost.</p>
 </div>
 </div>
 <div class="section" id="exercises">

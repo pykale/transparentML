@@ -36,6 +36,27 @@ Respectively, the above categories of information define two forms of transparen
 
 In this course, we will study machine learning systems from the perspectives of these two forms of transparency.
 
+### System transparency
+
+System transparency refers to access to information about the operational logic of a system. The most transparent systems are simple systems where system logic information can be inferred purely from a system’s formal
+representation. Three types of information are considered relevant for system transparency:
+
+> (1) The input variables that a given system relies on: what are the types of information that the system uses in operation?
+>
+> (2) The way in which the system transforms inputs into outputs: what is the relationship between input variables and system results?
+>
+> (3) The conditions under which the system would produce a certain output: for what values of the input variables would the system return a specific value of interest?
+
+### Process transparency
+
+Process transparency concerns access to any information about an ML system’s design, development, and deployment apart from the system’s logic. As with system logic information, such process information is important for addressing and providing assurance about concerns raised by AI systems. Correspondingly, there is a growing amount of work on how process information can be recorded, managed, and made accessible in practice.
+
+We can categorise process information regarding ML systems along two dimensions:
+
+- **Different lifecycle phases**: Process information can relate to (i) the design and development or (ii) the deployment of an ML system. In both areas, more specific lifecycle phases can be distinguished, each of them associated with unique aspects of information.
+- **Different levels of information**: In considering a given lifecycle phase, different levels of process information can be distinguished, corresponding to the kinds of questions that the information serves to answer.
+
+
 ### Relevant stakeholders
 
 The information that is relevant to a given stakeholder depends on the stakeholder's role and the context. For example, a data scientist may need to know the details of the data collection process, while a data subject may need to know how their data is used. We can split those who may have an interest in system or process transparency into two categories:

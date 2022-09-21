@@ -17,11 +17,7 @@ The what, why, and how of process transparency {cite}`ostmann2021ai` (maybe redr
 
 ### What relevant information?
 
-Process transparency concerns access to any information about an ML system’s design, development,
-and deployment apart from the system’s logic. As with system logic information, such process
-information is important for addressing and providing assurance about concerns raised by AI
-systems. Correspondingly, there is a growing amount of work on how process information can
-be recorded, managed, and made accessible in practice.
+Process transparency concerns access to any information about an ML system’s design, development, and deployment apart from the system’s logic. As with system logic information, such process information is important for addressing and providing assurance about concerns raised by AI systems. Correspondingly, there is a growing amount of work on how process information can be recorded, managed, and made accessible in practice.
 
 We can categorise process information regarding ML systems along two dimensions:
 
