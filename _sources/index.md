@@ -30,40 +30,27 @@ The course is designed to be completed in 40 hours, but you can take as long as 
 
 ## Course outline and structure (subject to change)
 
-- Prerequisites: Basic mathematics and Python programming for machine learning
-- Chapter 1: [System and Process] Introduction to machine learning and AI transparency
-  - Lab 1: Introduction to Python ecosystem software for machine learning and data analysis pipeline
+- [Prerequisites](https://pykale.github.io/transparentML/00-prereq/overview.html): Basic mathematics and Python programming for machine learning
 
-- Chapter 2: [System] Linear regression
-  - Lab 2: Simple and multiple linear regression and interpretation for house value prediction
+### Basics
 
-- Chapter 3: [System] Logistic regression and linear discriminant analysis
-  - Lab 3: Logistic regression and linear discriminant analysis for stock market trend prediction
+- [Chapter 1](https://pykale.github.io/transparentML/01-intro/overview.html): [System and Process] Introduction to machine learning and AI transparency
+- [Chapter 2](https://pykale.github.io/transparentML/02-linear-reg/overview.html): [System] Linear regression
+- [Chapter 3](https://pykale.github.io/transparentML/03-logistic-reg/overview.html): [System] Logistic regression and linear discriminant analysis
+- [Chapter 4](https://pykale.github.io/transparentML/04-cross-val-bootstrap/overview.html): [Process] Cross validation and bootstrap
+- [Chapter 5](https://pykale.github.io/transparentML/05-hypo-test-sw-dev/overview.html): [Process] Hypothesis testing and software development
 
-- Chapter 4: [Process] Cross validation and bootstrap
-  - Lab 4: Leave-one-out/k-fold cross validation and bootstrap for performance evaluation
+### Advanced
 
-- Chapter 5: [Process] Hypothesis testing and software development
-  - Lab 5: Types of errors, significance of results, and the software development life cycle on GitHub
-
-- Chapter 6: [System] Feature subset selection and shrinkage
-  - Lab 6: Feature selection and learning with sparsity for baseball player salary prediction
-
-- Chapter 7: [System] Decision trees and random forest
-  - Lab 7: Classification/regression trees and random forests for car seat sale and house value prediction
-
-- Chapter 8: [System] Naive Bayes, generalised linear models, and support vector machines
-  - Lab 8: Naive Bayes, GLM, and SVM for wage and cancer subtype prediction
-
-- Chapter 9: [System] Principal component analysis and k-means clustering
-  - Lab 9: Dimension reduction and clustering for genomic data analysis
-
-- Chapter 10: [System] Deep learning with convolutional/recurrent neural networks*
-  - Lab 10: Deep neural networks for digit classification and movie review sentiment analysis
+- [Chapter 6](https://pykale.github.io/transparentML/06-ftr-select-shrink/overview.html): [System] Feature subset selection and shrinkage
+- [Chapter 7](https://pykale.github.io/transparentML/07-dec-trees-rnd-forest/overview.html): [System] Decision trees and random forest
+- [Chapter 8](https://pykale.github.io/transparentML/08-nb-glm-svm/overview.html): [System] Naive Bayes, generalised linear models, and support vector machines
+- [Chapter 9](https://pykale.github.io/transparentML/09-pca-kmeans/overview.html): [System] Principal component analysis and k-means clustering
+- [Chapter 10](https://pykale.github.io/transparentML/10-deep-cnn-rnn/overview.html): [System] Deep learning with convolutional/recurrent neural networks*
 
 ## Instructors
 
-This course is developed by [Haiping Lu](https://haipinglu.github.io/), a Senior Lecturer in Machine Learning, and [Shuo Zhou](https://shuo-zhou.github.io/), an Academic Fellow in Machine Learning, both at the [Department of Computer Science](https://www.sheffield.ac.uk/dcs), [The University of Sheffield](https://www.sheffield.ac.uk/).
+This course is developed by [Haiping Lu](https://haipinglu.github.io/), a Senior Lecturer in Machine Learning, and [Shuo Zhou](https://shuo-zhou.github.io/), an Academic Fellow in Machine Learning, both at the [Department of Computer Science](https://www.sheffield.ac.uk/dcs), [The University of Sheffield](https://www.sheffield.ac.uk/). H. Lu has developed and taught two machine learning courses [Machine Learning and Adaptive Intelligence - University of Sheffield](https://github.com/maalvarezl/MLAI) from 2018 to 2021 and [Scalable Machine Learning - University of Sheffield](https://github.com/haipinglu/ScalableML) since 2017. S. Zhou was a student and then a head teaching assistant of the [Machine Learning and Adaptive Intelligence - University of Sheffield](https://github.com/maalvarezl/MLAI) course and earned a PhD in machine learning from the University of Sheffield in 2022.
 
 ## References
 
