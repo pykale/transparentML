@@ -108,6 +108,8 @@ parts:
     title: System transparency
   - file: appendix/process-transp
     title: Process transparency
+  - file: appendix/bibliography
+    title: Bibliography
 
 # - caption: Advanced (for second half)
 

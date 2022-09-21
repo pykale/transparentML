@@ -75,9 +75,6 @@ This course is developed by [Haiping Lu](https://haipinglu.github.io/), a Senior
   - [Good practice by design](https://onlinelearning.london.ac.uk/2020/06/08/good-practice-by-design/)
   - [Planning your online module (DIY, lockdown style)](https://onlinelearning.london.ac.uk/2020/05/24/planning-your-online-module-diy-lockdown-style/)
 
-## Acknowledgements and bibliography
+## Acknowledgements
 
 This development is supported by the [Funding call for online learning courses in responsible AI](https://www.turing.ac.uk/funding-call-online-learning-courses-responsible-ai) from the [Alan Turing Institute](https://www.turing.ac.uk/).
-
-```{bibliography}
-```
