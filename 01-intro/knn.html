@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1.5. K-Nearest Neighbors classification &#8212; Transparent ML Intro</title>
+    <title>1.5. K-nearest neighbors classification &#8212; Transparent ML Intro</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -512,7 +512,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#example-iris-classification">
-   1.5.2. Example: Iris classification
+   1.5.2. Example: iris classification
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -562,7 +562,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>K-Nearest Neighbors classification</h1>
+                <h1>K-nearest neighbors classification</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -579,7 +579,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#example-iris-classification">
-   1.5.2. Example: Iris classification
+   1.5.2. Example: iris classification
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -629,7 +629,7 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="section" id="k-nearest-neighbors-classification">
-<h1><span class="section-number">1.5. </span>K-Nearest Neighbors classification<a class="headerlink" href="#k-nearest-neighbors-classification" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">1.5. </span>K-nearest neighbors classification<a class="headerlink" href="#k-nearest-neighbors-classification" title="Permalink to this headline">¶</a></h1>
 <p>The K-Nearest Neighbors (KNN) algorithm is a supervised learning algorithm. It is a <em>non-parametric</em> method used for classification and regression. In both cases, the input consists of the <span class="math notranslate nohighlight">\(k\)</span> closest training examples in the feature space. The output depends on whether KNN is used for classification or regression. Here, we focus on the classification case.</p>
 <div class="section" id="ingredients-transparency">
 <h2><span class="section-number">1.5.1. </span>Ingredients &amp; transparency<a class="headerlink" href="#ingredients-transparency" title="Permalink to this headline">¶</a></h2>
@@ -655,7 +655,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="example-iris-classification">
-<h2><span class="section-number">1.5.2. </span>Example: Iris classification<a class="headerlink" href="#example-iris-classification" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.5.2. </span>Example: iris classification<a class="headerlink" href="#example-iris-classification" title="Permalink to this headline">¶</a></h2>
 <p>We adapt the <a class="reference external" href="https://scikit-learn.org/1.0/auto_examples/neighbors/plot_classification.html#sphx-glr-auto-examples-neighbors-plot-classification-py">KNN example from scikit-learn</a> to illustrate the use of KNN for classification.</p>
 <p>To do so, we use the Iris dataset, which is a classic dataset in machine learning and statistics. It is included in scikit-learn and we load it as follows.</p>
 <div class="admonition-launch admonition">
@@ -679,7 +679,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="load-data">
 <h3><span class="section-number">1.5.2.2. </span>Load data<a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h3>
-<p>Let us work on one of the classical dataset in machine learning: the <a class="reference external" href="https://en.wikipedia.org/wiki/Iris_flower_data_set">Iris flower dataset</a>. It can be loaded directly from the scikit-learn library.</p>
+<p>Let us work on one of the classical dataset in machine learning: the <a class="reference external" href="https://en.wikipedia.org/wiki/Iris_flower_data_set">Iris flower dataset</a>. It can be loaded directly from the scikit-learn library. You can also click <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Iris.csv">Iris</a> to view the dataset directly in your browser.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
@@ -743,7 +743,10 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">xx</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">yy</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;3-Class classification with $K$ = </span><span class="si">%i</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_neighbors</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span>
+        <span class="s2">&quot;Decision boundaries of 3-class KNN classification with $K$ = </span><span class="si">%i</span><span class="s2">&quot;</span>
+        <span class="o">%</span> <span class="p">(</span><span class="n">n_neighbors</span><span class="p">)</span>
+    <span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
