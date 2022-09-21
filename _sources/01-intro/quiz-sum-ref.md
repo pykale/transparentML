@@ -16,6 +16,3 @@ This material is based on the following resources:
 - [Machine Learning for Beginners - A Curriculum](https://github.com/microsoft/ML-For-Beginners), Microsoft
 - [Deep Learning for Molecules & Materials](https://dmol.pub/)
 - Ostmann F, Dorobantu C., [AI in Financial Services](https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf), [Alan Turing Institute](https://www.turing.ac.uk/), 2021. {cite}`ostmann2021ai`
-
-<!-- ```{bibliography}
-``` -->
