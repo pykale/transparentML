@@ -563,6 +563,11 @@ const thebe_selector_output = ".output, .cell_output"
    2.3.11. Variance Inflation Factor - page 102
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   2.3.12. Exercise
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -638,6 +643,11 @@ const thebe_selector_output = ".output, .cell_output"
    2.3.11. Variance Inflation Factor - page 102
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   2.3.12. Exercise
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -649,7 +659,7 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="section" id="extensions-and-discussions">
 <h1><span class="section-number">2.3. </span>Extensions and discussions<a class="headerlink" href="#extensions-and-discussions" title="Permalink to this headline">¶</a></h1>
-<p>Firstly, we will import the required libraries and load the <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> dataset.</p>
+<p>Import the required libraries and load datasets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ../standard_import.txt</span>
@@ -667,6 +677,12 @@ const thebe_selector_output = ".output, .cell_output"
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;seaborn-white&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1896/863918830.py:15: MatplotlibDeprecationWarning: The seaborn styles shipped by Matplotlib are deprecated since 3.6, as they no longer correspond to the styles shipped by seaborn. However, they will remain available as &#39;seaborn-v0_8-&lt;style&gt;&#39;. Alternatively, directly use the seaborn API instead.
+  plt.style.use(&quot;seaborn-white&quot;)
 </pre></div>
 </div>
 </div>
@@ -694,6 +710,88 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Income</th>
+      <th>Limit</th>
+      <th>Rating</th>
+      <th>Cards</th>
+      <th>Age</th>
+      <th>Education</th>
+      <th>Own</th>
+      <th>Student</th>
+      <th>Married</th>
+      <th>Region</th>
+      <th>Balance</th>
+      <th>Student2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>14.891</td>
+      <td>3606</td>
+      <td>283</td>
+      <td>2</td>
+      <td>34</td>
+      <td>11</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Yes</td>
+      <td>South</td>
+      <td>333</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>106.025</td>
+      <td>6645</td>
+      <td>483</td>
+      <td>3</td>
+      <td>82</td>
+      <td>15</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>West</td>
+      <td>903</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>104.593</td>
+      <td>7075</td>
+      <td>514</td>
+      <td>4</td>
+      <td>71</td>
+      <td>11</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>West</td>
+      <td>580</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -701,6 +799,26 @@ const thebe_selector_output = ".output, .cell_output"
 
 <span class="n">auto_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">auto_url</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="n">auto_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Int64Index: 392 entries, 0 to 396
+Data columns (total 9 columns):
+ #   Column        Non-Null Count  Dtype  
+---  ------        --------------  -----  
+ 0   mpg           392 non-null    float64
+ 1   cylinders     392 non-null    int64  
+ 2   displacement  392 non-null    float64
+ 3   horsepower    392 non-null    float64
+ 4   weight        392 non-null    int64  
+ 5   acceleration  392 non-null    float64
+ 6   year          392 non-null    int64  
+ 7   origin        392 non-null    int64  
+ 8   name          392 non-null    object 
+dtypes: float64(4), int64(4), object(1)
+memory usage: 30.6+ KB
 </pre></div>
 </div>
 </div>
@@ -715,6 +833,12 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f0c307e5d90&gt;
+</pre></div>
+</div>
+<img alt="../_images/extension-discussion_7_1.png" src="../_images/extension-discussion_7_1.png" />
+</div>
 </div>
 </div>
 <div class="section" id="table-3-7">
@@ -726,17 +850,44 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<tr>
+       <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>  <td>  509.8031</td> <td>   33.128</td> <td>   15.389</td> <td> 0.000</td> <td>  444.675</td> <td>  574.931</td>
+</tr>
+<tr>
+  <th>Own[T.Yes]</th> <td>   19.7331</td> <td>   46.051</td> <td>    0.429</td> <td> 0.669</td> <td>  -70.801</td> <td>  110.267</td>
+</tr>
+</table></div></div>
 </div>
 </div>
 <div class="section" id="table-3-8">
 <h2><span class="section-number">2.3.3. </span>Table 3.8<a class="headerlink" href="#table-3-8" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Balance ~ Ethnicity&quot;</span><span class="p">,</span> <span class="n">credit_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Balance ~ Region&quot;</span><span class="p">,</span> <span class="n">credit_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">est</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<tr>
+         <td></td>            <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>       <td>  531.0000</td> <td>   46.319</td> <td>   11.464</td> <td> 0.000</td> <td>  439.939</td> <td>  622.061</td>
+</tr>
+<tr>
+  <th>Region[T.South]</th> <td>  -12.5025</td> <td>   56.681</td> <td>   -0.221</td> <td> 0.826</td> <td> -123.935</td> <td>   98.930</td>
+</tr>
+<tr>
+  <th>Region[T.West]</th>  <td>  -18.6863</td> <td>   65.021</td> <td>   -0.287</td> <td> 0.774</td> <td> -146.515</td> <td>  109.142</td>
+</tr>
+</table></div></div>
 </div>
 </div>
 <div class="section" id="table-3-9-interaction-variables">
@@ -748,6 +899,24 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>    6.7502</td> <td>    0.248</td> <td>   27.233</td> <td> 0.000</td> <td>    6.261</td> <td>    7.239</td>
+</tr>
+<tr>
+  <th>TV</th>        <td>    0.0191</td> <td>    0.002</td> <td>   12.699</td> <td> 0.000</td> <td>    0.016</td> <td>    0.022</td>
+</tr>
+<tr>
+  <th>Radio</th>     <td>    0.0289</td> <td>    0.009</td> <td>    3.241</td> <td> 0.001</td> <td>    0.011</td> <td>    0.046</td>
+</tr>
+<tr>
+  <th>TV:Radio</th>  <td>    0.0011</td> <td> 5.24e-05</td> <td>   20.727</td> <td> 0.000</td> <td>    0.001</td> <td>    0.001</td>
+</tr>
+</table></div></div>
 </div>
 </div>
 <div class="section" id="figure-3-7-interaction-between-qualitative-and-quantative-variables">
@@ -763,6 +932,22 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="nb">print</span><span class="p">(</span><span class="n">regr1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Regression 2 - with interaction term&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">regr2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Regression 1 - without interaction term
+Intercept    211.142964
+Income         5.984336
+Student2     382.670539
+dtype: float64
+
+Regression 2 - with interaction term
+Intercept          200.623153
+Income               6.218169
+Student2           476.675843
+Income:Student2     -1.999151
+dtype: float64
 </pre></div>
 </div>
 </div>
@@ -805,6 +990,9 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/extension-discussion_16_0.png" src="../_images/extension-discussion_16_0.png" />
+</div>
 </div>
 </div>
 <div class="section" id="figure-3-8-non-linear-relationships">
@@ -816,16 +1004,16 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">auto_df</span><span class="o">.</span><span class="n">horsepower</span><span class="p">,</span> <span class="n">auto_df</span><span class="o">.</span><span class="n">mpg</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
 <span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
-    <span class="n">auto_df</span><span class="o">.</span><span class="n">horsepower</span><span class="p">,</span>
-    <span class="n">auto_df</span><span class="o">.</span><span class="n">mpg</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">auto_df</span><span class="o">.</span><span class="n">horsepower</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">auto_df</span><span class="o">.</span><span class="n">mpg</span><span class="p">,</span>
     <span class="n">ci</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Linear&quot;</span><span class="p">,</span>
     <span class="n">scatter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
-    <span class="n">auto_df</span><span class="o">.</span><span class="n">horsepower</span><span class="p">,</span>
-    <span class="n">auto_df</span><span class="o">.</span><span class="n">mpg</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">auto_df</span><span class="o">.</span><span class="n">horsepower</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">auto_df</span><span class="o">.</span><span class="n">mpg</span><span class="p">,</span>
     <span class="n">ci</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Degree 2&quot;</span><span class="p">,</span>
     <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
@@ -833,8 +1021,8 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
-    <span class="n">auto_df</span><span class="o">.</span><span class="n">horsepower</span><span class="p">,</span>
-    <span class="n">auto_df</span><span class="o">.</span><span class="n">mpg</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">auto_df</span><span class="o">.</span><span class="n">horsepower</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">auto_df</span><span class="o">.</span><span class="n">mpg</span><span class="p">,</span>
     <span class="n">ci</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Degree 5&quot;</span><span class="p">,</span>
     <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
@@ -847,6 +1035,9 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/extension-discussion_18_0.png" src="../_images/extension-discussion_18_0.png" />
+</div>
 </div>
 </div>
 <div class="section" id="table-3-10">
@@ -858,6 +1049,80 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mpg</th>
+      <th>cylinders</th>
+      <th>displacement</th>
+      <th>horsepower</th>
+      <th>weight</th>
+      <th>acceleration</th>
+      <th>year</th>
+      <th>origin</th>
+      <th>name</th>
+      <th>horsepower2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>18.0</td>
+      <td>8</td>
+      <td>307.0</td>
+      <td>130.0</td>
+      <td>3504</td>
+      <td>12.0</td>
+      <td>70</td>
+      <td>1</td>
+      <td>chevrolet chevelle malibu</td>
+      <td>16900.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>15.0</td>
+      <td>8</td>
+      <td>350.0</td>
+      <td>165.0</td>
+      <td>3693</td>
+      <td>11.5</td>
+      <td>70</td>
+      <td>1</td>
+      <td>buick skylark 320</td>
+      <td>27225.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>18.0</td>
+      <td>8</td>
+      <td>318.0</td>
+      <td>150.0</td>
+      <td>3436</td>
+      <td>11.0</td>
+      <td>70</td>
+      <td>1</td>
+      <td>plymouth satellite</td>
+      <td>22500.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -866,6 +1131,21 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<tr>
+       <td></td>          <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>   <td>   56.9001</td> <td>    1.800</td> <td>   31.604</td> <td> 0.000</td> <td>   53.360</td> <td>   60.440</td>
+</tr>
+<tr>
+  <th>horsepower</th>  <td>   -0.4662</td> <td>    0.031</td> <td>  -14.978</td> <td> 0.000</td> <td>   -0.527</td> <td>   -0.405</td>
+</tr>
+<tr>
+  <th>horsepower2</th> <td>    0.0012</td> <td>    0.000</td> <td>   10.080</td> <td> 0.000</td> <td>    0.001</td> <td>    0.001</td>
+</tr>
+</table></div></div>
 </div>
 </div>
 <div class="section" id="figure-3-9">
@@ -883,7 +1163,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">auto_df</span><span class="p">[</span><span class="s2">&quot;resid1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">auto_df</span><span class="o">.</span><span class="n">mpg</span> <span class="o">-</span> <span class="n">auto_df</span><span class="o">.</span><span class="n">pred1</span>
 
 <span class="c1"># Quadratic fit</span>
-<span class="n">X2</span> <span class="o">=</span> <span class="n">auto_df</span><span class="p">[[</span><span class="s2">&quot;horsepower&quot;</span><span class="p">,</span> <span class="s2">&quot;horsepower2&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">()</span>
+<span class="n">X2</span> <span class="o">=</span> <span class="n">auto_df</span><span class="p">[[</span><span class="s2">&quot;horsepower&quot;</span><span class="p">,</span> <span class="s2">&quot;horsepower2&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">regr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
 <span class="n">auto_df</span><span class="p">[</span><span class="s2">&quot;pred2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
@@ -898,8 +1178,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 <span class="c1"># Left plot</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
-    <span class="n">auto_df</span><span class="o">.</span><span class="n">pred1</span><span class="p">,</span>
-    <span class="n">auto_df</span><span class="o">.</span><span class="n">resid1</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">auto_df</span><span class="o">.</span><span class="n">pred1</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">auto_df</span><span class="o">.</span><span class="n">resid1</span><span class="p">,</span>
     <span class="n">lowess</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span>
     <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;lw&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
@@ -915,8 +1195,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 <span class="c1"># Right plot</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
-    <span class="n">auto_df</span><span class="o">.</span><span class="n">pred2</span><span class="p">,</span>
-    <span class="n">auto_df</span><span class="o">.</span><span class="n">resid2</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">auto_df</span><span class="o">.</span><span class="n">pred2</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">auto_df</span><span class="o">.</span><span class="n">resid2</span><span class="p">,</span>
     <span class="n">lowess</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;lw&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
@@ -935,6 +1215,9 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Residuals&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/extension-discussion_24_0.png" src="../_images/extension-discussion_24_0.png" />
 </div>
 </div>
 </div>
@@ -958,6 +1241,9 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/extension-discussion_26_0.png" src="../_images/extension-discussion_26_0.png" />
+</div>
 </div>
 </div>
 <div class="section" id="figure-3-15">
@@ -967,18 +1253,29 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">credit_df</span><span class="o">.</span><span class="n">Balance</span>
 
 <span class="c1"># Regression for left plot</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">credit_df</span><span class="p">[[</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="s2">&quot;Limit&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">credit_df</span><span class="p">[[</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="s2">&quot;Limit&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">regr1</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 <span class="n">regr1</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">scale</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">),</span> <span class="n">with_std</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">y</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Age/Limit</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">regr1</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">regr1</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
 
 <span class="c1"># Regression for right plot</span>
-<span class="n">X2</span> <span class="o">=</span> <span class="n">credit_df</span><span class="p">[[</span><span class="s2">&quot;Rating&quot;</span><span class="p">,</span> <span class="s2">&quot;Limit&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">()</span>
+<span class="n">X2</span> <span class="o">=</span> <span class="n">credit_df</span><span class="p">[[</span><span class="s2">&quot;Rating&quot;</span><span class="p">,</span> <span class="s2">&quot;Limit&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">regr2</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 <span class="n">regr2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">scale</span><span class="p">(</span><span class="n">X2</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">),</span> <span class="n">with_std</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">y</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Rating/Limit</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">regr2</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">regr2</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Age/Limit
+ 520.0150000000001
+[-2.29148553  0.17336497]
+
+Rating/Limit
+ 520.015
+[2.20167217 0.02451438]
 </pre></div>
 </div>
 </div>
@@ -1045,6 +1342,9 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/extension-discussion_30_0.png" src="../_images/extension-discussion_30_0.png" />
+</div>
 </div>
 </div>
 <div class="section" id="variance-inflation-factor-page-102">
@@ -1061,7 +1361,17 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0113846860681328
+160.66830095856935
+160.59287978597942
+</pre></div>
 </div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise">
+<h2><span class="section-number">2.3.12. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
