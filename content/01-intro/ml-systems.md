@@ -40,11 +40,11 @@ A typical machine learning system is composed of the following ingredients:
   - **Data/sample**: a data point or observation $\mathbf{x}_n$, with $n = 1, 2, \ldots, N$, where $N$ is the total number of samples.
   - **Feature**: each sample vector $\mathbf{x}_n$ has $D$ features as its representation, i.e. $D$ variables or attributes that are available for learning a model.
 - **Output** (of the ML model)
-  - **Target/Prediction**: each sample will have a target or prediction $\hat{y}_n$ as its output.
-  - **Label**: only in supervised learning, each sample will have a label $y_n$ as its ground truth. In classification, $y_n \in \{1, 2, \ldots, C\}$, where $C$ is the total number of classes.
+  - **Target/Embedding**: each sample will have a target or embedding $\hat{y}_n$ as its output.
+  - **Label**: in classification, each sample will have a class label $y_n$ as its ground truth. $y_n \in \{1, 2, \ldots, C\}$, where $C$ is the total number of classes.
 - **Dataset**
-  - **Labeled dataset**: a set of $N$ tuples of the form $(\mathbf{x}_n, y_n)$, where $n = 1, 2, \ldots, N$.
-  - **Unlabeled dataset**: a set of $N$ samples $\mathbf{x}_n$, where $n = 1, 2, \ldots, N$.
+  - **Labelled dataset**: a set of $N$ tuples of the form $(\mathbf{x}_n, y_n)$, where $n = 1, 2, \ldots, N$.
+  - **Unlabelled dataset**: a set of $N$ samples $\mathbf{x}_n$, where $n = 1, 2, \ldots, N$.
 - **Model**: a function $f(\mathbf{x})$ (the **objective function**) that maps a sample $\mathbf{x}$ to an output $\hat{y}$. This is the _focus_ of machine learning. The objective of machine learning is to estimate a good model $f(\mathbf{x})$. In classification, $f(\mathbf{x})$ maps a sample $\mathbf{x}$ to a class label $\hat{y} \in \{1, 2, \ldots, C\}$. In regression, $f(\mathbf{x})$ maps a sample $\mathbf{x}$ to a real number $\hat{y}$. In clustering, $f(\mathbf{x})$ maps a sample $\mathbf{x}$ to a cluster label $\hat{y} \in \{1, 2, \ldots, C\}$. In dimensionality reduction, $f(\mathbf{x})$ maps a sample $\mathbf{x}$ to a low-dimensional vector $\hat{\mathbf{y}}$.
   - **Hyperparameters**: the high-level parameters of a model that typically need to be _specified_ before learning a model. These hyperparameters will determine the model structure/architecture. For example, the number of layers, the number of neurons in each layer, the activation function, the loss function, the optimizer, etc.
   - **Parameters**: the model parameters are the specific realisation of a model to be _learned_ during training, such as the weights and biases $\mathbf{W}$ and $\mathbf{b}$. In machine learning, it is common to denote all parameters as $\boldsymbol{\theta}$.
