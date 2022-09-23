@@ -645,8 +645,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="simple">
 <li><p>Input: features of data samples</p></li>
 <li><p>Output: class labels of data samples</p></li>
-<li><p>Model: assigned dominant class label of the <span class="math notranslate nohighlight">\(K\)</span> nearest neighbors of an input sample to it</p></li>
+<li><p>Model: assigned dominant class label of the <span class="math notranslate nohighlight">\(K\)</span> nearest neighbors of an input sample to it</p>
+<ul>
 <li><p>Hyperparameter(s): the number of nearest neighbors <span class="math notranslate nohighlight">\(K\)</span></p></li>
+<li><p>Parameters: nonparametric (i.e., no parameters to learn, only store the training data)</p></li>
+</ul>
+</li>
 <li><p>Loss function: minimise distance between samples</p></li>
 <li><p>Learning algorithm: sorting distances between samples</p></li>
 </ul>
