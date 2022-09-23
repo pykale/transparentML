@@ -516,23 +516,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#figure-3-1-least-squares-fit">
-   2.1.2. Figure 3.1 - Least squares fit
+  <a class="reference internal nav-link" href="#assessing-the-accuracy-of-the-coefficient-estimates">
+   2.1.2. Assessing the accuracy of the coefficient estimates
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#figure-3-2-regression-coefficients-rss">
-   2.1.3. Figure 3.2 - Regression coefficients - RSS
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#confidence-interval-on-page-67-table-3-1-3-2-statsmodels">
-   2.1.4. Confidence interval on page 67 &amp; Table 3.1 &amp; 3.2 - Statsmodels
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#table-3-1-3-2-scikit-learn">
-   2.1.5. Table 3.1 &amp; 3.2 - Scikit-learn
+  <a class="reference internal nav-link" href="#assessing-the-accuracy-of-the-model">
+   2.1.3. Assessing the accuracy of the model
   </a>
  </li>
 </ul>
@@ -561,23 +551,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#figure-3-1-least-squares-fit">
-   2.1.2. Figure 3.1 - Least squares fit
+  <a class="reference internal nav-link" href="#assessing-the-accuracy-of-the-coefficient-estimates">
+   2.1.2. Assessing the accuracy of the coefficient estimates
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#figure-3-2-regression-coefficients-rss">
-   2.1.3. Figure 3.2 - Regression coefficients - RSS
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#confidence-interval-on-page-67-table-3-1-3-2-statsmodels">
-   2.1.4. Confidence interval on page 67 &amp; Table 3.1 &amp; 3.2 - Statsmodels
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#table-3-1-3-2-scikit-learn">
-   2.1.5. Table 3.1 &amp; 3.2 - Scikit-learn
+  <a class="reference internal nav-link" href="#assessing-the-accuracy-of-the-model">
+   2.1.3. Assessing the accuracy of the model
   </a>
  </li>
 </ul>
@@ -613,7 +593,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1745/863918830.py:15: MatplotlibDeprecationWarning: The seaborn styles shipped by Matplotlib are deprecated since 3.6, as they no longer correspond to the styles shipped by seaborn. However, they will remain available as &#39;seaborn-v0_8-&lt;style&gt;&#39;. Alternatively, directly use the seaborn API instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1895/863918830.py:15: MatplotlibDeprecationWarning: The seaborn styles shipped by Matplotlib are deprecated since 3.6, as they no longer correspond to the styles shipped by seaborn. However, they will remain available as &#39;seaborn-v0_8-&lt;style&gt;&#39;. Alternatively, directly use the seaborn API instead.
   plt.style.use(&quot;seaborn-white&quot;)
 </pre></div>
 </div>
@@ -729,10 +709,28 @@ Y \approx \beta_0 + \beta_1 X
 \end{equation}</p>
 <div class="section" id="estimating-the-coefficients">
 <h2><span class="section-number">2.1.1. </span>Estimating the coefficients<a class="headerlink" href="#estimating-the-coefficients" title="Permalink to this headline">¶</a></h2>
-<p>The goal of simple linear regression is to estimate the unknown parameters <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> from the data. The estimated values of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are denoted by <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> respectively. The estimated values of <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> are obtained by minimizing the sum of squared residuals (SSR) or the sum of squared errors (SSE). The SSR is defined as</p>
-</div>
-<div class="section" id="figure-3-1-least-squares-fit">
-<h2><span class="section-number">2.1.2. </span>Figure 3.1 - Least squares fit<a class="headerlink" href="#figure-3-1-least-squares-fit" title="Permalink to this headline">¶</a></h2>
+<p>The goal of simple linear regression is to estimate the unknown parameters <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> from the data. Let</p>
+<div class="math notranslate nohighlight">
+\[
+(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)
+\]</div>
+<p>be the <span class="math notranslate nohighlight">\(n\)</span> observations in the dataset, and <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> denote the estimated values of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>, respectively. The estimated values of <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> can be obtained by minimizing the <em>residual sum of squares</em> (RSS)</p>
+<p>\begin{equation}
+\text{RSS} = \sum_{i=1}^n (y_i - \hat{y}<em>i)^2 = \sum</em>{i=1}^n (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i)^2,
+\end{equation}</p>
+<p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the response <span class="math notranslate nohighlight">\(Y\)</span>, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predicted response <span class="math notranslate nohighlight">\(\hat{Y}\)</span>, and <span class="math notranslate nohighlight">\(x_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predictor <span class="math notranslate nohighlight">\(X\)</span>. The least squares estimates of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are given by</p>
+<p>\begin{equation}
+\hat{\beta}<em>1 = \frac{\sum</em>{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2},
+\end{equation}</p>
+<p>\begin{equation}
+\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}.
+\end{equation}</p>
+<p>where <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\bar{y}\)</span> are the sample means of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> respectively. The least squares estimates of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are obtained by minimizing the RSS. The least squares line is given by</p>
+<p>\begin{equation}
+\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x
+\end{equation}</p>
+<p>The least squares line is the line that minimizes the sum of squared residuals. The least squares line is also known as the <em>regression line</em>.</p>
+<p><strong>Figure 3.1 - Least squares fit</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
@@ -752,9 +750,7 @@ Y \approx \beta_0 + \beta_1 X
 <img alt="../_images/simple-linear-regression_7_0.png" src="../_images/simple-linear-regression_7_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="figure-3-2-regression-coefficients-rss">
-<h2><span class="section-number">2.1.3. </span>Figure 3.2 - Regression coefficients - RSS<a class="headerlink" href="#figure-3-2-regression-coefficients-rss" title="Permalink to this headline">¶</a></h2>
+<p><strong>Figure 3.2 - Regression coefficients - RSS</strong></p>
 <p>Note that the text in the book describes the coefficients based on uncentered data, whereas the plot shows the model based on centered data. The latter is visually more appealing for explaining the concept of a minimum RSS. I think that, in order not to confuse the reader, the values on the axis of the B0 coefficients have been changed to correspond with the text. The axes on the plots below are unaltered.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -848,8 +844,26 @@ Y \approx \beta_0 + \beta_1 X
 </div>
 </div>
 </div>
-<div class="section" id="confidence-interval-on-page-67-table-3-1-3-2-statsmodels">
-<h2><span class="section-number">2.1.4. </span>Confidence interval on page 67 &amp; Table 3.1 &amp; 3.2 - Statsmodels<a class="headerlink" href="#confidence-interval-on-page-67-table-3-1-3-2-statsmodels" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="assessing-the-accuracy-of-the-coefficient-estimates">
+<h2><span class="section-number">2.1.2. </span>Assessing the accuracy of the coefficient estimates<a class="headerlink" href="#assessing-the-accuracy-of-the-coefficient-estimates" title="Permalink to this headline">¶</a></h2>
+<p>The coefficient estimates <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> are only estimates of the true coefficients <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>. We can quantify the accuracy of the estimates by computing the <em>standard error</em> of the estimates. The standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> is given by</p>
+<p>\begin{equation}
+\text{SE}(\hat{\beta}<em>1) = \sqrt{\frac{\sum</em>{i=1}^n (y_i - \hat{y}<em>i)^2}{\sum</em>{i=1}^n (x_i - \bar{x})^2(n - 2)}},
+\end{equation}</p>
+<p>where <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predicted response <span class="math notranslate nohighlight">\(\hat{Y}\)</span>, and <span class="math notranslate nohighlight">\(x_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predictor <span class="math notranslate nohighlight">\(X\)</span>. The standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> is given by</p>
+<p>\begin{equation}
+\text{SE}(\hat{\beta}<em>0) = \sqrt{\frac{\sum</em>{i=1}^n (y_i - \hat{y}<em>i)^2}{n \sum</em>{i=1}^n (x_i - \bar{x})^2}}.
+\end{equation}</p>
+<p>The standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> is a measure of the variability of the estimate of <span class="math notranslate nohighlight">\(\beta_1\)</span> due to sampling error. The standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> is a measure of the variability of the estimate of <span class="math notranslate nohighlight">\(\beta_0\)</span> due to sampling error. The standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> is also known as the <em>standard error of the regression</em>.</p>
+</div>
+<div class="section" id="assessing-the-accuracy-of-the-model">
+<h2><span class="section-number">2.1.3. </span>Assessing the accuracy of the model<a class="headerlink" href="#assessing-the-accuracy-of-the-model" title="Permalink to this headline">¶</a></h2>
+<p>The accuracy of the linear model is dependent on the variability of the response <span class="math notranslate nohighlight">\(Y\)</span> and the predictor <span class="math notranslate nohighlight">\(X\)</span>. The variability of <span class="math notranslate nohighlight">\(Y\)</span> is measured by the variance of <span class="math notranslate nohighlight">\(Y\)</span>, denoted by <span class="math notranslate nohighlight">\(\sigma^2\)</span>. The variability of <span class="math notranslate nohighlight">\(X\)</span> is measured by the variance of <span class="math notranslate nohighlight">\(X\)</span>, denoted by <span class="math notranslate nohighlight">\(\sigma_x^2\)</span>. The coefficient of determination, denoted by <span class="math notranslate nohighlight">\(R^2\)</span>, is defined as</p>
+<p>\begin{equation}
+R^2 = \frac{\text{SSR}}{\text{SST}} = 1 - \frac{\text{SSE}}{\text{SST}}
+\end{equation}</p>
+<p>where <span class="math notranslate nohighlight">\(\text{SST} = \sum_{i=1}^n (y_i - \bar{y})^2\)</span> is the total sum of squares. The coefficient of determination is a proportion that measures the proportion of the variability in the response that is explained by the linear model. The coefficient of determination is always between 0 and 1. The coefficient of determination is 0 when the regression line does not fit the data at all, and the coefficient of determination is 1 when the regression line perfectly fits the data. The coefficient of determination is also known as the <em>coefficient of multiple determination</em>. The coefficient of determination is a measure of the goodness of fit of the linear model. The coefficient of determination is also known as the <em>coefficient of multiple determination</em>. The coefficient of determination is a measure of the goodness of fit of the linear model.</p>
+<p><strong>Confidence interval on page 67 &amp; Table 3.1 &amp; 3.2 - Statsmodels</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Sales ~ TV&quot;</span><span class="p">,</span> <span class="n">advertising_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -885,9 +899,7 @@ Y \approx \beta_0 + \beta_1 X
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="table-3-1-3-2-scikit-learn">
-<h2><span class="section-number">2.1.5. </span>Table 3.1 &amp; 3.2 - Scikit-learn<a class="headerlink" href="#table-3-1-3-2-scikit-learn" title="Permalink to this headline">¶</a></h2>
+<p><strong>Table 3.1 &amp; 3.2 - Scikit-learn</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
