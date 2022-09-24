@@ -54,3 +54,10 @@ sphinx:
     # - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
     # html_css_files: ???
     bibtex_reference_style: author_year
+
+parse:
+  myst_enable_extensions:
+    # don't forget to list any other extensions you want enabled,
+    # including those that are enabled by default!
+    - amsmath
+    - dollarmath
