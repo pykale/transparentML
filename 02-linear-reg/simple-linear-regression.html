@@ -511,18 +511,23 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-libraries-and-load-data">
+   2.1.1. Import libraries and load data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#estimating-the-coefficients">
-   2.1.1. Estimating the coefficients
+   2.1.2. Estimating the coefficients
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#assessing-the-accuracy-of-the-coefficient-estimates">
-   2.1.2. Assessing the accuracy of the coefficient estimates
+   2.1.3. Assessing the accuracy of the coefficient estimates
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#assessing-the-accuracy-of-the-model">
-   2.1.3. Assessing the accuracy of the model
+   2.1.4. Assessing the accuracy of the model
   </a>
  </li>
 </ul>
@@ -546,18 +551,23 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-libraries-and-load-data">
+   2.1.1. Import libraries and load data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#estimating-the-coefficients">
-   2.1.1. Estimating the coefficients
+   2.1.2. Estimating the coefficients
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#assessing-the-accuracy-of-the-coefficient-estimates">
-   2.1.2. Assessing the accuracy of the coefficient estimates
+   2.1.3. Assessing the accuracy of the coefficient estimates
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#assessing-the-accuracy-of-the-model">
-   2.1.3. Assessing the accuracy of the model
+   2.1.4. Assessing the accuracy of the model
   </a>
  </li>
 </ul>
@@ -571,11 +581,11 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="section" id="simple-linear-regression">
 <h1><span class="section-number">2.1. </span>Simple linear regression<a class="headerlink" href="#simple-linear-regression" title="Permalink to this headline">¶</a></h1>
-<p>Firstly, we will import the required libraries and load the <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> dataset.</p>
-<div class="cell docutils container">
+<div class="section" id="import-libraries-and-load-data">
+<h2><span class="section-number">2.1.1. </span>Import libraries and load data<a class="headerlink" href="#import-libraries-and-load-data" title="Permalink to this headline">¶</a></h2>
+<!-- Firstly, we will import the required libraries and load the `Advertising` dataset. --><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ../standard_import.txt</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">axes3d</span>
@@ -593,14 +603,14 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1858/863918830.py:15: MatplotlibDeprecationWarning: The seaborn styles shipped by Matplotlib are deprecated since 3.6, as they no longer correspond to the styles shipped by seaborn. However, they will remain available as &#39;seaborn-v0_8-&lt;style&gt;&#39;. Alternatively, directly use the seaborn API instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2071/1253042162.py:14: MatplotlibDeprecationWarning: The seaborn styles shipped by Matplotlib are deprecated since 3.6, as they no longer correspond to the styles shipped by seaborn. However, they will remain available as &#39;seaborn-v0_8-&lt;style&gt;&#39;. Alternatively, directly use the seaborn API instead.
   plt.style.use(&quot;seaborn-white&quot;)
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Load Datasets</strong></p>
-<p>Datasets available on <a class="reference external" href="https://www.statlearning.com/resources-first-edition">https://www.statlearning.com/resources-first-edition</a></p>
+<p><strong>Load <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> datasets</strong></p>
+<p>Datasets available on https://www.statlearning.com/resources-first-edition</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Advertising.csv&quot;</span>
@@ -700,37 +710,47 @@ memory usage: 7.8 KB
 </div></div></div>
 </div>
 <p>Simple linear regression assumes that there is a approximately a linear relationship between a quantitative response <span class="math notranslate nohighlight">\(Y\)</span> and a single predictor <span class="math notranslate nohighlight">\(X\)</span>. Mathematically, the linear relationship can be expressed as</p>
-<p>\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f95869a1-20e3-4a67-bcba-6d18af89b96b">
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-f95869a1-20e3-4a67-bcba-6d18af89b96b" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 Y \approx \beta_0 + \beta_1 X
-\end{equation}</p>
+\end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are two unknown constants that represent the <em>intercept</em> and <em>slope</em> of the linear model. Together, <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are called the <em>model coefficients</em>, or <em>parameters</em>. We can describe the linear relationship as <em>regressing</em> <span class="math notranslate nohighlight">\(Y\)</span> onto <span class="math notranslate nohighlight">\(X\)</span>. For example, <span class="math notranslate nohighlight">\(X\)</span> may represent <code class="docutils literal notranslate"><span class="pre">TV</span></code> advertising and <span class="math notranslate nohighlight">\(Y\)</span> may represent <code class="docutils literal notranslate"><span class="pre">sales</span></code>. Then we can regress sales onto TV by fitting the model</p>
-<p>\begin{equation}
+<!-- \begin{equation} -->
+<div class="math notranslate nohighlight">
+\[
 \textrm{sales} \approx \beta_0 + \beta_1 \times \textrm{TV}
-\end{equation}</p>
+\]</div>
+<!-- \end{equation} -->
+</div>
 <div class="section" id="estimating-the-coefficients">
-<h2><span class="section-number">2.1.1. </span>Estimating the coefficients<a class="headerlink" href="#estimating-the-coefficients" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.1.2. </span>Estimating the coefficients<a class="headerlink" href="#estimating-the-coefficients" title="Permalink to this headline">¶</a></h2>
 <p>The goal of simple linear regression is to estimate the unknown parameters <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> from the data. Let</p>
 <div class="math notranslate nohighlight">
 \[
 (x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)
 \]</div>
-<p>be the <span class="math notranslate nohighlight">\(n\)</span> observations in the dataset, and <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> denote the estimated values of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>, respectively. The estimated values of <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> can be obtained by minimizing the <em>residual sum of squares</em> (RSS)</p>
-<p>\begin{equation}
-\text{RSS} = \sum_{i=1}^n (y_i - \hat{y}<em>i)^2 = \sum</em>{i=1}^n (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i)^2,
-\end{equation}</p>
+<p>be the <span class="math notranslate nohighlight">\(n\)</span> observations in the dataset, and <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> denote the estimated values of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>, respectively. The estimated values of <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> can be obtained by minimising the <em>residual sum of squares</em> (RSS)</p>
+<div class="amsmath math notranslate nohighlight" id="equation-6cd46870-a027-429a-a501-8755464e013c">
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-6cd46870-a027-429a-a501-8755464e013c" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+\text{RSS} = \sum_{i=1}^n (y_i - \hat{y}_i)^2 = \sum_{i=1}^n (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i)^2,
+\end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the response <span class="math notranslate nohighlight">\(Y\)</span>, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predicted response <span class="math notranslate nohighlight">\(\hat{Y}\)</span>, and <span class="math notranslate nohighlight">\(x_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predictor <span class="math notranslate nohighlight">\(X\)</span>. The least squares estimates of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are given by</p>
-<p>\begin{equation}
-\hat{\beta}<em>1 = \frac{\sum</em>{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2},
-\end{equation}</p>
-<p>\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b2e1e1b1-0d1d-4120-a316-2b65ed4c4ecb">
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-b2e1e1b1-0d1d-4120-a316-2b65ed4c4ecb" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+\hat{\beta}_1 = \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2},
+\end{equation}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-225717f7-7541-4555-9c4d-0c161c85e642">
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-225717f7-7541-4555-9c4d-0c161c85e642" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}.
-\end{equation}</p>
-<p>where <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\bar{y}\)</span> are the sample means of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> respectively. The least squares estimates of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are obtained by minimizing the RSS. The least squares line is given by</p>
-<p>\begin{equation}
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\bar{y}\)</span> are the sample means of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> respectively. The least squares estimates of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are obtained by minimising the RSS. The least squares line is given by</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c0520532-1a91-4e97-b2f1-7369cfcc2100">
+<span class="eqno">(2.5)<a class="headerlink" href="#equation-c0520532-1a91-4e97-b2f1-7369cfcc2100" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x
-\end{equation}</p>
-<p>The least squares line is the line that minimizes the sum of squared residuals. The least squares line is also known as the <em>regression line</em>.</p>
+\end{equation}\]</div>
+<p>The least squares line is the line that minimises the sum of squared residuals. The least squares line is also known as the <em>regression line</em>.</p>
 <p><strong>Figure 3.1 - Least squares fit</strong></p>
+<p>This figure shows the least squares fit of <code class="docutils literal notranslate"><span class="pre">sales</span></code> onto <code class="docutils literal notranslate"><span class="pre">TV</span></code> for the <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> dataset. The objective is to minimising the sum of squared residuals, which is the sum of the vertical distances between the data points (red dots) and the least squares line (blue line). The least squares line is the line that minimises the sum of squared residuals. The least squares line is also known as the <em>regression line</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
@@ -751,7 +771,8 @@ Y \approx \beta_0 + \beta_1 X
 </div>
 </div>
 <p><strong>Figure 3.2 - Regression coefficients - RSS</strong></p>
-<p>Note that the text in the book describes the coefficients based on uncentered data, whereas the plot shows the model based on centered data. The latter is visually more appealing for explaining the concept of a minimum RSS. I think that, in order not to confuse the reader, the values on the axis of the B0 coefficients have been changed to correspond with the text. The axes on the plots below are unaltered.</p>
+<p>Firstly, fit a simple linear regression model using the scikit-learn library. The <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> method takes two arguments, the first is the predictor variable and the second is the response variable. The <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> method returns an object that contains the estimated coefficients. The <code class="docutils literal notranslate"><span class="pre">.intercept_</span></code> and <code class="docutils literal notranslate"><span class="pre">.coef_</span></code> attributes of the fitted model can be used to obtain the estimated intercept (<span class="math notranslate nohighlight">\(\beta_0\)</span>) and slope (<span class="math notranslate nohighlight">\(\beta_1\)</span>) of the regression line.</p>
+<p>Note that the text in the book describes the coefficients based on unnormalised data, whereas the plot shows the model based on normalised data. The latter is visually more appealing for explaining the concept of a minimum RSS. I think that, in order not to confuse the reader, the values on the axis of the <code class="docutils literal notranslate"><span class="pre">beta_0</span></code> coefficients have been changed to correspond with the text. The axes on the plots below are unaltered.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Regression coefficients (Ordinary Least Squares)</span>
@@ -776,17 +797,17 @@ Y \approx \beta_0 + \beta_1 X
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create grid coordinates for plotting</span>
-<span class="n">B0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">B1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">coef_</span> <span class="o">-</span> <span class="mf">0.02</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span> <span class="o">+</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">B0</span><span class="p">,</span> <span class="n">B1</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s2">&quot;xy&quot;</span><span class="p">)</span>
-<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">B0</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">B1</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+<span class="n">beta_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">beta_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">coef_</span> <span class="o">-</span> <span class="mf">0.02</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span> <span class="o">+</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">beta_0</span><span class="p">,</span> <span class="n">beta_1</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s2">&quot;xy&quot;</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">beta_0</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">beta_1</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
 
 <span class="c1"># Calculate Z-values (RSS) based on grid of coefficients</span>
 <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">ndenumerate</span><span class="p">(</span><span class="n">Z</span><span class="p">):</span>
     <span class="n">Z</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">xx</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">X</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">*</span> <span class="n">yy</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]))</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000</span>
 
-<span class="c1"># Minimized RSS</span>
-<span class="n">min_RSS</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$\beta_0$, $\beta_1$ for minimized RSS&quot;</span>
+<span class="c1"># minimised RSS</span>
+<span class="n">min_RSS</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$\beta_0$, $\beta_1$ for minimised RSS&quot;</span>
 <span class="n">min_rss</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span> <span class="o">*</span> <span class="n">X</span> <span class="o">-</span> <span class="n">y</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000</span>
 <span class="p">)</span>
@@ -845,24 +866,18 @@ Y \approx \beta_0 + \beta_1 X
 </div>
 </div>
 <div class="section" id="assessing-the-accuracy-of-the-coefficient-estimates">
-<h2><span class="section-number">2.1.2. </span>Assessing the accuracy of the coefficient estimates<a class="headerlink" href="#assessing-the-accuracy-of-the-coefficient-estimates" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.1.3. </span>Assessing the accuracy of the coefficient estimates<a class="headerlink" href="#assessing-the-accuracy-of-the-coefficient-estimates" title="Permalink to this headline">¶</a></h2>
 <p>The coefficient estimates <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> are only estimates of the true coefficients <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>. We can quantify the accuracy of the estimates by computing the <em>standard error</em> of the estimates. The standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> is given by</p>
-<p>\begin{equation}
-\text{SE}(\hat{\beta}<em>1) = \sqrt{\frac{\sum</em>{i=1}^n (y_i - \hat{y}<em>i)^2}{\sum</em>{i=1}^n (x_i - \bar{x})^2(n - 2)}},
-\end{equation}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-e2b0cb60-5126-4198-99dd-f33b63641e37">
+<span class="eqno">(2.6)<a class="headerlink" href="#equation-e2b0cb60-5126-4198-99dd-f33b63641e37" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+\text{SE}(\hat{\beta}_1) = \sqrt{\frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{\sum_{i=1}^n (x_i - \bar{x})^2(n - 2)}},
+\end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predicted response <span class="math notranslate nohighlight">\(\hat{Y}\)</span>, and <span class="math notranslate nohighlight">\(x_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predictor <span class="math notranslate nohighlight">\(X\)</span>. The standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> is given by</p>
-<p>\begin{equation}
-\text{SE}(\hat{\beta}<em>0) = \sqrt{\frac{\sum</em>{i=1}^n (y_i - \hat{y}<em>i)^2}{n \sum</em>{i=1}^n (x_i - \bar{x})^2}}.
-\end{equation}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-84e4e249-2dc3-40c6-8323-09547ec9ac5e">
+<span class="eqno">(2.7)<a class="headerlink" href="#equation-84e4e249-2dc3-40c6-8323-09547ec9ac5e" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+\text{SE}(\hat{\beta}_0) = \sqrt{\frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{n \sum_{i=1}^n (x_i - \bar{x})^2}}.
+\end{equation}\]</div>
 <p>The standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> is a measure of the variability of the estimate of <span class="math notranslate nohighlight">\(\beta_1\)</span> due to sampling error. The standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> is a measure of the variability of the estimate of <span class="math notranslate nohighlight">\(\beta_0\)</span> due to sampling error. The standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> is also known as the <em>standard error of the regression</em>.</p>
-</div>
-<div class="section" id="assessing-the-accuracy-of-the-model">
-<h2><span class="section-number">2.1.3. </span>Assessing the accuracy of the model<a class="headerlink" href="#assessing-the-accuracy-of-the-model" title="Permalink to this headline">¶</a></h2>
-<p>The accuracy of the linear model is dependent on the variability of the response <span class="math notranslate nohighlight">\(Y\)</span> and the predictor <span class="math notranslate nohighlight">\(X\)</span>. The variability of <span class="math notranslate nohighlight">\(Y\)</span> is measured by the variance of <span class="math notranslate nohighlight">\(Y\)</span>, denoted by <span class="math notranslate nohighlight">\(\sigma^2\)</span>. The variability of <span class="math notranslate nohighlight">\(X\)</span> is measured by the variance of <span class="math notranslate nohighlight">\(X\)</span>, denoted by <span class="math notranslate nohighlight">\(\sigma_x^2\)</span>. The coefficient of determination, denoted by <span class="math notranslate nohighlight">\(R^2\)</span>, is defined as</p>
-<p>\begin{equation}
-R^2 = \frac{\text{SSR}}{\text{SST}} = 1 - \frac{\text{SSE}}{\text{SST}}
-\end{equation}</p>
-<p>where <span class="math notranslate nohighlight">\(\text{SST} = \sum_{i=1}^n (y_i - \bar{y})^2\)</span> is the total sum of squares. The coefficient of determination is a proportion that measures the proportion of the variability in the response that is explained by the linear model. The coefficient of determination is always between 0 and 1. The coefficient of determination is 0 when the regression line does not fit the data at all, and the coefficient of determination is 1 when the regression line perfectly fits the data. The coefficient of determination is also known as the <em>coefficient of multiple determination</em>. The coefficient of determination is a measure of the goodness of fit of the linear model. The coefficient of determination is also known as the <em>coefficient of multiple determination</em>. The coefficient of determination is a measure of the goodness of fit of the linear model.</p>
 <p><strong>Confidence interval on page 67 &amp; Table 3.1 &amp; 3.2 - Statsmodels</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -899,6 +914,15 @@ R^2 = \frac{\text{SSR}}{\text{SST}} = 1 - \frac{\text{SSE}}{\text{SST}}
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="assessing-the-accuracy-of-the-model">
+<h2><span class="section-number">2.1.4. </span>Assessing the accuracy of the model<a class="headerlink" href="#assessing-the-accuracy-of-the-model" title="Permalink to this headline">¶</a></h2>
+<p>The accuracy of the linear model is dependent on the variability of the response <span class="math notranslate nohighlight">\(Y\)</span> and the predictor <span class="math notranslate nohighlight">\(X\)</span>. The variability of <span class="math notranslate nohighlight">\(Y\)</span> is measured by the variance of <span class="math notranslate nohighlight">\(Y\)</span>, denoted by <span class="math notranslate nohighlight">\(\sigma^2\)</span>. The variability of <span class="math notranslate nohighlight">\(X\)</span> is measured by the variance of <span class="math notranslate nohighlight">\(X\)</span>, denoted by <span class="math notranslate nohighlight">\(\sigma_x^2\)</span>. The coefficient of determination, denoted by <span class="math notranslate nohighlight">\(R^2\)</span>, is defined as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c8a0d4f8-c2f2-42f7-bc46-fe59a3ce9c1a">
+<span class="eqno">(2.8)<a class="headerlink" href="#equation-c8a0d4f8-c2f2-42f7-bc46-fe59a3ce9c1a" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+R^2 = \frac{\text{SSR}}{\text{SST}} = 1 - \frac{\text{SSE}}{\text{SST}}
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\text{SST} = \sum_{i=1}^n (y_i - \bar{y})^2\)</span> is the total sum of squares. The coefficient of determination is a proportion that measures the proportion of the variability in the response that is explained by the linear model. The coefficient of determination is always between 0 and 1. The coefficient of determination is 0 when the regression line does not fit the data at all, and the coefficient of determination is 1 when the regression line perfectly fits the data. The coefficient of determination is also known as the <em>coefficient of multiple determination</em>. The coefficient of determination is a measure of the goodness of fit of the linear model. The coefficient of determination is also known as the <em>coefficient of multiple determination</em>. The coefficient of determination is a measure of the goodness of fit of the linear model.</p>
 <p><strong>Table 3.1 &amp; 3.2 - Scikit-learn</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
