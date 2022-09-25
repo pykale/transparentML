@@ -51,7 +51,7 @@ parts:
       title: Simple linear regression
     - file: 02-linear-reg/multi-linear-regression
       title: Multiple linear regression
-    - file: 02-linear-reg/extension-discussion
+    - file: 02-linear-reg/extension-problem
       title: Extensions & discussion
   - file: 03-logistic-reg/overview
     title: Logistic regression
