@@ -1,0 +1,71 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.8.13/x64/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.8.13/x64/lib/python3.8/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.8.13/x64/lib/python3.8/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/hostedtoolcache/Python/3.8.13/x64/lib/python3.8/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/hostedtoolcache/Python/3.8.13/x64/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.8.13/x64/lib/python3.8/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.8.13/x64/lib/python3.8/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.8.13/x64/lib/python3.8/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Income (x-axis)
+income = np.linspace(0, 150)
+
+# Balance without interaction term (y-axis)
+student1 = np.linspace(
+    regr1["Intercept"] + regr1["Student2"],
+    regr1["Intercept"] + regr1["Student2"] + 150 * regr1["Income"],
+)
+non_student1 = np.linspace(
+    regr1["Intercept"], regr1["Intercept"] + 150 * regr1["Income"]
+)
+
+# Balance with iteraction term (y-axis)
+student2 = np.linspace(
+    regr2["Intercept"] + regr2["Student2"],
+    regr2["Intercept"]
+    + regr2["Student2"]
+    + 150 * (regr2["Income"] + regr2["Income:Student2"]),
+)
+non_student2 = np.linspace(
+    regr2["Intercept"], regr2["Intercept"] + 150 * regr2["Income"]
+)
+
+# Create plot
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+ax1.plot(income, student1, "r", income, non_student1, "k")
+ax2.plot(income, student2, "r", income, non_student2, "k")
+
+for ax in fig.axes:
+    ax.legend(["student", "non-student"], loc=2)
+    ax.set_xlabel("Income")
+    ax.set_ylabel("Balance")
+    ax.set_ylim(ymax=1550)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn [10], line 6[0m
+[1;32m      2[0m income [38;5;241m=[39m np[38;5;241m.[39mlinspace([38;5;241m0[39m, [38;5;241m150[39m)
+[1;32m      4[0m [38;5;66;03m# Balance without interaction term (y-axis)[39;00m
+[1;32m      5[0m student1 [38;5;241m=[39m np[38;5;241m.[39mlinspace(
+[0;32m----> 6[0m     regr1[[38;5;124m"[39m[38;5;124mIntercept[39m[38;5;124m"[39m] [38;5;241m+[39m regr1[[38;5;124m"[39m[38;5;124mStudent2[39m[38;5;124m"[39m],
+[1;32m      7[0m     regr1[[38;5;124m"[39m[38;5;124mIntercept[39m[38;5;124m"[39m] [38;5;241m+[39m regr1[[38;5;124m"[39m[38;5;124mStudent2[39m[38;5;124m"[39m] [38;5;241m+[39m [38;5;241m150[39m [38;5;241m*[39m regr1[[38;5;124m"[39m[38;5;124mIncome[39m[38;5;124m"[39m],
+[1;32m      8[0m )
+[1;32m      9[0m non_student1 [38;5;241m=[39m np[38;5;241m.[39mlinspace(
+[1;32m     10[0m     regr1[[38;5;124m"[39m[38;5;124mIntercept[39m[38;5;124m"[39m], regr1[[38;5;124m"[39m[38;5;124mIntercept[39m[38;5;124m"[39m] [38;5;241m+[39m [38;5;241m150[39m [38;5;241m*[39m regr1[[38;5;124m"[39m[38;5;124mIncome[39m[38;5;124m"[39m]
+[1;32m     11[0m )
+[1;32m     13[0m [38;5;66;03m# Balance with iteraction term (y-axis)[39;00m
+
+[0;31mNameError[0m: name 'regr1' is not defined
+NameError: name 'regr1' is not defined
+
