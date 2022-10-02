@@ -34,7 +34,7 @@ Respectively, the above categories of information define two forms of transparen
 - **System transparency**: Stakeholders having access to system logic information
 - **Process transparency**: Stakeholders having access to process information
 
-In this course, we will study machine learning systems from the perspectives of these two forms of transparency.
+In this course, we will study machine learning systems from the perspectives of these two forms of transparency, briefly discussed below, with more details available in appendices on {doc}`../appendix/system-transp` and {doc}`../appendix/process-transp`.
 
 ### System transparency
 
@@ -47,6 +47,8 @@ representation. Three types of information are considered relevant for system tr
 >
 > (3) The conditions under which the system would produce a certain output: for what values of the input variables would the system return a specific value of interest?
 
+See Appendix {doc}`../appendix/system-transp` on [more details about such info](https://pykale.github.io/transparentML/appendix/system-transp.html#what-relevant-information), [why these three types of information are considered relevant for system transparency](https://pykale.github.io/transparentML/appendix/system-transp.html#why-such-info) and [how to obtain and communicate such info](https://pykale.github.io/transparentML/appendix/system-transp.html#how-to-obtain-communicate-such-info).
+
 ### Process transparency
 
 Process transparency concerns access to any information about an ML system’s design, development, and deployment apart from the system’s logic. As with system logic information, such process information is important for addressing and providing assurance about concerns raised by AI systems. Correspondingly, there is a growing amount of work on how process information can be recorded, managed, and made accessible in practice.
@@ -56,6 +58,7 @@ We can categorise process information regarding ML systems along two dimensions:
 - **Different lifecycle phases**: Process information can relate to (i) the design and development or (ii) the deployment of an ML system. In both areas, more specific lifecycle phases can be distinguished, each of them associated with unique aspects of information.
 - **Different levels of information**: In considering a given lifecycle phase, different levels of process information can be distinguished, corresponding to the kinds of questions that the information serves to answer.
 
+See Appendix {doc}`../appendix/process-transp` on [more details about such info](https://pykale.github.io/transparentML/appendix/process-transp.html#what-relevant-information), [why such information is considered relevant for process transparency](https://pykale.github.io/transparentML/appendix/process-transp.html#why-such-info) and [how to manage such info](https://pykale.github.io/transparentML/appendix/process-transp.html#how-to-manage-such-info).
 
 ### Relevant stakeholders
 

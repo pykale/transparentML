@@ -1,5 +1,7 @@
 ## Machine learning systems
 
+Firstly, let us learn about the machine learning problems in their typical definitions.
+
 ### Machine learning problems
 
 Machine learning problems can be broadly classified into two categories: **supervised learning** and **unsupervised learning**. In supervised learning, the data is labelled, and the goal is to predict or estimate the label for new data. In unsupervised learning, the data is not labelled, and the goal is to find patterns, such as relationships or structures, in the data. Machine learning models can generate two types of outputs: discrete and continuous. Discrete outputs are categorical, such as the class of an image. Continuous outputs are numerical, such as the price of a house.
