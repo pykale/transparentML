@@ -597,7 +597,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1893/1253042162.py:14: MatplotlibDeprecationWarning: The seaborn styles shipped by Matplotlib are deprecated since 3.6, as they no longer correspond to the styles shipped by seaborn. However, they will remain available as &#39;seaborn-v0_8-&lt;style&gt;&#39;. Alternatively, directly use the seaborn API instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1866/1253042162.py:14: MatplotlibDeprecationWarning: The seaborn styles shipped by Matplotlib are deprecated since 3.6, as they no longer correspond to the styles shipped by seaborn. However, they will remain available as &#39;seaborn-v0_8-&lt;style&gt;&#39;. Alternatively, directly use the seaborn API instead.
   plt.style.use(&quot;seaborn-white&quot;)
 </pre></div>
 </div>
@@ -704,8 +704,8 @@ memory usage: 7.8 KB
 </div></div></div>
 </div>
 <p>Simple linear regression assumes that there is a approximately a linear relationship between a quantitative response <span class="math notranslate nohighlight">\(Y\)</span> and a single predictor <span class="math notranslate nohighlight">\(X\)</span>. Mathematically, the linear relationship can be expressed as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3d4a5a87-041b-4073-b8da-83f227d83892">
-<span class="eqno">(2.1)<a class="headerlink" href="#equation-3d4a5a87-041b-4073-b8da-83f227d83892" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a6e4612a-f671-4c3e-9b51-7c336723991e">
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-a6e4612a-f671-4c3e-9b51-7c336723991e" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 Y \approx \beta_0 + \beta_1 X
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are two unknown constants that represent the <em>intercept</em> and <em>slope</em> of the linear model. Together, <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are called the <em>model coefficients</em>, or <em>parameters</em>. We can describe the linear relationship as <em>regressing</em> <span class="math notranslate nohighlight">\(Y\)</span> onto <span class="math notranslate nohighlight">\(X\)</span>. For example, <span class="math notranslate nohighlight">\(X\)</span> may represent <code class="docutils literal notranslate"><span class="pre">TV</span></code> advertising and <span class="math notranslate nohighlight">\(Y\)</span> may represent <code class="docutils literal notranslate"><span class="pre">sales</span></code>. Then we can regress sales onto TV by fitting the model</p>
@@ -724,22 +724,22 @@ Y \approx \beta_0 + \beta_1 X
 (x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)
 \]</div>
 <p>be the <span class="math notranslate nohighlight">\(n\)</span> observations in the dataset, and <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> denote the estimated values of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>, respectively. The estimated values of <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> can be obtained by minimising the <em>residual sum of squares</em> (RSS)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e0500578-fd21-4f63-850b-c546d296f4bc">
-<span class="eqno">(2.2)<a class="headerlink" href="#equation-e0500578-fd21-4f63-850b-c546d296f4bc" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1de572e5-d748-4798-9020-dd36dc795078">
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-1de572e5-d748-4798-9020-dd36dc795078" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{RSS} = \sum_{i=1}^n (y_i - \hat{y}_i)^2 = \sum_{i=1}^n (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i)^2,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the response <span class="math notranslate nohighlight">\(Y\)</span>, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predicted response <span class="math notranslate nohighlight">\(\hat{Y}\)</span>, and <span class="math notranslate nohighlight">\(x_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predictor <span class="math notranslate nohighlight">\(X\)</span>. The least squares estimates of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-10a8fdf4-6eff-4e75-83bb-7dcaf3e71d11">
-<span class="eqno">(2.3)<a class="headerlink" href="#equation-10a8fdf4-6eff-4e75-83bb-7dcaf3e71d11" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8b951425-d50f-408f-bafe-99692b9b6010">
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-8b951425-d50f-408f-bafe-99692b9b6010" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{\beta}_1 = \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2},
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-d5bff9e6-3393-4e60-9bab-cab6bdd0a6cf">
-<span class="eqno">(2.4)<a class="headerlink" href="#equation-d5bff9e6-3393-4e60-9bab-cab6bdd0a6cf" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d52a6649-74b6-424c-b006-05fab8183bc1">
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-d52a6649-74b6-424c-b006-05fab8183bc1" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}.
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\bar{y}\)</span> are the sample means of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> respectively. The least squares estimates of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are obtained by minimising the RSS. The least squares line is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f390c016-89d4-4bdf-82dd-39ee83ad8abd">
-<span class="eqno">(2.5)<a class="headerlink" href="#equation-f390c016-89d4-4bdf-82dd-39ee83ad8abd" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-904695fe-e774-485c-bed0-79cfa7e88ebb">
+<span class="eqno">(2.5)<a class="headerlink" href="#equation-904695fe-e774-485c-bed0-79cfa7e88ebb" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x
 \end{equation}\]</div>
 <p>The least squares line is the line that minimises the sum of squared residuals. The least squares line is also known as the <em>regression line</em>.</p>
@@ -862,18 +862,18 @@ Y \approx \beta_0 + \beta_1 X
 <div class="section" id="assessing-the-accuracy-of-the-coefficient-estimates">
 <h2><span class="section-number">2.1.3. </span>Assessing the accuracy of the coefficient estimates<a class="headerlink" href="#assessing-the-accuracy-of-the-coefficient-estimates" title="Permalink to this headline">¶</a></h2>
 <p>The linear relationship between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> can be written in an equation as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8eecd56b-f19a-44fa-ad78-fda92cb7b5cd">
-<span class="eqno">(2.6)<a class="headerlink" href="#equation-8eecd56b-f19a-44fa-ad78-fda92cb7b5cd" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d985cc5f-decc-49a7-8470-fa7f73f9af99">
+<span class="eqno">(2.6)<a class="headerlink" href="#equation-d985cc5f-decc-49a7-8470-fa7f73f9af99" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 Y = \beta_0 + \beta_1 X + \epsilon,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\epsilon\)</span> is a random error term that represents the difference between the observed response <span class="math notranslate nohighlight">\(Y\)</span> and the true response <span class="math notranslate nohighlight">\(\beta_0 + \beta_1 X\)</span>. The error term <span class="math notranslate nohighlight">\(\epsilon\)</span> is assumed to be normally distributed with mean zero and constant variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. The coefficient estimates <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> are only estimates of the true coefficients <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>. We can quantify the accuracy of the estimates by computing the <em>standard error</em> of the estimates. The standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2cb848ae-3df2-4954-81e0-1582ec09fb00">
-<span class="eqno">(2.7)<a class="headerlink" href="#equation-2cb848ae-3df2-4954-81e0-1582ec09fb00" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-48ef598f-394b-4447-b562-386fdc07e615">
+<span class="eqno">(2.7)<a class="headerlink" href="#equation-48ef598f-394b-4447-b562-386fdc07e615" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{SE}(\hat{\beta}_{1})^2 = \frac{\sigma^2}{\sum_{i=1}^n (x_i - \bar{x})^2}, \quad \text{SE}(\hat{\beta}_0)^2 = \sigma^2 \left[\frac{1}{n} + \frac{\bar{x}^2}{\sum_{i=1}^n (x_i - \bar{x})^2} \right],
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\sigma^2\)</span> is an estimate of the variance of the error term <span class="math notranslate nohighlight">\(\epsilon= Y - (\beta_0 + \beta_1 X) \)</span>, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predicted response <span class="math notranslate nohighlight">\(\hat{Y}\)</span>, and <span class="math notranslate nohighlight">\(x_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predictor <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\bar{y}\)</span> are the sample means of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> respectively. Please note the <span class="math notranslate nohighlight">\(\sigma^2\)</span> is an estimation from the dataset of the whole population variance. This estimate is called the <em>residual standard error</em> (RSE)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8a155402-9d76-44fe-894f-7b74c42a82f6">
-<span class="eqno">(2.8)<a class="headerlink" href="#equation-8a155402-9d76-44fe-894f-7b74c42a82f6" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-299e193d-ab62-4535-b69e-979667a94fe4">
+<span class="eqno">(2.8)<a class="headerlink" href="#equation-299e193d-ab62-4535-b69e-979667a94fe4" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{RSE} = \sqrt{\frac{1}{n-2}\text{RSS}} = \sqrt{\frac{1}{n-2} \sum_{i=1}^n (y_i - \hat{y}_i)^2}.
 \end{equation}\]</div>
 <p>The standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> is a measure of the variability of the estimate of <span class="math notranslate nohighlight">\(\beta_1\)</span> due to sampling error. The standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> is a measure of the variability of the estimate of <span class="math notranslate nohighlight">\(\beta_0\)</span> due to sampling error. The standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> is also known as the <em>standard error of the regression</em>.</p>
@@ -917,8 +917,8 @@ Y = \beta_0 + \beta_1 X + \epsilon,
 <div class="section" id="assessing-the-accuracy-of-the-model">
 <h2><span class="section-number">2.1.4. </span>Assessing the accuracy of the model<a class="headerlink" href="#assessing-the-accuracy-of-the-model" title="Permalink to this headline">¶</a></h2>
 <p>The accuracy of the linear model is dependent on the variability of the response <span class="math notranslate nohighlight">\(Y\)</span> and the predictor <span class="math notranslate nohighlight">\(X\)</span>. The variability of <span class="math notranslate nohighlight">\(Y\)</span> is measured by the variance of <span class="math notranslate nohighlight">\(Y\)</span>, denoted by <span class="math notranslate nohighlight">\(\sigma^2\)</span>. The variability of <span class="math notranslate nohighlight">\(X\)</span> is measured by the variance of <span class="math notranslate nohighlight">\(X\)</span>, denoted by <span class="math notranslate nohighlight">\(\sigma_x^2\)</span>. The coefficient of determination, denoted by <span class="math notranslate nohighlight">\(R^2\)</span>, is defined as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7d299f66-1a47-491a-a4bc-e138157c276b">
-<span class="eqno">(2.9)<a class="headerlink" href="#equation-7d299f66-1a47-491a-a4bc-e138157c276b" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-39fa0bb7-3cb7-44ce-b0af-49d5231b5ef3">
+<span class="eqno">(2.9)<a class="headerlink" href="#equation-39fa0bb7-3cb7-44ce-b0af-49d5231b5ef3" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 R^2 = \frac{\text{TSS} - \text{RSS}}{\text{TSS}} = 1 - \frac{\text{RSS}}{\text{TSS}}
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\text{TSS} = \sum_{i=1}^n (y_i - \bar{y})^2\)</span> <em>is the total sum of squares</em>. The coefficient of determination is a proportion that measures the proportion of the variability in the response that is explained by the linear model. The coefficient of determination is always between 0 and 1. The coefficient of determination is 0 when the regression line does not fit the data at all, and the coefficient of determination is 1 when the regression line perfectly fits the data. The coefficient of determination is also known as the <em>coefficient of multiple determination</em>. The coefficient of determination is a measure of the goodness of fit of the linear model. The coefficient of determination is also known as the <em>coefficient of multiple determination</em>. The coefficient of determination is a measure of the goodness of fit of the linear model.</p>
