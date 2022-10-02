@@ -36,11 +36,7 @@ parts:
     - file: 01-intro/ml-transp
       title: ML transparency
     - file: 01-intro/knn
-      title: KNN
-    - file: 01-intro/data-problems
-      title: Datasets
-    - file: 01-intro/ml-models
-      title: ML models
+      title: KNN classifier
     - file: 01-intro/organisation
     - file: 01-intro/quiz-sum-ref
       title: Quiz & summary
@@ -101,7 +97,7 @@ parts:
     sections:
     - file: /quiz-sum-ref
       title: Quiz & summary
-- caption: Appendix
+- caption: Appendices
   numbered: false
   chapters:
   - file: appendix/system-transp

@@ -16,8 +16,6 @@ Drafting
 
 In this chapter, we will [... (intro paragraph)].
 
-<!-- ## No cap initial -->
-
 ```{admonition} Ingredients
 - Input: ...
 - Output: ...
@@ -34,5 +32,3 @@ System logic
 ```
 <!-- - What input to produce certain output:
 - How to produce certain output: -->
-
-### No cap initial
