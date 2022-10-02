@@ -536,8 +536,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#observations">
-     1.5.2.6. Observations
+    <a class="reference internal nav-link" href="#example-explanation-of-system-transparency">
+     1.5.2.6. Example explanation of system transparency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-observations">
+     1.5.2.7. Other observations
     </a>
    </li>
   </ul>
@@ -603,8 +608,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#observations">
-     1.5.2.6. Observations
+    <a class="reference internal nav-link" href="#example-explanation-of-system-transparency">
+     1.5.2.6. Example explanation of system transparency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-observations">
+     1.5.2.7. Other observations
     </a>
    </li>
   </ul>
@@ -625,7 +635,11 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="section" id="k-nearest-neighbors-classification">
 <h1><span class="section-number">1.5. </span>K-nearest neighbors classification<a class="headerlink" href="#k-nearest-neighbors-classification" title="Permalink to this headline">¶</a></h1>
-<p>The K-Nearest Neighbors (KNN) algorithm is a supervised learning algorithm. It is a <em>non-parametric</em> method used for classification and regression. In both cases, the input consists of the <span class="math notranslate nohighlight">\(k\)</span> closest training examples in the feature space. The output depends on whether KNN is used for classification or regression. Here, we focus on the classification case.</p>
+<p>Before we end this introduction, let us look at a simple example of a supervised machine learning model, the K-Nearest Neighbors (KNN) model. It is a <em>non-parametric</em> method used for classification and regression. In both cases, the input consists of the <span class="math notranslate nohighlight">\(k\)</span> closest training examples in the feature space. The output depends on whether KNN is used for classification or regression. Here, we focus on the classification case.</p>
+<p>Watch the 5-min video below to help you understand the KNN algorithm.</p>
+<iframe width="700" height="394" src="https://www.youtube.com/embed/HVXime0nQeI?t=17" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[Explaining K-Nearest Neighbors, by StatQuest](https://youtu.be/HVXime0nQeI)
+<p>Then study the following sections to learn more about KNN.</p>
 <div class="section" id="ingredients-transparency">
 <h2><span class="section-number">1.5.1. </span>Ingredients &amp; transparency<a class="headerlink" href="#ingredients-transparency" title="Permalink to this headline">¶</a></h2>
 <p>For all machine learning models covered in this course, we aim to talk about their ingredients and transparency in a standard way to facilitate understanding their similarities and differences. For transparency, we will focus on the system transparency, i.e. system logic. Process transparency is not specific to ML models and it will be discussed when we cover the ML process/lifecycle.</p>
@@ -740,6 +754,10 @@ const thebe_selector_output = ".output, .cell_output"
         <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
         <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
     <span class="p">)</span>
+
+    <span class="c1"># Add an example data point for insights</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mf">4.9</span><span class="p">,</span> <span class="mf">2.6</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
     <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">xx</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">yy</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span>
@@ -762,8 +780,17 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="observations">
-<h3><span class="section-number">1.5.2.6. </span>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="example-explanation-of-system-transparency">
+<h3><span class="section-number">1.5.2.6. </span>Example explanation of system transparency<a class="headerlink" href="#example-explanation-of-system-transparency" title="Permalink to this headline">¶</a></h3>
+<p>In the above, we highlighted an example test data point at <code class="docutils literal notranslate"><span class="pre">septal_length</span> <span class="pre">=</span> <span class="pre">4.9cm</span></code> and <code class="docutils literal notranslate"><span class="pre">septal_width</span> <span class="pre">=</span> <span class="pre">2.6cm</span></code>, marked as a red cross in the figures. Let us examine the system logic with <span class="math notranslate nohighlight">\(K=1\)</span> to reveal its system transparency.</p>
+<ul class="simple">
+<li><p>The model predicts the test point (at the red cross) to be a <code class="docutils literal notranslate"><span class="pre">virginica</span></code> because the nearest neighbor to the red cross is a darkblue circle, which is a <code class="docutils literal notranslate"><span class="pre">virginica</span></code>.</p></li>
+<li><p>The model would have predict the test point to be a <code class="docutils literal notranslate"><span class="pre">versicolor</span></code> if its <code class="docutils literal notranslate"><span class="pre">septal_length</span></code> is <code class="docutils literal notranslate"><span class="pre">5.1cm</span></code>, or the model would have predict the test point to be a <code class="docutils literal notranslate"><span class="pre">setosa</span></code> if its <code class="docutils literal notranslate"><span class="pre">septal_width</span></code> is <code class="docutils literal notranslate"><span class="pre">2.9cm</span></code>.</p></li>
+</ul>
+<p>When <span class="math notranslate nohighlight">\(K=5\)</span>, the model predicts the test point to be a <code class="docutils literal notranslate"><span class="pre">versicolor</span></code> because the majority of the five nearest neighbors to the red cross are <code class="docutils literal notranslate"><span class="pre">versicolor</span></code> (green circles). When <span class="math notranslate nohighlight">\(K=15\)</span>, the model predicts the test point to be a <code class="docutils literal notranslate"><span class="pre">setosa</span></code> because the majority of the 15 nearest neighbors to the red cross are <code class="docutils literal notranslate"><span class="pre">setosa</span></code> (orange circles). From the figures, we can tell how a different prediction would have been made by changing the features of the test point.</p>
+</div>
+<div class="section" id="other-observations">
+<h3><span class="section-number">1.5.2.7. </span>Other observations<a class="headerlink" href="#other-observations" title="Permalink to this headline">¶</a></h3>
 <p>We can make the following observations from the above figures.</p>
 <ul class="simple">
 <li><p>We can see that the decision boundaries are not smooth. This is because the KNN model is a non-parametric model, which means that it does not make any assumption on the underlying data distribution. This is also the reason why the model is called <em>lazy</em>. KNN actually does not learn a discriminative function from the training data but memorises the training dataset instead. This is why the model is also called <em>instance-based</em>. The model makes prediction by comparing the test sample with all training samples and assigning the label that is most common among its <span class="math notranslate nohighlight">\(K\)</span> nearest neighbors.</p></li>

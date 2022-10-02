@@ -726,8 +726,8 @@ const thebe_selector_output = ".output, .cell_output"
 Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon.
 \]</div>
 <p>This model can be extended to include an interaction term between <span class="math notranslate nohighlight">\(X_1\)</span> and <span class="math notranslate nohighlight">\(X_2\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dcd57f48-e704-444d-b474-5671baf19777">
-<span class="eqno">(2.19)<a class="headerlink" href="#equation-dcd57f48-e704-444d-b474-5671baf19777" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-45b3a006-dd67-47b9-a2bd-a0d87acdf978">
+<span class="eqno">(2.19)<a class="headerlink" href="#equation-45b3a006-dd67-47b9-a2bd-a0d87acdf978" title="Permalink to this equation">¶</a></span>\[\begin{align}
 Y &amp;= \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_1 X_2 + \epsilon \\
 &amp;= \beta_0 + (\beta_1 + \beta_3 X_2) X_1 + \beta_2 X_2 + \epsilon \\
 &amp;= \beta_0 + \tilde{\beta}_1 X_1 + \beta_2 X_2 + \epsilon,
@@ -844,8 +844,8 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_1 X_2 + \epsilon \\
 </div>
 </div>
 <p>The figure seem to suggest that a quadratic relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code> might be more appropriate than a linear relationship. We can fit such a model using the following regression:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-32dd1faa-f2ae-4b46-9368-0642cb3726b2">
-<span class="eqno">(2.20)<a class="headerlink" href="#equation-32dd1faa-f2ae-4b46-9368-0642cb3726b2" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-550d1581-e06c-4127-84a2-9554ad933a9d">
+<span class="eqno">(2.20)<a class="headerlink" href="#equation-550d1581-e06c-4127-84a2-9554ad933a9d" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \textrm{mpg} = \beta_0 + \beta_1 \times \textrm{horsepower} + \beta_2 \times \textrm{horsepower}^2 + \epsilon.
 \end{equation}\]</div>
 <p>In fact, this is still a linear model with <span class="math notranslate nohighlight">\(X_1 = \textrm{horsepower}\)</span> and <span class="math notranslate nohighlight">\(X_2 = \textrm{horsepower}^2\)</span>. Run the following code to fit a linear regression model with <code class="docutils literal notranslate"><span class="pre">mpg</span></code> as the response and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code> and <code class="docutils literal notranslate"><span class="pre">horsepower^2</span></code> as the predictors (Table 3.10 of the ISLR book).</p>

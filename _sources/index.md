@@ -36,11 +36,13 @@ For sections prepared in executable Jupyter notebooks, you will see a rocket ico
 
 We design this course to be self-contained so that most users can complete in 40 hours. For those short of time and those having relevant knowledge and skills already, going through the materials here should be sufficient. For those lacking such knowledge and skills, those who want to go deeper, and those with more time available, we suggest you to (re)read the textbook [An Introduction to Statistical Learning](https://www.statlearning.com/) alongside this course. You can [buy the book](https://www.amazon.co.uk/Introduction-Statistical-Learning-Applications-Statistics/dp/1071614177) or read the [free online version in PDF](https://hastie.su.domains/ISLR2/ISLRv2_website.pdf).
 
-## Course outline and structure (subject to change)
+## Course outline and structure
+
+Besides the prerequisites, the 10 chapters can be grouped into two parts: the first covers more basic topics and the second covers more advanced topics.
 
 - [Prerequisites](https://pykale.github.io/transparentML/00-prereq/overview.html): Basic mathematics and Python programming for machine learning
 
-### Basics
+**Basics**
 
 - [Chapter 1](https://pykale.github.io/transparentML/01-intro/overview.html): [System and Process] Introduction to machine learning and AI transparency
 - [Chapter 2](https://pykale.github.io/transparentML/02-linear-reg/overview.html): [System] Linear regression
@@ -48,7 +50,7 @@ We design this course to be self-contained so that most users can complete in 40
 - [Chapter 4](https://pykale.github.io/transparentML/04-cross-val-bootstrap/overview.html): [Process] Cross validation and bootstrap
 - [Chapter 5](https://pykale.github.io/transparentML/05-hypo-test-sw-dev/overview.html): [Process] Hypothesis testing and software development
 
-### Advanced
+**Advanced**
 
 - [Chapter 6](https://pykale.github.io/transparentML/06-ftr-select-shrink/overview.html): [System] Feature subset selection and shrinkage
 - [Chapter 7](https://pykale.github.io/transparentML/07-dec-trees-rnd-forest/overview.html): [System] Decision trees and random forest
@@ -57,6 +59,15 @@ We design this course to be self-contained so that most users can complete in 40
 - [Chapter 10](https://pykale.github.io/transparentML/10-deep-cnn-rnn/overview.html): [System] Deep learning with convolutional/recurrent neural networks
 
 ## Instructors
+
+<table>
+  <tbody>
+    <tr>
+      <td align="center"><a href="https://haipinglu.github.io/"><img src="https://raw.githubusercontent.com/haipinglu/hugo-academic/main/content/authors/haiping-lu/avatar.png" width="200px;" alt="Haiping Lu"/><br /><sub><b>Haiping Lu</b></sub></a></td>
+      <td align="center"><a href="https://shuo-zhou.github.io/"><img src="https://raw.githubusercontent.com/shuo-zhou/shuo-zhou.github.io/master/assets/img/profile.png" width="200px;" alt="Shuo Zhou"/><br /><sub><b>Shuo Zhou</b></sub></a></td>
+    </tr>
+  </tbody>
+</table>
 
 This course is developed by [Haiping Lu](https://haipinglu.github.io/), a Senior Lecturer in Machine Learning, and [Shuo Zhou](https://shuo-zhou.github.io/), an Academic Fellow in Machine Learning, both at the [Department of Computer Science](https://www.sheffield.ac.uk/dcs), [The University of Sheffield](https://www.sheffield.ac.uk/). H. Lu has developed and taught two machine learning courses [Machine Learning and Adaptive Intelligence](https://github.com/maalvarezl/MLAI) from 2018 to 2021 and [Scalable Machine Learning](https://github.com/haipinglu/ScalableML) since 2017. S. Zhou was a student and then a head teaching assistant of the [Machine Learning and Adaptive Intelligence](https://github.com/maalvarezl/MLAI) course and earned a PhD in machine learning from the University of Sheffield in 2022.
 
