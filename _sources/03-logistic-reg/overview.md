@@ -30,5 +30,16 @@ In this chapter, we will [... (intro paragraph)].
 System logic
 - Condition to produce certain output:
 ```
+
+Watch the following video to get an overview of the chapter:
+
+```{admonition} Video
+
+<iframe width="700" height="394" src="https://www.youtube.com/embed/yIYKR4sgzI8?start=24" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+[Explaining Logistic Regression, by StatQuest](https://www.youtube.com/embed/yIYKR4sgzI8?start=24)
+
+```
+
 <!-- - What input to produce certain output:
 - How to produce certain output: -->

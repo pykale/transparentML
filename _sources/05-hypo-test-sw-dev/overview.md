@@ -29,5 +29,14 @@ In this chapter, we will [... (intro paragraph)].
 System logic
 - Condition to produce certain output:
 ```
+
+```{admonition} Video
+
+<iframe width="700" height="394" src="https://www.youtube.com/embed/0oc49DyA3hU?start=16" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+[Explaining Hypothesis Testing, by StatQuest](https://www.youtube.com/embed/0oc49DyA3hU?start=16)
+
+```
+
 <!-- - What input to produce certain output:
 - How to produce certain output: -->
