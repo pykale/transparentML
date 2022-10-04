@@ -500,12 +500,15 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="admonition-objectives admonition">
 <p class="admonition-title">Objectives</p>
 <ul class="simple">
-<li><p>Estimate the coefficients of a linear regression model.</p></li>
-<li><p>Assess (evaluate) linear regression models and coefficients.</p></li>
+<li><p>Understand the basic concepts of linear regression</p></li>
+<li><p>Apply linear regression to real data</p></li>
+<li><p>Evaluate the performance of a linear regression model</p></li>
+<li><p>Interpret the results of a linear regression</p></li>
 </ul>
 </div>
 <p><strong>Expected time to complete</strong>: 3 hours</p>
-<p>Linear regression model is a linear model that assumes a linear relationship between the input (predictor) variable(s) <span class="math notranslate nohighlight">\(X\)</span> and the single output (response) variable <span class="math notranslate nohighlight">\(y\)</span>. This chapter will explain some of the key ideas underlying linear regression using the example of analysing <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> data. The <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> dataset contains sales revenue generated with respect to advertisement spends across multiple channels (TV, radio, newspaper) for a single product in a single market. The goal is to predict <code class="docutils literal notranslate"><span class="pre">sales</span></code> revenue based on the advertisement spends.</p>
+<p>Linear regression is a fundamental model for regression problems, where we aim to predict a continuous value (i.e. a quantitative response) based on one or more explanatory variables. It is a linear model that assumes a linear relationship between the input variable(s) <span class="math notranslate nohighlight">\(x\)</span> or <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and the single output variable <span class="math notranslate nohighlight">\(y\)</span>. Thus, it can be used to understand the relationship between two or more variables. In this chapter, we will learn how to use linear regression to make predictions and understand the relationship between variables. We will learn the basic concepts of linear regression and apply it to real data. We will also learn how to evaluate the performance of a linear regression model and interpret the results.</p>
+<p>We will mainly use the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Advertising.csv">Advertising</a> data to explain the key ideas underlying linear regression. The <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> dataset contains sales revenue generated with respect to advertisement spends across multiple channels (TV, radio, newspaper) for a single product in a single market. The goal is to predict <code class="docutils literal notranslate"><span class="pre">sales</span></code> revenue based on the advertisement spends.</p>
 <!-- By analysing this dataset, we will try to answer the 7 following questions:
 
 1. Is there a relationship between advertising budget and sales?
@@ -518,23 +521,23 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="admonition-ingredients admonition">
 <p class="admonition-title">Ingredients</p>
 <ul class="simple">
-<li><p>Input: features (predictor variables) of data samples</p></li>
-<li><p>Output: target values (responses) of data samples</p></li>
-<li><p>Model: linear regression model</p>
+<li><p>Input: features of data samples</p></li>
+<li><p>Output: target values of data samples</p></li>
+<li><p>Model: fit a line (or plane/hyperplane) to the training data and assign the value on the fitted line (or plane/hyperplane) to the test data</p>
 <ul>
 <li><p>Hyperparameter(s): None</p></li>
-<li><p>Parameters: regression coefficients, i.e. intercept and slope(s)</p></li>
+<li><p>Parameters: the intercept(s) and slope(s) of the fitted line (or plane/hyperplane), also known as the weight(s) and bias(es)</p></li>
 </ul>
 </li>
-<li><p>Loss function: residual sum of squares (RSS)</p></li>
-<li><p>Learning algorithm: ordinary least squares (OLS)</p></li>
+<li><p>Loss function: minimise the total distances of the training data points to the fitted line (or plane/hyperplane)</p></li>
+<li><p>Learning algorithm: closed-form analytical solution based on linear algebra</p></li>
 </ul>
 </div>
 <div class="admonition-transparency admonition">
 <p class="admonition-title">Transparency</p>
 <p>System logic</p>
 <ul class="simple">
-<li><p>Condition to produce certain output: with certain training data, the model will learn certain coefficients, which will produce certain responses (predictions) for certain test data.</p></li>
+<li><p>Condition to produce certain output: to produce an output <span class="math notranslate nohighlight">\(y\)</span>, locate this <span class="math notranslate nohighlight">\(y\)</span> value on the fitted line (or plane/hyperplane) and then find the corresponding input <span class="math notranslate nohighlight">\(x\)</span> (or <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>) value</p></li>
 </ul>
 </div>
 <!-- Generated by Copilot -->
