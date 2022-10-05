@@ -128,8 +128,8 @@ This section introduces the basic concepts of linear algebra and notations used 
 ### Exercises
 
 1. $$
-    \begin{bmatrix} 12 & 0 & 0 \\ 0 & 8 & 0 \\ 0 & 0 & 23 \end{bmatrix}.
-   $$
+    \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}.
+  $$
     What kind of matrices is it?
 2. **A** = $$ 
     \begin{bmatrix} 8 & 5 & 9 \\ 7 & 19 & 14 \end{bmatrix}. 
