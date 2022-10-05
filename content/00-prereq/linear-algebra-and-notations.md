@@ -146,4 +146,4 @@ This section introduces the basic concepts of linear algebra and notations used 
 
    a. AB = ?  
    b. 2A=?  
-   c. AB+2A=? 
+   c. AB+2A=?  
