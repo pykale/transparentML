@@ -76,49 +76,49 @@ From the above, we can see that reproducibility is a minimal requirement for rep
 
 ### Exercises
 
-1. What are the main ingredients of an ML system?  
-  
-  
-2. Weight and biases are the hyperparameters of a model.   
-   a. True  
-   b. False  
-  
-  
-3. Which of the following are true?  
-   a. In regression, the loss function measures the difference between the predicted class label and the true class label.  
-   b. In dimension reduction, the loss function measures the difference between the predicted real number and the true real number.  
-   c. In clustering, the loss function measures the coherence and separation of clusters.  
-   d. In classification, the loss function measures the difference between the predicted class label and the true class label.  
-  
+1. What are the main ingredients of an ML system?
+
+
+2. Weight and biases are the hyperparameters of a model.
+   a. True
+   b. False
+
+
+3. Which of the following are true?
+   a. In regression, the loss function measures the difference between the predicted class label and the true class label.
+   b. In dimension reduction, the loss function measures the difference between the predicted real number and the true real number.
+   c. In clustering, the loss function measures the coherence and separation of clusters.
+   d. In classification, the loss function measures the difference between the predicted class label and the true class label.
+
 Pricing apartments based on a real estate website. We have thousands of house descriptions with their price. Typically, an example of a house description is the following:
 “Great for entertaining: spacious, updated 2 bedroom, 1 bathroom apartment in Lakeview, 97630. The house will be available from May 1st. Close to nightlife with a private backyard. Price ~$1,000,000.”  We are interested in predicting house prices from their description. One potential use case for this would be, as a buyer, finding cheap houses compared to their market value.
-  
-4. What kind of problem is it?    
-   a. a supervised problem  
-   b. an unsupervised problem   
-   c. a classification problem  
-   d. a regression problem  
-   e. a clustering problem  
-   f. a dimensionality reduction problem  
-   Select all answers that apply  
-  
-  
-5. What are the features?      
-   a. the number of rooms might be a feature    
-   b. the postcode of the house might be a feature      
-   c. the price of the house might be a feature         
-   Select all answers that apply 
-  
-  
-6. What is the target variable?        
-   a. the full-text description is the target      
-   b. the price of the house is the target      
-   c. only house descriptions with no price mentioned are the target         
-   Select a single answer 
-  
-  
-7. What is a record (a sample)?        
-   a. each house description is a record      
-   b. each house price is a record      
-   c. each kind of description (as the house size) is a record         
-   Select a single answer     
+
+4. What kind of problem is it?
+   a. a supervised problem
+   b. an unsupervised problem
+   c. a classification problem
+   d. a regression problem
+   e. a clustering problem
+   f. a dimensionality reduction problem
+   Select all answers that apply
+
+
+5. What are the features?
+   a. the number of rooms might be a feature
+   b. the postcode of the house might be a feature
+   c. the price of the house might be a feature
+   Select all answers that apply
+
+
+6. What is the target variable?
+   a. the full-text description is the target
+   b. the price of the house is the target
+   c. only house descriptions with no price mentioned are the target
+   Select a single answer
+
+
+7. What is a record (a sample)?
+   a. each house description is a record
+   b. each house price is a record
+   c. each kind of description (as the house size) is a record
+   Select a single answer

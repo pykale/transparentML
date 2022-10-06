@@ -42,12 +42,12 @@ Denote the three features as $x_1$ for TV, $x_2$ for radio, and $x_3$ for newspa
 The function $f$ is called the **model** or **predictive function**. The model $f$ is learned from the data, which is called the **training data**. The training data consists of the features $\mathbf{x}$ and the target $y$ for each sample. In this case, the training data is a table with 200 rows and 4 columns, where each row is a sample and each column is a feature or a target. The first three columns are the features and the last column is the target.
 
 ### Exercises
- 
-1. Deep Learning is a subfield of AI.   
-   a. True  
-   b. False  
 
-We collected a set of data on the top 5000 firms in the US. For each firm, we record profit, number of employees, industry, and the CEO's salary. We are interested in understanding which factors affect CEO salary.  
+1. Deep Learning is a subfield of AI.
+   a. True
+   b. False
+
+We collected a set of data on the top 5000 firms in the US. For each firm, we record profit, number of employees, industry, and the CEO's salary. We are interested in understanding which factors affect CEO salary.
 
 3. What are the features here?
 
