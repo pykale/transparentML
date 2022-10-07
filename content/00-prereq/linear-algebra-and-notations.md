@@ -161,5 +161,5 @@ This section introduces the basic concepts of linear algebra and notations used 
 
 
    ```{toggle}
-    Some hidden toggle content!
+    Answer:
    ```
