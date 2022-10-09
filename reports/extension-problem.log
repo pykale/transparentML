@@ -17,55 +17,82 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Income (x-axis)
-income = np.linspace(0, 150)
-
-# Balance without interaction term (y-axis)
-student1 = np.linspace(
-    regr1["Intercept"] + regr1["Student2"],
-    regr1["Intercept"] + regr1["Student2"] + 150 * regr1["Income"],
+sns.pairplot(
+    credit_df[["Balance", "Age", "Cards", "Education", "Income", "Limit", "Rating"]]
 )
-non_student1 = np.linspace(
-    regr1["Intercept"], regr1["Intercept"] + 150 * regr1["Income"]
-)
-
-# Balance with iteraction term (y-axis)
-student2 = np.linspace(
-    regr2["Intercept"] + regr2["Student2"],
-    regr2["Intercept"]
-    + regr2["Student2"]
-    + 150 * (regr2["Income"] + regr2["Income:Student2"]),
-)
-non_student2 = np.linspace(
-    regr2["Intercept"], regr2["Intercept"] + 150 * regr2["Income"]
-)
-
-# Create plot
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
-ax1.plot(income, student1, "r", income, non_student1, "k")
-ax2.plot(income, student2, "r", income, non_student2, "k")
-
-for ax in fig.axes:
-    ax.legend(["student", "non-student"], loc=2)
-    ax.set_xlabel("Income")
-    ax.set_ylabel("Balance")
-    ax.set_ylim(ymax=1550)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mNameError[0m                                 Traceback (most recent call last)
-Cell [0;32mIn [10], line 6[0m
-[1;32m      2[0m income [38;5;241m=[39m np[38;5;241m.[39mlinspace([38;5;241m0[39m, [38;5;241m150[39m)
-[1;32m      4[0m [38;5;66;03m# Balance without interaction term (y-axis)[39;00m
-[1;32m      5[0m student1 [38;5;241m=[39m np[38;5;241m.[39mlinspace(
-[0;32m----> 6[0m     regr1[[38;5;124m"[39m[38;5;124mIntercept[39m[38;5;124m"[39m] [38;5;241m+[39m regr1[[38;5;124m"[39m[38;5;124mStudent2[39m[38;5;124m"[39m],
-[1;32m      7[0m     regr1[[38;5;124m"[39m[38;5;124mIntercept[39m[38;5;124m"[39m] [38;5;241m+[39m regr1[[38;5;124m"[39m[38;5;124mStudent2[39m[38;5;124m"[39m] [38;5;241m+[39m [38;5;241m150[39m [38;5;241m*[39m regr1[[38;5;124m"[39m[38;5;124mIncome[39m[38;5;124m"[39m],
-[1;32m      8[0m )
-[1;32m      9[0m non_student1 [38;5;241m=[39m np[38;5;241m.[39mlinspace(
-[1;32m     10[0m     regr1[[38;5;124m"[39m[38;5;124mIntercept[39m[38;5;124m"[39m], regr1[[38;5;124m"[39m[38;5;124mIntercept[39m[38;5;124m"[39m] [38;5;241m+[39m [38;5;241m150[39m [38;5;241m*[39m regr1[[38;5;124m"[39m[38;5;124mIncome[39m[38;5;124m"[39m]
-[1;32m     11[0m )
-[1;32m     13[0m [38;5;66;03m# Balance with iteraction term (y-axis)[39;00m
+[0;31mStopIteration[0m                             Traceback (most recent call last)
+Cell [0;32mIn [5], line 1[0m
+[0;32m----> 1[0m [43msns[49m[38;5;241;43m.[39;49m[43mpairplot[49m[43m([49m
+[1;32m      2[0m [43m    [49m[43mcredit_df[49m[43m[[49m[43m[[49m[38;5;124;43m"[39;49m[38;5;124;43mBalance[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mAge[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mCards[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mEducation[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mIncome[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mLimit[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mRating[39;49m[38;5;124;43m"[39;49m[43m][49m[43m][49m
+[1;32m      3[0m [43m)[49m
 
-[0;31mNameError[0m: name 'regr1' is not defined
-NameError: name 'regr1' is not defined
+File [0;32m/opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages/seaborn/axisgrid.py:2144[0m, in [0;36mpairplot[0;34m(data, hue, hue_order, palette, vars, x_vars, y_vars, kind, diag_kind, markers, height, aspect, corner, dropna, plot_kws, diag_kws, grid_kws, size)[0m
+[1;32m   2142[0m diag_kws[38;5;241m.[39msetdefault([38;5;124m"[39m[38;5;124mlegend[39m[38;5;124m"[39m, [38;5;28;01mFalse[39;00m)
+[1;32m   2143[0m [38;5;28;01mif[39;00m diag_kind [38;5;241m==[39m [38;5;124m"[39m[38;5;124mhist[39m[38;5;124m"[39m:
+[0;32m-> 2144[0m     [43mgrid[49m[38;5;241;43m.[39;49m[43mmap_diag[49m[43m([49m[43mhistplot[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mdiag_kws[49m[43m)[49m
+[1;32m   2145[0m [38;5;28;01melif[39;00m diag_kind [38;5;241m==[39m [38;5;124m"[39m[38;5;124mkde[39m[38;5;124m"[39m:
+[1;32m   2146[0m     diag_kws[38;5;241m.[39msetdefault([38;5;124m"[39m[38;5;124mfill[39m[38;5;124m"[39m, [38;5;28;01mTrue[39;00m)
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages/seaborn/axisgrid.py:1507[0m, in [0;36mPairGrid.map_diag[0;34m(self, func, **kwargs)[0m
+[1;32m   1505[0m     plot_kwargs[38;5;241m.[39msetdefault([38;5;124m"[39m[38;5;124mhue_order[39m[38;5;124m"[39m, [38;5;28mself[39m[38;5;241m.[39m_hue_order)
+[1;32m   1506[0m     plot_kwargs[38;5;241m.[39msetdefault([38;5;124m"[39m[38;5;124mpalette[39m[38;5;124m"[39m, [38;5;28mself[39m[38;5;241m.[39m_orig_palette)
+[0;32m-> 1507[0m     [43mfunc[49m[43m([49m[43mx[49m[38;5;241;43m=[39;49m[43mvector[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mplot_kwargs[49m[43m)[49m
+[1;32m   1508[0m     ax[38;5;241m.[39mlegend_ [38;5;241m=[39m [38;5;28;01mNone[39;00m
+[1;32m   1510[0m [38;5;28mself[39m[38;5;241m.[39m_add_axis_labels()
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages/seaborn/distributions.py:1418[0m, in [0;36mhistplot[0;34m(data, x, y, hue, weights, stat, bins, binwidth, binrange, discrete, cumulative, common_bins, common_norm, multiple, element, fill, shrink, kde, kde_kws, line_kws, thresh, pthresh, pmax, cbar, cbar_ax, cbar_kws, palette, hue_order, hue_norm, color, log_scale, legend, ax, **kwargs)[0m
+[1;32m   1416[0m     [38;5;28;01melse[39;00m:
+[1;32m   1417[0m         method [38;5;241m=[39m ax[38;5;241m.[39mplot
+[0;32m-> 1418[0m     color [38;5;241m=[39m [43m_default_color[49m[43m([49m[43mmethod[49m[43m,[49m[43m [49m[43mhue[49m[43m,[49m[43m [49m[43mcolor[49m[43m,[49m[43m [49m[43mkwargs[49m[43m)[49m
+[1;32m   1420[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m p[38;5;241m.[39mhas_xy_data:
+[1;32m   1421[0m     [38;5;28;01mreturn[39;00m ax
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages/seaborn/utils.py:139[0m, in [0;36m_default_color[0;34m(method, hue, color, kws)[0m
+[1;32m    134[0m     scout[38;5;241m.[39mremove()
+[1;32m    136[0m [38;5;28;01melif[39;00m method[38;5;241m.[39m[38;5;18m__name__[39m [38;5;241m==[39m [38;5;124m"[39m[38;5;124mbar[39m[38;5;124m"[39m:
+[1;32m    137[0m 
+[1;32m    138[0m     [38;5;66;03m# bar() needs masked, not empty data, to generate a patch[39;00m
+[0;32m--> 139[0m     scout, [38;5;241m=[39m [43mmethod[49m[43m([49m[43m[[49m[43mnp[49m[38;5;241;43m.[39;49m[43mnan[49m[43m][49m[43m,[49m[43m [49m[43m[[49m[43mnp[49m[38;5;241;43m.[39;49m[43mnan[49m[43m][49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkws[49m[43m)[49m
+[1;32m    140[0m     color [38;5;241m=[39m to_rgb(scout[38;5;241m.[39mget_facecolor())
+[1;32m    141[0m     scout[38;5;241m.[39mremove()
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages/matplotlib/__init__.py:1423[0m, in [0;36m_preprocess_data.<locals>.inner[0;34m(ax, data, *args, **kwargs)[0m
+[1;32m   1420[0m [38;5;129m@functools[39m[38;5;241m.[39mwraps(func)
+[1;32m   1421[0m [38;5;28;01mdef[39;00m [38;5;21minner[39m(ax, [38;5;241m*[39margs, data[38;5;241m=[39m[38;5;28;01mNone[39;00m, [38;5;241m*[39m[38;5;241m*[39mkwargs):
+[1;32m   1422[0m     [38;5;28;01mif[39;00m data [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[0;32m-> 1423[0m         [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[43max[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;28;43mmap[39;49m[43m([49m[43msanitize_sequence[49m[43m,[49m[43m [49m[43margs[49m[43m)[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m   1425[0m     bound [38;5;241m=[39m new_sig[38;5;241m.[39mbind(ax, [38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+[1;32m   1426[0m     auto_label [38;5;241m=[39m (bound[38;5;241m.[39marguments[38;5;241m.[39mget(label_namer)
+[1;32m   1427[0m                   [38;5;129;01mor[39;00m bound[38;5;241m.[39mkwargs[38;5;241m.[39mget(label_namer))
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages/matplotlib/axes/_axes.py:2373[0m, in [0;36mAxes.bar[0;34m(self, x, height, width, bottom, align, **kwargs)[0m
+[1;32m   2371[0m x0 [38;5;241m=[39m x
+[1;32m   2372[0m x [38;5;241m=[39m np[38;5;241m.[39masarray([38;5;28mself[39m[38;5;241m.[39mconvert_xunits(x))
+[0;32m-> 2373[0m width [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_convert_dx[49m[43m([49m[43mwidth[49m[43m,[49m[43m [49m[43mx0[49m[43m,[49m[43m [49m[43mx[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mconvert_xunits[49m[43m)[49m
+[1;32m   2374[0m [38;5;28;01mif[39;00m xerr [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[1;32m   2375[0m     xerr [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_convert_dx(xerr, x0, x, [38;5;28mself[39m[38;5;241m.[39mconvert_xunits)
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages/matplotlib/axes/_axes.py:2182[0m, in [0;36mAxes._convert_dx[0;34m(dx, x0, xconv, convert)[0m
+[1;32m   2170[0m [38;5;28;01mtry[39;00m:
+[1;32m   2171[0m     [38;5;66;03m# attempt to add the width to x0; this works for[39;00m
+[1;32m   2172[0m     [38;5;66;03m# datetime+timedelta, for instance[39;00m
+[0;32m   (...)[0m
+[1;32m   2179[0m     [38;5;66;03m# removes the units from unit packages like `pint` that[39;00m
+[1;32m   2180[0m     [38;5;66;03m# wrap numpy arrays.[39;00m
+[1;32m   2181[0m     [38;5;28;01mtry[39;00m:
+[0;32m-> 2182[0m         x0 [38;5;241m=[39m [43mcbook[49m[38;5;241;43m.[39;49m[43m_safe_first_finite[49m[43m([49m[43mx0[49m[43m)[49m
+[1;32m   2183[0m     [38;5;28;01mexcept[39;00m ([38;5;167;01mTypeError[39;00m, [38;5;167;01mIndexError[39;00m, [38;5;167;01mKeyError[39;00m):
+[1;32m   2184[0m         [38;5;28;01mpass[39;00m
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages/matplotlib/cbook/__init__.py:1749[0m, in [0;36m_safe_first_finite[0;34m(obj, skip_nonfinite)[0m
+[1;32m   1746[0m     [38;5;28;01mraise[39;00m [38;5;167;01mRuntimeError[39;00m([38;5;124m"[39m[38;5;124mmatplotlib does not [39m[38;5;124m"[39m
+[1;32m   1747[0m                        [38;5;124m"[39m[38;5;124msupport generators as input[39m[38;5;124m"[39m)
+[1;32m   1748[0m [38;5;28;01melse[39;00m:
+[0;32m-> 1749[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mnext[39;49m[43m([49m[43mval[49m[43m [49m[38;5;28;43;01mfor[39;49;00m[43m [49m[43mval[49m[43m [49m[38;5;129;43;01min[39;49;00m[43m [49m[43mobj[49m[43m [49m[38;5;28;43;01mif[39;49;00m[43m [49m[43msafe_isfinite[49m[43m([49m[43mval[49m[43m)[49m[43m)[49m
+
+[0;31mStopIteration[0m: 
+StopIteration: 
 

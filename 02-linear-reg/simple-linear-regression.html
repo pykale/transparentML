@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.2. Multiple Linear Regression" href="multi-linear-regression.html" />
+    <link rel="next" title="2.2. Multiple linear regression" href="multi-linear-regression.html" />
     <link rel="prev" title="2. Linear Regression" href="overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -585,7 +585,6 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">axes3d</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">scale</span>
@@ -697,8 +696,8 @@ memory usage: 7.8 KB
 </div></div></div>
 </div>
 <p>Simple linear regression assumes that there is an approximately linear relationship between a quantitative response <span class="math notranslate nohighlight">\(y\)</span> and a single predictor <span class="math notranslate nohighlight">\(x\)</span>. Mathematically, the linear relationship can be expressed as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a9c0c933-dde7-416e-9b3d-57b9800114de">
-<span class="eqno">(2.1)<a class="headerlink" href="#equation-a9c0c933-dde7-416e-9b3d-57b9800114de" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d3b652e4-c0fc-4b12-91c2-5cd29ba15607">
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-d3b652e4-c0fc-4b12-91c2-5cd29ba15607" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 y \approx \beta_0 + \beta_1 x
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are two unknown constants that represent the <em>weight</em> and <em>bias</em> of the linear model, which are also known as <em>intercept</em> and <em>slope</em>. Together, <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are called the <em>model coefficients</em>, or <em>parameters</em>. We can describe the linear relationship as <em>regressing</em> <span class="math notranslate nohighlight">\(y\)</span> onto <span class="math notranslate nohighlight">\(x\)</span>. For example, <span class="math notranslate nohighlight">\(x\)</span> may represent <code class="docutils literal notranslate"><span class="pre">TV</span></code> advertising and <span class="math notranslate nohighlight">\(y\)</span> may represent <code class="docutils literal notranslate"><span class="pre">sales</span></code>. Then we can regress sales onto TV by fitting the model</p>
@@ -717,22 +716,22 @@ y \approx \beta_0 + \beta_1 x
 (x_1, y_1), (x_2, y_2), \ldots, (x_N, y_N)
 \]</div>
 <p>be the <span class="math notranslate nohighlight">\(n\)</span> observations in the dataset, and <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> denote the estimated values of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>, respectively. The estimated values of <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> can be obtained by minimising the <em>residual sum of squares</em> (RSS)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3d0202c9-d6d6-4b7f-979b-7d4277e77c92">
-<span class="eqno">(2.2)<a class="headerlink" href="#equation-3d0202c9-d6d6-4b7f-979b-7d4277e77c92" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-33afb812-f471-4965-acb7-90fa0049332b">
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-33afb812-f471-4965-acb7-90fa0049332b" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{RSS} = \sum_{i=1}^N (y_i - \hat{y}_i)^2 = \sum_{i=1}^N (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i)^2,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the response <span class="math notranslate nohighlight">\(y\)</span>, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predicted response <span class="math notranslate nohighlight">\(\hat{Y}\)</span>, and <span class="math notranslate nohighlight">\(x_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predictor <span class="math notranslate nohighlight">\(x\)</span>. The least squares estimates of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7fc2ff5b-e5e1-486c-abdf-c7a298c93e81">
-<span class="eqno">(2.3)<a class="headerlink" href="#equation-7fc2ff5b-e5e1-486c-abdf-c7a298c93e81" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-78885cbe-5a25-41dc-ac2f-ed4201620684">
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-78885cbe-5a25-41dc-ac2f-ed4201620684" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{\beta}_1 = \frac{\sum_{i=1}^N (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^N (x_i - \bar{x})^2},
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-a87536bc-1ae2-425b-92a6-e3d21dba6040">
-<span class="eqno">(2.4)<a class="headerlink" href="#equation-a87536bc-1ae2-425b-92a6-e3d21dba6040" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e0d3f591-85a9-403f-88ec-6f9d0bb19116">
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-e0d3f591-85a9-403f-88ec-6f9d0bb19116" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}.
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\bar{y}\)</span> are the sample means of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> respectively. The least squares estimates of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are obtained by minimising the RSS. The least squares line is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5e395b0f-5970-4315-b85a-e040ea3aed9e">
-<span class="eqno">(2.5)<a class="headerlink" href="#equation-5e395b0f-5970-4315-b85a-e040ea3aed9e" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-874794c5-990e-4b08-9329-59d7502e6a89">
+<span class="eqno">(2.5)<a class="headerlink" href="#equation-874794c5-990e-4b08-9329-59d7502e6a89" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x
 \end{equation}\]</div>
 <p>The least squares line is the line that minimises the sum of squared residuals. The least squares line is also known as the <em>regression line</em>.</p>
@@ -858,13 +857,13 @@ Note that the text in the book describes the coefficients based on unnormalised 
 <div class="section" id="assessing-the-accuracy-of-the-model">
 <h2><span class="section-number">2.1.3. </span>Assessing the accuracy of the model<a class="headerlink" href="#assessing-the-accuracy-of-the-model" title="Permalink to this headline">¶</a></h2>
 <p>The accuracy of the linear model is dependent on the variability of the response <span class="math notranslate nohighlight">\(y\)</span> and the predictor <span class="math notranslate nohighlight">\(x\)</span>. The variability of <span class="math notranslate nohighlight">\(y\)</span> is measured by the variance of <span class="math notranslate nohighlight">\(y\)</span>, denoted by <span class="math notranslate nohighlight">\(\sigma^2\)</span>. The variability of <span class="math notranslate nohighlight">\(x\)</span> is measured by the variance of <span class="math notranslate nohighlight">\(x\)</span>, denoted by <span class="math notranslate nohighlight">\(\sigma_x^2\)</span>. The coefficient of determination, denoted by <span class="math notranslate nohighlight">\(R^2\)</span>, is defined as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7a887c8b-5723-4f5e-b913-46718c086ded">
-<span class="eqno">(2.6)<a class="headerlink" href="#equation-7a887c8b-5723-4f5e-b913-46718c086ded" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-84bf6ebb-398d-40a0-b717-7ef7333a85a2">
+<span class="eqno">(2.6)<a class="headerlink" href="#equation-84bf6ebb-398d-40a0-b717-7ef7333a85a2" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 R^2 = \frac{\text{TSS} - \text{RSS}}{\text{TSS}} = 1 - \frac{\text{RSS}}{\text{TSS}}
 \end{equation}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\text{TSS} = \sum_{i=1}^N (y_i - \bar{y})^2\)</span> <em>is the total sum of squares</em>. Dividing the TSS by the RSS gives the <em>mean squared error</em> (MSE) of the model. The MSE is the average squared distance between the observed response values and the response values predicted by the model. The MSE is also known as the <em>mean squared prediction error</em> (MSPE). The MSE is defined as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e2229dd4-a9dd-4d67-a4f4-a61559a5bd34">
-<span class="eqno">(2.7)<a class="headerlink" href="#equation-e2229dd4-a9dd-4d67-a4f4-a61559a5bd34" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<p>where <span class="math notranslate nohighlight">\(\text{TSS} = \sum_{i=1}^N (y_i - \bar{y})^2\)</span> <em>is the total sum of squares</em>. Dividing the TSS by the total number of training samples gives the <em>mean squared error</em> (MSE) of the model. The MSE is the average squared distance between the observed response values and the response values predicted by the model. The MSE is also known as the <em>mean squared prediction error</em> (MSPE). The MSE is defined as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8f831b43-f1cd-47bf-a8fb-7c58159c9740">
+<span class="eqno">(2.7)<a class="headerlink" href="#equation-8f831b43-f1cd-47bf-a8fb-7c58159c9740" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{MSE} = \frac{1}{N} \text{TSS} = \frac{1}{N} \sum_{i=1}^N (y_i - \hat{y}_i)^2 = \frac{1}{N} \sum_{i=1}^N (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i)^2.
 \end{equation}\]</div>
 <p>The coefficient of determination is a proportion that measures the proportion of the variability in the response that is explained by the linear model. The coefficient of determination is always between 0 and 1. The coefficient of determination is 0 when the regression line does not fit the data at all, and the coefficient of determination is 1 when the regression line perfectly fits the data. The coefficient of determination is also known as the <em>coefficient of multiple determination</em>. The coefficient of determination is a measure of the goodness of fit of the linear model. The coefficient of determination is also known as the <em>coefficient of multiple determination</em>. The coefficient of determination is a measure of the goodness of fit of the linear model.</p>
@@ -874,6 +873,7 @@ R^2 = \frac{\text{TSS} - \text{RSS}}{\text{TSS}} = 1 - \frac{\text{RSS}}{\text{T
 <iframe width="700" height="394" src="https://www.youtube.com/embed/2AQKmw14mHM?start=16" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
 <p><a class="reference external" href="https://www.youtube.com/embed/2AQKmw14mHM?start=16">Explaining <span class="math notranslate nohighlight">\(R^2\)</span>, by StatQuest</a></p>
 </div>
+<p>Run the following code to fit a simple linear regression model, and then evaluate the learnt model with <span class="math notranslate nohighlight">\(R^2\)</span> using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> (Table 3.1 &amp; 3.2 of the text book)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
@@ -897,12 +897,14 @@ R^2 = \frac{\text{TSS} - \text{RSS}}{\text{TSS}} = 1 - \frac{\text{RSS}}{\text{T
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sales_pred</span> <span class="o">=</span> <span class="n">regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">r2_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">sales_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R2 score:&quot;</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">sales_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean squared error: &quot;</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">sales_pred</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.611875050850071
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R2 score: 0.611875050850071
+Mean squared error:  10.512652915656757
 </pre></div>
 </div>
 </div>
@@ -911,22 +913,27 @@ R^2 = \frac{\text{TSS} - \text{RSS}}{\text{TSS}} = 1 - \frac{\text{RSS}}{\text{T
 <div class="section" id="assessing-the-accuracy-of-the-coefficient-estimates-advanced">
 <h2><span class="section-number">2.1.4. </span>Assessing the accuracy of the coefficient estimates (Advanced)<a class="headerlink" href="#assessing-the-accuracy-of-the-coefficient-estimates-advanced" title="Permalink to this headline">¶</a></h2>
 <p>The linear relationship between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> can be written in an equation as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9380b33e-f56a-40a9-8bfb-9cc85115fd6e">
-<span class="eqno">(2.8)<a class="headerlink" href="#equation-9380b33e-f56a-40a9-8bfb-9cc85115fd6e" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-df55cb61-d87e-4aab-9bd0-37196ec94267">
+<span class="eqno">(2.8)<a class="headerlink" href="#equation-df55cb61-d87e-4aab-9bd0-37196ec94267" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 y = \beta_0 + \beta_1 x + \epsilon,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\epsilon\)</span> is a random error term that represents the difference between the observed response <span class="math notranslate nohighlight">\(y\)</span> and the true response <span class="math notranslate nohighlight">\(\beta_0 + \beta_1 X\)</span>. The error term <span class="math notranslate nohighlight">\(\epsilon\)</span> is assumed to be normally distributed with mean zero and constant variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. The coefficient estimates <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> are only estimates of the true coefficients <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>. We can quantify the accuracy of the estimates by computing the <em>standard error</em> of the estimates. The following formulars can be used to compute the standard error associated with <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8df668ca-283a-41e3-9eb2-8528aab9022e">
-<span class="eqno">(2.9)<a class="headerlink" href="#equation-8df668ca-283a-41e3-9eb2-8528aab9022e" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-50b2916e-32af-4861-b111-82e550f3339e">
+<span class="eqno">(2.9)<a class="headerlink" href="#equation-50b2916e-32af-4861-b111-82e550f3339e" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{SE}(\hat{\beta}_{1})^2 = \frac{\sigma^2}{\sum_{i=1}^N (x_i - \bar{x})^2}, \quad \text{SE}(\hat{\beta}_0)^2 = \sigma^2 \left[\frac{1}{N} + \frac{\bar{x}^2}{\sum_{i=1}^N (x_i - \bar{x})^2} \right],
 \end{equation}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\sigma^2\)</span> is an estimate of the variance of the error term <span class="math notranslate nohighlight">\(\epsilon= y - (\beta_0 + \beta_1 x) \)</span>, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predicted response <span class="math notranslate nohighlight">\(\hat{Y}\)</span>, and <span class="math notranslate nohighlight">\(x_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predictor <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\bar{y}\)</span> are the sample means of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> respectively. This estimate is called the <em>residual standard error</em> (RSE)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6ccab470-133d-4f63-8e56-45d8959b3afa">
-<span class="eqno">(2.10)<a class="headerlink" href="#equation-6ccab470-133d-4f63-8e56-45d8959b3afa" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<p>where <span class="math notranslate nohighlight">\(\sigma^2\)</span> is an estimate of the variance of the error term <span class="math notranslate nohighlight">\(\epsilon= y - (\beta_0 + \beta_1 x) \)</span>, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predicted response <span class="math notranslate nohighlight">\(\hat{y}\)</span>, and <span class="math notranslate nohighlight">\(x_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predictor <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\bar{y}\)</span> are the sample means of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> respectively. This estimate is called the <em>residual standard error</em> (RSE)</p>
+<div class="amsmath math notranslate nohighlight" id="equation-308501e5-e377-4a40-8456-f43790651ee8">
+<span class="eqno">(2.10)<a class="headerlink" href="#equation-308501e5-e377-4a40-8456-f43790651ee8" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{RSE} = \sqrt{\frac{1}{N-2}\text{RSS}} = \sqrt{\frac{1}{N-2} \sum_{i=1}^N (y_i - \hat{y}_i)^2}.
 \end{equation}\]</div>
 <p>The standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> is a measure of the variability of the estimate of <span class="math notranslate nohighlight">\(\beta_1\)</span> due to sampling error. The standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> is a measure of the variability of the estimate of <span class="math notranslate nohighlight">\(\beta_0\)</span> due to sampling error. The standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> is also known as the <em>standard error of the regression</em>.</p>
-<p><strong>Confidence interval on page 67 &amp; Table 3.1 &amp; 3.2 - Statsmodels</strong></p>
+<p>Standard errors can be used to compute confidence intervals. A 95% is defined as a range of values such that with 95 % probability. The range is defined in terms of lower and upper limits computed from the sample of data. For linear regression, the 95 % confidence interval for <span class="math notranslate nohighlight">\(\beta_1\)</span> approximately takes the form</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c7f531b5-5048-4d7d-9203-139dff6ba1da">
+<span class="eqno">(2.11)<a class="headerlink" href="#equation-c7f531b5-5048-4d7d-9203-139dff6ba1da" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+\hat{\beta}_1 \pm 2 \times \text{SE}(\hat{\beta}_1).
+\end{equation}\]</div>
+<p>Run the following code to compute the statistics, including the confidence intervals, of the learnt model using <code class="docutils literal notranslate"><span class="pre">statesmodels</span></code> (page 67 &amp; Table 3.1 &amp; 3.2 of the textbook).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Sales ~ TV&quot;</span><span class="p">,</span> <span class="n">advertising_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -962,7 +969,6 @@ y = \beta_0 + \beta_1 x + \epsilon,
 </div>
 </div>
 </div>
-<p>Run the following code to fit a simple linear regression model, and then evaluate the learnt model with <span class="math notranslate nohighlight">\(R^2\)</span> using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> (Table 3.1 &amp; 3.2 of the text book)</p>
 </div>
 </div>
 
@@ -1001,7 +1007,7 @@ y = \beta_0 + \beta_1 x + \epsilon,
     <a class='right-next' id="next-link" href="multi-linear-regression.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.2. </span>Multiple Linear Regression</p>
+        <p class="prev-next-title"><span class="section-number">2.2. </span>Multiple linear regression</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

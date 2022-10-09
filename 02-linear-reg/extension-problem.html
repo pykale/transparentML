@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="3. Logistic Regression" href="../03-logistic-reg/overview.html" />
-    <link rel="prev" title="2.2. Multiple Linear Regression" href="multi-linear-regression.html" />
+    <link rel="prev" title="2.2. Multiple linear regression" href="multi-linear-regression.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -536,6 +536,18 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#problems-of-linear-regression">
    2.3.4. Problems of linear regression
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#non-linearity-of-the-data">
+     2.3.4.1. Non-linearity of the Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#collinearity">
+     2.3.4.2. Collinearity
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise">
@@ -598,6 +610,18 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#problems-of-linear-regression">
    2.3.4. Problems of linear regression
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#non-linearity-of-the-data">
+     2.3.4.1. Non-linearity of the Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#collinearity">
+     2.3.4.2. Collinearity
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise">
@@ -615,6 +639,12 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="section" id="extensions-and-problems">
 <h1><span class="section-number">2.3. </span>Extensions and problems<a class="headerlink" href="#extensions-and-problems" title="Permalink to this headline">¶</a></h1>
+<p>This section introduces more complicated types of variables and relationships. We will use three datasets for illustration:</p>
+<ol class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> dataset that has been used in the previous sections.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Credit</span></code> dataset contains information about credit card holders. The goal is to predict the credit <code class="docutils literal notranslate"><span class="pre">Limit</span></code> for each card holder.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset contains information about the characteristics of cars. The goal is to predict the <code class="docutils literal notranslate"><span class="pre">mpg</span></code> (miles per gallon) for a car based on its features like <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>, <code class="docutils literal notranslate"><span class="pre">weight</span></code> and <code class="docutils literal notranslate"><span class="pre">acceleration</span></code>. This dataset is also used in the  tutorial of <a class="reference internal" href="../00-prereq/overview.html"><span class="doc">Prerequisites</span></a>.</p></li>
+</ol>
 <div class="section" id="import-the-required-libraries-and-load-datasets">
 <h2><span class="section-number">2.3.1. </span>Import the required libraries and load datasets.<a class="headerlink" href="#import-the-required-libraries-and-load-datasets" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
@@ -622,26 +652,22 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">axes3d</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">scale</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
 
 <span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;seaborn-white&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Load <code class="docutils literal notranslate"><span class="pre">Advertising</span></code>, <code class="docutils literal notranslate"><span class="pre">Credit</span></code>, and <code class="docutils literal notranslate"><span class="pre">Auto</span></code> datasets</strong></p>
+<p><strong>Load <code class="docutils literal notranslate"><span class="pre">Advertising</span></code>, <code class="docutils literal notranslate"><span class="pre">Credit</span></code>, and <code class="docutils literal notranslate"><span class="pre">Auto</span></code> datasets</strong>.</p>
 <!-- Datasets available on https://www.statlearning.com/resources-first-edition --><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Advertising.csv&quot;</span>
-
 <span class="n">advertising_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -671,7 +697,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="qualitative-predictors">
 <h2><span class="section-number">2.3.2. </span>Qualitative predictors<a class="headerlink" href="#qualitative-predictors" title="Permalink to this headline">¶</a></h2>
-<p>In the previous sections, the predictor variables are <em>quantitative</em>. For example, in the <code class="docutils literal notranslate"><span class="pre">Credit</span></code> dataset, the response is <code class="docutils literal notranslate"><span class="pre">Balance</span></code> (average credit card debt for each individual) and there are six quantitative predictors: <code class="docutils literal notranslate"><span class="pre">Age</span></code> , <code class="docutils literal notranslate"><span class="pre">Cards</span></code> (number of credit cards), <code class="docutils literal notranslate"><span class="pre">Education</span></code> (years of education), <code class="docutils literal notranslate"><span class="pre">Income</span></code> (in thousands of dollars), <code class="docutils literal notranslate"><span class="pre">Limit</span></code> (credit limit), and <code class="docutils literal notranslate"><span class="pre">Rating</span></code> (credit rating). The following code displays the pairwise relationships between these variables (Figure 3.6 in the ISLR book).</p>
+<p>In the previous sections, the predictor variables are <em>quantitative</em>. For example, in the <code class="docutils literal notranslate"><span class="pre">Credit</span></code> dataset, the response is <code class="docutils literal notranslate"><span class="pre">Balance</span></code> (average credit card debt for each individual) and there are six quantitative predictors: <code class="docutils literal notranslate"><span class="pre">Age</span></code> , <code class="docutils literal notranslate"><span class="pre">Cards</span></code> (number of credit cards), <code class="docutils literal notranslate"><span class="pre">Education</span></code> (years of education), <code class="docutils literal notranslate"><span class="pre">Income</span></code> (in thousands of dollars), <code class="docutils literal notranslate"><span class="pre">Limit</span></code> (credit limit), and <code class="docutils literal notranslate"><span class="pre">Rating</span></code> (credit rating). The following code displays the pairwise relationships between these variables (Figure 3.6 in the textbook).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span>
@@ -683,7 +709,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>However, in practice, predictor variables are not always quantitative. For example in <code class="docutils literal notranslate"><span class="pre">Credit</span></code> dataset, it also contains four qualitative variables: <code class="docutils literal notranslate"><span class="pre">Student</span></code> (<code class="docutils literal notranslate"><span class="pre">Yes</span></code> or <code class="docutils literal notranslate"><span class="pre">No</span></code>), <code class="docutils literal notranslate"><span class="pre">Own</span></code> (<code class="docutils literal notranslate"><span class="pre">Yes</span></code> or <code class="docutils literal notranslate"><span class="pre">No</span></code>), <code class="docutils literal notranslate"><span class="pre">Married</span></code> (<code class="docutils literal notranslate"><span class="pre">Yes</span></code> or <code class="docutils literal notranslate"><span class="pre">No</span></code>), and <code class="docutils literal notranslate"><span class="pre">Region</span></code> (<code class="docutils literal notranslate"><span class="pre">South</span></code>, <code class="docutils literal notranslate"><span class="pre">East</span></code>, or <code class="docutils literal notranslate"><span class="pre">West</span></code>).</p>
 <p><strong>Predictors with only two levels</strong></p>
-<p>Run the following Least squares coefficient estimates associated with the regression of <code class="docutils literal notranslate"><span class="pre">Balance</span></code> onto <code class="docutils literal notranslate"><span class="pre">Own</span></code> in the <code class="docutils literal notranslate"><span class="pre">Credit</span></code> data set (Table 3.7 in the ISLR book).</p>
+<p>Run the following Least squares coefficient estimates associated with the regression of <code class="docutils literal notranslate"><span class="pre">Balance</span></code> onto <code class="docutils literal notranslate"><span class="pre">Own</span></code> in the <code class="docutils literal notranslate"><span class="pre">Credit</span></code> data set (Table 3.7 in the textbook).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Balance ~ Own&quot;</span><span class="p">,</span> <span class="n">credit_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -693,7 +719,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p><strong>Predictors with more than two levels</strong></p>
-<p>Run the following Least squares coefficient estimates associated with the regression of <code class="docutils literal notranslate"><span class="pre">Balance</span></code> onto <code class="docutils literal notranslate"><span class="pre">Region</span></code> in the <code class="docutils literal notranslate"><span class="pre">Credit</span></code> data set (Table 3.8 in the ISLR book).</p>
+<p>Run the following Least squares coefficient estimates associated with the regression of <code class="docutils literal notranslate"><span class="pre">Balance</span></code> onto <code class="docutils literal notranslate"><span class="pre">Region</span></code> in the <code class="docutils literal notranslate"><span class="pre">Credit</span></code> data set (Table 3.8 in the textbook).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Balance ~ Region&quot;</span><span class="p">,</span> <span class="n">credit_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -713,14 +739,14 @@ const thebe_selector_output = ".output, .cell_output"
 y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon.
 \]</div>
 <p>This model can be extended to include an interaction term between <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5405e061-a3db-44b2-bd92-630225b1a49d">
-<span class="eqno">(2.20)<a class="headerlink" href="#equation-5405e061-a3db-44b2-bd92-630225b1a49d" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-33cd1a6e-4196-4cfb-903e-ba1a6b3d2477">
+<span class="eqno">(2.21)<a class="headerlink" href="#equation-33cd1a6e-4196-4cfb-903e-ba1a6b3d2477" title="Permalink to this equation">¶</a></span>\[\begin{align}
 y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 &amp;= \beta_0 + (\beta_1 + \beta_3 x_2) x_1 + \beta_2 x_2 + \epsilon \\
 &amp;= \beta_0 + \tilde{\beta}_1 x_1 + \beta_2 x_2 + \epsilon,
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\tilde{\beta}_1 = \beta_1 + \beta_3 x_2\)</span> is the <em>effective</em> coefficient on <span class="math notranslate nohighlight">\(x_1\)</span>. Then the association between <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(x_1\)</span> is no longer constant and depends on the value of <span class="math notranslate nohighlight">\(x_2\)</span>. Similarly, the association between <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> is no longer constant and depends on the value of <span class="math notranslate nohighlight">\(x_1\)</span>.</p>
-<p>Run the following code for the <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> data, least squares coefficient estimates associated with the regression of sales onto <code class="docutils literal notranslate"><span class="pre">TV</span></code> and <code class="docutils literal notranslate"><span class="pre">radio</span></code>, with an interaction term, <code class="docutils literal notranslate"><span class="pre">TV</span></code> <span class="math notranslate nohighlight">\(\times\)</span> <code class="docutils literal notranslate"><span class="pre">radio</span></code> (Table 3.9 of the text book).</p>
+<p>Run the following code for the <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> data, least squares coefficient estimates associated with the regression of sales onto <code class="docutils literal notranslate"><span class="pre">TV</span></code> and <code class="docutils literal notranslate"><span class="pre">Radio</span></code>, with an interaction term, <code class="docutils literal notranslate"><span class="pre">TV</span></code> <span class="math notranslate nohighlight">\(\times\)</span> <code class="docutils literal notranslate"><span class="pre">Radio</span></code> (Table 3.9 of the text book).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Sales ~ TV + Radio + TV*Radio&quot;</span><span class="p">,</span> <span class="n">advertising_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -732,8 +758,7 @@ y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 </div>
 <div class="section" id="interaction-between-qualitative-and-quantitative-variables">
 <h3><span class="section-number">2.3.3.2. </span>Interaction between qualitative and quantitative variables<a class="headerlink" href="#interaction-between-qualitative-and-quantitative-variables" title="Permalink to this headline">¶</a></h3>
-<p>The concept of interactions applies just as well to qualitative variables. In fact, sometimes an interaction between a qualitative variable and a quantitative variable has a particularly nice interpretation.</p>
-<p>Run the following code to predict <code class="docutils literal notranslate"><span class="pre">balance</span></code> using the <code class="docutils literal notranslate"><span class="pre">income</span></code> (quantitative) and <code class="docutils literal notranslate"><span class="pre">student</span></code> (qualitative) variables, and compare the differences between including and excluding the interaction term between <code class="docutils literal notranslate"><span class="pre">income</span></code> and <code class="docutils literal notranslate"><span class="pre">student</span></code> (Figure 3.7 of the ISLR book).</p>
+<p>The concept of interactions applies just as well to qualitative variables. In fact, sometimes an interaction between a qualitative variable and a quantitative variable has a particularly nice interpretation. For example, run the following code to predict <code class="docutils literal notranslate"><span class="pre">Balance</span></code> using the <code class="docutils literal notranslate"><span class="pre">Income</span></code> (quantitative) and <code class="docutils literal notranslate"><span class="pre">Student</span></code> (qualitative) variables, and compare the differences between including and excluding the interaction term between <code class="docutils literal notranslate"><span class="pre">Income</span></code> and <code class="docutils literal notranslate"><span class="pre">Student</span></code> (Figure 3.7 of the textbook).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est1</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Balance ~ Income + Student2&quot;</span><span class="p">,</span> <span class="n">credit_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -750,6 +775,9 @@ y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Income (x-axis)</span>
+<span class="n">regr1</span> <span class="o">=</span> <span class="n">est1</span><span class="o">.</span><span class="n">params</span>
+<span class="n">regr2</span> <span class="o">=</span> <span class="n">est2</span><span class="o">.</span><span class="n">params</span>
+
 <span class="n">income</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
 
 <span class="c1"># Balance without interaction term (y-axis)</span>
@@ -761,7 +789,7 @@ y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
     <span class="n">regr1</span><span class="p">[</span><span class="s2">&quot;Intercept&quot;</span><span class="p">],</span> <span class="n">regr1</span><span class="p">[</span><span class="s2">&quot;Intercept&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">150</span> <span class="o">*</span> <span class="n">regr1</span><span class="p">[</span><span class="s2">&quot;Income&quot;</span><span class="p">]</span>
 <span class="p">)</span>
 
-<span class="c1"># Balance with iteraction term (y-axis)</span>
+<span class="c1"># Balance with interaction term (y-axis)</span>
 <span class="n">student2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span>
     <span class="n">regr2</span><span class="p">[</span><span class="s2">&quot;Intercept&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">regr2</span><span class="p">[</span><span class="s2">&quot;Student2&quot;</span><span class="p">],</span>
     <span class="n">regr2</span><span class="p">[</span><span class="s2">&quot;Intercept&quot;</span><span class="p">]</span>
@@ -790,7 +818,7 @@ y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 <div class="section" id="non-linear-relationships">
 <h3><span class="section-number">2.3.3.3. </span>Non-linear relationships<a class="headerlink" href="#non-linear-relationships" title="Permalink to this headline">¶</a></h3>
 <p>In some cases, the true relationship between the response and the predictors may be non-linear. Here we present a very simple way to directly extend the linear model to accommodate non-linear relationships, using <em>polynomial regression</em>.</p>
-<p>Run the following code to display the relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> (gas mileage in miles per gallon) and different degrees of <code class="docutils literal notranslate"><span class="pre">horsepower</span></code> (Figure 3.8 of the ISLR book) for a number of cars in the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset.</p>
+<p>Run the following code to display the relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> (gas mileage in miles per gallon) and different degrees of <code class="docutils literal notranslate"><span class="pre">horsepower</span></code> (Figure 3.8 of the textbook) for a number of cars in the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># With Seaborn&#39;s regplot() you can easily plot higher order polynomials.</span>
@@ -831,11 +859,11 @@ y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 </div>
 </div>
 <p>The figure seem to suggest that a quadratic relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code> might be more appropriate than a linear relationship. We can fit such a model using the following regression:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-66079350-d833-4957-a96f-a4017625b66f">
-<span class="eqno">(2.21)<a class="headerlink" href="#equation-66079350-d833-4957-a96f-a4017625b66f" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a1fb0970-6d29-4f04-9521-7a3583525b0a">
+<span class="eqno">(2.22)<a class="headerlink" href="#equation-a1fb0970-6d29-4f04-9521-7a3583525b0a" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \textrm{mpg} = \beta_0 + \beta_1 \times \textrm{horsepower} + \beta_2 \times \textrm{horsepower}^2 + \epsilon.
 \end{equation}\]</div>
-<p>In fact, this is still a linear model with <span class="math notranslate nohighlight">\(x_1 = \textrm{horsepower}\)</span> and <span class="math notranslate nohighlight">\(x_2 = \textrm{horsepower}^2\)</span>. Run the following code to fit a linear regression model with <code class="docutils literal notranslate"><span class="pre">mpg</span></code> as the response and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code> and <code class="docutils literal notranslate"><span class="pre">horsepower^2</span></code> as the predictors (Table 3.10 of the ISLR book).</p>
+<p>In fact, this is still a linear model with <span class="math notranslate nohighlight">\(x_1 = \textrm{horsepower}\)</span> and <span class="math notranslate nohighlight">\(x_2 = \textrm{horsepower}^2\)</span>. Run the following code to fit a linear regression model with <code class="docutils literal notranslate"><span class="pre">mpg</span></code> as the response and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code> and <code class="docutils literal notranslate"><span class="pre">horsepower^2</span></code> as the predictors (Table 3.10 of the textbook).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="p">[</span><span class="s2">&quot;horsepower2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">auto_df</span><span class="o">.</span><span class="n">horsepower</span><span class="o">**</span><span class="mi">2</span>
@@ -856,11 +884,11 @@ y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 </div>
 <div class="section" id="problems-of-linear-regression">
 <h2><span class="section-number">2.3.4. </span>Problems of linear regression<a class="headerlink" href="#problems-of-linear-regression" title="Permalink to this headline">¶</a></h2>
-<ul>
-<li><p>Non-linearity of the Data</p>
+<div class="section" id="non-linearity-of-the-data">
+<h3><span class="section-number">2.3.4.1. </span>Non-linearity of the Data<a class="headerlink" href="#non-linearity-of-the-data" title="Permalink to this headline">¶</a></h3>
 <p>The linear regression model assumes that there is a straight-line relationship between the predictors and the response. If the true relationship is far from linear, then virtually all of the conclusions that we draw from the fit are suspect. In addition, the prediction accuracy of the model can be significantly reduced.</p>
-</li>
-</ul>
+<p>Run the following code to compare the differences in accuracy between a linear regression model and a quadratic regression model for regressing <code class="docutils literal notranslate"><span class="pre">mpg</span></code> onto <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>.</p>
+<p>Firstly, fitting a linear regression model and a quadratic regression model for regressing <code class="docutils literal notranslate"><span class="pre">mpg</span></code> onto <code class="docutils literal notranslate"><span class="pre">horsepower</span></code> and compute the residuals for each model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
@@ -883,6 +911,7 @@ y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 </div>
 </div>
 </div>
+<p>Create plots of the residuals for each model. What do you observe?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -928,12 +957,19 @@ y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 </div>
 </div>
 </div>
-<ul>
-<li><p>Collinearity</p>
-<p>Collinearity refers to the situation in which two or more predictor variables are closely related to one another.</p>
-<p>Run the following code to illustrate the problem of collinearity in the <code class="docutils literal notranslate"><span class="pre">Credit</span></code> dataset (Figure 3.14 of the ISLR book). In the left-hand panel, the two predictors <code class="docutils literal notranslate"><span class="pre">limit</span></code> and <code class="docutils literal notranslate"><span class="pre">age</span></code> appear to have no obvious relationship. In contrast, in the right-hand panel, the predictors <code class="docutils literal notranslate"><span class="pre">limit</span></code> and <code class="docutils literal notranslate"><span class="pre">rating</span></code> are very highly correlated with each other, and we say that they are <em>collinear</em>. In this context, <code class="docutils literal notranslate"><span class="pre">limit</span></code> and <code class="docutils literal notranslate"><span class="pre">rating</span></code> tend to increase or decrease together, it can be difficult to determine how each one separately is associated with the response, <code class="docutils literal notranslate"><span class="pre">balance</span></code>.</p>
-</li>
+<div class="tip dropdown admonition">
+<p class="admonition-title">How to interpret the plots?</p>
+<ul class="simple">
+<li><p>The left panel of displays a residual plot from the linear regression of <code class="docutils literal notranslate"><span class="pre">mpg</span></code> onto <code class="docutils literal notranslate"><span class="pre">horsepower</span></code> on the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset. The red line is a smooth fit to the residuals, which is displayed in
+order to make it easier to identify any trends. The residuals exhibit a clear U-shape, which provides a strong indication of non-linearity in the data.</p></li>
+<li><p>The right-hand panel displays the residual plot that results from the model contains a quadratic term. There appears to be little pattern in the residuals, suggesting that the quadratic term improves the fit to the data.</p></li>
 </ul>
+</div>
+</div>
+<div class="section" id="collinearity">
+<h3><span class="section-number">2.3.4.2. </span>Collinearity<a class="headerlink" href="#collinearity" title="Permalink to this headline">¶</a></h3>
+<p>Collinearity refers to the situation in which two or more predictor variables are closely related to one another.</p>
+<p>Run the following code to illustrate the problem of collinearity in the <code class="docutils literal notranslate"><span class="pre">Credit</span></code> dataset (Figure 3.14 of the textbook). In the left-hand panel, the two predictors <code class="docutils literal notranslate"><span class="pre">limit</span></code> and <code class="docutils literal notranslate"><span class="pre">age</span></code> appear to have no obvious relationship. In contrast, in the right-hand panel, the predictors <code class="docutils literal notranslate"><span class="pre">limit</span></code> and <code class="docutils literal notranslate"><span class="pre">rating</span></code> are very highly correlated with each other, and we say that they are <em>collinear</em>. In this context, <code class="docutils literal notranslate"><span class="pre">limit</span></code> and <code class="docutils literal notranslate"><span class="pre">rating</span></code> tend to increase or decrease together, it can be difficult to determine how each one separately is associated with the response, <code class="docutils literal notranslate"><span class="pre">balance</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -953,7 +989,7 @@ y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 </div>
 </div>
 </div>
-<p>Run following code to learn the difficulties that can result from collinearity in the context of the <code class="docutils literal notranslate"><span class="pre">Credit</span></code> dataset (Table 3.11 of the ISLR book).</p>
+<p>Run following code to learn the difficulties that can result from collinearity in the context of the <code class="docutils literal notranslate"><span class="pre">Credit</span></code> dataset (Table 3.11 of the textbook).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">credit_df</span><span class="o">.</span><span class="n">Balance</span>
@@ -975,42 +1011,47 @@ y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 </div>
 </div>
 </div>
+<p>Create grid coordinates for plotting and then calculate RSS based on grid of coefficients</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create grid coordinates for plotting</span>
-<span class="n">B_Age</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">regr1</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="n">regr1</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">B_Limit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">regr1</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.02</span><span class="p">,</span> <span class="n">regr1</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># grid coordinates</span>
+<span class="n">beta_age</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">regr1</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="n">regr1</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">beta_limit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">regr1</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.02</span><span class="p">,</span> <span class="n">regr1</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 
-<span class="n">B_Rating</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">regr2</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="n">regr2</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">B_Limit2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">regr2</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">regr2</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">beta_rating</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">regr2</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="n">regr2</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">beta_limit2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">regr2</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">regr2</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 
-<span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">B_Limit</span><span class="p">,</span> <span class="n">B_Age</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s2">&quot;xy&quot;</span><span class="p">)</span>
-<span class="n">X2</span><span class="p">,</span> <span class="n">Y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">B_Limit2</span><span class="p">,</span> <span class="n">B_Rating</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s2">&quot;xy&quot;</span><span class="p">)</span>
-<span class="n">Z1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">B_Age</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">B_Limit</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
-<span class="n">Z2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">B_Rating</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">B_Limit2</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+<span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">beta_limit</span><span class="p">,</span> <span class="n">beta_age</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s2">&quot;xy&quot;</span><span class="p">)</span>
+<span class="n">X2</span><span class="p">,</span> <span class="n">Y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">beta_limit2</span><span class="p">,</span> <span class="n">beta_rating</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s2">&quot;xy&quot;</span><span class="p">)</span>
+<span class="n">Z1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">beta_age</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">beta_limit</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+<span class="n">Z2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">beta_rating</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">beta_limit2</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
 
-<span class="n">Limit_scaled</span> <span class="o">=</span> <span class="n">scale</span><span class="p">(</span><span class="n">credit_df</span><span class="o">.</span><span class="n">Limit</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">),</span> <span class="n">with_std</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">Age_scaled</span> <span class="o">=</span> <span class="n">scale</span><span class="p">(</span><span class="n">credit_df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">),</span> <span class="n">with_std</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">Rating_scaled</span> <span class="o">=</span> <span class="n">scale</span><span class="p">(</span><span class="n">credit_df</span><span class="o">.</span><span class="n">Rating</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">),</span> <span class="n">with_std</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">limit_scaled</span> <span class="o">=</span> <span class="n">scale</span><span class="p">(</span><span class="n">credit_df</span><span class="o">.</span><span class="n">Limit</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">),</span> <span class="n">with_std</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">age_scaled</span> <span class="o">=</span> <span class="n">scale</span><span class="p">(</span><span class="n">credit_df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">),</span> <span class="n">with_std</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">rating_scaled</span> <span class="o">=</span> <span class="n">scale</span><span class="p">(</span><span class="n">credit_df</span><span class="o">.</span><span class="n">Rating</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">),</span> <span class="n">with_std</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="c1"># Calculate Z-values (RSS) based on grid of coefficients</span>
+<span class="c1"># calculate RSS</span>
 <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">ndenumerate</span><span class="p">(</span><span class="n">Z1</span><span class="p">):</span>
     <span class="n">Z1</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">regr1</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="n">X1</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">Limit_scaled</span> <span class="o">+</span> <span class="n">Y1</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">Age_scaled</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">regr1</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="n">X1</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">limit_scaled</span> <span class="o">+</span> <span class="n">Y1</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">age_scaled</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span>
     <span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000000</span>
 
 <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">ndenumerate</span><span class="p">(</span><span class="n">Z2</span><span class="p">):</span>
     <span class="n">Z2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">regr2</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="n">X2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">Limit_scaled</span> <span class="o">+</span> <span class="n">Y2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">Rating_scaled</span><span class="p">))</span>
+        <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">regr2</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="n">X2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">limit_scaled</span> <span class="o">+</span> <span class="n">Y2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">rating_scaled</span><span class="p">))</span>
         <span class="o">**</span> <span class="mi">2</span>
     <span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000000</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Plot the contours of the RSS with respect to the coefficients of the two linear regression models in 2D.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="n">contour</span>
+
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;RSS - Regression coefficients&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 
 <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
@@ -1019,15 +1060,15 @@ y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 <span class="n">min_RSS</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$\beta_0$, $\beta_1$ for minimized RSS&quot;</span>
 
 <span class="c1"># Left plot</span>
-<span class="n">CS</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span><span class="p">,</span> <span class="n">Z1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Set1</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mf">21.25</span><span class="p">,</span> <span class="mf">21.5</span><span class="p">,</span> <span class="mf">21.8</span><span class="p">])</span>
+<span class="n">contour1</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span><span class="p">,</span> <span class="n">Z1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Set1</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mf">21.25</span><span class="p">,</span> <span class="mf">21.5</span><span class="p">,</span> <span class="mf">21.8</span><span class="p">])</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">regr1</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">regr1</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">min_RSS</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%1.1f</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">contour1</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%1.1f</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\beta_</span><span class="si">{Age}</span><span class="s2">$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
 
 <span class="c1"># Right plot</span>
-<span class="n">CS</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="n">Y2</span><span class="p">,</span> <span class="n">Z2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Set1</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mf">21.5</span><span class="p">,</span> <span class="mf">21.8</span><span class="p">])</span>
+<span class="n">contour2</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="n">Y2</span><span class="p">,</span> <span class="n">Z2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Set1</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mf">21.5</span><span class="p">,</span> <span class="mf">21.8</span><span class="p">])</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">regr2</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">regr2</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">min_RSS</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%1.1f</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">contour2</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%1.1f</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\beta_</span><span class="si">{Rating}</span><span class="s2">$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
 
@@ -1069,6 +1110,7 @@ y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 <p>In the first regression, both <code class="docutils literal notranslate"><span class="pre">age</span></code> and <code class="docutils literal notranslate"><span class="pre">limit</span></code> are highly significant with very small p-values. In the second, the collinearity between <code class="docutils literal notranslate"><span class="pre">limit</span></code> and <code class="docutils literal notranslate"><span class="pre">rating</span></code> has caused the standard error for the <code class="docutils literal notranslate"><span class="pre">limit</span></code> coefficient estimate to increase by a factor of 12 and the p-value to increase to 0.701. In other words, the importance of the <code class="docutils literal notranslate"><span class="pre">limit</span></code> variable has been masked due to the presence of collinearity.</p>
 </div>
 </div>
+</div>
 <div class="section" id="exercise">
 <h2><span class="section-number">2.3.5. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
 <ol>
@@ -1102,10 +1144,11 @@ y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 </li>
 <li><p>This question involves the <strong>Boston</strong> dataset from <a class="reference external" href="https://pykale.github.io/transparentML/01-intro/organisation.html#datasets-table">Tabel 1.2</a>. We will now try to predict per capita crime rate using the other variables in this dataset. In other owrds, per capita crime rate is the response, and the other variables are the prediction.</p>
 <p>(a) For each predictor, fit a simple linear regression model to predict the response. Describe your results. In which of the models is there a statistically significant association between the predictor and the response? Create some plots to back up your assertions.</p>
-<p>(b) Fit a multiple regression model to predict the response using all of the predictors. Describe your results.. FOr which predictiors can we reject the null hypothesis <span class="math notranslate nohighlight">\(H_0 : \beta_j = 0\)</span> ?</p>
-<p>(c) How do your results from (a) compare to your results form (b)? Create a plot displaying the univariate regression coefficients from (a) on the x-axis, and the multiple regression coefficients from (b) on the y-axis. That is, each predictor is displayed as a single point in the plot. Its coefficient in a simple linear regression model is shown on the x-axis, and its coefficient estimate in the multiple linear regression model is shown on the y-axis.</p>
+<p>(b) Fit a multiple regression model to predict the response using all of the predictors. Describe your results.. FOr which predictors can we reject the null hypothesis <span class="math notranslate nohighlight">\(H_0 : \beta_j = 0\)</span> ?</p>
+<p>(c) How do your results from (a) compare to your results form (b)? Create a plot displaying the uni-variate regression coefficients from (a) on the x-axis, and the multiple regression coefficients from (b) on the y-axis. That is, each predictor is displayed as a single point in the plot. Its coefficient in a simple linear regression model is shown on the x-axis, and its coefficient estimate in the multiple linear regression model is shown on the y-axis.</p>
 <p>(d) Is there evidence of non-linear association between any of the predictors and the response? To answer this question, for each predictor X, fit a model of the form,</p>
- <center> $$y = \beta_0 + \beta_1 x + \beta_2 x^2 + \beta_3 x^3 + \epsilon$$
+<div class="math notranslate nohighlight">
+\[y = \beta_0 + \beta_1 x + \beta_2 x^2 + \beta_3 x^3 + \epsilon\]</div>
 </li>
 </ol>
 </div>
@@ -1140,7 +1183,7 @@ y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2.2. </span>Multiple Linear Regression</p>
+            <p class="prev-next-title"><span class="section-number">2.2. </span>Multiple linear regression</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../03-logistic-reg/overview.html" title="next page">
