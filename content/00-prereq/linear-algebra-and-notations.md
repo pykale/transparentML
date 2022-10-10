@@ -144,7 +144,7 @@ This section introduces the basic concepts of linear algebra and notations used 
 
 
    ```{toggle}
-   Answer: **a, b, c, d, e**
+   Sample answer: **a, ???**
    ```
 
 2. **A** = $\begin{bmatrix} 8 & 5 & 9 \\ 7 & 19 & 14 \end{bmatrix}$
@@ -161,7 +161,7 @@ This section introduces the basic concepts of linear algebra and notations used 
 
 
    ```{toggle}
-    Sample Answer:
+    Sample answer:
 
     a. $\begin{bmatrix} 133 & ? & ? \\ ? & ? & ? \end{bmatrix}$
 
