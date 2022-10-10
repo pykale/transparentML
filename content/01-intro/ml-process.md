@@ -29,4 +29,35 @@ Indeed, some of these activities might not be carried out by human actors, but b
 
 ### Exercises
 
-To be completed in the next cycle
+1. Depending on the nature of a system, what kind of validation and verification can be used for assessment?
+    ```{toggle}
+    Answer:
+    ```
+2. In which lifecycle phase changes to thr ML systems can be done?
+
+       a. Validation and verification
+       b. Business case and problem definition
+       c. System retirement
+       d. Monitoring and evaluation
+       f. Integration
+    Select a single answer
+    ```{toggle}
+    Answer:
+    ```
+
+3. The structure of the lifecycle phases are affected by the automation of large section of an ML system's development.
+
+       a. True
+
+       b. False
+    ```{toggle}
+    Answer:
+    ```
+4. Lifecycle phases for system deployment occur iteratively.
+
+       a. True
+
+       b. False
+    ```{toggle}
+    Answer:
+    ```
