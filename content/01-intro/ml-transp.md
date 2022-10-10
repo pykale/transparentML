@@ -142,4 +142,36 @@ The applicability and implications of transparency trade-offs depend on context 
 
 ### Exercises
 
-To be completed in the next cycle
+1. Transparency is the key motivation for accountability.
+
+       a. True
+
+       b. False
+    ```{toggle}
+    Answer:
+    ```
+2. Transparency acts as an enabler to other ML/AI ethics principles.
+
+       a. True
+
+       b. False
+    ```{toggle}
+    Answer:
+    ```
+3. Transparency is a property of the information.
+
+       a. True
+
+       b. False
+    ```{toggle}
+    Answer:
+    ```
+4. Transparency is not a fixed property of ML systems.
+
+       a. True
+
+       b. False
+    ```{toggle}
+    Answer:
+    ```
+5. More will be added

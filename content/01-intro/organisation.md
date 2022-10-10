@@ -138,8 +138,8 @@ No single model will perform well in all possible scenarios. Therefore, it is im
    ```{toggle}
    Sample answer: to be completed.
    ```
-2. To be completed
+2. Write down the number of features and training samples of all the datasets present in {numref}`datasets-table`.
 
-    ```{toggle}
-    Sample answer: to be completed.
-    ```
+   ```{toggle}
+   Sample answer: to be completed.
+   ```
