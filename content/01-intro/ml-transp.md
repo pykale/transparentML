@@ -174,4 +174,4 @@ The applicability and implications of transparency trade-offs depend on context 
     ```{toggle}
     Answer:
     ```
-5. One real life example will be added here
+5. One real life example will be added
