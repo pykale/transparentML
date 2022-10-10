@@ -9,7 +9,10 @@ Drafting
 ```
 
 ```{admonition} Objectives
-- Objective 1
+- Understand the basic concepts of logistic regression
+- Apply logistic regression to real data
+- Evaluate the performance of a logistic regression model
+- Interpret the results of a logistic regression
 ```
 
 **Expected time to complete**: x hours
