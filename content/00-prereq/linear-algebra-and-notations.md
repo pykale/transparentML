@@ -143,7 +143,7 @@ This section introduces the basic concepts of linear algebra and notations used 
     You can choose multiple answers.
 
 
-   ```{admonition} Click to show the reuslt!
+   ```{admonition} Click to show the answer!
    :class: dropdown
    **a, b, c, d**
    ```
@@ -161,7 +161,7 @@ This section introduces the basic concepts of linear algebra and notations used 
     You have to do it manually.
 
 
-   ```{admonition} Click to show the reuslt!
+   ```{admonition} Click to show the answer!
    :class: dropdown
     a. $\begin{bmatrix} 133 & 241 & 261 \\ 365 & 551 & 459 \end{bmatrix}$
 
