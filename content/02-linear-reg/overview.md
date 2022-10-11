@@ -1,7 +1,7 @@
 # Linear Regression
 
 ```{admonition} Status
-Drafting
+Ready for review and feedback
 ```
 
 ```{admonition} Objectives
