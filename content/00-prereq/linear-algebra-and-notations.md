@@ -143,8 +143,9 @@ This section introduces the basic concepts of linear algebra and notations used 
     You can choose multiple answers.
 
 
-   ```{toggle}
-   Sample answer: **a, ???**
+   ```{admonition} Click to show the reuslt!
+   :class: dropdown
+   **a, b, c, d**
    ```
 
 2. **A** = $\begin{bmatrix} 8 & 5 & 9 \\ 7 & 19 & 14 \end{bmatrix}$
@@ -160,13 +161,12 @@ This section introduces the basic concepts of linear algebra and notations used 
     You have to do it manually.
 
 
-   ```{toggle}
-    Sample answer:
+   ```{admonition} Click to show the reuslt!
+   :class: dropdown
+    a. $\begin{bmatrix} 133 & 241 & 261 \\ 365 & 551 & 459 \end{bmatrix}$
 
-    a. $\begin{bmatrix} 133 & ? & ? \\ ? & ? & ? \end{bmatrix}$
+    b. $\begin{bmatrix} 16 & 10 & 18 \\ 14 & 38 & 28 \end{bmatrix}$
 
-    b. $\begin{bmatrix} 16 & ? & ? \\ 14 & ? & ? \end{bmatrix}$
-
-    c. $\begin{bmatrix} 149 & ? & ? \\ ? & ? & 487 \end{bmatrix}$
+    c. $\begin{bmatrix} 149 & 251 & 279 \\ 379 & 589 & 487 \end{bmatrix}$
 
    ```
