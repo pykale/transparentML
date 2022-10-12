@@ -49,9 +49,13 @@ parts:
       title: Multiple linear regression
     - file: 02-linear-reg/extension-problem
       title: Extensions & discussion
+    - file: 02-linear-reg/quiz-sum-ref
+      title: Quiz & summary
   - file: 03-logistic-reg/overview
     title: Logistic regression
     sections:
+    - file: 03-logistic-reg/logistic-model
+      title: Classification with logistic model
     - file: 03-logistic-reg/quiz-sum-ref
       title: Quiz & summary
   - file: 04-cross-val-bootstrap/overview
