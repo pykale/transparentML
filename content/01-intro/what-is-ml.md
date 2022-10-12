@@ -48,17 +48,20 @@ The function $f$ is called the **model** or **predictive function**. The model $
        a. True
 
        b. False
-    ```{toggle}
-    Answer:
+    ```{admonition} Click to show the answer!
+    :class: dropdown
+    **a. True**
     ```
 
 2. We collected a set of data on the top 5000 firms in the US. For each firm, we record profit, number of employees, industry, and the CEO's salary. We are interested in understanding which factors affect CEO salary.
 
     a. What are the features here?
-    ```{toggle}
-    Answer:
+    ```{admonition} Click to show the answer!
+    :class: dropdown
+    **profit, number of employees and industry**
     ```
     b. What is the target variable?
-    ```{toggle}
-    Answer:
+    ```{admonition} Click to show the answer!
+    :class: dropdown
+    **CEO's salary**
     ```

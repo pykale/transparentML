@@ -30,10 +30,11 @@ Indeed, some of these activities might not be carried out by human actors, but b
 ### Exercises
 
 1. Depending on the nature of a system, what kind of validation and verification can be used for assessment?
-    ```{toggle}
-    Answer:
+    ```{admonition} Click to show the answer!
+    :class: dropdown
+    **empirical testing or formal verification**
     ```
-2. In which lifecycle phase changes to thr ML systems can be done?
+2. In which lifecycle phase changes to the ML systems can be done?
 
        a. Validation and verification
        b. Business case and problem definition
@@ -41,8 +42,9 @@ Indeed, some of these activities might not be carried out by human actors, but b
        d. Monitoring and evaluation
        f. Integration
     Select a single answer
-    ```{toggle}
-    Answer:
+    ```{admonition} Click to show the answer!
+    :class: dropdown
+    **c. System retirement**
     ```
 
 3. The structure of the lifecycle phases are affected by the automation of large section of an ML system's development.
@@ -50,14 +52,16 @@ Indeed, some of these activities might not be carried out by human actors, but b
        a. True
 
        b. False
-    ```{toggle}
-    Answer:
+    ```{admonition} Click to show the answer!
+    :class: dropdown
+    **b. False**
     ```
-4. Lifecycle phases for system deployment occur iteratively.
+4. Lifecycle phases for system deployment occur parallel.
 
        a. True
 
        b. False
-    ```{toggle}
-    Answer:
+    ```{admonition} Click to show the answer!
+    :class: dropdown
+    **a. True**
     ```

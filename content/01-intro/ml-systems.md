@@ -77,8 +77,9 @@ From the above, we can see that reproducibility is a minimal requirement for rep
 ### Exercises
 
 1. What are the main ingredients of an ML system?
-    ```{toggle}
-    Answer:
+    ```{admonition} Click to show the answer!
+    :class: dropdown
+    **data, model and loss function**
     ```
 
 2. Weight and biases are the hyperparameters of a model.
@@ -86,11 +87,12 @@ From the above, we can see that reproducibility is a minimal requirement for rep
        a. True
 
        b. False
-    ```{toggle}
-    Answer:
+    ```{admonition} Click to show the answer!
+    :class: dropdown
+    **b. False**
     ```
 
-3. Which of the following are true?
+3. Which of the followings are true?
 
        a. In regression, the loss function measures the difference between the predicted class label and the true class label.
 
@@ -100,8 +102,9 @@ From the above, we can see that reproducibility is a minimal requirement for rep
 
        d. In classification, the loss function measures the difference between the predicted class label and the true class label.
 
-    ```{toggle}
-    Answer:
+    ```{admonition} Click to show the answer!
+    :class: dropdown
+    **c, d**
     ```
 
 4. Pricing apartments based on a real estate website. We have thousands of house descriptions with their price. Typically, an example of a house description is the following:
@@ -121,9 +124,9 @@ From the above, we can see that reproducibility is a minimal requirement for rep
 
        f. a dimensionality reduction problem
 
-    Select all answers that apply
-    ```{toggle}
-    Answer:
+    ```{admonition} Click to show the answer!
+    :class: dropdown
+    **a, d**
     ```
     4.2. What are the features?
 
@@ -134,8 +137,9 @@ From the above, we can see that reproducibility is a minimal requirement for rep
        c. the price of the house might be a feature
 
     Select all answers that apply
-    ```{toggle}
-    Answer:
+    ```{admonition} Click to show the answer!
+    :class: dropdown
+    **a, b**
     ```
     4.3. What is the target variable?
 
@@ -146,8 +150,9 @@ From the above, we can see that reproducibility is a minimal requirement for rep
        c. only house descriptions with no price mentioned are the target
 
     Select a single answer
-    ```{toggle}
-    Answer:
+    ```{admonition} Click to show the answer!
+    :class: dropdown
+    **b**
     ```
     4.4 What is a record (a sample)?
 
@@ -158,6 +163,7 @@ From the above, we can see that reproducibility is a minimal requirement for rep
        c. each kind of description (as the house size) is a record
 
    Select a single answer
-    ```{toggle}
-    Answer:
+    ```{admonition} Click to show the answer!
+    :class: dropdown
+    **a**
     ```
