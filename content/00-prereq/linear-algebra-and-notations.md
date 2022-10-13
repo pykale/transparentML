@@ -145,7 +145,7 @@ This section introduces the basic concepts of linear algebra and notations used 
 
 
 
-    Click to show the answer!
+    Compare your answer with the reference solution below
    ```{toggle}
     **a ,b, c**
    ```
@@ -162,7 +162,7 @@ This section introduces the basic concepts of linear algebra and notations used 
         c. AB + 2A = ?
 
 
-    Click to show the answer!
+    Compare your answer with the reference solution below
    ```{toggle}
     a. $\begin{bmatrix} 133 & 241 & 261 \\ 365 & 551 & 459 \end{bmatrix}$
 

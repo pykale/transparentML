@@ -3,9 +3,7 @@
 <!-- **Question**: What do you need to know before starting this course? -->
 
 ```{admonition} Status
-- Ready for review and feedback
-
-- Exercises are ready for review and feedback
+Ready for review and feedback
 ```
 
 ```{admonition} Objectives
