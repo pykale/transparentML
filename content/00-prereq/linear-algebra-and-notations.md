@@ -131,6 +131,8 @@ This section introduces the basic concepts of linear algebra and notations used 
 
     What kind of matrices is it?
 
+    You can choose multiple answers.
+
         a. Diagonal
 
         b. Identity
@@ -140,29 +142,28 @@ This section introduces the basic concepts of linear algebra and notations used 
         d. Inverse
 
         e. Orthogonal
-    You can choose multiple answers.
 
 
-   ```{admonition} Click to show the answer!
-   :class: dropdown
-   **a, b, c, d**
+
+    Click to show the answer!
+   ```{toggle}
+    **a ,b, c**
    ```
 
 2. **A** = $\begin{bmatrix} 8 & 5 & 9 \\ 7 & 19 & 14 \end{bmatrix}$
    **B** = $ \begin{bmatrix} 6 & 13 & 15 \\ 17 & 22 & 12 \\ 0 & 3 & 9 \end{bmatrix}$
 
-    Then,
+    You have to do it manually.
 
         a. AB = ?
 
         b. 2A = ?
 
         c. AB + 2A = ?
-    You have to do it manually.
 
 
-   ```{admonition} Click to show the answer!
-   :class: dropdown
+    Click to show the answer!
+   ```{toggle}
     a. $\begin{bmatrix} 133 & 241 & 261 \\ 365 & 551 & 459 \end{bmatrix}$
 
     b. $\begin{bmatrix} 16 & 10 & 18 \\ 14 & 38 & 28 \end{bmatrix}$
