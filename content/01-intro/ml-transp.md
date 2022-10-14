@@ -150,7 +150,7 @@ The applicability and implications of transparency trade-offs depend on context 
 
     Compare your answer with the reference solution below
     ```{toggle}
-    Answer:
+    **b. False**
     ```
 2. Transparency acts as an enabler to other ML/AI ethics principles.
 
@@ -160,7 +160,7 @@ The applicability and implications of transparency trade-offs depend on context 
 
     Compare your answer with the reference solution below
     ```{toggle}
-    Answer:
+    **a. True**
     ```
 3. Transparency is a property of the information.
 
@@ -170,7 +170,7 @@ The applicability and implications of transparency trade-offs depend on context 
 
     Compare your answer with the reference solution below
     ```{toggle}
-    Answer:
+    **b. False**
     ```
 4. Transparency is not a fixed property of ML systems.
 
@@ -180,6 +180,8 @@ The applicability and implications of transparency trade-offs depend on context 
 
     Compare your answer with the reference solution below
     ```{toggle}
-    Answer:
+    **a. True**
     ```
+5.
+
 5. One real life example will be added

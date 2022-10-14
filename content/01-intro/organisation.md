@@ -133,7 +133,7 @@ No single model will perform well in all possible scenarios. Therefore, it is im
 
 ### Exercises
 
-1. Choose three or more datasets of your interest from {numref}`datasets-table`. Click on the name of each chosen dataset to explore and get a sense of the data. You may not be able to get a beautiful view or a view at all for those larger ones. Write down the possible machine learning problems using terminology in {numref}`mlproblems-table` that can be solved using each of your chosen dataset. Click below for a sample answer.
+1. Choose three or more datasets of your interest from {numref}`datasets-table`. Click on the name of each chosen dataset to explore and get a sense of the data. You may not be able to get a beautiful view or a view at all for those larger ones. Write down the possible machine learning problems using terminology in {numref}`mlproblems-table` that can be solved using each of your chosen dataset.
 
    Compare your answer with the reference solution below
    ```{toggle}
@@ -143,5 +143,5 @@ No single model will perform well in all possible scenarios. Therefore, it is im
 
    Compare your answer with the reference solution below
    ```{toggle}
-   Sample answer: to be completed.
+   And here's my dropdown content
    ```
