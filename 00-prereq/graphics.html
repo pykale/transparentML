@@ -476,28 +476,6 @@ const thebe_selector_output = ".output, .cell_output"
 
             <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/00-prereq/graphics.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/00-prereq/graphics.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
         </div>
 
         <!-- Table of contents -->
@@ -550,7 +528,7 @@ const thebe_selector_output = ".output, .cell_output"
   <div class="section" id="graphics">
 <h1>Graphics<a class="headerlink" href="#graphics" title="Permalink to this headline">¶</a></h1>
 <p>In python, matplotlib is the most used library for plot matplotlib.pyplot is a collection of command style functions that make matplotlib work like MATLAB. The <code class="docutils literal notranslate"><span class="pre">pyplot.plot()</span></code> function is used to plot lines, and the <code class="docutils literal notranslate"><span class="pre">pyplot.scatter()</span></code> function is used to plot points. The <code class="docutils literal notranslate"><span class="pre">pyplot.plot()</span></code> and <code class="docutils literal notranslate"><span class="pre">pyplot.scatter()</span></code> will generate an output figure object, which can be displayed by the <code class="docutils literal notranslate"><span class="pre">pyplot.show()</span></code>. In addition, the <code class="docutils literal notranslate"><span class="pre">pyplot.savefig()</span></code> function can be used to save the figure object to a file.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -576,7 +554,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Use <code class="docutils literal notranslate"><span class="pre">plt.scatter?</span></code> and <code class="docutils literal notranslate"><span class="pre">plt.plot?</span></code> to see the documentation of these functions.</p>
 <p>Next, we will create a more sophisticated plot using the <code class="docutils literal notranslate"><span class="pre">pyplot.contour()</span></code> function. The <code class="docutils literal notranslate"><span class="pre">pyplot.contour()</span></code> function can be used to plot contour lines of a function. The <code class="docutils literal notranslate"><span class="pre">pyplot.contour()</span></code> function takes three arguments: <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, and <code class="docutils literal notranslate"><span class="pre">z</span></code>. <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are 1D arrays of x and y coordinates of the grid points, and <code class="docutils literal notranslate"><span class="pre">z</span></code> is a 2D array of z coordinates of the grid points. The <code class="docutils literal notranslate"><span class="pre">pyplot.contour()</span></code> function returns a <code class="docutils literal notranslate"><span class="pre">ContourSet</span></code> object, which can be used to add labels to the contour lines.</p>
 <p>First, let us create the data needed for the contour plot.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># in order to use Pi, math module needs to loaded first</span>
 <span class="kn">import</span> <span class="nn">math</span>
@@ -601,7 +579,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>Use <code class="docutils literal notranslate"><span class="pre">numpy.meshgrid()</span></code> to create a rectangular grid out of an array of x values and an array of y values.</p>
-<!-- The `numpy.meshgrid()` function takes two 1D arrays and produces two 2D matrices corresponding to all pairs of `(x, y)` in the two arrays. --><div class="cell tag_hide-output docutils container">
+<!-- The `numpy.meshgrid()` function takes two 1D arrays and produces two 2D matrices corresponding to all pairs of `(x, y)` in the two arrays. --><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
 <span class="kn">import</span> <span class="nn">matplotlib.mlab</span> <span class="k">as</span> <span class="nn">mlab</span>
@@ -613,7 +591,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">%whos</span></code> is a magic function that lists all the variables in the current workspace.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">whos</span>
 </pre></div>
@@ -636,7 +614,7 @@ y          ndarray    50: 50 elems, type `float64`, 400 bytes
 </div>
 </div>
 <p>Use <code class="docutils literal notranslate"><span class="pre">plt.contour()</span></code> to plot contour lines.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># same as above,</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
@@ -663,7 +641,7 @@ y          ndarray    50: 50 elems, type `float64`, 400 bytes
 </div>
 <p>Similarly, use <code class="docutils literal notranslate"><span class="pre">plt.contour?</span></code> to see the documentation of the <code class="docutils literal notranslate"><span class="pre">pyplot.contour()</span></code> function.</p>
 <p>2D arrays can also be visualised by the <code class="docutils literal notranslate"><span class="pre">imshow()</span></code> function, which produces colour-coded plot.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fa</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span> <span class="o">-</span> <span class="n">f</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># f.T for transpose or tranpose(f)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fa</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
@@ -691,7 +669,7 @@ y          ndarray    50: 50 elems, type `float64`, 400 bytes
 </div>
 <p>For more information please use <code class="docutils literal notranslate"><span class="pre">sns.heatmap?</span></code> to see the documentation of the <code class="docutils literal notranslate"><span class="pre">sns.heatmap()</span></code> function.</p>
 <p>The following example produces a 3D plot.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">axes3d</span>
 

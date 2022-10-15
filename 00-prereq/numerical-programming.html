@@ -476,28 +476,6 @@ const thebe_selector_output = ".output, .cell_output"
 
             <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/00-prereq/numerical-programming.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/00-prereq/numerical-programming.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
         </div>
 
         <!-- Table of contents -->
@@ -611,7 +589,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="creating-matrices-arrays">
 <h2>Creating matrices/arrays<a class="headerlink" href="#creating-matrices-arrays" title="Permalink to this headline">¶</a></h2>
 <p>Create a matrix using <code class="docutils literal notranslate"><span class="pre">list</span></code></p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create matrices</span>
 <span class="n">x</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
@@ -626,7 +604,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>Create an array using <code class="docutils literal notranslate"><span class="pre">numpy.array</span></code></p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -643,7 +621,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">shape</span></code> attribute of an array object returns a tuple consisting of array dimensions. For a matrix with <code class="docutils literal notranslate"><span class="pre">n</span></code> rows and <code class="docutils literal notranslate"><span class="pre">m</span></code> columns, shape will be <code class="docutils literal notranslate"><span class="pre">(n,m)</span></code>. The length of the shape tuple is therefore the number of axes, <code class="docutils literal notranslate"><span class="pre">ndim</span></code>.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
@@ -656,7 +634,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> is used to create a sequence of numbers. It is similar to the built-in <code class="docutils literal notranslate"><span class="pre">range()</span></code> function, but returns an <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> instead of a list. The arguments are <code class="docutils literal notranslate"><span class="pre">(start,</span> <span class="pre">stop,</span> <span class="pre">step)</span></code>, which the same as for <code class="docutils literal notranslate"><span class="pre">range()</span></code>, but it also accepts float arguments. The arguments are . If <code class="docutils literal notranslate"><span class="pre">step</span></code> is not given, it defaults to 1. If <code class="docutils literal notranslate"><span class="pre">start</span></code> is not given, it defaults to 0. If <code class="docutils literal notranslate"><span class="pre">stop</span></code> is not given, it defaults to <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">start</span></code> is set to 0. Note the <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> excludes right end of range specification.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -669,7 +647,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># note: np.arange actually can result in unexpected results; check np.arange(0.2, 0.6, 0.4) vs np.arange(0.2, 1.6, 1.4)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">))</span>
@@ -685,7 +663,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">reshape()</span></code> method can be used to reshape an array.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -704,7 +682,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>Try to run the following cell multiple times, can you get the same output every time?</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate random numbers/array/matrices</span>
 
@@ -724,17 +702,17 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[7 9 2 2 8]
-[[0.45613956 0.46961787 0.41852699]
- [0.43517867 0.32028781 0.10938399]]
-[-0.32380276 -0.04936402  0.01538616 -0.52896415  0.05385125]
-[19.43491633 19.91385063 20.09440109 19.31285885 20.13060868]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 6 6 1 6]
+[[0.35138064 0.27651283 0.01643475]
+ [0.09154688 0.66726726 0.99900649]]
+[ 1.03582811 -0.45841418  1.65491487  1.49388191 -0.9576369 ]
+[21.07619533 19.51857668 21.58131161 21.46822882 19.05195268]
 </pre></div>
 </div>
 </div>
 </div>
 <p>Run the following cell multiple times, can you get the same output every time?</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
 
@@ -755,7 +733,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Transpose</p></li>
 </ul>
 <p>The <code class="docutils literal notranslate"><span class="pre">T</span></code> attribute or <code class="docutils literal notranslate"><span class="pre">transpose()</span></code> method can be used to transpose an array.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
 
@@ -781,7 +759,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="simple">
 <li><p>Add a scalar to an array, or multiply an array by a scalar.</p></li>
 </ul>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
@@ -806,7 +784,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="simple">
 <li><p>Add or multiply two arrays of the same size element-wise.</p></li>
 </ul>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
 
@@ -832,7 +810,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="simple">
 <li><p>Matrix multiplication.</p></li>
 </ul>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># product of two matrices</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
@@ -848,7 +826,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  product of matrix and vector</span>
 <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
@@ -866,7 +844,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="statistics-with-numpy">
 <h2>Statistics with NumPy<a class="headerlink" href="#statistics-with-numpy" title="Permalink to this headline">¶</a></h2>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
 
@@ -886,7 +864,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 
@@ -913,7 +891,7 @@ The min value of the array x is:  9
 </div>
 <div class="section" id="indexing-in-numpy">
 <h2>Indexing in <code class="docutils literal notranslate"><span class="pre">NumPy</span></code><a class="headerlink" href="#indexing-in-numpy" title="Permalink to this headline">¶</a></h2>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -930,7 +908,7 @@ The min value of the array x is:  9
 </div>
 </div>
 <p>Get an element from a matrix, for example, get the forth element in the third row (index starts from 0).</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </pre></div>
@@ -942,7 +920,7 @@ The min value of the array x is:  9
 </div>
 </div>
 </div>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to select a submatrix, need the non-singleton dimension of your indexing array to be aligned with the axis you&#39;re indexing into,</span>
 <span class="c1"># e.g. for an n x m 2D subarray: A[n by 1 array,1 by m array]</span>
@@ -958,7 +936,7 @@ The min value of the array x is:  9
 </div>
 </div>
 <p>Using the <code class="docutils literal notranslate"><span class="pre">:</span></code> operator can get a row or a column.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the last two examples include either no index for the columns or no index for the rows. These indicate that Python should include all columns or all rows, respectively</span>
 <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
@@ -972,7 +950,7 @@ The min value of the array x is:  9
 </div>
 </div>
 <p>The default indexing is row-wise, and therefore the <code class="docutils literal notranslate"><span class="pre">:</span></code> for column can be omitted.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
@@ -992,7 +970,7 @@ The min value of the array x is:  9
 <li><p><code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">stop</span></code> can be omitted, which means the submatrix starts from the first element or ends at the last element.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">step_size</span></code> can be omitted, which means the step size is 1.</p></li>
 </ul>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this is another way to do that</span>
 <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
@@ -1006,7 +984,7 @@ The min value of the array x is:  9
 </div>
 </div>
 </div>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select all columns in those two rows</span>
 <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
@@ -1020,7 +998,7 @@ The min value of the array x is:  9
 </div>
 </div>
 </div>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select all row in those two columns</span>
 <span class="n">A</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
@@ -1036,7 +1014,7 @@ The min value of the array x is:  9
 </div>
 </div>
 </div>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &#39;-&#39; sign has a different meaning and good usage in Python. This means index from the end, -1 means the last element</span>
 <span class="n">A</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -1050,7 +1028,7 @@ The min value of the array x is:  9
 </div>
 </div>
 <p>Boolean indexing</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># there are other ways to let Python keep all rows except certain index. For example, we could also use boolean.</span>
 <span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">4</span><span class="p">,),</span> <span class="nb">bool</span><span class="p">)</span>
@@ -1065,7 +1043,7 @@ The min value of the array x is:  9
 </div>
 </div>
 </div>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="p">:])</span>
 

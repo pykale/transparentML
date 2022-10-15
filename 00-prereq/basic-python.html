@@ -476,28 +476,6 @@ const thebe_selector_output = ".output, .cell_output"
 
             <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/00-prereq/basic-python.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/00-prereq/basic-python.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
         </div>
 
         <!-- Table of contents -->
@@ -665,7 +643,7 @@ $$ --><div class="cell docutils container">
 <p>Some variable names are reserved for special use in Python. For example, <code class="docutils literal notranslate"><span class="pre">print</span></code> is a function that prints the value of a variable. If you try to use <code class="docutils literal notranslate"><span class="pre">print</span></code> as a variable name, Python will report an error.</p>
 </div>
 <p>Run the following code to see the full list of reserved words in Python:</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">keyword</span>
 
@@ -721,7 +699,7 @@ $$ --><div class="cell docutils container">
 </ul>
 <p><strong>Example</strong></p>
 <p>Display the characters in the string <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">world&quot;</span></code>:</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">character</span> <span class="ow">in</span> <span class="n">string_variable</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">character</span><span class="p">)</span>
@@ -753,7 +731,7 @@ d
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">if</span></code> … <code class="docutils literal notranslate"><span class="pre">else</span></code> statement</p></li>
 </ol>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check an input number is non-negative or negative</span>
 
@@ -779,7 +757,7 @@ d
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">if</span></code> … <code class="docutils literal notranslate"><span class="pre">elif</span></code> … <code class="docutils literal notranslate"><span class="pre">else</span></code> statement</p></li>
 </ol>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check an input number is positive, negative, or zero</span>
 
@@ -813,7 +791,7 @@ d
 <li><p><code class="docutils literal notranslate"><span class="pre">print</span></code> displays the value of an expression.</p></li>
 <li><p>Provide values to the function (i.e., the things to print) in parentheses.</p></li>
 </ul>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Value of the string variable is &quot;</span><span class="p">,</span> <span class="n">string_variable</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The first character of the string variable is &quot;</span><span class="p">,</span> <span class="n">string_variable</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -835,7 +813,7 @@ The first five characters of the string variable are  Hello
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">type</span></code> function returns the type of an expression.</p></li>
 </ul>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">string_variable</span><span class="p">)</span>
 </pre></div>
@@ -847,7 +825,7 @@ The first five characters of the string variable are  Hello
 </div>
 </div>
 </div>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
@@ -863,7 +841,7 @@ The first five characters of the string variable are  Hello
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">len</span></code> function returns the length of a string, or the number of elements in other type of variables, such as  list and tuple.</p></li>
 </ul>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">string_variable</span><span class="p">))</span>
 </pre></div>
@@ -879,7 +857,7 @@ The first five characters of the string variable are  Hello
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">range</span></code> function returns a sequence of numbers.</p></li>
 </ul>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;loop: &quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
@@ -904,7 +882,7 @@ loop:  2
 </ul>
 </li>
 </ul>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">z</span> <span class="o">=</span> <span class="mf">3.14</span>
@@ -929,7 +907,7 @@ loop:  2
 </ul>
 </li>
 </ul>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">string_variable</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="s2">&quot;Python is fun!&quot;</span><span class="p">)</span>
 </pre></div>
@@ -941,7 +919,7 @@ loop:  2
 </div>
 </div>
 </div>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">string_variable</span><span class="p">)</span>
 </pre></div>
@@ -961,7 +939,7 @@ loop:  2
 </ul>
 </li>
 </ul>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_int_variable</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="k">if</span> <span class="n">create_int_variable</span><span class="p">:</span>
@@ -990,7 +968,7 @@ loop:  2
 </ul>
 </li>
 </ul>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">none_variable</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">none_variable</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span>
@@ -1025,7 +1003,7 @@ loop:  2
 </div>
 </div>
 <p>Using the <code class="docutils literal notranslate"><span class="pre">append()</span></code> method can append an element to the end of the list.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">new_list</span><span class="p">)</span>
@@ -1062,7 +1040,7 @@ loop:  2
 </li>
 </ul>
 <p>In this course, tuples are usually used to represent the shapes of vectors and matrices.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 
@@ -1087,7 +1065,7 @@ loop:  2
 </ul>
 </li>
 </ul>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
 
@@ -1116,7 +1094,7 @@ loop:  2
 <li><p>Indices are numbered from 0.</p></li>
 <li><p>Use the position’s index in square brackets to get the character at that position.</p></li>
 </ul>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">string_variable</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
@@ -1129,7 +1107,7 @@ loop:  2
 </div>
 </div>
 <p>Index value can be negative, which counts from the right. For example, the index value <code class="docutils literal notranslate"><span class="pre">-1</span></code> refers to the last character in the string, <code class="docutils literal notranslate"><span class="pre">-2</span></code> refers to the second-last character, and so on. See the following example to get the last element of a list:</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">new_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
@@ -1154,7 +1132,7 @@ loop:  2
 <li><p>The difference between <code class="docutils literal notranslate"><span class="pre">stop</span></code> and <code class="docutils literal notranslate"><span class="pre">start</span></code> is the slice’s length.</p></li>
 <li><p>Taking a slice does not change the contents of the original string. Instead, taking a slice returns a copy of part of the original string.</p></li>
 </ul>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># elements beginning to index 5 (not included)</span>
 <span class="n">string_variable</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
@@ -1167,7 +1145,7 @@ loop:  2
 </div>
 </div>
 </div>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># elements from index 3 to 5 (not included)</span>
 <span class="n">string_variable</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
@@ -1180,7 +1158,7 @@ loop:  2
 </div>
 </div>
 </div>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># elements from index index 6 to end</span>
 <span class="n">string_variable</span><span class="p">[</span><span class="mi">6</span><span class="p">:]</span>
@@ -1197,7 +1175,7 @@ loop:  2
 <div class="section" id="calculations">
 <h3>Calculations<a class="headerlink" href="#calculations" title="Permalink to this headline">¶</a></h3>
 <p>Variables can be used in calculations as if they were values</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>

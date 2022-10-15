@@ -476,28 +476,6 @@ const thebe_selector_output = ".output, .cell_output"
 
             <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/00-prereq/loading-data.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/00-prereq/loading-data.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
         </div>
 
         <!-- Table of contents -->
@@ -573,7 +551,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h2>Data frame and basic operations<a class="headerlink" href="#data-frame-and-basic-operations" title="Permalink to this headline">¶</a></h2>
 <p>In Python, Pandas is a common used module to read from file into a data frame. I downloaded the Auto.csv from the book website. First, take a look at the csv file. There are headers, missing value is marked by ‘?’. The data is separated by comma. We can use the <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function to read the csv file into a data frame. The <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function has many parameters, we can use <code class="docutils literal notranslate"><span class="pre">?</span></code> to get the documentation of the function.</p>
 <p>The following code loads libraries needed for this section and shows how to read the csv file “Auto.csv” in the text book into a data frame <code class="docutils literal notranslate"><span class="pre">auto_df</span></code>.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">urllib</span>
@@ -593,7 +571,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">.head()</span></code> method can be used to get the first 5 (by default) rows of the data frame.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -695,7 +673,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div></div></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> method can get the summary statistics of the data frame. Specify the argument <code class="docutils literal notranslate"><span class="pre">include</span></code> to get the summary statistics of certain variables, e.g. <code class="docutils literal notranslate"><span class="pre">include</span> <span class="pre">=</span> <span class="pre">&quot;all&quot;</span></code> for mix types, <code class="docutils literal notranslate"><span class="pre">include</span> <span class="pre">=</span> <span class="pre">[np.number]</span></code> for numerical columns, and <code class="docutils literal notranslate"><span class="pre">include</span> <span class="pre">=</span> <span class="pre">[&quot;O&quot;]</span></code> for objects.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
@@ -823,7 +801,7 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </div></div></div>
 </div>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
 </pre></div>
@@ -997,7 +975,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div></div></div>
 </div>
 <p>The dimension of a data frame can be found out by the same <code class="docutils literal notranslate"><span class="pre">.shape()</span></code> method as in <code class="docutils literal notranslate"><span class="pre">Numpy</span></code> arrays.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
@@ -1010,7 +988,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>Indexing in Pandas data frame is similar to indexing in <code class="docutils literal notranslate"><span class="pre">Numpy</span></code> arrays. A row, a column, or a submatrix can be accessed by the <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code> or <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> method. <code class="docutils literal notranslate"><span class="pre">iloc</span></code> is used to index by position, and <code class="docutils literal notranslate"><span class="pre">loc</span></code> is used to index by labels (row and column names).</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">4</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
@@ -1064,7 +1042,7 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </div></div></div>
 </div>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="s2">&quot;cylinders&quot;</span><span class="p">]]</span>
 </pre></div>
@@ -1119,7 +1097,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div></div></div>
 </div>
 <p>An alternative way to select the first 4 rows.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
@@ -1209,7 +1187,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div></div></div>
 </div>
 <p>The column names can be found out by <code class="docutils literal notranslate"><span class="pre">list</span></code> function or the <code class="docutils literal notranslate"><span class="pre">.columns</span></code> attribute.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">auto_df</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">auto_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
@@ -1226,7 +1204,7 @@ Index([&#39;mpg&#39;, &#39;cylinders&#39;, &#39;displacement&#39;, &#39;horsepow
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">.isnull()</span></code> and <code class="docutils literal notranslate"><span class="pre">.sum()</span></code> methods can be used to find out how many NaNs in each variables.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
@@ -1247,7 +1225,7 @@ dtype: int64
 </div>
 </div>
 </div>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># after the previous steps, there are 397 obs in the data and only 5 with missing values. We can just drop the ones with missing values</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">auto_df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -1264,7 +1242,7 @@ dtype: int64
 </div>
 </div>
 <p>The type of variable(s) can be changed. The following example will change the cylinders into categorical variable</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="p">[</span><span class="s2">&quot;cylinders&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">auto_df</span><span class="p">[</span><span class="s2">&quot;cylinders&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
 </pre></div>
@@ -1275,7 +1253,7 @@ dtype: int64
 <div class="section" id="visualising-data">
 <h2>Visualising data<a class="headerlink" href="#visualising-data" title="Permalink to this headline">¶</a></h2>
 <p>Refer a column of data frame by name, by using a <code class="docutils literal notranslate"><span class="pre">.column_name</span></code>. See the options in plt.plot for more.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">auto_df</span><span class="o">.</span><span class="n">cylinders</span><span class="p">,</span> <span class="n">auto_df</span><span class="o">.</span><span class="n">mpg</span><span class="p">,</span> <span class="s2">&quot;ro&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1287,7 +1265,7 @@ dtype: int64
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">.hist()</span></code> method can get the histogram of certain variables. Specify the argument <code class="docutils literal notranslate"><span class="pre">column</span></code> to get the histogram of a certain variable.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cylinders&quot;</span><span class="p">,</span> <span class="s2">&quot;mpg&quot;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
