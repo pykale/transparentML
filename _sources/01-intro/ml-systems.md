@@ -76,78 +76,100 @@ From the above, we can see that reproducibility is a minimal requirement for rep
 
 ### Exercises
 
-Q1. What are the main ingredients of an ML system?
+1. What are the main ingredients of an ML system?
 
+    Compare your answer with the reference solution below
+   ```{toggle}
+    **data, model and loss function**
+   ```
 
-Q2. Weight and biases are the hyperparameters of a model.
+2. Weight and biases are the hyperparameters of a model.
 
-    a. True
+       a. True
 
-    b. False
+       b. False
+    Compare your answer with the reference solution below
+   ```{toggle}
+    **b. False**
+   ```
 
+3. Which of the followings are true?
 
+       a. In regression, the loss function measures the difference between the predicted class label and the true class label.
 
-Q3. Which of the following are true?
+       b. In dimension reduction, the loss function measures the difference between the predicted real number and the true real number.
 
-    a. In regression, the loss function measures the difference between the predicted class label and the true class label.
+       c. In clustering, the loss function measures the coherence and separation of clusters.
 
-    b. In dimension reduction, the loss function measures the difference between the predicted real number and the true real number.
+       d. In classification, the loss function measures the difference between the predicted class label and the true class label.
 
-    c. In clustering, the loss function measures the coherence and separation of clusters.
+    Compare your answer with the reference solution below
+   ```{toggle}
+    **c, d**
+   ```
 
-    d. In classification, the loss function measures the difference between the predicted class label and the true class label.
-
-
-Pricing apartments based on a real estate website. We have thousands of house descriptions with their price. Typically, an example of a house description is the following:
+4. Pricing apartments based on a real estate website. We have thousands of house descriptions with their price. Typically, an example of a house description is the following:
 “Great for entertaining: spacious, updated 2 bedroom, 1 bathroom apartment in Lakeview, 97630. The house will be available from May 1st. Close to nightlife with a private backyard. Price ~$1,000,000.”  We are interested in predicting house prices from their description. One potential use case for this would be, as a buyer, finding cheap houses compared to their market value.
 
-Q4. What kind of problem is it?
+    4.1. What kind of problem is it?
 
-    a. a supervised problem
+    Select all answers that apply
 
-    b. an unsupervised problem
+       a. a supervised problem
 
-    c. a classification problem
+       b. an unsupervised problem
 
-    d. a regression problem
+       c. a classification problem
 
-    e. a clustering problem
+       d. a regression problem
 
-    f. a dimensionality reduction problem
+       e. a clustering problem
 
-   Select all answers that apply
+       f. a dimensionality reduction problem
 
+    Compare your answer with the reference solution below
+   ```{toggle}
+    **a, d**
+   ```
+    4.2. What are the features?
 
-Q5. What are the features?
+    Select all answers that apply
 
-    a. the number of rooms might be a feature
+       a. the number of rooms might be a feature
 
-    b. the postcode of the house might be a feature
+       b. the postcode of the house might be a feature
 
-    c. the price of the house might be a feature
+       c. the price of the house might be a feature
 
-   Select all answers that apply
+    Compare your answer with the reference solution below
+   ```{toggle}
+    **a, b**
+   ```
+    4.3. What is the target variable?
 
+    Select a single answer
 
+       a. the full-text description is the target
 
-Q6. What is the target variable?
+       b. the price of the house is the target
 
-    a. the full-text description is the target
+       c. only house descriptions with no price mentioned are the target
 
-    b. the price of the house is the target
-
-    c. only house descriptions with no price mentioned are the target
+    Compare your answer with the reference solution below
+   ```{toggle}
+    **b**
+   ```
+    4.4 What is a record (a sample)?
 
    Select a single answer
 
+       a. each house description is a record
 
+       b. each house price is a record
 
-Q7. What is a record (a sample)?
+       c. each kind of description (as the house size) is a record
 
-    a. each house description is a record
-
-    b. each house price is a record
-
-    c. each kind of description (as the house size) is a record
-
-   Select a single answer
+    Compare your answer with the reference solution below
+   ```{toggle}
+    **a**
+   ```

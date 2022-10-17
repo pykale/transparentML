@@ -478,6 +478,28 @@ const thebe_selector_output = ".output, .cell_output"
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/01-intro/knn.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/01-intro/knn.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -499,8 +521,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#libraries">
-     1.5.2.1. Libraries
+    <a class="reference internal nav-link" href="#import-libraries">
+     1.5.2.1. Import libraries
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -571,8 +593,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#libraries">
-     1.5.2.1. Libraries
+    <a class="reference internal nav-link" href="#import-libraries">
+     1.5.2.1. Import libraries
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -624,7 +646,7 @@ const thebe_selector_output = ".output, .cell_output"
   <div class="section" id="k-nearest-neighbors-classification">
 <h1><span class="section-number">1.5. </span>K-nearest neighbors classification<a class="headerlink" href="#k-nearest-neighbors-classification" title="Permalink to this headline">¶</a></h1>
 <p>Before we end this introduction, let us look at a simple example of a supervised machine learning model, the K-Nearest Neighbors (KNN) model. It is a <em>non-parametric</em> method used for classification and regression. In both cases, the input consists of the <span class="math notranslate nohighlight">\(k\)</span> closest training examples in the feature space. The output depends on whether KNN is used for classification or regression. Here, we focus on the classification case.</p>
-<p>Watch the 5-min video below to help you understand the KNN algorithm.</p>
+<p>Watch the 5-minute video below for a visual explanation of the KNN algorithm.</p>
 <div class="admonition-video admonition">
 <p class="admonition-title">Video</p>
 <iframe width="700" height="394" src="https://www.youtube.com/embed/HVXime0nQeI?start=21&end=305" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -666,8 +688,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p class="admonition-title">Launch</p>
 <p>Click the rocket symbol (<i class="fas fa-rocket"></i>) to launch this page as an interactive notebook in Google Colab (faster but requiring a Google account) or Binder.</p>
 </div>
-<div class="section" id="libraries">
-<h3><span class="section-number">1.5.2.1. </span>Libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="import-libraries">
+<h3><span class="section-number">1.5.2.1. </span>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h3>
 <p>Get ready by importing the application programming interfaces (APIs) needed from respective libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -796,8 +818,447 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">1.5.3. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p>To be completed in the next cycle</p>
-<p>Q1. How many features are there in total for the iris dataset? Write code below to find out or verify.</p>
+<p><strong>1</strong>. How many features are there in total for the iris dataset?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compare your answer with the reference solution below</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">neighbors</span><span class="p">,</span> <span class="n">datasets</span>
+
+<span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of features of iris dataset is </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of features of iris dataset is 4
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>2</strong>. Why KNN is a lazy model?</p>
+<p>Compare your answer with the reference solution below</p>
+<div class="toggle docutils container">
+<p>KNN is a lazy model beacuase it is a non-parametric model, which means that it does not make any assumption on the underlying data distribution.</p>
+</div>
+<p><strong>3</strong>. Why KNN is a instance-based model?</p>
+<p>Compare your answer with the reference solution below</p>
+<div class="toggle docutils container">
+<p>KNN does not learn a discriminative function from the training data but memorises the training dataset instead thats why it’s called instance-based model.</p>
+</div>
+<p><strong>4</strong>. The table below provides a training set containing six observations, three predictors, and one qualitative response variable.</p>
+<table class="colwidths-auto table" id="knnproblem-table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Observations</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(X_1\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(X_2\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(X_3\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(Y\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>3</p></td>
+<td><p>0</p></td>
+<td><p>Red</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>Red</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>3</p></td>
+<td><p>Red</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>Green</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>-1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>Green</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>Red</p></td>
+</tr>
+</tbody>
+</table>
+<p>Suppose we wish to use the data see to make a prediction for Y when <span class="math notranslate nohighlight">\(X_1 = X_2 = X_3 = 1\)</span> using K-nearest neighbors.</p>
+<p><strong>a</strong>. Compute the Euclidean distance between each observation and the test point,  <span class="math notranslate nohighlight">\(X_1 = X_2 = X_3 = 1\)</span> .</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compare your answer with the reference solution below</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Obs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+        <span class="s2">&quot;X1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="s2">&quot;X2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+        <span class="s2">&quot;X3&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="s2">&quot;Y&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Red&quot;</span><span class="p">,</span> <span class="s2">&quot;Red&quot;</span><span class="p">,</span> <span class="s2">&quot;Red&quot;</span><span class="p">,</span> <span class="s2">&quot;Green&quot;</span><span class="p">,</span> <span class="s2">&quot;Green&quot;</span><span class="p">,</span> <span class="s2">&quot;Red&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">euclidian_dist</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute the row-wise euclidean distance</span>
+<span class="sd">    from the origin&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="o">**</span> <span class="mf">0.5</span>
+
+
+<span class="n">euc_dist</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;EuclideanDist&quot;</span><span class="p">:</span> <span class="n">euclidian_dist</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s2">&quot;X1&quot;</span><span class="p">,</span> <span class="s2">&quot;X2&quot;</span><span class="p">,</span> <span class="s2">&quot;X3&quot;</span><span class="p">]])})</span>
+<span class="n">df_euc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">euc_dist</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df_euc</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Obs</th>
+      <th>X1</th>
+      <th>X2</th>
+      <th>X3</th>
+      <th>Y</th>
+      <th>EuclideanDist</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>Red</td>
+      <td>2.449490</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Red</td>
+      <td>1.732051</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Red</td>
+      <td>2.236068</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>Green</td>
+      <td>1.414214</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Green</td>
+      <td>2.236068</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>1</td>
+      <td>Red</td>
+      <td>2.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>b</strong>. What is our prediction with K=1? Why?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compare your answer with the reference solution below</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">df_euc</span><span class="o">.</span><span class="n">nsmallest</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="s2">&quot;EuclideanDist&quot;</span><span class="p">)</span>
+
+<span class="c1"># Our prediction for K=1 is Green</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Obs</th>
+      <th>X1</th>
+      <th>X2</th>
+      <th>X3</th>
+      <th>Y</th>
+      <th>EuclideanDist</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>Green</td>
+      <td>1.414214</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>c</strong>. What is our prediction with k=3? Why?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compare your answer with the reference solution below</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">df_euc</span><span class="o">.</span><span class="n">nsmallest</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="s2">&quot;EuclideanDist&quot;</span><span class="p">)</span>
+
+<span class="c1"># Our prediction for K=3 is Red, because majority of the 3 nearest neighbours are Red.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Obs</th>
+      <th>X1</th>
+      <th>X2</th>
+      <th>X3</th>
+      <th>Y</th>
+      <th>EuclideanDist</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>Green</td>
+      <td>1.414214</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Red</td>
+      <td>1.732051</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>1</td>
+      <td>Red</td>
+      <td>2.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>d</strong>. What is our prediction with k=4? Why?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compare your answer with the reference solution below</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="n">df_euc</span><span class="o">.</span><span class="n">nsmallest</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="s2">&quot;EuclideanDist&quot;</span><span class="p">)</span>
+
+<span class="c1"># Our prediction for K=4 is Red, because majority of the 4 nearest neighbours are Red.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Obs</th>
+      <th>X1</th>
+      <th>X2</th>
+      <th>X3</th>
+      <th>Y</th>
+      <th>EuclideanDist</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>Green</td>
+      <td>1.414214</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Red</td>
+      <td>1.732051</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>1</td>
+      <td>Red</td>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Red</td>
+      <td>2.236068</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>e</strong>. If the Bayes decision boundry in this problem is higly non-linear, then would we expect the best value for K to be large or small? Why?</p>
+<p>Compare your answer with the reference solution below</p>
+<div class="toggle docutils container">
+<p>Small. A smaller value of K results in a more flexible classification model because the prediciton is based upon a smaller subset of all observations in the dataset.</p>
+</div>
 </div>
 </div>
 
