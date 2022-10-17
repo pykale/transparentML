@@ -127,33 +127,47 @@ This section introduces the basic concepts of linear algebra and notations used 
 
 ### Exercises
 
-Q1. $
-    \begin{bmatrix} 12 & 0 & 0 \\ 0 & 8 & 0 \\ 0 & 0 & 23 \end{bmatrix}
-    $
+1. $\begin{bmatrix} 12 & 0 & 0 \\ 0 & 8 & 0 \\ 0 & 0 & 23 \end{bmatrix}$
 
-  What kind of matrices is it?
+    What kind of matrices is it?
 
-    a. Diagonal
+    You can choose multiple answers.
 
-    b. Identity
+        a. Diagonal
 
-    c. Symmetric
+        b. Identity
 
-    d. Inverse
+        c. Symmetric
 
-    e. Orthogonal
+        d. Inverse
 
-  You can choose multiple answers.
+        e. Orthogonal
 
 
 
-Q2. **A** = $\begin{bmatrix} 8 & 5 & 9 \\ 7 & 19 & 14 \end{bmatrix}$
+    Compare your answer with the reference solution below
+   ```{toggle}
+    **a ,b, c**
+   ```
+
+2. **A** = $\begin{bmatrix} 8 & 5 & 9 \\ 7 & 19 & 14 \end{bmatrix}$
    **B** = $ \begin{bmatrix} 6 & 13 & 15 \\ 17 & 22 & 12 \\ 0 & 3 & 9 \end{bmatrix}$
 
-  Then,
+    You have to do it manually.
 
-    a. AB = ?
+        a. AB = ?
 
-    b. 2A=?
+        b. 2A = ?
 
-    c. AB+2A=?
+        c. AB + 2A = ?
+
+
+    Compare your answer with the reference solution below
+   ```{toggle}
+    a. $\begin{bmatrix} 133 & 241 & 261 \\ 365 & 551 & 459 \end{bmatrix}$
+
+    b. $\begin{bmatrix} 16 & 10 & 18 \\ 14 & 38 & 28 \end{bmatrix}$
+
+    c. $\begin{bmatrix} 149 & 251 & 279 \\ 379 & 589 & 487 \end{bmatrix}$
+
+   ```

@@ -43,15 +43,27 @@ The function $f$ is called the **model** or **predictive function**. The model $
 
 ### Exercises
 
-Q1. Deep Learning is a subfield of AI.
+1. Deep Learning is a subfield of AI.
 
-    a. True
+       a. True
 
-    b. False
+       b. False
+    Compare your answer with the reference solution below
+   ```{toggle}
+    **a. True**
+   ```
 
+2. We collected a set of data on the top 5000 firms in the US. For each firm, we record profit, number of employees, industry, and the CEO's salary. We are interested in understanding which factors affect CEO salary.
 
-We collected a set of data on the top 5000 firms in the US. For each firm, we record profit, number of employees, industry, and the CEO's salary. We are interested in understanding which factors affect CEO salary.
+    a. What are the features here?
 
-Q2. What are the features here?
+    Compare your answer with the reference solution below
+   ```{toggle}
+    **profit, number of employees and industry**
+   ```
+    b. What is the target variable?
 
-Q3. What is the target variable?
+   Compare your answer with the reference solution below
+   ```{toggle}
+    **CEO's salary**
+   ```
