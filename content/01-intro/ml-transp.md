@@ -192,7 +192,7 @@ The applicability and implications of transparency trade-offs depend on context 
     ```{toggle}
     **b. False**
     ```
-6. Stakeholder's transparency interests can differ even when their reasons for seeking information are the same. 
+6. Stakeholder's transparency interests can differ even when their reasons for seeking information are the same.
 
        a. True
 
