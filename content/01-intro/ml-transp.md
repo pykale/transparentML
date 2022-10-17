@@ -182,6 +182,23 @@ The applicability and implications of transparency trade-offs depend on context 
     ```{toggle}
     **a. True**
     ```
-5.
+5. Deep learning models has high interpretability but low flexibility.
 
-5. One real life example will be added
+       a. True
+
+       b. False
+
+    Compare your answer with the reference solution below
+    ```{toggle}
+    **b. False**
+    ```
+6. Stakeholder's transparency interests can differ even when their reasons for seeking information are the same. 
+
+       a. True
+
+       b. False
+
+    Compare your answer with the reference solution below
+    ```{toggle}
+    **a. True**
+    ```
