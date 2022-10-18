@@ -32,7 +32,7 @@ We will mainly use the [Advertising](https://github.com/pykale/transparentML/blo
 - Output: target values of data samples
 - Model: fit a line (or plane/hyperplane) to the training data and assign the value on the fitted line (or plane/hyperplane) to the test data
   - Hyperparameter(s): None
-  - Parameters: the intercept(s) and slope(s) of the fitted line (or plane/hyperplane), also known as the weight(s) and bias(es)
+  - Parameters: the intercept(s) and slope(s) of the fitted line (or plane/hyperplane), also known as the bias(es) and weight(s), respectively
 - Loss function: minimise the total distances of the training data points to the fitted line (or plane/hyperplane)
 - Learning algorithm: closed-form analytical solution based on linear algebra
 ```
