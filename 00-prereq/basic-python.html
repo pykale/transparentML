@@ -476,28 +476,6 @@ const thebe_selector_output = ".output, .cell_output"
 
             <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/00-prereq/basic-python.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/00-prereq/basic-python.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
         </div>
 
         <!-- Table of contents -->
@@ -648,7 +626,7 @@ https://youtu.be/seKOq-VMJgY?t=1082 -->
 <p>Try the following code in the cell below to assign <code class="docutils literal notranslate"><span class="pre">1</span></code> to a variable <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;hello</span> <span class="pre">world&quot;</span></code> to a variable <code class="docutils literal notranslate"><span class="pre">string_varible</span></code>:</p>
 <!-- $$
   \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\\vdots\\ x_n \end{bmatrix}.
-$$ --><div class="cell docutils container">
+$$ --><div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">string_variable</span> <span class="o">=</span> <span class="s2">&quot;Hello world&quot;</span>
@@ -721,7 +699,7 @@ $$ --><div class="cell docutils container">
 </ul>
 <p><strong>Example</strong></p>
 <p>Display the characters in the string <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">world&quot;</span></code>:</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">character</span> <span class="ow">in</span> <span class="n">string_variable</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">character</span><span class="p">)</span>
