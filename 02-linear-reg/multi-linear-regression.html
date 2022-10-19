@@ -511,23 +511,33 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-libraries">
+   2.2.1. Install libraries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#import-the-required-libraries-and-load-the-dataset">
-   2.2.1. Import the required libraries and load the dataset.
+   2.2.2. Import the required libraries and load the dataset
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#estimating-the-regression-coefficients">
-   2.2.2. Estimating the regression coefficients
+   2.2.3. Estimating the regression coefficients
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interpreting-the-results">
+   2.2.4. Interpreting the results
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#important-questions-in-multiple-linear-regression">
-   2.2.3. Important questions in multiple linear regression
+   2.2.5. Important questions in multiple linear regression
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#is-at-least-one-of-the-predictors-x-1-x-2-x-d-useful-in-predicting-the-response">
-     2.2.3.1. Is at least one of the predictors
+     2.2.5.1. Is at least one of the predictors
      <span class="math notranslate nohighlight">
       \(x_1, x_2, ..., x_D\)
      </span>
@@ -536,7 +546,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#do-all-the-predictors-help-to-explain-y-or-is-only-a-subset-of-the-predictors-useful">
-     2.2.3.2. Do all the predictors help to explain
+     2.2.5.2. Do all the predictors help to explain
      <span class="math notranslate nohighlight">
       \(y\)
      </span>
@@ -545,12 +555,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-well-does-the-model-fit-the-data">
-     2.2.3.3. How well does the model fit the data?
+     2.2.5.3. How well does the model fit the data?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#given-a-set-of-predictor-values-what-response-value-should-we-predict-and-how-accurate-is-our-prediction-advanced-add-more-content-of-prediction-interval-or-remove-this-sub-section-later">
-     2.2.3.4. Given a set of predictor values, what response value should we predict, and how accurate is our prediction? (Advanced, add more content of prediction interval/or remove this sub-section later)
+    <a class="reference internal nav-link" href="#given-a-set-of-predictor-values-what-response-value-should-we-predict-and-how-accurate-is-our-prediction">
+     2.2.5.4. Given a set of predictor values, what response value should we predict, and how accurate is our prediction?
     </a>
    </li>
   </ul>
@@ -576,23 +586,33 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-libraries">
+   2.2.1. Install libraries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#import-the-required-libraries-and-load-the-dataset">
-   2.2.1. Import the required libraries and load the dataset.
+   2.2.2. Import the required libraries and load the dataset
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#estimating-the-regression-coefficients">
-   2.2.2. Estimating the regression coefficients
+   2.2.3. Estimating the regression coefficients
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interpreting-the-results">
+   2.2.4. Interpreting the results
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#important-questions-in-multiple-linear-regression">
-   2.2.3. Important questions in multiple linear regression
+   2.2.5. Important questions in multiple linear regression
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#is-at-least-one-of-the-predictors-x-1-x-2-x-d-useful-in-predicting-the-response">
-     2.2.3.1. Is at least one of the predictors
+     2.2.5.1. Is at least one of the predictors
      <span class="math notranslate nohighlight">
       \(x_1, x_2, ..., x_D\)
      </span>
@@ -601,7 +621,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#do-all-the-predictors-help-to-explain-y-or-is-only-a-subset-of-the-predictors-useful">
-     2.2.3.2. Do all the predictors help to explain
+     2.2.5.2. Do all the predictors help to explain
      <span class="math notranslate nohighlight">
       \(y\)
      </span>
@@ -610,12 +630,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-well-does-the-model-fit-the-data">
-     2.2.3.3. How well does the model fit the data?
+     2.2.5.3. How well does the model fit the data?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#given-a-set-of-predictor-values-what-response-value-should-we-predict-and-how-accurate-is-our-prediction-advanced-add-more-content-of-prediction-interval-or-remove-this-sub-section-later">
-     2.2.3.4. Given a set of predictor values, what response value should we predict, and how accurate is our prediction? (Advanced, add more content of prediction interval/or remove this sub-section later)
+    <a class="reference internal nav-link" href="#given-a-set-of-predictor-values-what-response-value-should-we-predict-and-how-accurate-is-our-prediction">
+     2.2.5.4. Given a set of predictor values, what response value should we predict, and how accurate is our prediction?
     </a>
    </li>
   </ul>
@@ -631,16 +651,39 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="section" id="multiple-linear-regression">
 <h1><span class="section-number">2.2. </span>Multiple linear regression<a class="headerlink" href="#multiple-linear-regression" title="Permalink to this headline">¶</a></h1>
-<p>We have examined the relationship between <code class="docutils literal notranslate"><span class="pre">sale</span></code> and <code class="docutils literal notranslate"><span class="pre">TV</span></code> of the <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> dataset for simple linear regression. There are two more predictor variables <code class="docutils literal notranslate"><span class="pre">Radio</span></code> and <code class="docutils literal notranslate"><span class="pre">Newspaper</span></code> in the dataset. How can we account for the effect of these two variables in the model?</p>
+<p>We have examined the relationship between <code class="docutils literal notranslate"><span class="pre">sale</span></code> and <code class="docutils literal notranslate"><span class="pre">TV</span></code> of the <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> dataset for simple linear regression. There are two more predictor variables <code class="docutils literal notranslate"><span class="pre">radio</span></code> and <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> in the dataset. How can we account for the effect of these two variables in the model?</p>
 <p>Watch the 5-minute video below for a visual explanation of multiple linear regression.</p>
 <div class="admonition-video admonition">
 <p class="admonition-title">Video</p>
 <iframe width="700" height="394" src="https://www.youtube.com/embed/zITIFTsivN8?start=21" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
 <p><a class="reference external" href="https://www.youtube.com/embed/zITIFTsivN8?start=21">Explaining Multiple Linear Regression, by StatQuest</a></p>
 </div>
-<p>Then study the following sections to learn more about multiple linear regression with examples in the text book.</p>
+<p>Then study the following sections to learn more about multiple linear regression with examples in the textbook.</p>
+<div class="section" id="install-libraries">
+<h2><span class="section-number">2.2.1. </span>Install libraries<a class="headerlink" href="#install-libraries" title="Permalink to this headline">¶</a></h2>
+<p>If you are using Google Colab, you can skip this section. If you are using your own computer, you will need to install the following libraries unless they are already installed:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install mpl_toolkits statsmodels
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">ERROR: Could not find a version that satisfies the requirement mpl_toolkits (from versions: none)</span>
+<span class=" -Color -Color-Red">ERROR: No matching distribution found for mpl_toolkits</span>
+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> A new release of pip available: <span class=" -Color -Color-Red">22.2.2</span> -&gt; <span class=" -Color -Color-Green">22.3</span>
+<span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> To update, run: <span class=" -Color -Color-Green">pip install --upgrade pip</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="import-the-required-libraries-and-load-the-dataset">
-<h2><span class="section-number">2.2.1. </span>Import the required libraries and load the dataset.<a class="headerlink" href="#import-the-required-libraries-and-load-the-dataset" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2.2. </span>Import the required libraries and load the dataset<a class="headerlink" href="#import-the-required-libraries-and-load-the-dataset" title="Permalink to this headline">¶</a></h2>
+<p>Get ready by importing the APIs needed from respective libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ../standard_import.txt</span>
@@ -658,7 +701,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p><strong>Load Datasets</strong></p>
-<p>Load <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> dataset.</p>
+<p>Load the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Advertising.csv">Advertising dataset</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Advertising.csv&quot;</span>
@@ -668,7 +711,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>To accommodate multiple predictor variables, one option is to run simple linear regression separately for each predictor variable.</p>
-<p>The following code run a simple linear regression model of <code class="docutils literal notranslate"><span class="pre">Radio</span></code>, and <code class="docutils literal notranslate"><span class="pre">Newspaper</span></code> onto <code class="docutils literal notranslate"><span class="pre">Sales</span></code> using <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code>, respectively (Table 3.3 in the textbook).</p>
+<p>The following code run a simple linear regression model of <code class="docutils literal notranslate"><span class="pre">radio</span></code>, and <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> onto <code class="docutils literal notranslate"><span class="pre">sales</span></code> using <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code>, respectively (Table 3.3 in the textbook).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Sales ~ Radio&quot;</span><span class="p">,</span> <span class="n">advertising_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -709,38 +752,40 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </table></div></div>
 </div>
-<p>However, fitting a separate simple linear regression model for each predictor is not very efficient. It is unclear how to make a single prediction, while the effect of other predictors is ignored. A better approach is to use multiple linear regression. Multiple linear regression is an extension of simple linear regression. It allows us to predict a quantitative response using more than one predictor variable. The equation for a multiple linear regression model with two predictor variables is given by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6b47de05-0665-4579-9c09-3396745c8d85">
-<span class="eqno">(2.12)<a class="headerlink" href="#equation-6b47de05-0665-4579-9c09-3396745c8d85" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<p>However, fitting a separate simple linear regression model for each predictor is problematic: 1) It is unclear how to make a single prediction given the three advertising media budgets; 2) each separate linear regression model ignores  the effect of the other two predictors, which can lead to misleading estimates.</p>
+<p>A better approach is to use <em>multiple linear regression</em>. Multiple linear regression is an extension of simple linear regression. It allows us to predict a quantitative response using more than one predictor variable. The equation for a multiple linear regression model with <span class="math notranslate nohighlight">\(D\)</span> predictor variables is given by:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0db1215f-f1d3-4d3d-880b-bdd3b2ed2094">
+<span class="eqno">(2.12)<a class="headerlink" href="#equation-0db1215f-f1d3-4d3d-880b-bdd3b2ed2094" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_D x_D + \epsilon,
 \end{equation}\]</div>
-<p>where <span class="math notranslate nohighlight">\(y\)</span> is the response, <span class="math notranslate nohighlight">\(x_1, x_2, ..., x_D\)</span> are the predictors, <span class="math notranslate nohighlight">\(D\)</span> is the total number of features (predictor variables), and <span class="math notranslate nohighlight">\(\epsilon\)</span> is the error term. The <span class="math notranslate nohighlight">\(\beta\)</span>’s are called the regression coefficients. The <span class="math notranslate nohighlight">\(\beta_0\)</span> is the bias (intercept), and the <span class="math notranslate nohighlight">\(\beta_1, \beta_2, ..., \beta_D\)</span> are the weights (slopes). The equation can be written in matrix form as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3c86840f-29b5-4ff1-90a6-4b50ed06f99b">
-<span class="eqno">(2.13)<a class="headerlink" href="#equation-3c86840f-29b5-4ff1-90a6-4b50ed06f99b" title="Permalink to this equation">¶</a></span>\[\begin{equation}
-\mathbf{Y} = \mathbf{X} \mathbf{\beta} + \boldsymbol{\epsilon},
+<p>where <span class="math notranslate nohighlight">\(y\)</span> is the response, <span class="math notranslate nohighlight">\(x_1, x_2, ..., x_D\)</span> are the <span class="math notranslate nohighlight">\(D\)</span> predictors, <span class="math notranslate nohighlight">\(D\)</span> is the total number of predictor variables (features), and <span class="math notranslate nohighlight">\(\epsilon\)</span> is the error term. The <span class="math notranslate nohighlight">\(\beta\)</span>s are called the <em>regression coefficients</em>, where <span class="math notranslate nohighlight">\(\beta_0\)</span> is the bias (intercept), and <span class="math notranslate nohighlight">\(\beta_1, \beta_2, ..., \beta_D\)</span> are the weights (slopes). Considering <span class="math notranslate nohighlight">\(N\)</span> samples, the equation can be written in matrix form as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-35af248b-ebe1-4597-8ff4-8bfa2fa124bf">
+<span class="eqno">(2.13)<a class="headerlink" href="#equation-35af248b-ebe1-4597-8ff4-8bfa2fa124bf" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+\mathbf{y} = \mathbf{X} \boldsymbol{\beta} + \boldsymbol{\epsilon},
 \end{equation}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span> is a <span class="math notranslate nohighlight">\(N \times 1\)</span> vector of responses, <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> is a <span class="math notranslate nohighlight">\(N \times (p+1)\)</span> matrix of predictors, <span class="math notranslate nohighlight">\(\mathbf{\beta}\)</span> is a <span class="math notranslate nohighlight">\((p+1) \times 1\)</span> vector of regression coefficients, and <span class="math notranslate nohighlight">\(\boldsymbol{\epsilon}\)</span> is a <span class="math notranslate nohighlight">\(N \times 1\)</span> vector of errors. The <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> matrix contains a column of 1s to account for the intercept. The <span class="math notranslate nohighlight">\(\mathbf{\beta}\)</span> vector contains the intercept in the first position and the slopes for the remaining <span class="math notranslate nohighlight">\(p\)</span> predictors. The <span class="math notranslate nohighlight">\(\mathbf{\epsilon}\)</span> vector contains the error terms for each observation. Using the <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> dataset as an example, we can fit a multiple linear regression model:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b14ea9b6-b10d-4dd9-bfad-289ddf76d883">
-<span class="eqno">(2.14)<a class="headerlink" href="#equation-b14ea9b6-b10d-4dd9-bfad-289ddf76d883" title="Permalink to this equation">¶</a></span>\[\begin{equation}
-\text{Sales} = \beta_0 + \beta_1 \text{TV} + \beta_2 \times \text{Radio} + \beta_3 \times \text{Newspaper} + \epsilon.
+<p>where <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> is an <span class="math notranslate nohighlight">\(N \times 1\)</span> vector of responses, <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> is an <span class="math notranslate nohighlight">\(N \times (D+1)\)</span> matrix of predictors, <span class="math notranslate nohighlight">\(\boldsymbol{\beta}\)</span> is a <span class="math notranslate nohighlight">\((D+1) \times 1\)</span> vector of regression coefficients, and <span class="math notranslate nohighlight">\(\boldsymbol{\epsilon}\)</span> is an <span class="math notranslate nohighlight">\(N \times 1\)</span> vector of errors. The predictor (feature) matrix <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> contains a column of 1s to account for the intercept. The vector <span class="math notranslate nohighlight">\(\boldsymbol{\beta}\)</span> contains the intercept in the first position and the slopes for the remaining <span class="math notranslate nohighlight">\(D\)</span> predictors. The vector <span class="math notranslate nohighlight">\(\boldsymbol{\epsilon}\)</span> contains the error terms for each observation.</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> dataset as an example, we can fit a multiple linear regression model to the three predictor variables <code class="docutils literal notranslate"><span class="pre">TV</span></code>, <code class="docutils literal notranslate"><span class="pre">radio</span></code>, and <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> to predict <code class="docutils literal notranslate"><span class="pre">sales</span></code> as follows:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-27e9eca1-654f-49ca-b445-2d1c2f0e553f">
+<span class="eqno">(2.14)<a class="headerlink" href="#equation-27e9eca1-654f-49ca-b445-2d1c2f0e553f" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+\text{Sales} = \beta_0 + \beta_1 \times \text{TV} + \beta_2 \times \text{Radio} + \beta_3 \times \text{Newspaper} + \epsilon.
 \end{equation}\]</div>
 </div>
 <div class="section" id="estimating-the-regression-coefficients">
-<h2><span class="section-number">2.2.2. </span>Estimating the regression coefficients<a class="headerlink" href="#estimating-the-regression-coefficients" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2.3. </span>Estimating the regression coefficients<a class="headerlink" href="#estimating-the-regression-coefficients" title="Permalink to this headline">¶</a></h2>
 <p>Similar to simple linear regression, we can estimate the regression coefficients using least squares. The least squares estimates for the regression coefficients are given by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fca90d0a-7ce9-4c84-a735-9d1683fc5508">
-<span class="eqno">(2.15)<a class="headerlink" href="#equation-fca90d0a-7ce9-4c84-a735-9d1683fc5508" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-636d58e6-6b29-43fe-8c84-eff09a791a97">
+<span class="eqno">(2.15)<a class="headerlink" href="#equation-636d58e6-6b29-43fe-8c84-eff09a791a97" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \text{RSS} = &amp; \sum_{i=1}^N (y_i - \hat{y}_i)^2 \\
 = &amp; \sum_{i=1}^N (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_{i1} - \hat{\beta}_2 x_{i2} - ... - \hat{\beta}_D x_{iD})^2,
 \end{aligned}
 \end{align}\]</div>
-<p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>th response, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>th predicted response, <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> is the intercept, <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> is the slope for <span class="math notranslate nohighlight">\(x_{i,1}\)</span>, <span class="math notranslate nohighlight">\(\hat{\beta}_2\)</span> is the slope for <span class="math notranslate nohighlight">\(x_{i,2}\)</span>, and so on. The <span class="math notranslate nohighlight">\(\hat{\beta}\)</span>’s are the least squares estimates for the regression coefficients. The least squares estimates for the regression coefficients in matrix form are given by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f92fc9dc-27bc-4698-ac25-dccb082b9edd">
-<span class="eqno">(2.16)<a class="headerlink" href="#equation-f92fc9dc-27bc-4698-ac25-dccb082b9edd" title="Permalink to this equation">¶</a></span>\[\begin{equation}
-\hat{\boldsymbol{\beta}} = (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{Y}.
+<p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>th response, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>th predicted response, <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> is the intercept, <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> is the slope for <span class="math notranslate nohighlight">\(x_{i1}\)</span>, <span class="math notranslate nohighlight">\(\hat{\beta}_2\)</span> is the slope for <span class="math notranslate nohighlight">\(x_{i2}\)</span>, and so on. <span class="math notranslate nohighlight">\(\hat{\beta}\)</span>s are the least squares estimates for the regression coefficients, which can be obtained in matrix form as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-266e9bff-d4f9-4d48-af42-02a46afb0c30">
+<span class="eqno">(2.16)<a class="headerlink" href="#equation-266e9bff-d4f9-4d48-af42-02a46afb0c30" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+\hat{\boldsymbol{\beta}} = (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{y}.
 \end{equation}\]</div>
-<p>The following code run a multiple linear regression model of <code class="docutils literal notranslate"><span class="pre">TV</span></code>, <code class="docutils literal notranslate"><span class="pre">Radio</span></code>, and <code class="docutils literal notranslate"><span class="pre">Newspaper</span></code> onto <code class="docutils literal notranslate"><span class="pre">Sales</span></code> using <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code>, and display the learnt coefficients (Table 3.4 in the textbook).</p>
+<p>The following code run a multiple linear regression model to regress <code class="docutils literal notranslate"><span class="pre">TV</span></code>, <code class="docutils literal notranslate"><span class="pre">radio</span></code>, and <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> onto <code class="docutils literal notranslate"><span class="pre">sales</span></code> using <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code>, and display the learnt coefficients (Table 3.4 in the textbook).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Sales ~ TV + Radio + Newspaper&quot;</span><span class="p">,</span> <span class="n">advertising_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -761,10 +806,10 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_D x_D + \epsilon,
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   570.3</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Tue, 18 Oct 2022</td> <th>  Prob (F-statistic):</th> <td>1.58e-96</td>
+  <th>Date:</th>             <td>Wed, 19 Oct 2022</td> <th>  Prob (F-statistic):</th> <td>1.58e-96</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>12:09:00</td>     <th>  Log-Likelihood:    </th> <td> -386.18</td>
+  <th>Time:</th>                 <td>11:52:47</td>     <th>  Log-Likelihood:    </th> <td> -386.18</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   200</td>      <th>  AIC:               </th> <td>   780.4</td>
@@ -811,16 +856,24 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_D x_D + \epsilon,
 </tr>
 </table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
 </div>
+</div>
+<div class="section" id="interpreting-the-results">
+<h2><span class="section-number">2.2.4. </span>Interpreting the results<a class="headerlink" href="#interpreting-the-results" title="Permalink to this headline">¶</a></h2>
+<p>We have interpreted the results of simple linear regression in the <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/simple-linear-regression.html#example-explanation-of-system-transparency">previous section</a>. The interpretation of the results of multiple linear regression is similar. The only difference is that there are now three coefficients to interpret.</p>
+<div class="important admonition">
+<p class="admonition-title">Challenge</p>
+<p>Interpret the results of the multiple linear regression model above based on the <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/simple-linear-regression.html#example-explanation-of-system-transparency">previous section</a> and then click the following to compare the provided interpretation with yours.</p>
+</div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">How to interpret the results? </p>
-<p>We interpret these results as follows:</p>
+<p>We interpret these results above as follows:</p>
 <ul class="simple">
-<li><p>For a given amount of <code class="docutils literal notranslate"><span class="pre">TV</span></code> and <code class="docutils literal notranslate"><span class="pre">newspaper</span> </code>advertising, spending an additional $1,000 on <code class="docutils literal notranslate"><span class="pre">radio</span></code> advertising is associated with approximately 189 units of additional <code class="docutils literal notranslate"><span class="pre">sales</span></code>.</p></li>
-<li><p>Comparing these coefficients to the estimates in simple linear regression, we notice that the multiple regression coefficient estimates for <code class="docutils literal notranslate"><span class="pre">TV</span></code> and <code class="docutils literal notranslate"><span class="pre">radio</span></code> are pretty similar to the simple linear regression coefficient estimates. However, while the <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> regression coefficient estimate in simple linear regression was significantly non-zero, the coefficient estimate for <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> in the multiple regression model is close to zero, and the corresponding p-value is no longer significant, with a value around 0.86.</p></li>
-<li><p>This illustrates that the simple and multiple regression coefficient can be quite different. This difference stems from the fact that in the simple regression case, the slope term represents the average increase in product sales associated with a $1,000 increase in newspaper advertising, ignoring other predictors such as <code class="docutils literal notranslate"><span class="pre">TV</span></code> and <code class="docutils literal notranslate"><span class="pre">radio</span></code>. By contrast, in the multiple regression setting, the coefficient for <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> represents the average increase in product <code class="docutils literal notranslate"><span class="pre">sales</span></code> associated with increasing <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> spending by $1,000 while holding <code class="docutils literal notranslate"><span class="pre">TV</span></code> and <code class="docutils literal notranslate"><span class="pre">radio</span></code> fixed.</p></li>
+<li><p>For a <strong>given</strong> (i.e. fixed) amount of <code class="docutils literal notranslate"><span class="pre">TV</span></code> and <code class="docutils literal notranslate"><span class="pre">newspaper</span> </code>advertising budgets, spending an additional $1,000 on <code class="docutils literal notranslate"><span class="pre">radio</span></code> advertising is associated with approximately 189 units of additional <code class="docutils literal notranslate"><span class="pre">sales</span></code> (<em>recall the units of the variables</em>).</p></li>
+<li><p>Comparing these coefficients to the estimates in simple linear regression, we notice that the multiple regression coefficient estimates for <code class="docutils literal notranslate"><span class="pre">TV</span></code> and <code class="docutils literal notranslate"><span class="pre">radio</span></code> are pretty similar to the simple linear regression coefficient estimates. However, while the <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> regression coefficient estimate in simple linear regression was significantly non-zero, the coefficient estimate for <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> in the multiple regression model is close to zero, and the corresponding <span class="math notranslate nohighlight">\(p\)</span>-value is no longer significant, with a value around 0.86.</p></li>
+<li><p>This illustrates that the simple and multiple regression coefficients can be quite different. This difference stems from the fact that in the simple regression case, the slope term represents the average increase in product sales associated with a $1,000 increase in newspaper advertising, ignoring other predictors such as <code class="docutils literal notranslate"><span class="pre">TV</span></code> and <code class="docutils literal notranslate"><span class="pre">radio</span></code>. By contrast, in the multiple regression setting, the coefficient for <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> represents the average increase in product <code class="docutils literal notranslate"><span class="pre">sales</span></code> associated with increasing <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> spending by $1,000 while holding <code class="docutils literal notranslate"><span class="pre">TV</span></code> and <code class="docutils literal notranslate"><span class="pre">radio</span></code> <strong>fixed</strong>.</p></li>
 </ul>
 </div>
-<p>Why the relationship between <code class="docutils literal notranslate"><span class="pre">Sales</span></code> and <code class="docutils literal notranslate"><span class="pre">Newspaper</span></code> are opposite in the simple linear regression and multiple linear regression? Use following code displays the correlation matrix of the <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> dataset for further analysis.</p>
+<p>Why the relationship between <code class="docutils literal notranslate"><span class="pre">sales</span></code> and <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> are opposite in the simple linear regression and multiple linear regression? Use following code displays the correlation matrix of the <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> dataset for further analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">advertising_df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
@@ -887,31 +940,32 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_D x_D + \epsilon,
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">How to interpret the results?</p>
-<p>This indicates that markets with high <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> advertising tend to also have high <code class="docutils literal notranslate"><span class="pre">radio</span></code> advertising. Now suppose that the multiple regression is correct and <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> advertising is not associated with sales, but <code class="docutils literal notranslate"><span class="pre">radio</span></code> advertising is associated with <code class="docutils literal notranslate"><span class="pre">sales</span></code>. Then in markets where we spend more on <code class="docutils literal notranslate"><span class="pre">radio</span></code> our sales will tend to be higher, and as our correlation matrix shows, we also tend to spend more on newspaper advertising in those same markets. Hence, in a simple linear regression which only examines sales versus <code class="docutils literal notranslate"><span class="pre">newspaper</span></code>, we will observe that higher values of <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> tend to be associated with higher values of <code class="docutils literal notranslate"><span class="pre">sales</span></code> , even though newspaper advertising is not directly associated with sales. So newspaper advertising is a surrogate for <code class="docutils literal notranslate"><span class="pre">radio</span></code> advertising; <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> gets “credit” for the association between <code class="docutils literal notranslate"><span class="pre">radio</span></code> on <code class="docutils literal notranslate"><span class="pre">sales</span></code>.</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Correlation">correlation</a> between <code class="docutils literal notranslate"><span class="pre">radio</span></code> and <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> is 0.35, which is much higher than the other pair-wise correlations among the three medias. This indicates that in those markets spending more on <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> (<code class="docutils literal notranslate"><span class="pre">radio</span></code>) advertising, there is a tendency to spend more on <code class="docutils literal notranslate"><span class="pre">radio</span></code> (<code class="docutils literal notranslate"><span class="pre">newspaper</span></code>) advertising as well.</p>
+<p>Now suppose that the multiple regression is correct and <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> advertising is not associated with sales, but <code class="docutils literal notranslate"><span class="pre">radio</span></code> advertising is associated with <code class="docutils literal notranslate"><span class="pre">sales</span></code>. Then in markets where we spend more on <code class="docutils literal notranslate"><span class="pre">radio</span></code>, our sales will tend to be higher. As our correlation matrix shows, we also tend to spend more on <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> advertising in those same markets. Hence, in a simple linear regression which only examines sales versus <code class="docutils literal notranslate"><span class="pre">newspaper</span></code>, we will observe that higher values of <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> tend to be associated with higher values of <code class="docutils literal notranslate"><span class="pre">sales</span></code>, even though <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> advertising is not directly associated with <code class="docutils literal notranslate"><span class="pre">sales</span></code>. So <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> advertising is a surrogate for <code class="docutils literal notranslate"><span class="pre">radio</span></code> advertising; <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> gets “credit” for the association between <code class="docutils literal notranslate"><span class="pre">radio</span></code> on <code class="docutils literal notranslate"><span class="pre">sales</span></code>.</p>
 </div>
 </div>
 <div class="section" id="important-questions-in-multiple-linear-regression">
-<h2><span class="section-number">2.2.3. </span>Important questions in multiple linear regression<a class="headerlink" href="#important-questions-in-multiple-linear-regression" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2.5. </span>Important questions in multiple linear regression<a class="headerlink" href="#important-questions-in-multiple-linear-regression" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="is-at-least-one-of-the-predictors-x-1-x-2-x-d-useful-in-predicting-the-response">
-<h3><span class="section-number">2.2.3.1. </span>Is at least one of the predictors <span class="math notranslate nohighlight">\(x_1, x_2, ..., x_D\)</span> useful in predicting the response?<a class="headerlink" href="#is-at-least-one-of-the-predictors-x-1-x-2-x-d-useful-in-predicting-the-response" title="Permalink to this headline">¶</a></h3>
-<p>We can answer this question by testing the null hypothesis that all the regression coefficients are zero, i.e.</p>
+<h3><span class="section-number">2.2.5.1. </span>Is at least one of the predictors <span class="math notranslate nohighlight">\(x_1, x_2, ..., x_D\)</span> useful in predicting the response?<a class="headerlink" href="#is-at-least-one-of-the-predictors-x-1-x-2-x-d-useful-in-predicting-the-response" title="Permalink to this headline">¶</a></h3>
+<p>We can answer this question by testing the <a class="reference external" href="https://en.wikipedia.org/wiki/Null_hypothesis">null hypothesis</a> that all the regression coefficients are zero, i.e.</p>
 <div class="math notranslate nohighlight">
 \[
 H_0: \beta_1 = \beta_2 = ... = \beta_D = 0.
 \]</div>
-<p>versus the alternative hypothesis:</p>
+<p>versus the <a class="reference external" href="https://en.wikipedia.org/wiki/Alternative_hypothesis">alternative hypothesis</a> that at least one of the regression coefficients is non-zero, i.e.:</p>
 <div class="math notranslate nohighlight">
 \[
 H_a: \text{at least one of the regression coefficients is non-zero}. 
 \]</div>
-<p>This hypothesis test is performed by computing the <span class="math notranslate nohighlight">\(F\)</span>-statistic, which is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-71e44328-ad1f-44ec-8b92-05f776ad13b1">
-<span class="eqno">(2.17)<a class="headerlink" href="#equation-71e44328-ad1f-44ec-8b92-05f776ad13b1" title="Permalink to this equation">¶</a></span>\[\begin{equation}
-F = \frac{(\text{TSS} - \text{RSS})/p}{\text{RSS}/(N-D-1)},
+<p>This hypothesis test is performed by computing the <a class="reference external" href="https://en.wikipedia.org/wiki/F-test"><span class="math notranslate nohighlight">\(F\)</span>-statistic</a>, which is defined as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-65c396f8-51ce-4427-ba90-a6a632c8bd1c">
+<span class="eqno">(2.17)<a class="headerlink" href="#equation-65c396f8-51ce-4427-ba90-a6a632c8bd1c" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+F = \frac{(\text{TSS} - \text{RSS})/D}{\text{RSS}/(N-D-1)},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\text{TSS} = \sum(y_i - \bar{y})^2\)</span> and <span class="math notranslate nohighlight">\(\text{RSS} = \sum(y_i - \hat{y}_i)^2\)</span>. When there is no relationship between the response and predictors, one would expect the <span class="math notranslate nohighlight">\(F\)</span>-statistic to take on a value close to 1. On the other hand, if <span class="math notranslate nohighlight">\(H_a\)</span> a is true, we can expect <span class="math notranslate nohighlight">\(F\)</span> to be greater than 1.</p>
-<p>The <span class="math notranslate nohighlight">\(F\)</span>-statistic for the multiple linear regression model obtained by regressing <code class="docutils literal notranslate"><span class="pre">sales</span></code> onto <code class="docutils literal notranslate"><span class="pre">radio</span></code>, <code class="docutils literal notranslate"><span class="pre">TV</span></code>, and <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> is 570.3 (displayed above). Since this is far larger than 1, it provides compelling evidence against the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span>. In other words, the large <span class="math notranslate nohighlight">\(F\)</span>-statistic suggests that at least one of the advertising media must be related to <code class="docutils literal notranslate"><span class="pre">sales</span></code>.</p>
-<p>Watch the following video to learn more about the <span class="math notranslate nohighlight">\(F\)</span>-statistic.</p>
+<p>The <span class="math notranslate nohighlight">\(F\)</span>-statistic for the multiple linear regression model obtained by regressing <code class="docutils literal notranslate"><span class="pre">sales</span></code> onto <code class="docutils literal notranslate"><span class="pre">radio</span></code>, <code class="docutils literal notranslate"><span class="pre">TV</span></code>, and <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> is 570.3 (displayed in the first regression results in <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/multi-linear-regression.html#estimating-the-regression-coefficients">a previous section</a>). Since this is far greater than 1, it provides compelling evidence against the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span>. In other words, the large <span class="math notranslate nohighlight">\(F\)</span>-statistic suggests that at least one of the advertising media must be related to <code class="docutils literal notranslate"><span class="pre">sales</span></code>.</p>
+<p>Watch the following 9-minute video excerpt to learn more about the <span class="math notranslate nohighlight">\(F\)</span>-statistic.</p>
 <div class="admonition-video admonition">
 <p class="admonition-title">Video</p>
 <iframe width="700" height="394" src="https://www.youtube.com/embed/nk2CQITm_eo?start=969&end=1525" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
@@ -921,7 +975,7 @@ F = \frac{(\text{TSS} - \text{RSS})/p}{\text{RSS}/(N-D-1)},
 <!-- The numerator of the F-statistic is the ratio of the total sum of squares to the residual sum of squares, and the denominator is the ratio of the residual sum of squares to the degrees of freedom. The F-statistic has an $F$ distribution with $p$ and $n-p-1$ degrees of freedom. The null hypothesis is that all the regression coefficients are zero, and the alternative hypothesis is that at least one of the regression coefficients is non-zero.  -->
 </div>
 <div class="section" id="do-all-the-predictors-help-to-explain-y-or-is-only-a-subset-of-the-predictors-useful">
-<h3><span class="section-number">2.2.3.2. </span>Do all the predictors help to explain <span class="math notranslate nohighlight">\(y\)</span>, or is only a subset of the predictors useful?<a class="headerlink" href="#do-all-the-predictors-help-to-explain-y-or-is-only-a-subset-of-the-predictors-useful" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.5.2. </span>Do all the predictors help to explain <span class="math notranslate nohighlight">\(y\)</span>, or is only a subset of the predictors useful?<a class="headerlink" href="#do-all-the-predictors-help-to-explain-y-or-is-only-a-subset-of-the-predictors-useful" title="Permalink to this headline">¶</a></h3>
 <p>It is more often that the response is only associated with a subset of the predictors. The task of determining which predictors are associated with the response, in order to fit a single model involving only those predictors, is referred to as <em>variable selection</em> (or <em>feature selection</em>). This will be discussed extensively in <a class="reference internal" href="../06-ftr-select-shrink/overview.html"><span class="doc">Feature Selection and Shrinkage</span></a>.</p>
 <p>There are three common approaches to variable selection:</p>
 <ul class="simple">
@@ -931,18 +985,19 @@ F = \frac{(\text{TSS} - \text{RSS})/p}{\text{RSS}/(N-D-1)},
 </ul>
 </div>
 <div class="section" id="how-well-does-the-model-fit-the-data">
-<h3><span class="section-number">2.2.3.3. </span>How well does the model fit the data?<a class="headerlink" href="#how-well-does-the-model-fit-the-data" title="Permalink to this headline">¶</a></h3>
-<p>Similar to simple linear. We can answer this question by computing the <span class="math notranslate nohighlight">\(R^2\)</span> and RSE statistics. The <span class="math notranslate nohighlight">\(R^2\)</span> for multiple linear regression is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0d5fab5b-7356-492b-9314-46660706f3ee">
-<span class="eqno">(2.18)<a class="headerlink" href="#equation-0d5fab5b-7356-492b-9314-46660706f3ee" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<h3><span class="section-number">2.2.5.3. </span>How well does the model fit the data?<a class="headerlink" href="#how-well-does-the-model-fit-the-data" title="Permalink to this headline">¶</a></h3>
+<p>Similar to simple linear regression. We can answer this question by computing the <span class="math notranslate nohighlight">\(R^2\)</span> and RSE statistics. The <span class="math notranslate nohighlight">\(R^2\)</span> for multiple linear regression is defined in the same way as in simple linear regression as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-08ca1de6-a20b-4c0d-80a1-0d4f8b29c098">
+<span class="eqno">(2.18)<a class="headerlink" href="#equation-08ca1de6-a20b-4c0d-80a1-0d4f8b29c098" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 R^2 = 1 - \frac{\text{RSS}}{\text{TSS}} = 1 - \frac{\sum(y_i - \hat{y}_i)^2}{\sum(y_i - \bar{y})^2}.
 \end{equation}\]</div>
 <p>The <span class="math notranslate nohighlight">\(R^2\)</span> statistic provides an indication of the proportion of the variance in the response that is predictable from the predictors. In this case, the <span class="math notranslate nohighlight">\(R^2\)</span> statistic is 0.897, which indicates that 89.7% of the variance in <code class="docutils literal notranslate"><span class="pre">sales</span></code> is predictable from <code class="docutils literal notranslate"><span class="pre">TV</span></code>, <code class="docutils literal notranslate"><span class="pre">radio</span></code>, and <code class="docutils literal notranslate"><span class="pre">newspaper</span></code>.</p>
 <p>The RSE for multiple linear regression is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-449b64fd-4261-419d-b2a7-78cb38cf61ac">
-<span class="eqno">(2.19)<a class="headerlink" href="#equation-449b64fd-4261-419d-b2a7-78cb38cf61ac" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-399dcad2-bf24-4a24-8d92-5063ce3d99d3">
+<span class="eqno">(2.19)<a class="headerlink" href="#equation-399dcad2-bf24-4a24-8d92-5063ce3d99d3" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{RSE} = \sqrt{\frac{\text{RSS}}{N-D-1}} = \sqrt{\frac{\sum(y_i - \hat{y}_i)^2}{N-D-1}}.
 \end{equation}\]</div>
+<p>You can verify that when <span class="math notranslate nohighlight">\(D=1\)</span>, the RSE for multiple linear regression is the same as the RSE for <a class="reference internal" href="simple-linear-regression.html"><span class="doc">simple linear regression</span></a>.</p>
 <p>Run the following code to fit and then evaluate a multiple linear regression model using <code class="docutils literal notranslate"><span class="pre">sci-kit</span> <span class="pre">learn</span></code>:</p>
 <p>Firstly, fit a linear regression to <code class="docutils literal notranslate"><span class="pre">sales</span></code> using <code class="docutils literal notranslate"><span class="pre">TV</span></code> and <code class="docutils literal notranslate"><span class="pre">radio</span></code> as predictors.</p>
 <div class="cell docutils container">
@@ -965,12 +1020,10 @@ R^2 = 1 - \frac{\text{RSS}}{\text{TSS}} = 1 - \frac{\sum(y_i - \hat{y}_i)^2}{\su
 </div>
 </div>
 </div>
-<p>Show the min/max values of Radio &amp; TV to set up the range of the plot.</p>
+<p>Find out the min/max values of Radio &amp; TV to set up the grid (range) for plotting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># What are the</span>
-<span class="c1"># Use these values to set up the grid for plotting.</span>
-<span class="n">advertising_df</span><span class="p">[[</span><span class="s2">&quot;Radio&quot;</span><span class="p">,</span> <span class="s2">&quot;TV&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">advertising_df</span><span class="p">[[</span><span class="s2">&quot;Radio&quot;</span><span class="p">,</span> <span class="s2">&quot;TV&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1060,6 +1113,7 @@ R^2 = 1 - \frac{\text{RSS}}{\text{TSS}} = 1 - \frac{\sum(y_i - \hat{y}_i)^2}{\su
 </div>
 </div>
 <p>Create 3D plot of <code class="docutils literal notranslate"><span class="pre">sales</span></code> vs <code class="docutils literal notranslate"><span class="pre">TV</span></code> and <code class="docutils literal notranslate"><span class="pre">radio</span></code></p>
+<p>[ToDo] If possible, change the following to stem plot, such as in the <a class="reference external" href="https://matplotlib.org/stable/gallery/mplot3d/stem3d_demo.html">stem3d_demo</a> to better visualisation as the textbook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create plot</span>
@@ -1082,18 +1136,19 @@ R^2 = 1 - \frac{\text{RSS}}{\text{TSS}} = 1 - \frac{\sum(y_i - \hat{y}_i)^2}{\su
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/multi-linear-regression_22_0.png" src="../_images/multi-linear-regression_22_0.png" />
+<img alt="../_images/multi-linear-regression_24_0.png" src="../_images/multi-linear-regression_24_0.png" />
 </div>
 </div>
 </div>
-<div class="section" id="given-a-set-of-predictor-values-what-response-value-should-we-predict-and-how-accurate-is-our-prediction-advanced-add-more-content-of-prediction-interval-or-remove-this-sub-section-later">
-<h3><span class="section-number">2.2.3.4. </span>Given a set of predictor values, what response value should we predict, and how accurate is our prediction? (Advanced, add more content of prediction interval/or remove this sub-section later)<a class="headerlink" href="#given-a-set-of-predictor-values-what-response-value-should-we-predict-and-how-accurate-is-our-prediction-advanced-add-more-content-of-prediction-interval-or-remove-this-sub-section-later" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="given-a-set-of-predictor-values-what-response-value-should-we-predict-and-how-accurate-is-our-prediction">
+<h3><span class="section-number">2.2.5.4. </span>Given a set of predictor values, what response value should we predict, and how accurate is our prediction?<a class="headerlink" href="#given-a-set-of-predictor-values-what-response-value-should-we-predict-and-how-accurate-is-our-prediction" title="Permalink to this headline">¶</a></h3>
+<p><strong>[Advanced, add more content of prediction interval/or remove this sub-section later]</strong></p>
 <p>Once we have fit a multiple linear regression model, we can use the model to make predictions of the response for a given set of predictor values.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-420f27a4-7490-4205-8590-ad351dda339d">
-<span class="eqno">(2.20)<a class="headerlink" href="#equation-420f27a4-7490-4205-8590-ad351dda339d" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8ad423ea-0f96-4a99-ba48-4c55a1ab6ef0">
+<span class="eqno">(2.20)<a class="headerlink" href="#equation-8ad423ea-0f96-4a99-ba48-4c55a1ab6ef0" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_D x_D.
 \end{equation}\]</div>
-<p>However, we must be careful when making predictions, because the observed values of the predictors may not have been part of the data used to fit the model. In this case, the prediction may not be very accurate. We use a confidence interval to quantify the uncertainty associated with the prediction.</p>
+<p>However, we must be careful when making predictions, because the observed values of the predictors may not have been part of the data used to fit the model. In this case, the prediction may not be very accurate and using a confidence interval can help quantify the uncertainty associated with the prediction.</p>
 </div>
 </div>
 </div>
