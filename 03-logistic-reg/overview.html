@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="3.1. Classification with the logistic model" href="logistic-model.html" />
@@ -518,7 +520,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </div>
 <p><strong>Expected time to complete</strong>: x hours</p>
-<p>In this chapter, we will [… (intro paragraph)].</p>
+<p>The linear regression model discussed in <a class="reference internal" href="../02-linear-reg/overview.html"><span class="doc">Linear regression</span></a> assumes that the response variable <span class="math notranslate nohighlight">\(y\)</span> is quantitative. But in many situations, the response variable is instead qualitative. In this chapter, we will study approaches for predicting qualitative responses, a process that is known as <em>classification</em>. There are many possible classification techniques, or classifiers, that can be used to predict a qualitative response. In this chapter, we will focus on logistic regression, which is a classification technique that is commonly used to predict a binary response (i.e. a response with only two possible outcomes, such as pass/fail, win/lose, alive/dead or healthy/sick).</p>
+<!-- Logistic regression is an extension of linear regression that is used when the response variable is categorical. It is also known as _logit regression_ or _logit model_. In this chapter, we will learn how to use logistic regression to make predictions and understand the relationship between variables. We will learn the basic concepts of logistic regression and apply it to real data. We will also learn how to evaluate the performance of a logistic regression model and interpret the results. -->
 <div class="admonition-ingredients admonition">
 <p class="admonition-title">Ingredients</p>
 <ul class="simple">
