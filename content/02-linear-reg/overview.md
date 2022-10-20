@@ -11,7 +11,7 @@ Ready for review and feedback
 - Interpret the results of a linear regression
 ```
 
-**Expected time to complete**: 3 hours
+**Expected time to complete**: 4 hours
 
 Linear regression is a fundamental model for regression problems, where we aim to predict a continuous value (i.e. a quantitative response) based on one or more explanatory variables. It is a linear model that assumes a linear relationship between the input variable(s) $x$ or $\mathbf{x}$ and the single output variable $y$. Thus, it can be used to understand the relationship between two or more variables. In this chapter, we will learn how to use linear regression to make predictions and understand the relationship between variables. We will learn the basic concepts of linear regression and apply it to real data. We will also learn how to evaluate the performance of a linear regression model and interpret the results.
 
