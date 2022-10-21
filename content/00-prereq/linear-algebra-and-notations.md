@@ -129,9 +129,7 @@ This section introduces the basic concepts of linear algebra and notations used 
 
 1. $\begin{bmatrix} 12 & 0 & 0 \\ 0 & 8 & 0 \\ 0 & 0 & 23 \end{bmatrix}$
 
-    What kind of matrices is it?
-
-    You can choose multiple answers.
+    What kind of matrices is it? You can choose multiple answers.
 
         a. Diagonal
 
@@ -145,7 +143,7 @@ This section introduces the basic concepts of linear algebra and notations used 
 
 
 
-    Compare your answer with the reference solution below
+    *Compare your answer with the solution below*
    ```{toggle}
     **a ,b, c**
    ```
@@ -162,7 +160,7 @@ This section introduces the basic concepts of linear algebra and notations used 
         c. AB + 2A = ?
 
 
-    Compare your answer with the reference solution below
+    *Compare your answer with the reference solution below*
    ```{toggle}
     a. $\begin{bmatrix} 133 & 241 & 261 \\ 365 & 551 & 459 \end{bmatrix}$
 

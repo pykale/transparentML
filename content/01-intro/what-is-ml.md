@@ -48,7 +48,7 @@ The function $f$ is called the **model** or **predictive function**. The model $
        a. True
 
        b. False
-    Compare your answer with the reference solution below
+    *Compare your answer with the solution below*
    ```{toggle}
     **a. True**
    ```
@@ -57,13 +57,15 @@ The function $f$ is called the **model** or **predictive function**. The model $
 
     a. What are the features here?
 
-    Compare your answer with the reference solution below
+    *Compare your answer with the solution below*
+
    ```{toggle}
     **profit, number of employees and industry**
    ```
     b. What is the target variable?
 
-   Compare your answer with the reference solution below
+   *Compare your answer with the solution below*
+
    ```{toggle}
     **CEO's salary**
    ```

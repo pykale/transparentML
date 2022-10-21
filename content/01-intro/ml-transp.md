@@ -148,7 +148,8 @@ The applicability and implications of transparency trade-offs depend on context 
 
        b. False
 
-    Compare your answer with the reference solution below
+    *Compare your answer with the solution below*
+
     ```{toggle}
     **b. False**
     ```
@@ -158,7 +159,8 @@ The applicability and implications of transparency trade-offs depend on context 
 
        b. False
 
-    Compare your answer with the reference solution below
+    *Compare your answer with the solution below*
+
     ```{toggle}
     **a. True**
     ```
@@ -168,7 +170,8 @@ The applicability and implications of transparency trade-offs depend on context 
 
        b. False
 
-    Compare your answer with the reference solution below
+    *Compare your answer with the solution below*
+
     ```{toggle}
     **b. False**
     ```
@@ -178,7 +181,8 @@ The applicability and implications of transparency trade-offs depend on context 
 
        b. False
 
-    Compare your answer with the reference solution below
+    *Compare your answer with the solution below*
+
     ```{toggle}
     **a. True**
     ```
@@ -188,7 +192,8 @@ The applicability and implications of transparency trade-offs depend on context 
 
        b. False
 
-    Compare your answer with the reference solution below
+    *Compare your answer with the solution below*
+
     ```{toggle}
     **b. False**
     ```
@@ -198,7 +203,8 @@ The applicability and implications of transparency trade-offs depend on context 
 
        b. False
 
-    Compare your answer with the reference solution below
+    *Compare your answer with the solution below*
+
     ```{toggle}
     **a. True**
     ```
