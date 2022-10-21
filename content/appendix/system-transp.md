@@ -1,4 +1,4 @@
-## System transparency
+# System transparency
 
 We will now focus on system transparency, i.e. the transparency of the system logic information. We aim to answer three questions:
 
@@ -15,7 +15,7 @@ name: fig8-ai-transparency
 The what, why, and how of system transparency {cite}`ostmann2021ai` (maybe redraw later).
 ```
 
-### What relevant information?
+## What relevant information?
 
 System transparency refers to access to information about the operational logic of a system. The most transparent systems are simple systems where system logic information can be inferred purely from a system’s formal
 representation. Three types of information are considered relevant for system transparency:
@@ -49,7 +49,7 @@ Decreases in interpretability can take two forms. First, as model complexity inc
 
 The lack of interpretability of certain types of models does not necessarily mean that adequate forms of system logic information are unobtainable for these ML systems. Instead of obtaining information from the formal expression of models, system logic information can also be obtained indirectly, by using auxiliary strategies and tools, such as _explainability methods_.  However, these explainability methods cannot fully compensate for the information that can be obtained from interpretable systems.
 
-### Why such info?
+## Why such info?
 
 Access to system logic information can serve to address relevant concerns (e.g. ensuring trustworthiness and responsible use) as well as to provide assurance about possible concerns (e.g. demonstrating trustworthiness and responsible use), as shown in.
 
@@ -60,20 +60,20 @@ name: fig9-ai-transparency
 Areas of concern related to system transparency {cite}`ostmann2021ai` (maybe redraw later).
 ```
 
-#### System performance
+### System performance
 
 System logic information can be vital to understanding and improving the effectiveness, reliability, and robustness of ML systems. Where testing during system development reveals shortcomings, the analysis of input-output relationships can help identify possible improvements. Knowledge of input-output relationships can also be crucial when assessing the extent of possible performance issues that may arise during deployment. Stakeholders that may be interested in system logic information for these reasons include those involved in or making decisions about the development and use of ML systems as well as those seeking assurance about an ML system’s performance (including evaluation).
 
-#### System compliance
+### System compliance
 
 Knowledge of the input variables that a system relies on and other aspects of system logic can be crucial to ensuring compliance with legal and regulatory standards and rules. For example, an understanding of system logic can be critical to avoiding unlawful discrimination; ensuring the adequacy in risk management; assessing the risks; or avoiding the unlawful
 processing of personal data. As in the case of system performance, stakeholders that may be interested in system logic information for these reasons include those involved in or making decisions about the development and use of ML systems as well as those seeking assurance about system compliance.
 
-#### Competent use & human oversight
+### Competent use & human oversight
 
 System users may need access to system logic information to ensure competent use. For example, knowledge of the input variables that a system relies on can be necessary to ensure that factors already accounted for in system outputs are not accounted for more than once (and therefore distort results) within a given decision process as a whole. Similarly, internal stakeholders in charge of oversight arrangements may need an understanding of system logic to determine what kind of oversight is required and to anticipate situations that call for intervention.
 
-#### Providing explanations
+### Providing explanations
 
 System logic information can be at the core of explanations sought by
 decision recipients. For instance, it can provide assurance that decisions are taken in non-arbitrary
@@ -81,13 +81,13 @@ and methodologically sound ways. In contexts such as credit or insurance underwr
 example, access to system logic information can also be important in order for decision recipients
 to understand the effect that their behaviour may have on the decisions they receive.
 
-#### Responsiveness
+### Responsiveness
 
 Customer service representatives, for example, may need to understand which
 input variables a system relies on, how the system transforms inputs into outputs, or under what
 conditions a system would yield certain results to be able to respond to customer queries.
 
-#### Social and economic impact
+### Social and economic impact
 
 System logic information can be essential to assessing potential
 social and economic impacts or providing assurance in relation to concerns about such impacts.
@@ -97,12 +97,12 @@ may be considered ethically objectionable. Regulators, academics, or indeed wide
 stakeholders may have an interest in system logic information in order to assess social and
 economic implications.
 
-### How to obtain & communicate such info?
+## How to obtain & communicate such info?
 
 We now discuss how to obtain system logic information and how to communicate it to
 relevant stakeholders.
 
-#### Obtaining system logic information
+### Obtaining system logic information
 
 There are two methodological paths to obtaining information about an ML system’s input-output
 relationships and conditions under which it produces certain outputs:
@@ -112,7 +112,7 @@ a formal representation of the system (as illustrated by the [example of the sim
 on system logic. Many of these methods are perturbation-based, including LIME (Local Interpretable
 Model-Agnostic Explanation) {cite}`ribeiro2016should` and SHAP (SHapley Additive exPlanations) {cite}`lundberg2017unified`. They rely on the analysis of changes in system outputs in response to changes in input values and can be used without access to a formal representation of the system. This is out of the scope of this course and hence will _NOT_ be covered.
 
-#### Communicating system logic information
+### Communicating system logic information
 System logic information is only useful if it is communicated to stakeholders in ways that are
 intelligible and meaningful.
 

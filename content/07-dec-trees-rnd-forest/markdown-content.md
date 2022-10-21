@@ -1,7 +1,7 @@
-## No cap initial
+# No cap initial
 
 
 
-### Exercises
+## Exercises
 
 min 3 max 5
