@@ -135,13 +135,62 @@ No single model will perform well in all possible scenarios. Therefore, it is im
 
 1. Choose three or more datasets of your interest from {numref}`datasets-table`. Click on the name of each chosen dataset to explore and get a sense of the data. You may not be able to get a beautiful view or a view at all for those larger ones. Write down the possible machine learning problems using terminology in {numref}`mlproblems-table` that can be solved using each of your chosen dataset.
 
-   Compare your answer with the reference solution below
+   *Compare your answer with the solution below*
+
    ```{toggle}
-   Sample answer: to be completed.
+
+   |    Dataset    |   Machine learning problems   |
+   | :------------ | -------------: |
+   |        Advertising      |        5       |
+   |     Auto     |      2744      |
+   |        Bikeshare      |        5       |
+   |     Boston     |      2744      |
+   |        BrainCancer      |        5       |
+   |     Caravan     |      2744      |
+   |        Carseats      |        5       |
+   |     College     |      2744      |
+   |        Credit      |        5       |
+   |     Default     |      2744      |
+   |        Fund      |        5       |
+   |     Hitters     |      2744      |
+   |        Iris      |        5       |
+   |     Khan     |      2744      |
+   |        NCI60      |        5       |
+   |     OJ     |      2744      |
+   |        Portfolio      |        5       |
+   |        Publication      |        5       |
+   |     Smarket     |      2744      |
+   |        USArrests      |        5       |
+   |     Wage     |      2744      |
+   |        Weekly      |        5       |
+
    ```
 2. Write down the number of features and training samples of all the datasets present in {numref}`datasets-table`.
 
-   Compare your answer with the reference solution below
+   *Compare your answer with the solution below*
+
    ```{toggle}
-   And here's my dropdown content
+   |    Dataset   |   Number of Features   |   Number of Sample   |
+   | :------------ | -------------: | -------------: |
+   |        Advertising      |        5       |        200       |
+   |     Auto     |      9      |      397      |
+   |        Bikeshare      |        15       |        8645       |
+   |     Boston     |      14      |      506      |
+   |        BrainCancer      |        8       |        88       |
+   |     Caravan     |      86      |      5822      |
+   |        Carseats      |        11       |        400       |
+   |     College     |      18      |      777      |
+   |        Credit      |        11       |        400       |
+   |     Default     |      4      |      10000      |
+   |        Fund      |        5       |        5       |
+   |     Hitters     |      2000      |      50      |
+   |        Iris      |        5       |        150       |
+   |        NCI60      |        6830       |        64       |
+   |     OJ     |      18      |      1070      |
+   |        Portfolio      |        2       |        100       |
+   |     Publication     |      9      |      244      |
+   |        Smarket      |        9       |        1250       |
+   |     USArrests     |      5      |      50      |
+   |        Wage      |        12       |        3000       |
+   |     Weekly     |      9      |      1089      |
    ```

@@ -810,7 +810,7 @@ memory usage: 30.6+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f7b411c1460&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f5c40d31f70&gt;
 </pre></div>
 </div>
 <img alt="../_images/extension-limitation_9_1.png" src="../_images/extension-limitation_9_1.png" />
@@ -879,8 +879,8 @@ memory usage: 30.6+ KB
 y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon.
 \]</div>
 <p>This model can be extended to include an interaction term between <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9cea7991-e564-4ff6-842b-b26040d94b4b">
-<span class="eqno">(2.21)<a class="headerlink" href="#equation-9cea7991-e564-4ff6-842b-b26040d94b4b" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8d208cc3-e359-4304-b7d9-6416a7ec0048">
+<span class="eqno">(2.21)<a class="headerlink" href="#equation-8d208cc3-e359-4304-b7d9-6416a7ec0048" title="Permalink to this equation">¶</a></span>\[\begin{align}
 y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 &amp;= \beta_0 + (\beta_1 + \beta_3 x_2) x_1 + \beta_2 x_2 + \epsilon \\
 &amp;= \beta_0 + \tilde{\beta}_1 x_1 + \beta_2 x_2 + \epsilon,
@@ -1018,8 +1018,8 @@ dtype: float64
 </div>
 </div>
 <p>The figure shows a strong relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>, but it is clearly not linear. We can use a polynomial regression to fit a non-linear model to the data. We can fit a polynomial regression of degree 2 (quadratic) to the data using the following regression:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b3c26bb4-22bf-4dd2-8957-ba7bba09aeeb">
-<span class="eqno">(2.22)<a class="headerlink" href="#equation-b3c26bb4-22bf-4dd2-8957-ba7bba09aeeb" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-30befa5c-0ae7-4610-9602-ad76d49cf311">
+<span class="eqno">(2.22)<a class="headerlink" href="#equation-30befa5c-0ae7-4610-9602-ad76d49cf311" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \textrm{mpg} = \beta_0 + \beta_1 \times \textrm{horsepower} + \beta_2 \times \textrm{horsepower}^2 + \epsilon.
 \end{equation}\]</div>
 <p>Run the following code to display the relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> (gas mileage in miles per gallon) and <span class="math notranslate nohighlight">\(\textrm{horsepower}^2\)</span> as well as <span class="math notranslate nohighlight">\(\textrm{horsepower}^5\)</span> (Figure 3.8 of the textbook) for cars in the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset.</p>
@@ -1453,44 +1453,1973 @@ Rating/Limit
 </div>
 <div class="section" id="exercise">
 <h2><span class="section-number">2.3.4. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
-<ol>
-<li><p>This question involves the use of simple linear regression on the <strong>Auto</strong> dataset from <a class="reference external" href="https://pykale.github.io/transparentML/01-intro/organisation.html#datasets-table">Tabel 1.2</a>.</p>
-<p>(a) Use the <strong>LinearRegression()</strong> function to perform a simple linear regression with <strong>mpg</strong> as the response and <strong>horsepower</strong> as the predictor. Use the <strong>summary()</strong> function to print the results. Comment on the output.</p>
-<p>For example:</p>
-<blockquote>
-<div><p>i. Is there a relationship between the predictor and the response?</p>
-</div></blockquote>
-<blockquote>
-<div><p>ii. How strong is the relationship between the predictor and the response?</p>
-</div></blockquote>
-<blockquote>
-<div><p>iii. Is the relationship between the predictor and the response positive or negative?</p>
-</div></blockquote>
-<blockquote>
-<div><p>iv. What is the predicted <strong>mpg</strong> associated with a <strong>horsepower</strong> of 98? What are the associated 95% confidence and prediction intervals?</p>
-</div></blockquote>
-<p>(b) Plot the response and predictor. Use the <strong>regplot()</strong> function to display the least-squared regression line.</p>
-<p>(c) Produce the diagnostic plots of the least squares regression fit. Comment on any problems you see with the fit.</p>
-</li>
-<li><p>This question involves the use of multiple linear regression on the <strong>Carseats</strong> dataset from Tabel 1.2.</p>
-<p>(a) Fit a multiple regression model to predict <strong>Sales</strong> using <strong>Price</strong>, <strong>Urban</strong>, and <strong>US</strong>.</p>
-<p>(b) Provide an interpretation of each coefficient in the model. Be careful–some of the variables in the model are qualitative!</p>
-<p>(c) Write out the model in equation form, being careful to handle the qualitative variables properly.</p>
-<p>(d) For which of the predictors can you reject the null hypothesis <span class="math notranslate nohighlight">\(H_0 : \beta_j = 0\)</span> ?</p>
-<p>(e) On the basis of your response to the previous question, fit a smaller model that only uses the predictors for which there is evidence of association with the outcome.</p>
-<p>(f) How well do the models in (a) and (e) fit the data?</p>
-<p>(g) Using the model from (e), obtain 95% confidence intervals for the coefficient(s).</p>
-<p>(h) Is there evidence of outliers or high-leverage observations in the model from (e)?</p>
-</li>
-<li><p>This question involves the <strong>Boston</strong> dataset from <a class="reference external" href="https://pykale.github.io/transparentML/01-intro/organisation.html#datasets-table">Tabel 1.2</a>. We will now try to predict per capita crime rate using the other variables in this dataset. In other owrds, per capita crime rate is the response, and the other variables are the prediction.</p>
-<p>(a) For each predictor, fit a simple linear regression model to predict the response. Describe your results. In which of the models is there a statistically significant association between the predictor and the response? Create some plots to back up your assertions.</p>
-<p>(b) Fit a multiple regression model to predict the response using all of the predictors. Describe your results.. FOr which predictors can we reject the null hypothesis <span class="math notranslate nohighlight">\(H_0 : \beta_j = 0\)</span> ?</p>
-<p>(c) How do your results from (a) compare to your results form (b)? Create a plot displaying the uni-variate regression coefficients from (a) on the x-axis, and the multiple regression coefficients from (b) on the y-axis. That is, each predictor is displayed as a single point in the plot. Its coefficient in a simple linear regression model is shown on the x-axis, and its coefficient estimate in the multiple linear regression model is shown on the y-axis.</p>
-<p>(d) Is there evidence of non-linear association between any of the predictors and the response? To answer this question, for each predictor X, fit a model of the form,</p>
+<p><strong>1</strong>. This question involves the <strong>Boston</strong> dataset from <a class="reference external" href="https://pykale.github.io/transparentML/01-intro/organisation.html#datasets-table">Tabel 1.2</a>. We will now try to predict per capita crime rate using the other variables in this dataset. In other owrds, per capita crime rate is the response, and the other variables are the prediction.</p>
+<p><strong>a</strong>. For each predictor, fit a simple linear regression model to predict the response. Describe your results. In which of the models is there a statistically significant association between the predictor and the response? Create some plots to back up your assertions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compare your answer with the reference solution below</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+
+<span class="n">boston_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Boston.csv&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Check for missing values</span>
+<span class="k">assert</span> <span class="n">boston_df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="n">models_a</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s2">&quot;crim ~ </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">boston_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">boston_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models_a</span><span class="p">:</span>
+    <span class="n">dp</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">display</span><span class="p">(</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;coef&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">dp</span><span class="p">),</span>
+                <span class="s2">&quot;std_err&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">bse</span><span class="p">,</span> <span class="n">dp</span><span class="p">),</span>
+                <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span> <span class="o">/</span> <span class="n">model</span><span class="o">.</span><span class="n">bse</span><span class="p">,</span> <span class="n">dp</span><span class="p">),</span>
+                <span class="s2">&quot;P&gt;|t|&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">pvalues</span><span class="p">,</span> <span class="n">dp</span><span class="p">),</span>
+                <span class="s2">&quot;[0.025&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">conf_int</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dp</span><span class="p">),</span>
+                <span class="s2">&quot;0.975]&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">conf_int</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dp</span><span class="p">),</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="c1"># In which of the models is there a statistically significant association between the predictor and the response?</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">&quot;Models which have statistically significant association between the predictor and the response &quot;</span>
+<span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;h3&gt;p &lt; 0.05&lt;/h3&gt;&quot;</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models_a</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">pvalues</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;h3&gt;p &gt; 0.05&lt;/h3&gt;&quot;</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models_a</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">pvalues</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.05</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Create some plots to back up your assertions.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Some plots to back up my assertions.&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">plot_grid</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">cols</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Plot all predictor variables against response in grid&quot;&quot;&quot;</span>
+    <span class="n">variables</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">variables</span><span class="p">),</span> <span class="n">cols</span><span class="p">):</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span>
+            <span class="n">df</span><span class="p">,</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="n">response</span><span class="p">],</span> <span class="n">x_vars</span><span class="o">=</span><span class="n">variables</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">cols</span><span class="p">],</span> <span class="n">height</span><span class="o">=</span><span class="mi">4</span>
+        <span class="p">)</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">)</span>
+    <span class="k">return</span>
+
+
+<span class="n">plot_grid</span><span class="p">(</span><span class="n">boston_df</span><span class="p">,</span> <span class="s2">&quot;crim&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>4.4537</td>
+      <td>0.4172</td>
+      <td>10.6747</td>
+      <td>0.0</td>
+      <td>3.6340</td>
+      <td>5.2734</td>
+    </tr>
+    <tr>
+      <th>zn</th>
+      <td>-0.0739</td>
+      <td>0.0161</td>
+      <td>-4.5938</td>
+      <td>0.0</td>
+      <td>-0.1056</td>
+      <td>-0.0423</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>-2.0637</td>
+      <td>0.6672</td>
+      <td>-3.0930</td>
+      <td>0.0021</td>
+      <td>-3.3746</td>
+      <td>-0.7529</td>
+    </tr>
+    <tr>
+      <th>indus</th>
+      <td>0.5098</td>
+      <td>0.0510</td>
+      <td>9.9908</td>
+      <td>0.0000</td>
+      <td>0.4095</td>
+      <td>0.6100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>3.7444</td>
+      <td>0.3961</td>
+      <td>9.4530</td>
+      <td>0.0000</td>
+      <td>2.9662</td>
+      <td>4.5227</td>
+    </tr>
+    <tr>
+      <th>chas</th>
+      <td>-1.8928</td>
+      <td>1.5061</td>
+      <td>-1.2567</td>
+      <td>0.2094</td>
+      <td>-4.8518</td>
+      <td>1.0663</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>-13.7199</td>
+      <td>1.6995</td>
+      <td>-8.073</td>
+      <td>0.0</td>
+      <td>-17.0588</td>
+      <td>-10.3809</td>
+    </tr>
+    <tr>
+      <th>nox</th>
+      <td>31.2485</td>
+      <td>2.9992</td>
+      <td>10.419</td>
+      <td>0.0</td>
+      <td>25.3561</td>
+      <td>37.1410</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>20.4818</td>
+      <td>3.3645</td>
+      <td>6.0877</td>
+      <td>0.0</td>
+      <td>13.8717</td>
+      <td>27.0919</td>
+    </tr>
+    <tr>
+      <th>rm</th>
+      <td>-2.6841</td>
+      <td>0.5320</td>
+      <td>-5.0448</td>
+      <td>0.0</td>
+      <td>-3.7293</td>
+      <td>-1.6388</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>-3.7779</td>
+      <td>0.9440</td>
+      <td>-4.0021</td>
+      <td>0.0001</td>
+      <td>-5.6325</td>
+      <td>-1.9233</td>
+    </tr>
+    <tr>
+      <th>age</th>
+      <td>0.1078</td>
+      <td>0.0127</td>
+      <td>8.4628</td>
+      <td>0.0000</td>
+      <td>0.0828</td>
+      <td>0.1328</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>9.4993</td>
+      <td>0.7304</td>
+      <td>13.0056</td>
+      <td>0.0</td>
+      <td>8.0643</td>
+      <td>10.9343</td>
+    </tr>
+    <tr>
+      <th>dis</th>
+      <td>-1.5509</td>
+      <td>0.1683</td>
+      <td>-9.2135</td>
+      <td>0.0</td>
+      <td>-1.8816</td>
+      <td>-1.2202</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>-2.2872</td>
+      <td>0.4435</td>
+      <td>-5.1573</td>
+      <td>0.0</td>
+      <td>-3.1584</td>
+      <td>-1.4159</td>
+    </tr>
+    <tr>
+      <th>rad</th>
+      <td>0.6179</td>
+      <td>0.0343</td>
+      <td>17.9982</td>
+      <td>0.0</td>
+      <td>0.5505</td>
+      <td>0.6854</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>-8.5284</td>
+      <td>0.8158</td>
+      <td>-10.4539</td>
+      <td>0.0</td>
+      <td>-10.1312</td>
+      <td>-6.9256</td>
+    </tr>
+    <tr>
+      <th>tax</th>
+      <td>0.0297</td>
+      <td>0.0018</td>
+      <td>16.0994</td>
+      <td>0.0</td>
+      <td>0.0261</td>
+      <td>0.0334</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>-17.6469</td>
+      <td>3.1473</td>
+      <td>-5.6071</td>
+      <td>0.0</td>
+      <td>-23.8303</td>
+      <td>-11.4635</td>
+    </tr>
+    <tr>
+      <th>ptratio</th>
+      <td>1.1520</td>
+      <td>0.1694</td>
+      <td>6.8014</td>
+      <td>0.0</td>
+      <td>0.8192</td>
+      <td>1.4847</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>16.5535</td>
+      <td>1.4259</td>
+      <td>11.6092</td>
+      <td>0.0</td>
+      <td>13.7521</td>
+      <td>19.3550</td>
+    </tr>
+    <tr>
+      <th>black</th>
+      <td>-0.0363</td>
+      <td>0.0039</td>
+      <td>-9.3670</td>
+      <td>0.0</td>
+      <td>-0.0439</td>
+      <td>-0.0287</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>-3.3305</td>
+      <td>0.6938</td>
+      <td>-4.8007</td>
+      <td>0.0</td>
+      <td>-4.6936</td>
+      <td>-1.9675</td>
+    </tr>
+    <tr>
+      <th>lstat</th>
+      <td>0.5488</td>
+      <td>0.0478</td>
+      <td>11.4907</td>
+      <td>0.0</td>
+      <td>0.4550</td>
+      <td>0.6426</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>11.7965</td>
+      <td>0.9342</td>
+      <td>12.6276</td>
+      <td>0.0</td>
+      <td>9.9612</td>
+      <td>13.6319</td>
+    </tr>
+    <tr>
+      <th>medv</th>
+      <td>-0.3632</td>
+      <td>0.0384</td>
+      <td>-9.4597</td>
+      <td>0.0</td>
+      <td>-0.4386</td>
+      <td>-0.2877</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Models which have statistically significant association between the predictor and the response 
+</pre></div>
+</div>
+<div class="output text_html"><h3>p < 0.05</h3></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zn
+indus
+nox
+rm
+age
+dis
+rad
+tax
+ptratio
+black
+lstat
+medv
+</pre></div>
+</div>
+<div class="output text_html"><h3>p > 0.05</h3></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>chas
+
+Some plots to back up my assertions.
+</pre></div>
+</div>
+<img alt="../_images/extension-limitation_54_18.png" src="../_images/extension-limitation_54_18.png" />
+<img alt="../_images/extension-limitation_54_19.png" src="../_images/extension-limitation_54_19.png" />
+<img alt="../_images/extension-limitation_54_20.png" src="../_images/extension-limitation_54_20.png" />
+<img alt="../_images/extension-limitation_54_21.png" src="../_images/extension-limitation_54_21.png" />
+</div>
+</div>
+<p><strong>b</strong>. Fit a multiple regression model to predict the response using all of the predictors. Describe your results.. For which predictors can we reject the null hypothesis <span class="math notranslate nohighlight">\(H_0 : \beta_j = 0\)</span> ?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compare your answer with the reference solution below</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;crim&quot;</span>
+<span class="n">predictors</span> <span class="o">=</span> <span class="n">boston_df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> ~ </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">predictors</span><span class="p">))</span>
+
+<span class="n">model_b</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">boston_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">model_b</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>          <td>crim</td>       <th>  R-squared:         </th> <td>   0.454</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.440</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   31.47</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Fri, 21 Oct 2022</td> <th>  Prob (F-statistic):</th> <td>1.57e-56</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>16:40:07</td>     <th>  Log-Likelihood:    </th> <td> -1653.3</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   506</td>      <th>  AIC:               </th> <td>   3335.</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>   492</td>      <th>  BIC:               </th> <td>   3394.</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>    13</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>   17.0332</td> <td>    7.235</td> <td>    2.354</td> <td> 0.019</td> <td>    2.818</td> <td>   31.248</td>
+</tr>
+<tr>
+  <th>zn</th>        <td>    0.0449</td> <td>    0.019</td> <td>    2.394</td> <td> 0.017</td> <td>    0.008</td> <td>    0.082</td>
+</tr>
+<tr>
+  <th>indus</th>     <td>   -0.0639</td> <td>    0.083</td> <td>   -0.766</td> <td> 0.444</td> <td>   -0.228</td> <td>    0.100</td>
+</tr>
+<tr>
+  <th>chas</th>      <td>   -0.7491</td> <td>    1.180</td> <td>   -0.635</td> <td> 0.526</td> <td>   -3.068</td> <td>    1.570</td>
+</tr>
+<tr>
+  <th>nox</th>       <td>  -10.3135</td> <td>    5.276</td> <td>   -1.955</td> <td> 0.051</td> <td>  -20.679</td> <td>    0.052</td>
+</tr>
+<tr>
+  <th>rm</th>        <td>    0.4301</td> <td>    0.613</td> <td>    0.702</td> <td> 0.483</td> <td>   -0.774</td> <td>    1.634</td>
+</tr>
+<tr>
+  <th>age</th>       <td>    0.0015</td> <td>    0.018</td> <td>    0.081</td> <td> 0.935</td> <td>   -0.034</td> <td>    0.037</td>
+</tr>
+<tr>
+  <th>dis</th>       <td>   -0.9872</td> <td>    0.282</td> <td>   -3.503</td> <td> 0.001</td> <td>   -1.541</td> <td>   -0.433</td>
+</tr>
+<tr>
+  <th>rad</th>       <td>    0.5882</td> <td>    0.088</td> <td>    6.680</td> <td> 0.000</td> <td>    0.415</td> <td>    0.761</td>
+</tr>
+<tr>
+  <th>tax</th>       <td>   -0.0038</td> <td>    0.005</td> <td>   -0.733</td> <td> 0.464</td> <td>   -0.014</td> <td>    0.006</td>
+</tr>
+<tr>
+  <th>ptratio</th>   <td>   -0.2711</td> <td>    0.186</td> <td>   -1.454</td> <td> 0.147</td> <td>   -0.637</td> <td>    0.095</td>
+</tr>
+<tr>
+  <th>black</th>     <td>   -0.0075</td> <td>    0.004</td> <td>   -2.052</td> <td> 0.041</td> <td>   -0.015</td> <td>   -0.000</td>
+</tr>
+<tr>
+  <th>lstat</th>     <td>    0.1262</td> <td>    0.076</td> <td>    1.667</td> <td> 0.096</td> <td>   -0.023</td> <td>    0.275</td>
+</tr>
+<tr>
+  <th>medv</th>      <td>   -0.1989</td> <td>    0.061</td> <td>   -3.287</td> <td> 0.001</td> <td>   -0.318</td> <td>   -0.080</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td>666.613</td> <th>  Durbin-Watson:     </th> <td>   1.519</td> 
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.000</td>  <th>  Jarque-Bera (JB):  </th> <td>84887.625</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 6.617</td>  <th>  Prob(JB):          </th> <td>    0.00</td> 
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td>65.058</td>  <th>  Cond. No.          </th> <td>1.58e+04</td> 
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.<br/>[2] The condition number is large, 1.58e+04. This might indicate that there are<br/>strong multicollinearity or other numerical problems.</div></div>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For which predictors can we reject the null hypothesis H0 : βj = 0?¶</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;h3&gt;p &lt; 0.05&lt;/h3&gt;&quot;</span><span class="p">))</span>
+<span class="n">model_b</span><span class="o">.</span><span class="n">pvalues</span><span class="p">[</span><span class="n">model_b</span><span class="o">.</span><span class="n">pvalues</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h3>p < 0.05</h3></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept    1.894909e-02
+zn           1.702489e-02
+dis          5.022039e-04
+rad          6.460451e-11
+black        4.070233e-02
+medv         1.086810e-03
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>c</strong>. How do your results from (a) compare to your results form (b)? Create a plot displaying the uni-variate regression coefficients from (a) on the x-axis, and the multiple regression coefficients from (b) on the y-axis. That is, each predictor is displayed as a single point in the plot. Its coefficient in a simple linear regression model is shown on the x-axis, and its coefficient estimate in the multiple linear regression model is shown on the y-axis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compare your answer with the reference solution below</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get coefficients</span>
+<span class="n">univariate_params</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">models_a</span><span class="p">])</span>
+<span class="n">multivariate_params</span> <span class="o">=</span> <span class="n">model_b</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Univariate_coef&quot;</span><span class="p">:</span> <span class="n">univariate_params</span><span class="p">,</span>
+        <span class="s2">&quot;Multivariate_coef&quot;</span><span class="p">:</span> <span class="n">multivariate_params</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Univariate_coef&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Multivariate_coef&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Univariate_coef</th>
+      <th>Multivariate_coef</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>zn</th>
+      <td>-0.073935</td>
+      <td>0.044855</td>
+    </tr>
+    <tr>
+      <th>indus</th>
+      <td>0.509776</td>
+      <td>-0.063855</td>
+    </tr>
+    <tr>
+      <th>chas</th>
+      <td>-1.892777</td>
+      <td>-0.749134</td>
+    </tr>
+    <tr>
+      <th>nox</th>
+      <td>31.248531</td>
+      <td>-10.313535</td>
+    </tr>
+    <tr>
+      <th>rm</th>
+      <td>-2.684051</td>
+      <td>0.430131</td>
+    </tr>
+    <tr>
+      <th>age</th>
+      <td>0.107786</td>
+      <td>0.001452</td>
+    </tr>
+    <tr>
+      <th>dis</th>
+      <td>-1.550902</td>
+      <td>-0.987176</td>
+    </tr>
+    <tr>
+      <th>rad</th>
+      <td>0.617911</td>
+      <td>0.588209</td>
+    </tr>
+    <tr>
+      <th>tax</th>
+      <td>0.029742</td>
+      <td>-0.003780</td>
+    </tr>
+    <tr>
+      <th>ptratio</th>
+      <td>1.151983</td>
+      <td>-0.271081</td>
+    </tr>
+    <tr>
+      <th>black</th>
+      <td>-0.036280</td>
+      <td>-0.007538</td>
+    </tr>
+    <tr>
+      <th>lstat</th>
+      <td>0.548805</td>
+      <td>0.126211</td>
+    </tr>
+    <tr>
+      <th>medv</th>
+      <td>-0.363160</td>
+      <td>-0.198887</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../_images/extension-limitation_63_1.png" src="../_images/extension-limitation_63_1.png" />
+</div>
+</div>
+<p><strong>d</strong>. Is there evidence of non-linear association between any of the predictors and the response? To answer this question, for each predictor X, fit a model of the form,</p>
 <div class="math notranslate nohighlight">
 \[y = \beta_0 + \beta_1 x + \beta_2 x^2 + \beta_3 x^3 + \epsilon\]</div>
-</li>
-</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compare your answer with the reference solution below</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">models_d</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span>
+        <span class="n">formula</span><span class="o">=</span><span class="s2">&quot;crim ~ </span><span class="si">{0}</span><span class="s2"> + np.power(</span><span class="si">{0}</span><span class="s2">, 2) + np.power(</span><span class="si">{0}</span><span class="s2">, 3)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">),</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">boston_df</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">boston_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models_d</span><span class="p">:</span>
+    <span class="n">dp</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">display</span><span class="p">(</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;coef&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">dp</span><span class="p">),</span>
+                <span class="s2">&quot;std_err&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">bse</span><span class="p">,</span> <span class="n">dp</span><span class="p">),</span>
+                <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span> <span class="o">/</span> <span class="n">model</span><span class="o">.</span><span class="n">bse</span><span class="p">,</span> <span class="n">dp</span><span class="p">),</span>
+                <span class="s2">&quot;P&gt;|t|&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">pvalues</span><span class="p">,</span> <span class="n">dp</span><span class="p">),</span>
+                <span class="s2">&quot;[0.025&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">conf_int</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dp</span><span class="p">),</span>
+                <span class="s2">&quot;0.975]&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">conf_int</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dp</span><span class="p">),</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+
+<span class="c1"># In which of the models is there a statistically significant association between the predictor and the response?</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;h3&gt;Features with p &lt; 0.05&lt;/h3&gt;&quot;</span><span class="p">))</span>
+
+<span class="n">sig</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">pvalues</span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">pvalues</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">]</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models_d</span><span class="p">])</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;P&gt;|t|&quot;</span><span class="p">:</span> <span class="n">sig</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Intercept&quot;</span><span class="p">)}))</span>
+
+
+<span class="c1"># There is evidence of a non-linear association between the repsonse and INDUS, NOX, AGE, DIS, PTRATIO</span>
+<span class="c1"># There is evidence of a linear association between the response and ZN</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>4.8461</td>
+      <td>0.4330</td>
+      <td>11.1922</td>
+      <td>0.0000</td>
+      <td>3.9954</td>
+      <td>5.6967</td>
+    </tr>
+    <tr>
+      <th>zn</th>
+      <td>-0.3322</td>
+      <td>0.1098</td>
+      <td>-3.0252</td>
+      <td>0.0026</td>
+      <td>-0.5479</td>
+      <td>-0.1164</td>
+    </tr>
+    <tr>
+      <th>np.power(zn, 2)</th>
+      <td>0.0065</td>
+      <td>0.0039</td>
+      <td>1.6791</td>
+      <td>0.0938</td>
+      <td>-0.0011</td>
+      <td>0.0141</td>
+    </tr>
+    <tr>
+      <th>np.power(zn, 3)</th>
+      <td>-0.0000</td>
+      <td>0.0000</td>
+      <td>-1.2030</td>
+      <td>0.2295</td>
+      <td>-0.0001</td>
+      <td>0.0000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>3.6626</td>
+      <td>1.5740</td>
+      <td>2.3269</td>
+      <td>0.0204</td>
+      <td>0.5702</td>
+      <td>6.7550</td>
+    </tr>
+    <tr>
+      <th>indus</th>
+      <td>-1.9652</td>
+      <td>0.4820</td>
+      <td>-4.0773</td>
+      <td>0.0001</td>
+      <td>-2.9122</td>
+      <td>-1.0182</td>
+    </tr>
+    <tr>
+      <th>np.power(indus, 2)</th>
+      <td>0.2519</td>
+      <td>0.0393</td>
+      <td>6.4070</td>
+      <td>0.0000</td>
+      <td>0.1747</td>
+      <td>0.3292</td>
+    </tr>
+    <tr>
+      <th>np.power(indus, 3)</th>
+      <td>-0.0070</td>
+      <td>0.0010</td>
+      <td>-7.2920</td>
+      <td>0.0000</td>
+      <td>-0.0089</td>
+      <td>-0.0051</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>3.7444</td>
+      <td>0.3961</td>
+      <td>9.4530</td>
+      <td>0.0000</td>
+      <td>2.9662</td>
+      <td>4.5227</td>
+    </tr>
+    <tr>
+      <th>chas</th>
+      <td>-0.6309</td>
+      <td>0.5020</td>
+      <td>-1.2567</td>
+      <td>0.2094</td>
+      <td>-1.6173</td>
+      <td>0.3554</td>
+    </tr>
+    <tr>
+      <th>np.power(chas, 2)</th>
+      <td>-0.6309</td>
+      <td>0.5020</td>
+      <td>-1.2567</td>
+      <td>0.2094</td>
+      <td>-1.6173</td>
+      <td>0.3554</td>
+    </tr>
+    <tr>
+      <th>np.power(chas, 3)</th>
+      <td>-0.6309</td>
+      <td>0.5020</td>
+      <td>-1.2567</td>
+      <td>0.2094</td>
+      <td>-1.6173</td>
+      <td>0.3554</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>233.0866</td>
+      <td>33.6431</td>
+      <td>6.9282</td>
+      <td>0.0</td>
+      <td>166.9880</td>
+      <td>299.1852</td>
+    </tr>
+    <tr>
+      <th>nox</th>
+      <td>-1279.3713</td>
+      <td>170.3975</td>
+      <td>-7.5082</td>
+      <td>0.0</td>
+      <td>-1614.1513</td>
+      <td>-944.5912</td>
+    </tr>
+    <tr>
+      <th>np.power(nox, 2)</th>
+      <td>2248.5441</td>
+      <td>279.8993</td>
+      <td>8.0334</td>
+      <td>0.0</td>
+      <td>1698.6257</td>
+      <td>2798.4624</td>
+    </tr>
+    <tr>
+      <th>np.power(nox, 3)</th>
+      <td>-1245.7029</td>
+      <td>149.2816</td>
+      <td>-8.3446</td>
+      <td>0.0</td>
+      <td>-1538.9966</td>
+      <td>-952.4091</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>112.6246</td>
+      <td>64.5172</td>
+      <td>1.7457</td>
+      <td>0.0815</td>
+      <td>-14.1325</td>
+      <td>239.3817</td>
+    </tr>
+    <tr>
+      <th>rm</th>
+      <td>-39.1501</td>
+      <td>31.3115</td>
+      <td>-1.2503</td>
+      <td>0.2118</td>
+      <td>-100.6679</td>
+      <td>22.3676</td>
+    </tr>
+    <tr>
+      <th>np.power(rm, 2)</th>
+      <td>4.5509</td>
+      <td>5.0099</td>
+      <td>0.9084</td>
+      <td>0.3641</td>
+      <td>-5.2920</td>
+      <td>14.3938</td>
+    </tr>
+    <tr>
+      <th>np.power(rm, 3)</th>
+      <td>-0.1745</td>
+      <td>0.2637</td>
+      <td>-0.6615</td>
+      <td>0.5086</td>
+      <td>-0.6927</td>
+      <td>0.3437</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>-2.5488</td>
+      <td>2.7691</td>
+      <td>-0.9204</td>
+      <td>0.3578</td>
+      <td>-7.9893</td>
+      <td>2.8918</td>
+    </tr>
+    <tr>
+      <th>age</th>
+      <td>0.2737</td>
+      <td>0.1864</td>
+      <td>1.4683</td>
+      <td>0.1427</td>
+      <td>-0.0925</td>
+      <td>0.6398</td>
+    </tr>
+    <tr>
+      <th>np.power(age, 2)</th>
+      <td>-0.0072</td>
+      <td>0.0036</td>
+      <td>-1.9878</td>
+      <td>0.0474</td>
+      <td>-0.0144</td>
+      <td>-0.0001</td>
+    </tr>
+    <tr>
+      <th>np.power(age, 3)</th>
+      <td>0.0001</td>
+      <td>0.0000</td>
+      <td>2.7237</td>
+      <td>0.0067</td>
+      <td>0.0000</td>
+      <td>0.0001</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>30.0476</td>
+      <td>2.4459</td>
+      <td>12.2850</td>
+      <td>0.0</td>
+      <td>25.2422</td>
+      <td>34.8530</td>
+    </tr>
+    <tr>
+      <th>dis</th>
+      <td>-15.5544</td>
+      <td>1.7360</td>
+      <td>-8.9600</td>
+      <td>0.0</td>
+      <td>-18.9650</td>
+      <td>-12.1437</td>
+    </tr>
+    <tr>
+      <th>np.power(dis, 2)</th>
+      <td>2.4521</td>
+      <td>0.3464</td>
+      <td>7.0783</td>
+      <td>0.0</td>
+      <td>1.7715</td>
+      <td>3.1327</td>
+    </tr>
+    <tr>
+      <th>np.power(dis, 3)</th>
+      <td>-0.1186</td>
+      <td>0.0204</td>
+      <td>-5.8135</td>
+      <td>0.0</td>
+      <td>-0.1587</td>
+      <td>-0.0785</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>-0.6055</td>
+      <td>2.0501</td>
+      <td>-0.2954</td>
+      <td>0.7678</td>
+      <td>-4.6334</td>
+      <td>3.4223</td>
+    </tr>
+    <tr>
+      <th>rad</th>
+      <td>0.5127</td>
+      <td>1.0436</td>
+      <td>0.4913</td>
+      <td>0.6234</td>
+      <td>-1.5376</td>
+      <td>2.5631</td>
+    </tr>
+    <tr>
+      <th>np.power(rad, 2)</th>
+      <td>-0.0752</td>
+      <td>0.1485</td>
+      <td>-0.5061</td>
+      <td>0.6130</td>
+      <td>-0.3670</td>
+      <td>0.2167</td>
+    </tr>
+    <tr>
+      <th>np.power(rad, 3)</th>
+      <td>0.0032</td>
+      <td>0.0046</td>
+      <td>0.7031</td>
+      <td>0.4823</td>
+      <td>-0.0058</td>
+      <td>0.0122</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>19.1836</td>
+      <td>11.7955</td>
+      <td>1.6263</td>
+      <td>0.1045</td>
+      <td>-3.9911</td>
+      <td>42.3583</td>
+    </tr>
+    <tr>
+      <th>tax</th>
+      <td>-0.1533</td>
+      <td>0.0957</td>
+      <td>-1.6023</td>
+      <td>0.1097</td>
+      <td>-0.3413</td>
+      <td>0.0347</td>
+    </tr>
+    <tr>
+      <th>np.power(tax, 2)</th>
+      <td>0.0004</td>
+      <td>0.0002</td>
+      <td>1.4877</td>
+      <td>0.1375</td>
+      <td>-0.0001</td>
+      <td>0.0008</td>
+    </tr>
+    <tr>
+      <th>np.power(tax, 3)</th>
+      <td>-0.0000</td>
+      <td>0.0000</td>
+      <td>-1.1668</td>
+      <td>0.2439</td>
+      <td>-0.0000</td>
+      <td>0.0000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>477.1840</td>
+      <td>156.7950</td>
+      <td>3.0434</td>
+      <td>0.0025</td>
+      <td>169.1288</td>
+      <td>785.2393</td>
+    </tr>
+    <tr>
+      <th>ptratio</th>
+      <td>-82.3605</td>
+      <td>27.6439</td>
+      <td>-2.9793</td>
+      <td>0.0030</td>
+      <td>-136.6726</td>
+      <td>-28.0485</td>
+    </tr>
+    <tr>
+      <th>np.power(ptratio, 2)</th>
+      <td>4.6353</td>
+      <td>1.6083</td>
+      <td>2.8821</td>
+      <td>0.0041</td>
+      <td>1.4755</td>
+      <td>7.7952</td>
+    </tr>
+    <tr>
+      <th>np.power(ptratio, 3)</th>
+      <td>-0.0848</td>
+      <td>0.0309</td>
+      <td>-2.7433</td>
+      <td>0.0063</td>
+      <td>-0.1455</td>
+      <td>-0.0241</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>18.2637</td>
+      <td>2.3049</td>
+      <td>7.9238</td>
+      <td>0.0000</td>
+      <td>13.7353</td>
+      <td>22.7921</td>
+    </tr>
+    <tr>
+      <th>black</th>
+      <td>-0.0836</td>
+      <td>0.0563</td>
+      <td>-1.4834</td>
+      <td>0.1386</td>
+      <td>-0.1942</td>
+      <td>0.0271</td>
+    </tr>
+    <tr>
+      <th>np.power(black, 2)</th>
+      <td>0.0002</td>
+      <td>0.0003</td>
+      <td>0.7162</td>
+      <td>0.4742</td>
+      <td>-0.0004</td>
+      <td>0.0008</td>
+    </tr>
+    <tr>
+      <th>np.power(black, 3)</th>
+      <td>-0.0000</td>
+      <td>0.0000</td>
+      <td>-0.6078</td>
+      <td>0.5436</td>
+      <td>-0.0000</td>
+      <td>0.0000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>1.2010</td>
+      <td>2.0286</td>
+      <td>0.5920</td>
+      <td>0.5541</td>
+      <td>-2.7847</td>
+      <td>5.1866</td>
+    </tr>
+    <tr>
+      <th>lstat</th>
+      <td>-0.4491</td>
+      <td>0.4649</td>
+      <td>-0.9660</td>
+      <td>0.3345</td>
+      <td>-1.3624</td>
+      <td>0.4643</td>
+    </tr>
+    <tr>
+      <th>np.power(lstat, 2)</th>
+      <td>0.0558</td>
+      <td>0.0301</td>
+      <td>1.8522</td>
+      <td>0.0646</td>
+      <td>-0.0034</td>
+      <td>0.1149</td>
+    </tr>
+    <tr>
+      <th>np.power(lstat, 3)</th>
+      <td>-0.0009</td>
+      <td>0.0006</td>
+      <td>-1.5170</td>
+      <td>0.1299</td>
+      <td>-0.0020</td>
+      <td>0.0003</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coef</th>
+      <th>std_err</th>
+      <th>t</th>
+      <th>P&gt;|t|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>53.1655</td>
+      <td>3.3563</td>
+      <td>15.8405</td>
+      <td>0.0</td>
+      <td>46.5714</td>
+      <td>59.7597</td>
+    </tr>
+    <tr>
+      <th>medv</th>
+      <td>-5.0948</td>
+      <td>0.4338</td>
+      <td>-11.7438</td>
+      <td>0.0</td>
+      <td>-5.9472</td>
+      <td>-4.2425</td>
+    </tr>
+    <tr>
+      <th>np.power(medv, 2)</th>
+      <td>0.1555</td>
+      <td>0.0172</td>
+      <td>9.0455</td>
+      <td>0.0</td>
+      <td>0.1217</td>
+      <td>0.1893</td>
+    </tr>
+    <tr>
+      <th>np.power(medv, 3)</th>
+      <td>-0.0015</td>
+      <td>0.0002</td>
+      <td>-7.3120</td>
+      <td>0.0</td>
+      <td>-0.0019</td>
+      <td>-0.0011</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><h3>Features with p < 0.05</h3></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>P&gt;|t|</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>zn</th>
+      <td>2.612296e-03</td>
+    </tr>
+    <tr>
+      <th>indus</th>
+      <td>5.297064e-05</td>
+    </tr>
+    <tr>
+      <th>np.power(indus, 2)</th>
+      <td>3.420187e-10</td>
+    </tr>
+    <tr>
+      <th>np.power(indus, 3)</th>
+      <td>1.196405e-12</td>
+    </tr>
+    <tr>
+      <th>nox</th>
+      <td>2.758372e-13</td>
+    </tr>
+    <tr>
+      <th>np.power(nox, 2)</th>
+      <td>6.811300e-15</td>
+    </tr>
+    <tr>
+      <th>np.power(nox, 3)</th>
+      <td>6.961110e-16</td>
+    </tr>
+    <tr>
+      <th>np.power(age, 2)</th>
+      <td>4.737733e-02</td>
+    </tr>
+    <tr>
+      <th>np.power(age, 3)</th>
+      <td>6.679915e-03</td>
+    </tr>
+    <tr>
+      <th>dis</th>
+      <td>6.374792e-18</td>
+    </tr>
+    <tr>
+      <th>np.power(dis, 2)</th>
+      <td>4.941214e-12</td>
+    </tr>
+    <tr>
+      <th>np.power(dis, 3)</th>
+      <td>1.088832e-08</td>
+    </tr>
+    <tr>
+      <th>ptratio</th>
+      <td>3.028663e-03</td>
+    </tr>
+    <tr>
+      <th>np.power(ptratio, 2)</th>
+      <td>4.119552e-03</td>
+    </tr>
+    <tr>
+      <th>np.power(ptratio, 3)</th>
+      <td>6.300514e-03</td>
+    </tr>
+    <tr>
+      <th>medv</th>
+      <td>2.637707e-28</td>
+    </tr>
+    <tr>
+      <th>np.power(medv, 2)</th>
+      <td>3.260523e-18</td>
+    </tr>
+    <tr>
+      <th>np.power(medv, 3)</th>
+      <td>1.046510e-12</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </div>
 </div>
 
