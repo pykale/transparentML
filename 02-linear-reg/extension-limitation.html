@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.4. Quiz" href="quiz-sum-ref.html" />
+    <link rel="next" title="2.4. Quiz and summary" href="quiz-sum-ref.html" />
     <link rel="prev" title="2.2. Multiple linear regression" href="multi-linear-regression.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -138,7 +138,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../00-prereq/quiz-sum-ref.html">
-     Quiz
+     Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -192,7 +192,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../01-intro/quiz-sum-ref.html">
-     1.7. Quiz
+     1.7. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -224,7 +224,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="quiz-sum-ref.html">
-     2.4. Quiz
+     2.4. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -251,7 +251,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-logistic-reg/quiz-sum-ref.html">
-     3.3. Quiz
+     3.3. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -268,7 +268,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../04-cross-val-bootstrap/quiz-sum-ref.html">
-     4.1. Quiz
+     4.1. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -285,7 +285,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../05-hypo-test-sw-dev/quiz-sum-ref.html">
-     5.1. Quiz
+     5.1. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -309,7 +309,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-ftr-select-shrink/quiz-sum-ref.html">
-     6.1. Quiz
+     6.1. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -326,7 +326,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-dec-trees-rnd-forest/quiz-sum-ref.html">
-     7.1. Quiz
+     7.1. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -343,7 +343,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-nb-glm-svm/quiz-sum-ref.html">
-     8.1. Quiz
+     8.1. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -360,7 +360,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../09-pca-kmeans/quiz-sum-ref.html">
-     9.1. Quiz
+     9.1. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -377,7 +377,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../10-deep-cnn-rnn/quiz-sum-ref.html">
-     10.1. Quiz
+     10.1. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -512,39 +512,41 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal nav-link" href="#interaction-between-variables">
      2.3.3.1. Interaction between variables
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#interaction-between-qualitative-and-quantitative-variables">
-     2.3.3.2. Interaction between qualitative and quantitative variables
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#interaction-between-qualitative-and-quantitative-variables">
+       2.3.3.1.1. Interaction between qualitative and quantitative variables
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#non-linear-relationships">
-     2.3.3.3. Non-linear relationships
+     2.3.3.2. Non-linear relationships
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#limitations-of-linear-regression">
-   2.3.4. Limitations of linear regression
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#non-linearity-of-the-data">
-     2.3.4.1. Non-linearity of the Data
+    <a class="reference internal nav-link" href="#limitations-of-linear-regression">
+     2.3.3.3. Limitations of linear regression
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#non-linearity-of-the-data">
+       2.3.3.3.1. Non-linearity of the Data
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#collinearity">
-     2.3.4.2. Collinearity
+     2.3.3.4. Collinearity
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise">
-   2.3.5. Exercise
+   2.3.4. Exercise
   </a>
  </li>
 </ul>
@@ -586,39 +588,41 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal nav-link" href="#interaction-between-variables">
      2.3.3.1. Interaction between variables
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#interaction-between-qualitative-and-quantitative-variables">
-     2.3.3.2. Interaction between qualitative and quantitative variables
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#interaction-between-qualitative-and-quantitative-variables">
+       2.3.3.1.1. Interaction between qualitative and quantitative variables
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#non-linear-relationships">
-     2.3.3.3. Non-linear relationships
+     2.3.3.2. Non-linear relationships
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#limitations-of-linear-regression">
-   2.3.4. Limitations of linear regression
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#non-linearity-of-the-data">
-     2.3.4.1. Non-linearity of the Data
+    <a class="reference internal nav-link" href="#limitations-of-linear-regression">
+     2.3.3.3. Limitations of linear regression
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#non-linearity-of-the-data">
+       2.3.3.3.1. Non-linearity of the Data
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#collinearity">
-     2.3.4.2. Collinearity
+     2.3.3.4. Collinearity
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise">
-   2.3.5. Exercise
+   2.3.4. Exercise
   </a>
  </li>
 </ul>
@@ -630,7 +634,7 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="section" id="extensions-limitations-of-linear-regression">
+  <div class="tex2jax_ignore mathjax_ignore section" id="extensions-limitations-of-linear-regression">
 <h1><span class="section-number">2.3. </span>Extensions/limitations of linear regression<a class="headerlink" href="#extensions-limitations-of-linear-regression" title="Permalink to this headline">¶</a></h1>
 <p>This section studies how to extend linear regression to more complicated types of variables and relationships, and the limitations of linear regression. We will use three datasets to illustrate these concepts:</p>
 <ol class="simple">
@@ -806,7 +810,7 @@ memory usage: 30.6+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f0b02f6aa60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f7b411c1460&gt;
 </pre></div>
 </div>
 <img alt="../_images/extension-limitation_9_1.png" src="../_images/extension-limitation_9_1.png" />
@@ -875,8 +879,8 @@ memory usage: 30.6+ KB
 y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon.
 \]</div>
 <p>This model can be extended to include an interaction term between <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8edee52e-383c-4068-a235-6e64f759937a">
-<span class="eqno">(2.21)<a class="headerlink" href="#equation-8edee52e-383c-4068-a235-6e64f759937a" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9cea7991-e564-4ff6-842b-b26040d94b4b">
+<span class="eqno">(2.21)<a class="headerlink" href="#equation-9cea7991-e564-4ff6-842b-b26040d94b4b" title="Permalink to this equation">¶</a></span>\[\begin{align}
 y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 &amp;= \beta_0 + (\beta_1 + \beta_3 x_2) x_1 + \beta_2 x_2 + \epsilon \\
 &amp;= \beta_0 + \tilde{\beta}_1 x_1 + \beta_2 x_2 + \epsilon,
@@ -910,9 +914,8 @@ y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 </table></div></div>
 </div>
 <p>The small <span class="math notranslate nohighlight">\(p\)</span>-value for the interaction term suggests that the true relationship is not additive and there is a strong evidence of the associate between <code class="docutils literal notranslate"><span class="pre">Sales</span></code> and the interaction between <code class="docutils literal notranslate"><span class="pre">TV</span></code> and <code class="docutils literal notranslate"><span class="pre">Radio</span></code>. Without including the interaction term, our understanding of the relationship between <code class="docutils literal notranslate"><span class="pre">Sales</span></code> and <code class="docutils literal notranslate"><span class="pre">TV</span></code> and <code class="docutils literal notranslate"><span class="pre">Radio</span></code> is not complete.</p>
-</div>
 <div class="section" id="interaction-between-qualitative-and-quantitative-variables">
-<h3><span class="section-number">2.3.3.2. </span>Interaction between qualitative and quantitative variables<a class="headerlink" href="#interaction-between-qualitative-and-quantitative-variables" title="Permalink to this headline">¶</a></h3>
+<h4><span class="section-number">2.3.3.1.1. </span>Interaction between qualitative and quantitative variables<a class="headerlink" href="#interaction-between-qualitative-and-quantitative-variables" title="Permalink to this headline">¶</a></h4>
 <p>The concept of interactions also applies to qualitative variables. In fact, sometimes an interaction between a qualitative variable and a quantitative variable has a particularly nice interpretation. For example, run the following code to predict <code class="docutils literal notranslate"><span class="pre">Balance</span></code> using the <code class="docutils literal notranslate"><span class="pre">Income</span></code> (quantitative) and <code class="docutils literal notranslate"><span class="pre">Student</span></code> (qualitative) variables, and compare the differences between including and excluding the interaction term between <code class="docutils literal notranslate"><span class="pre">Income</span></code> and <code class="docutils literal notranslate"><span class="pre">Student</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -992,8 +995,9 @@ dtype: float64
 <p>In the left figure without the interaction term between <code class="docutils literal notranslate"><span class="pre">Income</span></code> and <code class="docutils literal notranslate"><span class="pre">Student</span></code>, we see two (solid) parallel lines, one for students and one for non-students. The two lines have different intercepts but the same slope, indicating that a one-unit increase in <code class="docutils literal notranslate"><span class="pre">Income</span></code> will have the same effect on <code class="docutils literal notranslate"><span class="pre">Balance</span></code> for students and non-students, which is counterintuitive.</p>
 <p>In the right figure with the interaction term between <code class="docutils literal notranslate"><span class="pre">Income</span></code> and <code class="docutils literal notranslate"><span class="pre">Student</span></code>, the two (dashed) lines are no longer parallel. We see that the slope of the line for students is flatter than that for non-students, indicating that a one-unit increase in <code class="docutils literal notranslate"><span class="pre">Income</span></code> will have a much smaller effect on credit card <code class="docutils literal notranslate"><span class="pre">Balance</span></code> for students than for non-students. This is consistent with our intuition.</p>
 </div>
+</div>
 <div class="section" id="non-linear-relationships">
-<h3><span class="section-number">2.3.3.3. </span>Non-linear relationships<a class="headerlink" href="#non-linear-relationships" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.3.3.2. </span>Non-linear relationships<a class="headerlink" href="#non-linear-relationships" title="Permalink to this headline">¶</a></h3>
 <p>In some cases, the true relationship between the response and the predictors may be non-linear. Here we present a very simple way to directly extend the linear model to accommodate non-linear relationships, using <a class="reference external" href="https://en.wikipedia.org/wiki/Polynomial_regression">polynomial regression</a>.</p>
 <p>Run the following code to observe the relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> (gas mileage in miles per gallon) and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>.</p>
 <div class="cell docutils container">
@@ -1014,8 +1018,8 @@ dtype: float64
 </div>
 </div>
 <p>The figure shows a strong relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>, but it is clearly not linear. We can use a polynomial regression to fit a non-linear model to the data. We can fit a polynomial regression of degree 2 (quadratic) to the data using the following regression:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4e0a770e-fe81-4e75-b8d8-366d8335be42">
-<span class="eqno">(2.22)<a class="headerlink" href="#equation-4e0a770e-fe81-4e75-b8d8-366d8335be42" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b3c26bb4-22bf-4dd2-8957-ba7bba09aeeb">
+<span class="eqno">(2.22)<a class="headerlink" href="#equation-b3c26bb4-22bf-4dd2-8957-ba7bba09aeeb" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \textrm{mpg} = \beta_0 + \beta_1 \times \textrm{horsepower} + \beta_2 \times \textrm{horsepower}^2 + \epsilon.
 \end{equation}\]</div>
 <p>Run the following code to display the relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> (gas mileage in miles per gallon) and <span class="math notranslate nohighlight">\(\textrm{horsepower}^2\)</span> as well as <span class="math notranslate nohighlight">\(\textrm{horsepower}^5\)</span> (Figure 3.8 of the textbook) for cars in the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset.</p>
@@ -1171,12 +1175,11 @@ dtype: float64
 </table></div></div>
 </div>
 </div>
-</div>
 <div class="section" id="limitations-of-linear-regression">
-<h2><span class="section-number">2.3.4. </span>Limitations of linear regression<a class="headerlink" href="#limitations-of-linear-regression" title="Permalink to this headline">¶</a></h2>
+<h3><span class="section-number">2.3.3.3. </span>Limitations of linear regression<a class="headerlink" href="#limitations-of-linear-regression" title="Permalink to this headline">¶</a></h3>
 <p>Every model will have some limitations, and linear regression is no exception. Here we briefly study two of the limitations of linear regression to show the possible complexities of real-world data. More limitations can be found in the textbook.</p>
 <div class="section" id="non-linearity-of-the-data">
-<h3><span class="section-number">2.3.4.1. </span>Non-linearity of the Data<a class="headerlink" href="#non-linearity-of-the-data" title="Permalink to this headline">¶</a></h3>
+<h4><span class="section-number">2.3.3.3.1. </span>Non-linearity of the Data<a class="headerlink" href="#non-linearity-of-the-data" title="Permalink to this headline">¶</a></h4>
 <p>The linear regression model assumes that there is a “straight-line” relationship between the predictors and the response. If the true relationship is far from linear, then virtually all of the conclusions that we draw from the fit are questionable. In addition, the prediction accuracy of the model can be significantly reduced.</p>
 <p>Run the following code to compare the differences in accuracy between a linear regression model and a quadratic regression model for regressing <code class="docutils literal notranslate"><span class="pre">mpg</span></code> onto <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>.</p>
 <p>Firstly, fitting a linear regression model and a quadratic regression model for regressing <code class="docutils literal notranslate"><span class="pre">mpg</span></code> onto <code class="docutils literal notranslate"><span class="pre">horsepower</span></code> and compute the residuals for each model.</p>
@@ -1259,8 +1262,9 @@ dtype: float64
 </ul>
 </div>
 </div>
+</div>
 <div class="section" id="collinearity">
-<h3><span class="section-number">2.3.4.2. </span>Collinearity<a class="headerlink" href="#collinearity" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.3.3.4. </span>Collinearity<a class="headerlink" href="#collinearity" title="Permalink to this headline">¶</a></h3>
 <p>Collinearity refers to the situation in which two or more predictor variables are closely related to one another.</p>
 <p>Run the following code to illustrate the problem of collinearity in the <code class="docutils literal notranslate"><span class="pre">Credit</span></code> dataset (Figure 3.14 of the textbook).</p>
 <div class="cell docutils container">
@@ -1448,7 +1452,7 @@ Rating/Limit
 </div>
 </div>
 <div class="section" id="exercise">
-<h2><span class="section-number">2.3.5. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3.4. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
 <ol>
 <li><p>This question involves the use of simple linear regression on the <strong>Auto</strong> dataset from <a class="reference external" href="https://pykale.github.io/transparentML/01-intro/organisation.html#datasets-table">Tabel 1.2</a>.</p>
 <p>(a) Use the <strong>LinearRegression()</strong> function to perform a simple linear regression with <strong>mpg</strong> as the response and <strong>horsepower</strong> as the predictor. Use the <strong>summary()</strong> function to print the results. Comment on the output.</p>
@@ -1525,7 +1529,7 @@ Rating/Limit
     <a class='right-next' id="next-link" href="quiz-sum-ref.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.4. </span>Quiz</p>
+        <p class="prev-next-title"><span class="section-number">2.4. </span>Quiz and summary</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

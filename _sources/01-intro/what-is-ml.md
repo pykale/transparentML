@@ -1,6 +1,6 @@
-## What is machine learning?
+# What is machine learning?
 
-### Human learning
+## Human learning
 
 Learning is familiar to humans (and animals), as a continuous process that starts from birth and continues throughout life. A human child (and adult) learns new things, acquire new skills, and improve existing skills to survive and thrive in the surrounding world. A child's brain and senses perceive the facts of their surroundings to gradually learn the hidden patterns of life that help the child to craft logical rules to identify learned patterns and predict future events.
 
@@ -8,7 +8,7 @@ Learning is a process of acquiring new knowledge, skills, and behaviors. Learnin
 
 You may have already known, since you are here, that machine can also learn, from their experiences, and from others. That is the subject of this course.
 
-### A definition of machine learning
+## A definition of machine learning
 
 > Machine learning learns a model from data.
 
@@ -17,7 +17,7 @@ Machine learning takes **data** as **input** to learn a **model**, a mathematica
 The above definition is the one we will use in this course for clarity, loosely inspired by how the human brain learns certain things based on the data it perceives from the outside world. From this definition, we can see machine learning as a set of **software** tools for **modelling** and **understanding** complex **datasets**. You may find various definitions of machine learning elsewhere. For example, machine learning, from a systems perspective, is defined as the creation of automated systems that can learn hidden patterns from data to aid in making intelligent decisions.
 
 
-### AI, machine learning, and deep learning
+## AI, machine learning, and deep learning
 
 Besides machine learning (ML), you may have also heard about artificial intelligence (AI), deep learning, and data science. Some use these terms interchangeably, but they are not the same, as shown in the figure below.
 
@@ -31,7 +31,7 @@ The relationships between AI, ML, deep learning, and data science, by [Jen Loope
 
 **AI** is a broad field of study that aims to create intelligent machines that can perform tasks that normally require human intelligence. There are multiple ways to achieve AI, and machine learning is one of them. As defined above, machine learning is a subfield of AI that machines acquire their experiences from data, in the form of a mathematical model. There are multiple ways of machine learning, and deep learning is one of them. **Deep learning** is a subfield of machine learning that uses deep (i.e. many layers) neural networks to learn from data. **Data science** is a broad field of study that uses scientific methods, processes, algorithms, and systems to extract knowledge and insights from data, not necessarily in the form of a mathematical model as machine learning does.
 
-### An motivating example
+## An motivating example
 
 Let us assume we are a consultant firm hired by a client to investigate the association between advertising and sales of a product. The [Advertising data set](https://github.com/pykale/transparentML/blob/main/data/Advertising.csv) consists of the sales of the product in 200 different markets, and advertising budgets for the product in each of those markets for three different media: TV, radio, and newspaper. You can click the link above to view the dataset.
 
@@ -41,7 +41,7 @@ Denote the three features as $x_1$ for TV, $x_2$ for radio, and $x_3$ for newspa
 
 The function $f$ is called the **model** or **predictive function**. The model $f$ is learned from the data, which is called the **training data**. The training data consists of the features $\mathbf{x}$ and the target $y$ for each sample. In this case, the training data is a table with 200 rows and 4 columns, where each row is a sample and each column is a feature or a target. The first three columns are the features and the last column is the target.
 
-### Exercises
+## Exercises
 
 1. Deep Learning is a subfield of AI.
 
