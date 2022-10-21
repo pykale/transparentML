@@ -54,8 +54,10 @@ parts:
   - file: 03-logistic-reg/overview
     title: Logistic regression
     sections:
+    - file: 03-logistic-reg/classification
+      title: An overview of classification
     - file: 03-logistic-reg/logistic-model
-      title: Classification with logistic model
+      title: Logistic models
     - file: 03-logistic-reg/quiz-sum-ref
       title: Quiz & summary
   - file: 04-cross-val-bootstrap/overview
