@@ -1,8 +1,8 @@
-## Linear algebra and notations
+# Linear algebra and notations
 
 This section introduces the basic concepts of linear algebra and notations used in this course. The concepts are introduced in a self-contained manner, and you can skip this section if you are already familiar with the concepts.
 
-### Scalars, vectors, and matrices
+## Scalars, vectors, and matrices
 
 - Scalars: a scalar is a single number. In this course, if not specified, scalers are denoted by lowercase letters, e.g. $x = 3.14$. When introducing a scaler, we will specify its type, e.g. $x \in \mathbb{R}$, where $\mathbb{R}$ is the set of real numbers.
 - Vectors: a vector is an array of numbers, which are arranged in order. Usually we denote vectors as lowercase letters in bold, e.g.
@@ -33,7 +33,7 @@ This section introduces the basic concepts of linear algebra and notations used 
    $$
 <!-- - Tensors: a tensor is an array of numbers arranged on a regular grid with a variable number of axes, e.g. $$\mathbf{X} = \begin{bmatrix} x_{1,1,1} & x_{1,1,2} & x_{1,1,3} \\ x_{1,2,1} & x_{1,2,2} & x_{1,2,3} \\ x_{1,3,1} & x_{1,3,2} & x_{1,3,3} \end{bmatrix}.$$ -->
 
-### Operations on matrices
+## Operations on matrices
 
 - A matrix $\mathbf{X}$ can be multiplied by a scaler $\alpha$ or add a scaler to a matrix:
 
@@ -95,7 +95,7 @@ This section introduces the basic concepts of linear algebra and notations used 
 - $\mathbf{X} (\mathbf{Y} + \mathbf{Z}) = \mathbf{X} \mathbf{Y} + \mathbf{X} \mathbf{Z}$.
 
 
-### Special matrices
+## Special matrices
 
 - **Diagonal** matrices contain non-zero elements only on the diagonal, i.e. $x_{i,j} = 0$ for $i \neq j$. For example, the following matrix is a diagonal matrix:
 
@@ -125,7 +125,7 @@ This section introduces the basic concepts of linear algebra and notations used 
 
 - An **Orthogonal** matrix is a square matrix whose columns are mutually orthogonal and have unit length, i.e. $\mathbf{X}^\top \mathbf{X} = \mathbf{X} \mathbf{X}^\top = \mathbf{I}$, where $\mathbf{I}$ is the identity matrix.
 
-### Exercises
+## Exercises
 
 1. $\begin{bmatrix} 12 & 0 & 0 \\ 0 & 8 & 0 \\ 0 & 0 & 23 \end{bmatrix}$
 

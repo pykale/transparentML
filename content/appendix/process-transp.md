@@ -1,4 +1,4 @@
-## Process transparency
+# Process transparency
 
 Now let us consider process transparency. We aim to answer three questions:
 
@@ -15,7 +15,7 @@ name: fig10-ai-transparency
 The what, why, and how of process transparency {cite}`ostmann2021ai` (maybe redraw later).
 ```
 
-### What relevant information?
+## What relevant information?
 
 Process transparency concerns access to any information about an ML system’s design, development, and deployment apart from the system’s logic. As with system logic information, such process information is important for addressing and providing assurance about concerns raised by AI systems. Correspondingly, there is a growing amount of work on how process information can be recorded, managed, and made accessible in practice.
 
@@ -52,7 +52,7 @@ name: fig12-ai-transparency
 Detailed process transparency matrix {cite}`ostmann2021ai` (maybe redraw later).
 ```
 
-### Why such info?
+## Why such info?
 
 Process information, like system logic information, can help to address concerns related to AI
 systems (ensuring the trustworthiness and responsible use of these systems) as well as to provide
@@ -75,7 +75,7 @@ The combined relevance of process and system logic information in explaining sys
 - **Responsiveness**: Telling users about ways in which they can ask for information, help, or redress is important to reassure them of the existence of pathways for expressing such requests. In addition, internal stakeholders may need access to different forms of process information, such as the data used during an ML system’s operation, to be able to respond to customer requests. Finally, stakeholders seeking assurance about the responsible use of ML systems may be interested in information about how issues of responsiveness are managed.
 - **Social and economic impact**: Various types of process information may be needed to manage and provide assurance regarding the social and economic impacts of an ML system. For example, information about system test results can be important for understanding an ML system’s potential financial exclusion implications. Similarly, information about how firms communicate personal data use to customers can be of interest to stakeholders seeking assurance in relation to concerns regarding consumer empowerment.
 
-### How to manage such info?
+## How to manage such info?
 
 The appropriate level of detail and technical sophistication in providing process information will depend on the purpose that the information is meant to serve. For example, actors involved directly in the validation of an ML system are likely to need a system requirements statement. Customers or other stakeholders interested in ensuring that the right procedures have been followed in validating an ML system will likely need less detailed information, expressed in easy-to-understand language.
 

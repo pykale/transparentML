@@ -1,6 +1,6 @@
-## Organisation
+# Organisation
 
-### The rest of the course
+## The rest of the course
 
 The rest of this course is organised into nine chapters, with appendices at the end. Each chapter will focus on either the system or the process.
 
@@ -8,7 +8,7 @@ We have seven chapters on ML systems, which are: [Chapter 2 on linear regression
 
 We have two chapters on ML processes, which are: [Chapter 4 on cross validation and bootstrap](https://pykale.github.io/transparentML/04-cross-val-bootstrap/overview.html), and [Chapter 5 on hypothesis testing and software development](https://pykale.github.io/transparentML/05-hypo-test-sw-dev/overview.html). These chapters will cover the process side of ML, including leave-one-out/k-fold cross validation,bootstrap, types of errors, significance of results, and the software development life cycle on GitHub.
 
-### Real-world datasets used
+## Real-world datasets used
 
 In this course, we will use real-world datasets to introduce machine learning from the perspective of AI transparency. We will use the following datasets from the textbook. You can click on the name of the dataset to see the actual data.
 
@@ -92,7 +92,7 @@ In this course, we will use real-world datasets to introduce machine learning fr
 
 The above datasets show the diverse range of problems that machine learning can solve, which shows only the tip of the iceberg actually. Applications of machine learning are everywhere, from healthcare to finance, from manufacturing to agriculture, from transportation to education, and so on. The datasets used in this course are from the textbook, which is a good starting point for learning about machine learning. However, you can also find many other datasets online, such as [Kaggle](https://www.kaggle.com/datasets), [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php), [OpenML](https://www.openml.org/), [Google Dataset Search](https://datasetsearch.research.google.com/), and so on.
 
-### Machine learning models
+## Machine learning models
 
 This course focuses on machine learning models (or methods) that are most widely used in practice, while NOT aiming to be exhaustive in covering all the models. The following table shows the machine learning models that we will cover in this course.
 
@@ -131,7 +131,7 @@ This course focuses on machine learning models (or methods) that are most widely
 
 No single model will perform well in all possible scenarios. Therefore, it is important to understand the assumptions and trade-offs of each model so that you can choose the right model for a given problem.
 
-### Exercises
+## Exercises
 
 1. Choose three or more datasets of your interest from {numref}`datasets-table`. Click on the name of each chosen dataset to explore and get a sense of the data. You may not be able to get a beautiful view or a view at all for those larger ones. Write down the possible machine learning problems using terminology in {numref}`mlproblems-table` that can be solved using each of your chosen dataset.
 
