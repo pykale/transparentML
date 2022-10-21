@@ -1,8 +1,8 @@
-## Machine learning transparency
+# Machine learning transparency
 
 Transparency is a fundamental AI ethics principle key to _responsible_ AI innovation {cite}`ostmann2021ai`. It plays a crucial role in the development of ML systems, as well as in the evaluation of their performance and the _trust_ that people place in them. We follow the definition and framework of transparency in {cite}`ostmann2021ai` in this course.
 
-### Why is transparency important?
+## Why is transparency important?
 
 For ML systems to be trustworthy and to be used responsibly, it is vital to ensure that they are transparent, i.e. stakeholders have _access to information_ relevant to them. Addressing concerns of AI and preventing potential harms of AI requires information being available to individuals involved in designing an ML system, developing it, deploying it, and using it, as well as to the general public, regulators, and other stakeholders for them to understand decisions made by the system, trust it, and hold it accountable. Different stakeholders are likely to have different information needs.
 
@@ -10,7 +10,7 @@ Transparency and accountability are closely related and reinforce each other. Ac
 availability of information about an ML system and accountability is key motivation for transparency.
 Transparency also acts as an enabler to other ML/AI ethics principles including fairness, sustainability, and safety.
 
-### What is transparency?
+## What is transparency?
 
 ML transparency relates to disclosing information about ML systems, and it can be understood as relevant stakeholders having access to relevant information about a given ML system. Transparency involves gathering and sharing information about an ML system’s logic (i.e. _explainability_) and how it was designed, developed, and deployed.
 
@@ -22,7 +22,7 @@ The three key questions to ask when considering transparency are:
 
 Transparency is a _property_ of the system, and it is _not_ a property of the information itself. Transparency is a _relative_ concept, and it is _not_ an absolute concept. Transparency is _context-dependent_ and it is _not_ a fixed property of the system. For example, a system transparent to a doctor (data scientist) does not mean the system is transparent to a patient (customer). External stakeholders (e.g. regulators, the general public) may have different information needs than internal stakeholders (e.g. data scientists, developers, and engineers).
 
-### Relevant information
+## Relevant information
 
 There are two broad categories of information considered relevant for transparency:
 
@@ -36,7 +36,7 @@ Respectively, the above categories of information define two forms of transparen
 
 In this course, we will study machine learning systems from the perspectives of these two forms of transparency, briefly discussed below, with more details available in appendices on {doc}`../appendix/system-transp` and {doc}`../appendix/process-transp`.
 
-### System transparency
+## System transparency
 
 System transparency refers to access to information about the operational logic of a system. The most transparent systems are simple systems where system logic information can be inferred purely from a system’s formal
 representation. Three types of information are considered relevant for system transparency:
@@ -49,7 +49,7 @@ representation. Three types of information are considered relevant for system tr
 
 See Appendix {doc}`../appendix/system-transp` on [more details about such info](https://pykale.github.io/transparentML/appendix/system-transp.html#what-relevant-information), [why these three types of information are considered relevant for system transparency](https://pykale.github.io/transparentML/appendix/system-transp.html#why-such-info) and [how to obtain and communicate such info](https://pykale.github.io/transparentML/appendix/system-transp.html#how-to-obtain-communicate-such-info).
 
-### Process transparency
+## Process transparency
 
 Process transparency concerns access to any information about an ML system’s design, development, and deployment apart from the system’s logic. As with system logic information, such process information is important for addressing and providing assurance about concerns raised by AI systems. Correspondingly, there is a growing amount of work on how process information can be recorded, managed, and made accessible in practice.
 
@@ -60,7 +60,7 @@ We can categorise process information regarding ML systems along two dimensions:
 
 See Appendix {doc}`../appendix/process-transp` on [more details about such info](https://pykale.github.io/transparentML/appendix/process-transp.html#what-relevant-information), [why such information is considered relevant for process transparency](https://pykale.github.io/transparentML/appendix/process-transp.html#why-such-info) and [how to manage such info](https://pykale.github.io/transparentML/appendix/process-transp.html#how-to-manage-such-info).
 
-### Relevant stakeholders
+## Relevant stakeholders
 
 The information that is relevant to a given stakeholder depends on the stakeholder's role and the context. For example, a data scientist may need to know the details of the data collection process, while a data subject may need to know how their data is used. We can split those who may have an interest in system or process transparency into two categories:
 
@@ -84,7 +84,7 @@ name: fig6-ai-transparency
 AI transparency typology {cite}`ostmann2021ai` (maybe redraw later).
 ```
 
-### Reasons for accessing information
+## Reasons for accessing information
 
 As mentioned above, transparency is a _relative_ concept. Not all types of information about an ML system will be equally important to all types of stakeholders. The reasons that underpin stakeholders’ interests in information about a given system (i.e. their ‘transparency interests’) are important in determining the types of information they may seek access to. When these reasons differ between stakeholders, the definition of what constitutes relevant information can change. For example, customers faced with an ML system used to make credit eligibility decisions may wish to understand the impact of, say, a 3% pay raise on their credit eligibility. The answer to this question can involve types of information that may not be relevant to the transparency interests, say, of regulators, which may be motivated by the goal of understanding
 different aspects of system performance and compliance.
@@ -100,7 +100,7 @@ name: fig7-ai-transparency
 Summary of the three key questions of transparency {cite}`ostmann2021ai` (maybe redraw later).
 ```
 
-#### Interpretability-flexibility trade-off
+### Interpretability-flexibility trade-off
 
 In general, linear models allow for a more interpretable (but less flexible) model, while non-linear models allow for a more flexible (but less interpretable) model.
 
@@ -125,7 +125,7 @@ risks having a false sense of understanding, potentially resulting in misplaced 
 and unexpected harmful outcomes. Governance arrangements play a key role when it comes to
 choosing appropriate types of models.
 
-### Other trade-offs
+## Other trade-offs
 
 There can be reasons for not making some types of information about ML systems accessible to certain stakeholders. Such
 reasons often play a prominent role in discussions about the disclosure of information to external stakeholders in particular. The applicability of such countervailing reasons is context dependent. In particular, these reasons, where relevant, do not speak against the disclosure of system logic and process information in a wholesale manner. Instead, they typically apply to the disclosure of specific types of information (e.g. specific aspects of system logic information rather than all types of system logic information) to specific types of stakeholders (e.g. customers rather than all external stakeholders), for specific types of use cases.
@@ -140,7 +140,7 @@ Three other potential reasons are worth noting:
 
 The applicability and implications of transparency trade-offs depend on context and vary between use cases. Regardless of the applicability of different countervailing reasons, large segments of the information that is of interest to stakeholders will remain unaffected.
 
-### Exercises
+## Exercises
 
 1. Transparency is the key motivation for accountability.
 

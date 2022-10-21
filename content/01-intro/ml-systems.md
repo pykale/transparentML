@@ -1,8 +1,8 @@
-## Machine learning systems
+# Machine learning systems
 
 Firstly, let us learn about the machine learning problems in their typical definitions.
 
-### Machine learning problems
+## Machine learning problems
 
 Machine learning problems can be broadly classified into two categories: **supervised learning** and **unsupervised learning**. In supervised learning, the data is labelled, and the goal is to predict or estimate the label for new data. In unsupervised learning, the data is not labelled, and the goal is to find patterns, such as relationships or structures, in the data. Machine learning models can generate two types of outputs: discrete and continuous. Discrete outputs are categorical, such as the class of an image. Continuous outputs are numerical, such as the price of a house.
 
@@ -26,14 +26,14 @@ The following table shows the different types of machine learning problems in th
 ```
 
 
-### Basic notations
+## Basic notations
 
 We use notations slightly different from those in the textbook to reduce the cognitive load (hopefully). We use $N$ to represent the number of **samples**, i.e. distinct data points or observations. We use $D$ to represent the number of **features**, i.e. distinct variables or attributes that are available for learning a model,
  also known as the **dimensionality**. We use $C$ to represent the number of **classes**, i.e. distinct categories or labels. We use $\mathbf{x}_n$ to represent the $n$-th sample, where $n = 1, 2, \ldots, N$. We use $x_{nd}$ to represent the $d$-th feature of the $n$-th sample, where $d = 1, 2, \ldots, D$. We use $y_n$ to represent the label of the $n$-th sample, where $y_n \in \{1, 2, \ldots, C\}$. We use $\mathbf{X}$ to represent the **feature matrix**, also know as the **data matrix**, where $\mathbf{X} = [\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_N]$. We use $\mathbf{y}$ to represent the label vector, where $\mathbf{y} = [y_1, y_2, \ldots, y_N]^\top$. We use $\mathbf{W}$ to represent the **weight matrix**, where $\mathbf{W} = [\mathbf{w}_1, \mathbf{w}_2, \ldots, \mathbf{w}_C]$. We use $\mathbf{b}$ to represent the **bias vector**, where $\mathbf{b} = [b_1, b_2, \ldots, b_C]^\top$. We use $\mathbf{z}_n$ to represent the linear combination of the $n$-th sample, where $\mathbf{z}_n = \mathbf{W} \mathbf{x}_n + \mathbf{b}$.
 
  <!-- We use $\mathbf{a}_n$ to represent the activation of the $n$-th sample, where $\mathbf{a}_n = \sigma(\mathbf{z}_n)$. We use $\mathbf{Z}$ to represent the linear combination matrix, where $\mathbf{Z} = \{\mathbf{z}_1, \mathbf{z}_2, \ldots, \mathbf{z}_N\}$. We use $\mathbf{A}$ to represent the activation matrix, where $\mathbf{A} = \{\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_N\}$. We use $\mathbf{Z}^T$ to represent the transpose of the linear combination matrix, where $\mathbf{Z}^T = \{\mathbf{z}_1^T, \mathbf{z}_2^T, \ldots, \mathbf{z}_N^T\}$. We use $\mathbf{A}^T$ to represent the transpose of the activation matrix, where $\mathbf{A}^T = \{\mathbf{a}_1^T, \mathbf{a}_2^T, \ldots, \mathbf{a}_N^T\}$. -->
 
-### Machine learning ingredients
+## Machine learning ingredients
 
 Machine learning systems are composed of three main ingredients: **data**, **model**, and **loss function**. The data is the input to the machine learning system. The model is the core of the machine learning system. The loss function is the output of the machine learning system. The following figure shows the three ingredients of a machine learning system.
 
@@ -54,7 +54,7 @@ A typical machine learning system is composed of the following ingredients:
     - **Evaluation metric/measure**: an evaluation (or error) metric (or measure) is needed for a loss function $L(y, \hat{y})$ or $\hat{y}$ to be useful. For example, in classification, the evaluation metric is typically the accuracy, which is a function of the predicted label $\hat{y}$ and the true label $y$.
 - **Learning/optimization algorithm**: an algorithm that finds (i.e. estimates) the best model $f(\mathbf{x})$ by minimizing the loss function $L(y, \hat{y})$ or $\hat{y}$. Nowadays, the optimization algorithms are typically available in libraries (software packages) and do not need to be implemented by the user. The optimization algorithms are typically iterative algorithms that iteratively update the model parameters to minimize the loss function. The optimization algorithms are typically _black boxes_ to the user. The user only needs to specify the loss function $L(y, \hat{y})$ or $\hat{y}$ and the optimization algorithm will find the best model $f(\mathbf{x})$.
 
-### Reproducibility of ML systems
+## Reproducibility of ML systems
 
 We follow the [definitions for reproducibility by The Turing Way](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions.html) as shown in Figure {numref}`reproducibility-mat`
 
@@ -74,7 +74,7 @@ The Turing Way defines reproducible research as work that can be independently r
 
 From the above, we can see that reproducibility is a minimal requirement for reproducible research.
 
-### Exercises
+## Exercises
 
 1. What are the main ingredients of an ML system?
 
