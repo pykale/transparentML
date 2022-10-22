@@ -56,13 +56,15 @@ parts:
     sections:
     - file: 03-logistic-reg/classification
       title: An overview of classification
-    - file: 03-logistic-reg/logistic-model
-      title: Logistic models
+    - file: 03-logistic-reg/logistic-regression
+      title: Logistic regression
     - file: 03-logistic-reg/quiz-sum-ref
       title: Quiz & summary
   - file: 04-cross-val-bootstrap/overview
     title: Cross validation & bootstrap
     sections:
+    - file: 04-cross-val-bootstrap/cross-validation
+      title: Cross validation
     - file: 04-cross-val-bootstrap/quiz-sum-ref
       title: Quiz & summary
   - file: 05-hypo-test-sw-dev/overview
