@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.2. Logistic model" href="logistic-model.html" />
+    <link rel="next" title="3.2. Logistic regression" href="logistic-regression.html" />
     <link rel="prev" title="3. Logistic Regression" href="overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -245,8 +245,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="logistic-model.html">
-     3.2. Logistic models
+    <a class="reference internal" href="logistic-regression.html">
+     3.2. Logistic regression
     </a>
    </li>
    <li class="toctree-l2">
@@ -267,8 +267,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../04-cross-val-bootstrap/cross-validation.html">
+     4.1. Cross validation
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../04-cross-val-bootstrap/quiz-sum-ref.html">
-     4.1. Quiz &amp; summary
+     4.2. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -696,10 +701,42 @@ const thebe_selector_output = ".output, .cell_output"
 <img alt="../_images/classification_4_0.png" src="../_images/classification_4_0.png" />
 </div>
 </div>
-<p>The individuals who defaulted in a given month are shown in orange, and those who did not in blue. (The overall default rate is about 3 %, so we have plotted only a fraction of the individuals who did not default.) It appears that individuals who defaulted tended to have higher credit card balances than those who did not. In the center and right-hand panels of Figure 4.1, two pairs of boxplots are shown. The first shows the distribution of balance split by the binary default variable; the second is a similar plot for income . In this chapter, we learn how to build a model to predict default (Y ) for any given value of balance (X 1 ) and income (X 2 ). Since Y is not quantitative, the simple linear regression model of Chapter 3 is not a good choice: we will elaborate on this further in Section 4.2. It is worth noting that Figure 4.1 displays a very pronounced relation- ship between the predictor balance and the response default . In most real applications, the relationship between the predictor and the response will not be nearly so strong. However, for the sake of illustrating the classification procedures discussed in this chapter, we use an example in which the relationship between the predictor and the response is somewhat exaggerated.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Observations from the plot</p>
+<p>In the left-hand panel of the above figure, the individuals who defaulted in a given month are shown in orange, and those who did not in blue. (The overall default rate is about 3%, so we have plotted only a fraction of the individuals who did not default.) It appears that individuals who defaulted tended to have higher credit card balances than those who did not.</p>
+<p>In the center and right-hand panels, two pairs of boxplots are shown. The first shows the distribution of balance split by the binary default variable; the second is a similar plot for income.</p>
+<!-- In this chapter, we learn how to build a model to predict default ($y$) for any given value of balance ($x_1$) and income ($x_2$). Since $y$ is not quantitative, the simple linear regression model of Chapter 3 is not a good choice: we will elaborate on this in the next section.  -->
+<p>It is worth noting that this example displays a very pronounced relationship between the predictor balance and the response default. In most real applications, the relationship between the predictor and the response will not be nearly so strong. To illustrate the classification procedures discussed, we use this example in which the relationship between the predictor and the response is somewhat exaggerated.</p>
+</div>
 </div>
 <div class="section" id="why-not-linear-regression">
 <h2><span class="section-number">3.1.2. </span>Why not linear regression?<a class="headerlink" href="#why-not-linear-regression" title="Permalink to this headline">¶</a></h2>
+<p>There are two main reasons not to perform classification using a regression method:</p>
+<ul class="simple">
+<li><p>A regression method cannot accommodate a qualitative response with more than two classes;</p></li>
+<li><p>A regression method will not provide meaningful estimates of <span class="math notranslate nohighlight">\(\mathbb{P}(y|x)\)</span></p></li>
+</ul>
+<p>Suppose there are three medical conditions of patients in a emergency room: <code class="docutils literal notranslate"><span class="pre">stroke</span></code>, <code class="docutils literal notranslate"><span class="pre">drug</span> <span class="pre">overdose</span></code>, and <code class="docutils literal notranslate"><span class="pre">epileptic</span> <span class="pre">seizure</span></code>. We could consider encoding these values as a quantitative response variable, <span class="math notranslate nohighlight">\(y\)</span>, as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+y = \begin{cases} 1 &amp; \text{if stroke}, \\ 2 &amp; \text{if drug overdose}, \\ 3 &amp; \text{if epileptic seizure}. \end{cases}
+\end{split}\]</div>
+<p>Using this coding, least squares could be used to fit a linear regression model to predict <span class="math notranslate nohighlight">\(y\)</span>. However, this coding implies that <code class="docutils literal notranslate"><span class="pre">drug</span> <span class="pre">overdose</span></code> is a condition in between <code class="docutils literal notranslate"><span class="pre">stroke</span></code> and <code class="docutils literal notranslate"><span class="pre">epileptic</span> <span class="pre">seizure</span></code>, and insisting that the difference between stroke and drug overdose is the same as the difference between drug overdose and epileptic seizure . In practice there is no particular reason that this needs to be the case. For instance, one could choose an equally reasonable coding,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+y = \begin{cases} 1 &amp; \text{if epileptic seizure}, \\ 2 &amp; \text{if stroke}, \\ 3 &amp; \text{if drug overdose}, \end{cases}
+\end{split}\]</div>
+<p>which would imply a totally different relationship among the three conditions. Each of these codings would produce fundamentally different linear models that would ultimately lead to different sets of predictions on test observations.</p>
+<p>If the response variable’s values did take on a natural ordering, such as <em>mild, moderate, and severe</em>, and we felt the gap between mild and moderate was similar to the gap between moderate and severe, then a 1, 2, 3 coding would be reasonable. Unfortunately, in general there is no natural way to convert a qualitative response variable with more than two levels into a
+quantitative response that is ready for linear regression.</p>
+<p>For a binary (two level) qualitative response, the situation is better. For binary instance, perhaps there are only two possibilities for the patient’s medical condition: <code class="docutils literal notranslate"><span class="pre">stroke</span></code> and <code class="docutils literal notranslate"><span class="pre">drug</span> <span class="pre">overdose</span></code>. We could then code the response as
+follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+y = \begin{cases} 1 &amp; \text{if stroke}, \\ 0 &amp; \text{if drug overdose}. \end{cases}
+\end{split}\]</div>
+<p>We could then fit a linear regression to this binary response, and predict <code class="docutils literal notranslate"><span class="pre">drug</span> <span class="pre">overdose</span></code> if <span class="math notranslate nohighlight">\( y &gt; 0.5 \)</span> and <code class="docutils literal notranslate"><span class="pre">stroke</span></code> otherwise. In the binary case it is not hard to show that even if we flip the above coding, linear regression will produce the same final predictions.</p>
+<p>Run the following code to compare the difference between the linear regression model and the logistic regression model for a binary classification task on the <code class="docutils literal notranslate"><span class="pre">Default</span></code> dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -754,6 +791,7 @@ const thebe_selector_output = ".output, .cell_output"
 <img alt="../_images/classification_7_0.png" src="../_images/classification_7_0.png" />
 </div>
 </div>
+<p>As shown in the output figure, for a binary response with a 0/1 coding, although the linear regression model can also produce the an estimate of <span class="math notranslate nohighlight">\(\mathbb{P}(y|x)\)</span>, some estimates might be outside the <span class="math notranslate nohighlight">\([0, 1]\)</span> interval making them hard to interpret as probabilities. Since the predicted outcome of linear regression is not a probability, but a linear interpolation between points, there is no meaningful threshold at which you can distinguish one class from the other. A good illustration of this issue has been given on <a class="reference external" href="https://stats.stackexchange.com/questions/22381/why-not-approach-classification-through-regression">Stackoverflow</a>.</p>
 </div>
 </div>
 
@@ -789,10 +827,10 @@ const thebe_selector_output = ".output, .cell_output"
             <p class="prev-next-title"><span class="section-number">3. </span>Logistic Regression</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="logistic-model.html" title="next page">
+    <a class='right-next' id="next-link" href="logistic-regression.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.2. </span>Logistic model</p>
+        <p class="prev-next-title"><span class="section-number">3.2. </span>Logistic regression</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
