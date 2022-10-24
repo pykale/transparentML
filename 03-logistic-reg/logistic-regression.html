@@ -513,6 +513,11 @@ const thebe_selector_output = ".output, .cell_output"
    3.2.3. Estimating the coefficients and making predictions
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-logistic-regression">
+   3.2.4. Multiple logistic regression
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -546,6 +551,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#estimating-the-coefficients-and-making-predictions">
    3.2.3. Estimating the coefficients and making predictions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-logistic-regression">
+   3.2.4. Multiple logistic regression
   </a>
  </li>
 </ul>
@@ -670,10 +680,10 @@ const thebe_selector_output = ".output, .cell_output"
 \[
 y = \beta_0 + \beta_1 x_1.
 \]</div>
-<p>For classification, we prefer probabilities between 0 and 1, so we wrap the right side of the equation into the logistic function. This forces the output to assume only values between 0 and 1.</p>
+<p>For classification, we prefer probabilities between 0 and 1, so we wrap the right side of the equation into the logistic function. This forces the output to assume only values between 0 and 1</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbb{P}(y = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1)}}
+\mathbb{P}(y = 1 | x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1)}}.
 \]</div>
 <p>Run the code cell below to see the curve of the logistic function.</p>
 <div class="cell docutils container">
@@ -689,6 +699,16 @@ y = \beta_0 + \beta_1 x_1.
 <img alt="../_images/logistic-regression_5_0.png" src="../_images/logistic-regression_5_0.png" />
 </div>
 </div>
+<p>Let <span class="math notranslate nohighlight">\(p(x) = \mathbb{P}(y=1| x)\)</span>, resulting in:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-971fd7e9-2548-48d8-be0e-803f0274a59d">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-971fd7e9-2548-48d8-be0e-803f0274a59d" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\begin{aligned}
+\frac{1-p(x)}{p(x)} &amp;= e^{-(\beta_0 + \beta_1 x_1)} \\
+\ln \left( \frac{1-p(x)}{p(x)} \right) &amp;= -(\beta_0 + \beta_1 x_1) \\
+\ln \left( \frac{p(x)}{1-p(x)} \right) &amp;= \beta_0 + \beta_1 x_1.
+\end{aligned}
+\end{align}\]</div>
+<p>The left-hand side is called the <em>log odds</em> or <em>logit</em>.</p>
 </div>
 <div class="section" id="estimating-the-coefficients-and-making-predictions">
 <h2><span class="section-number">3.2.3. </span>Estimating the coefficients and making predictions<a class="headerlink" href="#estimating-the-coefficients-and-making-predictions" title="Permalink to this headline">¶</a></h2>
@@ -704,7 +724,7 @@ y = \beta_0 + \beta_1 x_1.
 \mathbb{P}(\text{default} = \text{Yes} \mid \text{balance}, \beta_0, \beta_1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 \times \text{balance})}}.
 \]</div>
 <p>In practice, we can use the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> or <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> package to fit a logistic regression model and making predictions. Run the following code to fit a logistic regression model using the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> and <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> packages, respectively.</p>
-<p>Example of <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code></p>
+<p><strong>Example of <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code></strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s2">&quot;newton-cg&quot;</span><span class="p">)</span>
@@ -792,7 +812,7 @@ intercept : [-10.65132548]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/logistic-regression_8_0.png" src="../_images/logistic-regression_8_0.png" />
+<img alt="../_images/logistic-regression_9_0.png" src="../_images/logistic-regression_9_0.png" />
 </div>
 </div>
 <p>In the above example, we learnt a logistic regression model <span class="math notranslate nohighlight">\(f(x)\)</span> with two parameters, <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>, from the data, where</p>
@@ -804,14 +824,18 @@ intercept : [-10.65132548]
 <div class="important admonition">
 <p class="admonition-title">System transparency</p>
 <ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">balance</span></code>=1500 , the predicted probability of <code class="docutils literal notranslate"><span class="pre">default</span></code> is <span class="math notranslate nohighlight">\( f(1500) = \frac{1}{1 + e^{\beta_0 + \beta_1 \times 1500}} = \frac{1}{1 + e^{-10.65133019 + 0.00549892 \times 1500}} = 0.08294763 \)</span>.</p></li>
-<li><p>When the probability of default is 0.5, the balance is</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">balance</span></code>=1500 , the predicted probability of <code class="docutils literal notranslate"><span class="pre">default</span></code> is</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-b40c11cc-69b6-4e66-8e6a-2e7cf99e5614">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-b40c11cc-69b6-4e66-8e6a-2e7cf99e5614" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="math notranslate nohighlight">
+\[ f(1500) = \frac{1}{1 + e^{\beta_0 + \beta_1 \times 1500}} = \frac{1}{1 + e^{-10.65133019 + 0.00549892 \times 1500}} = 0.08294763. \]</div>
+<ul class="simple">
+<li><p>When the probability of default is 0.5, the corresponding balance can be calculated using the <em>log odds</em> equation above:</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight" id="equation-22237f0b-121b-4144-9bde-06e31aff01cc">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-22237f0b-121b-4144-9bde-06e31aff01cc" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
-0.5 &amp; = \frac{1}{1 + e^{\beta_0 + \beta_1 \times x}} \\
-\ln \left( \frac{1}{0.5} - 1 \right) &amp; = \beta_0 + \beta_1 \times x \\
+\ln \left(\frac{p(x)}{1-p(x)}\right) &amp;= \beta_0 + \beta_1 \times x \\
+\ln \left(\frac{0.5}{1-0.5}\right) &amp;= \beta_0 + \beta_1 \tims x \\
 x &amp; = \frac{- \beta_0}{\beta_1} \\
 x &amp; = \frac{- (-10.65133019)}{0.00549892} \\
 x &amp; = 1936.9858426745614.
@@ -819,8 +843,7 @@ x &amp; = 1936.9858426745614.
 \end{align}\]</div>
 <p>Therefore, to produce result <code class="docutils literal notranslate"><span class="pre">Yes</span></code>, i.e. the probability of <code class="docutils literal notranslate"><span class="pre">default</span></code> <span class="math notranslate nohighlight">\(&gt;\)</span> 0.5, the <code class="docutils literal notranslate"><span class="pre">balance</span></code> should be greater than 1936.9858426745614. By contrast, to produce result <code class="docutils literal notranslate"><span class="pre">No</span></code>, i.e. the probability of <code class="docutils literal notranslate"><span class="pre">default</span></code> <span class="math notranslate nohighlight">\(&lt;\)</span> 0.5, the <code class="docutils literal notranslate"><span class="pre">balance</span></code> should be less than 1936.9858426745614.</p>
 </div>
-<p><span class="math notranslate nohighlight">\( \)</span></p>
-<p>Example of <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code></p>
+<p><strong>Example of <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code></strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">logit</span><span class="p">(</span><span class="s2">&quot;default2 ~ balance&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -940,6 +963,124 @@ x &amp; = 1936.9858426745614.
       <td>0.000431</td>
       <td>0.179454</td>
       <td>0.630320</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="multiple-logistic-regression">
+<h2><span class="section-number">3.2.4. </span>Multiple logistic regression<a class="headerlink" href="#multiple-logistic-regression" title="Permalink to this headline">¶</a></h2>
+<p>The logistic regression model can be extended to multiple features. A generalised logistic regression model for an instance <span class="math notranslate nohighlight">\(\mathbf{x} = [x_1, x_2, \dots, x_D]^\top\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+\ln \left( \frac{p(\mathbf{x})}{1-p(\mathbf{x})} \right) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_D x_D.
+\]</div>
+<p>Run the following code to fit a multiple logistic regression model using the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> and <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> packages, respectively.</p>
+<p><strong>Example of <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code></strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;balance&quot;</span><span class="p">,</span> <span class="s2">&quot;income&quot;</span><span class="p">,</span> <span class="s2">&quot;student2&quot;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">default2</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s2">&quot;newton-cg&quot;</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">clf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;classes: &quot;</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;coefficients: &quot;</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;intercept :&quot;</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LogisticRegression(max_iter=1000, penalty=&#39;none&#39;, solver=&#39;newton-cg&#39;)
+classes:  [0 1]
+coefficients:  [[ 5.73593136e-03  3.01131944e-06 -6.47265842e-01]]
+intercept : [-10.86719778]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Example of <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code></strong>, where the learnt parameters are the same as the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">logit</span><span class="p">(</span><span class="s2">&quot;default2 ~ balance + income + student&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">est</span><span class="o">.</span><span class="n">summary2</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: 0.078577
+         Iterations 10
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Coef.</th>
+      <th>Std.Err.</th>
+      <th>z</th>
+      <th>P&gt;|z|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>-10.869045</td>
+      <td>0.492273</td>
+      <td>-22.079320</td>
+      <td>4.995499e-108</td>
+      <td>-11.833882</td>
+      <td>-9.904209</td>
+    </tr>
+    <tr>
+      <th>student[T.Yes]</th>
+      <td>-0.646776</td>
+      <td>0.236257</td>
+      <td>-2.737595</td>
+      <td>6.189022e-03</td>
+      <td>-1.109831</td>
+      <td>-0.183721</td>
+    </tr>
+    <tr>
+      <th>balance</th>
+      <td>0.005737</td>
+      <td>0.000232</td>
+      <td>24.736506</td>
+      <td>4.331521e-135</td>
+      <td>0.005282</td>
+      <td>0.006191</td>
+    </tr>
+    <tr>
+      <th>income</th>
+      <td>0.000003</td>
+      <td>0.000008</td>
+      <td>0.369808</td>
+      <td>7.115254e-01</td>
+      <td>-0.000013</td>
+      <td>0.000019</td>
     </tr>
   </tbody>
 </table>
