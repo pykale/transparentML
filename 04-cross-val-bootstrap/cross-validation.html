@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4.1. Chapter 5 - Resampling Methods &#8212; Transparent ML Intro</title>
+    <title>4.1. Cross-validation &#8212; Transparent ML Intro</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="4.2. Quiz and summary" href="quiz-sum-ref.html" />
@@ -502,21 +504,19 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cross-validation">
-   4.1.2. 5.1 Cross-Validation
+  <a class="reference internal nav-link" href="#validation-set-approach">
+   4.1.2. Validation Set Approach
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#figure-5-2-validation-set-approach">
-     4.1.2.1. Figure 5.2 - Validation Set Approach
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#figure-5-4">
-     4.1.2.2. Figure 5.4
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#leave-one-out-cross-validation">
+   4.1.3. Leave-One-Out Cross-Validation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-fold-cross-validation">
+   4.1.4. k-Fold cross-validation
+  </a>
  </li>
 </ul>
 
@@ -528,7 +528,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Chapter 5 - Resampling Methods</h1>
+                <h1>Cross-validation</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -544,21 +544,19 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cross-validation">
-   4.1.2. 5.1 Cross-Validation
+  <a class="reference internal nav-link" href="#validation-set-approach">
+   4.1.2. Validation Set Approach
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#figure-5-2-validation-set-approach">
-     4.1.2.1. Figure 5.2 - Validation Set Approach
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#figure-5-4">
-     4.1.2.2. Figure 5.4
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#leave-one-out-cross-validation">
+   4.1.3. Leave-One-Out Cross-Validation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-fold-cross-validation">
+   4.1.4. k-Fold cross-validation
+  </a>
  </li>
 </ul>
 
@@ -569,16 +567,11 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="chapter-5-resampling-methods">
-<h1><span class="section-number">4.1. </span>Chapter 5 - Resampling Methods<a class="headerlink" href="#chapter-5-resampling-methods" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p><a class="reference external" href="#Load-dataset">Load dataset</a></p></li>
-<li><p><a class="reference external" href="#5.1-Cross-Validation">Cross-Validation</a></p></li>
-</ul>
+  <div class="tex2jax_ignore mathjax_ignore section" id="cross-validation">
+<h1><span class="section-number">4.1. </span>Cross-validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ../standard_import.txt</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -594,7 +587,6 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="c1"># plt.style.use(&#39;seaborn-white&#39;)</span>
 </pre></div>
 </div>
 </div>
@@ -633,12 +625,18 @@ memory usage: 30.6+ KB
 </div>
 </div>
 </div>
-<div class="section" id="cross-validation">
-<h2><span class="section-number">4.1.2. </span>5.1 Cross-Validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="figure-5-2-validation-set-approach">
-<h3><span class="section-number">4.1.2.1. </span>Figure 5.2 - Validation Set Approach<a class="headerlink" href="#figure-5-2-validation-set-approach" title="Permalink to this headline">¶</a></h3>
-<p>Using Polynomial feature generation in scikit-learn<BR>
-http://scikit-learn.org/dev/modules/preprocessing.html#generating-polynomial-features</p>
+<div class="section" id="validation-set-approach">
+<h2><span class="section-number">4.1.2. </span>Validation Set Approach<a class="headerlink" href="#validation-set-approach" title="Permalink to this headline">¶</a></h2>
+<p>Using <a class="reference external" href="http://scikit-learn.org/dev/modules/preprocessing.html#generating-polynomial-features">Polynomial</a> feature generation in scikit-learn</p>
+<p>We illustrate the validation set approach on the Auto data set. Recall from Chapter 3 that there appears to be a non-linear relationship between mpg and horsepower , and that a model that predicts mpg using horsepower and horsepower 2 gives better results than a model that uses only a linear term. It is natural to wonder whether a cubic or higher-order fit might provide even better results. We answer this question in Chapter 3 by looking at the p-values associated with a cubic term and higher-order polynomial terms in a linear regression. But we could also answer this question using the validation method. We randomly split the 392 observations into two sets, a training set containing 196 of the data points, and a validation set containing the remaining 196 observations. The validation set error rates that result from fitting various regression models on the training sample and evaluating their performance on the validation sample, using MSE as a measure of validation set error, are shown in the left-hand panel of Figure 5.2. The validation set MSE for the quadratic fit is considerably smaller than for the linear fit. However, the validation set MSE for the cubic fit is actually slightly larger than for the quadratic fit. This implies that including a cubic term in the regression does not lead to better prediction than simply using a quadratic term.</p>
+<p>Recall that in order to create the left-hand panel of Figure 5.2, we randomly divided the data set into two parts, a training set and a validation set. If we repeat the process of randomly splitting the sample set into two parts, we will get a somewhat different estimate for the test MSE. As an illustration, the right-hand panel of Figure 5.2 displays ten different validation set MSE curves from the Auto data set, produced using ten different random splits of the observations into training and validation sets. All ten curves indicate that the model with a quadratic term has a dramatically smaller validation set MSE than the model with only a linear term. Furthermore, all ten curves indicate that there is not much benefit in including cubic or higher-order polynomial terms in the model. But it is worth noting that each of the ten curves results in a different test MSE estimate for each
+of the ten regression models considered. And there is no consensus among the curves as to which model results in the smallest validation set MSE. Based on the variability among these curves, all that we can conclude with any confidence is that the linear fit is not adequate for this data.</p>
+<p>The validation set approach is conceptually simple and is easy to implement. But it has two potential drawbacks:</p>
+<ol class="simple">
+<li><p>As is shown in the right-hand panel of Figure 5.2, the validation estimate of the test error rate can be highly variable, depending on precisely which observations are included in the training set and which observations are included in the validation set.</p></li>
+<li><p>In the validation approach, only a subset of the observations—those that are included in the training set rather than in the validation set—are used to fit the model. Since statistical methods tend to perform worse when trained on fewer observations, this suggests that the validation set error rate may tend to overestimate the test error rate for the model fit on the entire data set.</p></li>
+</ol>
+<p>In the coming subsections, we will present cross-validation, a refinement of the validation set approach that addresses these two issues.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_prop</span> <span class="o">=</span> <span class="mf">0.5</span>
@@ -683,12 +681,25 @@ http://scikit-learn.org/dev/modules/preprocessing.html#generating-polynomial-fea
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cross-validation_8_0.png" src="../_images/cross-validation_8_0.png" />
+<img alt="../_images/cross-validation_7_0.png" src="../_images/cross-validation_7_0.png" />
 </div>
 </div>
 </div>
-<div class="section" id="figure-5-4">
-<h3><span class="section-number">4.1.2.2. </span>Figure 5.4<a class="headerlink" href="#figure-5-4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="leave-one-out-cross-validation">
+<h2><span class="section-number">4.1.3. </span>Leave-One-Out Cross-Validation<a class="headerlink" href="#leave-one-out-cross-validation" title="Permalink to this headline">¶</a></h2>
+<p>Leave-one-out cross-validation (LOOCV) is closely related to the validation set approach of Section 5.1.1, but it attempts to address that method’s drawbacks.</p>
+<p>Like the validation set approach, LOOCV involves splitting the set of observations into two parts. However, instead of creating two subsets of comparable size, a single observation (x 1 , y 1 ) is used for the validation set, and the remaining observations {(x 2 , y 2 ), … , (x n , y n )} make up the training set. The statistical learning method is fit on the n − 1 training observations, and a prediction ŷ 1 is made for the excluded observation, using its value x 1 . Since (x 1 , y 1 ) was not used in the fitting process, MSE 1 = (y 1 − ŷ 1 ) 2 provides an approximately unbiased estimate for the test error. But even though MSE 1 is unbiased for the test error, it is a poor estimate because it is highly variable, since it is based upon a single observation
+(x 1 , y 1 ).</p>
+<p>We can repeat the procedure by selecting (x 2 , y 2 ) for the validation data, training the statistical learning procedure on the n − 1 observations {(x 1 , y 1 ), (x 3 , y 3 ), … , (x n , y n )}, and computing MSE 2 = (y 2 −ŷ 2 ) 2 . Repeating this approach n times produces n squared errors, MSE 1 , … , MSE n . The LOOCV estimate for the test MSE is the average of these n test error estimates:</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{n}\sum_{i=1}^n MSE_i\]</div>
+<p>A schematic of the LOOCV approach is illustrated in Figure 5.3.</p>
+<p>LOOCV has a couple of major advantages over the validation set approach. First, it has far less bias. In LOOCV, we repeatedly fit the statistical learning method using training sets that contain n − 1 observations, almost as many as are in the entire data set. This is in contrast to the validation set approach, in which the training set is typically around half the size of the original data set. Consequently, the LOOCV approach tends not to overestimate the test error rate as much as the validation set approach does. Second, in contrast to the validation approach which will yield different results when applied repeatedly due to randomness in the training/validation set splits, performing LOOCV multiple times will always yield the same results: there is no randomness in the training/validation set splits.</p>
+<p>We used LOOCV on the Auto data set in order to obtain an estimate of the test set MSE that results from fitting a linear regression model to predict mpg using polynomial functions of horsepower . The results are shown in the left-hand panel of Figure 5.4.</p>
+<p>LOOCV has the potential to be expensive to implement, since the model has to be fit n times. This can be very time consuming if n is large, and if each individual model is slow to fit. With least squares linear or polynomial regression, an amazing shortcut makes the cost of LOOCV the same as that of a single model fit! The following formula holds:</p>
+<p>where ŷ i is the ith fitted value from the original least squares fit, and h i is the leverage defined in (3.37) on page 99. 1 This is like the ordinary MSE, except the ith residual is divided by 1 − h i . The leverage lies between 1/n and 1, and reflects the amount that an observation influences its own fit.
+Hence the residuals for high-leverage points are inflated in this formula by exactly the right amount for this equality to hold.
+LOOCV is a very general method, and can be used with any kind of predictive modeling. For example we could use it with logistic regression or linear discriminant analysis, or any of the methods discussed in later chapters. The magic formula (5.2) does not hold in general, in which case the model has to be refit n times.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
@@ -758,10 +769,20 @@ http://scikit-learn.org/dev/modules/preprocessing.html#generating-polynomial-fea
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cross-validation_12_0.png" src="../_images/cross-validation_12_0.png" />
+<img alt="../_images/cross-validation_11_0.png" src="../_images/cross-validation_11_0.png" />
 </div>
 </div>
 </div>
+<div class="section" id="k-fold-cross-validation">
+<h2><span class="section-number">4.1.4. </span>k-Fold cross-validation<a class="headerlink" href="#k-fold-cross-validation" title="Permalink to this headline">¶</a></h2>
+<p>An alternative to LOOCV is k-fold CV. This approach involves randomly dividing the set of observations into k groups, or folds, of approximately equal size. The first fold is treated as a validation set, and the method is fit on the remaining k − 1 folds. The mean squared error, MSE 1 , is then computed on the observations in the held-out fold. This procedure is repeated k times; each time, a different group of observations is treated as a validation set. This process results in k estimates of the test error, MSE 1 , MSE 2 , … , MSE k . The k-fold CV estimate is computed by averaging these values,</p>
+<p>It is not hard to see that LOOCV is a special case of k-fold CV in which k is set to equal n. In practice, one typically performs k-fold CV using k = 5 or k = 10. What is the advantage of using k = 5 or k = 10 rather than k = n? The most obvious advantage is computational. LOOCV requires fitting the statistical learning method n times. This has the potential to be computationally expensive (except for linear models fit by least squares, in which case formula (5.2) can be used). But cross-validation is a very general approach that can be applied to almost any statistical learning method. Some statistical learning methods have computationally intensive fitting procedures, and so performing LOOCV may pose computational problems, especially if n is extremely large. In contrast, performing 10-fold CV requires fitting the learning procedure only ten times, which may be much more feasible. As we see in Section 5.1.4, there also can be other non-computational advantages to performing 5-fold or 10-fold CV, which involve the bias-variance trade-oﬀ.</p>
+<p>The right-hand panel of Figure 5.4 displays nine different 10-fold CV estimates for the Auto data set, each resulting from a different random split of the observations into ten folds. As we can see from the figure, there is some variability in the CV estimates as a result of the variability in how the observations are divided into ten folds. But this variability is typically much lower than the variability in the test error estimates that results from the validation set approach (right-hand panel of Figure 5.2).</p>
+<p>When we examine real data, we do not know the true test MSE, and so it is difficult to determine the accuracy of the cross-validation estimate. However, if we examine simulated data, then we can compute the true test MSE, and can thereby evaluate the accuracy of our cross-validation results. In Figure 5.6, we plot the cross-validation estimates and true test error rates that result from applying smoothing splines to the simulated data sets illustrated in Figures 2.9–2.11 of Chapter 2. The true test MSE is displayed in blue. The black dashed and orange solid lines respectively show the estimated LOOCV and 10-fold CV estimates. In all three plots, the two cross-validation estimates are very similar. In the right-hand panel of Figure 5.6, the true test MSE and the cross-validation curves are almost identical. In the center panel of Figure 5.6, the two sets of curves are similar at the lower degrees of flexibility, while the CV curves overestimate the test set MSE for higher degrees of flexibility. In the left-hand panel of Figure 5.6, the CV curves have the correct general shape, but they underestimate the
+true test MSE.</p>
+<p>When we perform cross-validation, our goal might be to determine how well a given statistical learning procedure can be expected to perform on independent data; in this case, the actual estimate of the test MSE is of interest. But at other times we are interested only in the location of the minimum point in the estimated test MSE curve. This is because we might be performing cross-validation on a number of statistical learning methods, or on a single method using different levels of flexibility, in order
+to identify the method that results in the lowest test error. For this purpose, the location of the minimum point in the estimated test MSE curve is important, but the actual value of the estimated test MSE is not. We find in Figure 5.6 that despite the fact that they sometimes underestimate the true test MSE, all of the CV curves come close to identifying the correct level of flexibility—that is, the flexibility level corresponding to the smallest test MSE.</p>
+<p>More <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html">cross-validation strategies in scikit-learn</a></p>
 </div>
 </div>
 
