@@ -569,12 +569,14 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="cross-validation">
 <h1><span class="section-number">4.1. </span>Cross-validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h1>
+<p>Cross-validation is a kind of resampling approach that can be used to estimate the test error associated with a given statistical learning method in order to evaluate its performance, or to select the appropriate level of flexibility. The process of evaluating a model’s performance is known as <em>model assessment</em>, whereas the process of selecting the proper level of flexibility for a model is known as <em>model selection</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">random</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
@@ -593,7 +595,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="load-dataset">
 <h2><span class="section-number">4.1.1. </span>Load dataset<a class="headerlink" href="#load-dataset" title="Permalink to this headline">¶</a></h2>
-<p>Dataset available on http://www-bcf.usc.edu/~gareth/ISL/data.html</p>
+<p>We will illustrate cross-validation on the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset. Run the following cell to load this dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Auto.csv&quot;</span>
@@ -627,19 +629,14 @@ memory usage: 30.6+ KB
 </div>
 <div class="section" id="validation-set-approach">
 <h2><span class="section-number">4.1.2. </span>Validation Set Approach<a class="headerlink" href="#validation-set-approach" title="Permalink to this headline">¶</a></h2>
-<p>Using <a class="reference external" href="http://scikit-learn.org/dev/modules/preprocessing.html#generating-polynomial-features">Polynomial</a> feature generation in scikit-learn</p>
-<p>We illustrate the validation set approach on the Auto data set. Recall from Chapter 3 that there appears to be a non-linear relationship between mpg and horsepower , and that a model that predicts mpg using horsepower and horsepower 2 gives better results than a model that uses only a linear term. It is natural to wonder whether a cubic or higher-order fit might provide even better results. We answer this question in Chapter 3 by looking at the p-values associated with a cubic term and higher-order polynomial terms in a linear regression. But we could also answer this question using the validation method. We randomly split the 392 observations into two sets, a training set containing 196 of the data points, and a validation set containing the remaining 196 observations. The validation set error rates that result from fitting various regression models on the training sample and evaluating their performance on the validation sample, using MSE as a measure of validation set error, are shown in the left-hand panel of Figure 5.2. The validation set MSE for the quadratic fit is considerably smaller than for the linear fit. However, the validation set MSE for the cubic fit is actually slightly larger than for the quadratic fit. This implies that including a cubic term in the regression does not lead to better prediction than simply using a quadratic term.</p>
-<p>Recall that in order to create the left-hand panel of Figure 5.2, we randomly divided the data set into two parts, a training set and a validation set. If we repeat the process of randomly splitting the sample set into two parts, we will get a somewhat different estimate for the test MSE. As an illustration, the right-hand panel of Figure 5.2 displays ten different validation set MSE curves from the Auto data set, produced using ten different random splits of the observations into training and validation sets. All ten curves indicate that the model with a quadratic term has a dramatically smaller validation set MSE than the model with only a linear term. Furthermore, all ten curves indicate that there is not much benefit in including cubic or higher-order polynomial terms in the model. But it is worth noting that each of the ten curves results in a different test MSE estimate for each
-of the ten regression models considered. And there is no consensus among the curves as to which model results in the smallest validation set MSE. Based on the variability among these curves, all that we can conclude with any confidence is that the linear fit is not adequate for this data.</p>
-<p>The validation set approach is conceptually simple and is easy to implement. But it has two potential drawbacks:</p>
-<ol class="simple">
-<li><p>As is shown in the right-hand panel of Figure 5.2, the validation estimate of the test error rate can be highly variable, depending on precisely which observations are included in the training set and which observations are included in the validation set.</p></li>
-<li><p>In the validation approach, only a subset of the observations—those that are included in the training set rather than in the validation set—are used to fit the model. Since statistical methods tend to perform worse when trained on fewer observations, this suggests that the validation set error rate may tend to overestimate the test error rate for the model fit on the entire data set.</p></li>
-</ol>
-<p>In the coming subsections, we will present cross-validation, a refinement of the validation set approach that addresses these two issues.</p>
+<!-- Using [Polynomial](http://scikit-learn.org/dev/modules/preprocessing.html#generating-polynomial-features) feature generation in scikit-learn -->
+<p>Suppose that we would like to estimate the <em>test error</em> associated with fitting a particular model on a set of observations. The validation set approach is a strategy that involves randomly dividing the available set of observations into two parts, a <em>training set</em> and a <em>validation set</em> or <em>hold-out set</em>. The model is fit on the training set, and the fitted model is used to predict the responses for the unseen observations in the validation set. The resulting validation set error rate—typically assessed using MSE in the case of a quantitative response—provides an estimate of the test error rate.</p>
+<p>Run the following to illustrate the validation set approach on the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset over different polynomial degrees.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_prop</span> <span class="o">=</span> <span class="mf">0.5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+
+<span class="n">t_prop</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="n">p_order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
 <span class="n">r_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
@@ -681,9 +678,25 @@ of the ten regression models considered. And there is no consensus among the cur
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cross-validation_7_0.png" src="../_images/cross-validation_7_0.png" />
+<img alt="../_images/cross-validation_6_0.png" src="../_images/cross-validation_6_0.png" />
 </div>
 </div>
+<p>In <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/extension-limitation.html#non-linear-relationships">Linear regression</a>, we discovered a non-linear relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>. Compared to using only a liner term, a model that using <code class="docutils literal notranslate"><span class="pre">horsepower</span></code> and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code><span class="math notranslate nohighlight">\(^2\)</span> gives better results in predicts <code class="docutils literal notranslate"><span class="pre">mpg</span></code>. For the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset, we can randomly split the 392 observations into two sets, a training set containing 196 of the data points for model training, and a validation set containing the remaining 196 observations for evaluating by MSE. As shown in the left-hand panel of the figure above.</p>
+<p>If we repeat the process of randomly splitting, we will get a somewhat different estimate for the test MSE. Ten different validation set MSE curves are shown in the right-hand panel of the figure above.</p>
+<!-- As an illustration, the right-hand panel of Figure 5.2 displays ten different validation set MSE curves from the Auto data set, produced using ten different random splits of the observations into training and validation sets.  -->
+<p>We can observe:</p>
+<ul class="simple">
+<li><p>model with a quadratic term has a dramatically smaller validation set MSE than the model with only a linear term</p></li>
+<li><p>ot much benefit in including cubic or higher-order polynomial terms in the model</p></li>
+<li><p>each of the ten curves results in a different test MSE estimate for each of the ten regression models considered</p></li>
+<li><p>there is no consensus among the curves as to which model results in the smallest validation set MSE.</p></li>
+</ul>
+<p>Based on the variability among these curves, all that we can conclude with any confidence is that the linear fit is not adequate for this data. The validation set approach is conceptually simple and is easy to implement. But it has two potential drawbacks:</p>
+<ol class="simple">
+<li><p>As is shown in the right-hand panel of Figure 5.2, the validation estimate of the test error rate can be highly variable, depending on precisely which observations are included in the training set and which observations are included in the validation set.</p></li>
+<li><p>In the validation approach, only a subset of the observations—those that are included in the training set rather than in the validation set—are used to fit the model. Since statistical methods tend to perform worse when trained on fewer observations, this suggests that the validation set error rate may tend to overestimate the test error rate for the model fit on the entire data set.</p></li>
+</ol>
+<p>In the coming subsections, we will present cross-validation, a refinement of the validation set approach that addresses these two issues.</p>
 </div>
 <div class="section" id="leave-one-out-cross-validation">
 <h2><span class="section-number">4.1.3. </span>Leave-One-Out Cross-Validation<a class="headerlink" href="#leave-one-out-cross-validation" title="Permalink to this headline">¶</a></h2>
