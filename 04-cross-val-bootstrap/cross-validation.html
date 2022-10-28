@@ -515,7 +515,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#k-fold-cross-validation">
-   4.1.4. k-Fold cross-validation
+   4.1.4. K-Fold cross-validation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bootstrap">
+   4.1.5. Bootstrap
   </a>
  </li>
 </ul>
@@ -555,7 +560,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#k-fold-cross-validation">
-   4.1.4. k-Fold cross-validation
+   4.1.4. K-Fold cross-validation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bootstrap">
+   4.1.5. Bootstrap
   </a>
  </li>
 </ul>
@@ -700,19 +710,24 @@ memory usage: 30.6+ KB
 </div>
 <div class="section" id="leave-one-out-cross-validation">
 <h2><span class="section-number">4.1.3. </span>Leave-One-Out Cross-Validation<a class="headerlink" href="#leave-one-out-cross-validation" title="Permalink to this headline">¶</a></h2>
-<p>Leave-one-out cross-validation (LOOCV) is closely related to the validation set approach of Section 5.1.1, but it attempts to address that method’s drawbacks.</p>
-<p>Like the validation set approach, LOOCV involves splitting the set of observations into two parts. However, instead of creating two subsets of comparable size, a single observation (x 1 , y 1 ) is used for the validation set, and the remaining observations {(x 2 , y 2 ), … , (x n , y n )} make up the training set. The statistical learning method is fit on the n − 1 training observations, and a prediction ŷ 1 is made for the excluded observation, using its value x 1 . Since (x 1 , y 1 ) was not used in the fitting process, MSE 1 = (y 1 − ŷ 1 ) 2 provides an approximately unbiased estimate for the test error. But even though MSE 1 is unbiased for the test error, it is a poor estimate because it is highly variable, since it is based upon a single observation
-(x 1 , y 1 ).</p>
-<p>We can repeat the procedure by selecting (x 2 , y 2 ) for the validation data, training the statistical learning procedure on the n − 1 observations {(x 1 , y 1 ), (x 3 , y 3 ), … , (x n , y n )}, and computing MSE 2 = (y 2 −ŷ 2 ) 2 . Repeating this approach n times produces n squared errors, MSE 1 , … , MSE n . The LOOCV estimate for the test MSE is the average of these n test error estimates:</p>
+<!-- Leave-one-out cross-validation (LOOCV) is closely related to the validation set approach of Section 5.1.1, but it attempts to address that method’s drawbacks. -->
+<p>Leave-one-out cross-validation (LOOCV) is closely related to the validation set approach. It also splits the set of observations into two parts. However, instead of creating two subsets of comparable size, a single observation <span class="math notranslate nohighlight">\((\mathbf{x}_i , y_i)\)</span>, where <span class="math notranslate nohighlight">\( i = 1, 2, \dots, N \)</span>, is used for the validation set, and the remaining observations <span class="math notranslate nohighlight">\(\{(\mathbf{x}_1, y_1), (\mathbf{x}_2, y_2), \dots, (\mathbf{x}_{i-1}, y_{i-1}), (\mathbf{x}_{i+1}, y_{i+1}), \dots, (\mathbf{x}_N , y_N)\}\)</span> make up the training set. The statistical learning method is fit on the <span class="math notranslate nohighlight">\( N − 1 \)</span> training observations, and a prediction <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is made for the excluded observation, using its value <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span>.
+Since <span class="math notranslate nohighlight">\((\mathbf{x}_i , y_i)\)</span> was not used in the fitting process, the squared test error <span class="math notranslate nohighlight">\( \epsilon_i = (y_i − \hat{y}_i)^2 \)</span> provides an approximately unbiased estimate.</p>
+<!-- But even though MSE 1 is unbiased for the test error, it is a poor estimate because it is highly variable, since it is based upon a single observation (x 1 , y 1 ). -->
+<p>We can repeat the procedure by iterating <span class="math notranslate nohighlight">\(i\)</span> from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(N\)</span> to produce <span class="math notranslate nohighlight">\(N\)</span> squared errors, <span class="math notranslate nohighlight">\( \epsilon_i, \dots, \epsilon_N \)</span>. The LOOCV estimate for the test MSE is the average of these <span class="math notranslate nohighlight">\(N\)</span> test error estimates:</p>
 <div class="math notranslate nohighlight">
-\[\frac{1}{n}\sum_{i=1}^n MSE_i\]</div>
-<p>A schematic of the LOOCV approach is illustrated in Figure 5.3.</p>
-<p>LOOCV has a couple of major advantages over the validation set approach. First, it has far less bias. In LOOCV, we repeatedly fit the statistical learning method using training sets that contain n − 1 observations, almost as many as are in the entire data set. This is in contrast to the validation set approach, in which the training set is typically around half the size of the original data set. Consequently, the LOOCV approach tends not to overestimate the test error rate as much as the validation set approach does. Second, in contrast to the validation approach which will yield different results when applied repeatedly due to randomness in the training/validation set splits, performing LOOCV multiple times will always yield the same results: there is no randomness in the training/validation set splits.</p>
-<p>We used LOOCV on the Auto data set in order to obtain an estimate of the test set MSE that results from fitting a linear regression model to predict mpg using polynomial functions of horsepower . The results are shown in the left-hand panel of Figure 5.4.</p>
-<p>LOOCV has the potential to be expensive to implement, since the model has to be fit n times. This can be very time consuming if n is large, and if each individual model is slow to fit. With least squares linear or polynomial regression, an amazing shortcut makes the cost of LOOCV the same as that of a single model fit! The following formula holds:</p>
-<p>where ŷ i is the ith fitted value from the original least squares fit, and h i is the leverage defined in (3.37) on page 99. 1 This is like the ordinary MSE, except the ith residual is divided by 1 − h i . The leverage lies between 1/n and 1, and reflects the amount that an observation influences its own fit.
-Hence the residuals for high-leverage points are inflated in this formula by exactly the right amount for this equality to hold.
-LOOCV is a very general method, and can be used with any kind of predictive modeling. For example we could use it with logistic regression or linear discriminant analysis, or any of the methods discussed in later chapters. The magic formula (5.2) does not hold in general, in which case the model has to be refit n times.</p>
+\[\textrm{MSE} = \frac{1}{N}\sum_{i=1}^N \epsilon_i = \frac{1}{N}\sum_{i=1}^N (y_i − \hat{y}_i)^2 \]</div>
+<p>Compared to the validation set approach, LOOCV has the following advantages:</p>
+<ul class="simple">
+<li><p>LOOCV has far less bias. In LOOCV, we repeatedly fit the statistical learning method using training sets that contain <span class="math notranslate nohighlight">\(N − 1\)</span> observations, almost as many as are in the entire data set. This is in contrast to the validation set approach, in which the training set is typically around half the size of the original data set. Consequently, the LOOCV approach tends not to overestimate the test error rate as much as the validation set approach does.</p></li>
+<li><p>In contrast to the validation approach which will yield different results when applied repeatedly due to randomness in the training/validation set splits, performing LOOCV multiple times will always yield the same results: there is no randomness in the training/validation set splits.</p></li>
+</ul>
+</div>
+<div class="section" id="k-fold-cross-validation">
+<h2><span class="section-number">4.1.4. </span>K-Fold cross-validation<a class="headerlink" href="#k-fold-cross-validation" title="Permalink to this headline">¶</a></h2>
+<p>An alternative to LOOCV is k-fold CV. This approach involves randomly dividing the set of observations into k groups, or folds, of approximately equal size. The first fold is treated as a validation set, and the method is fit on the remaining <span class="math notranslate nohighlight">\(k − 1\)</span> folds. The mean squared error, MSE 1 , is then computed on the observations in the held-out fold. This procedure is repeated k times; each time, a different group of observations is treated as a validation set. This process results in k estimates of the test error, MSE 1 , MSE 2 , … , MSE k . The k-fold CV estimate is computed by averaging these values,</p>
+<p>LOOCV can be viewed as a special case of k-fold CV in which <span class="math notranslate nohighlight">\(k\)</span> is set to equal <span class="math notranslate nohighlight">\(N\)</span>. In practice, one typically performs k-fold CV using <span class="math notranslate nohighlight">\(k = 5\)</span> or <span class="math notranslate nohighlight">\(k = 10\)</span>. The most obvious advantage is computational. LOOCV requires fitting the statistical learning method <span class="math notranslate nohighlight">\(N\)</span> times. This has the potential to be computationally expensive. But cross-validation is a very general approach that can be applied to almost any statistical learning method. Some statistical learning methods have computationally intensive fitting procedures, and so performing LOOCV may pose computational problems, especially if <span class="math notranslate nohighlight">\(N\)</span> is extremely large. In contrast, performing 10-fold CV requires fitting the learning procedure only ten times, which may be much more feasible.</p>
+<p>Run the following code to perform LOOCV and 10-fold CV on the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
@@ -785,17 +800,17 @@ LOOCV is a very general method, and can be used with any kind of predictive mode
 <img alt="../_images/cross-validation_11_0.png" src="../_images/cross-validation_11_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="k-fold-cross-validation">
-<h2><span class="section-number">4.1.4. </span>k-Fold cross-validation<a class="headerlink" href="#k-fold-cross-validation" title="Permalink to this headline">¶</a></h2>
-<p>An alternative to LOOCV is k-fold CV. This approach involves randomly dividing the set of observations into k groups, or folds, of approximately equal size. The first fold is treated as a validation set, and the method is fit on the remaining k − 1 folds. The mean squared error, MSE 1 , is then computed on the observations in the held-out fold. This procedure is repeated k times; each time, a different group of observations is treated as a validation set. This process results in k estimates of the test error, MSE 1 , MSE 2 , … , MSE k . The k-fold CV estimate is computed by averaging these values,</p>
-<p>It is not hard to see that LOOCV is a special case of k-fold CV in which k is set to equal n. In practice, one typically performs k-fold CV using k = 5 or k = 10. What is the advantage of using k = 5 or k = 10 rather than k = n? The most obvious advantage is computational. LOOCV requires fitting the statistical learning method n times. This has the potential to be computationally expensive (except for linear models fit by least squares, in which case formula (5.2) can be used). But cross-validation is a very general approach that can be applied to almost any statistical learning method. Some statistical learning methods have computationally intensive fitting procedures, and so performing LOOCV may pose computational problems, especially if n is extremely large. In contrast, performing 10-fold CV requires fitting the learning procedure only ten times, which may be much more feasible. As we see in Section 5.1.4, there also can be other non-computational advantages to performing 5-fold or 10-fold CV, which involve the bias-variance trade-oﬀ.</p>
-<p>The right-hand panel of Figure 5.4 displays nine different 10-fold CV estimates for the Auto data set, each resulting from a different random split of the observations into ten folds. As we can see from the figure, there is some variability in the CV estimates as a result of the variability in how the observations are divided into ten folds. But this variability is typically much lower than the variability in the test error estimates that results from the validation set approach (right-hand panel of Figure 5.2).</p>
-<p>When we examine real data, we do not know the true test MSE, and so it is difficult to determine the accuracy of the cross-validation estimate. However, if we examine simulated data, then we can compute the true test MSE, and can thereby evaluate the accuracy of our cross-validation results. In Figure 5.6, we plot the cross-validation estimates and true test error rates that result from applying smoothing splines to the simulated data sets illustrated in Figures 2.9–2.11 of Chapter 2. The true test MSE is displayed in blue. The black dashed and orange solid lines respectively show the estimated LOOCV and 10-fold CV estimates. In all three plots, the two cross-validation estimates are very similar. In the right-hand panel of Figure 5.6, the true test MSE and the cross-validation curves are almost identical. In the center panel of Figure 5.6, the two sets of curves are similar at the lower degrees of flexibility, while the CV curves overestimate the test set MSE for higher degrees of flexibility. In the left-hand panel of Figure 5.6, the CV curves have the correct general shape, but they underestimate the
-true test MSE.</p>
-<p>When we perform cross-validation, our goal might be to determine how well a given statistical learning procedure can be expected to perform on independent data; in this case, the actual estimate of the test MSE is of interest. But at other times we are interested only in the location of the minimum point in the estimated test MSE curve. This is because we might be performing cross-validation on a number of statistical learning methods, or on a single method using different levels of flexibility, in order
-to identify the method that results in the lowest test error. For this purpose, the location of the minimum point in the estimated test MSE curve is important, but the actual value of the estimated test MSE is not. We find in Figure 5.6 that despite the fact that they sometimes underestimate the true test MSE, all of the CV curves come close to identifying the correct level of flexibility—that is, the flexibility level corresponding to the smallest test MSE.</p>
+<p>The result of LOOCV and 10-fold CV are shown in the left and right panel, respectively. As we can see from the figure, there is some variability in the 10-fold CV estimates as a result of the variability in how the observations are divided into ten folds. But this variability is typically much lower than the variability in the test error estimates that results from the validation set approach.</p>
+<p>The objective of performing cross-validation can be different:</p>
+<ul class="simple">
+<li><p>For model evaluation, our goal might be to determine how well a given statistical learning procedure can be expected to perform on independent data; in this case, the actual estimate of the test MSE is of interest.</p></li>
+<li><p>For model selection, we are interested only in the location of the minimum point in the estimated test MSE curve. This is because we might be performing cross-validation on a number of statistical learning methods, or on a single method using different levels of flexibility, in order to identify the method that results in the lowest test error. For this purpose, the location of the minimum point in the estimated test MSE curve is important, but the actual value of the estimated test MSE is not.</p></li>
+</ul>
 <p>More <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html">cross-validation strategies in scikit-learn</a></p>
+</div>
+<div class="section" id="bootstrap">
+<h2><span class="section-number">4.1.5. </span>Bootstrap<a class="headerlink" href="#bootstrap" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://ethanwicker.com/2021-02-23-bootstrap-resampling-001/">Example</a></p>
 </div>
 </div>
 
