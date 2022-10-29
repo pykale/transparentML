@@ -34,10 +34,6 @@ Watch the following video to get an overview of the chapter:
 
 ```{admonition} Video
 
-<iframe width="700" height="394" src="https://www.youtube.com/embed/fSytzGwwBVw?start=15" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-[Explaining Cross Validation, by StatQuest](https://www.youtube.com/embed/fSytzGwwBVw?start=15)
-
 <iframe width="700" height="394" src="https://www.youtube.com/embed/Xz0x-8-cgaQ?start=8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 [Explaining Cross Bootstrap, by StatQuest](https://www.youtube.com/embed/Xz0x-8-cgaQ?start=8)
