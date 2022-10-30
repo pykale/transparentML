@@ -518,6 +518,23 @@ const thebe_selector_output = ".output, .cell_output"
    3.2.4. Multiple logistic regression
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluation-of-logistic-regression">
+   3.2.5. Evaluation of logistic regression
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#accuracy">
+     3.2.5.1. Accuracy
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#receiver-operating-characteristic-roc">
+     3.2.5.2. Receiver operating characteristic (ROC)
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -558,6 +575,23 @@ const thebe_selector_output = ".output, .cell_output"
    3.2.4. Multiple logistic regression
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluation-of-logistic-regression">
+   3.2.5. Evaluation of logistic regression
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#accuracy">
+     3.2.5.1. Accuracy
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#receiver-operating-characteristic-roc">
+     3.2.5.2. Receiver operating characteristic (ROC)
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
                         </nav>
@@ -570,6 +604,12 @@ const thebe_selector_output = ".output, .cell_output"
   <div class="tex2jax_ignore mathjax_ignore section" id="logistic-regression">
 <h1><span class="section-number">3.2. </span>Logistic regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">¶</a></h1>
 <p>Logistic regression is not a regression, but a classification algorithm. It models the probabilities for classification problems.</p>
+<p>Watch the 8-minute video below or a visual explanation of logistic regression:</p>
+<div class="admonition-video admonition">
+<p class="admonition-title">Video</p>
+<iframe width="700" height="394" src="https://www.youtube.com/embed/yIYKR4sgzI8?start=24" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p><a class="reference external" href="https://www.youtube.com/embed/yIYKR4sgzI8?start=24">Explaining Logistic Regression, by StatQuest</a></p>
+</div>
 <div class="section" id="import-libraries-and-load-data">
 <h2><span class="section-number">3.2.1. </span>Import libraries and load data<a class="headerlink" href="#import-libraries-and-load-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
@@ -581,6 +621,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">plot_roc_curve</span>
 
 <span class="c1"># from sklearn.discriminant_analysis import LinearDiscriminantAnalysis</span>
 <span class="c1"># from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis</span>
@@ -700,8 +741,8 @@ y = \beta_0 + \beta_1 x_1.
 </div>
 </div>
 <p>Let <span class="math notranslate nohighlight">\(p(x) = \mathbb{P}(y=1| x)\)</span>, resulting in:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a4356658-4a96-4e2c-98b8-a107b0215a52">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-a4356658-4a96-4e2c-98b8-a107b0215a52" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-beba0f54-39a1-4b19-bf18-499d23993515">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-beba0f54-39a1-4b19-bf18-499d23993515" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \frac{1-p(x)}{p(x)} &amp;= e^{-(\beta_0 + \beta_1 x_1)} \\
 \ln \left( \frac{1-p(x)}{p(x)} \right) &amp;= -(\beta_0 + \beta_1 x_1) \\
@@ -742,8 +783,8 @@ y = \beta_0 + \beta_1 x_1.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LogisticRegression(solver=&#39;newton-cg&#39;)
 classes:  [0 1]
-coefficients:  [[0.00549891]]
-intercept : [-10.65132548]
+coefficients:  [[0.00549892]]
+intercept : [-10.65132978]
 </pre></div>
 </div>
 </div>
@@ -831,11 +872,11 @@ intercept : [-10.65132548]
 <ul class="simple">
 <li><p>When the probability of default is 0.5, the corresponding balance can be calculated using the <em>log odds</em> equation above:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-27fe31dd-87ee-4305-b06e-77e2ada89331">
-<span class="eqno">(3.2)<a class="headerlink" href="#equation-27fe31dd-87ee-4305-b06e-77e2ada89331" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ac9eab53-cdd4-4a8d-b417-57643eb918e5">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-ac9eab53-cdd4-4a8d-b417-57643eb918e5" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \ln \left(\frac{p(x)}{1-p(x)}\right) &amp;= \beta_0 + \beta_1 \times x \\
-\ln \left(\frac{0.5}{1-0.5}\right) &amp;= \beta_0 + \beta_1 \tims x \\
+\ln \left(\frac{0.5}{1-0.5}\right) &amp;= \beta_0 + \beta_1 \times x \\
 x &amp; = \frac{- \beta_0}{\beta_1} \\
 x &amp; = \frac{- (-10.65133019)}{0.00549892} \\
 x &amp; = 1936.9858426745614.
@@ -999,13 +1040,13 @@ x &amp; = 1936.9858426745614.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LogisticRegression(max_iter=1000, penalty=&#39;none&#39;, solver=&#39;newton-cg&#39;)
 classes:  [0 1]
-coefficients:  [[ 5.73593136e-03  3.01131944e-06 -6.47265842e-01]]
-intercept : [-10.86719778]
+coefficients:  [[ 5.73354382e-03  2.91920072e-06 -6.49305055e-01]]
+intercept : [-10.85951046]
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Example of <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code></strong>, where the learnt parameters are the same as the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> example.</p>
+<p><strong>Example of <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code></strong>, where the similar parameters are estimated as the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">logit</span><span class="p">(</span><span class="s2">&quot;default2 ~ balance + income + student&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -1085,6 +1126,64 @@ intercept : [-10.86719778]
   </tbody>
 </table>
 </div></div></div>
+</div>
+</div>
+<div class="section" id="evaluation-of-logistic-regression">
+<h2><span class="section-number">3.2.5. </span>Evaluation of logistic regression<a class="headerlink" href="#evaluation-of-logistic-regression" title="Permalink to this headline">¶</a></h2>
+<p>The evaluation of logistic regression is similar to the evaluation of linear regression. The main difference is that the evaluation metrics are different. For example, the mean squared error (MSE) is not a good metric for classification. Here we introduce two common metrics for classification: accuracy and receiver operating characteristic (ROC).</p>
+<div class="section" id="accuracy">
+<h3><span class="section-number">3.2.5.1. </span>Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this headline">¶</a></h3>
+<p>The accuracy is the fraction of correct predictions. It is defined as</p>
+<div class="math notranslate nohighlight">
+\[
+\text{accuracy} = \frac{\text{number of correct predictions}}{\text{total number of predictions}}.
+\]</div>
+<p>Run the following code to calculate the training accuracy of the logistic regression model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">accuarcy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy: &quot;</span><span class="p">,</span> <span class="n">accuarcy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy:  0.9732
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="receiver-operating-characteristic-roc">
+<h3><span class="section-number">3.2.5.2. </span>Receiver operating characteristic (ROC)<a class="headerlink" href="#receiver-operating-characteristic-roc" title="Permalink to this headline">¶</a></h3>
+<p>The receiver operating characteristic (ROC) curve is a plot of the true positive rate (TPR) against the false positive rate (FPR) at various threshold settings. The TPR and FPR are defined as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\text{TPR} &amp;= \frac{\text{number of true positives}}{\text{number of positives}} \\
+\text{FPR} &amp;= \frac{\text{number of false positives}}{\text{number of negatives}}
+\end{aligned}
+\end{split}\]</div>
+<p>Run the following code to plot the ROC curve of the logistic regression model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_prob</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="n">roc_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ROC AUC: &quot;</span><span class="p">,</span> <span class="n">roc_auc</span><span class="p">)</span>
+
+<span class="n">clf_disp</span> <span class="o">=</span> <span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ROC AUC:  0.05044871083973183
+</pre></div>
+</div>
+<img alt="../_images/logistic-regression_21_1.png" src="../_images/logistic-regression_21_1.png" />
+</div>
+</div>
 </div>
 </div>
 </div>

@@ -580,13 +580,18 @@ const thebe_selector_output = ".output, .cell_output"
   <div class="tex2jax_ignore mathjax_ignore section" id="cross-validation">
 <h1><span class="section-number">4.1. </span>Cross-validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h1>
 <p>Cross-validation is a kind of resampling approach that can be used to estimate the test error associated with a given statistical learning method in order to evaluate its performance, or to select the appropriate level of flexibility. The process of evaluating a model’s performance is known as <em>model assessment</em>, whereas the process of selecting the proper level of flexibility for a model is known as <em>model selection</em>.</p>
+<p>Watch the 6-minute video below for a visual explanation of cross-validation:</p>
+<div class="admonition-video admonition">
+<p class="admonition-title">Video</p>
+<iframe width="700" height="394" src="https://www.youtube.com/embed/fSytzGwwBVw?start=15" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p><a class="reference external" href="https://www.youtube.com/embed/fSytzGwwBVw?start=15">Explaining Cross Validation, by StatQuest</a></p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">random</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
@@ -597,6 +602,7 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">cross_val_score</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">resample</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -636,17 +642,116 @@ memory usage: 30.6+ KB
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mpg</th>
+      <th>cylinders</th>
+      <th>displacement</th>
+      <th>horsepower</th>
+      <th>weight</th>
+      <th>acceleration</th>
+      <th>year</th>
+      <th>origin</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>18.0</td>
+      <td>8</td>
+      <td>307.0</td>
+      <td>130.0</td>
+      <td>3504</td>
+      <td>12.0</td>
+      <td>70</td>
+      <td>1</td>
+      <td>chevrolet chevelle malibu</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>15.0</td>
+      <td>8</td>
+      <td>350.0</td>
+      <td>165.0</td>
+      <td>3693</td>
+      <td>11.5</td>
+      <td>70</td>
+      <td>1</td>
+      <td>buick skylark 320</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>18.0</td>
+      <td>8</td>
+      <td>318.0</td>
+      <td>150.0</td>
+      <td>3436</td>
+      <td>11.0</td>
+      <td>70</td>
+      <td>1</td>
+      <td>plymouth satellite</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>16.0</td>
+      <td>8</td>
+      <td>304.0</td>
+      <td>150.0</td>
+      <td>3433</td>
+      <td>12.0</td>
+      <td>70</td>
+      <td>1</td>
+      <td>amc rebel sst</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>17.0</td>
+      <td>8</td>
+      <td>302.0</td>
+      <td>140.0</td>
+      <td>3449</td>
+      <td>10.5</td>
+      <td>70</td>
+      <td>1</td>
+      <td>ford torino</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </div>
 <div class="section" id="validation-set-approach">
 <h2><span class="section-number">4.1.2. </span>Validation Set Approach<a class="headerlink" href="#validation-set-approach" title="Permalink to this headline">¶</a></h2>
 <!-- Using [Polynomial](http://scikit-learn.org/dev/modules/preprocessing.html#generating-polynomial-features) feature generation in scikit-learn -->
-<p>Suppose that we would like to estimate the <em>test error</em> associated with fitting a particular model on a set of observations. The validation set approach is a strategy that involves randomly dividing the available set of observations into two parts, a <em>training set</em> and a <em>validation set</em> or <em>hold-out set</em>. The model is fit on the training set, and the fitted model is used to predict the responses for the unseen observations in the validation set. The resulting validation set error rate—typically assessed using MSE in the case of a quantitative response—provides an estimate of the test error rate.</p>
+<p>The validation set approach is a strategy to estimate the <em>test error</em> associated with fitting a particular model on a set of observations. It involves randomly dividing the available set of observations into two parts, a <em>training set</em> and a <em>validation set</em> or <em>hold-out set</em>. The model is fit on the training set, and the fitted model is used to predict the responses for the unseen observations in the validation set. The resulting validation set error rate—typically assessed using MSE in the case of a quantitative response—provides an estimate of the test error rate.</p>
 <p>Run the following to illustrate the validation set approach on the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset over different polynomial degrees.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
-
-<span class="n">t_prop</span> <span class="o">=</span> <span class="mf">0.5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_prop</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="n">p_order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
 <span class="n">r_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
@@ -688,7 +793,7 @@ memory usage: 30.6+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cross-validation_6_0.png" src="../_images/cross-validation_6_0.png" />
+<img alt="../_images/cross-validation_7_0.png" src="../_images/cross-validation_7_0.png" />
 </div>
 </div>
 <p>In <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/extension-limitation.html#non-linear-relationships">Linear regression</a>, we discovered a non-linear relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>. Compared to using only a liner term, a model that using <code class="docutils literal notranslate"><span class="pre">horsepower</span></code> and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code><span class="math notranslate nohighlight">\(^2\)</span> gives better results in predicts <code class="docutils literal notranslate"><span class="pre">mpg</span></code>. For the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset, we can randomly split the 392 observations into two sets, a training set containing 196 of the data points for model training, and a validation set containing the remaining 196 observations for evaluating by MSE. As shown in the left-hand panel of the figure above.</p>
@@ -725,7 +830,13 @@ Since <span class="math notranslate nohighlight">\((\mathbf{x}_i , y_i)\)</span>
 </div>
 <div class="section" id="k-fold-cross-validation">
 <h2><span class="section-number">4.1.4. </span>K-Fold cross-validation<a class="headerlink" href="#k-fold-cross-validation" title="Permalink to this headline">¶</a></h2>
-<p>An alternative to LOOCV is k-fold CV. This approach involves randomly dividing the set of observations into k groups, or folds, of approximately equal size. The first fold is treated as a validation set, and the method is fit on the remaining <span class="math notranslate nohighlight">\(k − 1\)</span> folds. The mean squared error, MSE 1 , is then computed on the observations in the held-out fold. This procedure is repeated k times; each time, a different group of observations is treated as a validation set. This process results in k estimates of the test error, MSE 1 , MSE 2 , … , MSE k . The k-fold CV estimate is computed by averaging these values,</p>
+<p>An alternative to LOOCV is k-fold CV. This approach involves randomly dividing the set of observations into k groups, or folds, of approximately equal size. Then repeating the following procedure by iterating <span class="math notranslate nohighlight">\(i\)</span> from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(k\)</span>:</p>
+<ol class="simple">
+<li><p>Treating <span class="math notranslate nohighlight">\(i\text{th}\)</span> group of observations (fold) as a validation set,</p></li>
+<li><p>Fitting model on the remaining <span class="math notranslate nohighlight">\(k − 1\)</span> folds,</p></li>
+<li><p>Computing the mean squared error, <span class="math notranslate nohighlight">\(\textrm{MSE}_i\)</span></p></li>
+</ol>
+<p>This process results in <span class="math notranslate nohighlight">\(k\)</span> estimates of the test error, <span class="math notranslate nohighlight">\(\textrm{MSE}_1, \textrm{MSE}_2, \dots, \textrm{MSE}_k\)</span> . The k-fold CV estimate is computed by averaging these values,</p>
 <p>LOOCV can be viewed as a special case of k-fold CV in which <span class="math notranslate nohighlight">\(k\)</span> is set to equal <span class="math notranslate nohighlight">\(N\)</span>. In practice, one typically performs k-fold CV using <span class="math notranslate nohighlight">\(k = 5\)</span> or <span class="math notranslate nohighlight">\(k = 10\)</span>. The most obvious advantage is computational. LOOCV requires fitting the statistical learning method <span class="math notranslate nohighlight">\(N\)</span> times. This has the potential to be computationally expensive. But cross-validation is a very general approach that can be applied to almost any statistical learning method. Some statistical learning methods have computationally intensive fitting procedures, and so performing LOOCV may pose computational problems, especially if <span class="math notranslate nohighlight">\(N\)</span> is extremely large. In contrast, performing 10-fold CV requires fitting the learning procedure only ten times, which may be much more feasible.</p>
 <p>Run the following code to perform LOOCV and 10-fold CV on the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> data:</p>
 <div class="cell docutils container">
@@ -797,7 +908,7 @@ Since <span class="math notranslate nohighlight">\((\mathbf{x}_i , y_i)\)</span>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cross-validation_11_0.png" src="../_images/cross-validation_11_0.png" />
+<img alt="../_images/cross-validation_12_0.png" src="../_images/cross-validation_12_0.png" />
 </div>
 </div>
 <p>The result of LOOCV and 10-fold CV are shown in the left and right panel, respectively. As we can see from the figure, there is some variability in the 10-fold CV estimates as a result of the variability in how the observations are divided into ten folds. But this variability is typically much lower than the variability in the test error estimates that results from the validation set approach.</p>
@@ -810,7 +921,153 @@ Since <span class="math notranslate nohighlight">\((\mathbf{x}_i , y_i)\)</span>
 </div>
 <div class="section" id="bootstrap">
 <h2><span class="section-number">4.1.5. </span>Bootstrap<a class="headerlink" href="#bootstrap" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://ethanwicker.com/2021-02-23-bootstrap-resampling-001/">Example</a></p>
+<p>The bootstrap is a widely applicable and extremely powerful statistical tool that can be used to quantify the uncertainty associated with a given estimator or statistical learning method. As a simple example, the bootstrap can be used to estimate the standard errors of the coefficients from a linear regression fit. Although standard errors were obtained automatically by <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> in <a class="reference internal" href="../00-prereq/overview.html"><span class="doc">Linear regression</span></a> and <a class="reference internal" href="../03-logistic-reg/overview.html"><span class="doc">Logistic regression</span></a>, the power of the bootstrap lies in the fact that it can be easily applied to a wide range of statistical learning methods.</p>
+<p>Watch the 6-minute video below for a visual explanation of cross-validation:</p>
+<div class="admonition-video admonition">
+<p class="admonition-title">Video</p>
+<iframe width="700" height="394" src="https://www.youtube.com/embed/Xz0x-8-cgaQ?start=8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p><a class="reference external" href="https://www.youtube.com/embed/Xz0x-8-cgaQ?start=8">Explaining Cross Bootstrap, by StatQuest</a></p>
+</div>
+<p>Suppose that we wish to estimate the uncertainly of a coefficient estimate <span class="math notranslate nohighlight">\(\beta_1\)</span> from a linear regression fit, we take
+<span class="math notranslate nohighlight">\(n\)</span> repeated samples with replacement from our dataset and train our linear regression model <span class="math notranslate nohighlight">\(n\)</span> times and record each value <span class="math notranslate nohighlight">\(\hat{\beta}_1^{*1}, \hat{\beta}_1^{*2}, \dots, \hat{\beta}_1^{*n}\)</span>. With enough resampling - typically 1000 or 10,000 - we can plot the distribution of these bootstrapped estimates <span class="math notranslate nohighlight">\(\hat{\beta}_1^{*i}, i = 1,\dots, n \)</span>. Then, we can use the resulting distribution to quantify the variability of this estimate by calculating useful summary statistics, such as standard errors and confidence intervals.</p>
+<p>The power of the bootstrap lies in the ability to take repeated samples of the dataset, instead of collecting a new dataset each time. Also, in contrast to standard error estimates typically reported with statistical software that rely on algebraic methods and underlying assumptions, bootstrapped standard error estimates are more accurate as they are calculated computationally.</p>
+<p><strong>Bootstrap example using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code></strong> (adapted from this <a class="reference external" href="https://ethanwicker.com/2021-02-23-bootstrap-resampling-001/">blog post</a>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Defining number of iterations for bootstrap resample</span>
+<span class="n">n_iterations</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Initializing estimator</span>
+<span class="n">lin_reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="c1"># Initializing DataFrame, to hold bootstrapped statistics</span>
+<span class="n">bootstrapped_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+<span class="c1"># Each loop iteration is a single bootstrap resample and model fit</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_iterations</span><span class="p">):</span>
+
+    <span class="c1"># Sampling n_samples from data, with replacement, as train</span>
+    <span class="c1"># Defining test to be all observations not in train</span>
+    <span class="n">train</span> <span class="o">=</span> <span class="n">resample</span><span class="p">(</span><span class="n">auto_df</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">n_samples</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">auto_df</span><span class="p">))</span>
+    <span class="n">test</span> <span class="o">=</span> <span class="n">auto_df</span><span class="p">[</span><span class="o">~</span><span class="n">auto_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
+
+    <span class="n">X_train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;horsepower&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="p">]]</span>
+    <span class="n">y_train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;mpg&quot;</span><span class="p">]]</span>
+
+    <span class="n">X_test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;horsepower&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="p">]]</span>
+    <span class="n">y_test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;mpg&quot;</span><span class="p">]]</span>
+
+    <span class="c1"># Fitting linear regression model</span>
+    <span class="n">lin_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+    <span class="c1"># Storing stats in DataFrame, and concatenating with stats</span>
+    <span class="n">intercept</span> <span class="o">=</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">intercept_</span>
+    <span class="n">beta_horsepower</span> <span class="o">=</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">beta_weight</span> <span class="o">=</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">r_squared</span> <span class="o">=</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+
+    <span class="n">bootstrapped_stats_i</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+            <span class="n">intercept</span><span class="o">=</span><span class="n">intercept</span><span class="p">,</span>
+            <span class="n">beta_horsepower</span><span class="o">=</span><span class="n">beta_horsepower</span><span class="p">,</span>
+            <span class="n">beta_weight</span><span class="o">=</span><span class="n">beta_weight</span><span class="p">,</span>
+            <span class="n">r_squared</span><span class="o">=</span><span class="n">r_squared</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">bootstrapped_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">objs</span><span class="o">=</span><span class="p">[</span><span class="n">bootstrapped_stats</span><span class="p">,</span> <span class="n">bootstrapped_stats_i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrapped_stats</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>intercept</th>
+      <th>beta_horsepower</th>
+      <th>beta_weight</th>
+      <th>r_squared</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>46.233103</td>
+      <td>-0.038780</td>
+      <td>-0.006321</td>
+      <td>0.696254</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>46.781247</td>
+      <td>-0.064438</td>
+      <td>-0.005475</td>
+      <td>0.681860</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>44.350345</td>
+      <td>-0.058893</td>
+      <td>-0.005022</td>
+      <td>0.689440</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>46.534909</td>
+      <td>-0.046982</td>
+      <td>-0.006131</td>
+      <td>0.680750</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>44.795406</td>
+      <td>-0.053167</td>
+      <td>-0.005331</td>
+      <td>0.713089</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Plot the distribution of the bootstrapped estimates of the coefficients and the corresponding test scores from the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting histograms</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">bootstrapped_stats</span><span class="p">[</span><span class="s2">&quot;intercept&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;royalblue&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">bootstrapped_stats</span><span class="p">[</span><span class="s2">&quot;beta_horsepower&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;olive&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">bootstrapped_stats</span><span class="p">[</span><span class="s2">&quot;beta_weight&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gold&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">bootstrapped_stats</span><span class="p">[</span><span class="s2">&quot;r_squared&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;teal&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/cross-validation_19_0.png" src="../_images/cross-validation_19_0.png" />
+</div>
+</div>
 </div>
 </div>
 
