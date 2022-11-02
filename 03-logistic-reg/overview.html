@@ -268,12 +268,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../04-cross-val-bootstrap/cross-validation.html">
-     4.1. Cross validation
+     4.1. Cross-validation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../04-cross-val-bootstrap/quiz-sum-ref.html">
-     4.2. Quiz &amp; summary
+     4.3. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -529,29 +529,29 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Interpret the results of a logistic regression</p></li>
 </ul>
 </div>
-<p><strong>Expected time to complete</strong>: x hours</p>
+<p><strong>Expected time to complete</strong>: 2.5 hours</p>
 <p>The linear regression model discussed in <a class="reference internal" href="../02-linear-reg/overview.html"><span class="doc">Linear regression</span></a> assumes that the response variable <span class="math notranslate nohighlight">\(y\)</span> is quantitative. But in many situations, the response variable is instead qualitative. In this chapter, we will study approaches for predicting qualitative responses, a process that is known as <em>classification</em>. There are many possible classification techniques, or classifiers, that can be used to predict a qualitative response. In this chapter, we will focus on logistic regression, which is a classification technique that is commonly used to predict a binary response (i.e. a response with only two possible outcomes, such as pass/fail, win/lose, alive/dead or healthy/sick).</p>
 <!-- Logistic regression is an extension of linear regression that is used when the response variable is categorical. It is also known as _logit regression_ or _logit model_. In this chapter, we will learn how to use logistic regression to make predictions and understand the relationship between variables. We will learn the basic concepts of logistic regression and apply it to real data. We will also learn how to evaluate the performance of a logistic regression model and interpret the results. -->
 <div class="admonition-ingredients admonition">
 <p class="admonition-title">Ingredients</p>
 <ul class="simple">
-<li><p>Input: …</p></li>
-<li><p>Output: …</p></li>
-<li><p>Model: …</p>
+<li><p>Input: features of data samples</p></li>
+<li><p>Output: class labels of data samples</p></li>
+<li><p>Model: fit a line (or plane/hyperplane) via the logistic (sigmoid) function to the training data and assign the label on the fitted line (or plane/hyperplane) to the test data</p>
 <ul>
-<li><p>Hyperparameter(s): …</p></li>
-<li><p>Parameter(s): …</p></li>
+<li><p>Hyperparameter(s): None</p></li>
+<li><p>Parameter(s): the intercept(s) and slope(s) of the fitted line (or plane/hyperplane), also known as the bias(es) and weight(s), respectively</p></li>
 </ul>
 </li>
-<li><p>Loss function: …</p></li>
-<li><p>Learning algorithm: …</p></li>
+<li><p>Loss function: maximise the likelihood (probability) of the classes for given training data points</p></li>
+<li><p>Learning algorithm: Gradient descent</p></li>
 </ul>
 </div>
 <div class="admonition-transparency admonition">
 <p class="admonition-title">Transparency</p>
 <p>System logic</p>
 <ul class="simple">
-<li><p>Condition to produce certain output:</p></li>
+<li><p>Condition to produce certain output: to produce a sample with label <span class="math notranslate nohighlight">\(c\)</span>, find a data point <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(\mathbb{P}(c|\mathbf{x}, \boldsymbol{\beta}) &gt; 0.5\)</span> where <span class="math notranslate nohighlight">\(\boldsymbol{\beta}\)</span> is the vector of parameters of the logistic regression model.</p></li>
 </ul>
 </div>
 <!-- - What input to produce certain output:

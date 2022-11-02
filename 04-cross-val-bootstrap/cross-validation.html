@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.2. Quiz and summary" href="quiz-sum-ref.html" />
+    <link rel="next" title="4.3. Quiz and summary" href="quiz-sum-ref.html" />
     <link rel="prev" title="4. Cross Validation and Bootstrap" href="overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -268,12 +268,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     4.1. Cross validation
+     4.1. Cross-validation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="quiz-sum-ref.html">
-     4.2. Quiz &amp; summary
+     4.3. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -498,29 +498,36 @@ const thebe_selector_output = ".output, .cell_output"
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-dataset">
-   4.1.1. Load dataset
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   4.1. Cross-validation
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-dataset">
+     4.1.1. Load dataset
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#validation-set-approach">
+     4.1.2. Validation Set Approach
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#leave-one-out-cross-validation">
+     4.1.3. Leave-One-Out Cross-Validation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#k-fold-cross-validation">
+     4.1.4. K-Fold cross-validation
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#validation-set-approach">
-   4.1.2. Validation Set Approach
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#leave-one-out-cross-validation">
-   4.1.3. Leave-One-Out Cross-Validation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#k-fold-cross-validation">
-   4.1.4. K-Fold cross-validation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bootstrap">
-   4.1.5. Bootstrap
+   4.2. Bootstrap
   </a>
  </li>
 </ul>
@@ -543,29 +550,36 @@ const thebe_selector_output = ".output, .cell_output"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-dataset">
-   4.1.1. Load dataset
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   4.1. Cross-validation
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-dataset">
+     4.1.1. Load dataset
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#validation-set-approach">
+     4.1.2. Validation Set Approach
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#leave-one-out-cross-validation">
+     4.1.3. Leave-One-Out Cross-Validation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#k-fold-cross-validation">
+     4.1.4. K-Fold cross-validation
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#validation-set-approach">
-   4.1.2. Validation Set Approach
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#leave-one-out-cross-validation">
-   4.1.3. Leave-One-Out Cross-Validation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#k-fold-cross-validation">
-   4.1.4. K-Fold cross-validation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bootstrap">
-   4.1.5. Bootstrap
+   4.2. Bootstrap
   </a>
  </li>
 </ul>
@@ -919,8 +933,9 @@ Since <span class="math notranslate nohighlight">\((\mathbf{x}_i , y_i)\)</span>
 </ul>
 <p>More <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html">cross-validation strategies in scikit-learn</a></p>
 </div>
-<div class="section" id="bootstrap">
-<h2><span class="section-number">4.1.5. </span>Bootstrap<a class="headerlink" href="#bootstrap" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="bootstrap">
+<h1><span class="section-number">4.2. </span>Bootstrap<a class="headerlink" href="#bootstrap" title="Permalink to this headline">¶</a></h1>
 <p>The bootstrap is a widely applicable and extremely powerful statistical tool that can be used to quantify the uncertainty associated with a given estimator or statistical learning method. As a simple example, the bootstrap can be used to estimate the standard errors of the coefficients from a linear regression fit. Although standard errors were obtained automatically by <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> in <a class="reference internal" href="../00-prereq/overview.html"><span class="doc">Linear regression</span></a> and <a class="reference internal" href="../03-logistic-reg/overview.html"><span class="doc">Logistic regression</span></a>, the power of the bootstrap lies in the fact that it can be easily applied to a wide range of statistical learning methods.</p>
 <p>Watch the 6-minute video below for a visual explanation of cross-validation:</p>
 <div class="admonition-video admonition">
@@ -1014,38 +1029,38 @@ Since <span class="math notranslate nohighlight">\((\mathbf{x}_i , y_i)\)</span>
   <tbody>
     <tr>
       <th>0</th>
-      <td>43.962171</td>
-      <td>-0.041526</td>
-      <td>-0.005427</td>
-      <td>0.690752</td>
+      <td>44.922223</td>
+      <td>-0.063775</td>
+      <td>-0.004946</td>
+      <td>0.739011</td>
     </tr>
     <tr>
       <th>0</th>
-      <td>46.330786</td>
-      <td>-0.032220</td>
-      <td>-0.006535</td>
-      <td>0.690975</td>
+      <td>45.822464</td>
+      <td>-0.027751</td>
+      <td>-0.006581</td>
+      <td>0.739844</td>
     </tr>
     <tr>
       <th>0</th>
-      <td>45.987655</td>
-      <td>-0.049403</td>
-      <td>-0.005785</td>
-      <td>0.751274</td>
+      <td>45.544916</td>
+      <td>-0.036207</td>
+      <td>-0.006211</td>
+      <td>0.722932</td>
     </tr>
     <tr>
       <th>0</th>
-      <td>46.219915</td>
-      <td>-0.039152</td>
-      <td>-0.006246</td>
-      <td>0.716826</td>
+      <td>45.529244</td>
+      <td>-0.052841</td>
+      <td>-0.005565</td>
+      <td>0.715965</td>
     </tr>
     <tr>
       <th>0</th>
-      <td>45.631189</td>
-      <td>-0.068064</td>
-      <td>-0.004960</td>
-      <td>0.745558</td>
+      <td>45.943279</td>
+      <td>-0.032489</td>
+      <td>-0.006413</td>
+      <td>0.656892</td>
     </tr>
   </tbody>
 </table>
@@ -1066,7 +1081,6 @@ Since <span class="math notranslate nohighlight">\((\mathbf{x}_i , y_i)\)</span>
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/cross-validation_19_0.png" src="../_images/cross-validation_19_0.png" />
-</div>
 </div>
 </div>
 </div>
@@ -1106,7 +1120,7 @@ Since <span class="math notranslate nohighlight">\((\mathbf{x}_i , y_i)\)</span>
     <a class='right-next' id="next-link" href="quiz-sum-ref.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.2. </span>Quiz and summary</p>
+        <p class="prev-next-title"><span class="section-number">4.3. </span>Quiz and summary</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

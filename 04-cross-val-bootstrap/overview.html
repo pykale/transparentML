@@ -266,12 +266,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cross-validation.html">
-     4.1. Cross validation
+     4.1. Cross-validation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="quiz-sum-ref.html">
-     4.2. Quiz &amp; summary
+     4.3. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -521,11 +521,13 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="admonition-objectives admonition">
 <p class="admonition-title">Objectives</p>
 <ul class="simple">
-<li><p>Objective 1</p></li>
+<li><p>Understand the basic concepts of cross validation and bootstrap</p></li>
+<li><p>Evaluate the performance of machine learning models using cross validation</p></li>
+<li><p>Quantify the uncertainty associated with a machine learning model using bootstrap</p></li>
 </ul>
 </div>
-<p><strong>Expected time to complete</strong>: x hours</p>
-<p>In this chapter, we will [… (intro paragraph)].</p>
+<p><strong>Expected time to complete</strong>: 2.5 hours</p>
+<p>In this chapter, we will learn two resampling methods: cross-validation and bootstrap. They involve repeatedly drawing samples from a training set and refitting a model of interest on each sample in order to obtain additional information about the fitted model. For example, to estimate the variability of a linear regression fit, we can repeatedly draw different samples from the training data, fit a linear regression to each new sample set, and then examine the extent to which the resulting fits differ. Such an approach may allow us to obtain information that would not be available from fitting the model only once using the original training sample.</p>
 <div class="admonition-ingredients admonition">
 <p class="admonition-title">Ingredients</p>
 <ul class="simple">
@@ -544,7 +546,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Condition to produce certain output:</p></li>
 </ul>
 </div>
-<p>Watch the following video to get an overview of the chapter:</p>
 <!-- - What input to produce certain output:
 - How to produce certain output: -->
 <div class="toctree-wrapper compound">
