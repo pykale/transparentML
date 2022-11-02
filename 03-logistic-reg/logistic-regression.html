@@ -741,8 +741,8 @@ y = \beta_0 + \beta_1 x_1.
 </div>
 </div>
 <p>Let <span class="math notranslate nohighlight">\(p(x) = \mathbb{P}(y=1| x)\)</span>, resulting in:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-beba0f54-39a1-4b19-bf18-499d23993515">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-beba0f54-39a1-4b19-bf18-499d23993515" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a868f898-8693-437f-9121-2cf9ee2db092">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-a868f898-8693-437f-9121-2cf9ee2db092" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \frac{1-p(x)}{p(x)} &amp;= e^{-(\beta_0 + \beta_1 x_1)} \\
 \ln \left( \frac{1-p(x)}{p(x)} \right) &amp;= -(\beta_0 + \beta_1 x_1) \\
@@ -783,8 +783,8 @@ y = \beta_0 + \beta_1 x_1.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LogisticRegression(solver=&#39;newton-cg&#39;)
 classes:  [0 1]
-coefficients:  [[0.00549892]]
-intercept : [-10.65132978]
+coefficients:  [[0.00549891]]
+intercept : [-10.65132548]
 </pre></div>
 </div>
 </div>
@@ -872,8 +872,8 @@ intercept : [-10.65132978]
 <ul class="simple">
 <li><p>When the probability of default is 0.5, the corresponding balance can be calculated using the <em>log odds</em> equation above:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-ac9eab53-cdd4-4a8d-b417-57643eb918e5">
-<span class="eqno">(3.2)<a class="headerlink" href="#equation-ac9eab53-cdd4-4a8d-b417-57643eb918e5" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-37d26997-7ea2-4e65-ad81-b6792fd4cddc">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-37d26997-7ea2-4e65-ad81-b6792fd4cddc" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \ln \left(\frac{p(x)}{1-p(x)}\right) &amp;= \beta_0 + \beta_1 \times x \\
 \ln \left(\frac{0.5}{1-0.5}\right) &amp;= \beta_0 + \beta_1 \times x \\
@@ -1040,8 +1040,8 @@ x &amp; = 1936.9858426745614.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LogisticRegression(max_iter=1000, penalty=&#39;none&#39;, solver=&#39;newton-cg&#39;)
 classes:  [0 1]
-coefficients:  [[ 5.73354382e-03  2.91920072e-06 -6.49305055e-01]]
-intercept : [-10.85951046]
+coefficients:  [[ 5.73593136e-03  3.01131944e-06 -6.47265842e-01]]
+intercept : [-10.86719778]
 </pre></div>
 </div>
 </div>
@@ -1178,7 +1178,7 @@ intercept : [-10.85951046]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ROC AUC:  0.05044871083973183
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ROC AUC:  0.05044715761587593
 </pre></div>
 </div>
 <img alt="../_images/logistic-regression_21_1.png" src="../_images/logistic-regression_21_1.png" />
