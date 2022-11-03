@@ -268,7 +268,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../04-cross-val-bootstrap/cross-validation.html">
-     4.1. Cross-validation
+     4.1. Cross validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-cross-val-bootstrap/bootstrap.html">
+     4.2. Bootstrap
     </a>
    </li>
    <li class="toctree-l2">
@@ -487,6 +492,28 @@ const thebe_selector_output = ".output, .cell_output"
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/03-logistic-reg/logistic-regression.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/03-logistic-reg/logistic-regression.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
 
         </div>
 
@@ -741,8 +768,8 @@ y = \beta_0 + \beta_1 x_1.
 </div>
 </div>
 <p>Let <span class="math notranslate nohighlight">\(p(x) = \mathbb{P}(y=1| x)\)</span>, resulting in:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b3250b66-ed40-4a28-a8d0-66f764562267">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-b3250b66-ed40-4a28-a8d0-66f764562267" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-01ed8d74-999b-4cf4-9ae6-ed4a3cca2f0a">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-01ed8d74-999b-4cf4-9ae6-ed4a3cca2f0a" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \frac{1-p(x)}{p(x)} &amp;= e^{-(\beta_0 + \beta_1 x_1)} \\
 \ln \left( \frac{1-p(x)}{p(x)} \right) &amp;= -(\beta_0 + \beta_1 x_1) \\
@@ -783,8 +810,8 @@ y = \beta_0 + \beta_1 x_1.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LogisticRegression(solver=&#39;newton-cg&#39;)
 classes:  [0 1]
-coefficients:  [[0.00549891]]
-intercept : [-10.65132548]
+coefficients:  [[0.00549892]]
+intercept : [-10.65132978]
 </pre></div>
 </div>
 </div>
@@ -872,8 +899,8 @@ intercept : [-10.65132548]
 <ul class="simple">
 <li><p>When the probability of default is 0.5, the corresponding balance can be calculated using the <em>log odds</em> equation above:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-1e1d4775-dc7d-4a13-93f3-9dae93319cfd">
-<span class="eqno">(3.2)<a class="headerlink" href="#equation-1e1d4775-dc7d-4a13-93f3-9dae93319cfd" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3d6d4fb2-355b-4f53-a7c9-7fc123c7f44b">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-3d6d4fb2-355b-4f53-a7c9-7fc123c7f44b" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \ln \left(\frac{p(x)}{1-p(x)}\right) &amp;= \beta_0 + \beta_1 \times x \\
 \ln \left(\frac{0.5}{1-0.5}\right) &amp;= \beta_0 + \beta_1 \times x \\
@@ -1040,8 +1067,8 @@ x &amp; = 1936.9858426745614.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LogisticRegression(max_iter=1000, penalty=&#39;none&#39;, solver=&#39;newton-cg&#39;)
 classes:  [0 1]
-coefficients:  [[ 5.73593136e-03  3.01131944e-06 -6.47265842e-01]]
-intercept : [-10.86719778]
+coefficients:  [[ 5.73354382e-03  2.91920072e-06 -6.49305055e-01]]
+intercept : [-10.85951046]
 </pre></div>
 </div>
 </div>
@@ -1178,7 +1205,7 @@ intercept : [-10.86719778]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ROC AUC:  0.05044715761587593
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ROC AUC:  0.05044871083973183
 </pre></div>
 </div>
 <img alt="../_images/logistic-regression_21_1.png" src="../_images/logistic-regression_21_1.png" />
