@@ -65,6 +65,8 @@ parts:
     sections:
     - file: 04-cross-val-bootstrap/cross-validation
       title: Cross validation
+    - file: 04-cross-val-bootstrap/bootstrap
+      title: Bootstrap
     - file: 04-cross-val-bootstrap/quiz-sum-ref
       title: Quiz & summary
   - file: 05-hypo-test-sw-dev/overview
