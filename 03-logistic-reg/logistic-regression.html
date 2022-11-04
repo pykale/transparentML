@@ -101,6 +101,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/pykale/transparentML/discussions">
+   Discussion forum
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../00-prereq/overview.html">
    Prerequisites
@@ -294,8 +299,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../05-hypo-test-sw-dev/hypothesis-testing.html">
+     5.1. Hypothesis testing
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../05-hypo-test-sw-dev/quiz-sum-ref.html">
-     5.1. Quiz &amp; summary
+     5.2. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -768,8 +778,8 @@ y = \beta_0 + \beta_1 x_1.
 </div>
 </div>
 <p>Let <span class="math notranslate nohighlight">\(p(x) = \mathbb{P}(y=1| x)\)</span>, resulting in:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-01ed8d74-999b-4cf4-9ae6-ed4a3cca2f0a">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-01ed8d74-999b-4cf4-9ae6-ed4a3cca2f0a" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ae119ece-ecca-4a11-a9b6-835514db3c65">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-ae119ece-ecca-4a11-a9b6-835514db3c65" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \frac{1-p(x)}{p(x)} &amp;= e^{-(\beta_0 + \beta_1 x_1)} \\
 \ln \left( \frac{1-p(x)}{p(x)} \right) &amp;= -(\beta_0 + \beta_1 x_1) \\
@@ -810,8 +820,8 @@ y = \beta_0 + \beta_1 x_1.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LogisticRegression(solver=&#39;newton-cg&#39;)
 classes:  [0 1]
-coefficients:  [[0.00549892]]
-intercept : [-10.65132978]
+coefficients:  [[0.00549891]]
+intercept : [-10.65132548]
 </pre></div>
 </div>
 </div>
@@ -899,8 +909,8 @@ intercept : [-10.65132978]
 <ul class="simple">
 <li><p>When the probability of default is 0.5, the corresponding balance can be calculated using the <em>log odds</em> equation above:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-3d6d4fb2-355b-4f53-a7c9-7fc123c7f44b">
-<span class="eqno">(3.2)<a class="headerlink" href="#equation-3d6d4fb2-355b-4f53-a7c9-7fc123c7f44b" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-13d48597-a4da-4da3-8fac-6ce82288bb6c">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-13d48597-a4da-4da3-8fac-6ce82288bb6c" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \ln \left(\frac{p(x)}{1-p(x)}\right) &amp;= \beta_0 + \beta_1 \times x \\
 \ln \left(\frac{0.5}{1-0.5}\right) &amp;= \beta_0 + \beta_1 \times x \\
@@ -1067,8 +1077,8 @@ x &amp; = 1936.9858426745614.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LogisticRegression(max_iter=1000, penalty=&#39;none&#39;, solver=&#39;newton-cg&#39;)
 classes:  [0 1]
-coefficients:  [[ 5.73354382e-03  2.91920072e-06 -6.49305055e-01]]
-intercept : [-10.85951046]
+coefficients:  [[ 5.73593136e-03  3.01131944e-06 -6.47265842e-01]]
+intercept : [-10.86719778]
 </pre></div>
 </div>
 </div>
@@ -1205,7 +1215,7 @@ intercept : [-10.85951046]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ROC AUC:  0.05044871083973183
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ROC AUC:  0.05044715761587593
 </pre></div>
 </div>
 <img alt="../_images/logistic-regression_21_1.png" src="../_images/logistic-regression_21_1.png" />

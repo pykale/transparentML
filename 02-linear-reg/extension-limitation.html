@@ -101,6 +101,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/pykale/transparentML/discussions">
+   Discussion forum
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../00-prereq/overview.html">
    Prerequisites
@@ -294,8 +299,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../05-hypo-test-sw-dev/hypothesis-testing.html">
+     5.1. Hypothesis testing
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../05-hypo-test-sw-dev/quiz-sum-ref.html">
-     5.1. Quiz &amp; summary
+     5.2. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -909,8 +919,8 @@ memory usage: 30.6+ KB
 y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon.
 \]</div>
 <p>This model can be extended to include an interaction term between <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-900aa114-54e2-43c9-bdca-53cd2b48c8e5">
-<span class="eqno">(2.21)<a class="headerlink" href="#equation-900aa114-54e2-43c9-bdca-53cd2b48c8e5" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e7284bca-7532-4632-a2e9-2044cc8c9776">
+<span class="eqno">(2.21)<a class="headerlink" href="#equation-e7284bca-7532-4632-a2e9-2044cc8c9776" title="Permalink to this equation">¶</a></span>\[\begin{align}
 y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 &amp;= \beta_0 + (\beta_1 + \beta_3 x_2) x_1 + \beta_2 x_2 + \epsilon \\
 &amp;= \beta_0 + \tilde{\beta}_1 x_1 + \beta_2 x_2 + \epsilon,
@@ -1048,8 +1058,8 @@ dtype: float64
 </div>
 </div>
 <p>The figure shows a strong relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>, but it is clearly not linear. We can use a polynomial regression to fit a non-linear model to the data. We can fit a polynomial regression of degree 2 (quadratic) to the data using the following regression:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-57af0aac-e459-4557-9087-a7d7aa5268d4">
-<span class="eqno">(2.22)<a class="headerlink" href="#equation-57af0aac-e459-4557-9087-a7d7aa5268d4" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-742e6a8d-f9d1-4a21-a2a9-58ef9d4b1c0f">
+<span class="eqno">(2.22)<a class="headerlink" href="#equation-742e6a8d-f9d1-4a21-a2a9-58ef9d4b1c0f" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \textrm{mpg} = \beta_0 + \beta_1 \times \textrm{horsepower} + \beta_2 \times \textrm{horsepower}^2 + \epsilon.
 \end{equation}\]</div>
 <p>Run the following code to display the relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> (gas mileage in miles per gallon) and <span class="math notranslate nohighlight">\(\textrm{horsepower}^2\)</span> as well as <span class="math notranslate nohighlight">\(\textrm{horsepower}^5\)</span> (Figure 3.8 of the textbook) for cars in the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset.</p>
@@ -1695,10 +1705,10 @@ chas
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   31.47</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Thu, 03 Nov 2022</td> <th>  Prob (F-statistic):</th> <td>1.57e-56</td>
+  <th>Date:</th>             <td>Fri, 04 Nov 2022</td> <th>  Prob (F-statistic):</th> <td>1.57e-56</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>18:26:07</td>     <th>  Log-Likelihood:    </th> <td> -1653.3</td>
+  <th>Time:</th>                 <td>10:47:00</td>     <th>  Log-Likelihood:    </th> <td> -1653.3</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   506</td>      <th>  AIC:               </th> <td>   3335.</td>

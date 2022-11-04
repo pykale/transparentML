@@ -1,0 +1,840 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5.1. Hypothesis testing &#8212; Transparent ML Intro</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5.2. Quiz and summary" href="quiz-sum-ref.html" />
+    <link rel="prev" title="5. Hypothesis Testing and Software Development" href="overview.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/transparentml-logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Transparent ML Intro</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Overview
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/pykale/transparentML/discussions">
+   Discussion forum
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../00-prereq/overview.html">
+   Prerequisites
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00-prereq/linear-algebra-and-notations.html">
+     Linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00-prereq/basic-python.html">
+     Python basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00-prereq/numerical-programming.html">
+     Numerical programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00-prereq/graphics.html">
+     Graphics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00-prereq/loading-data.html">
+     Loading data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00-prereq/quiz-sum-ref.html">
+     Quiz &amp; summary
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Basics
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01-intro/overview.html">
+   1. Intro ML &amp; Transparency
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-intro/what-is-ml.html">
+     1.1. What is ML?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-intro/ml-systems.html">
+     1.2. ML systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-intro/ml-process.html">
+     1.3. ML process
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-intro/ml-transp.html">
+     1.4. ML transparency
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-intro/knn.html">
+     1.5. KNN classifier
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-intro/organisation.html">
+     1.6. Organisation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-intro/quiz-sum-ref.html">
+     1.7. Quiz &amp; summary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02-linear-reg/overview.html">
+   2. Linear regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-linear-reg/simple-linear-regression.html">
+     2.1. Simple linear regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-linear-reg/multi-linear-regression.html">
+     2.2. Multiple linear regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-linear-reg/extension-limitation.html">
+     2.3. Extensions &amp; limitations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-linear-reg/quiz-sum-ref.html">
+     2.4. Quiz &amp; summary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03-logistic-reg/overview.html">
+   3. Logistic regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-logistic-reg/classification.html">
+     3.1. An overview of classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-logistic-reg/logistic-regression.html">
+     3.2. Logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-logistic-reg/quiz-sum-ref.html">
+     3.3. Quiz &amp; summary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04-cross-val-bootstrap/overview.html">
+   4. Cross validation &amp; bootstrap
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-cross-val-bootstrap/cross-validation.html">
+     4.1. Cross validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-cross-val-bootstrap/bootstrap.html">
+     4.2. Bootstrap
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-cross-val-bootstrap/quiz-sum-ref.html">
+     4.3. Quiz &amp; summary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="overview.html">
+   5. Hypothesis testing &amp; software dev
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     5.1. Hypothesis testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quiz-sum-ref.html">
+     5.2. Quiz &amp; summary
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Advanced
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../06-ftr-select-shrink/overview.html">
+   6. Feature selection &amp; shrinkage
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-ftr-select-shrink/quiz-sum-ref.html">
+     6.1. Quiz &amp; summary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../07-dec-trees-rnd-forest/overview.html">
+   7. Decision trees &amp; random forests
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-dec-trees-rnd-forest/quiz-sum-ref.html">
+     7.1. Quiz &amp; summary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../08-nb-glm-svm/overview.html">
+   8. Naive Bayes, GLM &amp; SVM
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-nb-glm-svm/quiz-sum-ref.html">
+     8.1. Quiz &amp; summary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../09-pca-kmeans/overview.html">
+   9. PCA &amp; K-means
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-pca-kmeans/quiz-sum-ref.html">
+     9.1. Quiz &amp; summary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../10-deep-cnn-rnn/overview.html">
+   10. Convolutional &amp; recurrent NN
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-deep-cnn-rnn/quiz-sum-ref.html">
+     10.1. Quiz &amp; summary
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/system-transp.html">
+   System transparency
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/process-transp.html">
+   Process transparency
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/bibliography.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/05-hypo-test-sw-dev/hypothesis-testing.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/pykale/transparentML"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F05-hypo-test-sw-dev/hypothesis-testing.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/05-hypo-test-sw-dev/hypothesis-testing.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inference-via-hypothesis-testing">
+   5.1.1. Inference via hypothesis testing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#four-steps-of-hypothesis-testing">
+   5.1.2. Four steps of hypothesis testing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-1-define-the-null-and-alternative-hypotheses">
+     5.1.2.1. Step 1: Define the null and alternative hypotheses
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-construct-a-test-statistic">
+     5.1.2.2. Step 2: Construct a test statistic
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-3-compute-a-p-value">
+     5.1.2.3. Step 3: Compute a
+     <span class="math notranslate nohighlight">
+      \(p\)
+     </span>
+     -value
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-4-decide-whether-to-reject-the-null-hypothesis-h-0">
+     5.1.2.4. Step 4: Decide whether to reject the null hypothesis
+     <span class="math notranslate nohighlight">
+      \(H_0\)
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#type-i-and-type-ii-errors">
+   5.1.3. Type I and Type II errors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition">
+     5.1.3.1. Definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trade-off-between-type-i-and-type-ii-errors">
+     5.1.3.2. Trade-off between Type I and Type II errors
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Hypothesis testing</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inference-via-hypothesis-testing">
+   5.1.1. Inference via hypothesis testing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#four-steps-of-hypothesis-testing">
+   5.1.2. Four steps of hypothesis testing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-1-define-the-null-and-alternative-hypotheses">
+     5.1.2.1. Step 1: Define the null and alternative hypotheses
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-construct-a-test-statistic">
+     5.1.2.2. Step 2: Construct a test statistic
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-3-compute-a-p-value">
+     5.1.2.3. Step 3: Compute a
+     <span class="math notranslate nohighlight">
+      \(p\)
+     </span>
+     -value
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-4-decide-whether-to-reject-the-null-hypothesis-h-0">
+     5.1.2.4. Step 4: Decide whether to reject the null hypothesis
+     <span class="math notranslate nohighlight">
+      \(H_0\)
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#type-i-and-type-ii-errors">
+   5.1.3. Type I and Type II errors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition">
+     5.1.3.1. Definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trade-off-between-type-i-and-type-ii-errors">
+     5.1.3.2. Trade-off between Type I and Type II errors
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="hypothesis-testing">
+<h1><span class="section-number">5.1. </span>Hypothesis testing<a class="headerlink" href="#hypothesis-testing" title="Permalink to this headline">¶</a></h1>
+<p>Hypothesis testing has been mentioned briefly in Chapter 2 <span class="xref std std-doc">Linear regression</span>, but it has not been explained in detail. This chapter will explain the basics of hypothesis testing and how it can be used to conduct <em>inference</em>.</p>
+<div class="section" id="inference-via-hypothesis-testing">
+<h2><span class="section-number">5.1.1. </span>Inference via hypothesis testing<a class="headerlink" href="#inference-via-hypothesis-testing" title="Permalink to this headline">¶</a></h2>
+<p>Hypothesis testing is a way to make inferences about a population based on a sample (of the population). Inference is the process of using sample data to make conclusions about a population. Inference is a key part of data science because we often do not have access to the entire population of interest. Instead, we have a sample of the population. Inference allows us to make conclusions about the population based on the sample.</p>
+<p>A statistical hypothesis test answers simple “yes-or-no” questions about data, to decide whether the data at hand sufficiently support a particular hypothesis, for example</p>
+<ul class="simple">
+<li><p>Q1. Is the coefficient <span class="math notranslate nohighlight">\(\beta_d\)</span> in a linear regression of <span class="math notranslate nohighlight">\(y\)</span> onto <span class="math notranslate nohighlight">\(x_1, . . . , x_D\)</span> equal to zero?</p></li>
+<li><p>Q2. Is there a difference in the mean blood pressure of laboratory mice in the control group and laboratory mice in the treatment group?</p></li>
+</ul>
+<p>As a formal procedure for testing a hypothesis, the hypothesis test is based on a null hypothesis and an alternative hypothesis. The null hypothesis is a statement about the population that is assumed to be true. The alternative hypothesis is a statement about the population that is assumed to be false. The null hypothesis is often denoted by <span class="math notranslate nohighlight">\(H_0\)</span> and the alternative hypothesis is often denoted by <span class="math notranslate nohighlight">\(H_1\)</span>.</p>
+<p>Watch the 14-minute video below for a visual explanation of hypothesis testing in the context of testing drugs for treatment.</p>
+<div class="admonition-video admonition">
+<p class="admonition-title">Video</p>
+<iframe width="700" height="394" src="https://www.youtube.com/embed/0oc49DyA3hU?start=16" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p><a class="reference external" href="https://www.youtube.com/embed/0oc49DyA3hU?start=16">Explaining Hypothesis Testing, by StatQuest</a></p>
+</div>
+</div>
+<div class="section" id="four-steps-of-hypothesis-testing">
+<h2><span class="section-number">5.1.2. </span>Four steps of hypothesis testing<a class="headerlink" href="#four-steps-of-hypothesis-testing" title="Permalink to this headline">¶</a></h2>
+<p>The four steps of hypothesis testing are:</p>
+<ol class="simple">
+<li><p>Define the null hypothesis and the alternative hypothesis.</p></li>
+<li><p>Construct a test statistic that summarizes the strength of evidence against the null hypothesis.</p></li>
+<li><p>Compute a <span class="math notranslate nohighlight">\(p\)</span>-value that quantifies the probability of having obtained a comparable or more extreme value of the test statistic under the null hypothesis.</p></li>
+<li><p>Decide whether to reject the null hypothesis based on the <span class="math notranslate nohighlight">\(p\)</span>-value.</p></li>
+</ol>
+<div class="section" id="step-1-define-the-null-and-alternative-hypotheses">
+<h3><span class="section-number">5.1.2.1. </span>Step 1: Define the null and alternative hypotheses<a class="headerlink" href="#step-1-define-the-null-and-alternative-hypotheses" title="Permalink to this headline">¶</a></h3>
+<p>In hypothesis testing, we consider two possibilities: the null hypothesis and the alternative hypothesis. The null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> is the <em>default</em> state of belief about the world. For example, the null hypotheses
+associated with the two questions Q1 and Q2 above are:</p>
+<ul class="simple">
+<li><p>Q1. The coefficient <span class="math notranslate nohighlight">\(\beta_d\)</span> in a linear regression of <span class="math notranslate nohighlight">\(y\)</span> onto <span class="math notranslate nohighlight">\(x_1, . . . , x_D\)</span> is equal to zero.</p></li>
+<li><p>Q2. There is no difference between the mean blood pressure of mice in the control and treatment groups.</p></li>
+</ul>
+<p>The alternative hypothesis <span class="math notranslate nohighlight">\(H_1\)</span> is the <em>opposite</em> of the null hypothesis, representing something different and often more interesting to us, e.g., there is a difference between the mean blood pressure of the mice in the two groups.</p>
+<p>Typically, we focus on using data to reject <span class="math notranslate nohighlight">\(H_0\)</span>, if there is sufficient evidence in favor of <span class="math notranslate nohighlight">\(H_1\)</span>. We
+can consider rejecting <span class="math notranslate nohighlight">\(H_0\)</span> as making a <em>discovery</em> about our data, i.e., we are discovering that <span class="math notranslate nohighlight">\(H_0\)</span> does not hold! However, if we fail to reject <span class="math notranslate nohighlight">\(H_0\)</span>, we are not making a discovery, but we are not necessarily saying that <span class="math notranslate nohighlight">\(H_0\)</span> is true. We are simply saying that we do not have sufficient evidence to reject <span class="math notranslate nohighlight">\(H_0\)</span>, since there can be multiple reasons for failing to reject <span class="math notranslate nohighlight">\(H_0\)</span>, e.g., the null hypothesis is true, or the sample size is too small, or the test statistic is not sensitive enough to detect a difference between the two groups.</p>
+</div>
+<div class="section" id="step-2-construct-a-test-statistic">
+<h3><span class="section-number">5.1.2.2. </span>Step 2: Construct a test statistic<a class="headerlink" href="#step-2-construct-a-test-statistic" title="Permalink to this headline">¶</a></h3>
+<p>Next, we use our data to find evidence for or against the null hypothesis. A <a class="reference external" href="https://en.wikipedia.org/wiki/Test_statistic">test statistic</a>, often denoted by <span class="math notranslate nohighlight">\(T\)</span>, is a function of the data that summarises the strength of evidence against the null hypothesis. Such function is often constructed from the sample mean and the sample standard deviation.</p>
+<p>For example, denote the blood pressure measurements for the <span class="math notranslate nohighlight">\(D_t\)</span> mice in the treatment group as <span class="math notranslate nohighlight">\(x^t_1, \cdots, x^t_{D_t}\)</span> and the blood pressure measurements for the <span class="math notranslate nohighlight">\(D_c\)</span> mice in the control group as <span class="math notranslate nohighlight">\(x^c_1, \cdots, x^c_{D_c}\)</span>. Denote their means as <span class="math notranslate nohighlight">\(\mu_t\)</span> and <span class="math notranslate nohighlight">\(\mu_c\)</span>, respectively. Then, the test statistic for the two-sample <span class="math notranslate nohighlight">\(t\)</span>-test for testing <span class="math notranslate nohighlight">\(H_0: \mu_t = \mu_c\)</span> versus <span class="math notranslate nohighlight">\(H_1: \mu_t \neq \mu_c\)</span> is</p>
+<p>T = <span class="math notranslate nohighlight">\(\frac{\hat{\mu}_t - \hat{\mu}_c}{\sqrt{\frac{s^2_t}{D_t} + \frac{s^2_c}{D_c}}}\)</span>,</p>
+<p>where <span class="math notranslate nohighlight">\(\hat{\mu}_t\)</span> and <span class="math notranslate nohighlight">\(\hat{\mu}_c\)</span> are the sample means of the treatment and control groups, respectively, and <span class="math notranslate nohighlight">\(s^2_t\)</span> and <span class="math notranslate nohighlight">\(s^2_c\)</span> are the sample variances of the treatment and control groups, respectively.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">How to interpret this statistic?</p>
+<p>This test statistic <span class="math notranslate nohighlight">\(T\)</span> is a measure of the difference between the two sample means, scaled by the standard deviation of the two samples. The larger the test statistic <span class="math notranslate nohighlight">\(T\)</span>, the more evidence there is against the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> (and in support of the alternative hypothesis <span class="math notranslate nohighlight">\(H_1\)</span>). The smaller the test statistic <span class="math notranslate nohighlight">\(T\)</span>, the more evidence there is in favor of the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> (and against the alternative hypothesis <span class="math notranslate nohighlight">\(H_1\)</span>).</p>
+</div>
+</div>
+<div class="section" id="step-3-compute-a-p-value">
+<h3><span class="section-number">5.1.2.3. </span>Step 3: Compute a <span class="math notranslate nohighlight">\(p\)</span>-value<a class="headerlink" href="#step-3-compute-a-p-value" title="Permalink to this headline">¶</a></h3>
+<p>The test statistic above is typically used to compute the <a class="reference external" href="https://en.wikipedia.org/wiki/P-value"><span class="math notranslate nohighlight">\(p\)</span>-value</a>, which is the probability of obtaining a test statistic at least as extreme as the one observed, assuming that the null hypothesis is true. The <span class="math notranslate nohighlight">\(p\)</span>-value is a measure of the strength of evidence against the null hypothesis. The smaller the <span class="math notranslate nohighlight">\(p\)</span>-value, the more evidence there is against the null hypothesis. The larger the <span class="math notranslate nohighlight">\(p\)</span>-value, the more evidence there is in favor of the null hypothesis.</p>
+<p>Watch the 11-minute video below for a visual explanation of <span class="math notranslate nohighlight">\(p\)</span>-value in the context of testing drugs for treatment.</p>
+<div class="admonition-video admonition">
+<p class="admonition-title">Video</p>
+<iframe width="700" height="394" src="https://www.youtube.com/embed/vemZtEM63GY?start=11" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p><a class="reference external" href="https://www.youtube.com/embed/vemZtEM63GY?start=16">Explanation and interpretation of <span class="math notranslate nohighlight">\(p\)</span>-value, by StatQuest</a></p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">How to interpret the <span class="math notranslate nohighlight">\(p\)</span>-value?</p>
+<p>The <span class="math notranslate nohighlight">\(p\)</span>-value is as the fraction of the time that we would expect to see such an extreme value of the test
+statistic if we repeated the experiment many many times, provided that the null hypothesis is true. If the <span class="math notranslate nohighlight">\(p\)</span>-value is small, then we would expect to see such an extreme value of the test statistic only a small fraction of the time, if we repeated the experiment many many times, provided that the null hypothesis is true. In this case, we would have strong evidence against the null hypothesis. If the <span class="math notranslate nohighlight">\(p\)</span>-value is large, then we would expect to see such an extreme value of the test statistic a large fraction of the time, if we repeated the experiment many many times, provided that the null hypothesis is true. In this case, we would have weak evidence against the null hypothesis.</p>
+</div>
+<p>In Step 2, we pointed out that a large (absolute) value of the test statistic provides evidence against <span class="math notranslate nohighlight">\(H_0\)</span>. Suppose
+a data analyst conducts a statistical test, and reports a test statistic of <span class="math notranslate nohighlight">\(T\)</span> = 17.3. Does this provide strong evidence against <span class="math notranslate nohighlight">\(H_0\)</span>? It’s impossible to know without more information: we would need to know what value of the test statistic should be expected, under <span class="math notranslate nohighlight">\(H_0\)</span>, if the data analyst had repeated the experiment many times. If the data analyst had repeated the experiment many times, and the test statistic was typically around 0, then a value of 17.3 would be very unusual, and we would have strong evidence against <span class="math notranslate nohighlight">\(H_0\)</span>. However, if the data analyst had repeated the experiment many times, and the test statistic was typically around 10, then a value of 17.3 would be less unusual, and we would have weaker evidence against <span class="math notranslate nohighlight">\(H_0\)</span>.</p>
+<p>This is exactly what a <span class="math notranslate nohighlight">\(p\)</span>-value measures. A <span class="math notranslate nohighlight">\(p\)</span>-value allows us to transform (or standardise) our test statistic, which is measured on some arbitrary and uninterpretable scale, into a number between 0 and 1 that can be <em>more easily interpreted</em>.</p>
+</div>
+<div class="section" id="step-4-decide-whether-to-reject-the-null-hypothesis-h-0">
+<h3><span class="section-number">5.1.2.4. </span>Step 4: Decide whether to reject the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span><a class="headerlink" href="#step-4-decide-whether-to-reject-the-null-hypothesis-h-0" title="Permalink to this headline">¶</a></h3>
+<p>Finally, we decide whether to reject <span class="math notranslate nohighlight">\(H_0\)</span> or not (we do not usually talk about “accepting” <span class="math notranslate nohighlight">\(H_0\)</span>: instead, we talk about “failing to reject” <span class="math notranslate nohighlight">\(H_0\)</span>). We reject <span class="math notranslate nohighlight">\(H_0\)</span> if the <span class="math notranslate nohighlight">\(p\)</span>-value is less than a pre-specified significance level <span class="math notranslate nohighlight">\(\alpha\)</span>. The significance level <span class="math notranslate nohighlight">\(\alpha\)</span> is a number between 0 and 1 that we choose before we conduct the statistical test. We typically choose <span class="math notranslate nohighlight">\(\alpha\)</span> = 0.05 or <span class="math notranslate nohighlight">\(\alpha\)</span> = 0.01, which is a common convention in the scientific community (with 0.05 being more common). If the <span class="math notranslate nohighlight">\(p\)</span>-value is less than <span class="math notranslate nohighlight">\(\alpha\)</span>, then we reject <span class="math notranslate nohighlight">\(H_0\)</span>. If the <span class="math notranslate nohighlight">\(p\)</span>-value is greater than or equal to <span class="math notranslate nohighlight">\(\alpha\)</span>, then we <em>fail to reject</em> <span class="math notranslate nohighlight">\(H_0\)</span>. Furthermore, a data analyst
+should typically report the <span class="math notranslate nohighlight">\(p\)</span>-value itself, rather than just whether or not it exceeds a specified threshold value.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">How to interpret the significance level <span class="math notranslate nohighlight">\(\alpha\)</span>?</p>
+<p>The significance level <span class="math notranslate nohighlight">\(\alpha\)</span> is the probability of rejecting <span class="math notranslate nohighlight">\(H_0\)</span> when it is true. For example, if <span class="math notranslate nohighlight">\(\alpha\)</span> = 0.05, then there is a 5% chance of rejecting <span class="math notranslate nohighlight">\(H_0\)</span> when it is true. In other words, if <span class="math notranslate nohighlight">\(H_0\)</span> holds, we would
+expect to see such a small <span class="math notranslate nohighlight">\(p\)</span>-value no more than 5% of the time. On the other hand, there is a 95% chance of <em>not</em> rejecting <span class="math notranslate nohighlight">\(H_0\)</span> when it is true. Nothing is absolute here.</p>
+</div>
+</div>
+</div>
+<div class="section" id="type-i-and-type-ii-errors">
+<h2><span class="section-number">5.1.3. </span>Type I and Type II errors<a class="headerlink" href="#type-i-and-type-ii-errors" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="definition">
+<h3><span class="section-number">5.1.3.1. </span>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h3>
+<p>In the context of hypothesis testing, we can distinguish between two types of errors: Type I errors and Type II errors. A Type I error occurs when we reject <span class="math notranslate nohighlight">\(H_0\)</span> when it is true. A Type II error occurs when we fail to reject <span class="math notranslate nohighlight">\(H_0\)</span> when it is false. A Type I error is also known as a <em>false positive</em>, and a Type II error is also known as a <em>false negative</em>. A summary of the possible scenarios associated with testing the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> is shown in table below.</p>
+<table class="colwidths-auto table" id="table-13-1">
+<caption><span class="caption-number">Table 5.1 </span><span class="caption-text">Possible scenarios associated with testing the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> (equivalent to Table 13.1 of the textbook). Type I errors are also known as false positives, and Type II errors as false negatives.</span><a class="headerlink" href="#table-13-1" title="Permalink to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Reject <span class="math notranslate nohighlight">\(H_0\)</span></p></th>
+<th class="head"><p>Fail to reject <span class="math notranslate nohighlight">\(H_0\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(H_0\)</span> is true</p></td>
+<td><p>Type I error</p></td>
+<td><p>Correct decision</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(H_0\)</span> is false</p></td>
+<td><p>Correct decision</p></td>
+<td><p>Type II error</p></td>
+</tr>
+</tbody>
+</table>
+<p>The table above summarises the possible scenarios associated with testing the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span>. The first row of the table shows the two possible outcomes of the statistical test (that we know after performing the test): either we reject <span class="math notranslate nohighlight">\(H_0\)</span> or we fail to reject <span class="math notranslate nohighlight">\(H_0\)</span>. The first column of the table shows the two possible ground-truth values of <span class="math notranslate nohighlight">\(H_0\)</span> (that we do not know): either <span class="math notranslate nohighlight">\(H_0\)</span> is true or <span class="math notranslate nohighlight">\(H_0\)</span> is false. The four cells in the table show the four possible scenarios that can occur when we test <span class="math notranslate nohighlight">\(H_0\)</span>.</p>
+<p>If we reject <span class="math notranslate nohighlight">\(H_0\)</span> when it is true, then we have made a Type I error. If we fail to reject <span class="math notranslate nohighlight">\(H_0\)</span> when it is false, then we have made a Type II error. If we reject <span class="math notranslate nohighlight">\(H_0\)</span> when it is false, then we have made a correct decision. If we fail to reject <span class="math notranslate nohighlight">\(H_0\)</span> when it is true, then we have made a correct decision too.</p>
+<p>The <em>Type I error rate</em> is defined as the probability of making a Type I error given that <span class="math notranslate nohighlight">\(H_0\)</span> is true, i.e., the probability of incorrectly rejecting <span class="math notranslate nohighlight">\(H_0\)</span>. The power of the hypothesis test is defined as the probability of NOT making a Type II error given that <span class="math notranslate nohighlight">\(H_1\)</span> holds, i.e., the probability of correctly rejecting <span class="math notranslate nohighlight">\(H_0\)</span>.</p>
+<div class="note admonition">
+<p class="admonition-title">Connections to classification</p>
+<p>The Type I error rate is equivalent to the false positive rate in binary classification, i.e. predicting a positive (non-null) label when the true label is in fact negative (null). The power of the hypothesis test is equivalent to the true positive rate in classification.</p>
+</div>
+</div>
+<div class="section" id="trade-off-between-type-i-and-type-ii-errors">
+<h3><span class="section-number">5.1.3.2. </span>Trade-off between Type I and Type II errors<a class="headerlink" href="#trade-off-between-type-i-and-type-ii-errors" title="Permalink to this headline">¶</a></h3>
+<p>Ideally we would like both the Type I and Type II errors to be small. But there typically is a trade-off: we can make the Type I error small by only rejecting <span class="math notranslate nohighlight">\(H_0\)</span> when we have strong evidence against it, but this will increase the Type II error. We can make the Type II error small by rejecting <span class="math notranslate nohighlight">\(H_0\)</span> even when we have weak evidence against it, but this will increase the Type I error.</p>
+<p>The significance level <span class="math notranslate nohighlight">\(\alpha\)</span> is a trade-off between the Type I and Type II errors. If we choose a small value of <span class="math notranslate nohighlight">\(\alpha\)</span>, then we will have strong evidence against <span class="math notranslate nohighlight">\(H_0\)</span> when we reject it, but this will increase the Type II error. If we choose a large value of <span class="math notranslate nohighlight">\(\alpha\)</span>, then we will have weak evidence against <span class="math notranslate nohighlight">\(H_0\)</span> when we reject it, but this will increase the Type I error. By only rejecting <span class="math notranslate nohighlight">\(H_0\)</span> when the <span class="math notranslate nohighlight">\(p\)</span>-value is below <span class="math notranslate nohighlight">\(\alpha\)</span>, we ensure that the Type I error
+rate will be less than or equal to <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+<p>In practice, we typically view Type I errors as more “serious” than Type II errors, because the former involves
+declaring a scientific finding that is not correct, which is more serious than failing to declare a scientific finding. Therefore, when we perform hypothesis testing, we typically require a low Type I error rate — e.g. at most <span class="math notranslate nohighlight">\(\alpha\)</span> = 0.05 — while trying to make the Type II error small (or, equivalently, the power large).</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./05-hypo-test-sw-dev"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="overview.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>Hypothesis Testing and Software Development</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="quiz-sum-ref.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5.2. </span>Quiz and summary</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Haiping Lu and Shuo Zhou<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
