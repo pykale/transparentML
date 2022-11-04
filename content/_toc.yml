@@ -6,6 +6,8 @@ root: index
 title: Introduction
 parts:
 - chapters:
+  - url: https://github.com/pykale/transparentML/discussions
+    title: Discussion forum
   - file: 00-prereq/overview
     title: Prerequisites
     sections:
@@ -70,6 +72,8 @@ parts:
   - file: 05-hypo-test-sw-dev/overview
     title: Hypothesis testing & software dev
     sections:
+    - file: 05-hypo-test-sw-dev/hypothesis-testing
+      title: Hypothesis testing
     - file: 05-hypo-test-sw-dev/quiz-sum-ref
       title: Quiz & summary
 - caption: Advanced
