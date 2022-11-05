@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -328,8 +329,18 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../06-ftr-select-shrink/subset-select.html">
+     6.1. Feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-ftr-select-shrink/shrink.html">
+     6.2. Shrinkage
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../06-ftr-select-shrink/quiz-sum-ref.html">
-     6.1. Quiz &amp; summary
+     6.3. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -778,8 +789,8 @@ y = \beta_0 + \beta_1 x_1.
 </div>
 </div>
 <p>Let <span class="math notranslate nohighlight">\(p(x) = \mathbb{P}(y=1| x)\)</span>, resulting in:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9317cf21-7c73-451b-89e3-01d9d609556e">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-9317cf21-7c73-451b-89e3-01d9d609556e" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b0c06288-2cc2-4669-80cc-a3237cd3c3fd">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-b0c06288-2cc2-4669-80cc-a3237cd3c3fd" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \frac{1-p(x)}{p(x)} &amp;= e^{-(\beta_0 + \beta_1 x_1)} \\
 \ln \left( \frac{1-p(x)}{p(x)} \right) &amp;= -(\beta_0 + \beta_1 x_1) \\
@@ -820,8 +831,8 @@ y = \beta_0 + \beta_1 x_1.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LogisticRegression(solver=&#39;newton-cg&#39;)
 classes:  [0 1]
-coefficients:  [[0.00549892]]
-intercept : [-10.65132978]
+coefficients:  [[0.00549891]]
+intercept : [-10.65132548]
 </pre></div>
 </div>
 </div>
@@ -909,8 +920,8 @@ intercept : [-10.65132978]
 <ul class="simple">
 <li><p>When the probability of default is 0.5, the corresponding balance can be calculated using the <em>log odds</em> equation above:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-2b2cc5cc-90a6-479e-862c-4279d02394ea">
-<span class="eqno">(3.2)<a class="headerlink" href="#equation-2b2cc5cc-90a6-479e-862c-4279d02394ea" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ddcbd7b4-6fc0-4102-9abb-ce8150d6a2c9">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-ddcbd7b4-6fc0-4102-9abb-ce8150d6a2c9" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \ln \left(\frac{p(x)}{1-p(x)}\right) &amp;= \beta_0 + \beta_1 \times x \\
 \ln \left(\frac{0.5}{1-0.5}\right) &amp;= \beta_0 + \beta_1 \times x \\
@@ -1077,8 +1088,8 @@ x &amp; = 1936.9858426745614.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LogisticRegression(max_iter=1000, penalty=&#39;none&#39;, solver=&#39;newton-cg&#39;)
 classes:  [0 1]
-coefficients:  [[ 5.73354382e-03  2.91920072e-06 -6.49305055e-01]]
-intercept : [-10.85951046]
+coefficients:  [[ 5.73593136e-03  3.01131944e-06 -6.47265842e-01]]
+intercept : [-10.86719778]
 </pre></div>
 </div>
 </div>
@@ -1215,7 +1226,7 @@ intercept : [-10.85951046]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ROC AUC:  0.05044871083973183
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ROC AUC:  0.05044715761587593
 </pre></div>
 </div>
 <img alt="../_images/logistic-regression_21_1.png" src="../_images/logistic-regression_21_1.png" />
