@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3.1. An overview of classification &#8212; Transparent ML Intro</title>
+    <title>3.1. Regression model for classification? &#8212; Transparent ML Intro</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -247,7 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     3.1. An overview of classification
+     3.1. Regress to classify?
     </a>
    </li>
    <li class="toctree-l2">
@@ -476,7 +476,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/03-logistic-reg/classification.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/03-logistic-reg/regress-to-classify.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -496,10 +496,10 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F03-logistic-reg/classification.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F03-logistic-reg/regress-to-classify.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/03-logistic-reg/classification.ipynb"><button
+        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/03-logistic-reg/regress-to-classify.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -519,7 +519,7 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/03-logistic-reg/classification.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/03-logistic-reg/regress-to-classify.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -527,7 +527,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/03-logistic-reg/classification.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/03-logistic-reg/regress-to-classify.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -552,9 +552,26 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-not-linear-regression">
-   3.1.2. Why not linear regression?
+  <a class="reference internal nav-link" href="#can-we-use-linear-regression-for-classification">
+   3.1.2. Can we use linear regression for classification?
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-about-converting-the-response-to-a-quantitative-variable">
+     3.1.2.1. How about converting the response to a quantitative variable?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#will-the-binary-case-work">
+     3.1.2.2. Will the binary case work?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reasons-not-to-perform-classification-using-a-regression-method">
+     3.1.2.3. Reasons not to perform classification using a regression method
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -566,7 +583,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>An overview of classification</h1>
+                <h1>Regression model for classification?</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -582,9 +599,26 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-not-linear-regression">
-   3.1.2. Why not linear regression?
+  <a class="reference internal nav-link" href="#can-we-use-linear-regression-for-classification">
+   3.1.2. Can we use linear regression for classification?
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-about-converting-the-response-to-a-quantitative-variable">
+     3.1.2.1. How about converting the response to a quantitative variable?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#will-the-binary-case-work">
+     3.1.2.2. Will the binary case work?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reasons-not-to-perform-classification-using-a-regression-method">
+     3.1.2.3. Reasons not to perform classification using a regression method
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -595,13 +629,13 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="an-overview-of-classification">
-<h1><span class="section-number">3.1. </span>An overview of classification<a class="headerlink" href="#an-overview-of-classification" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="regression-model-for-classification">
+<h1><span class="section-number">3.1. </span>Regression model for classification?<a class="headerlink" href="#regression-model-for-classification" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="what-is-classification">
 <h2><span class="section-number">3.1.1. </span>What is classification?<a class="headerlink" href="#what-is-classification" title="Permalink to this headline">¶</a></h2>
-<p>Just as in the regression setting, in the classification setting we have a set of training observations <span class="math notranslate nohighlight">\( (x_1, y_1), \dots, (x_n, y_n) \)</span>, where each <span class="math notranslate nohighlight">\( y_i \)</span> is a qualitative response.</p>
-<p>In this chapter, we will illustrate the concept of classification using the simulated <code class="docutils literal notranslate"><span class="pre">Default</span></code> data set. We are interested in predicting whether an individual will default on his or her credit card payment, which takes on the value <code class="docutils literal notranslate"><span class="pre">Yes</span></code> if the customer defaults on their credit card payment and <code class="docutils literal notranslate"><span class="pre">No</span></code> if they do not, on the basis of annual income and monthly credit card balance.</p>
-<p>Run the code cells below to load the libraries needed and the <code class="docutils literal notranslate"><span class="pre">Default</span></code> data as a pandas dataframe.</p>
+<p>Just as in the simple regression setting, in the simple (univariate) classification setting, we have a set of training observations <span class="math notranslate nohighlight">\( (x_1, y_1), \dots, (x_N, y_N) \)</span>, where each <span class="math notranslate nohighlight">\( y_n \)</span> is a qualitative (categorical) response.</p>
+<p>In this chapter, we will illustrate the concept of classification using the simulated <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Default.csv">Default dataset</a> (click to explore). We are interested in predicting whether an individual will default on his or her credit card payment, which takes on the value <code class="docutils literal notranslate"><span class="pre">Yes</span></code> if the customer defaults on their credit card payment and <code class="docutils literal notranslate"><span class="pre">No</span></code> if they do not, on the basis of annual income and monthly credit card balance.</p>
+<p>Get ready by importing the APIs needed from respective libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -611,13 +645,6 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
-
-<span class="c1"># from sklearn.discriminant_analysis import LinearDiscriminantAnalysis</span>
-<span class="c1"># from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis</span>
-<span class="c1"># from sklearn.metrics import confusion_matrix, classification_report, precision_score</span>
-<span class="c1"># from sklearn import preprocessing</span>
-<span class="c1"># from sklearn import neighbors</span>
-
 <span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">logit</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
@@ -625,6 +652,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<p>Load the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Default.csv">Default dataset</a> as a pandas dataframe, convert categories (<code class="docutils literal notranslate"><span class="pre">default</span></code> and <code class="docutils literal notranslate"><span class="pre">student</span></code>) to numerical values (0 and 1), and inspect the first three rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Default.csv&quot;</span>
@@ -697,7 +725,7 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </div></div></div>
 </div>
-<p>Run the following code to display 10,000 individuals’ data of annual <code class="docutils literal notranslate"><span class="pre">income</span></code> and monthly credit card <code class="docutils literal notranslate"><span class="pre">balance</span></code>, and the relationship with the <code class="docutils literal notranslate"><span class="pre">default</span></code> status.</p>
+<p>It is a good habit to inspect the data in a bit more detail before fitting a model. Let us visualise 10,000 individuals’ annual <code class="docutils literal notranslate"><span class="pre">income</span></code>, monthly credit card <code class="docutils literal notranslate"><span class="pre">balance</span></code>, and their relationships with the <code class="docutils literal notranslate"><span class="pre">default</span></code> status using <a class="reference external" href="https://en.wikipedia.org/wiki/Box_plot">box plot</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -746,52 +774,57 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/classification_4_0.png" src="../_images/classification_4_0.png" />
+<img alt="../_images/regress-to-classify_5_0.png" src="../_images/regress-to-classify_5_0.png" />
 </div>
 </div>
+<p>In the left-hand panel, the individuals who defaulted in a given month are shown in orange, and those who did not in blue. (The overall default rate is about 3%, so we have plotted only a fraction of the individuals who did not default.) In the centre and right-hand panels, two pairs of boxplots are shown. The first shows the distribution of balance split by the binary default variable; the second is a similar plot for income.</p>
 <div class="tip dropdown admonition">
-<p class="admonition-title">Observations from the plot</p>
-<p>In the left-hand panel of the above figure, the individuals who defaulted in a given month are shown in orange, and those who did not in blue. (The overall default rate is about 3%, so we have plotted only a fraction of the individuals who did not default.) It appears that individuals who defaulted tended to have higher credit card balances than those who did not.</p>
-<p>In the center and right-hand panels, two pairs of boxplots are shown. The first shows the distribution of balance split by the binary default variable; the second is a similar plot for income.</p>
+<p class="admonition-title">What can you observe from the visualisation above?</p>
+<p>From the left-hand panel, it appears that individuals who defaulted tended to have higher credit card balances than those who did not.</p>
+<p>From the centre and right-hand panels, it appears that individuals who defaulted tended to have higher balance than those who did not.</p>
 <!-- In this chapter, we learn how to build a model to predict default ($y$) for any given value of balance ($x_1$) and income ($x_2$). Since $y$ is not quantitative, the simple linear regression model of Chapter 3 is not a good choice: we will elaborate on this in the next section.  -->
-<p>It is worth noting that this example displays a very pronounced relationship between the predictor balance and the response default. In most real applications, the relationship between the predictor and the response will not be nearly so strong. To illustrate the classification procedures discussed, we use this example in which the relationship between the predictor and the response is somewhat exaggerated.</p>
 </div>
+<p>It is worth noting that this example displays a very pronounced relationship between the predictor <code class="docutils literal notranslate"><span class="pre">balance</span></code> and the response <code class="docutils literal notranslate"><span class="pre">default</span></code>. In most real applications, the relationship between the predictor and the response will not be nearly so strong. To illustrate the classification procedures discussed, we use this example in which the relationship between the predictor and the response is somewhat exaggerated.</p>
+<p>Can we use linear regression to predict the probability of default?</p>
 </div>
-<div class="section" id="why-not-linear-regression">
-<h2><span class="section-number">3.1.2. </span>Why not linear regression?<a class="headerlink" href="#why-not-linear-regression" title="Permalink to this headline">¶</a></h2>
-<p>There are two main reasons not to perform classification using a regression method:</p>
-<ul class="simple">
-<li><p>A regression method cannot accommodate a qualitative response with more than two classes;</p></li>
-<li><p>A regression method will not provide meaningful estimates of <span class="math notranslate nohighlight">\(\mathbb{P}(y|x)\)</span></p></li>
-</ul>
-<p>Suppose there are three medical conditions of patients in a emergency room: <code class="docutils literal notranslate"><span class="pre">stroke</span></code>, <code class="docutils literal notranslate"><span class="pre">drug</span> <span class="pre">overdose</span></code>, and <code class="docutils literal notranslate"><span class="pre">epileptic</span> <span class="pre">seizure</span></code>. We could consider encoding these values as a quantitative response variable, <span class="math notranslate nohighlight">\(y\)</span>, as follows:</p>
+<div class="section" id="can-we-use-linear-regression-for-classification">
+<h2><span class="section-number">3.1.2. </span>Can we use linear regression for classification?<a class="headerlink" href="#can-we-use-linear-regression-for-classification" title="Permalink to this headline">¶</a></h2>
+<!-- There are two main reasons not to perform classification using a regression method: 
+
+- A regression method cannot accommodate a qualitative response with more than two classes; 
+- A regression method will not provide meaningful estimates of $\mathbb{P}(y|x)$ -->
+<div class="section" id="how-about-converting-the-response-to-a-quantitative-variable">
+<h3><span class="section-number">3.1.2.1. </span>How about converting the response to a quantitative variable?<a class="headerlink" href="#how-about-converting-the-response-to-a-quantitative-variable" title="Permalink to this headline">¶</a></h3>
+<p>Since we can convert categorical variables (class labels) to numerical values, can we treat the classification problem as a regression problem and use linear regression to predict the class label?</p>
+<p>Suppose there are three medical conditions of patients in an emergency room: <code class="docutils literal notranslate"><span class="pre">stroke</span></code>, <code class="docutils literal notranslate"><span class="pre">drug</span> <span class="pre">overdose</span></code>, and <code class="docutils literal notranslate"><span class="pre">epileptic</span> <span class="pre">seizure</span></code>. We could consider encoding these values as a quantitative response variable, <span class="math notranslate nohighlight">\(y\)</span>, as follows:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 y = \begin{cases} 1 &amp; \text{if stroke}, \\ 2 &amp; \text{if drug overdose}, \\ 3 &amp; \text{if epileptic seizure}. \end{cases}
 \end{split}\]</div>
-<p>Using this coding, least squares could be used to fit a linear regression model to predict <span class="math notranslate nohighlight">\(y\)</span>. However, this coding implies that <code class="docutils literal notranslate"><span class="pre">drug</span> <span class="pre">overdose</span></code> is a condition in between <code class="docutils literal notranslate"><span class="pre">stroke</span></code> and <code class="docutils literal notranslate"><span class="pre">epileptic</span> <span class="pre">seizure</span></code>, and insisting that the difference between stroke and drug overdose is the same as the difference between drug overdose and epileptic seizure . In practice there is no particular reason that this needs to be the case. For instance, one could choose an equally reasonable coding,</p>
+<p>Using this coding, least squares could be used to fit a linear regression model to predict <span class="math notranslate nohighlight">\(y\)</span>. However, this coding implies that <code class="docutils literal notranslate"><span class="pre">drug</span> <span class="pre">overdose</span></code> is a condition in between <code class="docutils literal notranslate"><span class="pre">stroke</span></code> and <code class="docutils literal notranslate"><span class="pre">epileptic</span> <span class="pre">seizure</span></code>, and insisting that the difference between stroke and drug overdose is the same as the difference between drug overdose and epileptic seizure . In practice, there is no particular reason that this needs to be the case. For instance, one could choose an equally reasonable coding,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 y = \begin{cases} 1 &amp; \text{if epileptic seizure}, \\ 2 &amp; \text{if stroke}, \\ 3 &amp; \text{if drug overdose}, \end{cases}
 \end{split}\]</div>
 <p>which would imply a totally different relationship among the three conditions. Each of these codings would produce fundamentally different linear models that would ultimately lead to different sets of predictions on test observations.</p>
-<p>If the response variable’s values did take on a natural ordering, such as <em>mild, moderate, and severe</em>, and we felt the gap between mild and moderate was similar to the gap between moderate and severe, then a 1, 2, 3 coding would be reasonable. Unfortunately, in general there is no natural way to convert a qualitative response variable with more than two levels into a
-quantitative response that is ready for linear regression.</p>
-<p>For a binary (two level) qualitative response, the situation is better. For binary instance, perhaps there are only two possibilities for the patient’s medical condition: <code class="docutils literal notranslate"><span class="pre">stroke</span></code> and <code class="docutils literal notranslate"><span class="pre">drug</span> <span class="pre">overdose</span></code>. We could then code the response as
+<p>If the response variable’s values did take on a natural ordering, such as <em>mild, moderate, and severe</em>, and we felt the gap between mild and moderate was similar to the gap between moderate and severe, then a 1, 2, 3 coding would be reasonable. Even if so, unfortunately, in general there is no natural way to convert a qualitative response variable with more than two levels into a quantitative response that is ready for linear regression.</p>
+</div>
+<div class="section" id="will-the-binary-case-work">
+<h3><span class="section-number">3.1.2.2. </span>Will the binary case work?<a class="headerlink" href="#will-the-binary-case-work" title="Permalink to this headline">¶</a></h3>
+<p>For a binary (two level) qualitative response, the situation is better. For example, perhaps there are only two possibilities for the patient’s medical condition: <code class="docutils literal notranslate"><span class="pre">stroke</span></code> and <code class="docutils literal notranslate"><span class="pre">drug</span> <span class="pre">overdose</span></code>. We could then code the response as
 follows:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 y = \begin{cases} 1 &amp; \text{if stroke}, \\ 0 &amp; \text{if drug overdose}. \end{cases}
 \end{split}\]</div>
-<p>We could then fit a linear regression to this binary response, and predict <code class="docutils literal notranslate"><span class="pre">drug</span> <span class="pre">overdose</span></code> if <span class="math notranslate nohighlight">\( y &gt; 0.5 \)</span> and <code class="docutils literal notranslate"><span class="pre">stroke</span></code> otherwise. In the binary case it is not hard to show that even if we flip the above coding, linear regression will produce the same final predictions.</p>
-<p>Run the following code to compare the difference between the linear regression model and the logistic regression model for a binary classification task on the <code class="docutils literal notranslate"><span class="pre">Default</span></code> dataset.</p>
+<p>We could then fit a linear regression to this binary response, and predict <code class="docutils literal notranslate"><span class="pre">drug</span> <span class="pre">overdose</span></code> if <span class="math notranslate nohighlight">\( y &gt; 0.5 \)</span> and <code class="docutils literal notranslate"><span class="pre">stroke</span></code> otherwise. In the binary case, it is not hard to show that even if we flip the above coding, linear regression will produce the same final predictions.</p>
+<p>Now let us compare the difference between the linear regression model and the logistic regression model for a binary classification task on the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Default.csv">Default dataset</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">default2</span>
 
-<span class="c1"># Create array of test data. Calculate the classification probability</span>
-<span class="c1"># and predicted classification.</span>
+<span class="c1"># Create array of test data. Calculate the classification probability and predicted classification.</span>
 <span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s2">&quot;newton-cg&quot;</span><span class="p">)</span>
@@ -836,10 +869,20 @@ y = \begin{cases} 1 &amp; \text{if stroke}, \\ 0 &amp; \text{if drug overdose}. 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/classification_7_0.png" src="../_images/classification_7_0.png" />
+<img alt="../_images/regress-to-classify_8_0.png" src="../_images/regress-to-classify_8_0.png" />
 </div>
 </div>
-<p>As shown in the output figure, for a binary response with a 0/1 coding, although the linear regression model can also produce the an estimate of <span class="math notranslate nohighlight">\(\mathbb{P}(y|x)\)</span>, some estimates might be outside the <span class="math notranslate nohighlight">\([0, 1]\)</span> interval making them hard to interpret as probabilities. Since the predicted outcome of linear regression is not a probability, but a linear interpolation between points, there is no meaningful threshold at which you can distinguish one class from the other. A good illustration of this issue has been given on <a class="reference external" href="https://stats.stackexchange.com/questions/22381/why-not-approach-classification-through-regression">Stackoverflow</a>.</p>
+<p>As shown in the output figure above, for a binary response with a 0/1 coding, although the linear regression model can also produce an estimate of <span class="math notranslate nohighlight">\(\mathbb{P}(y|x)\)</span>, some estimates might be outside the <span class="math notranslate nohighlight">\([0, 1]\)</span> interval, making them hard to be interpreted as probabilities. Since the predicted outcome of linear regression is not a probability, but a linear interpolation between points, there is no meaningful threshold at which you can distinguish one class from the other.</p>
+<p>An additional illustration of this issue is available on <a class="reference external" href="https://stats.stackexchange.com/questions/22381/why-not-approach-classification-through-regression">Stackoverflow</a>.</p>
+</div>
+<div class="section" id="reasons-not-to-perform-classification-using-a-regression-method">
+<h3><span class="section-number">3.1.2.3. </span>Reasons not to perform classification using a regression method<a class="headerlink" href="#reasons-not-to-perform-classification-using-a-regression-method" title="Permalink to this headline">¶</a></h3>
+<p>There are two main reasons not to perform classification using a regression method:</p>
+<ul class="simple">
+<li><p><strong>Label coding</strong>: Difficulty in coding the response variable with more than two classes;</p></li>
+<li><p><strong>Interpretation</strong>: Difficulty in interpreting the predicted outcome of linear regression as a probability and thus in choosing a threshold to distinguish one class from the other.</p></li>
+</ul>
+</div>
 </div>
 </div>
 

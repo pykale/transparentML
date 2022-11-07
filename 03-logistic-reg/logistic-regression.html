@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="3.3. Quiz and summary" href="quiz-sum-ref.html" />
-    <link rel="prev" title="3.1. An overview of classification" href="classification.html" />
+    <link rel="prev" title="3.1. Regression model for classification?" href="regress-to-classify.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -246,8 +246,8 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="classification.html">
-     3.1. An overview of classification
+    <a class="reference internal" href="regress-to-classify.html">
+     3.1. Regress to classify?
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -789,8 +789,8 @@ y = \beta_0 + \beta_1 x_1.
 </div>
 </div>
 <p>Let <span class="math notranslate nohighlight">\(p(x) = \mathbb{P}(y=1| x)\)</span>, resulting in:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2c05d86e-167f-4663-af3a-06f2f1a9925d">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-2c05d86e-167f-4663-af3a-06f2f1a9925d" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a6a75968-5887-4a50-ac74-d3c9d2667392">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-a6a75968-5887-4a50-ac74-d3c9d2667392" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \frac{1-p(x)}{p(x)} &amp;= e^{-(\beta_0 + \beta_1 x_1)} \\
 \ln \left( \frac{1-p(x)}{p(x)} \right) &amp;= -(\beta_0 + \beta_1 x_1) \\
@@ -920,8 +920,8 @@ intercept : [-10.65132548]
 <ul class="simple">
 <li><p>When the probability of default is 0.5, the corresponding balance can be calculated using the <em>log odds</em> equation above:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-41e1017a-0b69-40ce-9a9b-d01a8a530033">
-<span class="eqno">(3.2)<a class="headerlink" href="#equation-41e1017a-0b69-40ce-9a9b-d01a8a530033" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-551b466d-b12e-43b0-b4f8-300ecc8f5489">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-551b466d-b12e-43b0-b4f8-300ecc8f5489" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \ln \left(\frac{p(x)}{1-p(x)}\right) &amp;= \beta_0 + \beta_1 \times x \\
 \ln \left(\frac{0.5}{1-0.5}\right) &amp;= \beta_0 + \beta_1 \times x \\
@@ -1261,11 +1261,11 @@ intercept : [-10.86719778]
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="classification.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="regress-to-classify.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">3.1. </span>An overview of classification</p>
+            <p class="prev-next-title"><span class="section-number">3.1. </span>Regression model for classification?</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="quiz-sum-ref.html" title="next page">
