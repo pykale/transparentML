@@ -56,8 +56,8 @@ parts:
   - file: 03-logistic-reg/overview
     title: Logistic regression
     sections:
-    - file: 03-logistic-reg/classification
-      title: An overview of classification
+    - file: 03-logistic-reg/regress-to-classify
+      title: Regress to classify?
     - file: 03-logistic-reg/logistic-regression
       title: Logistic regression
     - file: 03-logistic-reg/quiz-sum-ref
@@ -72,7 +72,7 @@ parts:
     - file: 04-cross-val-bootstrap/quiz-sum-ref
       title: Quiz & summary
   - file: 05-hypo-test-sw-dev/overview
-    title: Hypothesis testing & software dev
+    title: Hypothesis test & software dev
     sections:
     - file: 05-hypo-test-sw-dev/hypothesis-testing
       title: Hypothesis testing
@@ -84,6 +84,10 @@ parts:
   - file: 06-ftr-select-shrink/overview
     title: Feature selection & shrinkage
     sections:
+    - file: 06-ftr-select-shrink/subset-select
+      title: Feature selection
+    - file: 06-ftr-select-shrink/shrink
+      title: Shrinkage
     - file: 06-ftr-select-shrink/quiz-sum-ref
       title: Quiz & summary
   - file: 07-dec-trees-rnd-forest/overview

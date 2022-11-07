@@ -6,4 +6,5 @@ numpy
 pandas
 scikit-learn
 seaborn
+sphinx_proof
 statsmodels

@@ -54,6 +54,8 @@ sphinx:
     # - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
     # html_css_files: ???
     bibtex_reference_style: author_year
+  extra_extensions:
+    - sphinx_proof
 
 parse:
   myst_enable_extensions:
