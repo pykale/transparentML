@@ -580,6 +580,41 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-testing-the-null-hypothesis-h-0">
+   5.1.4. Example: testing the null hypothesis
+   <span class="math notranslate nohighlight">
+    \(H_0\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-hypothesis-testing">
+   5.1.5. Multiple hypothesis testing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#case-study-a-sure-win-stockbroker">
+     5.1.5.1. Case study: a “sure-win” stockbroker?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-challenge-of-multiple-hypothesis-testing">
+     5.1.5.2. The challenge of multiple hypothesis testing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#family-wise-error-rate">
+     5.1.5.3. Family-wise error rate
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#false-discovery-rate">
+     5.1.5.4. False discovery rate
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -652,6 +687,41 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#trade-off-between-type-i-and-type-ii-errors">
      5.1.3.2. Trade-off between Type I and Type II errors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-testing-the-null-hypothesis-h-0">
+   5.1.4. Example: testing the null hypothesis
+   <span class="math notranslate nohighlight">
+    \(H_0\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-hypothesis-testing">
+   5.1.5. Multiple hypothesis testing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#case-study-a-sure-win-stockbroker">
+     5.1.5.1. Case study: a “sure-win” stockbroker?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-challenge-of-multiple-hypothesis-testing">
+     5.1.5.2. The challenge of multiple hypothesis testing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#family-wise-error-rate">
+     5.1.5.3. Family-wise error rate
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#false-discovery-rate">
+     5.1.5.4. False discovery rate
     </a>
    </li>
   </ul>
@@ -782,8 +852,39 @@ expect to see such a small <span class="math notranslate nohighlight">\(p\)</spa
 <p>Ideally we would like both the Type I and Type II errors to be small. But there typically is a trade-off: we can make the Type I error small by only rejecting <span class="math notranslate nohighlight">\(H_0\)</span> when we have strong evidence against it, but this will increase the Type II error. We can make the Type II error small by rejecting <span class="math notranslate nohighlight">\(H_0\)</span> even when we have weak evidence against it, but this will increase the Type I error.</p>
 <p>The significance level <span class="math notranslate nohighlight">\(\alpha\)</span> is a trade-off between the Type I and Type II errors. If we choose a small value of <span class="math notranslate nohighlight">\(\alpha\)</span>, then we will have strong evidence against <span class="math notranslate nohighlight">\(H_0\)</span> when we reject it, but this will increase the Type II error. If we choose a large value of <span class="math notranslate nohighlight">\(\alpha\)</span>, then we will have weak evidence against <span class="math notranslate nohighlight">\(H_0\)</span> when we reject it, but this will increase the Type I error. By only rejecting <span class="math notranslate nohighlight">\(H_0\)</span> when the <span class="math notranslate nohighlight">\(p\)</span>-value is below <span class="math notranslate nohighlight">\(\alpha\)</span>, we ensure that the Type I error
 rate will be less than or equal to <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
-<p>In practice, we typically view Type I errors as more “serious” than Type II errors, because the former involves
-declaring a scientific finding that is not correct, which is more serious than failing to declare a scientific finding. Therefore, when we perform hypothesis testing, we typically require a low Type I error rate — e.g. at most <span class="math notranslate nohighlight">\(\alpha\)</span> = 0.05 — while trying to make the Type II error small (or, equivalently, the power large).</p>
+<p>In practice, we typically view Type I errors, i.e. false positives, as more “serious” than Type II errors, because the former involves declaring a scientific finding that is not correct, which is more serious than failing to declare a scientific finding (false negatives). Therefore, when we perform hypothesis testing, we typically require a low Type I error rate — e.g. at most <span class="math notranslate nohighlight">\(\alpha\)</span> = 0.05 — while trying to make the Type II error small (or, equivalently, the power large).</p>
+</div>
+</div>
+<div class="section" id="example-testing-the-null-hypothesis-h-0">
+<h2><span class="section-number">5.1.4. </span>Example: testing the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span><a class="headerlink" href="#example-testing-the-null-hypothesis-h-0" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="multiple-hypothesis-testing">
+<h2><span class="section-number">5.1.5. </span>Multiple hypothesis testing<a class="headerlink" href="#multiple-hypothesis-testing" title="Permalink to this headline">¶</a></h2>
+<p>Let us consider the more complicated case where we wish to test <span class="math notranslate nohighlight">\(M\)</span> null hypotheses, <span class="math notranslate nohighlight">\(H_0^1, H_0^2, \ldots, H_0^M\)</span>.</p>
+<div class="section" id="case-study-a-sure-win-stockbroker">
+<h3><span class="section-number">5.1.5.1. </span>Case study: a “sure-win” stockbroker?<a class="headerlink" href="#case-study-a-sure-win-stockbroker" title="Permalink to this headline">¶</a></h3>
+<p>A stockbroker wishes to drum up new clients by convincing them of his/her trading acumen. S/he tells 1,024 (i.e. <span class="math notranslate nohighlight">\(2^10\)</span>) potential new clients that s/he can correctly predict whether Apple’s stock price will increase or decrease for 10 days running. For such a binary outcome, we have <span class="math notranslate nohighlight">\(2^10=1024\)</span> possibilities for the course of these 10 days. Therefore, s/he emails each client one of these 1024 possibilities. Although the vast majority of his/her potential clients will find that his/her predictions are no better than chance, one of his/her potential clients will be really impressed to find that his/her predictions were correct for <em>ALL 10 of the days!</em> And so the stockbroker gains a new client (and possible more when this client spreads the news).</p>
+<p>This is <em>part of the reason why we receive so many spam emails/calls</em>. If you make a lot of guesses (“predictions”), then you are bound to get some right by chance.</p>
+</div>
+<div class="section" id="the-challenge-of-multiple-hypothesis-testing">
+<h3><span class="section-number">5.1.5.2. </span>The challenge of multiple hypothesis testing<a class="headerlink" href="#the-challenge-of-multiple-hypothesis-testing" title="Permalink to this headline">¶</a></h3>
+<p>Likewise, if we flip 1,024 fair coins ten times each. Then we would expect (on average) one coin to come up all tails. If one of our coins comes up all tails, then we might therefore conclude that this particular coin is not fair. But it would be incorrect to conclude that the coin is not fair: in fact, the null hypothesis holds, and we just happen to have gotten ten tails in a row by chance.</p>
+<p>The examples above demonstrate the main challenge of multiple testing: when testing a huge number of null hypotheses, we are bound to get some very small <span class="math notranslate nohighlight">\(p\)</span>-values by chance. If we make a decision about whether to reject each null hypothesis without accounting for the fact that we have performed a very large number of tests, then we may end up rejecting a great number of true null hypotheses, i.e. making a large number of Type I errors (false positives), which is what we hope to avoid (see the above).</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Why repeat the experiment?</p>
+<p>The reason why we repeat the experiment is to reduce the chance of getting a false positive. If we only perform the experiment once, then we will have a very small chance of getting a false positive.</p>
+</div>
+</div>
+<div class="section" id="family-wise-error-rate">
+<h3><span class="section-number">5.1.5.3. </span>Family-wise error rate<a class="headerlink" href="#family-wise-error-rate" title="Permalink to this headline">¶</a></h3>
+<p>Rejecting a null hypothesis if the <span class="math notranslate nohighlight">\(p\)</span>-value is below <span class="math notranslate nohighlight">\(\alpha\)</span> controls the probability of falsely rejecting that null hypothesis at level <span class="math notranslate nohighlight">\(\alpha\)</span>. However, if we do this for <span class="math notranslate nohighlight">\(M\)</span> null hypotheses, then the chance of falsely rejecting <em>at least one</em> of the M null hypotheses is quite a bit higher! This is because the chance of getting a false positive for each null hypothesis is <span class="math notranslate nohighlight">\(\alpha\)</span>, but the chance of getting a false positive for <em>at least one</em> of the <span class="math notranslate nohighlight">\(M\)</span> null hypotheses is <span class="math notranslate nohighlight">\(1-(1-\alpha)^M\)</span>.</p>
+<p>To address this challenge of multiple testing, we hope to test multiple hypotheses while controlling the probability of making at least one Type I error. This can be achieved by controlling the <a class="reference external" href="https://en.wikipedia.org/wiki/Family-wise_error_rate">familywise error rate (FWER)</a>, which is the probability of making at least one Type I error when testing <span class="math notranslate nohighlight">\(M\)</span> null hypotheses, i.e. rejecting at least one null hypothesis when all <span class="math notranslate nohighlight">\(M\)</span> null hypotheses are true. The FWER is also known as the <em>probability of a false discovery</em>.</p>
+<p>One solution is to adjust the significance level <span class="math notranslate nohighlight">\(\alpha\)</span> for each null hypothesis. Thus, the FWER is controlled by the <em>family-wise significance level</em> <span class="math notranslate nohighlight">\(\alpha_M\)</span>, which is the significance level that controls the FWER at level <span class="math notranslate nohighlight">\(\alpha_M\)</span>. The FWER is typically denoted by <span class="math notranslate nohighlight">\(\alpha_{\mathrm{FWER}}\)</span>. It is reasonable to control the FWER when <span class="math notranslate nohighlight">\(M\)</span> takes on a small value, like 5 or 10. However, for <span class="math notranslate nohighlight">\(M\)</span> = 100 or 1,000, attempting to control the FWER will make it almost impossible to reject any of the false null hypotheses.</p>
+</div>
+<div class="section" id="false-discovery-rate">
+<h3><span class="section-number">5.1.5.4. </span>False discovery rate<a class="headerlink" href="#false-discovery-rate" title="Permalink to this headline">¶</a></h3>
+<p>In practice, when <span class="math notranslate nohighlight">\(M\)</span> is large, trying to prevent any false positives (as in FWER control) is simply too stringent and scientifically uninteresting. In this case, we can tolerate a few false positives, in the interest of making more discoveries, i.e. more rejections of the null hypothesis. Thus, we typically control the <a class="reference external" href="https://en.wikipedia.org/wiki/False_discovery_rate">false discovery rate (FDR)</a>, which is the expected proportion of rejected null hypotheses that are false. The FDR is also known as the <em>expected proportion of false discoveries</em>. The FDR is typically denoted by <span class="math notranslate nohighlight">\(\alpha_{\mathrm{FDR}}\)</span>. The FDR is typically more useful than the FWER when <span class="math notranslate nohighlight">\(M\)</span> is large. The use of the FDR also aligns well with the way that data are often collected in contemporary applications, e.g. in <a class="reference external" href="https://en.wikipedia.org/wiki/Exploratory_data_analysis">exploratory data analysis</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Genomics">genomics</a>.</p>
+<p>Unlike <span class="math notranslate nohighlight">\(p\)</span>-values, the choice of FDR threshold is typically context-dependent (e.g. cost/budget-dependent), or even dataset-dependent, with no standard accepted threshold.</p>
 </div>
 </div>
 </div>
