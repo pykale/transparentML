@@ -373,8 +373,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../08-nb-glm-svm/glm.html">
+     8.1. Generalised linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../08-nb-glm-svm/quiz-sum-ref.html">
-     8.1. Quiz &amp; summary
+     8.2. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -888,8 +893,8 @@ $$ --></div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LogisticRegression(solver=&#39;newton-cg&#39;)
 classes:  [0 1]
-coefficients:  [[0.00549891]]
-intercept : [-10.65132548]
+coefficients:  [[0.00549892]]
+intercept : [-10.65132978]
 </pre></div>
 </div>
 </div>
@@ -977,8 +982,8 @@ intercept : [-10.65132548]
 <ul class="simple">
 <li><p>When the probability of <code class="docutils literal notranslate"><span class="pre">default</span></code> 0.5 (the commonly used threshold for binary classification), the corresponding balance can be calculated using the <em>log odds</em> equation above:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-0b48b648-f347-4bbe-8fea-c836bc60cdf9">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-0b48b648-f347-4bbe-8fea-c836bc60cdf9" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5a33cc24-f3c2-40b3-9a83-70bcc4f48730">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-5a33cc24-f3c2-40b3-9a83-70bcc4f48730" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \ln \left(\frac{\pi}{1-\pi}\right) &amp;= \beta_0 + \beta_1 \times x \\
 \ln \left(\frac{0.5}{1-0.5}\right) &amp;= \beta_0 + \beta_1 \times x \\
@@ -1148,8 +1153,8 @@ x &amp; = 1936.9858426745614.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LogisticRegression(max_iter=1000, penalty=&#39;none&#39;, solver=&#39;newton-cg&#39;)
 classes:  [0 1]
-coefficients:  [[ 5.73593136e-03  3.01131944e-06 -6.47265842e-01]]
-intercept : [-10.86719778]
+coefficients:  [[ 5.73354382e-03  2.91920072e-06 -6.49305055e-01]]
+intercept : [-10.85951046]
 </pre></div>
 </div>
 </div>
@@ -1288,7 +1293,7 @@ intercept : [-10.86719778]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ROC AUC:  0.9495528423841241
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ROC AUC:  0.9495512891602682
 </pre></div>
 </div>
 <img alt="../_images/logistic-regression_26_1.png" src="../_images/logistic-regression_26_1.png" />

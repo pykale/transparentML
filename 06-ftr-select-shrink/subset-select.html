@@ -373,8 +373,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../08-nb-glm-svm/glm.html">
+     8.1. Generalised linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../08-nb-glm-svm/quiz-sum-ref.html">
-     8.1. Quiz &amp; summary
+     8.2. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -643,7 +648,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h1><span class="section-number">6.1. </span>Subset selection<a class="headerlink" href="#subset-selection" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="best-subset-selection">
 <h2><span class="section-number">6.1.1. </span>Best subset selection<a class="headerlink" href="#best-subset-selection" title="Permalink to this headline">¶</a></h2>
-<p>To perform best subset selection, we fit a separate least squares regression for each possible combination of the <span class="math notranslate nohighlight">\(N\)</span> predictors. That is, we fit all <span class="math notranslate nohighlight">\(N\)</span> models <span class="math notranslate nohighlight">\(\left(\begin{array}{c} N \\ 2 \end{array}\right)\)</span> that contain exactly one predictor, all <span class="math notranslate nohighlight">\(2 = N(N − 1)/2\)</span> models that contain exactly two predictors, and so forth. We then look at all of the resulting models, with the goal of identifying the one that is best.</p>
+<p>To perform best subset selection, we fit a separate least squares regression for each possible combination of the <span class="math notranslate nohighlight">\(D\)</span>  predictors. That is, we fit all <span class="math notranslate nohighlight">\(D\)</span>  models <span class="math notranslate nohighlight">\(\left(\begin{array}{c} D \\ 2 \end{array}\right)\)</span> that contain exactly one predictor, all <span class="math notranslate nohighlight">\(2 = D(D − 1)/2\)</span> models that contain exactly two predictors, and so forth. We then look at all of the resulting models, with the goal of identifying the one that is best.</p>
 <div class="proof algorithm admonition" id="best-subset">
 <p class="admonition-title"><span class="caption-number">Algorithm 6.1 </span> (Best subset selection)</p>
 <div class="algorithm-content section" id="proof-content">
@@ -654,10 +659,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Let <span class="math notranslate nohighlight">\(\mathcal{M}_0\)</span> denote the null model, which contains no predictors. This model simply predicts the sample mean for each observation.</p></li>
 <li><p>For <span class="math notranslate nohighlight">\(k = 1, 2, \ldots, D\)</span>:</p>
 <ol class="simple">
-<li><p>Fit all <span class="math notranslate nohighlight">\(\left(\begin{array}{c} N \\ k \end{array}\right)\)</span> models that contain exactly <span class="math notranslate nohighlight">\(k\)</span> predictors, where <span class="math notranslate nohighlight">\(N\)</span> is the total number of predictors.</p></li>
-<li><p>Choose the best among these <span class="math notranslate nohighlight">\(\left(\begin{array}{c} N \\ k \end{array}\right)\)</span> models, denoted <span class="math notranslate nohighlight">\(\mathcal{M}_k\)</span>. Here best is defined using some criterion, such as <span class="math notranslate nohighlight">\(\mathrm{R}^2\)</span>.</p></li>
+<li><p>Fit all <span class="math notranslate nohighlight">\(\left(\begin{array}{c} D \\ k \end{array}\right)\)</span> models that contain exactly <span class="math notranslate nohighlight">\(k\)</span> predictors, where <span class="math notranslate nohighlight">\(D\)</span>  is the total number of predictors.</p></li>
+<li><p>Choose the best among these <span class="math notranslate nohighlight">\(\left(\begin{array}{c} D \\ k \end{array}\right)\)</span> models, denoted <span class="math notranslate nohighlight">\(\mathcal{M}_k\)</span>. Here best is defined using some criterion, such as <span class="math notranslate nohighlight">\(\mathrm{R}^2\)</span>.</p></li>
 </ol>
- <!-- 2. Choose the best among these $\left(\begin{array}{c} N \\ k \end{array}\right)$ models, denoted $\mathcal{M}_k$. Here best is defined using some criterion, such as $C_p$, $AIC$, $BIC$, adjusted $R^2$, or $Mallow's\;C_p$. -->
+ <!-- 2. Choose the best among these $\left(\begin{array}{c} D \\ k \end{array}\right)$ models, denoted $\mathcal{M}_k$. Here best is defined using some criterion, such as $C_p$, $AIC$, $BIC$, adjusted $R^2$, or $Mallow's\;C_p$. -->
 </li>
 <li><p>Select a single best model from <span class="math notranslate nohighlight">\(\mathcal{M}_0, \mathcal{M}_1, \ldots, \mathcal{M}_D\)</span> using cross-validation.</p></li>
 </ol>
@@ -666,11 +671,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div></div>
 <div class="section" id="stepwise-selection">
 <h2><span class="section-number">6.1.2. </span>Stepwise selection<a class="headerlink" href="#stepwise-selection" title="Permalink to this headline">¶</a></h2>
-<p>For computational reasons, best subset selection cannot be applied with very large <span class="math notranslate nohighlight">\(N\)</span>. Best subset selection may also suffer from statistical problems when <span class="math notranslate nohighlight">\(N\)</span> is large. The larger the search space, the higher the chance of finding models that look good on the training data, even though they might not
+<p>For computational reasons, best subset selection cannot be applied with very large <span class="math notranslate nohighlight">\(D\)</span> . Best subset selection may also suffer from statistical problems when <span class="math notranslate nohighlight">\(D\)</span>  is large. The larger the search space, the higher the chance of finding models that look good on the training data, even though they might not
 have any predictive power on future data. Thus an enormous search space can lead to overfitting and high variance of the coefficient estimates. For both of these reasons, stepwise methods, which explore a far more restricted set of models, are attractive alternatives to best subset selection.</p>
 <div class="section" id="forward-stepwise-selection">
 <h3><span class="section-number">6.1.2.1. </span>Forward stepwise selection<a class="headerlink" href="#forward-stepwise-selection" title="Permalink to this headline">¶</a></h3>
-<p>Forward stepwise selection is a computationally eﬃcient alternative to best subset selection. While the best subset selection procedure considers all <span class="math notranslate nohighlight">\(2^N\)</span> possible models containing subsets of the <span class="math notranslate nohighlight">\(N\)</span> predictors, forward stepwise considers a much smaller set of models. Forward stepwise selection begins with a model containing no predictors, and then adds predictors to the model, one-at-a-time, until all of the predictors are in the model. In particular, at each step the variable that gives the greatest additional improvement to the fit is added to the model.</p>
+<p>Forward stepwise selection is a computationally eﬃcient alternative to best subset selection. While the best subset selection procedure considers all <span class="math notranslate nohighlight">\(2^N\)</span> possible models containing subsets of the <span class="math notranslate nohighlight">\(D\)</span>  predictors, forward stepwise considers a much smaller set of models. Forward stepwise selection begins with a model containing no predictors, and then adds predictors to the model, one-at-a-time, until all of the predictors are in the model. In particular, at each step the variable that gives the greatest additional improvement to the fit is added to the model.</p>
 <div class="proof algorithm admonition" id="forward-stepwise">
 <p class="admonition-title"><span class="caption-number">Algorithm 6.2 </span> (Forward stepwise selection)</p>
 <div class="algorithm-content section" id="proof-content">
@@ -678,20 +683,20 @@ have any predictive power on future data. Thus an enormous search space can lead
 <li><p>Let <span class="math notranslate nohighlight">\(\mathcal{M}_0\)</span> denote the null model, which contains no predictors. This model simply predicts the sample mean for each observation.</p></li>
 <li><p>For <span class="math notranslate nohighlight">\(k = 1, 2, \ldots, D\)</span>:</p>
 <ol class="simple">
-<li><p>Fit all <span class="math notranslate nohighlight">\(N - k + 1\)</span> models that contain all of the predictors in <span class="math notranslate nohighlight">\(\mathcal{M}_{k-1}\)</span> plus one additional predictor.</p></li>
-<li><p>Choose the best among these <span class="math notranslate nohighlight">\(N - k + 1\)</span> models, denoted <span class="math notranslate nohighlight">\(\mathcal{M}_k\)</span>. Here best is defined using some criterion, such as <span class="math notranslate nohighlight">\(\mathrm{R}^2\)</span>..</p></li>
+<li><p>Fit all <span class="math notranslate nohighlight">\(D - k + 1\)</span> models that contain all of the predictors in <span class="math notranslate nohighlight">\(\mathcal{M}_{k-1}\)</span> plus one additional predictor.</p></li>
+<li><p>Choose the best among these <span class="math notranslate nohighlight">\(D - k + 1\)</span> models, denoted <span class="math notranslate nohighlight">\(\mathcal{M}_k\)</span>. Here best is defined using some criterion, such as <span class="math notranslate nohighlight">\(\mathrm{R}^2\)</span>..</p></li>
 </ol>
 </li>
 <li><p>Select a single best model from <span class="math notranslate nohighlight">\(\mathcal{M}_0, \mathcal{M}_1, \ldots, \mathcal{M}_D\)</span> using cross-validation.</p></li>
 </ol>
 </div>
-</div><p>Unlike best subset selection, which involved fitting <span class="math notranslate nohighlight">\(2^N\)</span> models, forward stepwise selection involves fitting one null model, along with <span class="math notranslate nohighlight">\(N − k\)</span> models in the kth iteration, for <span class="math notranslate nohighlight">\(k = 0, \dots, N − 1\)</span>. This amounts to a total of <span class="math notranslate nohighlight">\(1 + \sum_{k=0}^{N-1}(N-k) = 1 + N(N+1)/2\)</span> models. This is a substantial difference: when <span class="math notranslate nohighlight">\(N = 20\)</span>, best subset selection requires fitting 1,048,576 models, whereas forward stepwise selection requires fitting only 211 models.</p>
-<p>Forward stepwise selection’s computational advantage over best subset selection is clear. Though forward stepwise tends to do well in practice, it is not guaranteed to find the best possible model out of all <span class="math notranslate nohighlight">\(2^N\)</span> models containing subsets of the <span class="math notranslate nohighlight">\(N\)</span> predictors. For example, suppose that in a
-given data set with <span class="math notranslate nohighlight">\(N\)</span> = 3 predictors, the best possible one-variable model contains <span class="math notranslate nohighlight">\(x_1\)</span>, and the best possible two-variable model instead contains <span class="math notranslate nohighlight">\(x_2\)</span> and <span class="math notranslate nohighlight">\(x_3\)</span>. Then forward stepwise selection will fail to select the best possible two-variable model, because <span class="math notranslate nohighlight">\(\mathcal{M}_1\)</span> will contain <span class="math notranslate nohighlight">\(x_1\)</span>, so <span class="math notranslate nohighlight">\(\mathcal{M}_2\)</span> must also contain <span class="math notranslate nohighlight">\(x_1\)</span> together with one additional variable.</p>
+</div><p>Unlike best subset selection, which involved fitting <span class="math notranslate nohighlight">\(2^N\)</span> models, forward stepwise selection involves fitting one null model, along with <span class="math notranslate nohighlight">\(D − k\)</span> models in the kth iteration, for <span class="math notranslate nohighlight">\(k = 0, \dots, D − 1\)</span>. This amounts to a total of <span class="math notranslate nohighlight">\(1 + \sum_{k=0}^{D-1}(D-k) = 1 + N(N+1)/2\)</span> models. This is a substantial difference: when <span class="math notranslate nohighlight">\(D = 20\)</span>, best subset selection requires fitting 1,048,576 models, whereas forward stepwise selection requires fitting only 211 models.</p>
+<p>Forward stepwise selection’s computational advantage over best subset selection is clear. Though forward stepwise tends to do well in practice, it is not guaranteed to find the best possible model out of all <span class="math notranslate nohighlight">\(2^N\)</span> models containing subsets of the <span class="math notranslate nohighlight">\(D\)</span>  predictors. For example, suppose that in a
+given data set with <span class="math notranslate nohighlight">\(D\)</span>  = 3 predictors, the best possible one-variable model contains <span class="math notranslate nohighlight">\(x_1\)</span>, and the best possible two-variable model instead contains <span class="math notranslate nohighlight">\(x_2\)</span> and <span class="math notranslate nohighlight">\(x_3\)</span>. Then forward stepwise selection will fail to select the best possible two-variable model, because <span class="math notranslate nohighlight">\(\mathcal{M}_1\)</span> will contain <span class="math notranslate nohighlight">\(x_1\)</span>, so <span class="math notranslate nohighlight">\(\mathcal{M}_2\)</span> must also contain <span class="math notranslate nohighlight">\(x_1\)</span> together with one additional variable.</p>
 </div>
 <div class="section" id="backward-stepwise-selection">
 <h3><span class="section-number">6.1.2.2. </span>Backward stepwise selection<a class="headerlink" href="#backward-stepwise-selection" title="Permalink to this headline">¶</a></h3>
-<p>Backward stepwise selection is similar to forward stepwise selection, except that it begins with the full model that contains all <span class="math notranslate nohighlight">\(N\)</span> predictors, and then removes the least useful predictor, one-at-a-time, until the model contains no predictors.</p>
+<p>Backward stepwise selection is similar to forward stepwise selection, except that it begins with the full model that contains all <span class="math notranslate nohighlight">\(D\)</span>  predictors, and then removes the least useful predictor, one-at-a-time, until the model contains no predictors.</p>
 <div class="proof algorithm admonition" id="backward-stepwise">
 <p class="admonition-title"><span class="caption-number">Algorithm 6.3 </span> (Backward stepwise selection)</p>
 <div class="algorithm-content section" id="proof-content">
@@ -699,20 +704,20 @@ given data set with <span class="math notranslate nohighlight">\(N\)</span> = 3 
 <li><p>Let <span class="math notranslate nohighlight">\(\mathcal{M}_0\)</span> denote the null model, which contains no predictors. This model simply predicts the sample mean for each observation.</p></li>
 <li><p>For <span class="math notranslate nohighlight">\(k = 1, 2, \ldots, D\)</span>:</p>
 <ol class="simple">
-<li><p>Fit all <span class="math notranslate nohighlight">\(\left(\begin{array}{c} N \\ k \end{array}\right)\)</span> models that contain exactly <span class="math notranslate nohighlight">\(k\)</span> predictors.</p></li>
-<li><p>Choose the best among these <span class="math notranslate nohighlight">\(\left(\begin{array}{c} N \\ k \end{array}\right)\)</span> models, denoted <span class="math notranslate nohighlight">\(\mathcal{M}_k\)</span>. Here best is defined using some criterion <span class="math notranslate nohighlight">\(\mathrm{R}^2\)</span>..</p></li>
+<li><p>Fit all <span class="math notranslate nohighlight">\(\left(\begin{array}{c} D \\ k \end{array}\right)\)</span> models that contain exactly <span class="math notranslate nohighlight">\(k\)</span> predictors.</p></li>
+<li><p>Choose the best among these <span class="math notranslate nohighlight">\(\left(\begin{array}{c} D \\ k \end{array}\right)\)</span> models, denoted <span class="math notranslate nohighlight">\(\mathcal{M}_k\)</span>. Here best is defined using some criterion <span class="math notranslate nohighlight">\(\mathrm{R}^2\)</span>..</p></li>
 </ol>
 </li>
 <li><p>Select a single best model from <span class="math notranslate nohighlight">\(\mathcal{M}_0, \mathcal{M}_1, \ldots, \mathcal{M}_D\)</span> using cross-validation.</p></li>
 </ol>
 </div>
-</div><p>Like forward stepwise selection, the backward selection approach searches through only <span class="math notranslate nohighlight">\(1 + N(N + 1)/2\)</span> models, and so can be applied in settings where <span class="math notranslate nohighlight">\(N\)</span> is too large to apply best subset selection. Also like forward stepwise selection, backward stepwise selection is not guaranteed to yield the best
-model containing a subset of the <span class="math notranslate nohighlight">\(N\)</span> predictors.</p>
+</div><p>Like forward stepwise selection, the backward selection approach searches through only <span class="math notranslate nohighlight">\(1 + D(D + 1)/2\)</span> models, and so can be applied in settings where <span class="math notranslate nohighlight">\(D\)</span>  is too large to apply best subset selection. Also like forward stepwise selection, backward stepwise selection is not guaranteed to yield the best
+model containing a subset of the <span class="math notranslate nohighlight">\(D\)</span>  predictors.</p>
 </div>
 </div>
 <div class="section" id="choosing-the-best-model">
 <h2><span class="section-number">6.1.3. </span>Choosing the best model<a class="headerlink" href="#choosing-the-best-model" title="Permalink to this headline">¶</a></h2>
-<p>Best subset selection, forward selection, and backward selection result in the creation of a set of models, each of which contains a subset of the <span class="math notranslate nohighlight">\(N\)</span> predictors. To apply these methods, we need a way to determine which of these models is best. We can use either a validation set approach or a cross-validation approach introduced in <a class="reference internal" href="../04-cross-val-bootstrap/cross-validation.html"><span class="doc">Cross-validation</span></a> to estimate the test error directly and then choose the best model.</p>
+<p>Best subset selection, forward selection, and backward selection result in the creation of a set of models, each of which contains a subset of the <span class="math notranslate nohighlight">\(D\)</span>  predictors. To apply these methods, we need a way to determine which of these models is best. We can use either a validation set approach or a cross-validation approach introduced in <a class="reference internal" href="../04-cross-val-bootstrap/cross-validation.html"><span class="doc">Cross-validation</span></a> to estimate the test error directly and then choose the best model.</p>
 <p><strong>Example: feature selection using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code></strong></p>
 <p>Here we use the <code class="docutils literal notranslate"><span class="pre">Credit</span></code> dataset to illustrate the feature selection. To select features, we use <code class="docutils literal notranslate"><span class="pre">RFECV</span></code>, recursive feature elimination with cross-validation, which is a backward stepwise selection approach implemented in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>.</p>
 <div class="cell docutils container">
@@ -721,11 +726,7 @@ model containing a subset of the <span class="math notranslate nohighlight">\(N\
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-
-<span class="c1"># from sklearn.model_selection import StratifiedKFold</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">RFECV</span>
-
-<span class="c1"># from sklearn.datasets import make_classification</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -746,6 +747,7 @@ model containing a subset of the <span class="math notranslate nohighlight">\(N\
 <span class="p">)</span>
 <span class="n">credit_df</span><span class="p">[</span><span class="s2">&quot;West&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">credit_df</span><span class="o">.</span><span class="n">Region</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s2">&quot;West&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;North&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;South&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;East&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
 <span class="n">credit_df</span><span class="p">[</span><span class="s2">&quot;East&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">credit_df</span><span class="o">.</span><span class="n">Region</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s2">&quot;East&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;North&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;South&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;West&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+<span class="c1"># credit_df[&quot;Region2&quot;] = credit_df.Region.astype(&quot;category&quot;)</span>
 <span class="n">credit_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
