@@ -555,11 +555,30 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#logistic-model">
    3.2.2. Logistic model
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logit-function-transformation">
+     3.2.2.1. Logit function transformation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logistic-function">
+     3.2.2.2. Logistic function
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#estimating-the-coefficients-and-making-predictions">
-   3.2.3. Estimating the coefficients and making predictions
+  <a class="reference internal nav-link" href="#estimating-the-coefficients-to-make-predictions">
+   3.2.3. Estimating the coefficients to make predictions
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-explanation-of-system-transparency">
+     3.2.3.1. Example explanation of system transparency
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#multiple-logistic-regression">
@@ -577,8 +596,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#receiver-operating-characteristic-roc">
-     3.2.5.2. Receiver operating characteristic (ROC)
+    <a class="reference internal nav-link" href="#area-under-the-roc-curve-auc">
+     3.2.5.2. Area under the ROC curve (AUC)
     </a>
    </li>
   </ul>
@@ -612,11 +631,30 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#logistic-model">
    3.2.2. Logistic model
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logit-function-transformation">
+     3.2.2.1. Logit function transformation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logistic-function">
+     3.2.2.2. Logistic function
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#estimating-the-coefficients-and-making-predictions">
-   3.2.3. Estimating the coefficients and making predictions
+  <a class="reference internal nav-link" href="#estimating-the-coefficients-to-make-predictions">
+   3.2.3. Estimating the coefficients to make predictions
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-explanation-of-system-transparency">
+     3.2.3.1. Example explanation of system transparency
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#multiple-logistic-regression">
@@ -634,8 +672,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#receiver-operating-characteristic-roc">
-     3.2.5.2. Receiver operating characteristic (ROC)
+    <a class="reference internal nav-link" href="#area-under-the-roc-curve-auc">
+     3.2.5.2. Area under the ROC curve (AUC)
     </a>
    </li>
   </ul>
@@ -651,8 +689,8 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="logistic-regression">
 <h1><span class="section-number">3.2. </span>Logistic regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">¶</a></h1>
-<p>Logistic regression is not a regression, but a classification algorithm. It models the probabilities for classification problems.</p>
-<p>Watch the 8-minute video below or a visual explanation of logistic regression:</p>
+<p>Although having “regression” in its name, logistic regression is a classification (rather than regression) algorithm. Instead of modelling the qualitative response <span class="math notranslate nohighlight">\(y\)</span> directly, logistic regression models the probability that <span class="math notranslate nohighlight">\(y\)</span> belongs to a particular class (category).</p>
+<p>Watch the 8-minute video below for a visual explanation of logistic regression:</p>
 <div class="admonition-video admonition">
 <p class="admonition-title">Video</p>
 <iframe width="700" height="394" src="https://www.youtube.com/embed/yIYKR4sgzI8?start=24" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -660,6 +698,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="import-libraries-and-load-data">
 <h2><span class="section-number">3.2.1. </span>Import libraries and load data<a class="headerlink" href="#import-libraries-and-load-data" title="Permalink to this headline">¶</a></h2>
+<p>Get ready by importing the APIs needed from respective libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -671,12 +710,6 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">plot_roc_curve</span>
 
-<span class="c1"># from sklearn.discriminant_analysis import LinearDiscriminantAnalysis</span>
-<span class="c1"># from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis</span>
-<span class="c1"># from sklearn.metrics import confusion_matrix, classification_report, precision_score</span>
-<span class="c1"># from sklearn import preprocessing</span>
-<span class="c1"># from sklearn import neighbors</span>
-
 <span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">logit</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
@@ -684,13 +717,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<p>Load the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Default.csv">Default dataset</a> and inspect the first three rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Default.csv&quot;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="p">)</span>
 
-<span class="c1"># Note: factorize() returns two objects: a label array and an array with the unique values.</span>
-<span class="c1"># We are only interested in the first object.</span>
+<span class="c1"># Note: factorize() returns two objects: a label array and an array with the unique values. We are only interested in the first object.</span>
 <span class="n">df</span><span class="p">[</span><span class="s2">&quot;default2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">default</span><span class="o">.</span><span class="n">factorize</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">df</span><span class="p">[</span><span class="s2">&quot;student2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">student</span><span class="o">.</span><span class="n">factorize</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -759,22 +792,69 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="logistic-model">
 <h2><span class="section-number">3.2.2. </span>Logistic model<a class="headerlink" href="#logistic-model" title="Permalink to this headline">¶</a></h2>
-<p>Logistic regression is a solution for classification. It models the probability that <code class="docutils literal notranslate"><span class="pre">y</span></code> belongs to a particular category rather than modelling this response <code class="docutils literal notranslate"><span class="pre">y</span></code> directly. Specifically, instead of fitting a straight line or hyperplane, the logistic regression model uses the logistic function to squeeze the output of a linear equation between 0 and 1.</p>
+<p>Logistic regression models the probability that the response <span class="math notranslate nohighlight">\(y\)</span> belongs to a particular class (category) using linear <em>regression</em> via a <em>logistic</em> function, hence the name <em>logistic regression</em>. For binary classification, let us use 1 to denote the positive class (e.g. “Yes”) and 0 to denote the negative class (e.g. “No”).</p>
+<div class="section" id="logit-function-transformation">
+<h3><span class="section-number">3.2.2.1. </span>Logit function transformation<a class="headerlink" href="#logit-function-transformation" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(\pi\)</span> be the probability of a positive outcome</p>
 <div class="math notranslate nohighlight">
 \[
+\pi = \mathbb{P}(y=1| x).
+\]</div>
+<p>Then the probability of a negative outcome <span class="math notranslate nohighlight">\( \mathbb{P}(y=0| x) = 1-\pi \)</span>.</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Odds">odds</a> of a positive outcome is the ratio of the probability of a positive outcome to the probability of a negative outcome, i.e.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\pi}{1-\pi}.
+\]</div>
+<p>The log of the odds is called the <a class="reference external" href="https://en.wikipedia.org/wiki/Logit">logit</a> and the logit function is defined as :</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{logit}(\pi)=\log \frac{\pi}{1-\pi}
+\]</div>
+<p>The logit function is a monotonic transformation of the probability <span class="math notranslate nohighlight">\(\pi\)</span>. It maps the probability <span class="math notranslate nohighlight">\(\pi\)</span> ranging from 0 to 1 to the real line ranging from <span class="math notranslate nohighlight">\(-\infty\)</span> to <span class="math notranslate nohighlight">\(\infty\)</span>. The logit function is also known as the log-odds function.</p>
+</div>
+<div class="section" id="logistic-function">
+<h3><span class="section-number">3.2.2.2. </span>Logistic function<a class="headerlink" href="#logistic-function" title="Permalink to this headline">¶</a></h3>
+<p>In simple linear regression, we have modelled the relationship between outcome <span class="math notranslate nohighlight">\(y\)</span> and feature <span class="math notranslate nohighlight">\(x\)</span> with a linear equation:</p>
+<div class="math notranslate nohighlight">
+\[
+y = \beta_0 + \beta_1 x.
+\]</div>
+<p>This linear regression model is not able to produce a binary outcome for binary classification or a probability (in the range from 0 to 1 only). With the logit function above, we can transform the probability <span class="math notranslate nohighlight">\(\pi\)</span> ranging from 0 to 1 to the logit function <span class="math notranslate nohighlight">\(\mathrm{logit}(\pi)\)</span> ranging from <span class="math notranslate nohighlight">\(-\infty\)</span> to <span class="math notranslate nohighlight">\(\infty\)</span>. Now we can use the linear regression model to model the logit function <span class="math notranslate nohighlight">\(\mathrm{logit}(\pi)\)</span> instead of the probability <span class="math notranslate nohighlight">\(\pi\)</span> or <span class="math notranslate nohighlight">\(y\)</span> directly. The logit function is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{logit}(\pi)=\log \frac{\pi}{1-\pi} = \beta_0 + \beta_1 x.
+\]</div>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Logistic_function">logistic function</a>, also known as the sigmoid function, is the inverse of the logit function. It maps the logit function <span class="math notranslate nohighlight">\(\mathrm{logit}(\pi)\)</span> ranging from <span class="math notranslate nohighlight">\(-\infty\)</span> to <span class="math notranslate nohighlight">\(\infty\)</span> to the probability <span class="math notranslate nohighlight">\(\pi\)</span> ranging from 0 to 1:</p>
+<div class="math notranslate nohighlight">
+\[
+\pi = \mathbb{P}(y = 1 | x) = \mathrm{logit}^{-1}(\beta_0 + \beta_1 x) = \mathrm{logistic}(\beta_0 + \beta_1 x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1)}}.
+\]</div>
+<!-- For classification, we cannot use linear regression to model $y$ directly, because $y$ is either. Instead, we can model the logit of the probability of a positive outcome:
+
+ we prefer probabilities between 0 and 1, so we wrap the right side of the equation into the logistic function. This forces the output to assume only values between 0 and 1 -->
+<!-- Specifically, instead of fitting a straight line or hyperplane, the logistic regression model uses the logistic function to squeeze the output of a linear equation between 0 and 1. 
+
+$$
 \textrm{logistic}(x) = \frac{1}{1 + e^{-x}}
-\]</div>
-<p>The step from linear regression to logistic regression is kind of straightforward. In the simple linear regression model, we have modelled the relationship between outcome and features with a linear equation:</p>
+$$ --></div>
+</div>
+<div class="section" id="estimating-the-coefficients-to-make-predictions">
+<h2><span class="section-number">3.2.3. </span>Estimating the coefficients to make predictions<a class="headerlink" href="#estimating-the-coefficients-to-make-predictions" title="Permalink to this headline">¶</a></h2>
+<p>The coefficients of a logistic regression model can be estimated by <a class="reference external" href="https://en.wikipedia.org/wiki/Maximum_likelihood_estimation">maximum likelihood estimation</a> (MLE). The likelihood function is</p>
 <div class="math notranslate nohighlight">
 \[
-y = \beta_0 + \beta_1 x_1.
+\mathcal{L}(\beta_0, \beta_1) = \prod_{i:y_i=1} \mathbb{P}(y_i = 1) \prod_{i:y_i=0} (1 - \mathbb{P}(y_i = 1)).
 \]</div>
-<p>For classification, we prefer probabilities between 0 and 1, so we wrap the right side of the equation into the logistic function. This forces the output to assume only values between 0 and 1</p>
+<p>The mathematical details are beyond the scope of this course. If interested, please read Section 4.3 of the <a class="reference external" href="https://www.microsoft.com/en-us/research/publication/pattern-recognition-machine-learning/">Pattern Recognition and Machine Learning</a> book for more details of the optimization for logistic regression.</p>
+<p>To make predictions, taking the classification problem on the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Default.csv">Default dataset</a>, the probability of default given balance predicted by a logistic regression model is</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbb{P}(y = 1 | x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1)}}.
+\mathbb{P}(\text{default} = \text{Yes} \mid \text{balance}, \beta_0, \beta_1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 \times \text{balance})}}.
 \]</div>
-<p>Run the code cell below to see the curve of the logistic function.</p>
+<div class="section" id="example-explanation-of-system-transparency">
+<h3><span class="section-number">3.2.3.1. </span>Example explanation of system transparency<a class="headerlink" href="#example-explanation-of-system-transparency" title="Permalink to this headline">¶</a></h3>
+<p>Let us to see the curve of the logistic function on the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Default.csv">Default dataset</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;balance&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;default2&quot;</span><span class="p">,</span> <span class="n">logistic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -785,35 +865,12 @@ y = \beta_0 + \beta_1 x_1.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/logistic-regression_5_0.png" src="../_images/logistic-regression_5_0.png" />
+<img alt="../_images/logistic-regression_7_0.png" src="../_images/logistic-regression_7_0.png" />
 </div>
 </div>
-<p>Let <span class="math notranslate nohighlight">\(p(x) = \mathbb{P}(y=1| x)\)</span>, resulting in:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a6a75968-5887-4a50-ac74-d3c9d2667392">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-a6a75968-5887-4a50-ac74-d3c9d2667392" title="Permalink to this equation">¶</a></span>\[\begin{align}
-\begin{aligned}
-\frac{1-p(x)}{p(x)} &amp;= e^{-(\beta_0 + \beta_1 x_1)} \\
-\ln \left( \frac{1-p(x)}{p(x)} \right) &amp;= -(\beta_0 + \beta_1 x_1) \\
-\ln \left( \frac{p(x)}{1-p(x)} \right) &amp;= \beta_0 + \beta_1 x_1.
-\end{aligned}
-\end{align}\]</div>
-<p>The left-hand side is called the <em>log odds</em> or <em>logit</em>.</p>
-</div>
-<div class="section" id="estimating-the-coefficients-and-making-predictions">
-<h2><span class="section-number">3.2.3. </span>Estimating the coefficients and making predictions<a class="headerlink" href="#estimating-the-coefficients-and-making-predictions" title="Permalink to this headline">¶</a></h2>
-<p>The coefficients of a logistic regression model can be estimated by maximum likelihood estimation. The likelihood function is</p>
-<div class="math notranslate nohighlight">
-\[
-\mathcal{L}(\beta_0, \beta_1) = \prod_{i:y_i=1} \mathbb{P}(y_i = 1) \prod_{i:y_i=0} (1 - \mathbb{P}(y_i = 1)).
-\]</div>
-<p>The mathematical details are beyond the scope of this course. Please read Section 4.3 of the <a class="reference external" href="https://www.microsoft.com/en-us/research/publication/pattern-recognition-machine-learning/">Pattern Recognition and Machine Learning</a> book for more details of the optimization for logistic regression.</p>
-<p>To make predictions, taking the classification problem of the <code class="docutils literal notranslate"><span class="pre">Default</span></code> data for example, the probability of default given balance predicted by a logistic regression model is</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbb{P}(\text{default} = \text{Yes} \mid \text{balance}, \beta_0, \beta_1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 \times \text{balance})}}.
-\]</div>
-<p>In practice, we can use the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> or <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> package to fit a logistic regression model and making predictions. Run the following code to fit a logistic regression model using the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> and <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> packages, respectively.</p>
-<p><strong>Example of <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code></strong></p>
+<p>We can see an S-shaped curve with the vertical axis ranging from 0 to 1, indicating the probability of a positive outcome (<code class="docutils literal notranslate"><span class="pre">default</span></code>) with respect to the horizontal axis <span class="math notranslate nohighlight">\(x\)</span> (<code class="docutils literal notranslate"><span class="pre">balance</span></code>).</p>
+<p>In practice, we can use the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> or <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> package to fit a logistic regression model and make predictions.</p>
+<p>Let us fit a logistic regression model using the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html"><code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> API for logistic regression</a> first.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s2">&quot;newton-cg&quot;</span><span class="p">)</span>
@@ -837,11 +894,11 @@ intercept : [-10.65132548]
 </div>
 </div>
 </div>
+<p>Let us plot the fitted logistic regression model and study the system transparency.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prob</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-<span class="c1"># Right plot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">prob</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">)</span>
 
@@ -901,7 +958,7 @@ intercept : [-10.65132548]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/logistic-regression_9_0.png" src="../_images/logistic-regression_9_0.png" />
+<img alt="../_images/logistic-regression_11_0.png" src="../_images/logistic-regression_11_0.png" />
 </div>
 </div>
 <p>In the above example, we learnt a logistic regression model <span class="math notranslate nohighlight">\(f(x)\)</span> with two parameters, <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>, from the data, where</p>
@@ -918,21 +975,21 @@ intercept : [-10.65132548]
 <div class="math notranslate nohighlight">
 \[ f(1500) = \frac{1}{1 + e^{\beta_0 + \beta_1 \times 1500}} = \frac{1}{1 + e^{-10.65133019 + 0.00549892 \times 1500}} = 0.08294763. \]</div>
 <ul class="simple">
-<li><p>When the probability of default is 0.5, the corresponding balance can be calculated using the <em>log odds</em> equation above:</p></li>
+<li><p>When the probability of <code class="docutils literal notranslate"><span class="pre">default</span></code> 0.5 (the commonly used threshold for binary classification), the corresponding balance can be calculated using the <em>log odds</em> equation above:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-551b466d-b12e-43b0-b4f8-300ecc8f5489">
-<span class="eqno">(3.2)<a class="headerlink" href="#equation-551b466d-b12e-43b0-b4f8-300ecc8f5489" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0b48b648-f347-4bbe-8fea-c836bc60cdf9">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-0b48b648-f347-4bbe-8fea-c836bc60cdf9" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
-\ln \left(\frac{p(x)}{1-p(x)}\right) &amp;= \beta_0 + \beta_1 \times x \\
+\ln \left(\frac{\pi}{1-\pi}\right) &amp;= \beta_0 + \beta_1 \times x \\
 \ln \left(\frac{0.5}{1-0.5}\right) &amp;= \beta_0 + \beta_1 \times x \\
 x &amp; = \frac{- \beta_0}{\beta_1} \\
 x &amp; = \frac{- (-10.65133019)}{0.00549892} \\
 x &amp; = 1936.9858426745614.
 \end{aligned}
 \end{align}\]</div>
-<p>Therefore, to produce result <code class="docutils literal notranslate"><span class="pre">Yes</span></code>, i.e. the probability of <code class="docutils literal notranslate"><span class="pre">default</span></code> <span class="math notranslate nohighlight">\(&gt;\)</span> 0.5, the <code class="docutils literal notranslate"><span class="pre">balance</span></code> should be greater than 1936.9858426745614. By contrast, to produce result <code class="docutils literal notranslate"><span class="pre">No</span></code>, i.e. the probability of <code class="docutils literal notranslate"><span class="pre">default</span></code> <span class="math notranslate nohighlight">\(&lt;\)</span> 0.5, the <code class="docutils literal notranslate"><span class="pre">balance</span></code> should be less than 1936.9858426745614.</p>
+<p>Therefore, to produce result <code class="docutils literal notranslate"><span class="pre">Yes</span></code>, i.e. for the probability of <code class="docutils literal notranslate"><span class="pre">default</span></code> <span class="math notranslate nohighlight">\(&gt;\)</span> 0.5, the <code class="docutils literal notranslate"><span class="pre">balance</span></code> should be greater than 1936.9858426745614. Likewise, to produce result <code class="docutils literal notranslate"><span class="pre">No</span></code>, i.e. the probability of <code class="docutils literal notranslate"><span class="pre">default</span></code> <span class="math notranslate nohighlight">\(&lt;\)</span> 0.5, the <code class="docutils literal notranslate"><span class="pre">balance</span></code> should be less than 1936.9858426745614.</p>
 </div>
-<p><strong>Example of <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code></strong></p>
+<p>Let us fit a logistic regression model using the [<code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> API for logistic regression] next.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">logit</span><span class="p">(</span><span class="s2">&quot;default2 ~ balance&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -995,6 +1052,7 @@ x &amp; = 1936.9858426745614.
 </table>
 </div></div></div>
 </div>
+<p>We can see that the estimated parameters are the same as those from the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> API. Now let us fit a logistic regression model using <code class="docutils literal notranslate"><span class="pre">student</span></code> status as the input variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">logit</span><span class="p">(</span><span class="s2">&quot;default2 ~ student&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -1057,16 +1115,18 @@ x &amp; = 1936.9858426745614.
 </table>
 </div></div></div>
 </div>
+<p>The coefficient associated with <code class="docutils literal notranslate"><span class="pre">student</span></code> is positive, indicating that the probability of <code class="docutils literal notranslate"><span class="pre">default</span></code> is higher for students than non-students.</p>
+</div>
 </div>
 <div class="section" id="multiple-logistic-regression">
 <h2><span class="section-number">3.2.4. </span>Multiple logistic regression<a class="headerlink" href="#multiple-logistic-regression" title="Permalink to this headline">¶</a></h2>
 <p>The logistic regression model can be extended to multiple features. A generalised logistic regression model for an instance <span class="math notranslate nohighlight">\(\mathbf{x} = [x_1, x_2, \dots, x_D]^\top\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
-\ln \left( \frac{p(\mathbf{x})}{1-p(\mathbf{x})} \right) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_D x_D.
+\ln \left( \frac{\pi}{1-\pi} \right) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_D x_D.
 \]</div>
-<p>Run the following code to fit a multiple logistic regression model using the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> and <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> packages, respectively.</p>
-<p><strong>Example of <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code></strong></p>
+<p>Let us fit a multiple logistic regression model using the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> API first.</p>
+<p>Let us plot the fitted multiple logistic regression model and study the system transparency.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
@@ -1094,7 +1154,7 @@ intercept : [-10.86719778]
 </div>
 </div>
 </div>
-<p><strong>Example of <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code></strong>, where the similar parameters are estimated as the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> example.</p>
+<p>Let us fit a multiple logistic regression model using the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> API next.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">logit</span><span class="p">(</span><span class="s2">&quot;default2 ~ balance + income + student&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -1175,10 +1235,11 @@ intercept : [-10.86719778]
 </table>
 </div></div></div>
 </div>
+<p>Similar parameters are estimated as using the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> API.</p>
 </div>
 <div class="section" id="evaluation-of-logistic-regression">
 <h2><span class="section-number">3.2.5. </span>Evaluation of logistic regression<a class="headerlink" href="#evaluation-of-logistic-regression" title="Permalink to this headline">¶</a></h2>
-<p>The evaluation of logistic regression is similar to the evaluation of linear regression. The main difference is that the evaluation metrics are different. For example, the mean squared error (MSE) is not a good metric for classification. Here we introduce two common metrics for classification: accuracy and receiver operating characteristic (ROC).</p>
+<p>The evaluation of logistic regression is similar to the evaluation of linear regression. The main difference is that the evaluation metrics are different. For example, the mean squared error (MSE) is not a good metric for classification. Here we introduce two common metrics for classification: accuracy and area under <a class="reference external" href="https://en.wikipedia.org/wiki/Receiver_operating_characteristic">receiver operating characteristic</a> (ROC) curve, i.e. AUC (or more precisely, AUROC).</p>
 <div class="section" id="accuracy">
 <h3><span class="section-number">3.2.5.1. </span>Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this headline">¶</a></h3>
 <p>The accuracy is the fraction of correct predictions. It is defined as</p>
@@ -1186,7 +1247,7 @@ intercept : [-10.86719778]
 \[
 \text{accuracy} = \frac{\text{number of correct predictions}}{\text{total number of predictions}}.
 \]</div>
-<p>Run the following code to calculate the training accuracy of the logistic regression model.</p>
+<p>Let us compute the training accuracy of the multiple logistic regression model trained using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> API above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
@@ -1202,8 +1263,8 @@ intercept : [-10.86719778]
 </div>
 </div>
 </div>
-<div class="section" id="receiver-operating-characteristic-roc">
-<h3><span class="section-number">3.2.5.2. </span>Receiver operating characteristic (ROC)<a class="headerlink" href="#receiver-operating-characteristic-roc" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="area-under-the-roc-curve-auc">
+<h3><span class="section-number">3.2.5.2. </span>Area under the ROC curve (AUC)<a class="headerlink" href="#area-under-the-roc-curve-auc" title="Permalink to this headline">¶</a></h3>
 <p>The receiver operating characteristic (ROC) curve is a plot of the true positive rate (TPR) against the false positive rate (FPR) at various threshold settings. The TPR and FPR are defined as</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1212,10 +1273,11 @@ intercept : [-10.86719778]
 \text{FPR} &amp;= \frac{\text{number of false positives}}{\text{number of negatives}}
 \end{aligned}
 \end{split}\]</div>
-<p>Run the following code to plot the ROC curve of the logistic regression model.</p>
+<p>The area under the ROC curve (AUC) is a popular measure of classifier performance. The AUC is defined as the area under the ROC curve. It is a number between 0 and 1, where 0.5 is the random guess and 1 is the perfect prediction. The AUC is a good metric for evaluating the classification since it considers all possible classification thresholds.</p>
+<p>Let us plot the ROC curve of the multiple logistic regression model trained using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> API above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_prob</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_prob</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
 
 <span class="n">roc_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ROC AUC: &quot;</span><span class="p">,</span> <span class="n">roc_auc</span><span class="p">)</span>
@@ -1226,12 +1288,13 @@ intercept : [-10.86719778]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ROC AUC:  0.05044715761587593
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ROC AUC:  0.9495528423841241
 </pre></div>
 </div>
-<img alt="../_images/logistic-regression_21_1.png" src="../_images/logistic-regression_21_1.png" />
+<img alt="../_images/logistic-regression_26_1.png" src="../_images/logistic-regression_26_1.png" />
 </div>
 </div>
+<p>We can see clearly the trade-off between TPR and FPR. The AUC is 0.95, indicating that the model is good.</p>
 </div>
 </div>
 </div>
