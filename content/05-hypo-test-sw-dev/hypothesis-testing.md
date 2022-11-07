@@ -135,5 +135,41 @@ Ideally we would like both the Type I and Type II errors to be small. But there 
 The significance level $\alpha$ is a trade-off between the Type I and Type II errors. If we choose a small value of $\alpha$, then we will have strong evidence against $H_0$ when we reject it, but this will increase the Type II error. If we choose a large value of $\alpha$, then we will have weak evidence against $H_0$ when we reject it, but this will increase the Type I error. By only rejecting $H_0$ when the $p$-value is below $\alpha$, we ensure that the Type I error
 rate will be less than or equal to $\alpha$.
 
-In practice, we typically view Type I errors as more "serious" than Type II errors, because the former involves
-declaring a scientific finding that is not correct, which is more serious than failing to declare a scientific finding. Therefore, when we perform hypothesis testing, we typically require a low Type I error rate — e.g. at most $\alpha$ = 0.05 — while trying to make the Type II error small (or, equivalently, the power large).
+In practice, we typically view Type I errors, i.e. false positives, as more "serious" than Type II errors, because the former involves declaring a scientific finding that is not correct, which is more serious than failing to declare a scientific finding (false negatives). Therefore, when we perform hypothesis testing, we typically require a low Type I error rate — e.g. at most $\alpha$ = 0.05 — while trying to make the Type II error small (or, equivalently, the power large).
+
+## Example: testing the null hypothesis $H_0$
+
+## Multiple hypothesis testing
+
+Let us consider the more complicated case where we wish to test $M$ null hypotheses, $H_0^1, H_0^2, \ldots, H_0^M$.
+
+### Case study: a "sure-win" stockbroker?
+
+A stockbroker wishes to drum up new clients by convincing them of his/her trading acumen. S/he tells 1,024 (i.e. $2^10$) potential new clients that s/he can correctly predict whether Apple’s stock price will increase or decrease for 10 days running. For such a binary outcome, we have $2^10=1024$ possibilities for the course of these 10 days. Therefore, s/he emails each client one of these 1024 possibilities. Although the vast majority of his/her potential clients will find that his/her predictions are no better than chance, one of his/her potential clients will be really impressed to find that his/her predictions were correct for _ALL 10 of the days!_ And so the stockbroker gains a new client (and possible more when this client spreads the news).
+
+This is _part of the reason why we receive so many spam emails/calls_. If you make a lot of guesses ("predictions"), then you are bound to get some right by chance.
+
+### The challenge of multiple hypothesis testing
+
+Likewise, if we flip 1,024 fair coins ten times each. Then we would expect (on average) one coin to come up all tails. If one of our coins comes up all tails, then we might therefore conclude that this particular coin is not fair. But it would be incorrect to conclude that the coin is not fair: in fact, the null hypothesis holds, and we just happen to have gotten ten tails in a row by chance.
+
+The examples above demonstrate the main challenge of multiple testing: when testing a huge number of null hypotheses, we are bound to get some very small $p$-values by chance. If we make a decision about whether to reject each null hypothesis without accounting for the fact that we have performed a very large number of tests, then we may end up rejecting a great number of true null hypotheses, i.e. making a large number of Type I errors (false positives), which is what we hope to avoid (see the above).
+
+```{admonition} Why repeat the experiment?
+:class: tip, dropdown
+The reason why we repeat the experiment is to reduce the chance of getting a false positive. If we only perform the experiment once, then we will have a very small chance of getting a false positive.
+```
+
+### Family-wise error rate
+
+Rejecting a null hypothesis if the $p$-value is below $\alpha$ controls the probability of falsely rejecting that null hypothesis at level $\alpha$. However, if we do this for $M$ null hypotheses, then the chance of falsely rejecting _at least one_ of the M null hypotheses is quite a bit higher! This is because the chance of getting a false positive for each null hypothesis is $\alpha$, but the chance of getting a false positive for _at least one_ of the $M$ null hypotheses is $1-(1-\alpha)^M$.
+
+To address this challenge of multiple testing, we hope to test multiple hypotheses while controlling the probability of making at least one Type I error. This can be achieved by controlling the [familywise error rate (FWER)](https://en.wikipedia.org/wiki/Family-wise_error_rate), which is the probability of making at least one Type I error when testing $M$ null hypotheses, i.e. rejecting at least one null hypothesis when all $M$ null hypotheses are true. The FWER is also known as the _probability of a false discovery_.
+
+One solution is to adjust the significance level $\alpha$ for each null hypothesis. Thus, the FWER is controlled by the _family-wise significance level_ $\alpha_M$, which is the significance level that controls the FWER at level $\alpha_M$. The FWER is typically denoted by $\alpha_{\mathrm{FWER}}$. It is reasonable to control the FWER when $M$ takes on a small value, like 5 or 10. However, for $M$ = 100 or 1,000, attempting to control the FWER will make it almost impossible to reject any of the false null hypotheses.
+
+### False discovery rate
+
+In practice, when $M$ is large, trying to prevent any false positives (as in FWER control) is simply too stringent and scientifically uninteresting. In this case, we can tolerate a few false positives, in the interest of making more discoveries, i.e. more rejections of the null hypothesis. Thus, we typically control the [false discovery rate (FDR)](https://en.wikipedia.org/wiki/False_discovery_rate), which is the expected proportion of rejected null hypotheses that are false. The FDR is also known as the _expected proportion of false discoveries_. The FDR is typically denoted by $\alpha_{\mathrm{FDR}}$. The FDR is typically more useful than the FWER when $M$ is large. The use of the FDR also aligns well with the way that data are often collected in contemporary applications, e.g. in [exploratory data analysis](https://en.wikipedia.org/wiki/Exploratory_data_analysis) and [genomics](https://en.wikipedia.org/wiki/Genomics).
+
+Unlike $p$-values, the choice of FDR threshold is typically context-dependent (e.g. cost/budget-dependent), or even dataset-dependent, with no standard accepted threshold.
