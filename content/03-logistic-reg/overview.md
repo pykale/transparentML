@@ -5,7 +5,7 @@
 <!-- File names should be all lowercase, with words separated by hyphens (-), and no spaces.  Each chapter must include an "overview.md" and "quiz-sum-ref.md"-->
 
 ```{admonition} Status
-Drafting
+Ready for review and feedback
 ```
 
 ```{admonition} Objectives
