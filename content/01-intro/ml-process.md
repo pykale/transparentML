@@ -10,7 +10,7 @@ Machine learning process can be described in terms of lifecycle phases. The phas
 - **System requirements specification**: Translating the problem definition into technical design and performance requirements.
 - **Data acquisition and preparation**: Where relevant, acquiring any data that may be needed to build the system, checking its suitability, and preparing it for use, e.g. via data pre-processing and/or data augmentation.
 - **Building**: Creating a system that meets the design requirements previously specified. In the case of ML projects, this involves choosing between ML methods, developing and evaluating candidate models, and selecting the best performing model.
-- **Validation and verification**: Verifying, on an on-going basis, that the system meets the relevant design and performance requirements. Depending on the nature of the system, assessment can rely on empirical testing or formal verification.66
+- **Validation and verification**: Verifying, on an on-going basis, that the system meets the relevant design and performance requirements. Depending on the nature of the system, assessment can rely on empirical testing or formal verification.
 
 ## Lifecycle phases for system deployment
 
