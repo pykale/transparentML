@@ -646,7 +646,7 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="generalised-linear-models">
 <h1><span class="section-number">8.1. </span>Generalised linear models<a class="headerlink" href="#generalised-linear-models" title="Permalink to this headline">¶</a></h1>
-<p>we consider the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> data set. The response is bikers, the number of hourly users of a bike sharing program in Washington, DC. This response value is neither qualitative nor quantitative: instead, it takes on non-negative integer values, or counts. We will consider predicting <code class="docutils literal notranslate"><span class="pre">bikers</span></code> using the covariates <code class="docutils literal notranslate"><span class="pre">mnth</span></code> (month of the year), <code class="docutils literal notranslate"><span class="pre">hr</span></code> (hour of the day, from 0 to 23), <code class="docutils literal notranslate"><span class="pre">workingday</span></code> (an indicator variable that equals 1 if it is neither a weekend nor a holiday), <code class="docutils literal notranslate"><span class="pre">temp</span></code> (the normalized temperature, in Celsius), and <code class="docutils literal notranslate"><span class="pre">weathersit</span></code> (a qualitative variable that takes on one of four possible values: clear; misty or cloudy; light rain or light snow; or heavy rain or heavy snow.)</p>
+<p>we consider the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Bikeshare.csv">Bikeshare dataset</a>. The response is bikers, the number of hourly users of a bike sharing program in Washington, DC. This response value is neither qualitative nor quantitative: instead, it takes on non-negative integer values, or counts. We will consider predicting <code class="docutils literal notranslate"><span class="pre">bikers</span></code> using the covariates <code class="docutils literal notranslate"><span class="pre">mnth</span></code> (month of the year), <code class="docutils literal notranslate"><span class="pre">hr</span></code> (hour of the day, from 0 to 23), <code class="docutils literal notranslate"><span class="pre">workingday</span></code> (an indicator variable that equals 1 if it is neither a weekend nor a holiday), <code class="docutils literal notranslate"><span class="pre">temp</span></code> (the normalized temperature, in Celsius), and <code class="docutils literal notranslate"><span class="pre">weathersit</span></code> (a qualitative variable that takes on one of four possible values: clear; misty or cloudy; light rain or light snow; or heavy rain or heavy snow.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -806,10 +806,10 @@ const thebe_selector_output = ".output, .cell_output"
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   457.3</td> 
 </tr>
 <tr>
-  <th>Date:</th>             <td>Mon, 07 Nov 2022</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
+  <th>Date:</th>             <td>Tue, 08 Nov 2022</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
 </tr>
 <tr>
-  <th>Time:</th>                 <td>19:38:38</td>     <th>  Log-Likelihood:    </th> <td> -49743.</td> 
+  <th>Time:</th>                 <td>19:42:50</td>     <th>  Log-Likelihood:    </th> <td> -49743.</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  8645</td>      <th>  AIC:               </th> <td>9.957e+04</td>
@@ -1036,10 +1036,10 @@ const thebe_selector_output = ".output, .cell_output"
   <th>Method:</th>                 <td>MLE</td>       <th>  Df Model:          </th>   <td>    39</td>   
 </tr>
 <tr>
-  <th>Date:</th>            <td>Mon, 07 Nov 2022</td> <th>  Pseudo R-squ.:     </th>   <td>0.7459</td>   
+  <th>Date:</th>            <td>Tue, 08 Nov 2022</td> <th>  Pseudo R-squ.:     </th>   <td>0.7459</td>   
 </tr>
 <tr>
-  <th>Time:</th>                <td>19:38:39</td>     <th>  Log-Likelihood:    </th> <td>-1.4054e+05</td>
+  <th>Time:</th>                <td>19:42:51</td>     <th>  Log-Likelihood:    </th> <td>-1.4054e+05</td>
 </tr>
 <tr>
   <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th> <td>-5.5298e+05</td>
@@ -1204,21 +1204,21 @@ const thebe_selector_output = ".output, .cell_output"
 <h2><span class="section-number">8.1.3. </span>Generalized linear models<a class="headerlink" href="#generalized-linear-models" title="Permalink to this headline">¶</a></h2>
 <p>Common characteristics of generalized linear models:</p>
 <ol class="simple">
-<li><p>Each approach uses predictors X1, … , Xp to predict a response Y . We assume that, conditional on X1, … , Xp, Y belongs to a certain family of distributions. For linear regression, we typically assume that Y follows a Gaussian or normal distribution. For logistic regression, we assume that Y follows a Bernoulli distribution. Finally, for Poisson regression, we assume that Y follows a Poisson distribution.</p></li>
-<li><p>Each approach models the mean of Y as a function of the predictors. In linear regression, the mean of Y takes the form
+<li><p>Each approach uses predictors <span class="math notranslate nohighlight">\( x_1, x_2, \dots, x_D \)</span> to predict a response <span class="math notranslate nohighlight">\( y \)</span>. We assume that, conditional on <span class="math notranslate nohighlight">\( x_1, x_2,\dots, x_D \)</span>, <span class="math notranslate nohighlight">\( y \)</span> belongs to a certain family of distributions. For linear regression, we typically assume that <span class="math notranslate nohighlight">\( y \)</span> follows a Gaussian or normal distribution. For logistic regression, we assume that <span class="math notranslate nohighlight">\(y\)</span> follows a Bernoulli distribution. Finally, for Poisson regression, we assume that <span class="math notranslate nohighlight">\(y\)</span> follows a Poisson distribution.</p></li>
+<li><p>Each approach models the mean of <span class="math notranslate nohighlight">\(y\)</span> as a function of the predictors. In linear regression, the mean of <span class="math notranslate nohighlight">\(y\)</span> takes the form
 $<span class="math notranslate nohighlight">\(
-\mu = \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p.
-\)</span><span class="math notranslate nohighlight">\(
-In logistic regression, the mean of Y takes the form
-\)</span><span class="math notranslate nohighlight">\(
-\mu = \frac{e^{\beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p}}{1 + e^{\beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p}}.
-\)</span><span class="math notranslate nohighlight">\(
-In Poisson regression, the mean of Y takes the form
-\)</span><span class="math notranslate nohighlight">\(
-\mu = e^{\beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p}.
-\)</span>$</p></li>
+ \mathbb{E}(y|x_1, x_2, \dots, x_D) = \beta_0 + \beta_1 x_1 + \cdots + \beta_p x_D.
+ \)</span><span class="math notranslate nohighlight">\(
+ In logistic regression, the mean of \)</span>y<span class="math notranslate nohighlight">\( takes the form
+ \)</span><span class="math notranslate nohighlight">\(
+ \mathbb{E}(y|x_1, x_2, \dots, x_D) = \mathbb{P}(y=1|x_1, x_2, \dots, x_D) = \frac{e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_D}}{1 + e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_D}}.
+ \)</span><span class="math notranslate nohighlight">\(
+ In Poisson regression, the mean of \)</span>y<span class="math notranslate nohighlight">\( takes the form
+ \)</span><span class="math notranslate nohighlight">\(
+ \mu = e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_D}.
+ \)</span>$</p></li>
 </ol>
-<p>The Gaussian, Bernoulli and Poisson distributions are all members of a wider class of distributions, known as the exponential family. Other well known members of this family are the exponential distribution, the Gamma distribution, and the negative binomial distribution. In general, we can perform a regression by modeling the response Y as coming from a particular member of the exponential family, and then transforming the mean of the response so that the transformed mean is a linear function of the predictors via (4.42). Any regression approach that follows this very general recipe is known as a generalized linear model (GLM). Thus, linear regression, logistic regression, and Poisson regression are three examples of GLMs. Other examples not covered here include <em>Gamma regression</em> and <em>negative binomial regression</em>.</p>
+<p>The Gaussian, Bernoulli and Poisson distributions are all members of a wider class of distributions, known as the exponential family. Other well known members of this family are the exponential distribution, the Gamma distribution, and the negative binomial distribution. In general, we can perform a regression by modelling the response <span class="math notranslate nohighlight">\(y\)</span> as coming from a particular member of the exponential family, and then transforming the mean of the response so that the transformed mean is a linear function of the predictors via (4.42). Any regression approach that follows this very general recipe is known as a generalized linear model (GLM). Thus, linear regression, logistic regression, and Poisson regression are three examples of GLMs. Other examples not covered here include <em>Gamma regression</em> and <em>negative binomial regression</em>.</p>
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">8.1.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
