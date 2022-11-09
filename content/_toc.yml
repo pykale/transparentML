@@ -73,7 +73,7 @@ parts:
     title: Cross validation & bootstrap
     sections:
     - file: 05-cross-val-bootstrap/cross-validation
-      title: Cross validation
+      title: Cross-validation
     - file: 05-cross-val-bootstrap/bootstrap
       title: Bootstrap
     - file: 05-cross-val-bootstrap/quiz-sum-ref
