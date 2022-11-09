@@ -608,11 +608,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-testing-the-null-hypothesis-h-0">
-   4.1.4. Example: testing the null hypothesis
-   <span class="math notranslate nohighlight">
-    \(H_0\)
-   </span>
+  <a class="reference internal nav-link" href="#hypothesis-testing-on-synthetic-data">
+   4.1.4. Hypothesis testing on synthetic data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -631,8 +628,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#family-wise-error-rate">
-     4.1.5.3. Family-wise error rate
+    <a class="reference internal nav-link" href="#family-wise-error-rate-fwer">
+     4.1.5.3. Family-wise error rate (FWER)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -724,11 +721,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-testing-the-null-hypothesis-h-0">
-   4.1.4. Example: testing the null hypothesis
-   <span class="math notranslate nohighlight">
-    \(H_0\)
-   </span>
+  <a class="reference internal nav-link" href="#hypothesis-testing-on-synthetic-data">
+   4.1.4. Hypothesis testing on synthetic data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -747,8 +741,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#family-wise-error-rate">
-     4.1.5.3. Family-wise error rate
+    <a class="reference internal nav-link" href="#family-wise-error-rate-fwer">
+     4.1.5.3. Family-wise error rate (FWER)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -816,12 +810,22 @@ can consider rejecting <span class="math notranslate nohighlight">\(H_0\)</span>
 <h3><span class="section-number">4.1.2.2. </span>Step 2: Construct a test statistic<a class="headerlink" href="#step-2-construct-a-test-statistic" title="Permalink to this headline">¶</a></h3>
 <p>Next, we use our data to find evidence for or against the null hypothesis. A <a class="reference external" href="https://en.wikipedia.org/wiki/Test_statistic">test statistic</a>, often denoted by <span class="math notranslate nohighlight">\(T\)</span>, is a function of the data that summarises the strength of evidence against the null hypothesis. Such function is often constructed from the sample mean and the sample standard deviation.</p>
 <p>For example, denote the blood pressure measurements for the <span class="math notranslate nohighlight">\(D_t\)</span> mice in the treatment group as <span class="math notranslate nohighlight">\(x^t_1, \cdots, x^t_{D_t}\)</span> and the blood pressure measurements for the <span class="math notranslate nohighlight">\(D_c\)</span> mice in the control group as <span class="math notranslate nohighlight">\(x^c_1, \cdots, x^c_{D_c}\)</span>. Denote their means as <span class="math notranslate nohighlight">\(\mu_t\)</span> and <span class="math notranslate nohighlight">\(\mu_c\)</span>, respectively. Then, the test statistic for the two-sample <span class="math notranslate nohighlight">\(t\)</span>-test for testing <span class="math notranslate nohighlight">\(H_0: \mu_t = \mu_c\)</span> versus <span class="math notranslate nohighlight">\(H_1: \mu_t \neq \mu_c\)</span> is</p>
-<p>T = <span class="math notranslate nohighlight">\(\frac{\hat{\mu}_t - \hat{\mu}_c}{\sqrt{\frac{s^2_t}{D_t} + \frac{s^2_c}{D_c}}}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+T = \frac{\hat{\mu}_t - \hat{\mu}_c}{\sqrt{\frac{s^2_t}{D_t} + \frac{s^2_c}{D_c}}},
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat{\mu}_t\)</span> and <span class="math notranslate nohighlight">\(\hat{\mu}_c\)</span> are the sample means of the treatment and control groups, respectively, and <span class="math notranslate nohighlight">\(s^2_t\)</span> and <span class="math notranslate nohighlight">\(s^2_c\)</span> are the sample variances of the treatment and control groups, respectively.</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">How to interpret this statistic?</p>
 <p>This test statistic <span class="math notranslate nohighlight">\(T\)</span> is a measure of the difference between the two sample means, scaled by the standard deviation of the two samples. The larger the test statistic <span class="math notranslate nohighlight">\(T\)</span>, the more evidence there is against the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> (and in support of the alternative hypothesis <span class="math notranslate nohighlight">\(H_1\)</span>). The smaller the test statistic <span class="math notranslate nohighlight">\(T\)</span>, the more evidence there is in favor of the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> (and against the alternative hypothesis <span class="math notranslate nohighlight">\(H_1\)</span>).</p>
 </div>
+<p>The one-sample <span class="math notranslate nohighlight">\(t\)</span>-test for testing <span class="math notranslate nohighlight">\(H_0: \mu = \mu_0\)</span> versus <span class="math notranslate nohighlight">\(H_1: \mu \neq \mu_0\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+T = \frac{\hat{\mu} - \mu_0}{\frac{s}{\sqrt{D}}},
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu_0\)</span> is the hypothesised (population) mean, <span class="math notranslate nohighlight">\(\hat{\mu}\)</span> is the sample mean, and <span class="math notranslate nohighlight">\(s\)</span> is the sample standard deviation.</p>
+<p>The one-sample <span class="math notranslate nohighlight">\(t\)</span>-test compares one sample mean to a null hypothesis value. Thw two-sample <span class="math notranslate nohighlight">\(t\)</span>-test compares two sample means to each other, i.e. considering two independent groups. The paired <span class="math notranslate nohighlight">\(t\)</span>-test compares two sample means to each other, but the two groups are related to each other, i.e. “paired”, e.g., the same mice before and after treatment. The paired <span class="math notranslate nohighlight">\(t\)</span>-test simply calculates the difference between paired groups and then performs the one-sample <span class="math notranslate nohighlight">\(t\)</span>-test on the differences.</p>
 </div>
 <div class="section" id="step-3-compute-a-p-value">
 <h3><span class="section-number">4.1.2.3. </span>Step 3: Compute a <span class="math notranslate nohighlight">\(p\)</span>-value<a class="headerlink" href="#step-3-compute-a-p-value" title="Permalink to this headline">¶</a></h3>
@@ -892,8 +896,169 @@ rate will be less than or equal to <span class="math notranslate nohighlight">\(
 <p>In practice, we typically view Type I errors, i.e. false positives, as more “serious” than Type II errors, because the former involves declaring a scientific finding that is not correct, which is more serious than failing to declare a scientific finding (false negatives). Therefore, when we perform hypothesis testing, we typically require a low Type I error rate — e.g. at most <span class="math notranslate nohighlight">\(\alpha\)</span> = 0.05 — while trying to make the Type II error small (or, equivalently, the power large).</p>
 </div>
 </div>
-<div class="section" id="example-testing-the-null-hypothesis-h-0">
-<h2><span class="section-number">4.1.4. </span>Example: testing the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span><a class="headerlink" href="#example-testing-the-null-hypothesis-h-0" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="hypothesis-testing-on-synthetic-data">
+<h2><span class="section-number">4.1.4. </span>Hypothesis testing on synthetic data<a class="headerlink" href="#hypothesis-testing-on-synthetic-data" title="Permalink to this headline">¶</a></h2>
+<p>Let us perform some one-sample <span class="math notranslate nohighlight">\(t\)</span>-tests on synthetic data for this study.</p>
+<p>Get ready by importing the APIs needed from respective libraries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> <span class="k">as</span> <span class="n">st</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+<span class="kn">from</span> <span class="nn">statsmodels.sandbox.stats.multicomp</span> <span class="kn">import</span> <span class="n">multipletests</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us create 100 variables, each with 10 observations (samples). We make the first 50 variables to have mean 0.5 (the <code class="docutils literal notranslate"><span class="pre">offset</span></code>) and variance 1, and the last 50 variables to have mean 0 and variance 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">offset</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">X</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">50</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">50</span><span class="p">]</span> <span class="o">+</span> <span class="n">offset</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We then perform one-sample <span class="math notranslate nohighlight">\(t\)</span>-tests of the null hypothesis that the population mean (<code class="docutils literal notranslate"><span class="pre">popmean</span></code>) is zero <span class="math notranslate nohighlight">\(H_0: \mu_i = 0\)</span> for all variables <span class="math notranslate nohighlight">\(i=1, \cdots, 100\)</span> using the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_1samp.html"><code class="docutils literal notranslate"><span class="pre">ttest_1samp</span></code></a> function from the <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> module. The function returns the <span class="math notranslate nohighlight">\(t\)</span>-statistic and the <span class="math notranslate nohighlight">\(p\)</span>-value for each variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">popmean</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us inspect the <span class="math notranslate nohighlight">\(t\)</span>-statistic and <span class="math notranslate nohighlight">\(p\)</span>-value for the first and the 60th variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variable 0 t-statistic: &quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">statistic</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variable 0 p-value: &quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">pvalue</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variable 59 t-statistic: &quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">statistic</span><span class="p">[</span><span class="mi">59</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variable 59 p-value: &quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">pvalue</span><span class="p">[</span><span class="mi">59</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variable 0 t-statistic:  1.2087075209473424
+Variable 0 p-value:  0.2575718703150701
+Variable 59 t-statistic:  -0.0037602605936159984
+Variable 59 p-value:  0.9970817828876111
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <span class="math notranslate nohighlight">\(p\)</span>-value for the first variable is 0.25, which is greater than the significance level <span class="math notranslate nohighlight">\(\alpha\)</span> = 0.05. Therefore, we fail to reject the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> for the first variable. We know the true mean of the first variable is 0.5, so the null hypothesis is false. Thus, this is a Type II error.</p>
+<p>The <span class="math notranslate nohighlight">\(p\)</span>-value for the 60th variable is 0.99. We also fail to reject the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span>. However, we know the true mean of the 60th variable is 0, so the null hypothesis is true. Thus, this is a correct decision.</p>
+<p>We can plot the <span class="math notranslate nohighlight">\(p\)</span>-values of the <span class="math notranslate nohighlight">\(t\)</span>-tests as a histogram to see the distribution of the <span class="math notranslate nohighlight">\(p\)</span>-values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: ylabel=&#39;Count&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/hypothesis-testing_10_1.png" src="../_images/hypothesis-testing_10_1.png" />
+</div>
+</div>
+<p>We set the significance level <span class="math notranslate nohighlight">\(\alpha\)</span> to 0.05 to make a decision on whether to reject <span class="math notranslate nohighlight">\(H_0\)</span> or not.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_values</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">pvalue</span>
+<span class="n">decisions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p_values</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">p_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
+        <span class="n">decisions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Reject H0&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">decisions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Fail to reject H0&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us use the ground truth to evaluate the performance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ground_truth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="s2">&quot;Reject H0&quot;</span><span class="p">,</span> <span class="s2">&quot;Fail to reject H0&quot;</span><span class="p">],</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Reject H0&quot;</span><span class="p">,</span> <span class="s2">&quot;Fail to reject H0&quot;</span><span class="p">]</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">,</span> <span class="n">decisions</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[14 36]
+ [ 1 49]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can visualise this confusion matrix using the <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.heatmap.html"><code class="docutils literal notranslate"><span class="pre">heatmap</span></code></a> function from the <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> module.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ground_truth_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;H0 is False&quot;</span><span class="p">,</span> <span class="s2">&quot;H0 is True&quot;</span><span class="p">]</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">ground_truth_labels</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
+</pre></div>
+</div>
+<img alt="../_images/hypothesis-testing_16_1.png" src="../_images/hypothesis-testing_16_1.png" />
+</div>
+</div>
+<p>There are quite some errors made. We can make the offset larger (from 0.5 to 1) to see the change to the confusion matrix and the total number of errors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">offset</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">decisions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">X</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">50</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">50</span><span class="p">]</span> <span class="o">+</span> <span class="n">offset</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">popmean</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">p_values</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">pvalue</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p_values</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">p_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
+        <span class="n">decisions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Reject H0&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">decisions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Fail to reject H0&quot;</span><span class="p">)</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">,</span> <span class="n">decisions</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">ground_truth_labels</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
+</pre></div>
+</div>
+<img alt="../_images/hypothesis-testing_18_1.png" src="../_images/hypothesis-testing_18_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">decisions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100
+</pre></div>
+</div>
+</div>
+</div>
+<p>For this time, there is only one error in total.</p>
 </div>
 <div class="section" id="multiple-hypothesis-testing">
 <h2><span class="section-number">4.1.5. </span>Multiple hypothesis testing<a class="headerlink" href="#multiple-hypothesis-testing" title="Permalink to this headline">¶</a></h2>
@@ -912,15 +1077,366 @@ rate will be less than or equal to <span class="math notranslate nohighlight">\(
 <p>The reason why we repeat the experiment is to reduce the chance of getting a false positive. If we only perform the experiment once, then we will have a very small chance of getting a false positive.</p>
 </div>
 </div>
-<div class="section" id="family-wise-error-rate">
-<h3><span class="section-number">4.1.5.3. </span>Family-wise error rate<a class="headerlink" href="#family-wise-error-rate" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="family-wise-error-rate-fwer">
+<h3><span class="section-number">4.1.5.3. </span>Family-wise error rate (FWER)<a class="headerlink" href="#family-wise-error-rate-fwer" title="Permalink to this headline">¶</a></h3>
 <p>Rejecting a null hypothesis if the <span class="math notranslate nohighlight">\(p\)</span>-value is below <span class="math notranslate nohighlight">\(\alpha\)</span> controls the probability of falsely rejecting that null hypothesis at level <span class="math notranslate nohighlight">\(\alpha\)</span>. However, if we do this for <span class="math notranslate nohighlight">\(M\)</span> null hypotheses, then the chance of falsely rejecting <em>at least one</em> of the M null hypotheses is quite a bit higher! This is because the chance of getting a false positive for each null hypothesis is <span class="math notranslate nohighlight">\(\alpha\)</span>, but the chance of getting a false positive for <em>at least one</em> of the <span class="math notranslate nohighlight">\(M\)</span> null hypotheses is <span class="math notranslate nohighlight">\(1-(1-\alpha)^M\)</span>.</p>
-<p>To address this challenge of multiple testing, we hope to test multiple hypotheses while controlling the probability of making at least one Type I error. This can be achieved by controlling the <a class="reference external" href="https://en.wikipedia.org/wiki/Family-wise_error_rate">familywise error rate (FWER)</a>, which is the probability of making at least one Type I error when testing <span class="math notranslate nohighlight">\(M\)</span> null hypotheses, i.e. rejecting at least one null hypothesis when all <span class="math notranslate nohighlight">\(M\)</span> null hypotheses are true. The FWER is also known as the <em>probability of a false discovery</em>.</p>
-<p>One solution is to adjust the significance level <span class="math notranslate nohighlight">\(\alpha\)</span> for each null hypothesis. Thus, the FWER is controlled by the <em>family-wise significance level</em> <span class="math notranslate nohighlight">\(\alpha_M\)</span>, which is the significance level that controls the FWER at level <span class="math notranslate nohighlight">\(\alpha_M\)</span>. The FWER is typically denoted by <span class="math notranslate nohighlight">\(\alpha_{\mathrm{FWER}}\)</span>. It is reasonable to control the FWER when <span class="math notranslate nohighlight">\(M\)</span> takes on a small value, like 5 or 10. However, for <span class="math notranslate nohighlight">\(M\)</span> = 100 or 1,000, attempting to control the FWER will make it almost impossible to reject any of the false null hypotheses.</p>
+<p>Let us see this visually. We will plot the chance of getting a false positive for <em>at least one</em> of the <span class="math notranslate nohighlight">\(M\)</span> null hypotheses as a function of <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(M\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">fwe1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="o">-</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">m</span><span class="p">))</span>
+<span class="n">fwe2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="o">-</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">m</span><span class="p">))</span>
+<span class="n">fwe3</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="o">-</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">m</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">fwe1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;alpha=0.05&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">fwe2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;alpha=0.01&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">fwe3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;alpha=0.001&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;M: Number of tests in log scale&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Family-wise error rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/hypothesis-testing_22_0.png" src="../_images/hypothesis-testing_22_0.png" />
+</div>
+</div>
+<p>We see that setting <span class="math notranslate nohighlight">\(\alpha = 0.05\)</span> results in a high FWER even for moderate <span class="math notranslate nohighlight">\(M\)</span>. With <span class="math notranslate nohighlight">\(\alpha = 0.01\)</span>, we can test no more than five null hypotheses before the FWER exceeds 0.05. Only for very small values, such as <span class="math notranslate nohighlight">\(\alpha = 0.001\)</span>, we can manage to ensure a small FWER for moderate values of <span class="math notranslate nohighlight">\(M\)</span>.</p>
+<p>Of course, the problem with setting <span class="math notranslate nohighlight">\(\alpha\)</span> to such a low value is that we are likely to make a large number of Type II errors: in other words, our power is very low.</p>
+<p>To address this challenge of multiple testing, we hope to test multiple hypotheses while controlling the probability of making at least one Type I error. This can be achieved by controlling the <a class="reference external" href="https://en.wikipedia.org/wiki/Family-wise_error_rate">family-wise error rate (FWER)</a>, which is the probability of making at least one Type I error when testing <span class="math notranslate nohighlight">\(M\)</span> null hypotheses, i.e. rejecting at least one null hypothesis when all <span class="math notranslate nohighlight">\(M\)</span> null hypotheses are true. The FWER is also known as the <em>probability of a false discovery</em>.</p>
+<p>One solution is to adjust the significance level <span class="math notranslate nohighlight">\(\alpha\)</span> for each null hypothesis. The <a class="reference external" href="https://en.wikipedia.org/wiki/Bonferroni_correction">Bonferroni correction</a> is a simple way to adjust the significance level <span class="math notranslate nohighlight">\(\alpha\)</span> for multiple testing. This method divides the significance level <span class="math notranslate nohighlight">\(\alpha\)</span> by the number of null hypotheses <span class="math notranslate nohighlight">\(M\)</span> to obtain the <em>family-wise significance level</em> <span class="math notranslate nohighlight">\(\alpha_M\)</span>. The Bonferroni correction is conservative, i.e. it ensures that the FWER is at most <span class="math notranslate nohighlight">\(\alpha_M\)</span>. However, it also reduces the power of the test, i.e. the chance of rejecting a false null hypothesis.</p>
+<p>Let us study the family-wise error rate (FWER) and Bonferroni correction on the <a class="reference external" href="https://github.com/pykale/transparentML/raw/main/data/Fund.csv">Fund dataset</a> (click to explore).</p>
+<p>Load the data first and display some essential information first.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fund_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Fund.csv&quot;</span>
+
+<span class="n">fund_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">fund_url</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">fund_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 50 entries, 0 to 49
+Columns: 2000 entries, Manager1 to Manager2000
+dtypes: float64(2000)
+memory usage: 781.4 KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Inspect the first few rows of the data, as usual.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fund_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Manager1</th>
+      <th>Manager2</th>
+      <th>Manager3</th>
+      <th>Manager4</th>
+      <th>Manager5</th>
+      <th>Manager6</th>
+      <th>Manager7</th>
+      <th>Manager8</th>
+      <th>Manager9</th>
+      <th>Manager10</th>
+      <th>...</th>
+      <th>Manager1991</th>
+      <th>Manager1992</th>
+      <th>Manager1993</th>
+      <th>Manager1994</th>
+      <th>Manager1995</th>
+      <th>Manager1996</th>
+      <th>Manager1997</th>
+      <th>Manager1998</th>
+      <th>Manager1999</th>
+      <th>Manager2000</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-3.341992</td>
+      <td>-4.167469</td>
+      <td>9.389223</td>
+      <td>8.417220</td>
+      <td>0.997863</td>
+      <td>7.191473</td>
+      <td>-10.767592</td>
+      <td>4.072425</td>
+      <td>1.575264</td>
+      <td>-0.798505</td>
+      <td>...</td>
+      <td>-2.948706</td>
+      <td>10.350706</td>
+      <td>-2.855337</td>
+      <td>-4.431786</td>
+      <td>0.739544</td>
+      <td>0.198044</td>
+      <td>1.752188</td>
+      <td>-1.534710</td>
+      <td>-3.359419</td>
+      <td>6.585654</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.759627</td>
+      <td>12.525254</td>
+      <td>3.403366</td>
+      <td>0.143944</td>
+      <td>-7.222227</td>
+      <td>0.067747</td>
+      <td>-10.737053</td>
+      <td>-1.138185</td>
+      <td>-7.166604</td>
+      <td>4.778522</td>
+      <td>...</td>
+      <td>24.003150</td>
+      <td>-1.966606</td>
+      <td>-1.609109</td>
+      <td>1.405325</td>
+      <td>4.717175</td>
+      <td>1.540359</td>
+      <td>-12.218233</td>
+      <td>-0.073008</td>
+      <td>-8.547683</td>
+      <td>-2.382629</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>12.970091</td>
+      <td>-2.581061</td>
+      <td>-0.824734</td>
+      <td>6.584604</td>
+      <td>17.050241</td>
+      <td>1.857130</td>
+      <td>3.196942</td>
+      <td>-7.981362</td>
+      <td>-1.214148</td>
+      <td>2.338250</td>
+      <td>...</td>
+      <td>-2.926914</td>
+      <td>6.420147</td>
+      <td>8.946921</td>
+      <td>3.449013</td>
+      <td>1.009957</td>
+      <td>1.481369</td>
+      <td>14.203314</td>
+      <td>0.005562</td>
+      <td>-5.105035</td>
+      <td>2.292429</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-4.874630</td>
+      <td>7.981743</td>
+      <td>-4.026743</td>
+      <td>-4.731946</td>
+      <td>0.503276</td>
+      <td>0.740187</td>
+      <td>-28.969410</td>
+      <td>4.683751</td>
+      <td>-0.568840</td>
+      <td>-4.000547</td>
+      <td>...</td>
+      <td>-3.112208</td>
+      <td>3.173581</td>
+      <td>-6.017109</td>
+      <td>-1.984873</td>
+      <td>1.022525</td>
+      <td>-2.261927</td>
+      <td>19.345970</td>
+      <td>-1.048299</td>
+      <td>-0.016154</td>
+      <td>1.196832</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.019279</td>
+      <td>-5.370236</td>
+      <td>-4.854669</td>
+      <td>10.594432</td>
+      <td>-6.891574</td>
+      <td>9.877838</td>
+      <td>1.430033</td>
+      <td>9.840311</td>
+      <td>5.311455</td>
+      <td>18.365094</td>
+      <td>...</td>
+      <td>7.173653</td>
+      <td>-9.157211</td>
+      <td>7.643125</td>
+      <td>-1.022339</td>
+      <td>-1.325865</td>
+      <td>2.848785</td>
+      <td>-6.642081</td>
+      <td>2.488612</td>
+      <td>0.032060</td>
+      <td>-7.510032</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 2000 columns</p>
+</div></div></div>
+</div>
+<p>Let us do a one-sample <span class="math notranslate nohighlight">\(t\)</span>-test for the first manager.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">fund_df</span><span class="p">[</span><span class="s2">&quot;Manager1&quot;</span><span class="p">],</span> <span class="n">popmean</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">pvalue</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0062023554855382655
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s do a one-sample <span class="math notranslate nohighlight">\(t\)</span>-test for five managers instead.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_values</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">manager_number</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">manager_number</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">fund_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">popmean</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">p_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">pvalue</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">p_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.0062023554855382655, 0.9182711516514124, 0.011600982682500436, 0.6005396008061651, 0.7557815084668166]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <span class="math notranslate nohighlight">\(p\)</span>-values are low for Managers One and Three, and high for the other three managers. However, we cannot simply reject <span class="math notranslate nohighlight">\(H_0^1\)</span> and <span class="math notranslate nohighlight">\(H_0^3\)</span>, since this would fail to account for the multiple testing that we have performed. Instead, we can use the Bonferroni correction to adjust the significance level <span class="math notranslate nohighlight">\(\alpha\)</span> for multiple testing, using the <code class="docutils literal notranslate"><span class="pre">multipletests</span></code> function from the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> module.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reject</span><span class="p">,</span> <span class="n">p_values_corrected</span><span class="p">,</span> <span class="n">alphacSidak</span><span class="p">,</span> <span class="n">alphacBonf</span> <span class="o">=</span> <span class="n">multipletests</span><span class="p">(</span>
+    <span class="n">p_values</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;bonferroni&quot;</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p_values_corrected</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.03101178 1.         0.05800491 1.         1.        ]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Therefore, using the Bonferroni correction, we will reject the null hypothesis only for Manager One while controlling the FWER at 0.05. This information is also available in the variable reject.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">reject</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ True False False False False]
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is reasonable to control the FWER when <span class="math notranslate nohighlight">\(M\)</span> takes on a small value, like 5 or 10. However, for <span class="math notranslate nohighlight">\(M\)</span> = 100 or 1,000, attempting to control the FWER will make it almost impossible to reject any of the false null hypotheses.</p>
 </div>
 <div class="section" id="false-discovery-rate">
 <h3><span class="section-number">4.1.5.4. </span>False discovery rate<a class="headerlink" href="#false-discovery-rate" title="Permalink to this headline">¶</a></h3>
-<p>In practice, when <span class="math notranslate nohighlight">\(M\)</span> is large, trying to prevent any false positives (as in FWER control) is simply too stringent and scientifically uninteresting. In this case, we can tolerate a few false positives, in the interest of making more discoveries, i.e. more rejections of the null hypothesis. Thus, we typically control the <a class="reference external" href="https://en.wikipedia.org/wiki/False_discovery_rate">false discovery rate (FDR)</a>, which is the expected proportion of rejected null hypotheses that are false. The FDR is also known as the <em>expected proportion of false discoveries</em>. The FDR is typically denoted by <span class="math notranslate nohighlight">\(\alpha_{\mathrm{FDR}}\)</span>. The FDR is typically more useful than the FWER when <span class="math notranslate nohighlight">\(M\)</span> is large. The use of the FDR also aligns well with the way that data are often collected in contemporary applications, e.g. in <a class="reference external" href="https://en.wikipedia.org/wiki/Exploratory_data_analysis">exploratory data analysis</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Genomics">genomics</a>.</p>
+<p>In practice, when <span class="math notranslate nohighlight">\(M\)</span> is large, trying to prevent any false positives (as in FWER control) is simply too stringent and scientifically uninteresting. In this case, we can tolerate a few false positives, in the interest of making more discoveries, i.e. more rejections of the null hypothesis. Thus, we typically control the <a class="reference external" href="https://en.wikipedia.org/wiki/False_discovery_rate">false discovery rate (FDR)</a>, which is the expected proportion of rejected null hypotheses that are false. The FDR is also known as the <em>expected proportion of false discoveries</em>.</p>
+<p>The Benjamini-Hochberg procedure is a popular method for controlling the FDR. This method controls the FDR at level <span class="math notranslate nohighlight">\(\alpha\)</span> by rejecting the null hypothesis for the <span class="math notranslate nohighlight">\(k\)</span>th smallest <span class="math notranslate nohighlight">\(p\)</span>-value if <span class="math notranslate nohighlight">\(p_k \leq \alpha k/M\)</span>, where <span class="math notranslate nohighlight">\(M\)</span> is the number of null hypotheses. The Benjamini-Hochberg procedure is less conservative than the Bonferroni correction, i.e. it allows for more false positives. However, it also increases the power of the test, i.e. the chance of rejecting a false null hypothesis.</p>
+<p>The FDR is typically more useful than the FWER when <span class="math notranslate nohighlight">\(M\)</span> is large. The use of the FDR also aligns well with the way that data are often collected in contemporary applications, e.g. in <a class="reference external" href="https://en.wikipedia.org/wiki/Exploratory_data_analysis">exploratory data analysis</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Genomics">genomics</a>.</p>
+<p>Let us study the false discovery rate (FDR) on the <a class="reference external" href="https://github.com/pykale/transparentML/raw/main/data/Fund.csv">Fund dataset</a> above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_values</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">manager_number</span> <span class="o">=</span> <span class="n">fund_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">manager_number</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">fund_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">popmean</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">p_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">pvalue</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">p_values</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.0062023554855382655, 0.9182711516514124, 0.011600982682500436, 0.6005396008061651, 0.7557815084668166, 0.0009645725984591884, 0.004651524304645157, 0.0013978025258984373, 0.002604065138148157, 0.0027967384364455815]
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are far too many managers to consider if we try to control the FWER. Instead, we focus on controlling the FDR: that is, the expected fraction of rejected null hypotheses that are actually false positives. We can use the same <code class="docutils literal notranslate"><span class="pre">multipletests</span></code> function from the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> module to control the FDR.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reject</span><span class="p">,</span> <span class="n">p_values_corrected</span><span class="p">,</span> <span class="n">alphacSidak</span><span class="p">,</span> <span class="n">alphacBonf</span> <span class="o">=</span> <span class="n">multipletests</span><span class="p">(</span>
+    <span class="n">p_values</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;fdr_bh&quot;</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p_values_corrected</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.08988921 0.991491   0.12211561 0.92342997 0.95603587 0.07513802
+ 0.0767015  0.07513802 0.07513802 0.07513802]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <span class="math notranslate nohighlight">\(p\)</span>-values output by the Benjamini-Hochberg procedure can be interpreted as the smallest FDR threshold at which we would reject a particular null hypothesis. For instance, a <span class="math notranslate nohighlight">\(p\)</span>-value of 0.1 indicates that we can reject the corresponding null hypothesis at an FDR of 10% or greater, but that we cannot reject the null hypothesis at an FDR below 10%.</p>
+<p>We would find that 146 of the 2,000 fund managers have a corrected <span class="math notranslate nohighlight">\(p\)</span>-value below 0.1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">p_values_corrected</span> <span class="o">&lt;=</span> <span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>146
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we use bonferroni method, we will find None.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">p_values</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">0.1</span> <span class="o">/</span> <span class="n">fund_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
 <p>Unlike <span class="math notranslate nohighlight">\(p\)</span>-values, the choice of FDR threshold is typically context-dependent (e.g. cost/budget-dependent), or even dataset-dependent, with no standard accepted threshold.</p>
 </div>
 </div>
