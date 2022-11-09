@@ -841,7 +841,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p class="admonition-title">System transparency</p>
 <ul class="simple">
 <li><p>The model predicts the test point (at the red cross) to be a <code class="docutils literal notranslate"><span class="pre">virginica</span></code> because the nearest neighbor to the red cross is a darkblue circle, which is a <code class="docutils literal notranslate"><span class="pre">virginica</span></code>.</p></li>
-<li><p>The model would have predict the test point to be a <code class="docutils literal notranslate"><span class="pre">versicolor</span></code> if its <code class="docutils literal notranslate"><span class="pre">septal_length</span></code> is <code class="docutils literal notranslate"><span class="pre">5.1cm</span></code>, or the model would have predict the test point to be a <code class="docutils literal notranslate"><span class="pre">setosa</span></code> if its <code class="docutils literal notranslate"><span class="pre">septal_width</span></code> is <code class="docutils literal notranslate"><span class="pre">2.9cm</span></code>.</p></li>
+<li><p>The model would have predict the test point to be a <code class="docutils literal notranslate"><span class="pre">versicolor</span></code> if its <code class="docutils literal notranslate"><span class="pre">septal_length</span></code> is <code class="docutils literal notranslate"><span class="pre">5.1cm</span></code>, or The model would have predicted the test point to be a <code class="docutils literal notranslate"><span class="pre">setosa</span></code> if its <code class="docutils literal notranslate"><span class="pre">septal_width</span></code> is <code class="docutils literal notranslate"><span class="pre">2.9cm</span></code>.</p></li>
 </ul>
 </div>
 <p>When <span class="math notranslate nohighlight">\(K=5\)</span>, the model predicts the test point to be a <code class="docutils literal notranslate"><span class="pre">versicolor</span></code> because the majority of the five nearest neighbors to the red cross are <code class="docutils literal notranslate"><span class="pre">versicolor</span></code> (green circles). When <span class="math notranslate nohighlight">\(K=15\)</span>, the model predicts the test point to be a <code class="docutils literal notranslate"><span class="pre">setosa</span></code> because the majority of the 15 nearest neighbors to the red cross are <code class="docutils literal notranslate"><span class="pre">setosa</span></code> (orange circles). From the figures, we can tell how a different prediction would have been made by changing the features of the test point.</p>
@@ -883,12 +883,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p><strong>2</strong>. Why KNN is a lazy model?</p>
+<p><strong>2</strong>.  Why is KNN a lazy model?</p>
 <p><em>Compare your answer with the solution below</em></p>
 <div class="toggle docutils container">
 <p>KNN is a lazy model beacuase it is a non-parametric model, which means that it does not make any assumption on the underlying data distribution.</p>
 </div>
-<p><strong>3</strong>. Why KNN is an instance-based model?</p>
+<p><strong>3</strong>. Why is  KNN an instance-based model?</p>
 <p><em>Compare your answer with the solution below</em></p>
 <div class="toggle docutils container">
 <p>KNN does not learn a discriminative function from the training data but memorises the training dataset instead thats why it’s called instance-based model.</p>
@@ -1294,18 +1294,6 @@ const thebe_selector_output = ".output, .cell_output"
   </tbody>
 </table>
 </div></div></div>
-</div>
-<p><strong>5</strong>. Which of the following distance metric can not be used in k-NN? You can choose multiple answers.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>A) Manhattan
-B) Minkowski
-C) Tanimoto
-D) Jaccard
-E) Mahalanobis
-</pre></div>
-</div>
-<p><em>Compare your answer with the solution below</em></p>
-<div class="toggle docutils container">
-<p><strong>A, B, C, D, E</strong></p>
 </div>
 </div>
 </div>

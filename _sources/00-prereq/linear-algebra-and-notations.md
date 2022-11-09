@@ -145,7 +145,7 @@ This section introduces the basic concepts of linear algebra and notations used 
 
     *Compare your answer with the solution below*
    ```{toggle}
-    **a ,b, c**
+    **a , c, d**
    ```
 
 2. **A** = $\begin{bmatrix} 8 & 5 & 9 \\ 7 & 19 & 14 \end{bmatrix}$

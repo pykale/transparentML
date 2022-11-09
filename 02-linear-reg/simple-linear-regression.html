@@ -717,24 +717,22 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: statsmodels in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (0.13.5)
 Requirement already satisfied: seaborn in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (0.12.1)
+Requirement already satisfied: numpy&gt;=1.17 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from statsmodels) (1.23.4)
+Requirement already satisfied: scipy&gt;=1.3 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from statsmodels) (1.9.3)
+Requirement already satisfied: packaging&gt;=21.3 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from statsmodels) (21.3)
+Requirement already satisfied: patsy&gt;=0.5.2 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from statsmodels) (0.5.3)
+Requirement already satisfied: pandas&gt;=0.25 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from statsmodels) (1.5.1)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: patsy&gt;=0.5.2 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from statsmodels) (0.5.3)
-Requirement already satisfied: numpy&gt;=1.17 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from statsmodels) (1.23.4)
-Requirement already satisfied: packaging&gt;=21.3 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from statsmodels) (21.3)
-Requirement already satisfied: scipy&gt;=1.3 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from statsmodels) (1.9.3)
-Requirement already satisfied: pandas&gt;=0.25 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from statsmodels) (1.5.1)
-Requirement already satisfied: matplotlib!=3.6.1,&gt;=3.1 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from seaborn) (3.6.2)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: matplotlib!=3.6.1,&gt;=3.1 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from seaborn) (3.6.2)
 Requirement already satisfied: kiwisolver&gt;=1.0.1 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from matplotlib!=3.6.1,&gt;=3.1-&gt;seaborn) (1.4.4)
 Requirement already satisfied: pillow&gt;=6.2.0 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from matplotlib!=3.6.1,&gt;=3.1-&gt;seaborn) (9.3.0)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from matplotlib!=3.6.1,&gt;=3.1-&gt;seaborn) (2.8.2)
 Requirement already satisfied: contourpy&gt;=1.0.1 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from matplotlib!=3.6.1,&gt;=3.1-&gt;seaborn) (1.0.6)
+Requirement already satisfied: cycler&gt;=0.10 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from matplotlib!=3.6.1,&gt;=3.1-&gt;seaborn) (0.11.0)
 Requirement already satisfied: fonttools&gt;=4.22.0 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from matplotlib!=3.6.1,&gt;=3.1-&gt;seaborn) (4.38.0)
 Requirement already satisfied: pyparsing&gt;=2.2.1 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from matplotlib!=3.6.1,&gt;=3.1-&gt;seaborn) (3.0.9)
-Requirement already satisfied: python-dateutil&gt;=2.7 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from matplotlib!=3.6.1,&gt;=3.1-&gt;seaborn) (2.8.2)
-Requirement already satisfied: cycler&gt;=0.10 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from matplotlib!=3.6.1,&gt;=3.1-&gt;seaborn) (0.11.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pytz&gt;=2020.1 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from pandas&gt;=0.25-&gt;statsmodels) (2022.6)
+Requirement already satisfied: pytz&gt;=2020.1 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from pandas&gt;=0.25-&gt;statsmodels) (2022.6)
 Requirement already satisfied: six in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from patsy&gt;=0.5.2-&gt;statsmodels) (1.16.0)
 </pre></div>
 </div>
@@ -886,22 +884,22 @@ memory usage: 7.8 KB
 (x_1, y_1), (x_2, y_2), \ldots, (x_N, y_N)
 \]</div>
 <p>be the <span class="math notranslate nohighlight">\(N\)</span> observations in the dataset, and <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> denote the estimated values of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>, respectively. The estimated values of <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> can be obtained by minimising the <a class="reference external" href="https://en.wikipedia.org/wiki/Residual_sum_of_squares"><em>residual sum of squares</em> (RSS)</a> between the observed response values <span class="math notranslate nohighlight">\(y_i\)</span> and the predicted response values <span class="math notranslate nohighlight">\(\hat{y}_i\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-77ed3a77-5213-4abd-870b-ace7b10aea00">
-<span class="eqno">(2.2)<a class="headerlink" href="#equation-77ed3a77-5213-4abd-870b-ace7b10aea00" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-77ce9e41-bbaf-41af-aaa7-316e605c8161">
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-77ce9e41-bbaf-41af-aaa7-316e605c8161" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{RSS} = \sum_{i=1}^N (y_i - \hat{y}_i)^2 = \sum_{i=1}^N (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i)^2,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the response <span class="math notranslate nohighlight">\(y\)</span>, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predicted response <span class="math notranslate nohighlight">\(\hat{y}\)</span>, and <span class="math notranslate nohighlight">\(x_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predictor <span class="math notranslate nohighlight">\(x\)</span>. The least squares estimates of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are given as a <a class="reference external" href="https://mathworld.wolfram.com/Closed-FormSolution.html">closed-form solution</a> by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-17564795-d3f8-43f6-936e-0d7bb57f19b1">
-<span class="eqno">(2.3)<a class="headerlink" href="#equation-17564795-d3f8-43f6-936e-0d7bb57f19b1" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d8a27a02-29d2-4a74-a11e-4cc921e51cac">
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-d8a27a02-29d2-4a74-a11e-4cc921e51cac" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{\beta}_1 = \frac{\sum_{i=1}^N (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^N (x_i - \bar{x})^2},
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-023cdcdb-96f8-4a92-9f31-9667a1c1ece5">
-<span class="eqno">(2.4)<a class="headerlink" href="#equation-023cdcdb-96f8-4a92-9f31-9667a1c1ece5" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-bdb260cd-a05c-4812-a8bd-a8c92bf5d0cc">
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-bdb260cd-a05c-4812-a8bd-a8c92bf5d0cc" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}.
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\bar{y}\)</span> are the sample means of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> respectively. The least squares estimates of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are obtained by minimising the RSS. The least squares line is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4f58ee2a-7c03-4bc2-b4e5-761c220fe943">
-<span class="eqno">(2.5)<a class="headerlink" href="#equation-4f58ee2a-7c03-4bc2-b4e5-761c220fe943" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1fcb63e7-fdbf-4be2-861e-d7a0073a3656">
+<span class="eqno">(2.5)<a class="headerlink" href="#equation-1fcb63e7-fdbf-4be2-861e-d7a0073a3656" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x.
 \end{equation}\]</div>
 <p>The least squares line, also known as the <em>regression line</em>, is the straight line that minimises the sum of squared residuals.</p>
@@ -1106,13 +1104,13 @@ Predicted sales for TV = 200:  16.539921635731645
 <div class="section" id="assessing-model-accuracy-via-r-2">
 <h2><span class="section-number">2.1.7. </span>Assessing model accuracy via <span class="math notranslate nohighlight">\(R^2\)</span><a class="headerlink" href="#assessing-model-accuracy-via-r-2" title="Permalink to this headline">¶</a></h2>
 <p>The accuracy of the linear model is dependent on the variability of the response <span class="math notranslate nohighlight">\(y\)</span> and the predictor <span class="math notranslate nohighlight">\(x\)</span>. The variability of <span class="math notranslate nohighlight">\(y\)</span> is measured by the variance of <span class="math notranslate nohighlight">\(y\)</span>, denoted by <span class="math notranslate nohighlight">\(\sigma_y^2\)</span>. The variability of <span class="math notranslate nohighlight">\(x\)</span> is measured by the variance of <span class="math notranslate nohighlight">\(x\)</span>, denoted by <span class="math notranslate nohighlight">\(\sigma_x^2\)</span>. The <a class="reference external" href="https://en.wikipedia.org/wiki/Coefficient_of_determination">coefficient of determination</a>, denoted by <span class="math notranslate nohighlight">\(R^2\)</span>, is defined as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c5177e19-d34b-453e-9d7f-66978e415933">
-<span class="eqno">(2.6)<a class="headerlink" href="#equation-c5177e19-d34b-453e-9d7f-66978e415933" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3f2c1866-0002-4869-a018-f0d13a5eb5bb">
+<span class="eqno">(2.6)<a class="headerlink" href="#equation-3f2c1866-0002-4869-a018-f0d13a5eb5bb" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 R^2 = \frac{\text{TSS} - \text{RSS}}{\text{TSS}} = 1 - \frac{\text{RSS}}{\text{TSS}}
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\text{TSS} = \sum_{i=1}^N (y_i - \bar{y})^2\)</span> <em>is the total sum of squares</em>. Dividing the RSS by the total number of training samples gives the <em>mean squared error</em> (MSE) of the model. The MSE is the average squared distance between the observed response values and the response values predicted by the model. The MSE is also known as the <em>mean squared prediction error</em> (MSPE). The MSE is defined as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-68628203-e03b-4a7a-b66b-e8416df9a596">
-<span class="eqno">(2.7)<a class="headerlink" href="#equation-68628203-e03b-4a7a-b66b-e8416df9a596" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9e6c9d63-e4ca-4258-9817-67c58cafe156">
+<span class="eqno">(2.7)<a class="headerlink" href="#equation-9e6c9d63-e4ca-4258-9817-67c58cafe156" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{MSE} = \frac{1}{N} \text{RSS} = \frac{1}{N} \sum_{i=1}^N (y_i - \hat{y}_i)^2 = \frac{1}{N} \sum_{i=1}^N (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i)^2.
 \end{equation}\]</div>
 <p>The coefficient of determination <span class="math notranslate nohighlight">\(R^2\)</span> measures the proportion of the <em>total</em> variance in the response <span class="math notranslate nohighlight">\(y\)</span> that is explained by the linear model using the predictor <span class="math notranslate nohighlight">\(x\)</span>. <span class="math notranslate nohighlight">\(R^2\)</span> is always between 0 and 1: it is 0 when the regression line does not fit the data at all, and it is 1 when the regression line perfectly fits the data. <span class="math notranslate nohighlight">\(R^2\)</span> is also known as the <em>coefficient of multiple determination</em> and it is a measure of the goodness of fit of the linear model.</p>
@@ -1165,19 +1163,19 @@ Mean squared error:  10.512652915656757
 <h2><span class="section-number">2.1.8. </span>Standard errors and residual standard error<a class="headerlink" href="#standard-errors-and-residual-standard-error" title="Permalink to this headline">¶</a></h2>
 <p>*Advanced: advanced contents are optional.</p>
 <p>The linear relationship between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> can be written in an equation, rather than an approximation earlier in Equation <a class="reference internal" href="#equation-y-approx-x">(2.1)</a>, as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8b57ca78-0c40-44cb-abce-02820c863a07">
-<span class="eqno">(2.8)<a class="headerlink" href="#equation-8b57ca78-0c40-44cb-abce-02820c863a07" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-003a9b87-e21c-4ade-a917-33bb868548ca">
+<span class="eqno">(2.8)<a class="headerlink" href="#equation-003a9b87-e21c-4ade-a917-33bb868548ca" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 y = \beta_0 + \beta_1 x + \epsilon,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\epsilon\)</span> is a random error term that represents the difference (i.e. the error, unexplained part) between the observed response <span class="math notranslate nohighlight">\(y\)</span> and the true response <span class="math notranslate nohighlight">\(\beta_0 + \beta_1 x\)</span>. The error term <span class="math notranslate nohighlight">\(\epsilon\)</span> is assumed to be normally distributed with mean zero and constant variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. The coefficient estimates <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> are only estimates of the true coefficients <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>. We can quantify the accuracy of the estimates by computing the <a class="reference external" href="https://en.wikipedia.org/wiki/Standard_error"><em>standard error</em></a> of the estimates. The following formulars can be used to compute the standard error associated with <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3436f099-ecc9-436d-a5b1-b12961582c75">
-<span class="eqno">(2.9)<a class="headerlink" href="#equation-3436f099-ecc9-436d-a5b1-b12961582c75" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c2b8a36d-a643-4a9a-9026-d55d89383b91">
+<span class="eqno">(2.9)<a class="headerlink" href="#equation-c2b8a36d-a643-4a9a-9026-d55d89383b91" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{SE}(\hat{\beta}_{1})^2 = \frac{\sigma^2}{\sum_{i=1}^N (x_i - \bar{x})^2}, \quad \text{SE}(\hat{\beta}_0)^2 = \sigma^2 \left[\frac{1}{N} + \frac{\bar{x}^2}{\sum_{i=1}^N (x_i - \bar{x})^2} \right],
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\sigma^2\)</span> is an estimate of the variance of the error term <span class="math notranslate nohighlight">\(\epsilon= y - (\beta_0 + \beta_1 x) \)</span>, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predicted response <span class="math notranslate nohighlight">\(\hat{y}\)</span>, and <span class="math notranslate nohighlight">\(x_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predictor <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\bar{y}\)</span> are the sample means of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> respectively.</p>
 <p>In general, <span class="math notranslate nohighlight">\(\sigma^2\)</span> is unknown, so we need to estimate it from the <em>residual standard error</em> (RSE) below</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2441a225-8924-4276-abe2-4ed685041d6b">
-<span class="eqno">(2.10)<a class="headerlink" href="#equation-2441a225-8924-4276-abe2-4ed685041d6b" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-884df407-2878-4f71-8bc9-fea226f82ad0">
+<span class="eqno">(2.10)<a class="headerlink" href="#equation-884df407-2878-4f71-8bc9-fea226f82ad0" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{RSE} = \sqrt{\frac{1}{N-2}\text{RSS}} = \sqrt{\frac{1}{N-2} \sum_{i=1}^N (y_i - \hat{y}_i)^2}.
 \end{equation}\]</div>
 <p>RSE is also <em>another way to assess the quality of a linear regression fit</em> (in terms of error). Due to the presence of the error term <span class="math notranslate nohighlight">\(\epsilon\)</span>, perfect prediction is not possible even if we know the true regression line (unless <span class="math notranslate nohighlight">\(\epsilon\)</span> is zero, rarely the case in practice). The RSE is an estimate of the standard deviation of <span class="math notranslate nohighlight">\(\epsilon\)</span>. It is the average amount that the response will deviate from the true regression line, measuring the lack of fit of the model to the data. The smaller the RSE, the better the model fits the data.</p>
@@ -1186,8 +1184,8 @@ y = \beta_0 + \beta_1 x + \epsilon,
 <h2><span class="section-number">2.1.9. </span>Confidence intervals<a class="headerlink" href="#confidence-intervals" title="Permalink to this headline">¶</a></h2>
 <p>The standard error indicates the average amount that an estimate differs from its actual value. Thus, the standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> is a measure of the average amount that <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> will deviate from the its true value <span class="math notranslate nohighlight">\(\beta_1\)</span>. The standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> is a measure of the average amount that <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> will deviate from the its true value <span class="math notranslate nohighlight">\(\beta_0\)</span>.</p>
 <p>Standard errors can be used to compute <a class="reference external" href="https://en.wikipedia.org/wiki/Confidence_interval">confidence intervals</a>. A 95% is defined as a range of values such that with 95 % probability, the range (interval) will contain the true unknown value of the parameter. The range is defined in terms of lower and upper limits computed from the sample of data. For linear regression, the 95% confidence intervals for <span class="math notranslate nohighlight">\(\beta_1\)</span> and <span class="math notranslate nohighlight">\(\beta_0\)</span> approximately takes the form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-028cb62c-4582-4b3f-b7c3-e12ad49cf3bc">
-<span class="eqno">(2.11)<a class="headerlink" href="#equation-028cb62c-4582-4b3f-b7c3-e12ad49cf3bc" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-337e9321-1219-4fdb-8e63-0b838a7fdd5f">
+<span class="eqno">(2.11)<a class="headerlink" href="#equation-337e9321-1219-4fdb-8e63-0b838a7fdd5f" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{\beta}_1 \pm 2 \times \text{SE}(\hat{\beta}_1),\:\: \hat{\beta}_0 \pm 2 \times \text{SE}(\hat{\beta}_0).
 \end{equation}\]</div>
 <p>The above can be interpreted as there is an approximately 95% chance that the interview <span class="math notranslate nohighlight">\([\hat{\beta}_1 - 2 \times \text{SE}(\hat{\beta}_1), \hat{\beta}_1 + 2 \times \text{SE}(\hat{\beta}_1)] will contain the true value of \)</span>\beta_1<span class="math notranslate nohighlight">\(, and the interval \)</span>[\hat{\beta}_0 - 2 \times \text{SE}(\hat{\beta}_0), \hat{\beta}_0 + 2 \times \text{SE}(\hat{\beta}_0)]<span class="math notranslate nohighlight">\( will contain the true value of \)</span>\beta_0$.</p>
@@ -1462,7 +1460,7 @@ Mean squared error:  6.3806107320036825
 </div>
 </div>
 </div>
-<p><strong>i</strong>. Is this model fitted the data well?</p>
+<p><strong>i</strong>. Has  this model fitted the data well?</p>
 <p><em>Compare your answer with the solution below</em></p>
 <div class="toggle docutils container">
 <p><strong>No. As we know, <span class="math notranslate nohighlight">\(R^2\)</span> is 0 when the model does not fit the data at all, and it is 1 when the model perfectly fits the data. We got <span class="math notranslate nohighlight">\(R^2\)</span> score of 0.197, which is pretty low and near 0, which means the model does fit the data well.</strong></p>
