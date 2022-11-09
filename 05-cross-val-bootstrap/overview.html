@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="5.1. Cross-validation" href="cross-validation.html" />
@@ -558,27 +560,40 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </div>
 <p><strong>Expected time to complete</strong>: 2.5 hours</p>
-<p>In this chapter, we will learn two resampling methods: cross-validation and bootstrap. They involve repeatedly drawing samples from a training set and refitting a model of interest on each sample in order to obtain additional information about the fitted model. For example, to estimate the variability of a linear regression fit, we can repeatedly draw different samples from the training data, fit a linear regression to each new sample set, and then examine the extent to which the resulting fits differ. Such an approach may allow us to obtain information that would not be available from fitting the model only once using the original training sample.</p>
-<div class="admonition-ingredients admonition">
-<p class="admonition-title">Ingredients</p>
+<p>As shown in previous chapters, the performance of a machine learning model is evaluated using a performance metric. The discussions in <a class="reference external" href="https://pykale.github.io/transparentML/04-hypo-test-sw-dev/hypothesis-testing.html#multiple-hypothesis-testing">multiple hypothesis testing</a> imply that if we compute the performance metric using only a single split of the data into training and test sets, we may not have high confidence in the results and subsequent conclusions drawn from them, particularly when the performance metric is sensitive to the particular split of the data. We’d better take into account the variability in the data.</p>
+<p>In this chapter, we will learn about two <a class="reference external" href="https://en.wikipedia.org/wiki/Resampling_(statistics)">resampling methods</a>, cross-validation and bootstrap, to evaluate the performance of a machine learning model more rigorously and quantify the uncertainty associated with it. As the name “resampling” suggests, both methods involve resampling the data. They repeatedly draw samples from a training set and refit a model of interest on each set of drawn samples to obtain additional information about the fitted model. For example, to estimate the variability of a linear regression fit, we can repeatedly draw different samples from the training data, fit a linear regression to each new sample set, and then examine the extent to which the resulting fits differ. This approach allows us to obtain information that would not be available from fitting the model only once using the original training sample.</p>
+<div class="admonition-process-transparency-cross-validation admonition">
+<p class="admonition-title">Process transparency: cross validation</p>
 <ul class="simple">
-<li><p>Input: …</p></li>
-<li><p>Output: …</p></li>
-<li><p>Model: …</p></li>
-<li><p>Hyperparameter(s): …</p></li>
-<li><p>Loss function: …</p></li>
-<li><p>Learning algorithm: …</p></li>
+<li><p>Starting point: a standardised dataset for a machine learning task with a performance metric defined and a machine learning model chosen to address a practical need/problem</p></li>
+<li><p>Determine the number of folds <span class="math notranslate nohighlight">\(K\)</span> to use in cross validation</p></li>
+<li><p>Split the dataset into <span class="math notranslate nohighlight">\(K\)</span> folds</p></li>
+<li><p>For each fold <span class="math notranslate nohighlight">\(k\)</span>:</p>
+<ul>
+<li><p>Train the model on the remaining <span class="math notranslate nohighlight">\(K-1\)</span> folds</p></li>
+<li><p>Evaluate the model on fold <span class="math notranslate nohighlight">\(k\)</span></p></li>
+</ul>
+</li>
+<li><p>Compute the average performance metric across the <span class="math notranslate nohighlight">\(K\)</span> folds</p></li>
+<li><p>End point: Report the average performance metric and its standard deviation</p></li>
 </ul>
 </div>
-<div class="admonition-transparency admonition">
-<p class="admonition-title">Transparency</p>
-<p>System logic</p>
+<div class="admonition-process-transparency-bootstrap admonition">
+<p class="admonition-title">Process transparency: bootstrap</p>
 <ul class="simple">
-<li><p>Condition to produce certain output:</p></li>
+<li><p>Starting point: a standardised dataset for a machine learning task with a performance metric defined and a machine learning model chosen to address a practical need/problem</p></li>
+<li><p>Determine the number of bootstrap samples <span class="math notranslate nohighlight">\(B\)</span> to use</p></li>
+<li><p>For each bootstrap sample <span class="math notranslate nohighlight">\(b\)</span>:</p>
+<ul>
+<li><p>Draw a bootstrap sample from the dataset</p></li>
+<li><p>Train the model on the bootstrap sample</p></li>
+<li><p>Evaluate the model on the bootstrap sample</p></li>
+</ul>
+</li>
+<li><p>Compute the average performance metric across the <span class="math notranslate nohighlight">\(B\)</span> bootstrap samples</p></li>
+<li><p>End point: Report the average performance metric and its standard deviation</p></li>
 </ul>
 </div>
-<!-- - What input to produce certain output:
-- How to produce certain output: -->
 <div class="toctree-wrapper compound">
 </div>
 </div>
