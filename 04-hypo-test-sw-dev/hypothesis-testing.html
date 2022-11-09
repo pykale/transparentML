@@ -481,9 +481,9 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/04-hypo-test-sw-dev/hypothesis-testing.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/04-hypo-test-sw-dev/hypothesis-testing.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -504,7 +504,7 @@ const thebe_selector_output = ".output, .cell_output"
             href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F04-hypo-test-sw-dev/hypothesis-testing.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/04-hypo-test-sw-dev/hypothesis-testing.md"><button
+        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/04-hypo-test-sw-dev/hypothesis-testing.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -518,6 +518,28 @@ const thebe_selector_output = ".output, .cell_output"
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/04-hypo-test-sw-dev/hypothesis-testing.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/04-hypo-test-sw-dev/hypothesis-testing.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
 
         </div>
 
@@ -619,6 +641,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   4.1.6. Exercises
+  </a>
  </li>
 </ul>
 
@@ -730,6 +757,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   4.1.6. Exercises
+  </a>
  </li>
 </ul>
 
@@ -891,6 +923,10 @@ rate will be less than or equal to <span class="math notranslate nohighlight">\(
 <p>In practice, when <span class="math notranslate nohighlight">\(M\)</span> is large, trying to prevent any false positives (as in FWER control) is simply too stringent and scientifically uninteresting. In this case, we can tolerate a few false positives, in the interest of making more discoveries, i.e. more rejections of the null hypothesis. Thus, we typically control the <a class="reference external" href="https://en.wikipedia.org/wiki/False_discovery_rate">false discovery rate (FDR)</a>, which is the expected proportion of rejected null hypotheses that are false. The FDR is also known as the <em>expected proportion of false discoveries</em>. The FDR is typically denoted by <span class="math notranslate nohighlight">\(\alpha_{\mathrm{FDR}}\)</span>. The FDR is typically more useful than the FWER when <span class="math notranslate nohighlight">\(M\)</span> is large. The use of the FDR also aligns well with the way that data are often collected in contemporary applications, e.g. in <a class="reference external" href="https://en.wikipedia.org/wiki/Exploratory_data_analysis">exploratory data analysis</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Genomics">genomics</a>.</p>
 <p>Unlike <span class="math notranslate nohighlight">\(p\)</span>-values, the choice of FDR threshold is typically context-dependent (e.g. cost/budget-dependent), or even dataset-dependent, with no standard accepted threshold.</p>
 </div>
+</div>
+<div class="section" id="exercises">
+<h2><span class="section-number">4.1.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p>min 3 max 5</p>
 </div>
 </div>
 
