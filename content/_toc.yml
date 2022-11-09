@@ -62,21 +62,21 @@ parts:
       title: Logistic regression
     - file: 03-logistic-reg/quiz-sum-ref
       title: Quiz & summary
-  - file: 04-cross-val-bootstrap/overview
-    title: Cross validation & bootstrap
-    sections:
-    - file: 04-cross-val-bootstrap/cross-validation
-      title: Cross validation
-    - file: 04-cross-val-bootstrap/bootstrap
-      title: Bootstrap
-    - file: 04-cross-val-bootstrap/quiz-sum-ref
-      title: Quiz & summary
-  - file: 05-hypo-test-sw-dev/overview
+  - file: 04-hypo-test-sw-dev/overview
     title: Hypothesis test & software dev
     sections:
-    - file: 05-hypo-test-sw-dev/hypothesis-testing
+    - file: 04-hypo-test-sw-dev/hypothesis-testing
       title: Hypothesis testing
-    - file: 05-hypo-test-sw-dev/quiz-sum-ref
+    - file: 04-hypo-test-sw-dev/quiz-sum-ref
+      title: Quiz & summary
+  - file: 05-cross-val-bootstrap/overview
+    title: Cross validation & bootstrap
+    sections:
+    - file: 05-cross-val-bootstrap/cross-validation
+      title: Cross validation
+    - file: 05-cross-val-bootstrap/bootstrap
+      title: Bootstrap
+    - file: 05-cross-val-bootstrap/quiz-sum-ref
       title: Quiz & summary
 - caption: Advanced
   numbered: true
