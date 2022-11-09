@@ -95,7 +95,7 @@ From the above, we can see that reproducibility is a minimal requirement for rep
     **b. False**
    ```
 
-3. Which of the followings are true?
+3. Which of the following are true?
 
        a. In regression, the loss function measures the difference between the predicted class label and the true class label.
 
@@ -163,7 +163,7 @@ From the above, we can see that reproducibility is a minimal requirement for rep
 
        b. each house price is a record
 
-       c. each kind of description (as the house size) is a record
+       c. each attribute/features of description (as the house size) is a record
 
     *Compare your answer with the solution below*
 
