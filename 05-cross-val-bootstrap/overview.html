@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5. Cross Validation and Bootstrap &#8212; Transparent ML Intro</title>
+    <title>5. Cross-Validation and Bootstrap &#8212; Transparent ML Intro</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -296,7 +296,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cross-validation.html">
-     5.1. Cross validation
+     5.1. Cross-validation
     </a>
    </li>
    <li class="toctree-l2">
@@ -531,7 +531,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Cross Validation and Bootstrap</h1>
+                <h1>Cross-Validation and Bootstrap</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -543,7 +543,7 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="cross-validation-and-bootstrap">
-<h1><span class="section-number">5. </span>Cross Validation and Bootstrap<a class="headerlink" href="#cross-validation-and-bootstrap" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">5. </span>Cross-Validation and Bootstrap<a class="headerlink" href="#cross-validation-and-bootstrap" title="Permalink to this headline">¶</a></h1>
 <!-- Capitalise initials. As compact as possible, prefer ONE line. -->
 <!-- We use **UK** English spelling. -->
 <!-- File names should be all lowercase, with words separated by hyphens (-), and no spaces.  Each chapter must include an "overview.md" and "quiz-sum-ref.md"-->
@@ -554,19 +554,19 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="admonition-objectives admonition">
 <p class="admonition-title">Objectives</p>
 <ul class="simple">
-<li><p>Understand the basic concepts of cross validation and bootstrap</p></li>
-<li><p>Evaluate the performance of machine learning models using cross validation</p></li>
+<li><p>Understand the basic concepts of cross-validation and bootstrap</p></li>
+<li><p>Evaluate the performance of machine learning models using cross-validation</p></li>
 <li><p>Quantify the uncertainty associated with a machine learning model using bootstrap</p></li>
 </ul>
 </div>
 <p><strong>Expected time to complete</strong>: 2.5 hours</p>
 <p>As shown in previous chapters, the performance of a machine learning model is evaluated using a performance metric. The discussions in <a class="reference external" href="https://pykale.github.io/transparentML/04-hypo-test-sw-dev/hypothesis-testing.html#multiple-hypothesis-testing">multiple hypothesis testing</a> imply that if we compute the performance metric using only a single split of the data into training and test sets, we may not have high confidence in the results and subsequent conclusions drawn from them, particularly when the performance metric is sensitive to the particular split of the data. We’d better take into account the variability in the data.</p>
 <p>In this chapter, we will learn about two <a class="reference external" href="https://en.wikipedia.org/wiki/Resampling_(statistics)">resampling methods</a>, cross-validation and bootstrap, to evaluate the performance of a machine learning model more rigorously and quantify the uncertainty associated with it. As the name “resampling” suggests, both methods involve resampling the data. They repeatedly draw samples from a training set and refit a model of interest on each set of drawn samples to obtain additional information about the fitted model. For example, to estimate the variability of a linear regression fit, we can repeatedly draw different samples from the training data, fit a linear regression to each new sample set, and then examine the extent to which the resulting fits differ. This approach allows us to obtain information that would not be available from fitting the model only once using the original training sample.</p>
-<div class="admonition-process-transparency-cross-validation admonition">
-<p class="admonition-title">Process transparency: cross validation</p>
+<div class="admonition-process-transparency-k-fold-cross-validation admonition">
+<p class="admonition-title">Process transparency: <span class="math notranslate nohighlight">\(K\)</span>-fold cross-validation</p>
 <ul class="simple">
 <li><p>Starting point: a standardised dataset for a machine learning task with a performance metric defined and a machine learning model chosen to address a practical need/problem</p></li>
-<li><p>Determine the number of folds <span class="math notranslate nohighlight">\(K\)</span> to use in cross validation</p></li>
+<li><p>Determine the number of folds <span class="math notranslate nohighlight">\(K\)</span> to use in cross-validation</p></li>
 <li><p>Split the dataset into <span class="math notranslate nohighlight">\(K\)</span> folds</p></li>
 <li><p>For each fold <span class="math notranslate nohighlight">\(k\)</span>:</p>
 <ul>
