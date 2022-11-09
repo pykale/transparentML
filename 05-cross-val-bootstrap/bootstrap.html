@@ -557,8 +557,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-bootstrap">
-   5.2.2. The bootstrap
+  <a class="reference internal nav-link" href="#bootstrap-for-uncertainty-estimation">
+   5.2.2. Bootstrap for uncertainty estimation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -592,8 +592,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-bootstrap">
-   5.2.2. The bootstrap
+  <a class="reference internal nav-link" href="#bootstrap-for-uncertainty-estimation">
+   5.2.2. Bootstrap for uncertainty estimation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -612,7 +612,10 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="bootstrap">
 <h1><span class="section-number">5.2. </span>Bootstrap<a class="headerlink" href="#bootstrap" title="Permalink to this headline">¶</a></h1>
-<p>The bootstrap is a widely applicable and extremely powerful statistical tool that can be used to quantify the uncertainty associated with a given estimator or statistical learning method. As a simple example, the bootstrap can be used to estimate the standard errors of the coefficients from a linear regression fit. Although standard errors were obtained automatically by <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> in <a class="reference internal" href="../00-prereq/overview.html"><span class="doc">Linear regression</span></a> and <a class="reference internal" href="../03-logistic-reg/overview.html"><span class="doc">Logistic regression</span></a>, the power of the bootstrap lies in the fact that it can be easily applied to a wide range of statistical learning methods.</p>
+<p>From the previous section, we have seen that it is common to encounter randomness in performance evaluation. Even with cross-validation, such randomness can still be present. In this case, it will be good to have an estimation of the uncertainty of the performance metric obtained. This is where <a class="reference external" href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">the bootstrap, or bootstrapping</a> comes in.</p>
+<p>The bootstrap is a widely applicable and extremely powerful resampling method that can be used to quantify the uncertainty associated with a performance metric for machine learning models. It is a non-parametric method, meaning that it does not make any assumptions about the underlying distribution of the data. It is also a model-free method, meaning that it does not require a model to be fit to the data.</p>
+<p>The bootstrap is a general technique for estimating the sampling distribution of a statistic by sampling from the data <em>with replacement</em>. The bootstrap can be used to estimate the sampling distribution of <em>ANY</em> statistic, including the mean, standard deviation, correlation coefficient, and regression coefficients. The bootstrap can also be used to estimate the sampling distribution of a machine learning model, such as the coefficients of a linear regression model.</p>
+<p>As a simple example, the bootstrap can be used to estimate the <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/simple-linear-regression.html#standard-errors-and-residual-standard-error">standard errors</a> of the coefficients from a linear regression fit. Although standard errors were obtained automatically by <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> in <a class="reference internal" href="../00-prereq/overview.html"><span class="doc">Linear regression</span></a> and <a class="reference internal" href="../03-logistic-reg/overview.html"><span class="doc">Logistic regression</span></a>, the power of the bootstrap lies in the fact that it can be easily applied to a wide range of machine learning models.</p>
 <p>Watch the 6-minute video below for a visual explanation of cross-validation:</p>
 <div class="admonition-video admonition">
 <p class="admonition-title">Video</p>
@@ -621,6 +624,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="import-libraries-and-load-data">
 <h2><span class="section-number">5.2.1. </span>Import libraries and load data<a class="headerlink" href="#import-libraries-and-load-data" title="Permalink to this headline">¶</a></h2>
+<p>Get ready by importing the APIs needed from respective libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -644,6 +648,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<p>We use the same <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Auto.csv">Auto dataset</a> as in the previous section.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Auto.csv&quot;</span>
@@ -675,12 +680,12 @@ memory usage: 30.6+ KB
 </div>
 </div>
 </div>
-<div class="section" id="the-bootstrap">
-<h2><span class="section-number">5.2.2. </span>The bootstrap<a class="headerlink" href="#the-bootstrap" title="Permalink to this headline">¶</a></h2>
-<p>Suppose that we wish to estimate the uncertainly of a coefficient estimate <span class="math notranslate nohighlight">\(\beta_1\)</span> from a linear regression fit, we take
-<span class="math notranslate nohighlight">\(n\)</span> repeated samples with replacement from our dataset and train our linear regression model <span class="math notranslate nohighlight">\(n\)</span> times and record each value <span class="math notranslate nohighlight">\(\hat{\beta}_1^{*1}, \hat{\beta}_1^{*2}, \dots, \hat{\beta}_1^{*n}\)</span>. With enough resampling - typically 1000 or 10,000 - we can plot the distribution of these bootstrapped estimates <span class="math notranslate nohighlight">\(\hat{\beta}_1^{*i}, i = 1,\dots, n \)</span>. Then, we can use the resulting distribution to quantify the variability of this estimate by calculating useful summary statistics, such as standard errors and confidence intervals.</p>
-<p>The power of the bootstrap lies in the ability to take repeated samples of the dataset, instead of collecting a new dataset each time. Also, in contrast to standard error estimates typically reported with statistical software that rely on algebraic methods and underlying assumptions, bootstrapped standard error estimates are more accurate as they are calculated computationally.</p>
-<p><strong>Bootstrap example using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code></strong> (adapted from this <a class="reference external" href="https://ethanwicker.com/2021-02-23-bootstrap-resampling-001/">blog post</a>)</p>
+<div class="section" id="bootstrap-for-uncertainty-estimation">
+<h2><span class="section-number">5.2.2. </span>Bootstrap for uncertainty estimation<a class="headerlink" href="#bootstrap-for-uncertainty-estimation" title="Permalink to this headline">¶</a></h2>
+<p>Suppose that we wish to estimate the uncertainty of a coefficient estimate <span class="math notranslate nohighlight">\(\beta_1\)</span> from a linear regression fit, we take <span class="math notranslate nohighlight">\(M\)</span> (<span class="math notranslate nohighlight">\( M &lt;N \)</span>) repeated samples with replacement from our dataset and train our linear regression model <span class="math notranslate nohighlight">\(B\)</span> times and record each value <span class="math notranslate nohighlight">\(\hat{\beta}_1^{*1}, \hat{\beta}_1^{*2}, \dots, \hat{\beta}_1^{*B}\)</span>. With enough resampling, e.g. <span class="math notranslate nohighlight">\(B = 1000\)</span> or <span class="math notranslate nohighlight">\(B = 10,000\)</span>, we can plot the distribution of these bootstrapped estimates <span class="math notranslate nohighlight">\(\hat{\beta}_1^{*b}, b = 1,\cdots, B \)</span>. Then, we can use the resulting distribution to quantify the variability (or uncertainty, confidence) of this estimate by calculating useful summary statistics, such as standard errors and confidence intervals.</p>
+<p>The power of the bootstrap lies in the ability to take repeated samples of the dataset, instead of collecting a new dataset each time. Also, in contrast to standard error estimates typically reported with statistical software that rely on algebraic methods and underlying assumptions (which may be wrong), bootstrapped standard error estimates are more accurate as they are calculated computationally without any pre-specified assumptions.</p>
+<!-- **Bootstrap example using `scikit-learn`** (adapted from this [blog post](https://ethanwicker.com/2021-02-23-bootstrap-resampling-001/)) -->
+<p>Let us study the bootstrap on the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset using the <code class="docutils literal notranslate"><span class="pre">scikit-learn's</span> <span class="pre">[</span></code>resample` API](https://scikit-learn.org/stable/modules/generated/sklearn.utils.resample.html) (adapted from this <a class="reference external" href="https://ethanwicker.com/2021-02-23-bootstrap-resampling-001/">blog post</a>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Defining number of iterations for bootstrap resample</span>
@@ -729,6 +734,7 @@ memory usage: 30.6+ KB
 </div>
 </div>
 </div>
+<p>Let us inspect a few estimates.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrapped_stats</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -763,44 +769,44 @@ memory usage: 30.6+ KB
   <tbody>
     <tr>
       <th>0</th>
-      <td>46.845922</td>
-      <td>-0.027666</td>
-      <td>-0.006809</td>
-      <td>0.673690</td>
+      <td>44.838704</td>
+      <td>-0.056444</td>
+      <td>-0.005269</td>
+      <td>0.700805</td>
     </tr>
     <tr>
       <th>0</th>
-      <td>45.223565</td>
-      <td>-0.042311</td>
-      <td>-0.005875</td>
-      <td>0.713975</td>
+      <td>45.426927</td>
+      <td>-0.052500</td>
+      <td>-0.005556</td>
+      <td>0.674410</td>
     </tr>
     <tr>
       <th>0</th>
-      <td>46.158278</td>
-      <td>-0.048428</td>
-      <td>-0.005839</td>
-      <td>0.670519</td>
+      <td>45.339459</td>
+      <td>-0.052072</td>
+      <td>-0.005554</td>
+      <td>0.712507</td>
     </tr>
     <tr>
       <th>0</th>
-      <td>45.719810</td>
-      <td>-0.056734</td>
-      <td>-0.005504</td>
-      <td>0.709586</td>
+      <td>45.107948</td>
+      <td>-0.045921</td>
+      <td>-0.005689</td>
+      <td>0.685535</td>
     </tr>
     <tr>
       <th>0</th>
-      <td>45.579819</td>
-      <td>-0.036475</td>
-      <td>-0.006139</td>
-      <td>0.689804</td>
+      <td>45.317323</td>
+      <td>-0.042153</td>
+      <td>-0.005922</td>
+      <td>0.688459</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>Plot the distribution of the bootstrapped estimates of the coefficients and the corresponding test scores from the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset:</p>
+<p>Plot the distribution of the bootstrapped estimates of the coefficients and the corresponding test scores for the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting histograms</span>
@@ -814,9 +820,10 @@ memory usage: 30.6+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bootstrap_8_0.png" src="../_images/bootstrap_8_0.png" />
+<img alt="../_images/bootstrap_10_0.png" src="../_images/bootstrap_10_0.png" />
 </div>
 </div>
+<p>In this way, we can easily estimate the uncertainty of ANY coefficient estimates and ANY test scores.</p>
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">5.2.3. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
