@@ -67,6 +67,8 @@ parts:
     sections:
     - file: 04-hypo-test-sw-dev/hypothesis-testing
       title: Hypothesis testing
+    - file: 04-hypo-test-sw-dev/software-development
+      title: Software development
     - file: 04-hypo-test-sw-dev/quiz-sum-ref
       title: Quiz & summary
   - file: 05-cross-val-bootstrap/overview
