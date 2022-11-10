@@ -705,7 +705,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span><span class="p">,</span> <span class="n">Lasso</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span><span class="p">,</span> <span class="n">Lasso</span><span class="p">,</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">RFECV</span>
 
@@ -732,108 +733,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Income</th>
-      <th>Limit</th>
-      <th>Rating</th>
-      <th>Cards</th>
-      <th>Age</th>
-      <th>Education</th>
-      <th>Own</th>
-      <th>Student</th>
-      <th>Married</th>
-      <th>Region</th>
-      <th>Balance</th>
-      <th>Student2</th>
-      <th>Own2</th>
-      <th>Married2</th>
-      <th>South</th>
-      <th>West</th>
-      <th>East</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>14.891</td>
-      <td>3606</td>
-      <td>283</td>
-      <td>2</td>
-      <td>34</td>
-      <td>11</td>
-      <td>No</td>
-      <td>No</td>
-      <td>Yes</td>
-      <td>South</td>
-      <td>333</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>106.025</td>
-      <td>6645</td>
-      <td>483</td>
-      <td>3</td>
-      <td>82</td>
-      <td>15</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>West</td>
-      <td>903</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>104.593</td>
-      <td>7075</td>
-      <td>514</td>
-      <td>4</td>
-      <td>71</td>
-      <td>11</td>
-      <td>No</td>
-      <td>No</td>
-      <td>No</td>
-      <td>West</td>
-      <td>580</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -847,14 +746,24 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambdas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># regr = LinearRegression()</span>
+<span class="c1"># regr.fit(X_scaled, y)</span>
+
+<span class="n">lambdas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 
 <span class="n">coef_ridge</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># y_bias = []</span>
+<span class="c1"># y_var = []</span>
+<span class="c1"># y_mse = []</span>
 
 <span class="k">for</span> <span class="n">lambda_</span> <span class="ow">in</span> <span class="n">lambdas</span><span class="p">:</span>
     <span class="n">ridge</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">lambda_</span><span class="p">)</span>
     <span class="n">ridge</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     <span class="n">coef_ridge</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ridge</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+    <span class="c1"># y_pred = ridge.predict(X_scaled)</span>
+    <span class="c1"># y_bias.append(f(X_scaled) - np.mean(y_pred) ** 2)</span>
+    <span class="c1"># y_var.append(np.var(y_pred))</span>
+    <span class="c1"># y_mse.append(mean_squared_error(y, y_pred))</span>
 
 <span class="n">coef_ridge</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coef_ridge</span><span class="p">)</span>
 </pre></div>
@@ -877,22 +786,197 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/shrink_5_0.png" src="../_images/shrink_5_0.png" />
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlxtend.evaluate</span> <span class="kn">import</span> <span class="n">bias_variance_decomp</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">mlxtend.data</span> <span class="kn">import</span> <span class="n">iris_data</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">BaggingClassifier</span>
+
+<span class="c1"># Get Data Set</span>
+
+<span class="n">label_scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">y_scaled</span> <span class="o">=</span> <span class="n">label_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="c1"># X_train, X_test, y_train, y_test = train_test_split(X_scaled, y_scaled,</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X_scaled</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="c1"># Define Algorithm</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;bias&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;var&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;mse&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+
+
+<span class="k">for</span> <span class="n">lambda_</span> <span class="ow">in</span> <span class="n">lambdas</span><span class="p">:</span>
+    <span class="n">ridge</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">lambda_</span><span class="p">)</span>
+    <span class="n">avg_expected_loss</span><span class="p">,</span> <span class="n">avg_bias</span><span class="p">,</span> <span class="n">avg_var</span> <span class="o">=</span> <span class="n">bias_variance_decomp</span><span class="p">(</span>
+        <span class="n">ridge</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;mse&quot;</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">123</span>
+    <span class="p">)</span>
+    <span class="n">res</span><span class="p">[</span><span class="s2">&quot;bias&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">avg_bias</span><span class="p">)</span>
+    <span class="n">res</span><span class="p">[</span><span class="s2">&quot;var&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">avg_var</span><span class="p">)</span>
+    <span class="c1"># res[&#39;mse&#39;].append(mean_squared_error(y_test, ridge.predict(X_test)))</span>
+    <span class="n">res</span><span class="p">[</span><span class="s2">&quot;mse&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">avg_expected_loss</span><span class="p">)</span>
+
+
+<span class="c1"># # Get Bias and Variance - bias_variance_decomp function</span>
+<span class="c1"># avg_expected_loss, avg_bias, avg_var = bias_variance_decomp(</span>
+<span class="c1"># bag, X_train_ds, y_train_ds, X_test_ds, y_test_ds,</span>
+<span class="c1"># loss=&#39;0-1_loss&#39;,</span>
+<span class="c1"># random_seed=123,</span>
+<span class="c1"># num_rounds=1000)</span>
+<span class="c1"># # Display Bias and Variance</span>
+<span class="c1"># print(f&#39;Average Expected Loss: {round(avg_expected_loss, 4)}n&#39;)</span>
+<span class="c1"># print(f&#39;Average Bias: {round(avg_bias, 4)}&#39;)</span>
+<span class="c1"># print(f&#39;Average Variance: {round(avg_var, 4)}&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate data</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="c1"># return np.dot(x, w)</span>
+    <span class="c1"># return np.random.random(x.shape[0])</span>
+
+
+<span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">n_repeat</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">))</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">-</span> <span class="mi">5</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">n_repeat</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="c1"># y = f(X) + np.random.normal(0.0, noise, n_samples)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_repeat</span><span class="p">))</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repeat</span><span class="p">):</span>
+            <span class="n">y</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">)</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_repeat</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">n_train</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># Size of the training set</span>
+<span class="n">n_test</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># Size of the test set</span>
+<span class="n">n_features</span> <span class="o">=</span> <span class="mi">45</span>  <span class="c1"># Number of features</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># Standard deviation of the noise</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">n_features</span><span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repeat</span><span class="p">):</span>
+    <span class="n">X_</span><span class="p">,</span> <span class="n">y_</span> <span class="o">=</span> <span class="n">generate</span><span class="p">(</span><span class="n">n_train</span><span class="p">,</span> <span class="n">n_features</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">noise</span><span class="p">)</span>
+    <span class="n">X_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">X_</span><span class="p">)</span>
+    <span class="n">y_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_</span><span class="p">)</span>
+<span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">generate</span><span class="p">(</span><span class="n">n_test</span><span class="p">,</span> <span class="n">n_features</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">n_repeat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlxtend.data</span> <span class="kn">import</span> <span class="n">boston_housing_data</span>
+
+<span class="c1"># X_boston, y_boston = boston_housing_data()</span>
+<span class="c1"># X_train, X_test, y_train, y_test = train_test_split(X_boston, y_boston,</span>
+<span class="c1">#                                                     test_size=0.3,</span>
+<span class="c1">#                                                     random_state=123,</span>
+<span class="c1">#                                                     shuffle=True)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;bias&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;var&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;mse&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+
+<span class="n">lambdas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">lambda_</span> <span class="ow">in</span> <span class="n">lambdas</span><span class="p">:</span>
+    <span class="n">y_predict</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_test</span><span class="p">,</span> <span class="n">n_repeat</span><span class="p">))</span>
+
+    <span class="n">estimator</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">lambda_</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repeat</span><span class="p">):</span>
+        <span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y_train</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">y_predict</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+    <span class="c1"># Bias^2 + Variance + Noise decomposition of the mean squared error</span>
+    <span class="n">y_error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_test</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repeat</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repeat</span><span class="p">):</span>
+            <span class="n">y_error</span> <span class="o">+=</span> <span class="p">(</span><span class="n">y_test</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">y_predict</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span>
+
+    <span class="n">y_error</span> <span class="o">/=</span> <span class="n">n_repeat</span> <span class="o">*</span> <span class="n">n_repeat</span>
+
+    <span class="n">y_noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">y_bias</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_predict</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">y_var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">y_predict</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># avg_expected_loss, avg_bias, avg_var = bias_variance_decomp(</span>
+    <span class="c1">#     ridge, X_train, y_train, X_test, y_test,</span>
+    <span class="c1">#     loss=&#39;mse&#39;,</span>
+    <span class="c1">#     random_seed=123)</span>
+    <span class="c1"># res[&#39;bias&#39;].append(avg_bias)</span>
+    <span class="c1"># res[&#39;var&#39;].append(avg_var)</span>
+    <span class="c1"># # res[&#39;mse&#39;].append(mean_squared_error(y_test, ridge.predict(X_test)))</span>
+    <span class="c1"># res[&#39;mse&#39;].append(avg_expected_loss)</span>
+
+    <span class="n">res</span><span class="p">[</span><span class="s2">&quot;bias&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_bias</span><span class="p">))</span>
+    <span class="n">res</span><span class="p">[</span><span class="s2">&quot;var&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_var</span><span class="p">))</span>
+    <span class="n">res</span><span class="p">[</span><span class="s2">&quot;mse&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">y_bias</span> <span class="o">+</span> <span class="n">y_var</span> <span class="o">+</span> <span class="n">y_noise</span><span class="p">)))</span>
+    <span class="c1"># res[&quot;mse&quot;].append(np.var(y_pred) + np.mean((f(X_test, w) - y_pred) ** 2))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lambdas</span><span class="p">,</span> <span class="n">res</span><span class="p">[</span><span class="s2">&quot;mse&quot;</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$MSE(x)$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lambdas</span><span class="p">,</span> <span class="n">res</span><span class="p">[</span><span class="s2">&quot;bias&quot;</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$bias^2(x)$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lambdas</span><span class="p">,</span> <span class="n">res</span><span class="p">[</span><span class="s2">&quot;var&quot;</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$variance(x)$&quot;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="c1"># plt.yscale(&quot;log&quot;)</span>
+<span class="c1"># plt.ylim(-300, 500)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\lambda$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Mean Squared Error&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
 <div class="section" id="why-does-ridge-regression-improve-over-least-squares">
 <h3><span class="section-number">6.2.1.2. </span>Why does ridge regression improve over least squares?<a class="headerlink" href="#why-does-ridge-regression-improve-over-least-squares" title="Permalink to this headline">¶</a></h3>
-<p>Ridge regression’s advantage over least squares is rooted in the bias-variance trade-oﬀ. As λ increases, the flexibility of the ridge regression fit decreases, leading to decreased variance but increased bias. This is illustrated in the left-hand panel of Figure 6.5, using a simulated data set containing p = 45 predictors and n = 50 observations. The green curve in the left-hand panel of Figure 6.5 displays the variance of the ridge regression predictions as a function of λ. At the least squares coefficient estimates, which correspond to ridge regression with λ = 0, the variance is high but there is no bias. But as λ increases, the shrinkage of the ridge coefficient estimates leads to a substantial reduction in the variance of the predictions, at the expense of a slight increase in bias. Recall that the test mean squared error (MSE), plotted in purple, is closely related to the variance plus the squared bias. For values of λ up to about 10, the variance decreases rapidly, with very little increase in bias, plotted in black. Consequently, the MSE drops considerably as λ increases from 0 to 10. Beyond this point, the decrease in variance due to increasing λ slows, and the shrinkage on the coefficients causes them to be significantly underestimated, resulting in a large increase in the bias. The minimum MSE is achieved at approximately λ = 30. Interestingly, because of its high variance, the MSE associated with the least squares fit, when λ = 0, is almost as high as that of the null model for which all coefficient estimates are zero, when λ = ∞. However, for an intermediate value of λ, the MSE is considerably lower.</p>
-<p>The right-hand panel of Figure 6.5 displays the same curves as the left-hand panel, this time plotted against the ℓ 2 norm of the ridge regression coefficient estimates divided by the ℓ 2 norm of the least squares estimates. Now as we move from left to right, the fits become more flexible, and so the bias decreases and the variance increases.</p>
-<p>In general, in situations where the relationship between the response and the predictors is close to linear, the least squares estimates will have low bias but may have high variance. This means that a small change in the training data can cause a large change in the least squares coefficient estimates. In particular, when the number of variables p is almost as large as the number of observations n, as in the example in Figure 6.5, the least squares estimates will be extremely variable. And if p &gt; n, then the least squares estimates do not even have a unique solution, whereas ridge regression can still perform well by trading oﬀ a small increase in bias for a large decrease in variance. Hence, ridge regression works best in situations where the least squares estimates have high variance.</p>
-<p>Ridge regression also has substantial computational advantages over best subset selection, which requires searching through 2 p models. As we discussed previously, even for moderate values of p, such a search can be computationally infeasible. In contrast, for any fixed value of λ, ridge regression only fits a single model, and the model-fitting procedure can be performed quite quickly. In fact, one can show that the computations required to solve (6.5), simultaneously for all values of λ, are almost identical to those for fitting a model using least squares.</p>
+<p>Ridge regression’s advantage over least squares is rooted in the bias-variance trade-oﬀ. As <span class="math notranslate nohighlight">\(\lambda\)</span> increases, the flexibility of the ridge regression fit decreases, leading to decreased variance but increased bias. This is illustrated in the left-hand panel of Figure 6.5, using a simulated data set containing p = 45 predictors and n = 50 observations. The green curve in the left-hand panel of Figure 6.5 displays the variance of the ridge regression predictions as a function of <span class="math notranslate nohighlight">\(\lambda\)</span>. At the least squares coefficient estimates, which correspond to ridge regression with <span class="math notranslate nohighlight">\(\lambda\)</span> = 0, the variance is high but there is no bias. But as <span class="math notranslate nohighlight">\(\lambda\)</span> increases, the shrinkage of the ridge coefficient estimates leads to a substantial reduction in the variance of the predictions, at the expense of a slight increase in bias. Recall that the test mean squared error (MSE), plotted in purple, is closely related to the variance plus the squared bias. For values of <span class="math notranslate nohighlight">\(\lambda\)</span> up to about 10, the variance decreases rapidly, with very little increase in bias, plotted in black. Consequently, the MSE drops considerably as <span class="math notranslate nohighlight">\(\lambda\)</span> increases from 0 to 10. Beyond this point, the decrease in variance due to increasing <span class="math notranslate nohighlight">\(\lambda\)</span> slows, and the shrinkage on the coefficients causes them to be significantly underestimated, resulting in a large increase in the bias. The minimum MSE is achieved at approximately <span class="math notranslate nohighlight">\(\lambda\)</span> = 30. Interestingly, because of its high variance, the MSE associated with the least squares fit, when <span class="math notranslate nohighlight">\(\lambda = 0\)</span>, is almost as high as that of the null model for which all coefficient estimates are zero, when <span class="math notranslate nohighlight">\(\lambda = \infty \)</span>. However, for an intermediate value of <span class="math notranslate nohighlight">\(\lambda\)</span>, the MSE is considerably lower.</p>
+<p>In general, in situations where the relationship between the response and the predictors is close to linear, the least squares estimates will have low bias but may have high variance. This means that a small change in the training data can cause a large change in the least squares coefficient estimates. In particular, when the number of variables <span class="math notranslate nohighlight">\(D\)</span> is almost as large as the number of observations <span class="math notranslate nohighlight">\(N\)</span>, the least squares estimates will be extremely variable. And if <span class="math notranslate nohighlight">\(D &gt; N\)</span>, then the least squares estimates do not even have a unique solution, whereas ridge regression can still perform well by trading oﬀ a small increase in bias for a large decrease in variance. Hence, ridge regression works best in situations where the least squares estimates have high variance.</p>
+<p>Ridge regression also has substantial computational advantages over best subset selection, which requires searching through 2 p models. As we discussed previously, even for moderate values of p, such a search can be computationally infeasible. In contrast, for any fixed value of <span class="math notranslate nohighlight">\(\lambda\)</span>, ridge regression only fits a single model, and the model-fitting procedure can be performed quite quickly. In fact, one can show that the computations required to a ridge regression model, simultaneously for all values of <span class="math notranslate nohighlight">\(\lambda\)</span>, are almost identical to those for fitting a model using least squares.</p>
 </div>
 </div>
 <div class="section" id="lasso">
 <h2><span class="section-number">6.2.2. </span>Lasso<a class="headerlink" href="#lasso" title="Permalink to this headline">¶</a></h2>
-<p>Ridge regression does have one obvious disadvantage. Unlike best subset, forward stepwise, and backward stepwise selection, which will generally select models that involve just a subset of the variables, ridge regression will include all p predictors in the final model. The penalty λ β j 2 in (6.5) will shrink all of the coefficients towards zero, but it will not set any of them exactly to zero (unless λ = ∞). This may not be a problem for prediction accuracy, but it can create a challenge in model interpretation in settings in which the number of variables <span class="math notranslate nohighlight">\(D\)</span> is quite large.</p>
+<p>Ridge regression does have one obvious disadvantage. Unlike best subset, forward stepwise, and backward stepwise selection, which will generally select models that involve just a subset of the variables, ridge regression will include all p predictors in the final model. The penalty <span class="math notranslate nohighlight">\(\lambda\)</span> β j 2 in (6.5) will shrink all of the coefficients towards zero, but it will not set any of them exactly to zero (unless <span class="math notranslate nohighlight">\(\lambda\)</span> = ∞). This may not be a problem for prediction accuracy, but it can create a challenge in model interpretation in settings in which the number of variables <span class="math notranslate nohighlight">\(D\)</span> is quite large.</p>
 <div class="math notranslate nohighlight">
 \[
 \sum_{i=1}^N \left( y_i - \beta_0 - \sum_{j=1}^D x_{ij} \beta_j \right)^2 + \lambda \sum_{j=1}^D |\beta_j| = \textrm{RSS} + \lambda \sum_{j=1}^D |\beta_j|.
@@ -934,21 +1018,17 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/shrink_9_0.png" src="../_images/shrink_9_0.png" />
-</div>
 </div>
 <div class="section" id="the-variable-selection-property-of-the-lasso">
 <h3><span class="section-number">6.2.2.1. </span>The Variable Selection Property of the Lasso<a class="headerlink" href="#the-variable-selection-property-of-the-lasso" title="Permalink to this headline">¶</a></h3>
-<p>Why is it that the lasso, unlike ridge regression, results in coefficient estimates that are exactly equal to zero? The formulations (6.8) and (6.9) can be used to shed light on the issue. Figure 6.7 illustrates the situation. The least squares solution is marked as β̂, while the blue diamond and circle
-represent the lasso and ridge regression constraints in (6.8) and (6.9), respectively. If s is sufficiently large, then the constraint regions will contain β̂, and so the ridge regression and lasso estimates will be the same as the least squares estimates. (Such a large value of s corresponds to λ = 0 in
+<p>Why is it that the lasso, unlike ridge regression, results in coefficient estimates that are exactly equal to zero? The formulations (6.8) and (6.9) can be used to shed light on the issue. Figure 6.7 illustrates the situation. The least squares solution is marked as β̂, while the blue diamond and circle represent the lasso and ridge regression constraints in (6.8) and (6.9), respectively. If s is sufficiently large, then the constraint regions will contain β̂, and so the ridge regression and lasso estimates will be the same as the least squares estimates. (Such a large value of s corresponds to <span class="math notranslate nohighlight">\(\lambda\)</span> = 0 in
 (6.5) and (6.7).) However, in Figure 6.7 the least squares estimates lie outside of the diamond and the circle, and so the least squares estimates are not the same as the lasso and ridge regression estimates.</p>
 <p>Each of the ellipses centred around β̂ represents a contour: this means that all of the points on a particular ellipse have the same RSS value. As the ellipses expand away from the least squares coefficient estimates, the RSS increases. Equations (6.8) and (6.9) indicate that the lasso and ridge regression coefficient estimates are given by the first point at which an ellipse contacts the constraint region. Since ridge regression has a circular constraint with no sharp points, this intersection will not generally occur on an axis, and so the ridge regression coefficient estimates will be exclusively non-zero. However, the lasso constraint has corners at each of the axes, and so the ellipse will often intersect the constraint region at an axis. When this occurs, one of the coefficients will equal zero. In higher dimensions, many of the coefficient estimates may equal zero simultaneously. In Figure 6.7, the intersection occurs at β 1 = 0, and so the resulting model will only include β 2 .</p>
 </div>
 </div>
 <div class="section" id="comparing-the-lasso-and-ridge-regression">
 <h2><span class="section-number">6.2.3. </span>Comparing the Lasso and Ridge Regression<a class="headerlink" href="#comparing-the-lasso-and-ridge-regression" title="Permalink to this headline">¶</a></h2>
-<p>It is clear that the lasso has a major advantage over ridge regression, in that it produces simpler and more interpretable models that involve only a subset of the predictors. However, which method leads to better prediction accuracy? Figure 6.8 displays the variance, squared bias, and test MSE of the lasso applied to the same simulated data as in Figure 6.5. Clearly the lasso leads to qualitatively similar behaviour to ridge regression, in that as λ increases, the variance decreases and the bias increases. In the right-hand panel of Figure 6.8, the dotted lines represent the ridge regression fits. Here we plot both against their R 2 on the training data. This is another useful way to index models, and can be used to compare models with different types of regularization, as is the case here. In this example, the lasso and ridge regression result in almost identical biases. However, the variance of ridge regression is slightly lower than the variance of the lasso. Consequently, the minimum MSE of ridge regression is slightly smaller than that of the lasso.</p>
+<p>It is clear that the lasso has a major advantage over ridge regression, in that it produces simpler and more interpretable models that involve only a subset of the predictors. However, which method leads to better prediction accuracy? Figure 6.8 displays the variance, squared bias, and test MSE of the lasso applied to the same simulated data as in Figure 6.5. Clearly the lasso leads to qualitatively similar behaviour to ridge regression, in that as <span class="math notranslate nohighlight">\(\lambda\)</span> increases, the variance decreases and the bias increases. Consequently, the minimum MSE of ridge regression is slightly smaller than that of the lasso.</p>
 <p>However, the data in Figure 6.8 were generated in such a way that all 45 predictors were related to the response—that is, none of the true coefficients β 1 , … , β 45 equalled zero. The lasso implicitly assumes that a number of the coefficients truly equal zero. Consequently, it is not surprising that ridge
 regression outperforms the lasso in terms of prediction error in this setting. Figure 6.9 illustrates a similar situation, except that now the response is a function of only 2 out of 45 predictors. Now the lasso tends to outperform ridge regression in terms of bias, variance, and MSE.</p>
 <p>These two examples illustrate that neither ridge regression nor the lasso will universally dominate the other. In general, one might expect the lasso to perform better in a setting where a relatively small number of predictors have substantial coefficients, and the remaining predictors have coefficients that are very small or that equal zero. Ridge regression will perform better when the response is a function of many predictors, all with coefficients of roughly equal size. However, the number of predictors that is related to the response is never known a priori for real data sets. A technique such as cross-validation can be used in order to determine which approach is better on a particular data set.</p>
