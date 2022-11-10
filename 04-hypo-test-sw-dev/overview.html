@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4. Hypothesis Testing and Software Development &#8212; Transparent ML Intro</title>
+    <title>4. Hypothesis Testing &amp; Software Development &#8212; Transparent ML Intro</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="4.1. Hypothesis testing" href="hypothesis-testing.html" />
@@ -534,7 +536,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Hypothesis Testing and Software Development</h1>
+                <h1>Hypothesis Testing & Software Development</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -545,44 +547,51 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="hypothesis-testing-and-software-development">
-<h1><span class="section-number">4. </span>Hypothesis Testing and Software Development<a class="headerlink" href="#hypothesis-testing-and-software-development" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="hypothesis-testing-software-development">
+<h1><span class="section-number">4. </span>Hypothesis Testing &amp; Software Development<a class="headerlink" href="#hypothesis-testing-software-development" title="Permalink to this headline">¶</a></h1>
 <!-- Capitalise initials. As compact as possible, prefer ONE line. -->
 <!-- We use **UK** English spelling. -->
 <!-- File names should be all lowercase, with words separated by hyphens (-), and no spaces.  Each chapter must include an "overview.md" and "quiz-sum-ref.md"-->
 <div class="admonition-status admonition">
 <p class="admonition-title">Status</p>
-<p>Drafting</p>
-<!-- Ready for review and feedback -->
+<p>Ready for review and feedback</p>
 </div>
 <div class="admonition-objectives admonition">
 <p class="admonition-title">Objectives</p>
 <ul class="simple">
-<li><p>Objective 1</p></li>
+<li><p>Understand the concepts and processes of hypothesis testing</p></li>
+<li><p>Use hypothesis testing to evaluate and interpret the performance of machine learning models</p></li>
+<li><p>Understand the software development process and reproducibility</p></li>
+<li><p>Learn to use GitHub for version control and collaboration</p></li>
 </ul>
 </div>
-<p><strong>Expected time to complete</strong>: x hours</p>
-<p>In this chapter, we will [… (intro paragraph)].</p>
-<div class="admonition-ingredients admonition">
-<p class="admonition-title">Ingredients</p>
+<p><strong>Expected time to complete</strong>: 3 hours</p>
+<p>Machine learning is a powerful tool for decision making and scientific discovery. However, the results of machine learning models are often not as straightforward as it seems to interpret, and we need to be careful when using machine learning models to make decisions or draw conclusions. For example, a model may have a high accuracy but it may not be clear whether the model is actually useful.</p>
+<p>We typically develop software to implement the machine learning model. Different software development processes can lead to different results and costs. We need to be aware of the software development process and the reproducibility of the results. Moreover, nowadays, software development is often a collaborative process. We need to learn how to collaborate with others in software development and also ensure that the software is reproducible and maintainable.</p>
+<p>In this chapter, we will learn about the concepts and processes of hypothesis testing and how to use hypothesis testing to evaluate and interpret the performance of machine learning models. We will also learn about the software development process and reproducibility, and how to use GitHub for version control and collaboration.</p>
+<div class="admonition-process-transparency-hypothesis-testing admonition">
+<p class="admonition-title">Process transparency: hypothesis testing</p>
 <ul class="simple">
-<li><p>Input: …</p></li>
-<li><p>Output: …</p></li>
-<li><p>Model: …</p></li>
-<li><p>Hyperparameter(s): …</p></li>
-<li><p>Loss function: …</p></li>
-<li><p>Learning algorithm: …</p></li>
+<li><p><strong>Starting point</strong>: One or multiple groups of data to make a decision or draw a conclusion</p></li>
+<li><p>Define the null hypothesis and the alternative hypothesis</p></li>
+<li><p>Compute a test statistic to summarise the strength of evidence against the null hypothesis</p></li>
+<li><p>Compute a <span class="math notranslate nohighlight">\(p\)</span>-value to quantify the strength of evidence against the null hypothesis</p></li>
+<li><p>Decide whether to reject the null hypothesis or not based on a chosen significance level</p></li>
+<li><p><strong>End point</strong>: Report the decision or conclusion</p></li>
 </ul>
 </div>
-<div class="admonition-transparency admonition">
-<p class="admonition-title">Transparency</p>
-<p>System logic</p>
+<div class="admonition-process-transparency-software-development admonition">
+<p class="admonition-title">Process transparency: software development</p>
 <ul class="simple">
-<li><p>Condition to produce certain output:</p></li>
+<li><p><strong>Starting point</strong>: A problem to solve</p></li>
+<li><p>Initiate the project with rationale, scope, and vision</p></li>
+<li><p>Define the project’s objectives and requirements</p></li>
+<li><p>Build the software</p></li>
+<li><p>Test and evaluate the software in a controlled environment</p></li>
+<li><p>Deploy the software in a production environment</p></li>
+<li><p><strong>End point</strong>: Deployed software working as expected</p></li>
 </ul>
 </div>
-<!-- - What input to produce certain output:
-- How to produce certain output: -->
 <div class="toctree-wrapper compound">
 </div>
 </div>
