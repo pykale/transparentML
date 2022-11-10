@@ -278,8 +278,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../04-hypo-test-sw-dev/software-development.html">
+     4.2. Software development
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../04-hypo-test-sw-dev/quiz-sum-ref.html">
-     4.2. Quiz &amp; summary
+     4.3. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -687,7 +692,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Figure <a class="reference internal" href="#fig8-ai-transparency"><span class="std std-numref">Fig. 1</span></a> summarises system transparency in the three key questions above.</p>
 <div class="figure align-default" id="fig8-ai-transparency">
 <img alt="../_images/fig8-ai-transparency.png" src="../_images/fig8-ai-transparency.png" />
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">The what, why, and how of system transparency <span id="id1">[<a class="reference internal" href="bibliography.html#id6" title="Florian Ostmann and Cosmina Dorobantu. AI in financial services. Alan Turing Institute. doi, 2021. https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf.">Ostmann and Dorobantu, 2021</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#fig8-ai-transparency" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">The what, why, and how of system transparency <span id="id1">[<a class="reference internal" href="bibliography.html#id7" title="Florian Ostmann and Cosmina Dorobantu. AI in financial services. Alan Turing Institute. doi, 2021. https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf.">Ostmann and Dorobantu, 2021</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#fig8-ai-transparency" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="what-relevant-information">
 <h2>What relevant information?<a class="headerlink" href="#what-relevant-information" title="Permalink to this headline">¶</a></h2>
@@ -724,7 +729,7 @@ a decrease in or loss of model interpretability. It will generally be possible t
 <p>Access to system logic information can serve to address relevant concerns (e.g. ensuring trustworthiness and responsible use) as well as to provide assurance about possible concerns (e.g. demonstrating trustworthiness and responsible use), as shown in.</p>
 <div class="figure align-default" id="fig9-ai-transparency">
 <img alt="../_images/fig9-ai-transparency.png" src="../_images/fig9-ai-transparency.png" />
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Areas of concern related to system transparency <span id="id2">[<a class="reference internal" href="bibliography.html#id6" title="Florian Ostmann and Cosmina Dorobantu. AI in financial services. Alan Turing Institute. doi, 2021. https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf.">Ostmann and Dorobantu, 2021</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#fig9-ai-transparency" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Areas of concern related to system transparency <span id="id2">[<a class="reference internal" href="bibliography.html#id7" title="Florian Ostmann and Cosmina Dorobantu. AI in financial services. Alan Turing Institute. doi, 2021. https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf.">Ostmann and Dorobantu, 2021</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#fig9-ai-transparency" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="system-performance">
 <h3>System performance<a class="headerlink" href="#system-performance" title="Permalink to this headline">¶</a></h3>
@@ -777,7 +782,7 @@ relationships and conditions under which it produces certain outputs:</p>
 a formal representation of the system (as illustrated by the <a class="reference external" href="#what-relevant-information">example of the simple linear model</a>). This will be possible for many ML systems covered in this course, including those that are linear or non-linear but have a relatively simple structure. However, it will not be possible for all ML systems, including those that are non-linear and have a complex structure.</p></li>
 <li><p>Indirect analysis using explainability methods: Various auxiliary methods can help shed light
 on system logic. Many of these methods are perturbation-based, including LIME (Local Interpretable
-Model-Agnostic Explanation) <span id="id3">[<a class="reference internal" href="bibliography.html#id3" title="Marco Tulio Ribeiro, Sameer Singh, and Carlos Guestrin. &quot;Why should i trust you?&quot; Explaining the predictions of any classifier. In Proceedings of the 22nd ACM SIGKDD international conference on knowledge discovery and data mining (KDD), 1135–1144. 2016.">Ribeiro <em>et al.</em>, 2016</a>]</span> and SHAP (SHapley Additive exPlanations) <span id="id4">[<a class="reference internal" href="bibliography.html#id2" title="Scott M Lundberg and Su-In Lee. A unified approach to interpreting model predictions. In Advances in Neural Information Processing Systems (NeurIPS), 4768–4777. 2017.">Lundberg and Lee, 2017</a>]</span>. They rely on the analysis of changes in system outputs in response to changes in input values and can be used without access to a formal representation of the system. This is out of the scope of this course and hence will <em>NOT</em> be covered.</p></li>
+Model-Agnostic Explanation) <span id="id3">[<a class="reference internal" href="bibliography.html#id4" title="Marco Tulio Ribeiro, Sameer Singh, and Carlos Guestrin. &quot;Why should i trust you?&quot; Explaining the predictions of any classifier. In Proceedings of the 22nd ACM SIGKDD international conference on knowledge discovery and data mining (KDD), 1135–1144. 2016.">Ribeiro <em>et al.</em>, 2016</a>]</span> and SHAP (SHapley Additive exPlanations) <span id="id4">[<a class="reference internal" href="bibliography.html#id3" title="Scott M Lundberg and Su-In Lee. A unified approach to interpreting model predictions. In Advances in Neural Information Processing Systems (NeurIPS), 4768–4777. 2017.">Lundberg and Lee, 2017</a>]</span>. They rely on the analysis of changes in system outputs in response to changes in input values and can be used without access to a formal representation of the system. This is out of the scope of this course and hence will <em>NOT</em> be covered.</p></li>
 </ul>
 </div>
 <div class="section" id="communicating-system-logic-information">
