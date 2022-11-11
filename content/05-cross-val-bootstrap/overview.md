@@ -21,23 +21,23 @@ As shown in previous chapters, the performance of a machine learning model is ev
 In this chapter, we will learn about two [resampling methods](https://en.wikipedia.org/wiki/Resampling_(statistics)), cross-validation and bootstrap, to evaluate the performance of a machine learning model more rigorously and quantify the uncertainty associated with it. As the name "resampling" suggests, both methods involve resampling the data. They repeatedly draw samples from a training set and refit a model of interest on each set of drawn samples to obtain additional information about the fitted model. For example, to estimate the variability of a linear regression fit, we can repeatedly draw different samples from the training data, fit a linear regression to each new sample set, and then examine the extent to which the resulting fits differ. This approach allows us to obtain information that would not be available from fitting the model only once using the original training sample.
 
 ```{admonition} Process transparency: $K$-fold cross-validation
-- Starting point: a standardised dataset for a machine learning task with a performance metric defined and a machine learning model chosen to address a practical need/problem
+- **Starting point**: a standardised dataset for a machine learning task with a performance metric defined and a machine learning model chosen to address a practical need/problem
 - Determine the number of folds $K$ to use in cross-validation
 - Split the dataset into $K$ folds
 - For each fold $k$:
     - Train the model on the remaining $K-1$ folds
     - Evaluate the model on fold $k$
 - Compute the average performance metric across the $K$ folds
-- End point: Report the average performance metric and its standard deviation
+- **End point**: Report the average performance metric and its standard deviation
 ```
 
 ```{admonition} Process transparency: bootstrap
-- Starting point: a standardised dataset for a machine learning task with a performance metric defined and a machine learning model chosen to address a practical need/problem
+- **Starting point**: a standardised dataset for a machine learning task with a performance metric defined and a machine learning model chosen to address a practical need/problem
 - Determine the number of bootstrap samples $B$ to use
 - For each bootstrap sample $b$:
     - Draw a bootstrap sample from the dataset
     - Train the model on the bootstrap sample
     - Evaluate the model on the bootstrap sample
 - Compute the average performance metric across the $B$ bootstrap samples
-- End point: Report the average performance metric and its standard deviation
+- **End point**: Report the average performance metric and its standard deviation
 ```
