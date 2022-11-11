@@ -42,11 +42,12 @@ We design this course to be self-contained so that most users can complete in 40
 
 ## Course outline and structure
 
-Besides the prerequisites, the 10 chapters can be grouped into two parts: the first covers more basic topics and the second covers more advanced topics.
+Besides the prerequisites, the 10 chapters can be grouped into two parts: part one covers primary topics and part two covers secondary topics.
 
 - [Prerequisites](https://pykale.github.io/transparentML/00-prereq/overview.html): Basic mathematics and Python programming for machine learning
 
-**Basics**
+**Primary topics**
+**
 
 - [Chapter 1](https://pykale.github.io/transparentML/01-intro/overview.html): [System and Process] Introduction to machine learning and AI transparency
 - [Chapter 2](https://pykale.github.io/transparentML/02-linear-reg/overview.html): [System] Linear regression
@@ -54,7 +55,7 @@ Besides the prerequisites, the 10 chapters can be grouped into two parts: the fi
 - [Chapter 4](https://pykale.github.io/transparentML/04-hypo-test-sw-dev/overview.html): [Process] Hypothesis testing and software development
 - [Chapter 5](https://pykale.github.io/transparentML/05-cross-val-bootstrap/overview.html): [Process] Cross validation and bootstrap
 
-**Advanced**
+**Secondary topics**
 
 - [Chapter 6](https://pykale.github.io/transparentML/06-ftr-select-shrink/overview.html): [System] Feature subset selection and shrinkage
 - [Chapter 7](https://pykale.github.io/transparentML/07-dec-trees-rnd-forest/overview.html): [System] Decision trees and random forest
