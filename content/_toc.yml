@@ -84,12 +84,12 @@ parts:
   numbered: true
   chapters:
   - file: 06-ftr-select-shrink/overview
-    title: Feature selection & shrinkage
+    title: Feature selection & regularisation
     sections:
     - file: 06-ftr-select-shrink/subset-select
       title: Feature selection
     - file: 06-ftr-select-shrink/shrink
-      title: Shrinkage
+      title: Regularisation
     - file: 06-ftr-select-shrink/quiz-sum-ref
       title: Quiz & summary
   - file: 07-dec-trees-rnd-forest/overview
