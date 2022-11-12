@@ -23,7 +23,7 @@ parts:
       title: Loading data
     - file: 00-prereq/quiz-sum-ref
       title: Quiz & summary
-- caption: Basics
+- caption: Primary
   numbered: true
   chapters:
   - file: 01-intro/overview
@@ -80,7 +80,7 @@ parts:
       title: Bootstrap
     - file: 05-cross-val-bootstrap/quiz-sum-ref
       title: Quiz & summary
-- caption: Advanced
+- caption: Secondary
   numbered: true
   chapters:
   - file: 06-ftr-select-shrink/overview
@@ -128,11 +128,3 @@ parts:
     title: Process transparency
   - file: appendix/bibliography
     title: Bibliography
-
-# - caption: Advanced (for second half)
-
-
-
-# - file: markdown
-# - file: notebooks
-# - file: markdown-notebooks

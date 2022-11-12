@@ -42,24 +42,25 @@ We design this course to be self-contained so that most users can complete in 40
 
 ## Course outline and structure
 
-Besides the prerequisites, the 10 chapters can be grouped into two parts: the first covers more basic topics and the second covers more advanced topics.
+Besides the prerequisites, the 10 chapters can be grouped into two parts: part one covers primary topics and part two covers secondary topics.
 
 - [Prerequisites](https://pykale.github.io/transparentML/00-prereq/overview.html): Basic mathematics and Python programming for machine learning
 
-**Basics**
+**Primary topics**
 
-- [Chapter 1](https://pykale.github.io/transparentML/01-intro/overview.html): [System and Process] Introduction to machine learning and AI transparency
+- [Chapter 1](https://pykale.github.io/transparentML/01-intro/overview.html): [System and Process] Introduction to machine learning and transparency
 - [Chapter 2](https://pykale.github.io/transparentML/02-linear-reg/overview.html): [System] Linear regression
-- [Chapter 3](https://pykale.github.io/transparentML/03-logistic-reg/overview.html): [System] Logistic regression and linear discriminant analysis
+- [Chapter 3](https://pykale.github.io/transparentML/03-logistic-reg/overview.html): [System] Logistic regression
 - [Chapter 4](https://pykale.github.io/transparentML/04-hypo-test-sw-dev/overview.html): [Process] Hypothesis testing and software development
 - [Chapter 5](https://pykale.github.io/transparentML/05-cross-val-bootstrap/overview.html): [Process] Cross validation and bootstrap
+<!-- and linear discriminant analysis -->
 
-**Advanced**
+**Secondary topics**
 
 - [Chapter 6](https://pykale.github.io/transparentML/06-ftr-select-shrink/overview.html): [System] Feature subset selection and shrinkage
 - [Chapter 7](https://pykale.github.io/transparentML/07-dec-trees-rnd-forest/overview.html): [System] Decision trees and random forest
 - [Chapter 8](https://pykale.github.io/transparentML/08-nb-glm-svm/overview.html): [System] Naive Bayes, generalised linear models, and support vector machines
-- [Chapter 9](https://pykale.github.io/transparentML/09-pca-kmeans/overview.html): [System] Principal component analysis and k-means clustering
+- [Chapter 9](https://pykale.github.io/transparentML/09-pca-kmeans/overview.html): [System] Principal component analysis and $k$-means clustering
 - [Chapter 10](https://pykale.github.io/transparentML/10-deep-cnn-rnn/overview.html): [System] Deep learning with convolutional/recurrent neural networks
 
 ## Instructors and contributors
