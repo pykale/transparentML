@@ -691,15 +691,11 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="ridge-regression">
 <h2><span class="section-number">6.2.1. </span>Ridge regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">¶</a></h2>
 <p>Recall from <a class="reference internal" href="../02-linear-reg/overview.html"><span class="doc">Linear regression</span></a> that the least squares fitting procedure estimates <span class="math notranslate nohighlight">\(\beta_0, \beta_1, \ldots, \beta_D\)</span> by minimizing the residual sum of squares:</p>
-<div class="math notranslate nohighlight">
-\[
-\textrm{RSS} = \sum_{i=1}^N \left( y_i - \beta_0 - \sum_{j=1}^D x_{ij} \beta_j \right)^2
-\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-least-squares">
+<span class="eqno">(6.1)<a class="headerlink" href="#equation-eq-least-squares" title="Permalink to this equation">¶</a></span>\[\textrm{RSS}  = \sum_{i=1}^N \left( y_i - \beta_0 - \sum_{j=1}^D x_{ij} \beta_j \right)^2 \]</div>
 <p>Ridge regression is very similar to least squares, except that the coefficients are estimated by minimizing a slightly different quantity. In particular, the ridge regression coefficient estimates <span class="math notranslate nohighlight">\(\beta^R\)</span> are the values that minimise</p>
-<div class="math notranslate nohighlight">
-\[
-\sum_{i=1}^N \left( y_i - \beta_0 - \sum_{j=1}^D x_{ij} \beta_j \right)^2 + \lambda \sum_{j=1}^D \beta_j^2,
-\]</div>
+<div class="math notranslate nohighlight" id="equation-ridge-regression1">
+<span class="eqno">(6.2)<a class="headerlink" href="#equation-ridge-regression1" title="Permalink to this equation">¶</a></span>\[\sum_{i=1}^N \left( y_i - \beta_0 - \sum_{j=1}^D x_{ij} \beta_j \right)^2 + \lambda \sum_{j=1}^D \beta_j^2,\]</div>
 <p>where <span class="math notranslate nohighlight">\(\lambda \geq 0\)</span> is a tuning parameter. The term <span class="math notranslate nohighlight">\(\lambda \sum_{j=1}^D \beta_j^2\)</span> is called a <em>regularisation term</em> or <em>shrinkage penalty</em>, because it regularises/shrinks the coefficient estimates towards zero. The tuning parameter <span class="math notranslate nohighlight">\(\lambda\)</span> controls the amount of shrinkage: for large values of <span class="math notranslate nohighlight">\(\lambda\)</span>, the coefficients are very strongly shrunk towards zero, whereas for small values of <span class="math notranslate nohighlight">\(\lambda\)</span>, the coefficients are barely shrunk at all. In the limit as <span class="math notranslate nohighlight">\(\lambda \rightarrow 0\)</span>, ridge regression recovers the least squares estimates.</p>
 <p>Note that the ridge regression penalty has the effect of shrinking the coefficient estimates <span class="math notranslate nohighlight">\(\beta_j\)</span> for all <span class="math notranslate nohighlight">\(j\)</span>, but it has no effect on <span class="math notranslate nohighlight">\(\beta_0\)</span>. This is because the penalty only includes the sum of squares of the <span class="math notranslate nohighlight">\(\beta_j\)</span>, not the <span class="math notranslate nohighlight">\(\beta_0\)</span>. In other words, the penalty has no effect on the intercept. This is a desirable property, since we usually do not want to regularize the intercept.</p>
 <p>Watch the 9-minute video below for a visual explanation of Ridge regression:</p>
@@ -719,7 +715,6 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
-
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -912,6 +907,7 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">ridge</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
     <span class="n">mses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">ridge</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)))</span>
 
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best MSE: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">mses</span><span class="p">))</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
@@ -933,27 +929,27 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">),</span>
     <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Optimal&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">15000</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Optimal&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15000</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
     <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">mses</span><span class="p">)),</span>
-    <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15000</span><span class="p">),</span>
+    <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">lambdas</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">mses</span><span class="p">)],</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">mses</span><span class="p">)),</span>
+    <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">lambdas</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">mses</span><span class="p">)],</span> <span class="mi">15000</span><span class="p">),</span>
     <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="n">relpos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span>
 <span class="p">)</span>
 
-<span class="c1"># plt.legend()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
-<span class="c1"># plt.ylim(-300, 500)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\lambda$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Mean Squared Error&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;bias-variance.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/shrink_7_0.png" src="../_images/shrink_7_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best MSE:  12385.885432230521
+</pre></div>
+</div>
+<img alt="../_images/shrink_7_1.png" src="../_images/shrink_7_1.png" />
 </div>
 </div>
 <p>Ridge regression’s advantage over least squares is preventing overfitting, which is rooted in the bias-variance trade-oﬀ. As illustrated in the figure above, <span class="math notranslate nohighlight">\(\lambda\)</span> increases, the flexibility of the ridge regression fit decreases, leading to decreased variance but increased bias.
@@ -961,16 +957,14 @@ But as <span class="math notranslate nohighlight">\(\lambda\)</span> increases, 
 Recall that the test mean squared error (MSE), plotted in purple, is closely related to the variance plus the squared bias.
 For values of <span class="math notranslate nohighlight">\(\lambda\)</span> up to about 10, the MSE drops as <span class="math notranslate nohighlight">\(\lambda\)</span> increases. Beyond this point, the MSE increases considerably.</p>
 <p>To better understand this trade-off you can consider the example of the mean square error, which can be decomposed into its components. The mean square error can be written as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fc38bd99-668c-4cf1-ad1d-6f7ab34f0d40">
-<span class="eqno">(6.1)<a class="headerlink" href="#equation-fc38bd99-668c-4cf1-ad1d-6f7ab34f0d40" title="Permalink to this equation">¶</a></span>\[\begin{align}
-\begin{aligned}
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
 \text{MSE} = &amp; \mathbb{E}\left[\left(\mathbf{y} -\hat{f}(\mathbf{X})^2 \right) \right] \\
            = &amp; \frac{1}{N} \sum_{i=1}^N \left(y_i - \hat{f}(x_i)\right)^2 \\
-           = &amp; \left(\mathbb{E}\left[(\hat{f}(\mathbf{X}) \right] - \hat{f}(\mathbf{X})\right)^2 
-           + \mathbb{E}\left[\left(\hat{f}(\mathbf{X}) - \mathbb{E}\left[ \hat{f}(\mathbf{X})\right]\right)^2\right] + \text{Irreducible Error} \\
-           = &amp; \text{Bias}^2 + \text{Variance} + \text{Irreducible Error}
-\end{aligned}
-\end{align}\]</div>
+           = &amp; \underbrace{\left(\mathbb{E}\left[(\hat{f}(\mathbf{X}) \right] - \hat{f}(\mathbf{X})\right)^2}_{\text{Bias}^2} 
+           + \underbrace{\mathbb{E}\left[\left(\hat{f}(\mathbf{X}) - \mathbb{E}\left[ \hat{f}(\mathbf{X})\right]\right)^2\right]}_{\text{Variance}} \\ 
+            &amp; + \text{Irreducible Error} 
+\end{aligned}\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbb{E}[\cdot]\)</span> is the expectation operator and <span class="math notranslate nohighlight">\(\text{Var}(\cdot)\)</span> is the variance operator. The first term on the right-hand side is the squared bias, the second term is the variance of the prediction, and the third term is the irreducible error. The bias-variance trade-off is a consequence of the fact that the variance and squared bias terms are inversely related. As the variance increases, the squared bias decreases, and vice versa. The irreducible error is the variance of the error term <span class="math notranslate nohighlight">\(\epsilon\)</span> and is independent of the model. The MSE is minimized when the variance and squared bias are equal, which occurs when the model is unbiased and has the minimum variance possible given the data.</p>
 <p>In general, in situations where the relationship between the response and the predictors is close to linear, the least squares estimates will have low bias but may have high variance. This means that a small change in the training data can cause a large change in the least squares coefficient estimates. In particular, when the number of variables <span class="math notranslate nohighlight">\(D\)</span> is almost as large as the number of observations <span class="math notranslate nohighlight">\(N\)</span>, the least squares estimates will be extremely variable. And if <span class="math notranslate nohighlight">\(D &gt; N\)</span>, then the least squares estimates do not even have a unique solution, whereas ridge regression can still perform well by trading oﬀ a small increase in bias for a large decrease in variance. Hence, ridge regression works best in situations where the least squares estimates have high variance.</p>
 <p>Ridge regression also has substantial computational advantages over best subset selection, which requires searching through <span class="math notranslate nohighlight">\(2^D\)</span> models. As we discussed previously, even for moderate values of <span class="math notranslate nohighlight">\(D\)</span>, such a search can be computationally infeasible. In contrast, for any fixed value of <span class="math notranslate nohighlight">\(\lambda\)</span>, ridge regression only fits a single model, and the model-fitting procedure can be performed quite quickly. In fact, one can show that the computations required to a ridge regression model, simultaneously for all values of <span class="math notranslate nohighlight">\(\lambda\)</span>, are almost identical to those for fitting a model using least squares.</p>
@@ -979,10 +973,8 @@ For values of <span class="math notranslate nohighlight">\(\lambda\)</span> up t
 <div class="section" id="lasso">
 <h2><span class="section-number">6.2.2. </span>Lasso<a class="headerlink" href="#lasso" title="Permalink to this headline">¶</a></h2>
 <p>Ridge regression does have one obvious disadvantage. Unlike best subset, forward stepwise, and backward stepwise selection, which will generally select models that involve just a subset of the variables, ridge regression will include all p predictors in the final model. The penalty <span class="math notranslate nohighlight">\(\lambda\)</span> β j 2 in (6.5) will shrink all of the coefficients towards zero, but it will not set any of them exactly to zero (unless <span class="math notranslate nohighlight">\(\lambda\)</span> = ∞). This may not be a problem for prediction accuracy, but it can create a challenge in model interpretation in settings in which the number of variables <span class="math notranslate nohighlight">\(D\)</span> is quite large.</p>
-<div class="math notranslate nohighlight">
-\[
-\sum_{i=1}^N \left( y_i - \beta_0 - \sum_{j=1}^D x_{ij} \beta_j \right)^2 + \lambda \sum_{j=1}^D |\beta_j| = \textrm{RSS} + \lambda \sum_{j=1}^D |\beta_j|.
-\]</div>
+<div class="math notranslate nohighlight" id="equation-lasso1">
+<span class="eqno">(6.3)<a class="headerlink" href="#equation-lasso1" title="Permalink to this equation">¶</a></span>\[\sum_{i=1}^N \left( y_i - \beta_0 - \sum_{j=1}^D x_{ij} \beta_j \right)^2 + \lambda \sum_{j=1}^D |\beta_j| = \textrm{RSS} + \lambda \sum_{j=1}^D |\beta_j|.\]</div>
 <p>Watch the 8-minute video below for a visual explanation of Lasso:</p>
 <div class="admonition-video admonition">
 <p class="admonition-title">Video</p>
@@ -1024,18 +1016,70 @@ For values of <span class="math notranslate nohighlight">\(\lambda\)</span> up t
 <img alt="../_images/shrink_11_0.png" src="../_images/shrink_11_0.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mses</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">lambdas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">lambda_</span> <span class="ow">in</span> <span class="n">lambdas</span><span class="p">:</span>
+    <span class="n">lasso</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">lambda_</span><span class="p">)</span>
+    <span class="n">lasso</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">mses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">lasso</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best MSE: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">mses</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lambdas</span><span class="p">,</span> <span class="n">mses</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$MSE(x)$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">mses</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">mses</span><span class="p">),</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Optimal $\lambda$&quot;</span><span class="p">)</span>
+
+<span class="c1"># add annotation</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Overfit (high variance, high bias)&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">19000</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">14000</span><span class="p">),</span>
+    <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">19000</span><span class="p">),</span>
+    <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="n">relpos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="s2">&quot;Underfit (high bias, low variance)&quot;</span><span class="p">,</span>
+    <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mi">45000</span><span class="p">),</span>
+    <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">55000</span><span class="p">),</span>
+    <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">),</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Optimal&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">18000</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">lambdas</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">mses</span><span class="p">)],</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">mses</span><span class="p">)),</span>
+    <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">lambdas</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">mses</span><span class="p">)],</span> <span class="mi">18000</span><span class="p">),</span>
+    <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="n">relpos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\lambda$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Mean Squared Error&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best MSE:  12956.572451521926
+</pre></div>
+</div>
+<img alt="../_images/shrink_12_1.png" src="../_images/shrink_12_1.png" />
+</div>
+</div>
 <div class="section" id="another-formulation-of-ridge-regression-and-lasso">
 <h3><span class="section-number">6.2.2.1. </span>Another formulation of ridge regression and lasso<a class="headerlink" href="#another-formulation-of-ridge-regression-and-lasso" title="Permalink to this headline">¶</a></h3>
 <p>One can show that the lasso and ridge regression coefficient estimates solve the problems</p>
-<div class="math notranslate nohighlight">
-\[
-\min_{\boldsymbol{\beta} \in \mathbb{R}^D} \left\{ \sum_{i=1}^N \left( y_i - \beta_0 - \sum_{j=1}^D x_{ij} \beta_j \right)^2 \right\} \quad \text{subject to} \quad \sum_{j=1}^D |\beta_j| \leq t,
-\]</div>
+<div class="math notranslate nohighlight" id="equation-lasso2">
+<span class="eqno">(6.4)<a class="headerlink" href="#equation-lasso2" title="Permalink to this equation">¶</a></span>\[\min_{\boldsymbol{\beta} \in \mathbb{R}^D} \left\{ \sum_{i=1}^N \left( y_i - \beta_0 - \sum_{j=1}^D x_{ij} \beta_j \right)^2 \right\} \quad \text{subject to} \quad \sum_{j=1}^D |\beta_j| \leq t,\]</div>
 <p>and</p>
-<div class="math notranslate nohighlight">
-\[
-\min_{\boldsymbol{\beta} \in \mathbb{R}^D} \left\{ \sum_{i=1}^N \left( y_i - \beta_0 - \sum_{j=1}^D x_{ij} \beta_j \right)^2 \right\} \quad \text{subject to} \quad \sum_{j=1}^D \beta_j^2 \leq t,
-\]</div>
+<div class="math notranslate nohighlight" id="equation-ridge-regression2">
+<span class="eqno">(6.5)<a class="headerlink" href="#equation-ridge-regression2" title="Permalink to this equation">¶</a></span>\[\min_{\boldsymbol{\beta} \in \mathbb{R}^D} \left\{ \sum_{i=1}^N \left( y_i - \beta_0 - \sum_{j=1}^D x_{ij} \beta_j \right)^2 \right\} \quad \text{subject to} \quad \sum_{j=1}^D \beta_j^2 \leq t,\]</div>
 <p>respectively. In other words, for every value of <span class="math notranslate nohighlight">\(\lambda\)</span>, there is some <span class="math notranslate nohighlight">\(t\)</span> such that will give the same ridge regression or lasso coefficient estimates.</p>
 </div>
 <div class="section" id="the-variable-selection-property-of-the-lasso">
@@ -1047,19 +1091,16 @@ For values of <span class="math notranslate nohighlight">\(\lambda\)</span> up t
 <p class="caption"><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Contours of the error and constraint functions for the lasso
 (left) and ridge regression (right). source: https://commons.wikimedia.org/wiki/File:Regularization.jpg</span><a class="headerlink" href="#l2-l1" title="Permalink to this image">¶</a></p>
 </div>
-<p>Why is it that the lasso, unlike ridge regression, results in coefficient estimates that are exactly equal to zero? The figure above illustrates the situation. The least squares solution is marked as <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> while the blue diamond and circle represent the lasso and ridge regression constraints, respectively. If s is sufficiently large, then the constraint regions will contain β̂, and so the ridge regression and lasso estimates will be the same as the least squares estimates. (Such a large value of <span class="math notranslate nohighlight">\(t\)</span> corresponds to <span class="math notranslate nohighlight">\(\lambda\)</span> = 0 in
-(6.5) and (6.7).) However, in Figure 6.7 the least squares estimates lie outside of the diamond and the circle, and so the least squares estimates are not the same as the lasso and ridge regression estimates.</p>
-<p>Each of the ellipses centred around <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> represents a contour: this means that all of the points on a particular ellipse have the same RSS value. As the ellipses expand away from the least squares coefficient estimates, the RSS increases. Equations (6.8) and (6.9) indicate that the lasso and ridge regression coefficient estimates are given by the first point at which an ellipse contacts the constraint region. Since ridge regression has a circular constraint with no sharp points, this intersection will not generally occur on an axis, and so the ridge regression coefficient estimates will be exclusively non-zero. However, the lasso constraint has corners at each of the axes, and so the ellipse will often intersect the constraint region at an axis. When this occurs, one of the coefficients will equal zero. In higher dimensions, many of the coefficient estimates may equal zero simultaneously. In Figure 6.7, the intersection occurs at <span class="math notranslate nohighlight">\(\beta_1 = 0\)</span>, and so the resulting model will only include <span class="math notranslate nohighlight">\(\beta_2\)</span> .</p>
+<p>Why is it that the lasso, unlike ridge regression, results in coefficient estimates that are exactly equal to zero? The figure above illustrates the situation. The least squares solution is marked as <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> while the blue diamond and circle represent the lasso and ridge regression constraints, respectively. If <span class="math notranslate nohighlight">\(t\)</span> is sufficiently large, then the constraint regions will contain <span class="math notranslate nohighlight">\(\hat{\beta}\)</span>, and so the ridge regression and lasso estimates will be the same as the least squares estimates. (Such a large value of <span class="math notranslate nohighlight">\(t\)</span> corresponds to <span class="math notranslate nohighlight">\(\lambda = 0 \)</span> in
+Equation <a class="reference internal" href="#equation-ridge-regression1">(6.2)</a> and Equation <a class="reference internal" href="#equation-lasso1">(6.3)</a>.) However, in <a class="reference internal" href="#l2-l1"><span class="std std-numref">Fig. 6.1</span></a> the least squares estimates lie outside of the diamond and the circle, and so the least squares estimates are not the same as the lasso and ridge regression estimates.</p>
+<p>Each of the ellipses centred around <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> represents a contour: this means that all of the points on a particular ellipse have the same RSS value. As the ellipses expand away from the least squares coefficient estimates, the RSS increases. Equations <a class="reference internal" href="#equation-lasso2">(6.4)</a> and <a class="reference internal" href="#equation-ridge-regression2">(6.5)</a> indicate that the lasso and ridge regression coefficient estimates are given by the first point at which an ellipse contacts the constraint region. Since ridge regression has a circular constraint with no sharp points, this intersection will not generally occur on an axis, and so the ridge regression coefficient estimates will be exclusively non-zero. However, the lasso constraint has corners at each of the axes, and so the ellipse will often intersect the constraint region at an axis. When this occurs, one of the coefficients will equal zero. In higher dimensions, many of the coefficient estimates may equal zero simultaneously. In <a class="reference internal" href="#l2-l1"><span class="std std-numref">Fig. 6.1</span></a>, the intersection occurs at <span class="math notranslate nohighlight">\(\beta_1 = 0\)</span>, and so the resulting model will only include <span class="math notranslate nohighlight">\(\beta_2\)</span> .</p>
 </div>
 </div>
 <div class="section" id="comparing-the-lasso-and-ridge-regression">
 <h2><span class="section-number">6.2.3. </span>Comparing the Lasso and Ridge Regression<a class="headerlink" href="#comparing-the-lasso-and-ridge-regression" title="Permalink to this headline">¶</a></h2>
-<p>It is clear that the lasso has a major advantage over ridge regression, in that it produces simpler and more interpretable models that involve only a subset of the predictors. However, which method leads to better prediction accuracy? Figure 6.8 displays the variance, squared bias, and test MSE of the lasso applied to the same simulated data as in Figure 6.5. Clearly the lasso leads to qualitatively similar behaviour to ridge regression, in that as <span class="math notranslate nohighlight">\(\lambda\)</span> increases, the variance decreases and the bias increases. Consequently, the minimum MSE of ridge regression is slightly smaller than that of the lasso.</p>
-<p>However, the data in Figure 6.8 were generated in such a way that all 45 predictors were related to the response—that is, none of the true coefficients β 1 , … , β 45 equalled zero. The lasso implicitly assumes that a number of the coefficients truly equal zero. Consequently, it is not surprising that ridge
-regression outperforms the lasso in terms of prediction error in this setting. Figure 6.9 illustrates a similar situation, except that now the response is a function of only 2 out of 45 predictors. Now the lasso tends to outperform ridge regression in terms of bias, variance, and MSE.</p>
-<p>These two examples illustrate that neither ridge regression nor the lasso will universally dominate the other. In general, one might expect the lasso to perform better in a setting where a relatively small number of predictors have substantial coefficients, and the remaining predictors have coefficients that are very small or that equal zero. Ridge regression will perform better when the response is a function of many predictors, all with coefficients of roughly equal size. However, the number of predictors that is related to the response is never known a priori for real data sets. A technique such as cross-validation can be used in order to determine which approach is better on a particular data set.</p>
+<p>It is clear that the lasso has a major advantage over ridge regression, in that it produces simpler and more interpretable models that involve only a subset of the predictors. However, which method leads to better prediction accuracy? By comparing the test MSEs in <a class="reference external" href="#Ridge-regression">Ridge regression</a> and <a class="reference external" href="#Lasso">Lasso</a>, we can see that the lasso leads to a similar behaviour to ridge regression, while the minimum MSE of ridge regression is slightly smaller than that of the lasso. However, if the response variable is only correlated with a small subset of the predictors, then the lasso will perform better than ridge regression. This is because the lasso will set the coefficients of the irrelevant predictors to zero, whereas ridge regression will shrink them towards zero but not set them exactly to zero. In this case, the lasso will perform better because it will result in a model that involves only the relevant predictors.</p>
+<p>In general, one might expect the lasso to perform better in a setting where a relatively small number of predictors have substantial coefficients, and the remaining predictors have coefficients that are very small or that equal zero. Ridge regression will perform better when the response is a function of many predictors, all with coefficients of roughly equal size. However, the number of predictors that is related to the response is never known a priori for real data sets. A technique such as cross-validation can be used in order to determine which approach is better on a particular data set.</p>
 <p>As with ridge regression, when the least squares estimates have excessively high variance, the lasso solution can yield a reduction in variance at the expense of a small increase in bias, and consequently can generate more accurate predictions. Unlike ridge regression, the lasso performs variable selection, and hence results in models that are easier to interpret.</p>
-<p>There are very efficient algorithms for fitting both ridge and lasso models; in both cases the entire coefficient paths can be computed with about the same amount of work as a single least squares fit. We will explore this further in the lab at the end of this chapter.</p>
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">6.2.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>

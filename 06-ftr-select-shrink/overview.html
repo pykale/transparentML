@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>6. Feature Selection and Shrinkage &#8212; Transparent ML Intro</title>
+    <title>6. Feature Selection and Regularisation &#8212; Transparent ML Intro</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="6.1. Subset selection" href="subset-select.html" />
@@ -534,7 +536,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Feature Selection and Shrinkage</h1>
+                <h1>Feature Selection and Regularisation</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -545,44 +547,64 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="feature-selection-and-shrinkage">
-<h1><span class="section-number">6. </span>Feature Selection and Shrinkage<a class="headerlink" href="#feature-selection-and-shrinkage" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="feature-selection-and-regularisation">
+<h1><span class="section-number">6. </span>Feature Selection and Regularisation<a class="headerlink" href="#feature-selection-and-regularisation" title="Permalink to this headline">¶</a></h1>
 <!-- Capitalise initials. As compact as possible, prefer ONE line. -->
 <!-- We use **UK** English spelling. -->
 <!-- File names should be all lowercase, with words separated by hyphens (-), and no spaces.  Each chapter must include an "overview.md" and "quiz-sum-ref.md"-->
 <div class="admonition-status admonition">
 <p class="admonition-title">Status</p>
-<p>Drafting</p>
+<p>Ready for HP review</p>
 </div>
 <div class="admonition-objectives admonition">
 <p class="admonition-title">Objectives</p>
 <ul class="simple">
-<li><p>Objective 1</p></li>
+<li><p>Understand the basic concepts of feature selection and regularisation</p></li>
+<li><p>Apply feature selection to reduce the number of variables in a dataset</p></li>
+<li><p>Use regularisation approaches (e.g. LASSO and Ridge Regression) on real-world datasets and understand the concepts of underfit, overfit, and bias-variance trade-off</p></li>
 </ul>
 </div>
-<p><strong>Expected time to complete</strong>: x hours</p>
-<p>In this chapter, we will [… (intro paragraph)].</p>
-<div class="admonition-ingredients admonition">
-<p class="admonition-title">Ingredients</p>
+<p><strong>Expected time to complete</strong>: 2.5 hours</p>
+<p>In this chapter, we will learn about two approaches to improve the performance of a machine learning model, feature selection and regularisation. Feature selection is a process of selecting a subset of relevant features for use in model construction. Regularisation is a process of introducing additional information in order to solve an ill-posed problem or to prevent overfitting. Both approaches are used to improve the performance of a machine learning model. In particular, regularisation is used to reduce the variance of a model, while feature selection is used to reduce the complexity of a model.</p>
+<div class="admonition-process-transparency-feature-selection admonition">
+<p class="admonition-title">Process transparency: Feature selection</p>
 <ul class="simple">
-<li><p>Input: …</p></li>
-<li><p>Output: …</p></li>
-<li><p>Model: …</p>
+<li><p><strong>Starting point</strong>: a standardised dataset for a machine learning task with a performance metric defined and a machine learning model for feature selection</p></li>
+<li><p>Determine the feature selection method to use (e.g. best subset selection, forward selection, backward elimination, LASSO)</p></li>
+<li><p>Split the dataset into <span class="math notranslate nohighlight">\(K\)</span> folds</p></li>
+<li><p>Compute the average performance metric using cross-validation</p></li>
+<li><p><strong>End point</strong>: Select the subset of features that gives the best performance metric</p></li>
+</ul>
+</div>
+<div class="admonition-ingredients-ridge-regression-and-lasso admonition">
+<p class="admonition-title">Ingredients: Ridge Regression and LASSO</p>
+<ul class="simple">
+<li><p>Input: features of data samples</p></li>
+<li><p>Output: target values of data samples</p></li>
+<li><p>Model: fit a line (or plane/hyperplane) to the training data and assign the value on the fitted line (or plane/hyperplane) to the test data</p>
 <ul>
-<li><p>Hyperparameter(s): …</p></li>
-<li><p>Parameter(s): …</p></li>
+<li><p>Hyperparameter(s): <span class="math notranslate nohighlight">\(\lambda\)</span>, the importance of the regularisation term / shrinkage penalty</p></li>
+<li><p>Parameter(s): the intercept(s) and slope(s) of the fitted line (or plane/hyperplane), also known as the bias(es) and weight(s), respectively</p></li>
 </ul>
 </li>
-<li><p>Loss function: …</p></li>
-<li><p>Learning algorithm: …</p></li>
+<li><p>Loss function: minimise the total distances of the training data points to the fitted line (or plane/hyperplane) and the sum of the squares or absolute values of the weights</p></li>
+<li><p>Learning algorithm:</p>
+<ul>
+<li><p>Ridge regression:</p>
+<ul>
+<li><p>closed-form analytical solution based on linear algebra, or</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Gradient_descent">Gradient descent</a>: update the weights and intercepts by solving a <em>multivariate</em> optimisation problem iteratively to minimise the loss function</p></li>
+</ul>
+</li>
+<li><p>Lasso:
+-<a class="reference external" href="https://en.wikipedia.org/wiki/Coordinate_descent">Coordinate descent</a>: update the weights and intercepts by solving a <em>single variable</em> optimisation problem (along one coordinate direction) in each iteration to minimise the loss function</p></li>
+</ul>
+</li>
 </ul>
 </div>
-<div class="admonition-transparency admonition">
-<p class="admonition-title">Transparency</p>
-<p>System logic</p>
-<ul class="simple">
-<li><p>Condition to produce certain output:</p></li>
-</ul>
+<div class="admonition-transparency-ridge-regression-and-lasso admonition">
+<p class="admonition-title">Transparency: Ridge Regression and LASSO</p>
+<p>Same as <a class="reference internal" href="../02-linear-reg/overview.html"><span class="doc">Linear Regression</span></a>.</p>
 </div>
 <!-- - What input to produce certain output:
 - How to produce certain output: -->

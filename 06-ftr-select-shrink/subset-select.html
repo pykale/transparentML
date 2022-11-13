@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="6.2. Regularisation" href="shrink.html" />
-    <link rel="prev" title="6. Feature Selection and Shrinkage" href="overview.html" />
+    <link rel="prev" title="6. Feature Selection and Regularisation" href="overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -654,7 +654,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="best-subset-selection">
 <h2><span class="section-number">6.1.1. </span>Best subset selection<a class="headerlink" href="#best-subset-selection" title="Permalink to this headline">¶</a></h2>
 <p>To perform best subset selection, we fit a separate least squares regression for each possible combination of the <span class="math notranslate nohighlight">\(D\)</span>  predictors. That is, we fit all <span class="math notranslate nohighlight">\(D\)</span>  models <span class="math notranslate nohighlight">\(\left(\begin{array}{c} D \\ 2 \end{array}\right)\)</span> that contain exactly one predictor, all <span class="math notranslate nohighlight">\(2 = D(D − 1)/2\)</span> models that contain exactly two predictors, and so forth. We then look at all of the resulting models, with the goal of identifying the one that is best.</p>
-<div class="proof algorithm admonition" id="best-subset">
+<div class="proof algorithm admonition" id="alg:best-subset">
 <p class="admonition-title"><span class="caption-number">Algorithm 6.1 </span> (Best subset selection)</p>
 <div class="algorithm-content section" id="proof-content">
 <!-- **Inputs** Given a Network $G=(V,E)$ with flow capacity $c$, a source node $s$, and a sink node $t$
@@ -681,7 +681,7 @@ have any predictive power on future data. Thus an enormous search space can lead
 <div class="section" id="forward-stepwise-selection">
 <h3><span class="section-number">6.1.2.1. </span>Forward stepwise selection<a class="headerlink" href="#forward-stepwise-selection" title="Permalink to this headline">¶</a></h3>
 <p>Forward stepwise selection is a computationally eﬃcient alternative to best subset selection. While the best subset selection procedure considers all <span class="math notranslate nohighlight">\(2^N\)</span> possible models containing subsets of the <span class="math notranslate nohighlight">\(D\)</span>  predictors, forward stepwise considers a much smaller set of models. Forward stepwise selection begins with a model containing no predictors, and then adds predictors to the model, one-at-a-time, until all of the predictors are in the model. In particular, at each step the variable that gives the greatest additional improvement to the fit is added to the model.</p>
-<div class="proof algorithm admonition" id="forward-stepwise">
+<div class="proof algorithm admonition" id="alg:forward-stepwise">
 <p class="admonition-title"><span class="caption-number">Algorithm 6.2 </span> (Forward stepwise selection)</p>
 <div class="algorithm-content section" id="proof-content">
 <ol class="simple">
@@ -702,15 +702,15 @@ given data set with <span class="math notranslate nohighlight">\(D\)</span>  = 3
 <div class="section" id="backward-stepwise-selection">
 <h3><span class="section-number">6.1.2.2. </span>Backward stepwise selection<a class="headerlink" href="#backward-stepwise-selection" title="Permalink to this headline">¶</a></h3>
 <p>Backward stepwise selection is similar to forward stepwise selection, except that it begins with the full model that contains all <span class="math notranslate nohighlight">\(D\)</span>  predictors, and then removes the least useful predictor, one-at-a-time, until the model contains no predictors.</p>
-<div class="proof algorithm admonition" id="backward-stepwise">
+<div class="proof algorithm admonition" id="alg:backward-stepwise">
 <p class="admonition-title"><span class="caption-number">Algorithm 6.3 </span> (Backward stepwise selection)</p>
 <div class="algorithm-content section" id="proof-content">
 <ol class="simple">
-<li><p>Let <span class="math notranslate nohighlight">\(\mathcal{M}_0\)</span> denote the null model, which contains no predictors. This model simply predicts the sample mean for each observation.</p></li>
-<li><p>For <span class="math notranslate nohighlight">\(k = 1, 2, \ldots, D\)</span>:</p>
+<li><p>Let <span class="math notranslate nohighlight">\(\mathcal{M}_0\)</span> denote the full model, which contains all <span class="math notranslate nohighlight">\(D\)</span> predictors.</p></li>
+<li><p>For <span class="math notranslate nohighlight">\(k = D, D-1, \ldots, 1\)</span>:</p>
 <ol class="simple">
-<li><p>Fit all <span class="math notranslate nohighlight">\(\left(\begin{array}{c} D \\ k \end{array}\right)\)</span> models that contain exactly <span class="math notranslate nohighlight">\(k\)</span> predictors.</p></li>
-<li><p>Choose the best among these <span class="math notranslate nohighlight">\(\left(\begin{array}{c} D \\ k \end{array}\right)\)</span> models, denoted <span class="math notranslate nohighlight">\(\mathcal{M}_k\)</span>. Here best is defined using some criterion <span class="math notranslate nohighlight">\(\mathrm{R}^2\)</span>..</p></li>
+<li><p>Consider all k models that contain all but one of the predictors im <span class="math notranslate nohighlight">\(\mathcal{M}_{k}\)</span>, for a total of <span class="math notranslate nohighlight">\(k-1\)</span> predictors.</p></li>
+<li><p>Choose the best among these <span class="math notranslate nohighlight">\( k \)</span> models, denoted <span class="math notranslate nohighlight">\(\mathcal{M}_{k-1}\)</span>. Here best is defined using some criterion such as smallest <span class="math notranslate nohighlight">\(\text{RSS}\)</span> or highest <span class="math notranslate nohighlight">\(\mathrm{R}^2\)</span>..</p></li>
 </ol>
 </li>
 <li><p>Select a single best model from <span class="math notranslate nohighlight">\(\mathcal{M}_0, \mathcal{M}_1, \ldots, \mathcal{M}_D\)</span> using cross-validation.</p></li>
@@ -946,7 +946,7 @@ model containing a subset of the <span class="math notranslate nohighlight">\(D\
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">6. </span>Feature Selection and Shrinkage</p>
+            <p class="prev-next-title"><span class="section-number">6. </span>Feature Selection and Regularisation</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="shrink.html" title="next page">
