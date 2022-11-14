@@ -31,9 +31,6 @@ The linear regression model discussed in {doc}`Linear regression <../02-linear-r
 ```
 
 ```{admonition} Transparency
-```
-
-```{admonition} Transparency
 System logic
 - Condition to produce certain output: to produce a positive label with a probability $p$, or equivalently a negative label with a probability $(1-p)$, transform the probability $p$ to a real value $\mathrm{logit}(p)$ via the logit function, locate this value $\mathrm{logit}(p)$ on the fitted line (or plane/hyperplane) and then find the corresponding input $x$ (or $\mathbf{x}$) value.
 ```

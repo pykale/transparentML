@@ -86,7 +86,7 @@ parts:
   - file: 06-ftr-select-regularise/overview
     title: Feature selection/regularisation
     sections:
-    - file: 06-ftr-select-regularise/subset-select
+    - file: 06-ftr-select-regularise/feature-select
       title: Feature selection
     - file: 06-ftr-select-regularise/regularisation
       title: Regularisation
@@ -113,11 +113,6 @@ parts:
     title: Convolutional & recurrent NN
     sections:
     - file: 10-deep-cnn-rnn/quiz-sum-ref
-      title: Quiz & summary
-  - file: /overview
-    title:
-    sections:
-    - file: /quiz-sum-ref
       title: Quiz & summary
 - caption: Appendices
   numbered: false
