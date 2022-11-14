@@ -562,19 +562,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ridge-regression-on-credit-data">
-     6.2.1.1. Ridge regression on
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       Credit
-      </span>
-     </code>
-     data
+    <a class="reference internal nav-link" href="#ridge-regression-on-credit-dataset">
+     6.2.1.1. Ridge regression on Credit dataset
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#why-does-ridge-regression-improve-over-least-squares">
-     6.2.1.2. Why does ridge regression improve over least squares?
+    <a class="reference internal nav-link" href="#biasvariance-trade-off-in-ridge-regression">
+     6.2.1.2. Bias–variance trade-off in ridge regression
     </a>
    </li>
   </ul>
@@ -585,20 +579,25 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#another-formulation-of-ridge-regression-and-lasso">
-     6.2.2.1. Another formulation of ridge regression and lasso
+    <a class="reference internal nav-link" href="#lasso-on-credit-dataset">
+     6.2.2.1. Lasso on Credit dataset
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-variable-selection-property-of-the-lasso">
-     6.2.2.2. The Variable Selection Property of the Lasso
+    <a class="reference internal nav-link" href="#another-formulation-of-ridge-regression-and-lasso">
+     6.2.2.2. Another formulation of ridge regression and lasso
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feature-selection-property-of-the-lasso">
+     6.2.2.3. Feature selection property of the lasso
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#comparing-the-lasso-and-ridge-regression">
-   6.2.3. Comparing the Lasso and Ridge Regression
+   6.2.3. Comparing the lasso and ridge regression
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -632,19 +631,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ridge-regression-on-credit-data">
-     6.2.1.1. Ridge regression on
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       Credit
-      </span>
-     </code>
-     data
+    <a class="reference internal nav-link" href="#ridge-regression-on-credit-dataset">
+     6.2.1.1. Ridge regression on Credit dataset
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#why-does-ridge-regression-improve-over-least-squares">
-     6.2.1.2. Why does ridge regression improve over least squares?
+    <a class="reference internal nav-link" href="#biasvariance-trade-off-in-ridge-regression">
+     6.2.1.2. Bias–variance trade-off in ridge regression
     </a>
    </li>
   </ul>
@@ -655,20 +648,25 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#another-formulation-of-ridge-regression-and-lasso">
-     6.2.2.1. Another formulation of ridge regression and lasso
+    <a class="reference internal nav-link" href="#lasso-on-credit-dataset">
+     6.2.2.1. Lasso on Credit dataset
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-variable-selection-property-of-the-lasso">
-     6.2.2.2. The Variable Selection Property of the Lasso
+    <a class="reference internal nav-link" href="#another-formulation-of-ridge-regression-and-lasso">
+     6.2.2.2. Another formulation of ridge regression and lasso
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feature-selection-property-of-the-lasso">
+     6.2.2.3. Feature selection property of the lasso
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#comparing-the-lasso-and-ridge-regression">
-   6.2.3. Comparing the Lasso and Ridge Regression
+   6.2.3. Comparing the lasso and ridge regression
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -687,31 +685,34 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="regularisation">
 <h1><span class="section-number">6.2. </span>Regularisation<a class="headerlink" href="#regularisation" title="Permalink to this headline">¶</a></h1>
-<p>The subset selection methods described in the previous section involve using least squares to fit a linear model that contains a subset of the predictors. As an alternative, we can fit a model containing all p predictors using a technique that constrains or regularizes the coefficient estimates, or equivalently, that shrinks the coefficient estimates towards zero. It may not be immediately obvious why such a constraint should improve the fit, but it turns out that shrinking the coefficient estimates can significantly reduce their variance. The two best-known techniques for shrinking the regression coefficients towards zero are ridge regression and the lasso.</p>
+<p>For the case of linear regression, the feature (subset) selection methods in the previous section involve using least squares to fit a linear model that contains a subset of the predictors (features/variables). We have seen the large variance of the least squares estimates across different folds in cross validation. This variance is related to the sensitivity of the least squares estimates to small changes in the data, leading to <a class="reference external" href="https://en.wikipedia.org/wiki/Overfitting">overfitting</a>.</p>
+<p>In this section, we will see how to reduce this variance by regularising the least squares estimates, i.e. <a class="reference external" href="https://en.wikipedia.org/wiki/Regularization_(mathematics)">regularisation</a>. We can fit a model containing all <span class="math notranslate nohighlight">\(D\)</span> predictors using a technique that constrains or regularises the coefficient estimates, or equivalently, that shrinks the coefficient estimates towards zero and significantly reduce their variance. The two best-known techniques for shrinking the regression coefficients towards zero, i.e. regularisation, are <a class="reference external" href="https://en.wikipedia.org/wiki/Ridge_regression">ridge regression</a> and the <a class="reference external" href="https://en.wikipedia.org/wiki/Lasso_(statistics)">lasso</a>.</p>
 <div class="section" id="ridge-regression">
 <h2><span class="section-number">6.2.1. </span>Ridge regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">¶</a></h2>
-<p>Recall from <a class="reference internal" href="../02-linear-reg/overview.html"><span class="doc">Linear regression</span></a> that the least squares fitting procedure estimates <span class="math notranslate nohighlight">\(\beta_0, \beta_1, \ldots, \beta_D\)</span> by minimizing the residual sum of squares:</p>
+<p>Recall from <a class="reference internal" href="../02-linear-reg/overview.html"><span class="doc">Linear regression</span></a> that the least squares fitting procedure estimates <span class="math notranslate nohighlight">\(\beta_0, \beta_1, \ldots, \beta_D\)</span> by minimising the <a class="reference external" href="https://en.wikipedia.org/wiki/Residual_sum_of_squares">residual sum of squares</a> (RSS) on the training data:</p>
 <div class="math notranslate nohighlight" id="equation-eq-least-squares">
-<span class="eqno">(6.1)<a class="headerlink" href="#equation-eq-least-squares" title="Permalink to this equation">¶</a></span>\[\textrm{RSS}  = \sum_{i=1}^N \left( y_i - \beta_0 - \sum_{j=1}^D x_{ij} \beta_j \right)^2 \]</div>
+<span class="eqno">(6.1)<a class="headerlink" href="#equation-eq-least-squares" title="Permalink to this equation">¶</a></span>\[\textrm{RSS}  = \sum_{n=1}^N \left( y_n - \beta_0 - \sum_{d=1}^D x_{nd} \beta_d \right)^2. \]</div>
 <p>Ridge regression is very similar to least squares, except that the coefficients are estimated by minimizing a slightly different quantity. In particular, the ridge regression coefficient estimates <span class="math notranslate nohighlight">\(\beta^R\)</span> are the values that minimise</p>
 <div class="math notranslate nohighlight" id="equation-ridge-regression1">
-<span class="eqno">(6.2)<a class="headerlink" href="#equation-ridge-regression1" title="Permalink to this equation">¶</a></span>\[\sum_{i=1}^N \left( y_i - \beta_0 - \sum_{j=1}^D x_{ij} \beta_j \right)^2 + \lambda \sum_{j=1}^D \beta_j^2,\]</div>
-<p>where <span class="math notranslate nohighlight">\(\lambda \geq 0\)</span> is a tuning parameter. The term <span class="math notranslate nohighlight">\(\lambda \sum_{j=1}^D \beta_j^2\)</span> is called a <em>regularisation term</em> or <em>shrinkage penalty</em>, because it regularises/shrinks the coefficient estimates towards zero. The tuning parameter <span class="math notranslate nohighlight">\(\lambda\)</span> controls the amount of shrinkage: for large values of <span class="math notranslate nohighlight">\(\lambda\)</span>, the coefficients are very strongly shrunk towards zero, whereas for small values of <span class="math notranslate nohighlight">\(\lambda\)</span>, the coefficients are barely shrunk at all. In the limit as <span class="math notranslate nohighlight">\(\lambda \rightarrow 0\)</span>, ridge regression recovers the least squares estimates.</p>
-<p>Note that the ridge regression penalty has the effect of shrinking the coefficient estimates <span class="math notranslate nohighlight">\(\beta_j\)</span> for all <span class="math notranslate nohighlight">\(j\)</span>, but it has no effect on <span class="math notranslate nohighlight">\(\beta_0\)</span>. This is because the penalty only includes the sum of squares of the <span class="math notranslate nohighlight">\(\beta_j\)</span>, not the <span class="math notranslate nohighlight">\(\beta_0\)</span>. In other words, the penalty has no effect on the intercept. This is a desirable property, since we usually do not want to regularize the intercept.</p>
-<p>Watch the 9-minute video below for a visual explanation of Ridge regression:</p>
+<span class="eqno">(6.2)<a class="headerlink" href="#equation-ridge-regression1" title="Permalink to this equation">¶</a></span>\[\sum_{n=1}^N \left( y_n - \beta_0 - \sum_{d=1}^D x_{nd} \beta_d \right)^2 + \lambda \sum_{d=1}^D \beta_d^2,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda \geq 0\)</span> is a tuning (or regularisation) parameter. The term <span class="math notranslate nohighlight">\(\lambda \sum_{d=1}^D \beta_d^2\)</span> is called a <em>regularisation term</em> (or <em>shrinkage penalty</em>), because it regularises (shrinks) the coefficient estimates towards zero. The tuning parameter <span class="math notranslate nohighlight">\(\lambda\)</span> controls the amount of shrinkage: for large values of <span class="math notranslate nohighlight">\(\lambda\)</span>, the coefficients are very strongly shrunk towards zero, whereas for small values of <span class="math notranslate nohighlight">\(\lambda\)</span>, the coefficients are barely shrunk at all. In the limit as <span class="math notranslate nohighlight">\(\lambda \rightarrow 0\)</span>, ridge regression recovers the least squares estimates, i.e. degenerated to linear regression without regularisation.</p>
+<p>Note that the regularisation term in ridge regression has the effect of shrinking the coefficient estimates <span class="math notranslate nohighlight">\(\beta_d\)</span> for all <span class="math notranslate nohighlight">\(d\)</span>, but it has no effect on <span class="math notranslate nohighlight">\(\beta_0\)</span>. This is because the penalty only includes the sum of squares of the <span class="math notranslate nohighlight">\(\beta_d\)</span>, not the <span class="math notranslate nohighlight">\(\beta_0\)</span>. In other words, the penalty has no effect on the intercept. This is a desirable property, since we usually do not want to regularise the intercept.</p>
+<p>Watch the 9-minute video below for a visual explanation of ridge regression:</p>
 <div class="admonition-video admonition">
 <p class="admonition-title">Video</p>
 <iframe width="700" height="394" src="https://www.youtube.com/embed/Q81RR3yKn30?start=57&end=619" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <p><a class="reference external" href="https://www.youtube.com/embed/Q81RR3yKn30?start=57&amp;end=619">Explaining Ridge regression, by StatQuest</a></p>
 </div>
-<div class="section" id="ridge-regression-on-credit-data">
-<h3><span class="section-number">6.2.1.1. </span>Ridge regression on <code class="docutils literal notranslate"><span class="pre">Credit</span></code> data<a class="headerlink" href="#ridge-regression-on-credit-data" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="ridge-regression-on-credit-dataset">
+<h3><span class="section-number">6.2.1.1. </span>Ridge regression on <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Credit.csv">Credit dataset</a><a class="headerlink" href="#ridge-regression-on-credit-dataset" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform a ridge regression on the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Credit.csv">Credit dataset</a> to predict the <code class="docutils literal notranslate"><span class="pre">Balance</span></code> using all the other variables. We will use the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> implementation of ridge regression, which can be found in the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html"><code class="docutils literal notranslate"><span class="pre">sklearn.linear_model.Ridge</span></code></a> class. The <code class="docutils literal notranslate"><span class="pre">alpha</span></code> parameter is our <span class="math notranslate nohighlight">\(lambda\)</span> that controls the amount of regularisation (shrinkage): the larger the value of <code class="docutils literal notranslate"><span class="pre">alpha</span></code>, the greater the amount of shrinkage.</p>
+<p>Get ready by importing the APIs needed from respective libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span><span class="p">,</span> <span class="n">Lasso</span><span class="p">,</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span><span class="p">,</span> <span class="n">Lasso</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
@@ -721,6 +722,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<p>Load the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Credit.csv">Credit dataset</a> dataset, convert the values of variables (predictors) <code class="docutils literal notranslate"><span class="pre">Student</span></code>, <code class="docutils literal notranslate"><span class="pre">Own</span></code>, <code class="docutils literal notranslate"><span class="pre">Married</span></code>, and <code class="docutils literal notranslate"><span class="pre">Region</span></code> from category to numbers (‘0’ and ‘1’), and inspect the first three rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">credit_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Credit.csv&quot;</span>
@@ -842,6 +844,7 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </div></div></div>
 </div>
+<p>Drop categorical variables, which have been converted to numerical variables, and the <code class="docutils literal notranslate"><span class="pre">Balance</span></code> variable, which is the target variable. Standardise the remaining variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">credit_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Own&quot;</span><span class="p">,</span> <span class="s2">&quot;Student&quot;</span><span class="p">,</span> <span class="s2">&quot;Married&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Balance&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
@@ -852,6 +855,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<p>Choose a set of <code class="docutils literal notranslate"><span class="pre">lambda</span></code> values to study for ridge regression, using the <code class="docutils literal notranslate"><span class="pre">np.logspace</span></code> function. This function returns a set of values that are logarithmically spaced between the two specified values, which is useful for exploring a wide range of values at a small cost.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambdas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
@@ -867,6 +871,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<p>Plot the coefficient estimates for each of the <code class="docutils literal notranslate"><span class="pre">lambda</span></code> values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lambdas</span><span class="p">,</span> <span class="n">coef_ridge</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Income&quot;</span><span class="p">)</span>
@@ -879,17 +884,20 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\lambda$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Standardised Coefficients&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/regularisation_5_0.png" src="../_images/regularisation_5_0.png" />
+<img alt="../_images/regularisation_9_0.png" src="../_images/regularisation_9_0.png" />
 </div>
 </div>
+<p>We can observe that the coefficient estimates approach zero as the value of <code class="docutils literal notranslate"><span class="pre">lambda</span></code> increases. This is because the regularisation term in ridge regression has the effect of shrinking the coefficient estimates towards zero. The coefficient estimates for <code class="docutils literal notranslate"><span class="pre">lambda</span></code> values close to zero are very similar to the least squares estimates, whereas the coefficient estimates for <code class="docutils literal notranslate"><span class="pre">lambda</span></code> values close to 10000 are very close to zero.</p>
 </div>
-<div class="section" id="why-does-ridge-regression-improve-over-least-squares">
-<h3><span class="section-number">6.2.1.2. </span>Why does ridge regression improve over least squares?<a class="headerlink" href="#why-does-ridge-regression-improve-over-least-squares" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="biasvariance-trade-off-in-ridge-regression">
+<h3><span class="section-number">6.2.1.2. </span>Bias–variance trade-off in ridge regression<a class="headerlink" href="#biasvariance-trade-off-in-ridge-regression" title="Permalink to this headline">¶</a></h3>
+<p>So, why can ridge regression improve over least squares? Let us plot the mean squared error (MSE) on the test data for each of the <code class="docutils literal notranslate"><span class="pre">lambda</span></code> values, up to 100. We will use the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html"><code class="docutils literal notranslate"><span class="pre">sklearn.metrics.mean_squared_error</span></code> function</a> to compute the MSE.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">label_scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
@@ -941,46 +949,56 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\lambda$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Mean Squared Error&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best MSE:  12385.885432230525
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best MSE:  12385.885432230521
 </pre></div>
 </div>
-<img alt="../_images/regularisation_7_1.png" src="../_images/regularisation_7_1.png" />
+<img alt="../_images/regularisation_12_1.png" src="../_images/regularisation_12_1.png" />
 </div>
 </div>
-<p>Ridge regression’s advantage over least squares is preventing overfitting, which is rooted in the bias-variance trade-oﬀ. As illustrated in the figure above, <span class="math notranslate nohighlight">\(\lambda\)</span> increases, the flexibility of the ridge regression fit decreases, leading to decreased variance but increased bias.
-But as <span class="math notranslate nohighlight">\(\lambda\)</span> increases, the shrinkage of the ridge coefficient estimates leads to a substantial reduction in the variance of the predictions, at the expense of a slight increase in bias.
-Recall that the test mean squared error (MSE), plotted in purple, is closely related to the variance plus the squared bias.
-For values of <span class="math notranslate nohighlight">\(\lambda\)</span> up to about 10, the MSE drops as <span class="math notranslate nohighlight">\(\lambda\)</span> increases. Beyond this point, the MSE increases considerably.</p>
-<p>To better understand this trade-off you can consider the example of the mean square error, which can be decomposed into its components. The mean square error can be written as:</p>
+<p>Ridge regression’s advantage over least squares is that it can alleviate overfitting, which is rooted in the bias-variance trade-off. As <span class="math notranslate nohighlight">\(\lambda\)</span> increases, the flexibility of the ridge regression fit decreases, leading to decreased variance but increased bias. In other words, ridge regression reduces the variance of the least squares estimates, but at the expense of increasing the bias. As shown in the figure above, for values of <span class="math notranslate nohighlight">\(\lambda\)</span> up to about 10, the MSE drops as <span class="math notranslate nohighlight">\(\lambda\)</span> increases. Beyond this point, the MSE increases considerably. This is because the bias introduced by ridge regression becomes too large, and the model becomes too rigid to to capture the true relationship between the predictors and the response.</p>
+<div class="tip admonition">
+<p class="admonition-title">Bias-variance trade-off</p>
+<p><strong>Variance</strong> refers to the amount by which <span class="math notranslate nohighlight">\(\hat{f}(\mathbf{x})\)</span> would change if we estimated it using a different training data set. If a method has high variance, then small changes in the training data can result in large changes in the estimated values of <span class="math notranslate nohighlight">\(\hat{f}(\mathbf{x})\)</span>.</p>
+<p><strong>Bias</strong> refers to the error that is introduced by approximating a real-life problem, which may be extremely complicated, by a much simpler model. For example, linear regression assumes a linear relationship between the predictors and the response, but many real-life relationships are nonlinear. In this case, the linear regression model will have high bias, since it will not be able to capture the nonlinear relationship between the predictors and the response.</p>
+<p>Generally, more flexible methods have higher variance and lower bias, and less flexible methods (such as linear methods) have lower variance and higher bias.</p>
+</div>
+<!-- But as $\lambda$ increases beyond the optimal value (around 10), the shrinkage of the ridge coefficient estimates leads to a substantial reduction in the variance of the predictions, at the expense of a slight increase in bias. Recall that the test mean squared error (MSE), plotted in purple, is closely related to the variance plus the squared bias.  -->
+<p>To better understand this trade-off, let us consider the mean square error (MSE), which can be decomposed into multiple components as:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
-\text{MSE} = &amp; \mathbb{E}\left[\left(\mathbf{y} -\hat{f}(\mathbf{X})^2 \right) \right] \\
-           = &amp; \frac{1}{N} \sum_{i=1}^N \left(y_i - \hat{f}(x_i)\right)^2 \\
-           = &amp; \underbrace{\left(\mathbb{E}\left[(\hat{f}(\mathbf{X}) \right] - \hat{f}(\mathbf{X})\right)^2}_{\text{Bias}^2} 
-           + \underbrace{\mathbb{E}\left[\left(\hat{f}(\mathbf{X}) - \mathbb{E}\left[ \hat{f}(\mathbf{X})\right]\right)^2\right]}_{\text{Variance}} \\ 
-            &amp; + \text{Irreducible Error} 
+\text{MSE} = &amp; \mathbb{E}\left[\left(\mathbf{y} -\hat{f}(\mathbf{x})^2 \right) \right] \\
+           = &amp; \frac{1}{N} \sum_{n=1}^N \left(y_n - \hat{f}(x_n)\right)^2 \\
+           = &amp; \underbrace{\left(\mathbb{E}\left[(\hat{f}(\mathbf{x}) \right] - \hat{f}(\mathbf{x})\right)^2}_{\text{Bias}^2} 
+           + \underbrace{\mathbb{E}\left[\left(\hat{f}(\mathbf{x}) - \mathbb{E}\left[ \hat{f}(\mathbf{x})\right]\right)^2\right]}_{\text{Variance}} + \text{Irreducible Error} 
 \end{aligned}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbb{E}[\cdot]\)</span> is the expectation operator and <span class="math notranslate nohighlight">\(\text{Var}(\cdot)\)</span> is the variance operator. The first term on the right-hand side is the squared bias, the second term is the variance of the prediction, and the third term is the irreducible error. The bias-variance trade-off is a consequence of the fact that the variance and squared bias terms are inversely related. As the variance increases, the squared bias decreases, and vice versa. The irreducible error is the variance of the error term <span class="math notranslate nohighlight">\(\epsilon\)</span> and is independent of the model. The MSE is minimized when the variance and squared bias are equal, which occurs when the model is unbiased and has the minimum variance possible given the data.</p>
-<p>In general, in situations where the relationship between the response and the predictors is close to linear, the least squares estimates will have low bias but may have high variance. This means that a small change in the training data can cause a large change in the least squares coefficient estimates. In particular, when the number of variables <span class="math notranslate nohighlight">\(D\)</span> is almost as large as the number of observations <span class="math notranslate nohighlight">\(N\)</span>, the least squares estimates will be extremely variable. And if <span class="math notranslate nohighlight">\(D &gt; N\)</span>, then the least squares estimates do not even have a unique solution, whereas ridge regression can still perform well by trading oﬀ a small increase in bias for a large decrease in variance. Hence, ridge regression works best in situations where the least squares estimates have high variance.</p>
+<p>where <span class="math notranslate nohighlight">\(\mathbb{E}[\cdot]\)</span> is the expectation operator. The first term on the right-hand side is the squared bias, the second term is the variance of the prediction, and the third term is the irreducible error.</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff">bias-variance trade-off</a> is a consequence of the fact that the variance and squared bias terms are inversely related. As the variance increases, the squared bias decreases, and vice versa. The irreducible error is the variance of the error term <span class="math notranslate nohighlight">\(\epsilon\)</span> and is independent of the model. The MSE is minimised when the variance and squared bias are equal, which occurs when the model is unbiased and has the minimum variance possible given the data.</p>
+<!-- and $\text{Var}(\cdot)$ is the variance operator -->
+<p>In general, in situations where the relationship between the response and the predictors is close to linear, the least squares estimates will have low bias but may have high variance. This means that a small change in the training data can cause a large change in the least squares coefficient estimates. In particular, when the number of variables <span class="math notranslate nohighlight">\(D\)</span> is almost as large as the number of observations <span class="math notranslate nohighlight">\(N\)</span>, the least squares estimates will be extremely variable. And if <span class="math notranslate nohighlight">\(D &gt; N\)</span>, then the least squares estimates do not even have a unique solution, whereas ridge regression can still perform well by trading oﬀ a small increase in bias for a large decrease in variance. Hence, <em>ridge regression works best in situations where the least squares estimates have high variance</em>.</p>
 <p>Ridge regression also has substantial computational advantages over best subset selection, which requires searching through <span class="math notranslate nohighlight">\(2^D\)</span> models. As we discussed previously, even for moderate values of <span class="math notranslate nohighlight">\(D\)</span>, such a search can be computationally infeasible. In contrast, for any fixed value of <span class="math notranslate nohighlight">\(\lambda\)</span>, ridge regression only fits a single model, and the model-fitting procedure can be performed quite quickly. In fact, one can show that the computations required to a ridge regression model, simultaneously for all values of <span class="math notranslate nohighlight">\(\lambda\)</span>, are almost identical to those for fitting a model using least squares.</p>
+<p>Ridge regression does have one obvious disadvantage. Unlike best subset, forward stepwise, and backward stepwise selection, which will generally select models that involve just a subset of the variables, ridge regression will include all <span class="math notranslate nohighlight">\(D\)</span> predictors in the final model. The penalty <span class="math notranslate nohighlight">\(\lambda \sum_{d=1}^D \beta_d^2\)</span> will shrink all of the coefficients towards zero, but it will not set any of them exactly to zero (unless <span class="math notranslate nohighlight">\(\lambda\)</span> = ∞). This may not be a problem for prediction accuracy, but it can create a challenge in model interpretation in settings when the number of variables <span class="math notranslate nohighlight">\(D\)</span> is quite large.</p>
 </div>
 </div>
 <div class="section" id="lasso">
 <h2><span class="section-number">6.2.2. </span>Lasso<a class="headerlink" href="#lasso" title="Permalink to this headline">¶</a></h2>
-<p>Ridge regression does have one obvious disadvantage. Unlike best subset, forward stepwise, and backward stepwise selection, which will generally select models that involve just a subset of the variables, ridge regression will include all p predictors in the final model. The penalty <span class="math notranslate nohighlight">\(\lambda\)</span> β j 2 in (6.5) will shrink all of the coefficients towards zero, but it will not set any of them exactly to zero (unless <span class="math notranslate nohighlight">\(\lambda\)</span> = ∞). This may not be a problem for prediction accuracy, but it can create a challenge in model interpretation in settings in which the number of variables <span class="math notranslate nohighlight">\(D\)</span> is quite large.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Lasso_(statistics)"><strong>Lasso</strong></a> (least absolute shrinkage and selection operator) is another regularisation method, also another method for performing feature (variable) selection in regression. It is very similar to ridge regression, except that the penalty term is the <span class="math notranslate nohighlight">\(L_1\)</span> norm of the coefficient vector, rather than half the <span class="math notranslate nohighlight">\(L_2\)</span> norm of the coefficient vector (which is the case of ridge regression). Lasso is defined as:</p>
 <div class="math notranslate nohighlight" id="equation-lasso1">
-<span class="eqno">(6.3)<a class="headerlink" href="#equation-lasso1" title="Permalink to this equation">¶</a></span>\[\sum_{i=1}^N \left( y_i - \beta_0 - \sum_{j=1}^D x_{ij} \beta_j \right)^2 + \lambda \sum_{j=1}^D |\beta_j| = \textrm{RSS} + \lambda \sum_{j=1}^D |\beta_j|.\]</div>
+<span class="eqno">(6.3)<a class="headerlink" href="#equation-lasso1" title="Permalink to this equation">¶</a></span>\[\sum_{n=1}^N \left( y_n - \beta_0 - \sum_{d=1}^D x_{nd} \beta_d \right)^2 + \lambda \sum_{d=1}^D |\beta_d| = \textrm{RSS} + \lambda \sum_{d=1}^D |\beta_d|.\]</div>
 <p>Watch the 8-minute video below for a visual explanation of Lasso:</p>
 <div class="admonition-video admonition">
 <p class="admonition-title">Video</p>
 <iframe width="700" height="394" src="https://www.youtube.com/embed/NGf0voTMlcs?start=15" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <p><a class="reference external" href="https://www.youtube.com/embed/NGf0voTMlcs?start=15">Explaining Lasso, by StatQuest</a></p>
 </div>
+<div class="section" id="lasso-on-credit-dataset">
+<h3><span class="section-number">6.2.2.1. </span>Lasso on <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Credit.csv">Credit dataset</a><a class="headerlink" href="#lasso-on-credit-dataset" title="Permalink to this headline">¶</a></h3>
+<p>Let us study Lasso with different values of regularisation parameter <span class="math notranslate nohighlight">\(\lambda\)</span> on the same <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Credit.csv">Credit dataset</a> dataset as above. We will use the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html"><code class="docutils literal notranslate"><span class="pre">Lasso</span></code> function</a> in <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code> to fit a Lasso model on the training set, and then evaluate its MSE on the test set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambdas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
@@ -996,6 +1014,7 @@ For values of <span class="math notranslate nohighlight">\(\lambda\)</span> up t
 </div>
 </div>
 </div>
+<p>Plot the coefficient estimates for each of the <code class="docutils literal notranslate"><span class="pre">lambda</span></code> values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lambdas</span><span class="p">,</span> <span class="n">coef_lasso</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Income&quot;</span><span class="p">)</span>
@@ -1008,14 +1027,17 @@ For values of <span class="math notranslate nohighlight">\(\lambda\)</span> up t
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\lambda$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Standardised Coefficients&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/regularisation_11_0.png" src="../_images/regularisation_11_0.png" />
+<img alt="../_images/regularisation_17_0.png" src="../_images/regularisation_17_0.png" />
 </div>
 </div>
+<p>We can see that as <span class="math notranslate nohighlight">\(\lambda\)</span> increases, more and more of the coefficient estimates are driven towards zero. This is a consequence of the <span class="math notranslate nohighlight">\(L_1\)</span> penalty, which has the effect of forcing some of the coefficient estimates to be exactly equal to zero when the tuning parameter <span class="math notranslate nohighlight">\(\lambda\)</span> is sufficiently large. In this way, Lasso performs <em>embedded feature selection</em>, in addition to shrinking the coefficient estimates. In fact, Lasso will completely eliminate some of the features from the final model, which is not the case with ridge regression. This can be useful for <em>interpretation</em>.</p>
+<p>As in the case of ridge regression, the tuning parameter <span class="math notranslate nohighlight">\(\lambda\)</span> must be chosen carefully. Let us study the test MSE corresponding to the various values of <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mses</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1061,29 +1083,33 @@ For values of <span class="math notranslate nohighlight">\(\lambda\)</span> up t
 <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\lambda$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Mean Squared Error&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best MSE:  12956.57245152192
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best MSE:  12956.572451521926
 </pre></div>
 </div>
-<img alt="../_images/regularisation_12_1.png" src="../_images/regularisation_12_1.png" />
+<img alt="../_images/regularisation_20_1.png" src="../_images/regularisation_20_1.png" />
 </div>
+</div>
+<p>Here, we observe a similar pattern to that of ridge regression. As <span class="math notranslate nohighlight">\(\lambda\)</span> increases, the test MSE initially decreases and then increases again.</p>
 </div>
 <div class="section" id="another-formulation-of-ridge-regression-and-lasso">
-<h3><span class="section-number">6.2.2.1. </span>Another formulation of ridge regression and lasso<a class="headerlink" href="#another-formulation-of-ridge-regression-and-lasso" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.2.2.2. </span>Another formulation of ridge regression and lasso<a class="headerlink" href="#another-formulation-of-ridge-regression-and-lasso" title="Permalink to this headline">¶</a></h3>
 <p>One can show that the lasso and ridge regression coefficient estimates solve the problems</p>
 <div class="math notranslate nohighlight" id="equation-lasso2">
-<span class="eqno">(6.4)<a class="headerlink" href="#equation-lasso2" title="Permalink to this equation">¶</a></span>\[\min_{\boldsymbol{\beta} \in \mathbb{R}^D} \left\{ \sum_{i=1}^N \left( y_i - \beta_0 - \sum_{j=1}^D x_{ij} \beta_j \right)^2 \right\} \quad \text{subject to} \quad \sum_{j=1}^D |\beta_j| \leq t,\]</div>
+<span class="eqno">(6.4)<a class="headerlink" href="#equation-lasso2" title="Permalink to this equation">¶</a></span>\[\min_{\boldsymbol{\beta} \in \mathbb{R}^D} \left\{ \sum_{n=1}^N \left( y_n - \beta_0 - \sum_{d=1}^D x_{nd} \beta_d \right)^2 \right\} \quad \text{subject to} \quad \sum_{d=1}^D |\beta_d| \leq t,\]</div>
 <p>and</p>
 <div class="math notranslate nohighlight" id="equation-ridge-regression2">
-<span class="eqno">(6.5)<a class="headerlink" href="#equation-ridge-regression2" title="Permalink to this equation">¶</a></span>\[\min_{\boldsymbol{\beta} \in \mathbb{R}^D} \left\{ \sum_{i=1}^N \left( y_i - \beta_0 - \sum_{j=1}^D x_{ij} \beta_j \right)^2 \right\} \quad \text{subject to} \quad \sum_{j=1}^D \beta_j^2 \leq t,\]</div>
-<p>respectively. In other words, for every value of <span class="math notranslate nohighlight">\(\lambda\)</span>, there is some <span class="math notranslate nohighlight">\(t\)</span> such that will give the same ridge regression or lasso coefficient estimates.</p>
+<span class="eqno">(6.5)<a class="headerlink" href="#equation-ridge-regression2" title="Permalink to this equation">¶</a></span>\[\min_{\boldsymbol{\beta} \in \mathbb{R}^D} \left\{ \sum_{n=1}^N \left( y_n - \beta_0 - \sum_{d=1}^D x_{nd} \beta_d \right)^2 \right\} \quad \text{subject to} \quad \sum_{d=1}^D \beta_d^2 \leq t,\]</div>
+<p>respectively. Thus, the lasso and ridge regression solutions are the unique minimisers of the corresponding constrained optimisation problems with <span class="math notranslate nohighlight">\(L_1\)</span> and <span class="math notranslate nohighlight">\(L_2\)</span> constraints (penalties), respectively.</p>
+<!-- In other words, for every value of $\lambda$, there is some $t$ such that will give the same ridge regression or lasso coefficient estimates. -->
 </div>
-<div class="section" id="the-variable-selection-property-of-the-lasso">
-<h3><span class="section-number">6.2.2.2. </span>The Variable Selection Property of the Lasso<a class="headerlink" href="#the-variable-selection-property-of-the-lasso" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="feature-selection-property-of-the-lasso">
+<h3><span class="section-number">6.2.2.3. </span>Feature selection property of the lasso<a class="headerlink" href="#feature-selection-property-of-the-lasso" title="Permalink to this headline">¶</a></h3>
 <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Regularization.jpg/800px-Regularization.jpg?20190518214104" width="700px;" alt="Contours of the error and constraint functions for the lasso
 (left) and ridge regression (right). source: https://commons.wikimedia.org/wiki/File:Regularization.jpg"/> -->
 <div class="figure align-default" id="l2-l1">
@@ -1091,17 +1117,16 @@ For values of <span class="math notranslate nohighlight">\(\lambda\)</span> up t
 <p class="caption"><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Contours of the error and constraint functions for the lasso
 (left) and ridge regression (right). source: https://commons.wikimedia.org/wiki/File:Regularization.jpg</span><a class="headerlink" href="#l2-l1" title="Permalink to this image">¶</a></p>
 </div>
-<p>Why is it that the lasso, unlike ridge regression, results in coefficient estimates that are exactly equal to zero? The figure above illustrates the situation. The least squares solution is marked as <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> while the blue diamond and circle represent the lasso and ridge regression constraints, respectively. If <span class="math notranslate nohighlight">\(t\)</span> is sufficiently large, then the constraint regions will contain <span class="math notranslate nohighlight">\(\hat{\beta}\)</span>, and so the ridge regression and lasso estimates will be the same as the least squares estimates. (Such a large value of <span class="math notranslate nohighlight">\(t\)</span> corresponds to <span class="math notranslate nohighlight">\(\lambda = 0 \)</span> in
-Equation <a class="reference internal" href="#equation-ridge-regression1">(6.2)</a> and Equation <a class="reference internal" href="#equation-lasso1">(6.3)</a>.) However, in <a class="reference internal" href="#l2-l1"><span class="std std-numref">Fig. 6.1</span></a> the least squares estimates lie outside of the diamond and the circle, and so the least squares estimates are not the same as the lasso and ridge regression estimates.</p>
-<p>Each of the ellipses centred around <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> represents a contour: this means that all of the points on a particular ellipse have the same RSS value. As the ellipses expand away from the least squares coefficient estimates, the RSS increases. Equations <a class="reference internal" href="#equation-lasso2">(6.4)</a> and <a class="reference internal" href="#equation-ridge-regression2">(6.5)</a> indicate that the lasso and ridge regression coefficient estimates are given by the first point at which an ellipse contacts the constraint region. Since ridge regression has a circular constraint with no sharp points, this intersection will not generally occur on an axis, and so the ridge regression coefficient estimates will be exclusively non-zero. However, the lasso constraint has corners at each of the axes, and so the ellipse will often intersect the constraint region at an axis. When this occurs, one of the coefficients will equal zero. In higher dimensions, many of the coefficient estimates may equal zero simultaneously. In <a class="reference internal" href="#l2-l1"><span class="std std-numref">Fig. 6.1</span></a>, the intersection occurs at <span class="math notranslate nohighlight">\(\beta_1 = 0\)</span>, and so the resulting model will only include <span class="math notranslate nohighlight">\(\beta_2\)</span> .</p>
+<p>Why is it that the lasso, unlike ridge regression, results in coefficient estimates that are exactly equal to zero? The figure above illustrates the case when <span class="math notranslate nohighlight">\(D=2\)</span>. The least squares solution is marked as <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> while the blue diamond and circle represent the lasso and ridge regression constraints, respectively. If <span class="math notranslate nohighlight">\(t\)</span> is sufficiently large, then the constraint regions will contain <span class="math notranslate nohighlight">\(\hat{\beta}\)</span>, and so the ridge regression and lasso estimates will be the same as the least squares estimates. (Such a large value of <span class="math notranslate nohighlight">\(t\)</span> corresponds to <span class="math notranslate nohighlight">\(\lambda = 0 \)</span> in
+Equation <a class="reference internal" href="#equation-ridge-regression1">(6.2)</a> and Equation <a class="reference internal" href="#equation-lasso1">(6.3)</a>.) However, in <a class="reference internal" href="#l2-l1"><span class="std std-numref">Fig. 6.1</span></a>, <span class="math notranslate nohighlight">\(t\)</span> is not large enough so the least squares estimates lie outside of the diamond and the circle, and the least squares estimates are not the same as the lasso and ridge regression estimates.</p>
+<p>Each of the ellipses centred around <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> represents a contour: this means that all of the points on a particular ellipse have the same RSS value. As the ellipses expand away from the least squares coefficient estimates, the RSS increases. Equations <a class="reference internal" href="#equation-lasso2">(6.4)</a> and <a class="reference internal" href="#equation-ridge-regression2">(6.5)</a> indicate that the lasso and ridge regression coefficient estimates are given by the first point at which an ellipse contacts the constraint region. Since ridge regression has a circular constraint with no sharp points, this intersection will not generally occur on an axis, and so the ridge regression coefficient estimates will be exclusively non-zero. However, the lasso constraint has corners at each of the axes, and so the ellipse will often intersect the constraint region at an axis. When this occurs, one of the coefficients will equal to zero. For example, in <a class="reference internal" href="#l2-l1"><span class="std std-numref">Fig. 6.1</span></a>, the intersection occurs at <span class="math notranslate nohighlight">\(\beta_1 = 0\)</span>, and so the resulting model will only include <span class="math notranslate nohighlight">\(\beta_2\)</span>. In higher dimensions, many of the coefficient estimates may equal to zero simultaneously. This is the reason why the lasso results in some coefficient estimates that are exactly equal to zero.</p>
 </div>
 </div>
 <div class="section" id="comparing-the-lasso-and-ridge-regression">
-<h2><span class="section-number">6.2.3. </span>Comparing the Lasso and Ridge Regression<a class="headerlink" href="#comparing-the-lasso-and-ridge-regression" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.2.3. </span>Comparing the lasso and ridge regression<a class="headerlink" href="#comparing-the-lasso-and-ridge-regression" title="Permalink to this headline">¶</a></h2>
 <p>It is clear that the lasso has a major advantage over ridge regression, in that it produces simpler and more interpretable models that involve only a subset of the predictors. However, which method leads to better prediction accuracy? By comparing the test MSEs in <a class="reference external" href="#Ridge-regression">Ridge regression</a> and <a class="reference external" href="#Lasso">Lasso</a>, we can see that the lasso leads to a similar behaviour to ridge regression, while the minimum MSE of ridge regression is slightly smaller than that of the lasso. However, if the response variable is only correlated with a small subset of the predictors, then the lasso will perform better than ridge regression. This is because the lasso will set the coefficients of the irrelevant predictors to zero, whereas ridge regression will shrink them towards zero but not set them exactly to zero. In this case, the lasso will perform better because it will result in a model that involves only the relevant predictors.</p>
-<p>In general, one might expect the lasso to perform better in a setting where a relatively small number of predictors have substantial coefficients, and the remaining predictors have coefficients that are very small or that equal zero. Ridge regression will perform better when the response is a function of many predictors, all with coefficients of roughly equal size. However, the number of predictors that is related to the response is never known a priori for real data sets. A technique such as cross-validation can be used in order to determine which approach is better on a particular data set.</p>
-<p>As with ridge regression, when the least squares estimates have excessively high variance, the lasso solution can yield a reduction in variance at the expense of a small increase in bias, and consequently can generate more accurate predictions. Unlike ridge regression, the lasso performs variable selection, and hence results in models that are easier to interpret.</p>
-</div>
+<p>In general, one might expect the lasso to perform better in a setting where a relatively small number of predictors have substantial coefficients, and the remaining predictors have coefficients that are very small or equal to zero. Ridge regression will perform better when the response is a function of many predictors, all with coefficients of roughly equal size. However, the number of predictors that is related to the response is never known a priori for real datasets. A technique such as cross-validation can be used to determine which approach is better on a particular dataset.</p>
+<!-- As with ridge regression, when the least squares estimates have excessively high variance, the lasso solution can yield a reduction in variance at the expense of a small increase in bias, and consequently can generate more accurate predictions. Unlike ridge regression, the lasso performs variable selection, and hence results in models that are easier to interpret.  --></div>
 <div class="section" id="exercises">
 <h2><span class="section-number">6.2.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <p>min 3 max 5</p>

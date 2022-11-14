@@ -864,7 +864,7 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </div></div></div>
 </div>
-<p>To simplify the problem, let us drop those categorical variables, which have been converted to numerical variables, and the <code class="docutils literal notranslate"><span class="pre">Balance</span></code> variable, which is the target variable. We also drop the <code class="docutils literal notranslate"><span class="pre">Income</span></code> variable, which will make the problem slightly more interesting than otherwise (otherwise, the optimal is selecting all variables).</p>
+<p>Drop categorical variables, which have been converted to numerical variables, and the <code class="docutils literal notranslate"><span class="pre">Balance</span></code> variable, which is the target variable. We also drop the <code class="docutils literal notranslate"><span class="pre">Income</span></code> variable, which will make the problem slightly more interesting than otherwise (otherwise, the optimal is selecting all variables).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">credit_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span>
