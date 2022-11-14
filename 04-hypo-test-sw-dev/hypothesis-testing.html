@@ -1447,7 +1447,277 @@ memory usage: 781.4 KB
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">4.1.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p>min 3 max 5</p>
+<p><strong>1</strong>. The alternative hypothesis is a statement about the population that is assumed to be true.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   a. True
+
+   b. False
+</pre></div>
+</div>
+<p><em>Compare your answer with the solution below</em></p>
+<div class="toggle docutils container">
+<p><strong>b. False</strong></p>
+</div>
+<p><strong>2</strong>. Normally, we focus on using data to reject null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> and there can be only one reasons for failing to reject <span class="math notranslate nohighlight">\(H_0\)</span>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   a. True
+
+   b. False
+</pre></div>
+</div>
+<p><em>Compare your answer with the solution below</em></p>
+<div class="toggle docutils container">
+<p><strong>b. False</strong></p>
+</div>
+<p><strong>3</strong>.  The larger the <span class="math notranslate nohighlight">\(p\)</span>-value, the more evidence there is in favor of the null hypothesis.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   a. True
+
+   b. False
+</pre></div>
+</div>
+<p><em>Compare your answer with the solution below</em></p>
+<div class="toggle docutils container">
+<p><strong>a. True</strong></p>
+</div>
+<p><strong>4</strong>. A test statistic allows us to standardise our <span class="math notranslate nohighlight">\(p\)</span>-value.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   a. True
+
+   b. False
+</pre></div>
+</div>
+<p><em>Compare your answer with the solution below</em></p>
+<div class="toggle docutils container">
+<p><strong>b. False</strong></p>
+</div>
+<p><strong>5</strong>. A Type II error occurs when we fail to reject <span class="math notranslate nohighlight">\(H_0\)</span> when it is false.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   a. True
+
+   b. False
+</pre></div>
+</div>
+<p><em>Compare your answer with the solution below</em></p>
+<div class="toggle docutils container">
+<p><strong>a. True</strong></p>
+</div>
+<p><strong>6</strong>. When we perform hypothesis testing, we typically require a low Type II error rate while trying to make the Type I error small.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   a. True
+
+   b. False
+</pre></div>
+</div>
+<p><em>Compare your answer with the solution below</em></p>
+<div class="toggle docutils container">
+<p><strong>b. False</strong></p>
+</div>
+<p><strong>7</strong>. All the following exercises involve the use of <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Weekly.csv">Weekly</a> dataset.</p>
+<p><strong>a</strong>. Load the dataset and inspect the first few rows of the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">data_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Weekly.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Lag1</th>
+      <th>Lag2</th>
+      <th>Lag3</th>
+      <th>Lag4</th>
+      <th>Lag5</th>
+      <th>Volume</th>
+      <th>Today</th>
+      <th>Direction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1990</td>
+      <td>0.816</td>
+      <td>1.572</td>
+      <td>-3.936</td>
+      <td>-0.229</td>
+      <td>-3.484</td>
+      <td>0.154976</td>
+      <td>-0.270</td>
+      <td>Down</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1990</td>
+      <td>-0.270</td>
+      <td>0.816</td>
+      <td>1.572</td>
+      <td>-3.936</td>
+      <td>-0.229</td>
+      <td>0.148574</td>
+      <td>-2.576</td>
+      <td>Down</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1990</td>
+      <td>-2.576</td>
+      <td>-0.270</td>
+      <td>0.816</td>
+      <td>1.572</td>
+      <td>-3.936</td>
+      <td>0.159837</td>
+      <td>3.514</td>
+      <td>Up</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1990</td>
+      <td>3.514</td>
+      <td>-2.576</td>
+      <td>-0.270</td>
+      <td>0.816</td>
+      <td>1.572</td>
+      <td>0.161630</td>
+      <td>0.712</td>
+      <td>Up</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1990</td>
+      <td>0.712</td>
+      <td>3.514</td>
+      <td>-2.576</td>
+      <td>-0.270</td>
+      <td>0.816</td>
+      <td>0.153728</td>
+      <td>1.178</td>
+      <td>Up</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>b</strong>. Find out the t-statistic and p-value for the variable <strong>Today</strong> and state whether we can reject the null hypothesis for this variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> <span class="k">as</span> <span class="n">st</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Today&quot;</span><span class="p">],</span> <span class="n">popmean</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variable Volume t-statistic: &quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">statistic</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variable Volume p-value: &quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">pvalue</span><span class="p">)</span>
+
+<span class="c1"># The p-value for the Today variable is 0.036, which is smaller than the significance level alpha= 0.05.</span>
+<span class="c1"># Therefore, we can reject the null hypothesis  for the Today variable.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variable Volume t-statistic:  2.0987777102902156
+Variable Volume p-value:  0.03606653400392579
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>c</strong>. Now, do a one-sample t-test for all the lagging indicators and show all the p-values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_values</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">lag_number</span> <span class="o">=</span> <span class="mi">6</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">lag_number</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Lag&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)],</span> <span class="n">popmean</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">p_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">pvalue</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.03523272982234851, 0.0346563283663142, 0.03983425981695654, 0.04171710659891552, 0.0508316731170037]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>d</strong>. According to the resulting p-values from 7(b), can we reject all the null hypotheses because the p-values are low?</p>
+<p><em>Compare your answer with the solution below</em></p>
+<div class="toggle docutils container">
+<p>The <span class="math notranslate nohighlight">\(p\)</span>-values are low for all the lagging indicators. However, we cannot simply reject <span class="math notranslate nohighlight">\(H_{0}^{1}\)</span>, <span class="math notranslate nohighlight">\(H_{0}^{2}\)</span>, <span class="math notranslate nohighlight">\(H_{0}^{3}\)</span>, <span class="math notranslate nohighlight">\(H_{0}^{4}\)</span>and <span class="math notranslate nohighlight">\(H_{0}^{5}\)</span>, since this would fail to account for the multiple testing that we have performed.</p>
+</div>
+<p><strong>e</strong>. Now, use the Bonferroni correction to adjust the significance level <span class="math notranslate nohighlight">\(\alpha\)</span> for multiple testing using the <strong>multipletests</strong> function from the <strong>statsmodels</strong> module and state which null hypothesis we can reject.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.sandbox.stats.multicomp</span> <span class="kn">import</span> <span class="n">multipletests</span>
+
+<span class="n">reject</span><span class="p">,</span> <span class="n">p_values_corrected</span><span class="p">,</span> <span class="n">alphacSidak</span><span class="p">,</span> <span class="n">alphacBonf</span> <span class="o">=</span> <span class="n">multipletests</span><span class="p">(</span>
+    <span class="n">p_values</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;bonferroni&quot;</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p_values_corrected</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reject</span><span class="p">)</span>
+
+<span class="c1"># Therefore, using the Bonferroni correction, we will not  reject the any null hypothesis while controlling the FWER at 0.05.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.17616365 0.17328164 0.1991713  0.20858553 0.25415837]
+[False False False False False]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>f</strong>. If we want to test 100 null hypotheses, can we control FWER using Bonferroni correction?</p>
+<p><em>Compare your answer with the solution below</em></p>
+<div class="toggle docutils container">
+<p>It is reasonable to control the FWER when <span class="math notranslate nohighlight">\(M\)</span> (number of the null hypothesis) takes on a small value, like 5 or 10. However, for  <span class="math notranslate nohighlight">\(M\)</span>= 100 or 1,000, attempting to control the FWER will make it almost impossible to reject any of the false null hypotheses. In that case, we control the false discovery rate (FDR) using the Benjamini-Hochberg procedure rather than the FWER.</p>
+</div>
 </div>
 </div>
 
