@@ -651,7 +651,7 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="generalised-linear-models">
 <h1><span class="section-number">8.1. </span>Generalised linear models<a class="headerlink" href="#generalised-linear-models" title="Permalink to this headline">¶</a></h1>
-<p>we consider the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Bikeshare.csv">Bikeshare dataset</a>. The response is bikers, the number of hourly users of a bike sharing program in Washington, DC. This response value is neither qualitative nor quantitative: instead, it takes on non-negative integer values, or counts. We will consider predicting <code class="docutils literal notranslate"><span class="pre">bikers</span></code> using the covariates <code class="docutils literal notranslate"><span class="pre">mnth</span></code> (month of the year), <code class="docutils literal notranslate"><span class="pre">hr</span></code> (hour of the day, from 0 to 23), <code class="docutils literal notranslate"><span class="pre">workingday</span></code> (an indicator variable that equals 1 if it is neither a weekend nor a holiday), <code class="docutils literal notranslate"><span class="pre">temp</span></code> (the normalized temperature, in Celsius), and <code class="docutils literal notranslate"><span class="pre">weathersit</span></code> (a qualitative variable that takes on one of four possible values: clear; misty or cloudy; light rain or light snow; or heavy rain or heavy snow.)</p>
+<p>We use the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Bikeshare.csv">Bikeshare dataset</a> to illustrate generalised linear models (glm). The response is bikers, the number of hourly users of a bike sharing program in Washington, DC. This response value is neither qualitative nor quantitative: instead, it takes on non-negative integer values, or counts. We will consider predicting <code class="docutils literal notranslate"><span class="pre">bikers</span></code> using the covariates <code class="docutils literal notranslate"><span class="pre">mnth</span></code> (month of the year), <code class="docutils literal notranslate"><span class="pre">hr</span></code> (hour of the day, from 0 to 23), <code class="docutils literal notranslate"><span class="pre">workingday</span></code> (an indicator variable that equals 1 if it is neither a weekend nor a holiday), <code class="docutils literal notranslate"><span class="pre">temp</span></code> (the normalized temperature, in Celsius), and <code class="docutils literal notranslate"><span class="pre">weathersit</span></code> (a qualitative variable that takes on one of four possible values: clear; misty or cloudy; light rain or light snow; or heavy rain or heavy snow.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -791,6 +791,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="linear-regression-on-the-bikeshare-data">
 <h2><span class="section-number">8.1.1. </span>Linear regression on the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> data<a class="headerlink" href="#linear-regression-on-the-bikeshare-data" title="Permalink to this headline">¶</a></h2>
+<p>To begin, we consider predicting <code class="docutils literal notranslate"><span class="pre">bikers</span></code> using linear regression.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;bikers ~ mnth + hr + temp + workingday + weathersit&quot;</span><span class="p">,</span> <span class="n">data_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -814,7 +815,7 @@ const thebe_selector_output = ".output, .cell_output"
   <th>Date:</th>             <td>Mon, 14 Nov 2022</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
 </tr>
 <tr>
-  <th>Time:</th>                 <td>16:48:21</td>     <th>  Log-Likelihood:    </th> <td> -49743.</td> 
+  <th>Time:</th>                 <td>17:23:05</td>     <th>  Log-Likelihood:    </th> <td> -49743.</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  8645</td>      <th>  AIC:               </th> <td>9.957e+04</td>
@@ -969,6 +970,7 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
 </div>
+<p>We see, for example, that a progression of weather from clear to cloudy results in, on average, 12.89 fewer bikers per hour; however, if the weather progresses further to light rain or snow, then this further results in 53.60 fewer bikers per hour.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># months = [&quot;Jan&quot;, &quot;Feb&quot;, &quot;March&quot;, &quot;April&quot;, &quot;May&quot;, &quot;June&quot;, &quot;July&quot;, &quot;Aug&quot;, &quot;Sept&quot;, &quot;Oct&quot;, &quot;Nov&quot;, &quot;Dec&quot;]</span>
@@ -1001,18 +1003,17 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Hour&quot;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
-    <span class="c1">#     ax.legend([&quot;student&quot;, &quot;non-student&quot;], loc=2)</span>
-    <span class="c1">#     ax.set_xlabel(&quot;Income&quot;)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Coefficient&quot;</span><span class="p">)</span>
-<span class="c1">#     ax.set_ylim(ymax=1550)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/glm_6_0.png" src="../_images/glm_6_0.png" />
+<img alt="../_images/glm_7_0.png" src="../_images/glm_7_0.png" />
 </div>
 </div>
+<p>The above figures display the coefficients associated with <code class="docutils literal notranslate"><span class="pre">mnth</span></code> and <code class="docutils literal notranslate"><span class="pre">hr</span></code>, respectively. We see that bike usage is highest in the spring and fall, and lowest during the winter months. Furthermore, bike usage is greatest around rush hour (9 AM and 6 PM), and lowest overnight. Thus, at first glance, fitting a linear regression model to the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> dataset seems to provide reasonable and intuitive results.</p>
 </div>
 <div class="section" id="poisson-regression-on-the-bikeshare-data">
 <h2><span class="section-number">8.1.2. </span>Poisson regression on the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> data<a class="headerlink" href="#poisson-regression-on-the-bikeshare-data" title="Permalink to this headline">¶</a></h2>
@@ -1044,7 +1045,7 @@ const thebe_selector_output = ".output, .cell_output"
   <th>Date:</th>            <td>Mon, 14 Nov 2022</td> <th>  Pseudo R-squ.:     </th>   <td>0.7459</td>   
 </tr>
 <tr>
-  <th>Time:</th>                <td>16:48:22</td>     <th>  Log-Likelihood:    </th> <td>-1.4054e+05</td>
+  <th>Time:</th>                <td>17:23:06</td>     <th>  Log-Likelihood:    </th> <td>-1.4054e+05</td>
 </tr>
 <tr>
   <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th> <td>-5.5298e+05</td>
@@ -1201,7 +1202,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/glm_9_0.png" src="../_images/glm_9_0.png" />
+<img alt="../_images/glm_11_0.png" src="../_images/glm_11_0.png" />
 </div>
 </div>
 </div>

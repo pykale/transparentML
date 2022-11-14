@@ -665,21 +665,16 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="proof algorithm admonition" id="alg:best-subset">
 <p class="admonition-title"><span class="caption-number">Algorithm 6.1 </span> (Best subset selection)</p>
 <div class="algorithm-content section" id="proof-content">
-<!-- **Inputs** Given a Network $G=(V,E)$ with flow capacity $c$, a source node $s$, and a sink node $t$
-
-**Output** Compute a flow $f$ from $s$ to $t$ of maximum value -->
-<ul>
+<ul class="simple">
 <li><p>Let <span class="math notranslate nohighlight">\(\mathcal{M}_0\)</span> denote the null model, which contains no predictors. This model simply predicts the sample mean for each observation.</p></li>
 <li><p>For <span class="math notranslate nohighlight">\(d = 1, 2, \cdots, D\)</span>:</p>
-<ul class="simple">
+<ul>
 <li><p>Fit all <span class="math notranslate nohighlight">\(\left(\begin{array}{c} D \\ d \end{array}\right)\)</span> models that contain exactly <span class="math notranslate nohighlight">\(d\)</span> predictors, where <span class="math notranslate nohighlight">\(D\)</span>  is the total number of predictors.</p></li>
 <li><p>Choose the best among these <span class="math notranslate nohighlight">\(\left(\begin{array}{c} D \\ d \end{array}\right)\)</span> models, denoted <span class="math notranslate nohighlight">\(\mathcal{M}_d\)</span>. Here best is defined using some criterion, such as <span class="math notranslate nohighlight">\(\mathrm{R}^2\)</span> for linear regression (or AUC for binary classification).</p></li>
 </ul>
-  <!-- 2. Choose the best among these $\left(\begin{array}{c} D \\ k \end{array}\right)$ models, denoted $\mathcal{M}_k$. Here best is defined using some criterion, such as $C_p$, $AIC$, $BIC$, adjusted $R^2$, or $Mallow's\;C_p$. -->
 </li>
 <li><p>Select the single best model from <span class="math notranslate nohighlight">\(\mathcal{M}_0\)</span>, <span class="math notranslate nohighlight">\(\mathcal{M}_1\)</span>, <span class="math notranslate nohighlight">\(\cdots\)</span>, <span class="math notranslate nohighlight">\(\mathcal{M}_D\)</span> using cross-validation.</p></li>
 </ul>
-<!-- Here we will use $C_p$, but you could also use $AIC$, $BIC$, adjusted $R^2$, or $Mallow's\;C_p$. -->
 </div>
 </div><p>As you can imagine, the best subset selection algorithm above is computationally very expensive. For example, if we have <span class="math notranslate nohighlight">\(D = 100\)</span> predictors, then we would have to fit <span class="math notranslate nohighlight">\(2^{100} = 1.3 \times 10^{30}\)</span> models! Thus, for computational reasons, best subset selection can only be applied to problems with a very small number of predictors, making it practically useless for most real-world applications.</p>
 <p>Best subset selection may also suffer from statistical problems when <span class="math notranslate nohighlight">\(D\)</span>  is large. The larger the search space, the higher the chance of finding models that look good on the training (known/seen) data, even though they might not have any predictive power on test (unknown/unseen) data. Thus, an enormous search space can lead to high variance of the coefficient estimates and <a class="reference external" href="https://en.wikipedia.org/wiki/Overfitting">overfitting</a>, where the model performs well on the training data but poorly on the test data.</p>
@@ -739,8 +734,9 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">RFECV</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -885,7 +881,10 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 
 <span class="n">min_features_to_select</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Minimum number of features to consider</span>
-<span class="n">cv</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># Number of folds in cross-validation</span>
+<span class="n">n_splits</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span>
+    <span class="n">n_splits</span><span class="o">=</span><span class="n">n_splits</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123456</span>
+<span class="p">)</span>  <span class="c1"># change the random_state for cross-validation splits to see how the results change</span>
 <span class="n">rfecv</span> <span class="o">=</span> <span class="n">RFECV</span><span class="p">(</span>
     <span class="n">estimator</span><span class="o">=</span><span class="n">regr</span><span class="p">,</span>
     <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
@@ -895,14 +894,23 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="p">)</span>
 <span class="n">rfecv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Optimal number of features : </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">rfecv</span><span class="o">.</span><span class="n">n_features_</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_splits</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="s2">&quot;Optimal number of features for fold </span><span class="si">%d</span><span class="s2">: </span><span class="si">%d</span><span class="s2">&quot;</span>
+        <span class="o">%</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">rfecv</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">[</span><span class="s2">&quot;split</span><span class="si">%d</span><span class="s2">_test_score&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">argmax</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Optimal number of features on average: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">rfecv</span><span class="o">.</span><span class="n">n_features_</span><span class="p">)</span>
 
 <span class="c1"># Plot number of features VS. cross-validation scores</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Number of features selected&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cross validation score (MSE)&quot;</span><span class="p">)</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
-    <span class="p">[</span><span class="o">-</span><span class="n">rfecv</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">[</span><span class="s2">&quot;split</span><span class="si">%s</span><span class="s2">_test_score&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cv</span><span class="p">)],</span>
+    <span class="p">[</span>
+        <span class="o">-</span><span class="n">rfecv</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">[</span><span class="s2">&quot;split</span><span class="si">%s</span><span class="s2">_test_score&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_splits</span><span class="p">)</span>
+    <span class="p">],</span>
     <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
@@ -914,13 +922,23 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimal number of features : 10
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimal number of features for fold 1: 10
+Optimal number of features for fold 2: 9
+Optimal number of features for fold 3: 11
+Optimal number of features for fold 4: 11
+Optimal number of features for fold 5: 11
+Optimal number of features for fold 6: 7
+Optimal number of features for fold 7: 6
+Optimal number of features for fold 8: 11
+Optimal number of features for fold 9: 10
+Optimal number of features for fold 10: 10
+Optimal number of features on average: 11
 </pre></div>
 </div>
 <img alt="../_images/feature-select_11_1.png" src="../_images/feature-select_11_1.png" />
 </div>
 </div>
-<p>From the output, we can see that the optimal number of features is 10, which is one less than the total number of features in the full model (11). We can also observe the (large) variance (inconsistency) across the 10 folds, which is a measure of the stability of the model. The lower the variance, the more stable the model is.</p>
+<p>From the output, we can also observe the (large) variance (inconsistency) across the 10 folds, where the optimal number of features varies from 6 to 11 (when <code class="docutils literal notranslate"><span class="pre">random_state</span></code>=123456). It is also a measure of the stability of the model. The lower the variance, the more stable the model is. Furthermore, if we repeated cross-validation using a different set of cross-validation folds (changing the values of the <code class="docutils literal notranslate"><span class="pre">random_state</span></code> parameter in the <code class="docutils literal notranslate"><span class="pre">KFold</span></code> object), then the precise model with the lowest estimated test error would change. In this setting, we can select a model using the <em>one-standard-error</em> rule. We first calculate the standard error of the estimated test MSE for each model size, and then select the smallest model for which the estimated test error is within one standard error of the lowest point on the curve. The rationale here is that if a set of models appear to be more or less equally good, then we might as well choose the simplest model—that is, the model with the smallest number of predictors.</p>
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">6.1.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>

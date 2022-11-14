@@ -571,7 +571,6 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="simple">
 <li><p><strong>Starting point</strong>: a standardised dataset for a machine learning task with a performance metric defined and a machine learning model for feature selection</p></li>
 <li><p>Determine the feature selection method to use (e.g. best subset selection, forward selection, backward elimination, LASSO)</p></li>
-<li><p>Split the dataset into <span class="math notranslate nohighlight">\(K\)</span> folds</p></li>
 <li><p>Compute the average performance metric using cross-validation</p></li>
 <li><p><strong>End point</strong>: Select the subset of features that gives the best performance metric</p></li>
 </ul>
@@ -596,8 +595,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Gradient_descent">Gradient descent</a>: update the weights and intercepts by solving a <em>multivariate</em> optimisation problem iteratively to minimise the loss function</p></li>
 </ul>
 </li>
-<li><p>Lasso:
--<a class="reference external" href="https://en.wikipedia.org/wiki/Coordinate_descent">Coordinate descent</a>: update the weights and intercepts by solving a <em>single variable</em> optimisation problem (along one coordinate direction) in each iteration to minimise the loss function</p></li>
+<li><p>Lasso:</p>
+<ul>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Coordinate_descent">Coordinate descent</a>: update the weights and intercepts by solving a <em>univariate</em> optimisation problem (along one coordinate direction) iteratively to minimise the loss function</p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
