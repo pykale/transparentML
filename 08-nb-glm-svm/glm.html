@@ -815,7 +815,7 @@ const thebe_selector_output = ".output, .cell_output"
   <th>Date:</th>             <td>Mon, 14 Nov 2022</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
 </tr>
 <tr>
-  <th>Time:</th>                 <td>19:27:11</td>     <th>  Log-Likelihood:    </th> <td> -49743.</td> 
+  <th>Time:</th>                 <td>20:16:37</td>     <th>  Log-Likelihood:    </th> <td> -49743.</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  8645</td>      <th>  AIC:               </th> <td>9.957e+04</td>
@@ -1014,9 +1014,77 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>The above figures display the coefficients associated with <code class="docutils literal notranslate"><span class="pre">mnth</span></code> and <code class="docutils literal notranslate"><span class="pre">hr</span></code>, respectively. We see that bike usage is highest in the spring and fall, and lowest during the winter months. Furthermore, bike usage is greatest around rush hour (9 AM and 6 PM), and lowest overnight. Thus, at first glance, fitting a linear regression model to the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> dataset seems to provide reasonable and intuitive results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">est</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;mnth&quot;</span><span class="p">,</span> <span class="s2">&quot;hr&quot;</span><span class="p">,</span> <span class="s2">&quot;temp&quot;</span><span class="p">,</span> <span class="s2">&quot;workingday&quot;</span><span class="p">,</span> <span class="s2">&quot;weathersit&quot;</span><span class="p">]])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/glm_9_0.png" src="../_images/glm_9_0.png" />
+</div>
+</div>
+<p>But upon more careful inspection, some issues become apparent. For example, as shown in the figure above, 9.6% of the fitted values in the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> data set are negative: that is, the linear regression model predicts a negative number of users during 9.6% of the hours in the data set. This calls into question our ability to perform meaningful predictions on the data, and it also raises concerns about the accuracy of the coefficient estimates, confidence intervals, and other outputs of the regression model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">stripplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;hr&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;bikers&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;.2&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">data_df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;hr&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;bikers&quot;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+    <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;vlag&quot;</span><span class="p">,</span>
+    <span class="n">meanline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Number of Bikers&quot;</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">stripplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;hr&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;bikers&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;.2&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">data_df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;hr&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;bikers&quot;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+    <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;vlag&quot;</span><span class="p">,</span>
+    <span class="n">meanline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;log(Number of Bikers)&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Hour&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/glm_11_0.png" src="../_images/glm_11_0.png" />
+</div>
+</div>
+<p>Furthermore, it is reasonable to suspect that when the expected value of bikers is small, the variance of bikers should be small as well. For instance, at 2 AM during a heavy December snow storm, we expect that extremely few people will use a bike, and moreover that there should be little variance associated with the number of users during those conditions. This is borne out in the data: between 1 AM and 4 AM, in December, January, and February, when it is raining, there are 5.05 users, on average, with a standard deviation of 3.73. By contrast, between 7 AM and 10 AM, in April, May, and June, when skies are clear, there are 243.59 users, on average, with a standard deviation of 131.7. The mean-variance relationship is displayed in the left-hand panel of the figure above. This is a major violation of the assumptions of a linear model, which state that <span class="math notranslate nohighlight">\(y = \sum_{j=1}^{D}x_j\beta_j + \epsilon\)</span>, where <span class="math notranslate nohighlight">\(\epsilon\)</span> is a mean-zero error term with variance <span class="math notranslate nohighlight">\(\sigma^2\)</span> that is constant, and not a function of the covariates. Therefore, the heteroscedasticity of the data calls into question the suitability of a linear regression model.</p>
+<p>Finally, the response bikers is integer-valued. But under a linear model, <span class="math notranslate nohighlight">\(y = \beta_0 + \sum_{j=1}^{D}x_j\beta_j + \epsilon\)</span>, where <span class="math notranslate nohighlight">\(\epsilon\)</span> is a continuous-valued error term. This means that in a linear model, the response <span class="math notranslate nohighlight">\(y\)</span> is necessarily continuous-valued (quantitative). Thus, the integer nature of the response bikers suggests that a linear regression model is not entirely satisfactory for this data set.</p>
+<p>Some of the problems that arise when fitting a linear regression model to the Bikeshare data can be overcome by transforming the response; for instance, we can fit the model</p>
+<div class="math notranslate nohighlight">
+\[
+\log(y) = \beta_0 + \sum_{j=1}^{D}x_j\beta_j + \epsilon.
+\]</div>
+<p>Transforming the response avoids the possibility of negative predictions, and it overcomes much of the heteroscedasticity in the untransformed data, as is shown in the right-hand panel of the figure above. However, it is not quite a satisfactory solution, since predictions and inference are made in terms of the log of the response, rather than the response. This leads to challenges in interpretation, e.g. ``a one-unit increase in <span class="math notranslate nohighlight">\(x_j\)</span> is associated with an increase in the mean of the log of <span class="math notranslate nohighlight">\(y\)</span> by an amount <span class="math notranslate nohighlight">\(\beta_j\)</span>. Furthermore, a log transformation of the response cannot be applied in settings where the response can take on a value of 0. Thus, while fitting a linear model to a transformation of the response may be an adequate approach for some count-valued data sets, it often leaves something to be desired. We will see in the next section that a Poisson regression model provides a much more natural and elegant approach for this task.</p>
 </div>
 <div class="section" id="poisson-regression-on-the-bikeshare-data">
 <h2><span class="section-number">8.1.2. </span>Poisson regression on the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> data<a class="headerlink" href="#poisson-regression-on-the-bikeshare-data" title="Permalink to this headline">¶</a></h2>
+<p>To overcome the inadequacies of linear regression for analysing the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> data set, we will make use of an alternative approach, called Poisson regression. Before we can talk about Poisson regression, we must first introduce the Poisson distribution.</p>
+<p>Suppose that a random variable Y takes on nonnegative integer values, i.e. <span class="math notranslate nohighlight">\(y \in \{0, 1, 2, \dots\}\)</span>. If <span class="math notranslate nohighlight">\(y\)</span> follows the Poisson distribution, then</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}(y=k) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0, 1, 2, \dots .
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">poisson</span><span class="p">(</span><span class="s2">&quot;bikers ~ mnth + hr + temp + workingday + weathersit&quot;</span><span class="p">,</span> <span class="n">data_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -1045,7 +1113,7 @@ const thebe_selector_output = ".output, .cell_output"
   <th>Date:</th>            <td>Mon, 14 Nov 2022</td> <th>  Pseudo R-squ.:     </th>   <td>0.7459</td>   
 </tr>
 <tr>
-  <th>Time:</th>                <td>19:27:12</td>     <th>  Log-Likelihood:    </th> <td>-1.4054e+05</td>
+  <th>Time:</th>                <td>20:16:39</td>     <th>  Log-Likelihood:    </th> <td>-1.4054e+05</td>
 </tr>
 <tr>
   <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th> <td>-5.5298e+05</td>
@@ -1202,7 +1270,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/glm_11_0.png" src="../_images/glm_11_0.png" />
+<img alt="../_images/glm_15_0.png" src="../_images/glm_15_0.png" />
 </div>
 </div>
 </div>
