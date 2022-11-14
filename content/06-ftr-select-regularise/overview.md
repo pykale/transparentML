@@ -21,7 +21,6 @@ In this chapter, we will learn about two approaches to improve the performance o
 ```{admonition} Process transparency: Feature selection
 - **Starting point**: a standardised dataset for a machine learning task with a performance metric defined and a machine learning model for feature selection
 - Determine the feature selection method to use (e.g. best subset selection, forward selection, backward elimination, LASSO)
-- Split the dataset into $K$ folds
 - Compute the average performance metric using cross-validation
 - **End point**: Select the subset of features that gives the best performance metric
 ```
@@ -38,7 +37,7 @@ In this chapter, we will learn about two approaches to improve the performance o
     - closed-form analytical solution based on linear algebra, or
     - [Gradient descent](https://en.wikipedia.org/wiki/Gradient_descent): update the weights and intercepts by solving a _multivariate_ optimisation problem iteratively to minimise the loss function
   - Lasso:
-    -[Coordinate descent](https://en.wikipedia.org/wiki/Coordinate_descent): update the weights and intercepts by solving a _single variable_ optimisation problem (along one coordinate direction) in each iteration to minimise the loss function
+    - [Coordinate descent](https://en.wikipedia.org/wiki/Coordinate_descent): update the weights and intercepts by solving a _univariate_ optimisation problem (along one coordinate direction) iteratively to minimise the loss function
 ```
 
 ```{admonition} Transparency: Ridge Regression and LASSO
