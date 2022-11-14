@@ -142,68 +142,68 @@ The applicability and implications of transparency trade-offs depend on context 
 
 ## Exercises
 
-1. Transparency is the key motivation for accountability.
+**1**. Transparency is the key motivation for accountability.
 
        a. True
 
        b. False
 
-    *Compare your answer with the solution below*
+*Compare your answer with the solution below*
 
     ```{toggle}
     **b. False**
     ```
-2. Transparency acts as an enabler to other ML/AI ethics principles.
+**2**. Transparency acts as an enabler to other ML/AI ethics principles.
 
        a. True
 
        b. False
 
-    *Compare your answer with the solution below*
+*Compare your answer with the solution below*
 
     ```{toggle}
     **a. True**
     ```
-3. Transparency is a property of the information.
+**3**. Transparency is a property of the information.
 
        a. True
 
        b. False
 
-    *Compare your answer with the solution below*
+*Compare your answer with the solution below*
 
     ```{toggle}
     **b. False**
     ```
-4. Transparency is not a fixed property of ML systems.
+**4**. Transparency is not a fixed property of ML systems.
 
        a. True
 
        b. False
 
-    *Compare your answer with the solution below*
+*Compare your answer with the solution below*
 
     ```{toggle}
     **a. True**
     ```
-5. Deep learning models has high interpretability but low flexibility.
+**5**. Deep learning models has high interpretability but low flexibility.
 
        a. True
 
        b. False
 
-    *Compare your answer with the solution below*
+*Compare your answer with the solution below*
 
     ```{toggle}
     **b. False**
     ```
-6. Stakeholder's transparency interests can differ even when their reasons for seeking information are the same.
+**6**. Stakeholder's transparency interests can differ even when their reasons for seeking information are the same.
 
        a. True
 
        b. False
 
-    *Compare your answer with the solution below*
+*Compare your answer with the solution below*
 
     ```{toggle}
     **a. True**
