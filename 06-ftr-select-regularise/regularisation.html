@@ -325,7 +325,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="overview.html">
-   6. Feature selection &amp; regularisation
+   6. Feature selection/regularisation
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
@@ -486,7 +486,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/06-ftr-select-shrink/shrink.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/06-ftr-select-regularise/regularisation.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -506,10 +506,10 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F06-ftr-select-shrink/shrink.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F06-ftr-select-regularise/regularisation.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/06-ftr-select-shrink/shrink.ipynb"><button
+        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/06-ftr-select-regularise/regularisation.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -529,7 +529,7 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/06-ftr-select-shrink/shrink.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/06-ftr-select-regularise/regularisation.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -537,7 +537,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/06-ftr-select-shrink/shrink.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/06-ftr-select-regularise/regularisation.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -884,7 +884,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/shrink_5_0.png" src="../_images/shrink_5_0.png" />
+<img alt="../_images/regularisation_5_0.png" src="../_images/regularisation_5_0.png" />
 </div>
 </div>
 </div>
@@ -949,7 +949,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best MSE:  12385.885432230521
 </pre></div>
 </div>
-<img alt="../_images/shrink_7_1.png" src="../_images/shrink_7_1.png" />
+<img alt="../_images/regularisation_7_1.png" src="../_images/regularisation_7_1.png" />
 </div>
 </div>
 <p>Ridge regression’s advantage over least squares is preventing overfitting, which is rooted in the bias-variance trade-oﬀ. As illustrated in the figure above, <span class="math notranslate nohighlight">\(\lambda\)</span> increases, the flexibility of the ridge regression fit decreases, leading to decreased variance but increased bias.
@@ -1013,7 +1013,7 @@ For values of <span class="math notranslate nohighlight">\(\lambda\)</span> up t
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/shrink_11_0.png" src="../_images/shrink_11_0.png" />
+<img alt="../_images/regularisation_11_0.png" src="../_images/regularisation_11_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1069,7 +1069,7 @@ For values of <span class="math notranslate nohighlight">\(\lambda\)</span> up t
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best MSE:  12956.572451521926
 </pre></div>
 </div>
-<img alt="../_images/shrink_12_1.png" src="../_images/shrink_12_1.png" />
+<img alt="../_images/regularisation_12_1.png" src="../_images/regularisation_12_1.png" />
 </div>
 </div>
 <div class="section" id="another-formulation-of-ridge-regression-and-lasso">
@@ -1121,7 +1121,7 @@ Equation <a class="reference internal" href="#equation-ridge-regression1">(6.2)<
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./06-ftr-select-shrink"
+            path: "./06-ftr-select-regularise"
         },
         predefinedOutput: true
     }
