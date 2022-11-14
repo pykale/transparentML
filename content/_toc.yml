@@ -83,14 +83,14 @@ parts:
 - caption: Secondary
   numbered: true
   chapters:
-  - file: 06-ftr-select-shrink/overview
-    title: Feature selection & regularisation
+  - file: 06-ftr-select-regularise/overview
+    title: Feature selection/regularisation
     sections:
-    - file: 06-ftr-select-shrink/subset-select
+    - file: 06-ftr-select-regularise/feature-select
       title: Feature selection
-    - file: 06-ftr-select-shrink/shrink
+    - file: 06-ftr-select-regularise/regularisation
       title: Regularisation
-    - file: 06-ftr-select-shrink/quiz-sum-ref
+    - file: 06-ftr-select-regularise/quiz-sum-ref
       title: Quiz & summary
   - file: 07-dec-trees-rnd-forest/overview
     title: Decision trees & random forests
@@ -113,11 +113,6 @@ parts:
     title: Convolutional & recurrent NN
     sections:
     - file: 10-deep-cnn-rnn/quiz-sum-ref
-      title: Quiz & summary
-  - file: /overview
-    title:
-    sections:
-    - file: /quiz-sum-ref
       title: Quiz & summary
 - caption: Appendices
   numbered: false
