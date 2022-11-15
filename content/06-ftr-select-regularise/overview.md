@@ -5,43 +5,50 @@
 <!-- File names should be all lowercase, with words separated by hyphens (-), and no spaces.  Each chapter must include an "overview.md" and "quiz-sum-ref.md"-->
 
 ```{admonition} Status
-Ready for HP review
+Ready for review and feedback
 ```
 
 ```{admonition} Objectives
-- Understand the basic concepts of feature selection and regularisation
-- Apply feature selection to reduce the number of variables in a dataset
-- Use regularisation approaches (e.g. LASSO and Ridge Regression) on real-world datasets and understand the concepts of underfit, overfit, and bias-variance trade-off
+- Understand the ideas and processes behind several feature selection approaches
+- Apply feature selection to reduce the number of features in model construction
+- Understand the concepts of overfitting, bias-variance trade-off, and regularisation
+- Apply regularisation via ridge/lasso regression to reduce overfitting in model training
 ```
 
 **Expected time to complete**: 2.5 hours
 
-In this chapter, we will learn about two approaches to improve the performance of a machine learning model, feature selection and regularisation. Feature selection is a process of selecting a subset of relevant features for use in model construction. Regularisation is a process of introducing additional information in order to solve an ill-posed problem or to prevent overfitting. Both approaches are used to improve the performance of a machine learning model. In particular, regularisation is used to reduce the variance of a model, while feature selection is used to reduce the complexity of a model.
+In this chapter, we will learn about two popular approaches to improve the performance of a machine learning model by reducing its complexity and overfitting: **feature selection** and **regularisation**. [Feature selection](https://en.wikipedia.org/wiki/Feature_selection) is a process of selecting a subset of features from an original feature set. [Regularisation](https://en.wikipedia.org/wiki/Regularization_(mathematics)) aims to reduce the complexity of a model by penalising the (flexibility of) model parameters. Both feature selection and regularisation are useful in reducing the complexity of a model and thus reducing the risk of overfitting.
 
-```{admonition} Process transparency: Feature selection
-- **Starting point**: a standardised dataset for a machine learning task with a performance metric defined and a machine learning model for feature selection
-- Determine the feature selection method to use (e.g. best subset selection, forward selection, backward elimination, LASSO)
-- Compute the average performance metric using cross-validation
+Feature selection is primarily a machine learning process so we consider its process transparency.
+
+```{admonition} Process transparency: feature selection
+- **Starting point**: a standardised dataset for a machine learning task with a performance metric defined and a machine learning model chosen to be trained
+- Choose the feature selection method to use (e.g. best subset, forward/backward stepwise, lasso, etc.)
+- Determine the model performance metric to use (e.g. mean square error, accuracy, etc.)
+- Choose the model selection process (e.g. cross-validation, etc.)
+- Compute the performance metric for candidate models with different feature sets
 - **End point**: Select the subset of features that gives the best performance metric
 ```
 
-```{admonition} Ingredients: Ridge Regression and LASSO
+Regularisation is a technique used in combination with machine learning models. Here, we consider the use of regularisation in {doc}`linear regression <../02-linear-reg/overview>` models and thus consider the system transparency of the regularised linear regression models, which we call ridge regression and lasso regression.
+
+```{admonition} Ingredients: ridge/lasso regression
 - Input: features of data samples
 - Output: target values of data samples
 - Model: fit a line (or plane/hyperplane) to the training data and assign the value on the fitted line (or plane/hyperplane) to the test data
-  - Hyperparameter(s): $\lambda$, the importance of the regularisation term / shrinkage penalty
+  - Hyperparameter(s): $\lambda$, the weight of the regularisation term
   - Parameter(s): the intercept(s) and slope(s) of the fitted line (or plane/hyperplane), also known as the bias(es) and weight(s), respectively
-- Loss function: minimise the total distances of the training data points to the fitted line (or plane/hyperplane) and the sum of the squares or absolute values of the weights
+- Loss function: minimise the sum of 1) the total distances of the training data points to the fitted line (or plane/hyperplane) and 2) the sum of the squares (for ridge) or absolute (for lasso) values of the weights, i.e. the regularisation term
 - Learning algorithm:
   - Ridge regression:
     - closed-form analytical solution based on linear algebra, or
-    - [Gradient descent](https://en.wikipedia.org/wiki/Gradient_descent): update the weights and intercepts by solving a _multivariate_ optimisation problem iteratively to minimise the loss function
+    - [Gradient descent](https://en.wikipedia.org/wiki/Gradient_descent): update the weights and intercepts iteratively by solving a _multivariate_ optimisation problem to minimise the loss function
   - Lasso:
-    - [Coordinate descent](https://en.wikipedia.org/wiki/Coordinate_descent): update the weights and intercepts by solving a _univariate_ optimisation problem (along one coordinate direction) iteratively to minimise the loss function
+    - [Coordinate descent](https://en.wikipedia.org/wiki/Coordinate_descent): update the weights and intercepts iteratively by solving one _univariate_ optimisation problem (for one variable/feature) at a time and successively (alternating between variables/features) to minimise the loss function
 ```
 
-```{admonition} Transparency: Ridge Regression and LASSO
-Same as {doc}`../02-linear-reg/overview`.
+```{admonition} System transparency: ridge/lasso regression
+The same as in {doc}`../02-linear-reg/overview`.
 ```
 
 <!-- - What input to produce certain output:
