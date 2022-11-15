@@ -1,4 +1,4 @@
-# Decision Trees and Random Forests
+# Trees and Ensembles
 
 <!-- Capitalise initials. As compact as possible, prefer ONE line. -->
 <!-- We use **UK** English spelling. -->
@@ -14,7 +14,7 @@ Drafting
 
 **Expected time to complete**: x hours
 
-In this chapter, we will [... (intro paragraph)].
+In this chapter, we will study tree
 
 ```{admonition} Ingredients
 - Input: ...
