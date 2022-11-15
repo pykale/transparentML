@@ -57,8 +57,8 @@ Besides the prerequisites, the 10 chapters can be grouped into two parts: part o
 
 **Secondary topics**
 
-- [Chapter 6](https://pykale.github.io/transparentML/06-ftr-select-shrink/overview.html): [Process and System] Feature selection and regularisation
-- [Chapter 7](https://pykale.github.io/transparentML/07-dec-trees-rnd-forest/overview.html): [System] Decision trees and random forest
+- [Chapter 6](https://pykale.github.io/transparentML/06-ftr-select-regularise/overview.html): [Process and System] Feature selection and regularisation
+- [Chapter 7](https://pykale.github.io/transparentML/07-trees-ensembles/overview.html): [System] Trees and ensembles
 - [Chapter 8](https://pykale.github.io/transparentML/08-nb-glm-svm/overview.html): [System] Naive Bayes, generalised linear models, and support vector machines
 - [Chapter 9](https://pykale.github.io/transparentML/09-pca-kmeans/overview.html): [System] Principal component analysis and $k$-means clustering
 - [Chapter 10](https://pykale.github.io/transparentML/10-deep-cnn-rnn/overview.html): [System] Deep learning with convolutional/recurrent neural networks

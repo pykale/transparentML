@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>7. Decision Trees and Random Forests &#8212; Transparent ML Intro</title>
+    <title>7.1. Quiz and summary &#8212; Transparent ML Intro</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.1. Quiz and summary" href="quiz-sum-ref.html" />
-    <link rel="prev" title="6.3. Quiz and summary" href="../06-ftr-select-regularise/quiz-sum-ref.html" />
+    <link rel="next" title="8. Naive Bayes, GLM, SVM" href="../08-nb-glm-svm/overview.html" />
+    <link rel="prev" title="7. Trees and Ensembles" href="overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -349,17 +349,17 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
-   7. Decision trees &amp; random forests
+  <a class="reference internal" href="overview.html">
+   7. Trees &amp; ensembles
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
   <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="quiz-sum-ref.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      7.1. Quiz &amp; summary
     </a>
    </li>
@@ -484,7 +484,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/07-dec-trees-rnd-forest/overview.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/07-trees-ensembles/quiz-sum-ref.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -504,10 +504,10 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F07-dec-trees-rnd-forest/overview.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F07-trees-ensembles/quiz-sum-ref.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/07-dec-trees-rnd-forest/overview.md"><button
+        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/07-trees-ensembles/quiz-sum-ref.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -527,6 +527,29 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quiz">
+   7.1.1. Quiz
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   7.1.2. Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references-and-further-reading">
+   7.1.3. References and further reading
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -534,59 +557,59 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Decision Trees and Random Forests</h1>
+                <h1>Quiz and summary</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quiz">
+   7.1.1. Quiz
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   7.1.2. Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references-and-further-reading">
+   7.1.3. References and further reading
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="decision-trees-and-random-forests">
-<h1><span class="section-number">7. </span>Decision Trees and Random Forests<a class="headerlink" href="#decision-trees-and-random-forests" title="Permalink to this headline">¶</a></h1>
-<!-- Capitalise initials. As compact as possible, prefer ONE line. -->
-<!-- We use **UK** English spelling. -->
-<!-- File names should be all lowercase, with words separated by hyphens (-), and no spaces.  Each chapter must include an "overview.md" and "quiz-sum-ref.md"-->
-<div class="admonition-status admonition">
-<p class="admonition-title">Status</p>
-<p>Drafting</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="quiz-and-summary">
+<h1><span class="section-number">7.1. </span>Quiz and summary<a class="headerlink" href="#quiz-and-summary" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="quiz">
+<h2><span class="section-number">7.1.1. </span>Quiz<a class="headerlink" href="#quiz" title="Permalink to this headline">¶</a></h2>
+<p><em>Not for now. To finish in the next cycle.</em> Complete <a class="reference external" href="https://forms.gle/8Q5Z7Z7Z7Z7Z7Z7Z7">Quiz</a> to check your understanding of this topic. You are advised to score at least 50% to proceed to the next topic.</p>
 </div>
-<div class="admonition-objectives admonition">
-<p class="admonition-title">Objectives</p>
+<div class="section" id="summary">
+<h2><span class="section-number">7.1.2. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this topic, you learned how to:</p>
 <ul class="simple">
-<li><p>Objective 1</p></li>
+<li><p>Use …</p></li>
 </ul>
 </div>
-<p><strong>Expected time to complete</strong>: x hours</p>
-<p>In this chapter, we will [… (intro paragraph)].</p>
-<div class="admonition-ingredients admonition">
-<p class="admonition-title">Ingredients</p>
+<div class="section" id="references-and-further-reading">
+<h2><span class="section-number">7.1.3. </span>References and further reading<a class="headerlink" href="#references-and-further-reading" title="Permalink to this headline">¶</a></h2>
+<p>This material is based on the following resources:</p>
 <ul class="simple">
-<li><p>Input: …</p></li>
-<li><p>Output: …</p></li>
-<li><p>Model: …</p>
-<ul>
-<li><p>Hyperparameter(s): …</p></li>
-<li><p>Parameter(s): …</p></li>
+<li><p>Reference 1</p></li>
 </ul>
-</li>
-<li><p>Loss function: …</p></li>
-<li><p>Learning algorithm: …</p></li>
-</ul>
-</div>
-<div class="admonition-transparency admonition">
-<p class="admonition-title">Transparency</p>
-<p>System logic</p>
-<ul class="simple">
-<li><p>Condition to produce certain output:</p></li>
-</ul>
-</div>
-<!-- - What input to produce certain output:
-- How to produce certain output: -->
-<div class="toctree-wrapper compound">
 </div>
 </div>
 
@@ -603,7 +626,7 @@ const thebe_selector_output = ".output, .cell_output"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./07-dec-trees-rnd-forest"
+            path: "./07-trees-ensembles"
         },
         predefinedOutput: true
     }
@@ -615,17 +638,17 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../06-ftr-select-regularise/quiz-sum-ref.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="overview.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">6.3. </span>Quiz and summary</p>
+            <p class="prev-next-title"><span class="section-number">7. </span>Trees and Ensembles</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="quiz-sum-ref.html" title="next page">
+    <a class='right-next' id="next-link" href="../08-nb-glm-svm/overview.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.1. </span>Quiz and summary</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Naive Bayes, GLM, SVM</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
