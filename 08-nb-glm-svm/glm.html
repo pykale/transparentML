@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8.2. Quiz and summary" href="quiz-sum-ref.html" />
+    <link rel="next" title="8.2. Chapter 9 - Support Vector Machines" href="svm.html" />
     <link rel="prev" title="8. Naive Bayes, GLM, SVM" href="overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -383,8 +383,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="svm.html">
+     8.2. Support vector machines
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="quiz-sum-ref.html">
-     8.2. Quiz &amp; summary
+     8.3. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -815,7 +820,7 @@ const thebe_selector_output = ".output, .cell_output"
   <th>Date:</th>             <td>Tue, 15 Nov 2022</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
 </tr>
 <tr>
-  <th>Time:</th>                 <td>17:56:44</td>     <th>  Log-Likelihood:    </th> <td> -49743.</td> 
+  <th>Time:</th>                 <td>21:31:33</td>     <th>  Log-Likelihood:    </th> <td> -49743.</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  8645</td>      <th>  AIC:               </th> <td>9.957e+04</td>
@@ -1080,11 +1085,31 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="poisson-regression-on-the-bikeshare-data">
 <h2><span class="section-number">8.1.2. </span>Poisson regression on the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> data<a class="headerlink" href="#poisson-regression-on-the-bikeshare-data" title="Permalink to this headline">¶</a></h2>
 <p>To overcome the inadequacies of linear regression for analysing the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> data set, we will make use of an alternative approach, called Poisson regression. Before we can talk about Poisson regression, we must first introduce the Poisson distribution.</p>
-<p>Suppose that a random variable Y takes on nonnegative integer values, i.e. <span class="math notranslate nohighlight">\(y \in \{0, 1, 2, \dots\}\)</span>. If <span class="math notranslate nohighlight">\(y\)</span> follows the Poisson distribution, then</p>
+<p>Suppose that a random variable <span class="math notranslate nohighlight">\(y\)</span> takes on nonnegative integer values, i.e. <span class="math notranslate nohighlight">\(y \in \{0, 1, 2, \dots\}\)</span>. If <span class="math notranslate nohighlight">\(y\)</span> follows the Poisson distribution, then</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbb{P}(y=k) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0, 1, 2, \dots .
 \]</div>
+<p>Here, <span class="math notranslate nohighlight">\(\lambda\)</span> is a positive real number, called the rate parameter. The Poisson distribution is a discrete distribution, and it is characterized by the fact that the probability of observing a particular value of <span class="math notranslate nohighlight">\(y\)</span> does not depend on the values of the other random variables. In other words, the probability of observing <span class="math notranslate nohighlight">\(y\)</span> is independent of the values of all other random variables. This is in contrast to the binomial distribution, which is also a discrete distribution, but which depends on the values of two random variables: the number of trials, and the probability of success on each trial. The Poisson distribution is also in contrast to the normal distribution, which is a continuous distribution, and which depends on the values of all other random variables.</p>
+<p>Here, <span class="math notranslate nohighlight">\(\lambda&gt;0\)</span> is the expected value of <span class="math notranslate nohighlight">\(y\)</span>, i.e. <span class="math notranslate nohighlight">\(\mathbb{E}(y)\)</span>. It turns out that <span class="math notranslate nohighlight">\(\lambda\)</span> also equals the variance of <span class="math notranslate nohighlight">\(y\)</span>, i.e. <span class="math notranslate nohighlight">\(λ = \mathbb{E}(y) = \text{Var}(y)\)</span>. This means that if <span class="math notranslate nohighlight">\(y\)</span> follows the Poisson distribution, then the larger the mean of <span class="math notranslate nohighlight">\(y\)</span> , the larger its variance. (In (4.35), the notation k!, pronounced “k factorial”, is defined as k! = k × (k − 1) × (k − 2) × … × 3 × 2 × 1.) The Poisson distribution is typically used to model counts; this is a natural choice for a number of reasons, including the fact that counts, like the Poisson distribution, take on non-negative integer values. To see how we might use the Poisson distribution in practice, let <span class="math notranslate nohighlight">\(y\)</span> denote the number of users of the bike sharing program during a particular hour of the day, under a particular set of weather conditions, and during a particular month of the year. We might model <span class="math notranslate nohighlight">\(y\)</span> as a Poisson distribution with mean <span class="math notranslate nohighlight">\(\mathbb{E}(y) = \lambda = 5\)</span>. This means that the probability of no users during this particular hour is <span class="math notranslate nohighlight">\(\mathbb{P}(y=0) = \frac{e^{-5}5^0}{0!} = e^{-5} = 0.0067 \)</span>, where 0! = 1 by convention. The probability that there is exactly one user is <span class="math notranslate nohighlight">\( \mathbb{P}(y = 1) = \frac{e^{-5}5^1}{1!} = 0.034 \)</span>, the probability of two users is <span class="math notranslate nohighlight">\( \mathbb{P}(y = 2) = \frac{e^{-5}5^2}{2!} = 0.084 \)</span> and so on.</p>
+<p>Of course, in reality, we expect the mean number of users of the bike sharing program, <span class="math notranslate nohighlight">\( \lambda = \mathbb{E}(y) \)</span>, to vary as a function of the hour of the day, the month of the year, the weather conditions, and so forth. So rather than modelling the number of bikers, <span class="math notranslate nohighlight">\(y\)</span> , as a Poisson distribution with a fixed mean value like <span class="math notranslate nohighlight">\(\lambda = 5 \)</span>, we would like to allow the mean to vary as a function of the covariates. In particular, we consider the following model for the mean <span class="math notranslate nohighlight">\( \lambda = \mathbb{E}(y) \)</span>, which we now write as <span class="math notranslate nohighlight">\( \lambda(x_1, \cdots, x_D) \)</span> to emphasize that it is a function of the covariates <span class="math notranslate nohighlight">\( x_1, \cdots, x_D \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\log(\lambda(x_1, \cdots, x_D)) = \beta_0 + \sum_{j=1}^{D}x_j\beta_j.
+\]</div>
+<p>or equivalently,</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda(x_1, \cdots, x_D) = e^{\beta_0 + \sum_{j=1}^{D}x_j\beta_j}.
+\]</div>
+<p>Here, <span class="math notranslate nohighlight">\( \beta_0, \beta_1, \cdots, \beta_D \)</span> are parameters to be estimated. Together, the above equations define the Poisson regression model.</p>
+<p>To estimate the coefficients <span class="math notranslate nohighlight">\( \beta_0, \beta_1, \cdots, \beta_D \)</span>, we use the same maximum likelihood approach that we adopted for logistic regression in <a class="reference internal" href="../03-logistic-reg/logistic-regression.html"><span class="doc">Logistic regression</span></a>. The likelihood function for the Poisson regression model is</p>
+<div class="math notranslate nohighlight">
+\[
+\ell(\beta_0, \beta_1, \cdots, \beta_D) = \prod_{i=1}^{N} \frac{\lambda(\mathbf{x}_i)^{y_i} e^{-\lambda(\mathbf{x}_i)}}{y_i!},
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda(\mathbf{x}_i) = e^{\beta_0 + \sum_{j=1}^{D}x_{ij}\beta_j}\)</span>, and <span class="math notranslate nohighlight">\(y_i\)</span> is the response for the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation. TWe estimate the coefficients that maximize the likelihood <span class="math notranslate nohighlight">\(\ell(\beta_0, \beta_1, \cdots, \beta_D)\)</span>, i.e. that make the observed data as likely as possible.</p>
+<p>We now fit a Poisson regression model to the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> dataset using the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> library.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">poisson</span><span class="p">(</span><span class="s2">&quot;bikers ~ mnth + hr + temp + workingday + weathersit&quot;</span><span class="p">,</span> <span class="n">data_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -1113,7 +1138,7 @@ const thebe_selector_output = ".output, .cell_output"
   <th>Date:</th>            <td>Tue, 15 Nov 2022</td> <th>  Pseudo R-squ.:     </th>   <td>0.7459</td>   
 </tr>
 <tr>
-  <th>Time:</th>                <td>17:56:46</td>     <th>  Log-Likelihood:    </th> <td>-1.4054e+05</td>
+  <th>Time:</th>                <td>21:31:36</td>     <th>  Log-Likelihood:    </th> <td>-1.4054e+05</td>
 </tr>
 <tr>
   <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th> <td>-5.5298e+05</td>
@@ -1273,12 +1298,19 @@ const thebe_selector_output = ".output, .cell_output"
 <img alt="../_images/glm_15_0.png" src="../_images/glm_15_0.png" />
 </div>
 </div>
+<p>We again see that bike usage is highest in the spring and fall and during rush hour, and lowest during the winter and in the early morning hours. Moreover, bike usage increases as the temperature increases, and decreases as the weather worsens. Interestingly, the coefficient associated with <code class="docutils literal notranslate"><span class="pre">workingday</span></code> is statistically significant under the Poisson regression model, but not under the linear regression model.</p>
+<p>Some important distinctions between the Poisson regression model and the linear regression model are as follows:</p>
+<ul class="simple">
+<li><p><em>Interpretation</em>: To interpret the coeﬃcients in the Poisson regression model, we must pay close attention to (4.37), which states that an increase in <span class="math notranslate nohighlight">\(x_j\)</span> by one unit is associated with a change in <span class="math notranslate nohighlight">\(\mathbb{E}(y) = \lambda\)</span> by a factor of <span class="math notranslate nohighlight">\(exp(\beta_j)\)</span>. For example, a change in weather from clear to cloudy skies is associated with a change in mean bike usage by a factor of <span class="math notranslate nohighlight">\(exp(−0.08) = 0.923\)</span>, i.e. on average, only 92.3% as many people will use bikes when it is cloudy relative to when it is clear. If the weather worsens further and it begins to rain, then the mean bike usage will further change by a factor of <span class="math notranslate nohighlight">\(exp(−0.5) = 0.607\)</span>, i.e. on average only 60.7% as many people will use bikes when it is rainy relative to when it is cloudy.</p></li>
+<li><p><em>Mean-variance relationship</em>: As mentioned earlier, under the Poisson model,  <span class="math notranslate nohighlight">\( \lambda = \mathbb{E}(y) = \text{Var}(y) \)</span>. Thus, by modelling bike usage with a Poisson regression, we implicitly assume that mean bike usage in a given hour equals the variance of bike usage during that hour. By contrast, under a linear regression model, the variance of bike usage always takes on a constant value. Recall from Figure 4.14 that in the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> data, when biking conditions are favourable, both the mean and the variance in bike usage are much higher than when conditions are unfavourable. Thus, the Poisson regression model is able to handle the mean-variance relationship seen in the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> data in a way that the linear regression model is not.</p></li>
+<li><p><em>nonnegative fitted values</em>: There are no negative predictions using the Poisson regression model. This is because the Poisson model itself only allows for nonnegative values; see (4.35). By contrast, when we fit a linear regression model to the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> data set, almost 10% of the predictions were negative.</p></li>
+</ul>
 </div>
 <div class="section" id="generalized-linear-models">
 <h2><span class="section-number">8.1.3. </span>Generalized linear models<a class="headerlink" href="#generalized-linear-models" title="Permalink to this headline">¶</a></h2>
 <p>Common characteristics of generalized linear models:</p>
 <ol class="simple">
-<li><p>Each approach uses predictors <span class="math notranslate nohighlight">\( x_1, x_2, \dots, x_D \)</span> to predict a response <span class="math notranslate nohighlight">\( y \)</span>. We assume that, conditional on <span class="math notranslate nohighlight">\( x_1, x_2,\dots, x_D \)</span>, <span class="math notranslate nohighlight">\( y \)</span> belongs to a certain family of distributions. For linear regression, we typically assume that <span class="math notranslate nohighlight">\( y \)</span> follows a Gaussian or normal distribution. For logistic regression, we assume that <span class="math notranslate nohighlight">\(y\)</span> follows a Bernoulli distribution. Finally, for Poisson regression, we assume that <span class="math notranslate nohighlight">\(y\)</span> follows a Poisson distribution.</p></li>
+<li><p>Each approach uses predictors <span class="math notranslate nohighlight">\( x_1, x_2, \dots, x_D \)</span> to predict a response <span class="math notranslate nohighlight">\( y \)</span>. We assume that, conditional on <span class="math notranslate nohighlight">\( x_1, x_2,\dots, x_D \)</span>, <span class="math notranslate nohighlight">\( y \)</span> belongs to a certain family of distributions. For linear regression, we typically assume that <span class="math notranslate nohighlight">\(y\)</span> follows a Gaussian or normal distribution. For logistic regression, we assume that <span class="math notranslate nohighlight">\(y\)</span> follows a Bernoulli distribution. Finally, for Poisson regression, we assume that <span class="math notranslate nohighlight">\(y\)</span> follows a Poisson distribution.</p></li>
 <li><p>Each approach models the mean of <span class="math notranslate nohighlight">\(y\)</span> as a function of the predictors. In linear regression, the mean of <span class="math notranslate nohighlight">\(y\)</span> takes the form
 $<span class="math notranslate nohighlight">\(
  \mathbb{E}(y|x_1, x_2, \dots, x_D) = \beta_0 + \beta_1 x_1 + \cdots + \beta_p x_D.
@@ -1287,11 +1319,17 @@ $<span class="math notranslate nohighlight">\(
  \)</span><span class="math notranslate nohighlight">\(
  \mathbb{E}(y|x_1, x_2, \dots, x_D) = \mathbb{P}(y=1|x_1, x_2, \dots, x_D) = \frac{e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_D}}{1 + e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_D}}.
  \)</span><span class="math notranslate nohighlight">\(
- In Poisson regression, the mean of \)</span>y<span class="math notranslate nohighlight">\( takes the form
+ In Poisson regression, it takes the form
  \)</span><span class="math notranslate nohighlight">\(
- \mu = e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_D}.
+ \mathbb{E}(y|x_1, x_2, \dots, x_D) = \lambda(x_1, x_2, \dots, x_D) = e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_D}.
  \)</span>$</p></li>
 </ol>
+<p>The above three equations can be expressed using a <em>link function</em>, <span class="math notranslate nohighlight">\( \eta \)</span>, which applies a transformation to <span class="math notranslate nohighlight">\( \mathbb{E}(y|x_1, x_2, \dots, x_D) \)</span> so that the transformed mean is a linear function of the predictors. That is</p>
+<div class="math notranslate nohighlight">
+\[
+\eta(\mathbb{E}(y|x_1, x_2, \dots, x_D)) = \beta_0 + \beta_1 x_1 + \cdots + \beta_p x_D.
+\]</div>
+<p>The link functions for linear, logistic and Poisson regression are <span class="math notranslate nohighlight">\(\eta(\mu) = \mu \)</span>, <span class="math notranslate nohighlight">\( \eta(\mu) = \log(\mu/(1 − \mu)) \)</span>, and <span class="math notranslate nohighlight">\(\eta(\mu) = \log(\mu)\)</span>, respectively.</p>
 <p>The Gaussian, Bernoulli and Poisson distributions are all members of a wider class of distributions, known as the exponential family. Other well known members of this family are the exponential distribution, the Gamma distribution, and the negative binomial distribution. In general, we can perform a regression by modelling the response <span class="math notranslate nohighlight">\(y\)</span> as coming from a particular member of the exponential family, and then transforming the mean of the response so that the transformed mean is a linear function of the predictors via (4.42). Any regression approach that follows this very general recipe is known as a generalized linear model (GLM). Thus, linear regression, logistic regression, and Poisson regression are three examples of GLMs. Other examples not covered here include <em>Gamma regression</em> and <em>negative binomial regression</em>.</p>
 </div>
 <div class="section" id="exercises">
@@ -1332,10 +1370,10 @@ $<span class="math notranslate nohighlight">\(
             <p class="prev-next-title"><span class="section-number">8. </span>Naive Bayes, GLM, SVM</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="quiz-sum-ref.html" title="next page">
+    <a class='right-next' id="next-link" href="svm.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8.2. </span>Quiz and summary</p>
+        <p class="prev-next-title"><span class="section-number">8.2. </span>Chapter 9 - Support Vector Machines</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
