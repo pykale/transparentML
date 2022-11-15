@@ -583,8 +583,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Learning algorithm: Gradient descent on the negative log likelihood (or cross-entropy)</p></li>
 </ul>
 </div>
-<div class="admonition-transparency admonition">
-<p class="admonition-title">Transparency</p>
+<div class="admonition-system-transparency admonition">
+<p class="admonition-title">System transparency</p>
 <p>System logic</p>
 <ul class="simple">
 <li><p>Condition to produce certain output: to produce a positive label with a probability <span class="math notranslate nohighlight">\(p\)</span>, or equivalently a negative label with a probability <span class="math notranslate nohighlight">\((1-p)\)</span>, transform the probability <span class="math notranslate nohighlight">\(p\)</span> to a real value <span class="math notranslate nohighlight">\(\mathrm{logit}(p)\)</span> via the logit function, locate this value <span class="math notranslate nohighlight">\(\mathrm{logit}(p)\)</span> on the fitted line (or plane/hyperplane) and then find the corresponding input <span class="math notranslate nohighlight">\(x\)</span> (or <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>) value.</p></li>

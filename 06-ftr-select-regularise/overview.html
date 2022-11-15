@@ -554,59 +554,64 @@ const thebe_selector_output = ".output, .cell_output"
 <!-- File names should be all lowercase, with words separated by hyphens (-), and no spaces.  Each chapter must include an "overview.md" and "quiz-sum-ref.md"-->
 <div class="admonition-status admonition">
 <p class="admonition-title">Status</p>
-<p>Ready for HP review</p>
+<p>Ready for review and feedback</p>
 </div>
 <div class="admonition-objectives admonition">
 <p class="admonition-title">Objectives</p>
 <ul class="simple">
-<li><p>Understand the basic concepts of feature selection and regularisation</p></li>
-<li><p>Apply feature selection to reduce the number of variables in a dataset</p></li>
-<li><p>Use regularisation approaches (e.g. LASSO and Ridge Regression) on real-world datasets and understand the concepts of underfit, overfit, and bias-variance trade-off</p></li>
+<li><p>Understand the ideas and processes behind several feature selection approaches</p></li>
+<li><p>Apply feature selection to reduce the number of features in model construction</p></li>
+<li><p>Understand the concepts of overfitting, bias-variance trade-off, and regularisation</p></li>
+<li><p>Apply regularisation via ridge/lasso regression to reduce overfitting in model training</p></li>
 </ul>
 </div>
 <p><strong>Expected time to complete</strong>: 2.5 hours</p>
-<p>In this chapter, we will learn about two approaches to improve the performance of a machine learning model, feature selection and regularisation. Feature selection is a process of selecting a subset of relevant features for use in model construction. Regularisation is a process of introducing additional information in order to solve an ill-posed problem or to prevent overfitting. Both approaches are used to improve the performance of a machine learning model. In particular, regularisation is used to reduce the variance of a model, while feature selection is used to reduce the complexity of a model.</p>
+<p>In this chapter, we will learn about two popular approaches to improve the performance of a machine learning model by reducing its complexity and overfitting: <strong>feature selection</strong> and <strong>regularisation</strong>. <a class="reference external" href="https://en.wikipedia.org/wiki/Feature_selection">Feature selection</a> is a process of selecting a subset of features from an original feature set. <a class="reference external" href="https://en.wikipedia.org/wiki/Regularization_(mathematics)">Regularisation</a> aims to reduce the complexity of a model by penalising the (flexibility of) model parameters. Both feature selection and regularisation are useful in reducing the complexity of a model and thus reducing the risk of overfitting.</p>
+<p>Feature selection is primarily a machine learning process so we consider its process transparency.</p>
 <div class="admonition-process-transparency-feature-selection admonition">
-<p class="admonition-title">Process transparency: Feature selection</p>
+<p class="admonition-title">Process transparency: feature selection</p>
 <ul class="simple">
-<li><p><strong>Starting point</strong>: a standardised dataset for a machine learning task with a performance metric defined and a machine learning model for feature selection</p></li>
-<li><p>Determine the feature selection method to use (e.g. best subset selection, forward selection, backward elimination, LASSO)</p></li>
-<li><p>Compute the average performance metric using cross-validation</p></li>
+<li><p><strong>Starting point</strong>: a standardised dataset for a machine learning task with a performance metric defined and a machine learning model chosen to be trained</p></li>
+<li><p>Choose the feature selection method to use (e.g. best subset, forward/backward stepwise, lasso, etc.)</p></li>
+<li><p>Determine the model performance metric to use (e.g. mean square error, accuracy, etc.)</p></li>
+<li><p>Choose the model selection process (e.g. cross-validation, etc.)</p></li>
+<li><p>Compute the performance metric for candidate models with different feature sets</p></li>
 <li><p><strong>End point</strong>: Select the subset of features that gives the best performance metric</p></li>
 </ul>
 </div>
-<div class="admonition-ingredients-ridge-regression-and-lasso admonition">
-<p class="admonition-title">Ingredients: Ridge Regression and LASSO</p>
+<p>Regularisation is a technique used in combination with machine learning models. Here, we consider the use of regularisation in <a class="reference internal" href="../02-linear-reg/overview.html"><span class="doc">linear regression</span></a> models and thus consider the system transparency of the regularised linear regression models, which we call ridge regression and lasso regression.</p>
+<div class="admonition-ingredients-ridge-lasso-regression admonition">
+<p class="admonition-title">Ingredients: ridge/lasso regression</p>
 <ul class="simple">
 <li><p>Input: features of data samples</p></li>
 <li><p>Output: target values of data samples</p></li>
 <li><p>Model: fit a line (or plane/hyperplane) to the training data and assign the value on the fitted line (or plane/hyperplane) to the test data</p>
 <ul>
-<li><p>Hyperparameter(s): <span class="math notranslate nohighlight">\(\lambda\)</span>, the importance of the regularisation term / shrinkage penalty</p></li>
+<li><p>Hyperparameter(s): <span class="math notranslate nohighlight">\(\lambda\)</span>, the weight of the regularisation term</p></li>
 <li><p>Parameter(s): the intercept(s) and slope(s) of the fitted line (or plane/hyperplane), also known as the bias(es) and weight(s), respectively</p></li>
 </ul>
 </li>
-<li><p>Loss function: minimise the total distances of the training data points to the fitted line (or plane/hyperplane) and the sum of the squares or absolute values of the weights</p></li>
+<li><p>Loss function: minimise the sum of 1) the total distances of the training data points to the fitted line (or plane/hyperplane) and 2) the sum of the squares (for ridge) or absolute (for lasso) values of the weights, i.e. the regularisation term</p></li>
 <li><p>Learning algorithm:</p>
 <ul>
 <li><p>Ridge regression:</p>
 <ul>
 <li><p>closed-form analytical solution based on linear algebra, or</p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Gradient_descent">Gradient descent</a>: update the weights and intercepts by solving a <em>multivariate</em> optimisation problem iteratively to minimise the loss function</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Gradient_descent">Gradient descent</a>: update the weights and intercepts iteratively by solving a <em>multivariate</em> optimisation problem to minimise the loss function</p></li>
 </ul>
 </li>
 <li><p>Lasso:</p>
 <ul>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Coordinate_descent">Coordinate descent</a>: update the weights and intercepts by solving a <em>univariate</em> optimisation problem (along one coordinate direction) iteratively to minimise the loss function</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Coordinate_descent">Coordinate descent</a>: update the weights and intercepts iteratively by solving one <em>univariate</em> optimisation problem (for one variable/feature) at a time and successively (alternating between variables/features) to minimise the loss function</p></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="admonition-transparency-ridge-regression-and-lasso admonition">
-<p class="admonition-title">Transparency: Ridge Regression and LASSO</p>
-<p>Same as <a class="reference internal" href="../02-linear-reg/overview.html"><span class="doc">Linear Regression</span></a>.</p>
+<div class="admonition-system-transparency-ridge-lasso-regression admonition">
+<p class="admonition-title">System transparency: ridge/lasso regression</p>
+<p>The same as in <a class="reference internal" href="../02-linear-reg/overview.html"><span class="doc">Linear Regression</span></a>.</p>
 </div>
 <!-- - What input to produce certain output:
 - How to produce certain output: -->
