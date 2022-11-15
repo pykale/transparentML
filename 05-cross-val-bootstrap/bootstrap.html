@@ -639,16 +639,18 @@ const thebe_selector_output = ".output, .cell_output"
 
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">train_test_split</span><span class="p">,</span>
-    <span class="n">LeaveOneOut</span><span class="p">,</span>
-    <span class="n">KFold</span><span class="p">,</span>
-    <span class="n">cross_val_score</span><span class="p">,</span>
-<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
 <span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">resample</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set a random seed for reproducibility.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -774,38 +776,38 @@ memory usage: 30.6+ KB
   <tbody>
     <tr>
       <th>0</th>
-      <td>45.703044</td>
-      <td>-0.031583</td>
-      <td>-0.006272</td>
-      <td>0.692988</td>
+      <td>45.343984</td>
+      <td>-0.066652</td>
+      <td>-0.005013</td>
+      <td>0.702527</td>
     </tr>
     <tr>
       <th>0</th>
-      <td>45.534953</td>
-      <td>-0.035747</td>
-      <td>-0.006236</td>
-      <td>0.682499</td>
+      <td>45.803707</td>
+      <td>-0.047437</td>
+      <td>-0.005756</td>
+      <td>0.702518</td>
     </tr>
     <tr>
       <th>0</th>
-      <td>45.626801</td>
-      <td>-0.046377</td>
-      <td>-0.005794</td>
-      <td>0.684558</td>
+      <td>46.132643</td>
+      <td>-0.036886</td>
+      <td>-0.006368</td>
+      <td>0.708330</td>
     </tr>
     <tr>
       <th>0</th>
-      <td>45.830918</td>
-      <td>-0.035279</td>
-      <td>-0.006334</td>
-      <td>0.712461</td>
+      <td>45.994224</td>
+      <td>-0.072389</td>
+      <td>-0.005004</td>
+      <td>0.709075</td>
     </tr>
     <tr>
       <th>0</th>
-      <td>44.375733</td>
-      <td>-0.035274</td>
-      <td>-0.005796</td>
-      <td>0.689375</td>
+      <td>44.679054</td>
+      <td>-0.060294</td>
+      <td>-0.005046</td>
+      <td>0.723611</td>
     </tr>
   </tbody>
 </table>
@@ -825,7 +827,7 @@ memory usage: 30.6+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bootstrap_10_0.png" src="../_images/bootstrap_10_0.png" />
+<img alt="../_images/bootstrap_12_0.png" src="../_images/bootstrap_12_0.png" />
 </div>
 </div>
 <p>In this way, we can easily estimate the uncertainty of ANY coefficient estimates and ANY test scores.</p>
@@ -933,7 +935,7 @@ memory usage: 30.6+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bootstrap_22_0.png" src="../_images/bootstrap_22_0.png" />
+<img alt="../_images/bootstrap_24_0.png" src="../_images/bootstrap_24_0.png" />
 </div>
 </div>
 </div>

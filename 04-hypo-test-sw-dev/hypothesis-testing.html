@@ -773,7 +773,7 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="hypothesis-testing">
 <h1><span class="section-number">4.1. </span>Hypothesis testing<a class="headerlink" href="#hypothesis-testing" title="Permalink to this headline">¶</a></h1>
-<p>Hypothesis testing has been mentioned briefly in Chapter 2 <span class="xref std std-doc">Linear regression</span>, but it has not been explained in detail. This chapter will explain the basics of hypothesis testing and how it can be used to conduct <em>inference</em>.</p>
+<p>Hypothesis testing has been mentioned briefly in Chapter 2 <a class="reference internal" href="../02-linear-reg/overview.html"><span class="doc">Linear regression</span></a>, but it has not been explained in detail. This chapter will explain the basics of hypothesis testing and how it can be used to conduct <em>inference</em>.</p>
 <div class="section" id="inference-via-hypothesis-testing">
 <h2><span class="section-number">4.1.1. </span>Inference via hypothesis testing<a class="headerlink" href="#inference-via-hypothesis-testing" title="Permalink to this headline">¶</a></h2>
 <p>Hypothesis testing is a way to make inferences about a population based on a sample (of the population). Inference is the process of using sample data to make conclusions about a population. Inference is a key part of data science because we often do not have access to the entire population of interest. Instead, we have a sample of the population. Inference allows us to make conclusions about the population based on the sample.</p>
@@ -915,9 +915,15 @@ rate will be less than or equal to <span class="math notranslate nohighlight">\(
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
 <span class="kn">from</span> <span class="nn">statsmodels.sandbox.stats.multicomp</span> <span class="kn">import</span> <span class="n">multipletests</span>
 
-<span class="kn">import</span> <span class="nn">json</span>
-
 <span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set a random seed for reproducibility (more on this later in the next section).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -925,8 +931,7 @@ rate will be less than or equal to <span class="math notranslate nohighlight">\(
 <p>Let us create 100 variables, each with 10 observations (samples). We make the first 50 variables to have mean 0.5 (the <code class="docutils literal notranslate"><span class="pre">offset</span></code>) and variance 1, and the last 50 variables to have mean 0 and variance 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
 <span class="n">offset</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="n">X</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">50</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">50</span><span class="p">]</span> <span class="o">+</span> <span class="n">offset</span>
 </pre></div>
@@ -973,7 +978,7 @@ Variable 59 p-value:  0.9970817828876111
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: ylabel=&#39;Count&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/hypothesis-testing_10_1.png" src="../_images/hypothesis-testing_10_1.png" />
+<img alt="../_images/hypothesis-testing_12_1.png" src="../_images/hypothesis-testing_12_1.png" />
 </div>
 </div>
 <p>We set the significance level <span class="math notranslate nohighlight">\(\alpha\)</span> to 0.05 to make a decision on whether to reject <span class="math notranslate nohighlight">\(H_0\)</span> or not.</p>
@@ -1021,7 +1026,7 @@ Variable 59 p-value:  0.9970817828876111
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
 </pre></div>
 </div>
-<img alt="../_images/hypothesis-testing_16_1.png" src="../_images/hypothesis-testing_16_1.png" />
+<img alt="../_images/hypothesis-testing_18_1.png" src="../_images/hypothesis-testing_18_1.png" />
 </div>
 </div>
 <p>There are quite some errors made. We can make the offset larger (from 0.5 to 1) to see the change to the confusion matrix and the total number of errors.</p>
@@ -1048,7 +1053,7 @@ Variable 59 p-value:  0.9970817828876111
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
 </pre></div>
 </div>
-<img alt="../_images/hypothesis-testing_18_1.png" src="../_images/hypothesis-testing_18_1.png" />
+<img alt="../_images/hypothesis-testing_20_1.png" src="../_images/hypothesis-testing_20_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1105,7 +1110,7 @@ Variable 59 p-value:  0.9970817828876111
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/hypothesis-testing_22_0.png" src="../_images/hypothesis-testing_22_0.png" />
+<img alt="../_images/hypothesis-testing_24_0.png" src="../_images/hypothesis-testing_24_0.png" />
 </div>
 </div>
 <p>We see that setting <span class="math notranslate nohighlight">\(\alpha = 0.05\)</span> results in a high FWER even for moderate <span class="math notranslate nohighlight">\(M\)</span>. With <span class="math notranslate nohighlight">\(\alpha = 0.01\)</span>, we can test no more than five null hypotheses before the FWER exceeds 0.05. Only for very small values, such as <span class="math notranslate nohighlight">\(\alpha = 0.001\)</span>, we can manage to ensure a small FWER for moderate values of <span class="math notranslate nohighlight">\(M\)</span>.</p>

@@ -722,6 +722,14 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<p>Set a random seed for reproducibility.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>Load the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Credit.csv">Credit dataset</a> dataset, convert the values of variables (predictors) <code class="docutils literal notranslate"><span class="pre">Student</span></code>, <code class="docutils literal notranslate"><span class="pre">Own</span></code>, <code class="docutils literal notranslate"><span class="pre">Married</span></code>, and <code class="docutils literal notranslate"><span class="pre">Region</span></code> from category to numbers (‘0’ and ‘1’), and inspect the first three rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -890,7 +898,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/regularisation_9_0.png" src="../_images/regularisation_9_0.png" />
+<img alt="../_images/regularisation_11_0.png" src="../_images/regularisation_11_0.png" />
 </div>
 </div>
 <p>We can observe that the coefficient estimates approach zero as the value of <code class="docutils literal notranslate"><span class="pre">lambda</span></code> increases. This is because the regularisation term in ridge regression has the effect of shrinking the coefficient estimates towards zero. The coefficient estimates for <code class="docutils literal notranslate"><span class="pre">lambda</span></code> values close to zero are very similar to the least squares estimates, whereas the coefficient estimates for <code class="docutils literal notranslate"><span class="pre">lambda</span></code> values close to 10000 are very close to zero.</p>
@@ -958,7 +966,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best MSE:  12385.885432230521
 </pre></div>
 </div>
-<img alt="../_images/regularisation_12_1.png" src="../_images/regularisation_12_1.png" />
+<img alt="../_images/regularisation_14_1.png" src="../_images/regularisation_14_1.png" />
 </div>
 </div>
 <p>Ridge regression’s advantage over least squares is that it can alleviate overfitting, which is rooted in the bias-variance trade-off. As <span class="math notranslate nohighlight">\(\lambda\)</span> increases, the flexibility of the ridge regression fit decreases, leading to decreased variance but increased bias. In other words, ridge regression reduces the variance of the least squares estimates, but at the expense of increasing the bias. As shown in the figure above, for values of <span class="math notranslate nohighlight">\(\lambda\)</span> up to about 10, the MSE drops as <span class="math notranslate nohighlight">\(\lambda\)</span> increases. Beyond this point, the MSE increases considerably. This is because the bias introduced by ridge regression becomes too large, and the model becomes too rigid to to capture the true relationship between the predictors and the response.</p>
@@ -1033,7 +1041,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/regularisation_17_0.png" src="../_images/regularisation_17_0.png" />
+<img alt="../_images/regularisation_19_0.png" src="../_images/regularisation_19_0.png" />
 </div>
 </div>
 <p>We can see that as <span class="math notranslate nohighlight">\(\lambda\)</span> increases, more and more of the coefficient estimates are driven towards zero. This is a consequence of the <span class="math notranslate nohighlight">\(L_1\)</span> penalty, which has the effect of forcing some of the coefficient estimates to be exactly equal to zero when the tuning parameter <span class="math notranslate nohighlight">\(\lambda\)</span> is sufficiently large. In this way, Lasso performs <em>embedded feature selection</em>, in addition to shrinking the coefficient estimates. In fact, Lasso will completely eliminate some of the features from the final model, which is not the case with ridge regression. This can be useful for <em>interpretation</em>.</p>
@@ -1092,7 +1100,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best MSE:  12956.572451521926
 </pre></div>
 </div>
-<img alt="../_images/regularisation_20_1.png" src="../_images/regularisation_20_1.png" />
+<img alt="../_images/regularisation_22_1.png" src="../_images/regularisation_22_1.png" />
 </div>
 </div>
 <p>Here, we observe a similar pattern to that of ridge regression. As <span class="math notranslate nohighlight">\(\lambda\)</span> increases, the test MSE initially decreases and then increases again.</p>
