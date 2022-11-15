@@ -9,7 +9,7 @@ Ready for review and feedback
 ```
 
 ```{admonition} Objectives
-- Understand the basic concepts of cross-validation and bootstrap
+- Understand the concepts and processes of cross-validation and bootstrap
 - Evaluate the performance of machine learning models using cross-validation
 - Quantify the uncertainty associated with a machine learning model using bootstrap
 ```

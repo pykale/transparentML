@@ -37,7 +37,7 @@ We will mainly use the [Advertising](https://github.com/pykale/transparentML/blo
 - Learning algorithm: closed-form analytical solution based on linear algebra
 ```
 
-```{admonition} Transparency
+```{admonition} System transparency
 System logic
 - Condition to produce certain output: to produce an output $y$, locate this $y$ value on the fitted line (or plane/hyperplane) and then find the corresponding input $x$ (or $\mathbf{x}$) value
 ```
