@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.1. Quiz and summary" href="quiz-sum-ref.html" />
+    <link rel="next" title="7.1. Regression trees" href="regression-trees.html" />
     <link rel="prev" title="6.3. Quiz and summary" href="../06-ftr-select-regularise/quiz-sum-ref.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -359,8 +359,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="regression-trees.html">
+     7.1. Regression trees
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="quiz-sum-ref.html">
-     7.1. Quiz &amp; summary
+     7.2. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -566,7 +571,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </div>
 <p><strong>Expected time to complete</strong>: x hours</p>
-<p>In this chapter, we will study tree</p>
+<p>In this chapter, we will study classification and regression models that are based on trees and ensembles. These models are very popular in practice, and are used in a wide range of applications. We will start by studying decision trees, which are the simplest form of tree-based models. We will then study bagging and random forests, which are ensemble methods that combine multiple decision trees. Finally, we will study boosting, which is another ensemble method that combines multiple decision trees.</p>
+<p>Tree-based models involves dividing (stratifying, segmenting) the feature space into a number of simple regions, and then making a prediction for each region. This is in contrast to linear models, which involve fitting a single linear function to the data. The main advantage of tree-based models is that they are very easy to <strong>interpret</strong>. The main disadvantage is that they are prone to overfitting, and have limited predictive power.</p>
+<p>To overcome these disadvantages, we can use ensemble methods, which combine multiple trees to produce a single model for a single consensus prediction. The main advantage of ensemble methods is that they are less prone to overfitting, and have better predictive power. The main disadvantage is that they are more difficult to interpret.</p>
 <div class="admonition-ingredients admonition">
 <p class="admonition-title">Ingredients</p>
 <ul class="simple">
@@ -627,10 +634,10 @@ const thebe_selector_output = ".output, .cell_output"
             <p class="prev-next-title"><span class="section-number">6.3. </span>Quiz and summary</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="quiz-sum-ref.html" title="next page">
+    <a class='right-next' id="next-link" href="regression-trees.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.1. </span>Quiz and summary</p>
+        <p class="prev-next-title"><span class="section-number">7.1. </span>Regression trees</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
