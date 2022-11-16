@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.2. Quiz and summary" href="quiz-sum-ref.html" />
+    <link rel="next" title="7.2. Classification trees" href="classification-trees.html" />
     <link rel="prev" title="7. Trees and Ensembles" href="overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -366,8 +366,18 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="classification-trees.html">
+     7.2. Classification trees
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ensembles.html">
+     7.3. Ensemble methods
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="quiz-sum-ref.html">
-     7.2. Quiz &amp; summary
+     7.4. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -675,33 +685,10 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">cross_val_score</span>
-<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">DecisionTreeClassifier</span><span class="p">,</span>
-    <span class="n">export_graphviz</span><span class="p">,</span>
-    <span class="n">DecisionTreeRegressor</span><span class="p">,</span>
-    <span class="n">plot_tree</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">confusion_matrix</span><span class="p">,</span>
-    <span class="n">accuracy_score</span><span class="p">,</span>
-    <span class="n">mean_squared_error</span><span class="p">,</span>
-    <span class="n">classification_report</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
-
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span><span class="p">,</span> <span class="n">plot_tree</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
-</pre></div>
-</div>
-</div>
-</div>
-<p>Set a random seed for reproducibility.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -932,7 +919,7 @@ memory usage: 43.1+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/regression-trees_9_0.png" src="../_images/regression-trees_9_0.png" />
+<img alt="../_images/regression-trees_7_0.png" src="../_images/regression-trees_7_0.png" />
 </div>
 </div>
 <p>Let’s fit a regression tree to the data. We will use the <code class="docutils literal notranslate"><span class="pre">DecisionTreeRegressor</span></code> class from the <code class="docutils literal notranslate"><span class="pre">sklearn.tree</span></code> module. We will set the <code class="docutils literal notranslate"><span class="pre">max_leaf_nodes</span></code> hyperparameter to 3, which means that the tree will have at most 3 leaf nodes.</p>
@@ -956,7 +943,7 @@ memory usage: 43.1+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/regression-trees_13_0.png" src="../_images/regression-trees_13_0.png" />
+<img alt="../_images/regression-trees_11_0.png" src="../_images/regression-trees_11_0.png" />
 </div>
 </div>
 <p>The above depicts a regression tree fitted to the data. The tree has three leaf nodes, and each leaf node corresponds to a region in the feature space. The predicted value for each region is the average value of the <code class="docutils literal notranslate"><span class="pre">Salary</span></code> variable in the training data that falls into that region.</p>
@@ -983,7 +970,7 @@ memory usage: 43.1+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/regression-trees_15_0.png" src="../_images/regression-trees_15_0.png" />
+<img alt="../_images/regression-trees_13_0.png" src="../_images/regression-trees_13_0.png" />
 </div>
 </div>
 <div class="tip dropdown admonition">
@@ -1049,10 +1036,10 @@ the splitting rules are also called <em>decision rules</em>.</p>
             <p class="prev-next-title"><span class="section-number">7. </span>Trees and Ensembles</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="quiz-sum-ref.html" title="next page">
+    <a class='right-next' id="next-link" href="classification-trees.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.2. </span>Quiz and summary</p>
+        <p class="prev-next-title"><span class="section-number">7.2. </span>Classification trees</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
