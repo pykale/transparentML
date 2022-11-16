@@ -1002,8 +1002,8 @@ intercept : [-10.65132548]
 <ul class="simple">
 <li><p>When the probability of <code class="docutils literal notranslate"><span class="pre">default</span></code> 0.5 (the commonly used threshold for binary classification), the corresponding balance can be calculated using the <em>log odds</em> equation above:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-cfb98990-0ea8-4fb2-8938-18415a5ffbe1">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-cfb98990-0ea8-4fb2-8938-18415a5ffbe1" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c30728cf-5370-4b47-b055-4197c2a77741">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-c30728cf-5370-4b47-b055-4197c2a77741" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \ln \left(\frac{\pi}{1-\pi}\right) &amp;= \beta_0 + \beta_1 \times x \\
 \ln \left(\frac{0.5}{1-0.5}\right) &amp;= \beta_0 + \beta_1 \times x \\
@@ -1339,13 +1339,13 @@ intercept : [-10.86719778]
 <div class="toggle docutils container">
 <p>0.60</p>
 </div>
-<p><strong>3</strong>. If the dataset from Exercise 2 is an equally balanced dataset and the splitting was equal for each class (floor the sample size of both classes). Now, if, from the 153 correctly predicted samples, 100 are from the positive class, what is the True Positive Rate (TPR) value?</p>
+<p><strong>3</strong>. If the dataset from Exercise 2 is an equally balanced dataset and the splitting was equal for each class (round down to the nearest integer for the sample size of both classes). Now, if, from the 153 correctly predicted samples, 100 are from the positive class, what is the True Positive Rate (TPR) value?</p>
 <p><em>Compare your answer with the solution below</em></p>
 <div class="toggle docutils container">
 <p>TPR = 100/126 = 0.79</p>
 </div>
-<p><strong>4</strong>. All the follwoing exercises will use <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Weekly.csv">Weekly</a> dataset.</p>
-<p>Load the dataset, convert the categories to numerical values, and fit a logistic regression model using volume as a predictor and Direction as the response using Scikit-Learn or StatsModel. Find out the fitted model’s weight and bias.</p>
+<p><strong>4</strong>. All the following exercises will use <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Weekly.csv">Weekly</a> dataset.</p>
+<p>Load the dataset, convert the categories to numerical values, and fit a logistic regression model using <strong>volume</strong> as a predictor and <strong>Direction</strong> as the response using Scikit-Learn or StatsModel. Find out the fitted model’s <strong>weight</strong> and <strong>bias</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1367,12 +1367,12 @@ intercept : [-10.86719778]
 
 <span class="n">data_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Weekly.csv&quot;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Direction1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Direction</span><span class="o">.</span><span class="n">factorize</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Direction&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Direction</span><span class="o">.</span><span class="n">factorize</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s2">&quot;newton-cg&quot;</span><span class="p">)</span>
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Lag1</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Lag1</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="o">.</span><span class="n">Lag1</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Direction1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Direction</span>
 <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;coefficients: &quot;</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;intercept :&quot;</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
@@ -1386,121 +1386,7 @@ intercept : [0.23023757]
 </div>
 </div>
 </div>
-<p><strong>5</strong>. We learned a logistic regression model <span class="math notranslate nohighlight">\(f(x)\)</span> with two parameters weight (<span class="math notranslate nohighlight">\(\beta_1\)</span>) and bias (<span class="math notranslate nohighlight">\(\beta_0\)</span>), where we already have the weight and bias of the model from Exercise-4. Using these two estimated parameters, we can examine the system logic of the logistic regression model to reveal its system transparency. For the probability of Direction &gt; 0.5, what condition should Lag1 follow? Visualize them on the regression plot. Hint: Use the log odds equation from <a class="reference external" href="https://pykale.github.io/transparentML/03-logistic-reg/logistic-regression.html#logistic-function">3.2.2.2</a>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><em>Compare your answer with the reference solution below</em></p>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prob</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">prob</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="o">-</span><span class="n">clf</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">/</span> <span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span>
-    <span class="mi">1</span><span class="p">,</span>
-    <span class="n">xmin</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_data_interval</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
-    <span class="n">xmax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_data_interval</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span>
-    <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
-    <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span>
-    <span class="mi">0</span><span class="p">,</span>
-    <span class="n">xmin</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_data_interval</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
-    <span class="n">xmax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_data_interval</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span>
-    <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
-    <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span>
-    <span class="mf">0.5</span><span class="p">,</span>
-    <span class="n">xmin</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_data_interval</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
-    <span class="n">xmax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_data_interval</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span>
-    <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
-    <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span>
-    <span class="o">-</span><span class="n">clf</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">/</span> <span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-    <span class="n">ymin</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">get_data_interval</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
-    <span class="n">ymax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">get_data_interval</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span>
-    <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
-    <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="p">)</span>
-
-
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Probability of Direction&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Lag1&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="c1"># For the probability of Direction &gt; 0.5, the Lag1 should be less than 5.34.</span>
-<span class="c1"># Likewise, to produce result No, i.e. the probability of   Direction &lt; 0.5, the Lag1 should be less than 5.34.</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5.34247484]
-</pre></div>
-</div>
-<img alt="../_images/logistic-regression_45_1.png" src="../_images/logistic-regression_45_1.png" />
-</div>
-</div>
-<p><strong>6</strong>. Use the fitted logistic regression model from <strong>Exercise-4</strong> and predict the Direction probability when Lag1 = 0.7. Visualize them on the regression plot.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><em>Compare your answer with the reference solution below</em></p>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prob</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">prob</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">)</span>
-
-
-<span class="nb">print</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span>
-    <span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span>
-    <span class="n">xmin</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_data_interval</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
-    <span class="n">xmax</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
-    <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
-    <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span>
-    <span class="mi">6</span><span class="p">,</span>
-    <span class="n">ymin</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">get_data_interval</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
-    <span class="n">ymax</span><span class="o">=</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span>
-    <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
-    <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Probability of Direction&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Lag1&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4929163510485887
-</pre></div>
-</div>
-<img alt="../_images/logistic-regression_49_1.png" src="../_images/logistic-regression_49_1.png" />
-</div>
-</div>
-<p><strong>7</strong>. Plot the ROC curve and find out the training Accuracy and AUC of the fitted model from <strong>Exercise-4</strong>.</p>
+<p><strong>5</strong>. Plot the ROC curve and find out the training Accuracy and AUC of the fitted model from <strong>Exercise-4</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1523,6 +1409,9 @@ intercept : [0.23023757]
 
 <span class="n">clf_disp</span> <span class="o">=</span> <span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># From the ROC curve we can say that the result is almost random as it is almost close to 50%.</span>
+<span class="c1"># The model from Exercise-4 has not learned anything at all.</span>
 </pre></div>
 </div>
 </div>
@@ -1531,10 +1420,10 @@ intercept : [0.23023757]
 AUC:  0.5357284338501468
 </pre></div>
 </div>
-<img alt="../_images/logistic-regression_53_1.png" src="../_images/logistic-regression_53_1.png" />
+<img alt="../_images/logistic-regression_45_1.png" src="../_images/logistic-regression_45_1.png" />
 </div>
 </div>
-<p><strong>8</strong>. Train another logistic regression model using Direction as a response and all the other features as predictors. Print out all the parameter values.</p>
+<p><strong>6</strong>. Train another logistic regression model using Direction as a response and all the other features as predictors. Print out all the parameter values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1545,11 +1434,11 @@ AUC:  0.5357284338501468
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Direction&quot;</span><span class="p">,</span> <span class="s2">&quot;Direction1&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Direction&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Direction1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Direction</span>
 
-<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s2">&quot;newton-cg&quot;</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s2">&quot;newton-cg&quot;</span><span class="p">)</span>
 <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;coefficients: &quot;</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;intercept :&quot;</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
@@ -1564,7 +1453,7 @@ intercept : [-7.36798384]
 </div>
 </div>
 </div>
-<p><strong>9</strong>. Plot the ROC curve and find out the Accuracy and AUC metrics of the fitted model from <strong>Exercise-8</strong>.</p>
+<p><strong>7</strong>. Plot the ROC curve and find out the Accuracy and AUC metrics of the fitted model from <strong>Exercise-6</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1593,12 +1482,66 @@ intercept : [-7.36798384]
 AUC:  0.9999931698654464
 </pre></div>
 </div>
-<img alt="../_images/logistic-regression_61_1.png" src="../_images/logistic-regression_61_1.png" />
+<img alt="../_images/logistic-regression_53_1.png" src="../_images/logistic-regression_53_1.png" />
 </div>
 </div>
-<p><strong>10</strong>. Which model performed well between Exercise 4 and Exercise 8 according to Accuracy and AUC metrics?</p>
-<div class="toggle docutils container">
-<p>The Exercise-8 fitted model performed well according to Accuracy and AUC metrics.</p>
+<p><strong>8</strong>. You might notice that the model with all variables is much better than the model from <strong>Exercise-4</strong>. Use the skills you have learned to explain why. <strong>Hint</strong>: Correlation matrix (See section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/multi-linear-regression.html#interpreting-the-results">2.2.4</a>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">)</span>
+<span class="c1"># Here from the correlation result we can see that, &quot;Today&quot; has a 0.72 correlation with &quot;Direction&quot;</span>
+<span class="c1"># which is the main reason for getting high performance</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Direction</span>
+
+<span class="c1"># model with out &quot;Today&quot;</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Direction&quot;</span><span class="p">,</span> <span class="s2">&quot;Today&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">clf_disp</span> <span class="o">=</span> <span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># model with only &quot;Today&quot;</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Today&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">clf_disp</span> <span class="o">=</span> <span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>               Year      Lag1      Lag2      Lag3      Lag4      Lag5  \
+Year       1.000000 -0.032289 -0.033390 -0.030006 -0.031128 -0.030519   
+Lag1      -0.032289  1.000000 -0.074853  0.058636 -0.071274 -0.008183   
+Lag2      -0.033390 -0.074853  1.000000 -0.075721  0.058382 -0.072499   
+Lag3      -0.030006  0.058636 -0.075721  1.000000 -0.075396  0.060657   
+Lag4      -0.031128 -0.071274  0.058382 -0.075396  1.000000 -0.075675   
+Lag5      -0.030519 -0.008183 -0.072499  0.060657 -0.075675  1.000000   
+Volume     0.841942 -0.064951 -0.085513 -0.069288 -0.061075 -0.058517   
+Today     -0.032460 -0.075032  0.059167 -0.071244 -0.007826  0.011013   
+Direction -0.022200 -0.050004  0.072696 -0.022913 -0.020549 -0.018168   
+
+             Volume     Today  Direction  
+Year       0.841942 -0.032460  -0.022200  
+Lag1      -0.064951 -0.075032  -0.050004  
+Lag2      -0.085513  0.059167   0.072696  
+Lag3      -0.069288 -0.071244  -0.022913  
+Lag4      -0.061075 -0.007826  -0.020549  
+Lag5      -0.058517  0.011013  -0.018168  
+Volume     1.000000 -0.033078  -0.017995  
+Today     -0.033078  1.000000   0.720025  
+Direction -0.017995  0.720025   1.000000  
+</pre></div>
+</div>
+<img alt="../_images/logistic-regression_57_1.png" src="../_images/logistic-regression_57_1.png" />
+<img alt="../_images/logistic-regression_57_2.png" src="../_images/logistic-regression_57_2.png" />
+</div>
 </div>
 </div>
 </div>

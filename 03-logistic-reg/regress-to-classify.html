@@ -918,9 +918,9 @@ y = \begin{cases} 1 &amp; \text{if stroke}, \\ 0 &amp; \text{if drug overdose}. 
 </div>
 <p><em>Compare your answer with the solution below</em></p>
 <div class="toggle docutils container">
-<p><strong>a. True</strong></p>
+<p>**a. True. In this case, it is hard or often impossible to interpret the distances between the samples of your dependent variables. **</p>
 </div>
-<p><strong>2</strong>. Linear regression can be used in probability prediction.</p>
+<p><strong>2</strong>. Linear Regression gives interpretable results for probability prediction.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    a. True
     
     b. False
@@ -930,12 +930,7 @@ y = \begin{cases} 1 &amp; \text{if stroke}, \\ 0 &amp; \text{if drug overdose}. 
 <div class="toggle docutils container">
 <p><strong>b. False</strong></p>
 </div>
-<p><strong>3</strong>. Difficulty in the response variable with more than two classes is high when we perform classification using a regression method.</p>
-<p><em>Compare your answer with the solution below</em></p>
-<div class="toggle docutils container">
-<p><strong>b. False</strong></p>
-</div>
-<p><strong>4</strong>. All the following exercises involve the use of <strong><a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Weekly.csv">Weekly</a></strong> dataset.</p>
+<p><strong>3</strong>. All the following exercises involve the use of <strong><a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Weekly.csv">Weekly</a></strong> dataset.</p>
 <p><strong>a</strong>. Load the dataset, convert the <strong>Direction</strong> categories to numerical values, and inspect the first 10 rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1151,7 +1146,7 @@ y = \begin{cases} 1 &amp; \text{if stroke}, \\ 0 &amp; \text{if drug overdose}. 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/regress-to-classify_28_0.png" src="../_images/regress-to-classify_28_0.png" />
+<img alt="../_images/regress-to-classify_25_0.png" src="../_images/regress-to-classify_25_0.png" />
 </div>
 </div>
 <p><strong>c</strong>. Use a linear regression model for binary classification on the <strong><a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Weekly.csv">Weekly</a></strong> dataset and explain why you should not perform classification using a regression method. <strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/03-logistic-reg/regress-to-classify.html#will-the-binary-case-work">3.1.2.2</a>.</p>
@@ -1166,7 +1161,6 @@ y = \begin{cases} 1 &amp; \text{if stroke}, \\ 0 &amp; \text{if drug overdose}. 
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
@@ -1198,9 +1192,10 @@ y = \begin{cases} 1 &amp; \text{if stroke}, \\ 0 &amp; \text{if drug overdose}. 
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;sepal&quot;</span><span class="p">)</span>
 
 <span class="c1"># As shown in the output of this cell, for a binary response with a 0/1 coding, although the linear regression model can also</span>
-<span class="c1"># produce an estimate of $P(y|x)$, some estimates might be outside the [0, 1] interval, making them hard to be interpreted as probabilities.</span>
+<span class="c1"># produce an estimate of P(y|x), some estimates might be outside the [0, 1] interval, making them hard to be interpreted as probabilities.</span>
 <span class="c1"># Since the predicted outcome of linear regression is not a probability, but a linear interpolation between points,</span>
 <span class="c1"># there is no meaningful threshold at which you can distinguish one class from the other.</span>
+<span class="c1"># Thats why you should not perform classification using a regression method.</span>
 </pre></div>
 </div>
 </div>
@@ -1208,7 +1203,7 @@ y = \begin{cases} 1 &amp; \text{if stroke}, \\ 0 &amp; \text{if drug overdose}. 
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;sepal&#39;)
 </pre></div>
 </div>
-<img alt="../_images/regress-to-classify_32_1.png" src="../_images/regress-to-classify_32_1.png" />
+<img alt="../_images/regress-to-classify_29_1.png" src="../_images/regress-to-classify_29_1.png" />
 </div>
 </div>
 </div>

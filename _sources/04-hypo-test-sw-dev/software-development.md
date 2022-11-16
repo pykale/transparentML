@@ -125,4 +125,4 @@ To make your code reproducible, setting random seeds is only the most basic step
     **a. True**
    ```
 
-**3**. Create a Github profile of your own (if you don't have any) and upload all the exercise notebooks you have done so far in this course.
+**3**. Create a Github profile of your own (if you don't have any) and try to upload one of the exercise notebooks you have completed in this course. **Hint**: See section [4.2.2](https://pykale.github.io/transparentML/04-hypo-test-sw-dev/software-development.html#github-for-software-development)
