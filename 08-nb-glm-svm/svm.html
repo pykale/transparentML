@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>8.2. Chapter 9 - Support Vector Machines &#8212; Transparent ML Intro</title>
+    <title>8.2. Support vector machines &#8212; Transparent ML Intro</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="8.3. Quiz and summary" href="quiz-sum-ref.html" />
@@ -575,33 +577,55 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#maximum-margin-classifier">
+   8.2.1. Maximum margin classifier
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classification-using-a-separating-hyperplane">
+     8.2.1.1. Classification Using a Separating Hyperplane
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-maximum-margin-classifier">
+     8.2.1.2. The Maximum Margin Classifier
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#construction-of-maximum-margin-classifier">
+     8.2.1.3. Construction of maximum margin classifier
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lab">
-   8.2.1. LAB
+   8.2.2. LAB
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#support-vector-classifier">
-     8.2.1.1. 9.6.1 Support Vector Classifier
+     8.2.2.1. 9.6.1 Support Vector Classifier
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#support-vector-machine">
-     8.2.1.2. 9.6.2 Support Vector Machine
+     8.2.2.2. 9.6.2 Support Vector Machine
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#roc-curves">
-     8.2.1.3. 9.6.3 ROC Curves
+     8.2.2.3. 9.6.3 ROC Curves
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#svm-with-multiple-classes">
-     8.2.1.4. 9.6.4 SVM with Multiple Classes
+     8.2.2.4. 9.6.4 SVM with Multiple Classes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#application-to-gene-expression-data">
-     8.2.1.5. 9.6.5 Application to Gene Expression Data
+     8.2.2.5. 9.6.5 Application to Gene Expression Data
     </a>
    </li>
   </ul>
@@ -616,7 +640,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Chapter 9 - Support Vector Machines</h1>
+                <h1>Support vector machines</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -627,33 +651,55 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#maximum-margin-classifier">
+   8.2.1. Maximum margin classifier
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classification-using-a-separating-hyperplane">
+     8.2.1.1. Classification Using a Separating Hyperplane
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-maximum-margin-classifier">
+     8.2.1.2. The Maximum Margin Classifier
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#construction-of-maximum-margin-classifier">
+     8.2.1.3. Construction of maximum margin classifier
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lab">
-   8.2.1. LAB
+   8.2.2. LAB
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#support-vector-classifier">
-     8.2.1.1. 9.6.1 Support Vector Classifier
+     8.2.2.1. 9.6.1 Support Vector Classifier
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#support-vector-machine">
-     8.2.1.2. 9.6.2 Support Vector Machine
+     8.2.2.2. 9.6.2 Support Vector Machine
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#roc-curves">
-     8.2.1.3. 9.6.3 ROC Curves
+     8.2.2.3. 9.6.3 ROC Curves
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#svm-with-multiple-classes">
-     8.2.1.4. 9.6.4 SVM with Multiple Classes
+     8.2.2.4. 9.6.4 SVM with Multiple Classes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#application-to-gene-expression-data">
-     8.2.1.5. 9.6.5 Application to Gene Expression Data
+     8.2.2.5. 9.6.5 Application to Gene Expression Data
     </a>
    </li>
   </ul>
@@ -667,8 +713,9 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="chapter-9-support-vector-machines">
-<h1><span class="section-number">8.2. </span>Chapter 9 - Support Vector Machines<a class="headerlink" href="#chapter-9-support-vector-machines" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="support-vector-machines">
+<h1><span class="section-number">8.2. </span>Support vector machines<a class="headerlink" href="#support-vector-machines" title="Permalink to this headline">¶</a></h1>
+<p>In this section, we discuss the support vector machine (SVM), an approach for classification that was developed in the computer science community in the 1990s and that has grown in popularity since then. SVMs have been shown to perform well in a variety of settings, and are often considered one of the best “out of the box” classifiers.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="#9.6.1-Support-Vector-Classifier">Lab: 9.6.1 Support Vector Classifier</a></p></li>
 <li><p><a class="reference external" href="#9.6.2-Support-Vector-Machine">Lab: 9.6.2 Support Vector Machine</a></p></li>
@@ -695,10 +742,116 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<div class="section" id="maximum-margin-classifier">
+<h2><span class="section-number">8.2.1. </span>Maximum margin classifier<a class="headerlink" href="#maximum-margin-classifier" title="Permalink to this headline">¶</a></h2>
+<p>In this section, we define a hyperplane and introduce the concept of an optimal separating hyperplane.</p>
+<p>In a <span class="math notranslate nohighlight">\(D\)</span>-dimensional space, a hyperplane is a flat affine subspace of dimension <span class="math notranslate nohighlight">\(D − 1\)</span>. For instance, in two dimensions, a hyperplane is a flat one-dimensional subspace—in other words, a line. In three dimensions, a hyperplane is a flat two-dimensional subspace—that is, a plane. In <span class="math notranslate nohighlight">\(D &gt; 3\)</span> dimensions, it can be hard to visualize a hyperplane, but the notion of a <span class="math notranslate nohighlight">\((D − 1)\)</span>-dimensional flat subspace still applies.</p>
+<p>The mathematical definition of a hyperplane is quite simple. In two dimensions, a hyperplane is defined by the equation,</p>
+<div class="math notranslate nohighlight">
+\[
+\beta_0 + \beta_1 x_1 + \beta_2 x_2 = 0
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\beta_0, \beta_1, \beta_2\)</span> are parameters. When we say that the above equation “defines” the hyperplane, we mean that any <span class="math notranslate nohighlight">\(\mathbf{x} = [x_1, x_2]^\top \)</span> satisfies the equation is a point on the hyperplane. Note the equation above is simply the equation of a line, since indeed in two dimensions a hyperplane is a line. In the <span class="math notranslate nohighlight">\(D\)</span>-dimensional case, the equation defining a hyperplane is</p>
+<div class="math notranslate nohighlight">
+\[
+\beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_D x_D = 0
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\beta_0, \beta_1, \beta_2, \ldots, \beta_D\)</span> are parameters. In this equation, any <span class="math notranslate nohighlight">\(\mathbf{x} = [x_1, x_2, \ldots, x_D]^\top\)</span> satisfies the above equation is a point on the hyperplane. If <span class="math notranslate nohighlight">\(\mathbf{x} \)</span> does not satisfy the equation, e.g.</p>
+<div class="math notranslate nohighlight">
+\[
+\beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_D x_D &gt; 0
+\]</div>
+<p>then <span class="math notranslate nohighlight">\(\mathbf{x} \)</span> is on one side of the hyperplane, and if</p>
+<div class="math notranslate nohighlight">
+\[
+\beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_D x_D &lt; 0
+\]</div>
+<p>then <span class="math notranslate nohighlight">\(\mathbf{x} \)</span> is on the other side of the hyperplane. So we can think of the hyperplane as dividing <span class="math notranslate nohighlight">\(D\)</span>-dimensional space into two halves. One can easily determine on which side of the hyperplane a point lies by simply calculating
+the sign of the left hand side of the hyperplane equation. The following code plots a hyperplane in two dimensions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot hyperplane</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.51</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.51</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">zz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">X</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">Y</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">zz</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">zz</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">Z</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Z</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">Z</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Z</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="classification-using-a-separating-hyperplane">
+<h3><span class="section-number">8.2.1.1. </span>Classification Using a Separating Hyperplane<a class="headerlink" href="#classification-using-a-separating-hyperplane" title="Permalink to this headline">¶</a></h3>
+<p>Suppose we have a set of observations <span class="math notranslate nohighlight">\(\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_N\)</span> in <span class="math notranslate nohighlight">\(D\)</span>-dimensional space</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{x}_1 = \begin{bmatrix} x_{11} \\ x_{12} \\ \vdots \\ x_{1D} \end{bmatrix}, \ldots, \mathbf{x}_N = \begin{bmatrix} x_{N1} \\ x_{N2} \\ \vdots \\ x_{ND} \end{bmatrix},
+\end{split}\]</div>
+<p>and that these observations fall into two classes, <span class="math notranslate nohighlight">\(y_1, \ldots, y_N \in \{-1, 1\}\)</span>, where 1 represents one class and -1 the other class. We also have a test observation <span class="math notranslate nohighlight">\(\mathbf{x}^* = [x^*_1, \ldots, x^*_N]^\top\)</span> that we would like to classify. We can do so by finding the hyperplane that separates the two classes. Such a hyperplane is known as an separating hyperplane.</p>
+<p>We can label the observations from the blue class as <span class="math notranslate nohighlight">\( y_i = 1 \)</span> and those from the purple class as <span class="math notranslate nohighlight">\( y_i = −1 \)</span>. Then a separating hyperplane has the property that</p>
+<div class="math notranslate nohighlight">
+\[
+\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD} &gt; 0, \text{ if } y_i = 1
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD} &lt; 0, \text{ if } y_i = -1.
+\]</div>
+<p>Equivalently, we can write this as</p>
+<div class="math notranslate nohighlight">
+\[
+y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0, \text{ for } i = 1, \ldots, N.
+\]</div>
+<p>If a separating hyperplane exists, we can use it to construct a very natural classifier: a test observation is assigned a class depending on which side of the hyperplane it is located.</p>
+</div>
+<div class="section" id="the-maximum-margin-classifier">
+<h3><span class="section-number">8.2.1.2. </span>The Maximum Margin Classifier<a class="headerlink" href="#the-maximum-margin-classifier" title="Permalink to this headline">¶</a></h3>
+<p>In general, if the data can be perfectly separated using a hyperplane, then there will in fact exist an infinite number of such hyperplanes. This is because a given separating hyperplane can usually be shifted a tiny bit up or down, or rotated, without coming into contact with any of the observations.</p>
+<p>A natural choice is the <em>maximal margin hyperplane</em> (also known as the optimal separating hyperplane), which is the separating hyperplane that is farthest from the training observations. That is, we can compute the (perpendicular) distance from each training observation to a given separating hyperplane; the smallest such distance is the minimal distance from the observations to the hyperplane, and is known as the margin. The maximal margin hyperplane is the separating hyperplane for which the margin is margin largest—that is, it is the hyperplane that has the farthest minimum distance to the training observations. We can then classify a test observation based on which side of the maximal margin hyperplane it lies. This is known as the maximal margin classifier. We hope that a classifier that has a large margin on the training data will also have a large margin on the test data, and hence will classify the test observations correctly.</p>
+</div>
+<div class="section" id="construction-of-maximum-margin-classifier">
+<h3><span class="section-number">8.2.1.3. </span>Construction of maximum margin classifier<a class="headerlink" href="#construction-of-maximum-margin-classifier" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight" id="equation-eq-max-margin-classifier">
+<span class="eqno">(8.1)<a class="headerlink" href="#equation-eq-max-margin-classifier" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+&amp; \max_{\beta_0, \beta_1, \ldots, \beta_D} M \\
+&amp; \text{subject to } \sum_{j=1}^D \beta_j^2 = 1 ,\\
+&amp; y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) \geq 1, \text{ for } i = 1, \ldots, N.
+\end{aligned}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(M\)</span> represents the margin of our hyperplane, and the optimization problem chooses <span class="math notranslate nohighlight">\( \beta_0, \beta_1, \ldots, \beta_D \)</span> to maximize M. This is exactly the definition of the maximal margin hyperplane! The problem <code class="xref std std-numref docutils literal notranslate"><span class="pre">max-margin-classifier</span></code> can be solved efficiently via quadratic programming, but details of this optimization are outside of the scope of this course.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">X</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">Y</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span> <span class="o">=</span> <span class="n">zz</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">zz</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mf">0.3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="lab">
-<h2><span class="section-number">8.2.1. </span>LAB<a class="headerlink" href="#lab" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.2.2. </span>LAB<a class="headerlink" href="#lab" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="support-vector-classifier">
-<h3><span class="section-number">8.2.1.1. </span>9.6.1 Support Vector Classifier<a class="headerlink" href="#support-vector-classifier" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.2.2.1. </span>9.6.1 Support Vector Classifier<a class="headerlink" href="#support-vector-classifier" title="Permalink to this headline">¶</a></h3>
 <p>Define a function to plot a classifier with support vectors.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -706,6 +859,8 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">pad</span>
     <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">pad</span>
     <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">yy</span><span class="p">)</span>
     <span class="n">Z</span> <span class="o">=</span> <span class="n">svc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
     <span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
@@ -713,7 +868,9 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
     <span class="c1"># Support vectors indicated in plot by vertical lines</span>
     <span class="n">sv</span> <span class="o">=</span> <span class="n">svc</span><span class="o">.</span><span class="n">support_vectors_</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sv</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">sv</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;|&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+        <span class="n">sv</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">sv</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+    <span class="p">)</span>  <span class="c1"># , linewidths=1)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X1&quot;</span><span class="p">)</span>
@@ -734,7 +891,14 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X1&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;X2&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;X2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y</span>
 </pre></div>
 </div>
 </div>
@@ -795,7 +959,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_test</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X1&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;X2&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;X2&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -868,7 +1032,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="support-vector-machine">
-<h3><span class="section-number">8.2.1.2. </span>9.6.2 Support Vector Machine<a class="headerlink" href="#support-vector-machine" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.2.2.2. </span>9.6.2 Support Vector Machine<a class="headerlink" href="#support-vector-machine" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generating test data</span>
@@ -959,7 +1123,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="roc-curves">
-<h3><span class="section-number">8.2.1.3. </span>9.6.3 ROC Curves<a class="headerlink" href="#roc-curves" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.2.2.3. </span>9.6.3 ROC Curves<a class="headerlink" href="#roc-curves" title="Permalink to this headline">¶</a></h3>
 <p>Comparing the ROC curves of two models on train/test data. One model is more flexible than the other.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1041,7 +1205,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>As expected, the more flexible model scores better on training data but worse on the test data.</p>
 </div>
 <div class="section" id="svm-with-multiple-classes">
-<h3><span class="section-number">8.2.1.4. </span>9.6.4 SVM with Multiple Classes<a class="headerlink" href="#svm-with-multiple-classes" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.2.2.4. </span>9.6.4 SVM with Multiple Classes<a class="headerlink" href="#svm-with-multiple-classes" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding a third class of observations</span>
@@ -1074,7 +1238,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="application-to-gene-expression-data">
-<h3><span class="section-number">8.2.1.5. </span>9.6.5 Application to Gene Expression Data<a class="headerlink" href="#application-to-gene-expression-data" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.2.2.5. </span>9.6.5 Application to Gene Expression Data<a class="headerlink" href="#application-to-gene-expression-data" title="Permalink to this headline">¶</a></h3>
 <p>In R, I exported the dataset from package ‘ISLR’ to csv files.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
