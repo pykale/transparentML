@@ -95,6 +95,8 @@ parts:
   - file: 07-trees-ensembles/overview
     title: Trees & ensembles
     sections:
+    - file: 07-trees-ensembles/regression-trees
+      title: Regression trees
     - file: 07-trees-ensembles/quiz-sum-ref
       title: Quiz & summary
   - file: 08-nb-glm-svm/overview
