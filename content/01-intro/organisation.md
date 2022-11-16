@@ -52,6 +52,9 @@ In this course, we will use real-world datasets to introduce machine learning fr
 * - [Fund](https://github.com/pykale/transparentML/blob/main/data/Fund.csv)
   - Returns of 2,000 hedge fund managers over 50 months.
   - Predict the returns of a hedge fund manager.
+* - [Heart](https://github.com/pykale/transparentML/blob/main/data/Heart.csv)
+  - Information about heart disease for 303 patients.
+  - Predict whether a patient has heart disease.
 * - [Hitters](https://github.com/pykale/transparentML/blob/main/data/Hitters.csv)
   - Records and salaries for baseball players.
   - Predict the salary of a baseball player.
