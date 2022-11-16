@@ -92,16 +92,18 @@ parts:
       title: Regularisation
     - file: 06-ftr-select-regularise/quiz-sum-ref
       title: Quiz & summary
-  - file: 07-dec-trees-rnd-forest/overview
-    title: Decision trees & random forests
+  - file: 07-trees-ensembles/overview
+    title: Trees & ensembles
     sections:
-    - file: 07-dec-trees-rnd-forest/quiz-sum-ref
+    - file: 07-trees-ensembles/quiz-sum-ref
       title: Quiz & summary
   - file: 08-nb-glm-svm/overview
     title: Naive Bayes, GLM & SVM
     sections:
     - file: 08-nb-glm-svm/glm
       title: Generalised linear models
+    - file: 08-nb-glm-svm/svm
+      title: Support vector machines
     - file: 08-nb-glm-svm/quiz-sum-ref
       title: Quiz & summary
   - file: 09-pca-kmeans/overview
