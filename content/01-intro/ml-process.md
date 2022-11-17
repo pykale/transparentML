@@ -5,7 +5,7 @@ Machine learning process can be described in terms of lifecycle phases. The phas
 **(Add illustration figure here later)**
 
 ## Lifecycle phases for design & development:
-
+Below are the typical lifecycle phases for design and development of ML systems. Although they are expressed in business terms, they can be easily adapted to your research context!
 - **Business case and problem definition**: Establishing the need for the ML system and the tasks it is meant to perform.
 - **System requirements specification**: Translating the problem definition into technical design and performance requirements.
 - **Data acquisition and preparation**: Where relevant, acquiring any data that may be needed to build the system, checking its suitability, and preparing it for use, e.g. via data pre-processing and/or data augmentation.
