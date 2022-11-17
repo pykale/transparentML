@@ -587,8 +587,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-maximum-margin-classifier">
-     8.2.1.2. The Maximum Margin Classifier
+    <a class="reference internal nav-link" href="#the-maximum-margin-classifier-hard-margin">
+     8.2.1.2. The maximum margin classifier (hard margin)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -661,8 +661,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-maximum-margin-classifier">
-     8.2.1.2. The Maximum Margin Classifier
+    <a class="reference internal nav-link" href="#the-maximum-margin-classifier-hard-margin">
+     8.2.1.2. The maximum margin classifier (hard margin)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -809,12 +809,21 @@ the sign of the left hand side of the hyperplane equation. The following code pl
 \[
 y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0, \text{ for } i = 1, \ldots, N.
 \]</div>
-<p>If a separating hyperplane exists, we can use it to construct a very natural classifier: a test observation is assigned a class depending on which side of the hyperplane it is located.</p>
+<div class="margin-caption figure align-default" id="svm2">
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm3.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm3.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm3.png" style="width: 700px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8.1 </span><span class="caption-text">Two classes of observations are shown in blue and in purple, respectively. Left: Three separating hyperplanes, out of many possible, are shown in black. Right: A separating hyperplane is shown in black. The blue and purple grid indicates the decision rule made by a classifier based on this separating hyperplane: a test observation that falls in the blue portion of the grid will be assigned to the blue class, and one that falls in the purple portion of the grid will be assigned to the purple class.</span><a class="headerlink" href="#svm2" title="Permalink to this image">¶</a></p>
 </div>
-<div class="section" id="the-maximum-margin-classifier">
-<h3><span class="section-number">8.2.1.2. </span>The Maximum Margin Classifier<a class="headerlink" href="#the-maximum-margin-classifier" title="Permalink to this headline">¶</a></h3>
+<p>A shown in <a class="reference internal" href="#svm2"><span class="std std-numref">Fig. 8.1</span></a>, if a separating hyperplane exists, we can use it to construct a very natural classifier: a test observation is assigned a class depending on which side of the hyperplane it is located.</p>
+</div>
+<div class="section" id="the-maximum-margin-classifier-hard-margin">
+<h3><span class="section-number">8.2.1.2. </span>The maximum margin classifier (hard margin)<a class="headerlink" href="#the-maximum-margin-classifier-hard-margin" title="Permalink to this headline">¶</a></h3>
 <p>In general, if the data can be perfectly separated using a hyperplane, then there will in fact exist an infinite number of such hyperplanes. This is because a given separating hyperplane can usually be shifted a tiny bit up or down, or rotated, without coming into contact with any of the observations.</p>
 <p>A natural choice is the <em>maximal margin hyperplane</em> (also known as the optimal separating hyperplane), which is the separating hyperplane that is farthest from the training observations. That is, we can compute the (perpendicular) distance from each training observation to a given separating hyperplane; the smallest such distance is the minimal distance from the observations to the hyperplane, and is known as the margin. The maximal margin hyperplane is the separating hyperplane for which the margin is margin largest—that is, it is the hyperplane that has the farthest minimum distance to the training observations. We can then classify a test observation based on which side of the maximal margin hyperplane it lies. This is known as the maximal margin classifier. We hope that a classifier that has a large margin on the training data will also have a large margin on the test data, and hence will classify the test observations correctly.</p>
+<div class="margin-caption figure align-default" id="svm3">
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm2.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm2.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm2.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8.2 </span><span class="caption-text">Two classes of observations are shown in blue and in purple, respectively. The maximal margin hyperplane is shown as a solid line. The margin is the distance from the solid line to either of the dashed lines. The two blue points and the purple point that lie on the dashed lines are the support vectors, and the distance from those points to the hyperplane is indicated by arrows. The purple and blue grid indicates the decision rule made by a classifier based on this separating hyperplane.</span><a class="headerlink" href="#svm3" title="Permalink to this image">¶</a></p>
+</div>
+<p><a class="reference internal" href="#svm3"><span class="std std-numref">Fig. 8.2</span></a> shows a maximal margin hyperplane. Comparing to the right-hand panel of <a class="reference internal" href="#svm2"><span class="std std-numref">Fig. 8.1</span></a>, we see that the maximal margin hyperplane in <a class="reference internal" href="#svm3"><span class="std std-numref">Fig. 8.2</span></a> results in a greater minimal distance between the observations and the separating hyperplane—that is, a larger margin. We can also see that three training observations are equidistant from the maximal margin hyperplane and lie along the dashed lines indicating the width of the margin. These three observations are known as <em>support vectors</em>, and the distance from the support vectors to the hyperplane is known as the <em>margin width</em>.</p>
 </div>
 <div class="section" id="construction-of-maximum-margin-classifier">
 <h3><span class="section-number">8.2.1.3. </span>Construction of maximum margin classifier<a class="headerlink" href="#construction-of-maximum-margin-classifier" title="Permalink to this headline">¶</a></h3>
@@ -822,30 +831,9 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
 <span class="eqno">(8.1)<a class="headerlink" href="#equation-eq-max-margin-classifier" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
 &amp; \max_{\beta_0, \beta_1, \ldots, \beta_D} M \\
 &amp; \text{subject to } \sum_{j=1}^D \beta_j^2 = 1 ,\\
-&amp; y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) \geq 1, \text{ for } i = 1, \ldots, N.
+&amp; y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) \geq M, \text{ for } i = 1, \ldots, N.
 \end{aligned}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(M\)</span> represents the margin of our hyperplane, and the optimization problem chooses <span class="math notranslate nohighlight">\( \beta_0, \beta_1, \ldots, \beta_D \)</span> to maximize M. This is exactly the definition of the maximal margin hyperplane! The problem <code class="xref std std-numref docutils literal notranslate"><span class="pre">max-margin-classifier</span></code> can be solved efficiently via quadratic programming, but details of this optimization are outside of the scope of this course.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">X</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">Y</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span><span class="o">.</span><span class="n">T</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span> <span class="o">=</span> <span class="n">zz</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">zz</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mf">0.3</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>where <span class="math notranslate nohighlight">\(M\)</span> represents the margin of our hyperplane, and the optimization problem chooses <span class="math notranslate nohighlight">\( \beta_0, \beta_1, \ldots, \beta_D \)</span> to maximize M. This is exactly the definition of the maximal margin hyperplane! The problem <a class="reference internal" href="#equation-eq-max-margin-classifier">(8.1)</a> can be solved efficiently via quadratic programming, but details of this optimization are outside of the scope of this course.</p>
 </div>
 </div>
 <div class="section" id="lab">
