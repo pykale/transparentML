@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="7.1. Regression trees" href="regression-trees.html" />
@@ -370,7 +372,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ensembles.html">
-     7.3. Ensemble methods
+     7.3. Ensemble learning
     </a>
    </li>
    <li class="toctree-l2">
@@ -572,42 +574,53 @@ const thebe_selector_output = ".output, .cell_output"
 <!-- File names should be all lowercase, with words separated by hyphens (-), and no spaces.  Each chapter must include an "overview.md" and "quiz-sum-ref.md"-->
 <div class="admonition-status admonition">
 <p class="admonition-title">Status</p>
-<p>Drafting</p>
+<p>Ready for review and feedback</p>
 </div>
 <div class="admonition-objectives admonition">
 <p class="admonition-title">Objectives</p>
 <ul class="simple">
-<li><p>Objective 1</p></li>
+<li><p>Understand decision trees for regression and classification.</p></li>
+<li><p>Apply decision trees to real-world problems and interpret the results.</p></li>
+<li><p>Understand bagging, random forests, and boosting for ensemble-based learning.</p></li>
+<li><p>Apply ensemble learning to real-world problems and interpret the results.</p></li>
 </ul>
 </div>
-<p><strong>Expected time to complete</strong>: x hours</p>
-<p>In this chapter, we will study classification and regression models that are based on trees and ensembles. These models are very popular in practice, and are used in a wide range of applications. We will start by studying <a class="reference external" href="https://en.wikipedia.org/wiki/Decision_tree">decision trees</a>, which are the simplest form of tree-based models. We will then study bagging and random forests, which are ensemble methods that combine multiple decision trees. Finally, we will study boosting, which is another ensemble method that combines multiple decision trees.</p>
-<p>Tree-based models involves dividing (stratifying, segmenting) the feature space into a number of simple regions, and then making a prediction for each region. This is in contrast to linear models, which involve fitting a single linear function to the data. The main advantage of tree-based models is that they are very easy to <strong>interpret</strong>. The main disadvantage is that they are prone to overfitting, and have limited predictive power.</p>
-<p>To overcome these disadvantages, we can use ensemble methods, which combine multiple trees to produce a single model for a single consensus prediction. The main advantage of ensemble methods is that they are less prone to overfitting, and have better predictive power. The main disadvantage is that they are more difficult to interpret.</p>
-<div class="admonition-ingredients admonition">
-<p class="admonition-title">Ingredients</p>
+<p><strong>Expected time to complete</strong>: 3 hours</p>
+<p>In this chapter, we will study classification and regression models that are based on trees and ensembles. These models are very popular in practice, and are used in a wide range of applications. We will start with <a class="reference external" href="https://en.wikipedia.org/wiki/Decision_tree">decision trees</a>, which are the simplest form of tree-based models. We will then study bagging, random forests, and boosting, which are ensemble learning methods that combine multiple decision trees or other models to improve their performance.</p>
+<p>Tree-based models involve dividing (stratifying, segmenting) the feature space into a number of simple regions, and then making a prediction for each region. This is in contrast to linear models, which involve fitting a single linear function to the data. The main advantage of tree-based models is that they are very easy to <strong>interpret</strong>. The main disadvantage is that they are prone to overfitting, and have limited predictive power.</p>
+<p>To overcome these disadvantages, we can use ensemble learning, which combine multiple trees to produce a single model for a single consensus prediction. Therefore, ensemble learning is more a machine learning process than a specific model. The main advantage of ensemble learning methods is that they are less prone to overfitting, and have better predictive power. The main disadvantage is that they are more difficult to interpret.</p>
+<div class="admonition-ingredients-regression-or-classification-trees admonition">
+<p class="admonition-title">Ingredients: regression or classification trees</p>
 <ul class="simple">
-<li><p>Input: …</p></li>
-<li><p>Output: …</p></li>
-<li><p>Model: …</p>
+<li><p>Input: features of data samples</p></li>
+<li><p>Output: target values (regression) or class labels (classification) of data samples</p></li>
+<li><p>Model: divide the feature space into multiple simple regions, and make a prediction of the target value or class label for each region by averaging the target values or selecting the most common class label of the data samples in that region</p>
 <ul>
-<li><p>Hyperparameter(s): …</p></li>
-<li><p>Parameter(s): …</p></li>
+<li><p>Hyperparameter(s): maximum depth of tree, maximum number of leaves, and/or minimum number of samples in a leaf</p></li>
+<li><p>Parameter(s): decision rules for each region consisting of a feature and a threshold</p></li>
 </ul>
 </li>
-<li><p>Loss function: …</p></li>
-<li><p>Learning algorithm: …</p></li>
+<li><p>Loss function: mean squared error / residual sum of squares (regression) or  Gini index / entropy (classification)</p></li>
+<li><p>Learning algorithm: greedy search for the best splitting rule across all features and thresholds at each step</p></li>
 </ul>
 </div>
-<div class="admonition-transparency admonition">
-<p class="admonition-title">Transparency</p>
+<div class="admonition-system-transparency-regression-or-classification-trees admonition">
+<p class="admonition-title">System transparency: regression or classification trees</p>
 <p>System logic</p>
 <ul class="simple">
-<li><p>Condition to produce certain output:</p></li>
+<li><p>Condition to produce certain output: to produce an output <span class="math notranslate nohighlight">\(y\)</span> or a class label <span class="math notranslate nohighlight">\(c\)</span>, we need to find the region in the feature space producing a value closest to <span class="math notranslate nohighlight">\(y\)</span> or containing the most samples of class <span class="math notranslate nohighlight">\(c\)</span>, then go from that region to the root of the tree to find the decision rules that lead to that region, and find any input features <span class="math notranslate nohighlight">\(x\)</span> that satisfy those decision rules.</p></li>
 </ul>
 </div>
-<!-- - What input to produce certain output:
-- How to produce certain output: -->
+<p>Ensemble learning (bagging, random forests, and boosting) is primarily a machine learning process so we consider its process transparency.</p>
+<div class="admonition-process-transparency-bagging-random-forests-and-boosting admonition">
+<p class="admonition-title">Process transparency: bagging, random forests, and boosting</p>
+<ul class="simple">
+<li><p><strong>Starting point</strong>: a standardised dataset for a machine learning task with a performance metric defined and a “weak learner” (building block) model chosen to be trained</p></li>
+<li><p>Train multiple weak learning models (e.g. trees) on different subsets of the data, e.g. bootstrapped subsets of the data (bagging), and/or random subsets of the features (random forests), and/or different subsets of the data with different weights (boosting)</p></li>
+<li><p>Combine the predictions of the weak learning models to produce a single model for a single consensus prediction</p></li>
+<li><p><strong>End point</strong>: a trained model for a single consensus prediction</p></li>
+</ul>
+</div>
 <div class="toctree-wrapper compound">
 </div>
 </div>
