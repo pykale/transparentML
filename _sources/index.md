@@ -1,3 +1,15 @@
+# Ongoing live sessions
+
+**[Session 1](https://meet.google.com/nfh-pyuj-fuh)**: 10:00 - 13:00 Tuesday 22nd November
+
+**[Session 2](https://meet.google.com/wxt-jdsb-dyg)**: 15:00 - 17:00 Wednesday 23rd November
+
+**[Session 3](https://meet.google.com/uzn-cyrg-wxp)**: 15:00 - 17:00 Thursday 24rd November
+
+**[Session 4](https://meet.google.com/fpy-ozcv-rxz)**: 10:00 - 12:00 Friday 25th November
+
+**[Session 5](https://meet.google.com/tyv-enpa-pgk)**: 14:00 - 16:00 Friday 25th November
+
 # Overview
 
 **[Turing Course: An Introduction to Transparent Machine Learning](https://github.com/alan-turing-institute/Intro-to-transparent-ML-course/)**
