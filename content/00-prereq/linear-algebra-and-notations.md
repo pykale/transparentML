@@ -151,7 +151,7 @@ This section introduces the basic concepts of linear algebra and notations used 
 **2**. **A** = $\begin{bmatrix} 8 & 5 & 9 \\ 7 & 19 & 14 \end{bmatrix}$
    **B** = $ \begin{bmatrix} 6 & 13 & 15 \\ 17 & 22 & 12 \\ 0 & 3 & 9 \end{bmatrix}$
 
-    You have to do it manually.
+    Calculate the following matrix operations by hand.
 
         a. AB = ?
 

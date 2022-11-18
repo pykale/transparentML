@@ -14,15 +14,15 @@ This course is being developed at [a PyKale repository](https://github.com/pykal
 
 ## Learning objectives [LOs]
 
-By the end of the course, we expect a learner can demonstrate the ability to
+By the end of the course, we expect a learner can demonstrate the ability to:
 
-- [LO1] understand the theoretical issues and wider context related to transparent machine learning systems and processes
+- [LO1] understand the theoretical issues and wider context related to transparent machine learning systems and processes.
 
-- [LO2] understand the inner-working of a selected number of transparent machine learning algorithms with the capability of interpret the modelling process and the input-output relationships
+- [LO2] understand the inner-working of a selected number of transparent machine learning algorithms with the capability of interpret the modelling process and the input-output relationships.
 
-- [LO3] deploy a practical implementation of transparent machine learning systems and processes in a real-world setting using Python libraries such as scikit-learn
+- [LO3] deploy a practical implementation of transparent machine learning systems and processes in a real-world setting using Python libraries such as scikit-learn.
 
-- [LO4] visualise, interpret, and explain transparent machine learning systems and processes in a real-world setting to help stakeholders understand these systems and processes
+- [LO4] visualise, interpret, and explain transparent machine learning systems and processes in a real-world setting to help stakeholders understand these systems and processes.
 
 ## Target audience
 
