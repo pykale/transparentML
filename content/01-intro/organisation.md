@@ -144,27 +144,27 @@ No single model will perform well in all possible scenarios. Therefore, it is im
 
    |    Dataset    |   Machine learning problems (not done yet)   |
    | :------------ | -------------: |
-   |        Advertising      |        5       |
-   |     Auto     |      2744      |
-   |        Bikeshare      |        5       |
-   |     Boston     |      2744      |
-   |        BrainCancer      |        5       |
-   |     Caravan     |      2744      |
-   |        Carseats      |        5       |
-   |     College     |      2744      |
-   |        Credit      |        5       |
-   |     Default     |      2744      |
-   |        Fund      |        5       |
-   |     Hitters     |      2744      |
-   |        Iris      |        5       |
-   |     Khan     |      2744      |
-   |        NCI60      |        5       |
-   |     OJ     |      2744      |
-   |        Portfolio      |        5       |
-   |        Publication      |        5       |
-   |     Smarket     |      2744      |
-   |        USArrests      |        5       |
-   |     Wage     |      2744      |
-   |        Weekly      |        5       |
+   |        Advertising      |        Regression       |
+   |     Auto     |      Regression     |
+   |        Bikeshare      |        Regression       |
+   |     Boston     |      Regression     |
+   |        BrainCancer      |        Regression      |
+   |     Caravan     |      Classification      |
+   |        Carseats      |        Regression       |
+   |     College     |        Regression    |
+   |        Credit      |        Regression       |
+   |     Default     |      Classification      |
+   |        Fund      |        Regression       |
+   |     Hitters     |      Regression      |
+   |        Iris      |        Classfication       |
+   |     Khan     |      Classification     |
+   |        NCI60      |       Clustering        |
+   |     OJ     |      Regression      |
+   |        Portfolio      |       Regression        |
+   |        Publication      |        Regression       |
+   |     Smarket     |      Classification      |
+   |        USArrests      |        Clustering       |
+   |     Wage     |      Regression     |
+   |        Weekly      |        Classification       |
 
    ```
