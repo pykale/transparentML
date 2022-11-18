@@ -1061,6 +1061,7 @@ Since <span class="math notranslate nohighlight">\((\mathbf{x}_i , y_i)\)</span>
 
 <span class="c1"># converting categories</span>
 <span class="n">default_df</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_df</span><span class="o">.</span><span class="n">default</span><span class="o">.</span><span class="n">factorize</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">default_df</span><span class="p">[</span><span class="s2">&quot;student&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_df</span><span class="o">.</span><span class="n">student</span><span class="o">.</span><span class="n">factorize</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
@@ -1138,26 +1139,34 @@ total_error_rate: 3.4000000000000004%
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># X = default_df[[&quot;income&quot;, &quot;balance&quot;, &quot;student&quot;]].values</span>
-<span class="c1"># Y = default_df[&quot;default&quot;]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">default_df</span><span class="p">[[</span><span class="s2">&quot;income&quot;</span><span class="p">,</span> <span class="s2">&quot;balance&quot;</span><span class="p">,</span> <span class="s2">&quot;student&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">default_df</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">]</span>
 
-<span class="c1"># for s in range(1, 4):</span>
-<span class="c1">#     print(&quot;Random seed = {}&quot;.format(s))</span>
-<span class="c1">#     np.random.seed(s)</span>
-<span class="c1">#     X_train, X_test, y_train, y_test = train_test_split(X, Y.ravel(), test_size=0.5)</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random seed = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
-<span class="c1">#     # Logistic regression</span>
-<span class="c1">#     logit = LogisticRegression()</span>
-<span class="c1">#     model_logit = logit.fit(X_train, y_train)</span>
-
-<span class="c1">#     # Predict</span>
-<span class="c1">#     y_pred = model_logit.predict(X_test)</span>
-
-<span class="c1">#     total_error_rate_pct = mean_squared_error(y_test, y_pred) * 100</span>
-<span class="c1">#     print(&quot;total_error_rate: {}%&quot;.format(total_error_rate_pct))</span>
+    <span class="c1"># Logistic regression</span>
+    <span class="n">logit</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+    <span class="n">model_logit</span> <span class="o">=</span> <span class="n">logit</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="c1"># Predict</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model_logit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">total_error_rate_pct</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;total_error_rate: </span><span class="si">{}</span><span class="s2">%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">total_error_rate_pct</span><span class="p">))</span>
 
 
 <span class="c1"># Including a dummy variable for student didn&#39;t leads to a reduction in the test error rate.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random seed = 1
+total_error_rate: 3.2199999999999998%
+Random seed = 2
+total_error_rate: 3.2%
+Random seed = 3
+total_error_rate: 3.4000000000000004%
 </pre></div>
 </div>
 </div>
