@@ -168,32 +168,3 @@ No single model will perform well in all possible scenarios. Therefore, it is im
    |        Weekly      |        5       |
 
    ```
-**2**. Write down the number of features and training samples of all the datasets present in {numref}`datasets-table`.
-
-*Compare your answer with the solution below*
-
-   ```{toggle}
-   |    Dataset   |   Number of Features   |   Number of Sample   |
-   | :------------ | -------------: | -------------: |
-   |        Advertising      |        5       |        200       |
-   |     Auto     |      9      |      397      |
-   |        Bikeshare      |        15       |        8645       |
-   |     Boston     |      14      |      506      |
-   |        BrainCancer      |        8       |        88       |
-   |     Caravan     |      86      |      5822      |
-   |        Carseats      |        11       |        400       |
-   |     College     |      18      |      777      |
-   |        Credit      |        11       |        400       |
-   |     Default     |      4      |      10000      |
-   |        Fund      |        5       |        5       |
-   |     Hitters     |      2000      |      50      |
-   |        Iris      |        5       |        150       |
-   |        NCI60      |        6830       |        64       |
-   |     OJ     |      18      |      1070      |
-   |        Portfolio      |        2       |        100       |
-   |     Publication     |      9      |      244      |
-   |        Smarket      |        9       |        1250       |
-   |     USArrests     |      5      |      50      |
-   |        Wage      |        12       |        3000       |
-   |     Weekly     |      9      |      1089      |
-   ```
