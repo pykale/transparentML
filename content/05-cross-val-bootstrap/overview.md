@@ -9,9 +9,9 @@ Ready for review and feedback
 ```
 
 ```{admonition} Objectives
-- Understand the concepts and processes of cross-validation and bootstrap
-- Evaluate the performance of machine learning models using cross-validation
-- Quantify the uncertainty associated with a machine learning model using bootstrap
+- Understand the concepts and processes of cross-validation and bootstrap.
+- Evaluate the performance of machine learning models using cross-validation.
+- Quantify the uncertainty associated with a machine learning model using bootstrap.
 ```
 
 **Expected time to complete**: 2.5 hours
