@@ -1,8 +1,8 @@
 # Quiz and summary
 
-## Quiz
+## Quiz-4
 
-_Not for now. To finish in the next cycle._ Complete [Quiz](https://forms.gle/8Q5Z7Z7Z7Z7Z7Z7Z7) to check your understanding of this topic. You are advised to score at least 50% to proceed to the next topic.
+Complete [**Quiz-4**](https://docs.google.com/forms/d/e/1FAIpQLSeZ-RMnnhv5almGWXnYkf8_v33rE3yOTF8s0PLIF0jHr4eU3Q/viewform?usp=share_link) to check your understanding of this topic. You are advised to score at least 50% to proceed to the next topic.
 
 ## Summary
 
