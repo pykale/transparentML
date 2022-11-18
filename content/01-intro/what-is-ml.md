@@ -2,7 +2,7 @@
 
 ## Human learning
 
-Learning is familiar to humans (and animals), as a continuous process that starts from birth and continues throughout life. A human child (and adult) learns new things, acquires new skills, and improves existing skills to survive and thrive in the surrounding world. A child's brain and senses perceive the facts of their surroundings to gradually learn the hidden patterns of life that help the child to craft logical rules to identify learned patterns and predict future events.
+Learning is familiar to humans (and animals), as a continuous process that starts from birth and continues throughout life. A human child (and adult) learns new things, acquires new skills, and improves existing skills to survive and thrive in the surrounding world. A child's brain and senses perceive the facts of their surroundings to gradually learn the hidden patterns of life that help the child to craft logical rules to identify learnt patterns and predict future events.
 
 Learning is a process of acquiring new knowledge, skills, and behaviors. Learning can be divided into two categories: **acquisition** and **performance**. Acquisition is the process of acquiring new knowledge, skills, and behaviors. Performance is the process of using the acquired knowledge, skills, and behaviors to achieve a goal. Learning can be defined as a change in behavior or knowledge that results from experience. We learn from our experiences and we learn from others. For example, we learn to walk by watching others walk, we learn to speak by listening to others speak, we learn to drive by watching others drive, and we learn to cook by watching others cook.
 
@@ -12,7 +12,7 @@ You may have already known, since you are here, that machines can also learn fro
 
 > Machine learning learns a model from data.
 
-Machine learning takes **data** as **input** to learn a **model**, a mathematical representation of the data. This learning process is called the **training** phase and the data used in training is called the **training data**. After training, the learned model can take new data, the **test data**, as input to generate **output** for making predictions on the test data or for exploring/explaining the test data, which is the **test** phase.
+Machine learning takes **data** as **input** to learn a **model**, a mathematical representation of the data. This learning process is called the **training** phase and the data used in training is called the **training data**. After training, the learnt model can take new data, the **test data**, as input to generate **output** for making predictions on the test data or for exploring/explaining the test data, which is the **test** phase.
 
 The above definition is the one we will use in this course for clarity, loosely inspired by how the human brain learns certain things based on the data it perceives from the outside world. From this definition, we can see machine learning as a set of **software** tools for **modelling** and **understanding** complex **datasets**. You may find various definitions of machine learning elsewhere. For example, machine learning, from a systems perspective, is defined as the creation of automated systems that can learn hidden patterns from data to aid in making intelligent decisions.
 
@@ -39,7 +39,7 @@ Our goal is to develop an accurate model that can be used to predict sales on th
 
 Denote the three features as $x_1$ for TV, $x_2$ for radio, and $x_3$ for newspaper, and the target as $y$ for sales (e.g. quantity). Collectively, we denote the features as $\mathbf{x}= [x_1, x_2, x_3]^\top$ as a column vector. We can use the [dataset](https://github.com/pykale/transparentML/blob/main/data/Advertising.csv) to learn a model that can predict the sales $y$ based on the advertising budgets $\mathbf{x}$: $y = f(\mathbf{x})$.
 
-The function $f$ is called the **model** or **predictive function**. The model $f$ is learned from the data, which is called the **training data**. The training data consists of the features $\mathbf{x}$ and the target $y$ for each sample. In this case, the training data is a table with 200 rows and 4 columns, where each row is a sample and each column is a feature or a target. The first three columns are the features and the last column is the target.
+The function $f$ is called the **model** or **predictive function**. The model $f$ is learnt from the data, which is called the **training data**. The training data consists of the features $\mathbf{x}$ and the target $y$ for each sample. In this case, the training data is a table with 200 rows and 4 columns, where each row is a sample and each column is a feature or a target. The first three columns are the features and the last column is the target.
 
 ## Exercises
 

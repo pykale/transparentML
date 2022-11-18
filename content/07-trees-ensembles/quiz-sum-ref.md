@@ -6,7 +6,7 @@ _Not for now. To finish in the next cycle._ Complete [Quiz](https://forms.gle/8Q
 
 ## Summary
 
-In this topic, you learned how to:
+In this topic, you learnt how to:
 - Use ...
 
 ## References and further reading
