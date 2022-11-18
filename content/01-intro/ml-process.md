@@ -1,10 +1,18 @@
 # Machine learning process
 
-Machine learning process can be described in terms of lifecycle phases. The phases of An ML system’s lifecycle are a number of analytically distinct activities throughout the stages of system design, development, and deployment. There is no universally agreed breakdown of lifecycle phases for ML systems. However, the following illustrative typology is suitable for a range of contexts and intersects with prominent lifecycle frameworks. Some of the activities below only apply to certain phases of ML systems.
+Machine learning process can be described in terms of lifecycle phases. The phases of a machine learning system’s lifecycle are a number of analytically distinct activities throughout the stages of system design, development, and deployment. There is no universally agreed breakdown of lifecycle phases for machine learning systems but they generally follow the same [systems development life cycle](https://en.wikipedia.org/wiki/Systems_development_life_cycle) shown below as other software systems:
 
-**(Add illustration figure here later)**
+```{figure} https://upload.wikimedia.org/wikipedia/commons/7/7e/SDLC-Maintenance-Highlighted.png
+---
+name: SDLC-Maintenance-Highlighted
+width: 200px
+---
+A general systems development life cycle, from Wikipedia.
+```
 
 ## Lifecycle phases for design & development:
+
+Below are the typical lifecycle phases for design and development of machine learning systems. Although they are expressed in business terms, they can be easily adapted to your research context!
 
 - **Business case and problem definition**: Establishing the need for the ML system and the tasks it is meant to perform.
 - **System requirements specification**: Translating the problem definition into technical design and performance requirements.

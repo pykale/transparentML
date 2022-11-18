@@ -10,6 +10,8 @@ Transparency and accountability are closely related and reinforce each other. Ac
 availability of information about an ML system and accountability is key motivation for transparency.
 Transparency also acts as an enabler to other ML/AI ethics principles including fairness, sustainability, and safety.
 
+In the context of research, transparency is important if you want to interpret the results of your ML system, and understand how it works. It is also important if you want to explain the results to your research community, and it can even help you verify your results.
+
 ## What is transparency?
 
 ML transparency relates to disclosing information about ML systems, and it can be understood as relevant stakeholders having access to relevant information about a given ML system. Transparency involves gathering and sharing information about an ML system’s logic (i.e. _explainability_) and how it was designed, developed, and deployed.
@@ -150,9 +152,9 @@ The applicability and implications of transparency trade-offs depend on context 
 
 *Compare your answer with the solution below*
 
-    ```{toggle}
-    **b. False**
-    ```
+```{toggle}
+**b. False**
+```
 **2**. Transparency acts as an enabler to other ML/AI ethics principles.
 
        a. True
@@ -161,9 +163,9 @@ The applicability and implications of transparency trade-offs depend on context 
 
 *Compare your answer with the solution below*
 
-    ```{toggle}
-    **a. True**
-    ```
+```{toggle}
+**a. True**
+```
 **3**. Transparency is a property of the information.
 
        a. True
@@ -172,9 +174,9 @@ The applicability and implications of transparency trade-offs depend on context 
 
 *Compare your answer with the solution below*
 
-    ```{toggle}
-    **b. False**
-    ```
+```{toggle}
+**b. False**
+```
 **4**. Transparency is not a fixed property of ML systems.
 
        a. True
@@ -183,9 +185,9 @@ The applicability and implications of transparency trade-offs depend on context 
 
 *Compare your answer with the solution below*
 
-    ```{toggle}
-    **a. True**
-    ```
+```{toggle}
+**a. True**
+```
 **5**. Deep learning models has high interpretability but low flexibility.
 
        a. True
@@ -194,9 +196,9 @@ The applicability and implications of transparency trade-offs depend on context 
 
 *Compare your answer with the solution below*
 
-    ```{toggle}
-    **b. False**
-    ```
+```{toggle}
+**b. False**
+```
 **6**. Stakeholder's transparency interests can differ even when their reasons for seeking information are the same.
 
        a. True
@@ -205,6 +207,6 @@ The applicability and implications of transparency trade-offs depend on context 
 
 *Compare your answer with the solution below*
 
-    ```{toggle}
-    **a. True**
-    ```
+```{toggle}
+**a. True**
+```

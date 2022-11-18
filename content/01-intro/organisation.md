@@ -142,7 +142,7 @@ No single model will perform well in all possible scenarios. Therefore, it is im
 
    ```{toggle}
 
-   |    Dataset    |   Machine learning problems (not done yet)   |
+   |    Dataset    |   Machine learning problems |
    | :------------ | -------------: |
    |        Advertising      |        Regression       |
    |     Auto     |      Regression     |
