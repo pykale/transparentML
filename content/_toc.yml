@@ -100,7 +100,7 @@ parts:
     - file: 07-trees-ensembles/classification-trees
       title: Classification trees
     - file: 07-trees-ensembles/ensembles
-      title: Ensemble methods
+      title: Ensemble learning
     - file: 07-trees-ensembles/quiz-sum-ref
       title: Quiz & summary
   - file: 08-nb-glm-svm/overview
