@@ -9,10 +9,10 @@ Ready for review and feedback
 ```
 
 ```{admonition} Objectives
-- Understand the concepts and processes of hypothesis testing
-- Use hypothesis testing to evaluate and interpret the performance of machine learning models
-- Understand the software development process and reproducibility
-- Learn to use GitHub for version control and collaboration
+- Understand the concepts and processes of hypothesis testing.
+- Use hypothesis testing to evaluate and interpret the performance of machine learning models.
+- Understand the software development process and reproducibility.
+- Learn to use GitHub for version control and collaboration.
 ```
 
 **Expected time to complete**: 3 hours

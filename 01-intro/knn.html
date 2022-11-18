@@ -97,7 +97,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../index.html">
-   Ongoing live sessions
+   Overview
   </a>
  </li>
 </ul>
@@ -597,13 +597,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hyperparameter-tuning">
-     1.5.2.3. Hyperparameter tuning
+    <a class="reference internal nav-link" href="#visualisation-in-2d">
+     1.5.2.3. Visualisation in 2D
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#visulisation-in-2d">
-     1.5.2.4. Visulisation in 2D
+    <a class="reference internal nav-link" href="#hyperparameter-tuning">
+     1.5.2.4. Hyperparameter tuning
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -669,13 +669,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hyperparameter-tuning">
-     1.5.2.3. Hyperparameter tuning
+    <a class="reference internal nav-link" href="#visualisation-in-2d">
+     1.5.2.3. Visualisation in 2D
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#visulisation-in-2d">
-     1.5.2.4. Visulisation in 2D
+    <a class="reference internal nav-link" href="#hyperparameter-tuning">
+     1.5.2.4. Hyperparameter tuning
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -771,7 +771,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="load-data">
 <h3><span class="section-number">1.5.2.2. </span>Load data<a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h3>
-<p>Let us work on one of the classical dataset in machine learning: the <a class="reference external" href="https://en.wikipedia.org/wiki/Iris_flower_data_set">Iris flower dataset</a>. It can be loaded directly from the scikit-learn library. You can also click <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Iris.csv">Iris</a> to view the dataset directly in your browser.</p>
+<p>Let us work on one of the classical dataset in machine learning: the <a class="reference external" href="https://en.wikipedia.org/wiki/Iris_flower_data_set">Iris flower dataset</a>. It can be loaded directly from the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span> <span class="pre">library</span></code>. You can also click <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Iris.csv">Iris</a> to view the dataset directly in your browser.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
@@ -780,19 +780,38 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="hyperparameter-tuning">
-<h3><span class="section-number">1.5.2.3. </span>Hyperparameter tuning<a class="headerlink" href="#hyperparameter-tuning" title="Permalink to this headline">¶</a></h3>
-<p>In the KNN model, there is only one hyperparameter, the number of neighbors <span class="math notranslate nohighlight">\(K\)</span>, which is <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>. We set it to 15. In the following, we will study the effect of this hyperparameter on the model performance by examining five different values of <span class="math notranslate nohighlight">\(K\)</span>.</p>
-</div>
-<div class="section" id="visulisation-in-2d">
-<h3><span class="section-number">1.5.2.4. </span>Visulisation in 2D<a class="headerlink" href="#visulisation-in-2d" title="Permalink to this headline">¶</a></h3>
-<p>For the purpose of visulisation to get intuition, we will work with the first two features only so that we can do visualisation of the data samples in a 2D plot. We can take the first two features by <a class="reference external" href="https://pykale.github.io/transparentML/00-prereq/basic-python.html#indexing-and-slicing">indexing and slicing</a> as below.</p>
+<div class="section" id="visualisation-in-2d">
+<h3><span class="section-number">1.5.2.3. </span>Visualisation in 2D<a class="headerlink" href="#visualisation-in-2d" title="Permalink to this headline">¶</a></h3>
+<p>For the purpose of visualisation to get intuition, we will work with the first two features only so that we can do visualisation of the data samples in a 2D plot. We can take the first two features by <a class="reference external" href="https://pykale.github.io/transparentML/00-prereq/basic-python.html#indexing-and-slicing">indexing and slicing</a> as below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
-
-<span class="n">h</span> <span class="o">=</span> <span class="mf">0.02</span>  <span class="c1"># step size in the mesh</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us visualise the data samples in a 2D plot below using the <code class="docutils literal notranslate"><span class="pre">scatter</span></code> function from the <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> library. This is useful for getting intuition about the data. The colour of each data point corresponds to its label.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Set1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Sepal length&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Sepal width&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/knn_8_0.png" src="../_images/knn_8_0.png" />
+</div>
+</div>
+<p>Set up the <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.meshgrid.html"><code class="docutils literal notranslate"><span class="pre">meshgrid</span></code></a> for visualisation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="mf">0.02</span>  <span class="c1"># step size in the mesh</span>
 
 <span class="c1"># Create color maps</span>
 <span class="n">cmap_light</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">([</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;cyan&quot;</span><span class="p">,</span> <span class="s2">&quot;cornflowerblue&quot;</span><span class="p">])</span>
@@ -807,6 +826,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="hyperparameter-tuning">
+<h3><span class="section-number">1.5.2.4. </span>Hyperparameter tuning<a class="headerlink" href="#hyperparameter-tuning" title="Permalink to this headline">¶</a></h3>
+<p>In the KNN model, there is only one hyperparameter, the number of neighbors <span class="math notranslate nohighlight">\(K\)</span>, which is <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>. We set it to 15. In the following, we will study the effect of this hyperparameter on the model performance by examining five different values of <span class="math notranslate nohighlight">\(K\)</span>.</p>
 </div>
 <div class="section" id="training-and-testing">
 <h3><span class="section-number">1.5.2.5. </span>Training and testing<a class="headerlink" href="#training-and-testing" title="Permalink to this headline">¶</a></h3>
@@ -851,11 +874,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/knn_9_0.png" src="../_images/knn_9_0.png" />
-<img alt="../_images/knn_9_1.png" src="../_images/knn_9_1.png" />
-<img alt="../_images/knn_9_2.png" src="../_images/knn_9_2.png" />
-<img alt="../_images/knn_9_3.png" src="../_images/knn_9_3.png" />
-<img alt="../_images/knn_9_4.png" src="../_images/knn_9_4.png" />
+<img alt="../_images/knn_13_0.png" src="../_images/knn_13_0.png" />
+<img alt="../_images/knn_13_1.png" src="../_images/knn_13_1.png" />
+<img alt="../_images/knn_13_2.png" src="../_images/knn_13_2.png" />
+<img alt="../_images/knn_13_3.png" src="../_images/knn_13_3.png" />
+<img alt="../_images/knn_13_4.png" src="../_images/knn_13_4.png" />
 </div>
 </div>
 </div>

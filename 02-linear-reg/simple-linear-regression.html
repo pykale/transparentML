@@ -97,7 +97,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../index.html">
-   Ongoing live sessions
+   Overview
   </a>
  </li>
 </ul>
@@ -744,20 +744,20 @@ const thebe_selector_output = ".output, .cell_output"
 Requirement already satisfied: seaborn in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (0.12.1)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pandas&gt;=0.25 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from statsmodels) (1.5.1)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: scipy&gt;=1.3 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from statsmodels) (1.9.3)
 Requirement already satisfied: packaging&gt;=21.3 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from statsmodels) (21.3)
-Requirement already satisfied: scipy&gt;=1.3 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from statsmodels) (1.9.3)
-Requirement already satisfied: numpy&gt;=1.17 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from statsmodels) (1.23.4)
 Requirement already satisfied: patsy&gt;=0.5.2 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from statsmodels) (0.5.3)
+Requirement already satisfied: pandas&gt;=0.25 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from statsmodels) (1.5.1)
+Requirement already satisfied: numpy&gt;=1.17 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from statsmodels) (1.23.4)
+Requirement already satisfied: matplotlib!=3.6.1,&gt;=3.1 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from seaborn) (3.6.2)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: matplotlib!=3.6.1,&gt;=3.1 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from seaborn) (3.6.2)
-Requirement already satisfied: cycler&gt;=0.10 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from matplotlib!=3.6.1,&gt;=3.1-&gt;seaborn) (0.11.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: kiwisolver&gt;=1.0.1 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from matplotlib!=3.6.1,&gt;=3.1-&gt;seaborn) (1.4.4)
 Requirement already satisfied: pillow&gt;=6.2.0 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from matplotlib!=3.6.1,&gt;=3.1-&gt;seaborn) (9.3.0)
-Requirement already satisfied: python-dateutil&gt;=2.7 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from matplotlib!=3.6.1,&gt;=3.1-&gt;seaborn) (2.8.2)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from matplotlib!=3.6.1,&gt;=3.1-&gt;seaborn) (1.4.4)
-Requirement already satisfied: fonttools&gt;=4.22.0 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from matplotlib!=3.6.1,&gt;=3.1-&gt;seaborn) (4.38.0)
 Requirement already satisfied: contourpy&gt;=1.0.1 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from matplotlib!=3.6.1,&gt;=3.1-&gt;seaborn) (1.0.6)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from matplotlib!=3.6.1,&gt;=3.1-&gt;seaborn) (2.8.2)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from matplotlib!=3.6.1,&gt;=3.1-&gt;seaborn) (4.38.0)
+Requirement already satisfied: cycler&gt;=0.10 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from matplotlib!=3.6.1,&gt;=3.1-&gt;seaborn) (0.11.0)
 Requirement already satisfied: pyparsing&gt;=2.2.1 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from matplotlib!=3.6.1,&gt;=3.1-&gt;seaborn) (3.0.9)
 Requirement already satisfied: pytz&gt;=2020.1 in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from pandas&gt;=0.25-&gt;statsmodels) (2022.6)
 Requirement already satisfied: six in /opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages (from patsy&gt;=0.5.2-&gt;statsmodels) (1.16.0)
@@ -914,17 +914,17 @@ memory usage: 7.8 KB
 <div class="math notranslate nohighlight" id="equation-rssdef">
 <span class="eqno">(2.2)<a class="headerlink" href="#equation-rssdef" title="Permalink to this equation">¶</a></span>\[\text{RSS} = \sum_{i=1}^N (y_i - \hat{y}_i)^2 = \sum_{i=1}^N (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i)^2,\]</div>
 <p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the response <span class="math notranslate nohighlight">\(y\)</span>, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predicted response <span class="math notranslate nohighlight">\(\hat{y}\)</span>, and <span class="math notranslate nohighlight">\(x_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predictor <span class="math notranslate nohighlight">\(x\)</span>. The least squares estimates of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are given as a <a class="reference external" href="https://mathworld.wolfram.com/Closed-FormSolution.html">closed-form solution</a> by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2db35589-bf2e-4221-b069-4251e36615c8">
-<span class="eqno">(2.3)<a class="headerlink" href="#equation-2db35589-bf2e-4221-b069-4251e36615c8" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d8002f76-bc5c-47d9-bdae-a15579ad835c">
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-d8002f76-bc5c-47d9-bdae-a15579ad835c" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{\beta}_1 = \frac{\sum_{i=1}^N (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^N (x_i - \bar{x})^2},
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-aef7202f-b569-434e-b830-e69a7fb3fdb8">
-<span class="eqno">(2.4)<a class="headerlink" href="#equation-aef7202f-b569-434e-b830-e69a7fb3fdb8" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6b3f6695-2020-459d-971f-e9fa46e0da9a">
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-6b3f6695-2020-459d-971f-e9fa46e0da9a" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}.
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\bar{y}\)</span> are the sample means of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> respectively. The least squares estimates of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are obtained by minimising the RSS. The least squares line is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1a9cfb58-9dc2-4b16-9e5c-be40e2ed23bf">
-<span class="eqno">(2.5)<a class="headerlink" href="#equation-1a9cfb58-9dc2-4b16-9e5c-be40e2ed23bf" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-86c9ec82-53c9-4ab8-a3d5-e65b9ae53b31">
+<span class="eqno">(2.5)<a class="headerlink" href="#equation-86c9ec82-53c9-4ab8-a3d5-e65b9ae53b31" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x.
 \end{equation}\]</div>
 <p>The least squares line, also known as the <em>regression line</em>, is the straight line that minimises the sum of squared residuals.</p>
@@ -953,10 +953,10 @@ memory usage: 7.8 KB
 </div>
 <div class="section" id="example-model-fitting-and-visualisation-using-scikit-learn">
 <h2><span class="section-number">2.1.5. </span>Example: model fitting and visualisation using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code><a class="headerlink" href="#example-model-fitting-and-visualisation-using-scikit-learn" title="Permalink to this headline">¶</a></h2>
-<p>Now we use the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html"><code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> class in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code></a> to fit a linear regression model. The <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression.fit"><code class="docutils literal notranslate"><span class="pre">.fit()</span></code> method</a> takes two arguments, the first is the predictor variable and the second is the response variable. The <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> method returns an object that contains the estimated coefficients. The <code class="docutils literal notranslate"><span class="pre">.intercept_</span></code> and <code class="docutils literal notranslate"><span class="pre">.coef_</span></code> attributes of the fitted model can be used to obtain the estimated intercept (<span class="math notranslate nohighlight">\(\beta_0\)</span>) and slope (<span class="math notranslate nohighlight">\(\beta_1\)</span>) of the regression line.</p>
+<p>Now we use the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html"><code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> class in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code></a> to fit a linear regression model, in order to delve into the details of the a model that minimizes the residual sum of squares (RSS). The <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression.fit"><code class="docutils literal notranslate"><span class="pre">.fit()</span></code> method</a> takes two arguments, the first is the predictor variable and the second is the response variable. The <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> method returns an object that contains the estimated coefficients. The model generates the fit by minimizing the RSS between the observed targets in the dataset, and the targets predicted by the linear approximation. The <code class="docutils literal notranslate"><span class="pre">.intercept_</span></code> and <code class="docutils literal notranslate"><span class="pre">.coef_</span></code> attributes of the fitted model can be used to obtain the estimated intercept (<span class="math notranslate nohighlight">\(\beta_0\)</span>) and slope (<span class="math notranslate nohighlight">\(\beta_1\)</span>) of the regression line.</p>
 <!-- 
 Note that the text in the book describes the coefficients based on unnormalised data, whereas the plot shows the model based on normalised data. The latter is visually more appealing for explaining the concept of a minimum RSS. I think that, in order not to confuse the reader, the values on the axis of the `beta_0` coefficients have been changed to correspond with the text. The axes on the plots below are unaltered. -->
-<p>Firstly, fit a linear regression model. Before fitting, we centre the data by subtracting the mean of each variable from each observation via a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html"><code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code></a>. This is a common practice in machine learning.</p>
+<p>Firstly, fit a linear regression model. Before fitting, we centre the data by subtracting the mean of each variable from each observation via a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html"><code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code></a>. This is a common practice in machine learning called <a class="reference external" href="https://en.wikipedia.org/wiki/Feature_scaling">data normalization</a>, and essentially makes it easier for our model to learn from the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Regression coefficients (Ordinary Least Squares)</span>
@@ -970,6 +970,14 @@ Note that the text in the book describes the coefficients based on unnormalised 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean removed from input features: &quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">.</span><span class="n">mean_</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Regression model intercept (bias): &quot;</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Regression model slop (weight): &quot;</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+
+<span class="c1"># Plot the data and the regression line</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">())</span>
+<span class="n">y_vals</span> <span class="o">=</span> <span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span> <span class="o">*</span> <span class="n">x_vals</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -979,6 +987,10 @@ Regression model intercept (bias):  14.0225
 Regression model slop (weight):  [0.04753664]
 </pre></div>
 </div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f078a3381f0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/simple-linear-regression_13_2.png" src="../_images/simple-linear-regression_13_2.png" />
 </div>
 </div>
 <p>Check the input data.</p>
@@ -994,7 +1006,8 @@ Regression model slop (weight):  [0.04753664]
 </div>
 </div>
 </div>
-<p>Create grid coordinates for plotting and compute the minimum of RSS.</p>
+<p>Now let’s visualise the RSS value for different choices of intercept <span class="math notranslate nohighlight">\(\beta_0\)</span> and slope <span class="math notranslate nohighlight">\(\beta_1\)</span>.</p>
+<p>First, create grid coordinates for plotting and computing the minimum of RSS.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beta_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
@@ -1065,6 +1078,7 @@ Regression model slop (weight):  [0.04753664]
 <img alt="../_images/simple-linear-regression_19_0.png" src="../_images/simple-linear-regression_19_0.png" />
 </div>
 </div>
+<p>On the right, we can see a 3D representation of RSS as a function of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>. The minimum of RSS is at the point where <span class="math notranslate nohighlight">\(\beta_0 = 14.0225\)</span> and <span class="math notranslate nohighlight">\(\beta_1 = 0.0475\)</span>. The left plot shows a 2D top-down contour of the 3D plot, showing that as we move away from the minimum, the RSS value increases.</p>
 </div>
 <div class="section" id="example-explanation-of-system-transparency">
 <h2><span class="section-number">2.1.6. </span>Example explanation of system transparency<a class="headerlink" href="#example-explanation-of-system-transparency" title="Permalink to this headline">¶</a></h2>
@@ -1109,7 +1123,7 @@ Predicted sales for TV = 147.0425 (mean):  14.0225
 Predicted sales for TV = 200:  16.539921635731645
 </pre></div>
 </div>
-<img alt="../_images/simple-linear-regression_21_1.png" src="../_images/simple-linear-regression_21_1.png" />
+<img alt="../_images/simple-linear-regression_22_1.png" src="../_images/simple-linear-regression_22_1.png" />
 </div>
 </div>
 <p>In the above example, we learnt a linear regression model <span class="math notranslate nohighlight">\(f(x)\)</span> with two parameters, <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>, from the data, where</p>
@@ -1129,8 +1143,8 @@ Predicted sales for TV = 200:  16.539921635731645
 <div class="section" id="assessing-model-accuracy-via-r-2">
 <h2><span class="section-number">2.1.7. </span>Assessing model accuracy via <span class="math notranslate nohighlight">\(R^2\)</span><a class="headerlink" href="#assessing-model-accuracy-via-r-2" title="Permalink to this headline">¶</a></h2>
 <p>The accuracy of the linear model is dependent on the variability of the response <span class="math notranslate nohighlight">\(y\)</span> and the predictor <span class="math notranslate nohighlight">\(x\)</span>. The variability of <span class="math notranslate nohighlight">\(y\)</span> is measured by the variance of <span class="math notranslate nohighlight">\(y\)</span>, denoted by <span class="math notranslate nohighlight">\(\sigma_y^2\)</span>. The variability of <span class="math notranslate nohighlight">\(x\)</span> is measured by the variance of <span class="math notranslate nohighlight">\(x\)</span>, denoted by <span class="math notranslate nohighlight">\(\sigma_x^2\)</span>. The <a class="reference external" href="https://en.wikipedia.org/wiki/Coefficient_of_determination">coefficient of determination</a>, denoted by <span class="math notranslate nohighlight">\(R^2\)</span>, is defined as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ac21877e-f688-4595-8bbf-75a6edcc5df3">
-<span class="eqno">(2.6)<a class="headerlink" href="#equation-ac21877e-f688-4595-8bbf-75a6edcc5df3" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a8ec7c76-9852-4b10-8aff-412346ebf798">
+<span class="eqno">(2.6)<a class="headerlink" href="#equation-a8ec7c76-9852-4b10-8aff-412346ebf798" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 R^2 = \frac{\text{TSS} - \text{RSS}}{\text{TSS}} = 1 - \frac{\text{RSS}}{\text{TSS}}
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\text{TSS} = \sum_{i=1}^N (y_i - \bar{y})^2\)</span> <em>is the total sum of squares</em>. Dividing the RSS by the total number of training samples gives the <em>mean squared error</em> (MSE) of the model. The MSE is the average squared distance between the observed response values and the response values predicted by the model. The MSE is also known as the <em>mean squared prediction error</em> (MSPE). The MSE is defined as</p>
@@ -1186,19 +1200,19 @@ Mean squared error:  10.512652915656757
 <h2><span class="section-number">2.1.8. </span>Standard errors and residual standard error<a class="headerlink" href="#standard-errors-and-residual-standard-error" title="Permalink to this headline">¶</a></h2>
 <p>*Advanced: advanced contents are optional.</p>
 <p>The linear relationship between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> can be written in an equation, rather than an approximation earlier in Equation <a class="reference internal" href="#equation-y-approx-x">(2.1)</a>, as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-01117c5c-5860-4553-87c9-37665393d959">
-<span class="eqno">(2.8)<a class="headerlink" href="#equation-01117c5c-5860-4553-87c9-37665393d959" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4664bf34-f6f6-4f7b-a9e7-035b5d88e6fb">
+<span class="eqno">(2.8)<a class="headerlink" href="#equation-4664bf34-f6f6-4f7b-a9e7-035b5d88e6fb" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 y = \beta_0 + \beta_1 x + \epsilon,
 \end{equation}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\epsilon\)</span> is a random error term that represents the difference (i.e. the error, unexplained part) between the observed response <span class="math notranslate nohighlight">\(y\)</span> and the true response <span class="math notranslate nohighlight">\(\beta_0 + \beta_1 x\)</span>. The error term <span class="math notranslate nohighlight">\(\epsilon\)</span> is assumed to be normally distributed with mean zero and constant variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. The coefficient estimates <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> are only estimates of the true coefficients <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>. We can quantify the accuracy of the estimates by computing the <a class="reference external" href="https://en.wikipedia.org/wiki/Standard_error"><em>standard error</em></a> of the estimates. The following formulars can be used to compute the standard error associated with <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-466f64e3-4c70-4334-a9c9-7973cfff507f">
-<span class="eqno">(2.9)<a class="headerlink" href="#equation-466f64e3-4c70-4334-a9c9-7973cfff507f" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<p>where <span class="math notranslate nohighlight">\(\epsilon\)</span> is a random error term that represents the difference (i.e. the error, unexplained part) between the observed response <span class="math notranslate nohighlight">\(y\)</span> and the true response <span class="math notranslate nohighlight">\(\beta_0 + \beta_1 x\)</span>. The error term <span class="math notranslate nohighlight">\(\epsilon\)</span> is assumed to be normally distributed with mean zero and constant variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. The coefficient estimates <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> are only estimates of the true coefficients <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>. We can quantify the accuracy of the estimates by computing the <a class="reference external" href="https://en.wikipedia.org/wiki/Standard_error"><em>standard error</em></a> of the estimates. The following formulas can be used to compute the standard error associated with <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-78f248f4-0c01-4e74-993c-e80d50c72754">
+<span class="eqno">(2.9)<a class="headerlink" href="#equation-78f248f4-0c01-4e74-993c-e80d50c72754" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{SE}(\hat{\beta}_{1})^2 = \frac{\sigma^2}{\sum_{i=1}^N (x_i - \bar{x})^2}, \quad \text{SE}(\hat{\beta}_0)^2 = \sigma^2 \left[\frac{1}{N} + \frac{\bar{x}^2}{\sum_{i=1}^N (x_i - \bar{x})^2} \right],
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\sigma^2\)</span> is an estimate of the variance of the error term <span class="math notranslate nohighlight">\(\epsilon= y - (\beta_0 + \beta_1 x) \)</span>, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predicted response <span class="math notranslate nohighlight">\(\hat{y}\)</span>, and <span class="math notranslate nohighlight">\(x_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predictor <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\bar{y}\)</span> are the sample means of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> respectively.</p>
 <p>In general, <span class="math notranslate nohighlight">\(\sigma^2\)</span> is unknown, so we need to estimate it from the <em>residual standard error</em> (RSE) below</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ea204aeb-a9c1-4743-ac66-aa40c49b14f3">
-<span class="eqno">(2.10)<a class="headerlink" href="#equation-ea204aeb-a9c1-4743-ac66-aa40c49b14f3" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f7fa976d-dfaa-4ee7-a404-6a7d7e1586a2">
+<span class="eqno">(2.10)<a class="headerlink" href="#equation-f7fa976d-dfaa-4ee7-a404-6a7d7e1586a2" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{RSE} = \sqrt{\frac{1}{N-2}\text{RSS}} = \sqrt{\frac{1}{N-2} \sum_{i=1}^N (y_i - \hat{y}_i)^2}.
 \end{equation}\]</div>
 <p>RSE is also <em>another way to assess the quality of a linear regression fit</em> (in terms of error). Due to the presence of the error term <span class="math notranslate nohighlight">\(\epsilon\)</span>, perfect prediction is not possible even if we know the true regression line (unless <span class="math notranslate nohighlight">\(\epsilon\)</span> is zero, rarely the case in practice). The RSE is an estimate of the standard deviation of <span class="math notranslate nohighlight">\(\epsilon\)</span>. It is the average amount that the response will deviate from the true regression line, measuring the lack of fit of the model to the data. The smaller the RSE, the better the model fits the data.</p>
@@ -1207,11 +1221,11 @@ y = \beta_0 + \beta_1 x + \epsilon,
 <h2><span class="section-number">2.1.9. </span>Confidence intervals<a class="headerlink" href="#confidence-intervals" title="Permalink to this headline">¶</a></h2>
 <p>The standard error indicates the average amount that an estimate differs from its actual value. Thus, the standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> is a measure of the average amount that <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> will deviate from the its true value <span class="math notranslate nohighlight">\(\beta_1\)</span>. The standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> is a measure of the average amount that <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> will deviate from the its true value <span class="math notranslate nohighlight">\(\beta_0\)</span>.</p>
 <p>Standard errors can be used to compute <a class="reference external" href="https://en.wikipedia.org/wiki/Confidence_interval">confidence intervals</a>. A 95% is defined as a range of values such that with 95 % probability, the range (interval) will contain the true unknown value of the parameter. The range is defined in terms of lower and upper limits computed from the sample of data. For linear regression, the 95% confidence intervals for <span class="math notranslate nohighlight">\(\beta_1\)</span> and <span class="math notranslate nohighlight">\(\beta_0\)</span> approximately takes the form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-48ddfd2d-4a01-4f12-b281-6ae3b7fd00f8">
-<span class="eqno">(2.11)<a class="headerlink" href="#equation-48ddfd2d-4a01-4f12-b281-6ae3b7fd00f8" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-cc61be2f-f025-49a0-8ce3-89fa87b89991">
+<span class="eqno">(2.11)<a class="headerlink" href="#equation-cc61be2f-f025-49a0-8ce3-89fa87b89991" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{\beta}_1 \pm 2 \times \text{SE}(\hat{\beta}_1),\:\: \hat{\beta}_0 \pm 2 \times \text{SE}(\hat{\beta}_0).
 \end{equation}\]</div>
-<p>The above can be interpreted as there is an approximately 95% chance that the interview <span class="math notranslate nohighlight">\([\hat{\beta}_1 - 2 \times \text{SE}(\hat{\beta}_1), \hat{\beta}_1 + 2 \times \text{SE}(\hat{\beta}_1)] will contain the true value of \)</span>\beta_1<span class="math notranslate nohighlight">\(, and the interval \)</span>[\hat{\beta}_0 - 2 \times \text{SE}(\hat{\beta}_0), \hat{\beta}_0 + 2 \times \text{SE}(\hat{\beta}_0)]<span class="math notranslate nohighlight">\( will contain the true value of \)</span>\beta_0$.</p>
+<p>The above can be interpreted as there is an approximately 95% chance that the interview <span class="math notranslate nohighlight">\([\hat{\beta}_1 - 2 \times \text{SE}(\hat{\beta}_1), \hat{\beta}_1 + 2 \times \text{SE}(\hat{\beta}_1)]\)</span> will contain the true value of <span class="math notranslate nohighlight">\(\beta_1\)</span>, and the interval <span class="math notranslate nohighlight">\([\hat{\beta}_0 - 2 \times \text{SE}(\hat{\beta}_0), \hat{\beta}_0 + 2 \times \text{SE}(\hat{\beta}_0)]\)</span> will contain the true value of <span class="math notranslate nohighlight">\(\beta_0\)</span>.</p>
 <p>Run the following code to compute the statistics, including the confidence intervals, of the learnt model using <code class="docutils literal notranslate"><span class="pre">statesmodels</span></code> (page 67 &amp; Table 3.1 &amp; 3.2 of the textbook).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1320,10 +1334,10 @@ Regression model slop (weight):  [-0.05307302]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/simple-linear-regression_44_0.png" src="../_images/simple-linear-regression_44_0.png" />
+<img alt="../_images/simple-linear-regression_45_0.png" src="../_images/simple-linear-regression_45_0.png" />
 </div>
 </div>
-<p><strong>3</strong>. We learned a linear regression model <span class="math notranslate nohighlight">\(f(x)\)</span> with two parameters weight (<span class="math notranslate nohighlight">\(\beta_1\)</span>) and bias (<span class="math notranslate nohighlight">\(\beta_0\)</span>), where we already have the weight and bias of the model from <strong><a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/simple-linear-regression.html#assessing-model-accuracy-via-r-2:~:text=2.1.10.%20Exercise-,1.,-This%20question%20involves">Exercise-1</a></strong>. Using these two estimated parameters, we can examine the system logic of the simple linear regression model to reveal its system transparency. Using the below linear regression equation, predict the sales when the price = 77 and 134. Visualize them on the regression plot. <strong>Hint</strong>: Sec Section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/simple-linear-regression.html#example-explanation-of-system-transparency">2.1.6</a>.</p>
+<p><strong>3</strong>. We learnt a linear regression model <span class="math notranslate nohighlight">\(f(x)\)</span> with two parameters weight (<span class="math notranslate nohighlight">\(\beta_1\)</span>) and bias (<span class="math notranslate nohighlight">\(\beta_0\)</span>), where we already have the weight and bias of the model from <strong><a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/simple-linear-regression.html#assessing-model-accuracy-via-r-2:~:text=2.1.10.%20Exercise-,1.,-This%20question%20involves">Exercise-1</a></strong>. Using these two estimated parameters, we can examine the system logic of the simple linear regression model to reveal its system transparency. Using the below linear regression equation, predict the sales when the price = 77 and 134. Visualise them on the regression plot. <strong>Hint</strong>: Sec Section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/simple-linear-regression.html#example-explanation-of-system-transparency">2.1.6</a>.</p>
 <div class="math notranslate nohighlight">
 \[
 f(x) = \beta_1 \times (x - \bar{x}) + \beta_0
@@ -1368,7 +1382,7 @@ f(x) = \beta_1 \times (x - \bar{x}) + \beta_0
 Predicted sales for Price = 134:  6.530130698274568
 </pre></div>
 </div>
-<img alt="../_images/simple-linear-regression_48_1.png" src="../_images/simple-linear-regression_48_1.png" />
+<img alt="../_images/simple-linear-regression_49_1.png" src="../_images/simple-linear-regression_49_1.png" />
 </div>
 </div>
 <p><strong>4</strong>. Create the grid coordinates for plotting and compute the minimum RSS of the trained model from <strong><a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/simple-linear-regression.html#assessing-model-accuracy-via-r-2:~:text=2.1.10.%20Exercise-,1.,-This%20question%20involves">Exercise-1</a></strong>. <strong>Hint</strong>: See Section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/simple-linear-regression.html#example-model-fitting-and-visualisation-using-scikit-learn">2.1.5</a>.</p>
@@ -1454,10 +1468,10 @@ Predicted sales for Price = 134:  6.530130698274568
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/simple-linear-regression_56_0.png" src="../_images/simple-linear-regression_56_0.png" />
+<img alt="../_images/simple-linear-regression_57_0.png" src="../_images/simple-linear-regression_57_0.png" />
 </div>
 </div>
-<p><strong>6.</strong> Evaluate the learned model from <strong><a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/simple-linear-regression.html#assessing-model-accuracy-via-r-2:~:text=2.1.10.%20Exercise-,1.,-This%20question%20involves">Exercise-1</a></strong> accuracy using <span class="math notranslate nohighlight">\(R^2\)</span> score and Means Squared Error (MSE). <strong>Hint</strong>: See Section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/simple-linear-regression.html#assessing-model-accuracy-via-r-2">2.1.7</a>.</p>
+<p><strong>6.</strong> Evaluate the learnt model from <strong><a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/simple-linear-regression.html#assessing-model-accuracy-via-r-2:~:text=2.1.10.%20Exercise-,1.,-This%20question%20involves">Exercise-1</a></strong> accuracy using <span class="math notranslate nohighlight">\(R^2\)</span> score and Means Squared Error (MSE). <strong>Hint</strong>: See Section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/simple-linear-regression.html#assessing-model-accuracy-via-r-2">2.1.7</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>

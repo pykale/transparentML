@@ -97,7 +97,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../index.html">
-   Ongoing live sessions
+   Overview
   </a>
  </li>
 </ul>
@@ -850,7 +850,7 @@ T = \frac{\hat{\mu}_t - \hat{\mu}_c}{\sqrt{\frac{s^2_t}{D_t} + \frac{s^2_c}{D_c}
 T = \frac{\hat{\mu} - \mu_0}{\frac{s}{\sqrt{D}}},
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\mu_0\)</span> is the hypothesised (population) mean, <span class="math notranslate nohighlight">\(\hat{\mu}\)</span> is the sample mean, and <span class="math notranslate nohighlight">\(s\)</span> is the sample standard deviation.</p>
-<p>The one-sample <span class="math notranslate nohighlight">\(t\)</span>-test compares one sample mean to a null hypothesis value. Thw two-sample <span class="math notranslate nohighlight">\(t\)</span>-test compares two sample means to each other, i.e. considering two independent groups. The paired <span class="math notranslate nohighlight">\(t\)</span>-test compares two sample means to each other, but the two groups are related to each other, i.e. “paired”, e.g., the same mice before and after treatment. The paired <span class="math notranslate nohighlight">\(t\)</span>-test simply calculates the difference between paired groups and then performs the one-sample <span class="math notranslate nohighlight">\(t\)</span>-test on the differences.</p>
+<p>The one-sample <span class="math notranslate nohighlight">\(t\)</span>-test compares one sample mean to a null hypothesis value. The two-sample <span class="math notranslate nohighlight">\(t\)</span>-test compares two sample means to each other, i.e. considering two independent groups. The paired <span class="math notranslate nohighlight">\(t\)</span>-test compares two sample means to each other, but the two groups are related to each other, i.e. “paired”, e.g., the same mice before and after treatment. The paired <span class="math notranslate nohighlight">\(t\)</span>-test simply calculates the difference between paired groups and then performs the one-sample <span class="math notranslate nohighlight">\(t\)</span>-test on the differences.</p>
 </div>
 <div class="section" id="step-3-compute-a-p-value">
 <h3><span class="section-number">4.1.2.3. </span>Step 3: Compute a <span class="math notranslate nohighlight">\(p\)</span>-value<a class="headerlink" href="#step-3-compute-a-p-value" title="Permalink to this headline">¶</a></h3>
@@ -1095,7 +1095,7 @@ Variable 59 p-value:  0.9970817828876111
 <p>Let us consider the more complicated case where we wish to test <span class="math notranslate nohighlight">\(M\)</span> null hypotheses, <span class="math notranslate nohighlight">\(H_0^1, H_0^2, \ldots, H_0^M\)</span>.</p>
 <div class="section" id="case-study-a-sure-win-stockbroker">
 <h3><span class="section-number">4.1.5.1. </span>Case study: a “sure-win” stockbroker?<a class="headerlink" href="#case-study-a-sure-win-stockbroker" title="Permalink to this headline">¶</a></h3>
-<p>A stockbroker wishes to drum up new clients by convincing them of his/her trading acumen. S/he tells 1,024 (i.e. <span class="math notranslate nohighlight">\(2^10\)</span>) potential new clients that s/he can correctly predict whether Apple’s stock price will increase or decrease for 10 days running. For such a binary outcome, we have <span class="math notranslate nohighlight">\(2^10=1024\)</span> possibilities for the course of these 10 days. Therefore, s/he emails each client one of these 1024 possibilities. Although the vast majority of his/her potential clients will find that his/her predictions are no better than chance, one of his/her potential clients will be really impressed to find that his/her predictions were correct for <em>ALL 10 of the days!</em> And so the stockbroker gains a new client (and possible more when this client spreads the news).</p>
+<p>A stockbroker wishes to drum up new clients by convincing them of his/her trading acumen. S/he tells 1,024 (i.e. <span class="math notranslate nohighlight">\(2^{10}\)</span>) potential new clients that s/he can correctly predict whether Apple’s stock price will increase or decrease for 10 days running. For such a binary outcome, we have <span class="math notranslate nohighlight">\(2^{10}=1024\)</span> possibilities for the course of these 10 days. Therefore, s/he emails each client one of these 1024 possibilities. Although the vast majority of his/her potential clients will find that his/her predictions are no better than chance, one of his/her potential clients will be really impressed to find that his/her predictions were correct for <em>ALL 10 of the days!</em> And so the stockbroker gains a new client (and possible more when this client spreads the news).</p>
 <p>This is <em>part of the reason why we receive so many spam emails/calls</em>. If you make a lot of guesses (“predictions”), then you are bound to get some right by chance.</p>
 </div>
 <div class="section" id="the-challenge-of-multiple-hypothesis-testing">

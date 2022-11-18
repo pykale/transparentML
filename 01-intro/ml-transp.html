@@ -95,7 +95,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../index.html">
-   Ongoing live sessions
+   Overview
   </a>
  </li>
 </ul>
@@ -694,6 +694,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Transparency and accountability are closely related and reinforce each other. Accountability mechanisms depend on the
 availability of information about an ML system and accountability is key motivation for transparency.
 Transparency also acts as an enabler to other ML/AI ethics principles including fairness, sustainability, and safety.</p>
+<p>In the context of research, transparency is important if you want to interpret the results of your ML system, and understand how it works. It is also important if you want to explain the results to your research community, and it can even help you verify your results.</p>
 </div>
 <div class="section" id="what-is-transparency">
 <h2><span class="section-number">1.4.2. </span>What is transparency?<a class="headerlink" href="#what-is-transparency" title="Permalink to this headline">¶</a></h2>
@@ -756,10 +757,10 @@ representation. Three types of information are considered relevant for system tr
 <p>This second distinction intersects with the first one, between system and process transparency.
 System logic information or process information can be accessible to internal stakeholders,
 external stakeholders, or both. The resulting four-fold transparency typology is summarised
-in <a class="reference internal" href="#fig6-ai-transparency"><span class="std std-numref">Fig. 1.3</span></a> below.</p>
+in <a class="reference internal" href="#fig6-ai-transparency"><span class="std std-numref">Fig. 1.4</span></a> below.</p>
 <div class="figure align-default" id="fig6-ai-transparency">
 <img alt="../_images/fig6-ai-transparency.png" src="../_images/fig6-ai-transparency.png" />
-<p class="caption"><span class="caption-number">Fig. 1.3 </span><span class="caption-text">AI transparency typology <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id7" title="Florian Ostmann and Cosmina Dorobantu. AI in financial services. Alan Turing Institute. doi, 2021. https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf.">Ostmann and Dorobantu, 2021</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#fig6-ai-transparency" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1.4 </span><span class="caption-text">AI transparency typology <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id7" title="Florian Ostmann and Cosmina Dorobantu. AI in financial services. Alan Turing Institute. doi, 2021. https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf.">Ostmann and Dorobantu, 2021</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#fig6-ai-transparency" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="reasons-for-accessing-information">
@@ -767,10 +768,10 @@ in <a class="reference internal" href="#fig6-ai-transparency"><span class="std s
 <p>As mentioned above, transparency is a <em>relative</em> concept. Not all types of information about an ML system will be equally important to all types of stakeholders. The reasons that underpin stakeholders’ interests in information about a given system (i.e. their ‘transparency interests’) are important in determining the types of information they may seek access to. When these reasons differ between stakeholders, the definition of what constitutes relevant information can change. For example, customers faced with an ML system used to make credit eligibility decisions may wish to understand the impact of, say, a 3% pay raise on their credit eligibility. The answer to this question can involve types of information that may not be relevant to the transparency interests, say, of regulators, which may be motivated by the goal of understanding
 different aspects of system performance and compliance.</p>
 <p>Stakeholders’ transparency interests can differ even when their reasons for seeking information are the same. For example, a risk and compliance officer may seek information about an ML system for the same reasons and look for answers to the same questions as a different internal stakeholder (eg a customer service representative) or an external stakeholder (eg a member of the public). Each of these stakeholders, however, might expect different levels of detail.</p>
-<p>Figure <a class="reference internal" href="#fig7-ai-transparency"><span class="std std-numref">Fig. 1.4</span></a> summarises the three key questions of AI transparency so far.</p>
+<p>Figure <a class="reference internal" href="#fig7-ai-transparency"><span class="std std-numref">Fig. 1.5</span></a> summarises the three key questions of AI transparency so far.</p>
 <div class="figure align-default" id="fig7-ai-transparency">
 <img alt="../_images/fig7-ai-transparency.png" src="../_images/fig7-ai-transparency.png" />
-<p class="caption"><span class="caption-number">Fig. 1.4 </span><span class="caption-text">Summary of the three key questions of transparency <span id="id4">[<a class="reference internal" href="../appendix/bibliography.html#id7" title="Florian Ostmann and Cosmina Dorobantu. AI in financial services. Alan Turing Institute. doi, 2021. https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf.">Ostmann and Dorobantu, 2021</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#fig7-ai-transparency" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1.5 </span><span class="caption-text">Summary of the three key questions of transparency <span id="id4">[<a class="reference internal" href="../appendix/bibliography.html#id7" title="Florian Ostmann and Cosmina Dorobantu. AI in financial services. Alan Turing Institute. doi, 2021. https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf.">Ostmann and Dorobantu, 2021</a>]</span> (maybe redraw later).</span><a class="headerlink" href="#fig7-ai-transparency" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="interpretability-flexibility-trade-off">
 <h3><span class="section-number">1.4.7.1. </span>Interpretability-flexibility trade-off<a class="headerlink" href="#interpretability-flexibility-trade-off" title="Permalink to this headline">¶</a></h3>
@@ -778,7 +779,7 @@ different aspects of system performance and compliance.</p>
 <p>A trade-off between model flexibility and interpretability is shown in the figure below.</p>
 <div class="figure align-default" id="fig-trade-off-interpretable-flexible">
 <a class="reference internal image-reference" href="../_images/fig2_7.png"><img alt="../_images/fig2_7.png" src="../_images/fig2_7.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1.5 </span><span class="caption-text">A trade-off between model flexibility and interpretability <span id="id5">[<a class="reference internal" href="../appendix/bibliography.html#id6" title="Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An Introduction to Statistical Learning. Springer, 2nd edition, 2021. https://www.statlearning.com/.">James <em>et al.</em>, 2021</a>]</span>.</span><a class="headerlink" href="#fig-trade-off-interpretable-flexible" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1.6 </span><span class="caption-text">A trade-off between model flexibility and interpretability <span id="id5">[<a class="reference internal" href="../appendix/bibliography.html#id6" title="Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An Introduction to Statistical Learning. Springer, 2nd edition, 2021. https://www.statlearning.com/.">James <em>et al.</em>, 2021</a>]</span>.</span><a class="headerlink" href="#fig-trade-off-interpretable-flexible" title="Permalink to this image">¶</a></p>
 </div>
 <p>The decision to limit model complexity for the sake of interpretability is often portrayed as a tradeoff with model accuracy. You may find figures look like the above but replacing flexibility with accuracy. The basis for this argument is the assumption that more complex models have higher accuracy than simpler ones. Yet, this assumption is not always true. In many modelling contexts, interpretable models can be designed to achieve the same or comparable levels of accuracy as models that would be considered uninterpretable. Significant research efforts are underway to advance the field of <em>interpretable machine learning</em>. Over time, these research efforts can be expected to further reduce the range of contexts in which interpretability-accuracy tradeoffs are perceived to exist.</p>
 <p>Decisions in favour of interpretability do not necessarily come at the expense of
@@ -813,10 +814,8 @@ reasons often play a prominent role in discussions about the disclosure of infor
 </pre></div>
 </div>
 <p><em>Compare your answer with the solution below</em></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```{toggle}
-**b. False**
-```
-</pre></div>
+<div class="toggle docutils container">
+<p><strong>b. False</strong></p>
 </div>
 <p><strong>2</strong>. Transparency acts as an enabler to other ML/AI ethics principles.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   a. True
@@ -825,10 +824,8 @@ reasons often play a prominent role in discussions about the disclosure of infor
 </pre></div>
 </div>
 <p><em>Compare your answer with the solution below</em></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```{toggle}
-**a. True**
-```
-</pre></div>
+<div class="toggle docutils container">
+<p><strong>a. True</strong></p>
 </div>
 <p><strong>3</strong>. Transparency is a property of the information.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   a. True
@@ -837,10 +834,8 @@ reasons often play a prominent role in discussions about the disclosure of infor
 </pre></div>
 </div>
 <p><em>Compare your answer with the solution below</em></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```{toggle}
-**b. False**
-```
-</pre></div>
+<div class="toggle docutils container">
+<p><strong>b. False</strong></p>
 </div>
 <p><strong>4</strong>. Transparency is not a fixed property of ML systems.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   a. True
@@ -849,10 +844,8 @@ reasons often play a prominent role in discussions about the disclosure of infor
 </pre></div>
 </div>
 <p><em>Compare your answer with the solution below</em></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```{toggle}
-**a. True**
-```
-</pre></div>
+<div class="toggle docutils container">
+<p><strong>a. True</strong></p>
 </div>
 <p><strong>5</strong>. Deep learning models has high interpretability but low flexibility.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   a. True
@@ -861,10 +854,8 @@ reasons often play a prominent role in discussions about the disclosure of infor
 </pre></div>
 </div>
 <p><em>Compare your answer with the solution below</em></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```{toggle}
-**b. False**
-```
-</pre></div>
+<div class="toggle docutils container">
+<p><strong>b. False</strong></p>
 </div>
 <p><strong>6</strong>. Stakeholder’s transparency interests can differ even when their reasons for seeking information are the same.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   a. True
@@ -873,10 +864,8 @@ reasons often play a prominent role in discussions about the disclosure of infor
 </pre></div>
 </div>
 <p><em>Compare your answer with the solution below</em></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```{toggle}
-**a. True**
-```
-</pre></div>
+<div class="toggle docutils container">
+<p><strong>a. True</strong></p>
 </div>
 </div>
 </div>

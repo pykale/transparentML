@@ -97,7 +97,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../index.html">
-   Ongoing live sessions
+   Overview
   </a>
  </li>
 </ul>
@@ -673,12 +673,12 @@ const thebe_selector_output = ".output, .cell_output"
 <h1>Numerical programming with <code class="docutils literal notranslate"><span class="pre">numpy</span></code><a class="headerlink" href="#numerical-programming-with-numpy" title="Permalink to this headline">¶</a></h1>
 <p>In python we can use the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> package to perform basic matrix operations. The <code class="docutils literal notranslate"><span class="pre">numpy</span></code> package is a fundamental package for scientific computing with Python. It contains among other things:</p>
 <ul class="simple">
-<li><p>a powerful N-dimensional array object</p></li>
-<li><p>sophisticated (broadcasting) functions</p></li>
-<li><p>a collection of routines for linear algebra, Fourier transform, and random number generation</p></li>
-<li><p>a collection of routines for numerical integration and optimization</p></li>
-<li><p>key tools for working with numerical data in Python</p></li>
-<li><p>support for large, multi-dimensional arrays and matrices</p></li>
+<li><p>A powerful N-dimensional array object.</p></li>
+<li><p>Sophisticated (broadcasting) functions.</p></li>
+<li><p>A collection of routines for linear algebra, Fourier transform, and random number generation.</p></li>
+<li><p>A collection of routines for numerical integration and optimization.</p></li>
+<li><p>Key tools for working with numerical data in Python.</p></li>
+<li><p>Support for large, multi-dimensional arrays and matrices.</p></li>
 </ul>
 <div class="section" id="creating-matrices-arrays">
 <h2>Creating matrices/arrays<a class="headerlink" href="#creating-matrices-arrays" title="Permalink to this headline">¶</a></h2>
@@ -797,11 +797,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4 2 5 6 6]
-[[0.0009515  0.80594403 0.52291827]
- [0.44064841 0.48925996 0.57758619]]
-[ 1.56257051 -0.56590257  0.7728396   1.3747943  -1.28898168]
-[21.61648691 19.44869556 20.75423022 21.41999748 18.73378331]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2 7 2 9 0]
+[[0.508263   0.49353995 0.43185697]
+ [0.04140735 0.38333455 0.53480797]]
+[-0.01259264 -0.58814742  0.26350698 -0.66278752 -0.07005657]
+[20.04077619 19.54541993 20.24837984 19.29477166 20.07112344]
 </pre></div>
 </div>
 </div>
@@ -825,7 +825,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="basic-matrix-operations">
 <h2>Basic matrix operations<a class="headerlink" href="#basic-matrix-operations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Transpose</p></li>
+<li><p>Transpose a matrix (array).</p></li>
 </ul>
 <p>The <code class="docutils literal notranslate"><span class="pre">T</span></code> attribute or <code class="docutils literal notranslate"><span class="pre">transpose()</span></code> method can be used to transpose an array.</p>
 <div class="cell docutils container">
@@ -1122,10 +1122,10 @@ The min value of the array x is:  9
 </div>
 </div>
 </div>
-<p>Boolean indexing</p>
+<p>Boolean indexing. There are other ways to let Python keep all rows except certain indices.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># there are other ways to let Python keep all rows except certain index. For example, we could also use boolean.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># index using a boolean value</span>
 <span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">4</span><span class="p">,),</span> <span class="nb">bool</span><span class="p">)</span>
 <span class="n">ind</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ind</span><span class="p">)</span>

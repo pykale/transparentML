@@ -6,11 +6,13 @@ Complete [**Quiz-0**](https://docs.google.com/forms/d/e/1FAIpQLScuoQvL2b5-6HFcom
 
 ## Summary
 
-In this topic, you learned:
-- Basic linear algebra and matrix operations
-- Basic Python syntax
-- Using `numpy` and `pandas` packages to perform basic matrix operations and data analysis
-- Using `matplotlib` package to plot graphics
+In this topic, you learnt:
+- Basic linear algebra and matrix operations.
+- Basic Python syntax.
+- Using `numpy` and `pandas` packages to perform basic matrix operations and data analysis.
+- Using `matplotlib` package to plot graphics.
+
+Now you have all the core skills you need to move on to primary course!
 
 ## References and further reading
 

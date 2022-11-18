@@ -1,16 +1,12 @@
-# Ongoing live sessions
-
-**[Session 1](https://meet.google.com/nfh-pyuj-fuh)**: 10:00 - 13:00 Tuesday 22nd November
-
-**[Session 2](https://meet.google.com/wxt-jdsb-dyg)**: 15:00 - 17:00 Wednesday 23rd November
-
-**[Session 3](https://meet.google.com/uzn-cyrg-wxp)**: 15:00 - 17:00 Thursday 24rd November
-
-**[Session 4](https://meet.google.com/fpy-ozcv-rxz)**: 10:00 - 12:00 Friday 25th November
-
-**[Session 5](https://meet.google.com/tyv-enpa-pgk)**: 14:00 - 16:00 Friday 25th November
-
 # Overview
+
+**Live sessions at University of Sheffield**
+
+- **[Session 1](https://meet.google.com/nfh-pyuj-fuh)**: 10:00 - 13:00 Tuesday 22nd November
+- **[Session 2](https://meet.google.com/wxt-jdsb-dyg)**: 15:00 - 17:00 Wednesday 23rd November
+- **[Session 3](https://meet.google.com/uzn-cyrg-wxp)**: 15:00 - 17:00 Thursday 24rd November
+- **[Session 4](https://meet.google.com/fpy-ozcv-rxz)**: 10:00 - 12:00 Friday 25th November
+- **[Session 5](https://meet.google.com/tyv-enpa-pgk)**: 14:00 - 16:00 Friday 25th November
 
 **[Turing Course: An Introduction to Transparent Machine Learning](https://github.com/alan-turing-institute/Intro-to-transparent-ML-course/)**
 
@@ -26,15 +22,13 @@ This course is being developed at [a PyKale repository](https://github.com/pykal
 
 ## Learning objectives [LOs]
 
-By the end of the course, we expect a learner can demonstrate the ability to
+By the end of the course, we expect a learner can demonstrate the ability to:
 
-- [LO1] understand the theoretical issues and wider context related to transparent machine learning systems and processes
-
-- [LO2] understand the inner-working of a selected number of transparent machine learning algorithms with the capability of interpret the modelling process and the input-output relationships
-
-- [LO3] deploy a practical implementation of transparent machine learning systems and processes in a real-world setting using Python libraries such as scikit-learn
-
-- [LO4] visualise, interpret, and explain transparent machine learning systems and processes in a real-world setting to help stakeholders understand these systems and processes
+- [LO1] Understand the theoretical issues and wider context related to transparent machine learning systems and processes.
+- [LO2] Understand the inner-working of a selected number of transparent machine learning algorithms with the capability of interpret the modelling process and the input-output relationships.
+- [LO3] Deploy a practical implementation of transparent machine learning systems and processes in a real-world setting using Python libraries such as scikit-learn.
+- [LO4] Visualise, interpret, and explain transparent machine learning systems and processes in a real-world setting to help stakeholders understand these systems and processes.
+- [LO5] Gain the skills to confidently apply machine learning to your area of work, regardless of your background.
 
 ## Target audience
 

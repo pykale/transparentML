@@ -5,10 +5,10 @@ Ready for review and feedback
 ```
 
 ```{admonition} Objectives
-- Understand the basic concepts of linear regression
-- Apply linear regression to real data
-- Evaluate the performance of a linear regression model
-- Interpret the results of a linear regression
+- Understand the basic concepts of linear regression.
+- Apply linear regression to real data.
+- Evaluate the performance of a linear regression model.
+- Interpret the results of a linear regression.
 ```
 
 **Expected time to complete**: 4 hours
