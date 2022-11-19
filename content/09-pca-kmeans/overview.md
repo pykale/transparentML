@@ -1,4 +1,4 @@
-# Principal Component Analysis & K-Means Clustering
+# Principal Component Analysis & $K$-Means Clustering
 
 <!-- Capitalise initials. As compact as possible, prefer ONE line. -->
 <!-- We use **UK** English spelling. -->
@@ -41,7 +41,7 @@ Watch the following video to get an overview of the chapter:
 
 <iframe width="700" height="394" src="https://www.youtube.com/embed/4b5d3muPQmA?start=14" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-[Explaining K-Means Clustering, by StatQuest](https://www.youtube.com/embed/4b5d3muPQmA?start=14)
+[Explaining $K$-Means Clustering, by StatQuest](https://www.youtube.com/embed/4b5d3muPQmA?start=14)
 
 ```
 

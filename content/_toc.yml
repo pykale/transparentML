@@ -38,7 +38,7 @@ parts:
     - file: 01-intro/ml-transp
       title: ML transparency
     - file: 01-intro/knn
-      title: KNN classifier
+      title: $K$-NN classifier
     - file: 01-intro/organisation
     - file: 01-intro/quiz-sum-ref
       title: Quiz & summary
@@ -104,7 +104,7 @@ parts:
     - file: 07-trees-ensembles/quiz-sum-ref
       title: Quiz & summary
   - file: 08-nb-glm-svm/overview
-    title: Naive Bayes, GLM & SVM
+    title: GLM & SVM
     sections:
     - file: 08-nb-glm-svm/glm
       title: Generalised linear models
@@ -113,7 +113,7 @@ parts:
     - file: 08-nb-glm-svm/quiz-sum-ref
       title: Quiz & summary
   - file: 09-pca-kmeans/overview
-    title: PCA & K-means
+    title: PCA & $K$-means
     sections:
     - file: 09-pca-kmeans/quiz-sum-ref
       title: Quiz & summary
