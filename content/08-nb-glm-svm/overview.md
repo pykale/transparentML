@@ -1,4 +1,4 @@
-# Naive Bayes, GLM, SVM
+# GLM and SVM
 
 <!-- Capitalise initials. As compact as possible, prefer ONE line. -->
 <!-- We use **UK** English spelling. -->

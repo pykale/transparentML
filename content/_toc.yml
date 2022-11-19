@@ -104,7 +104,7 @@ parts:
     - file: 07-trees-ensembles/quiz-sum-ref
       title: Quiz & summary
   - file: 08-nb-glm-svm/overview
-    title: Naive Bayes, GLM & SVM
+    title: GLM & SVM
     sections:
     - file: 08-nb-glm-svm/glm
       title: Generalised linear models
