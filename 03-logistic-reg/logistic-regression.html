@@ -188,7 +188,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../01-intro/knn.html">
-     1.5. KNN classifier
+     1.5. $K$-NN classifier
     </a>
    </li>
    <li class="toctree-l2">
@@ -411,7 +411,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../09-pca-kmeans/overview.html">
-   9. PCA &amp; K-means
+   9. PCA &amp; $K$-means
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -1017,8 +1017,8 @@ intercept : [-10.65132548]
 <ul class="simple">
 <li><p>When the probability of <code class="docutils literal notranslate"><span class="pre">default</span></code> 0.5 (the commonly used threshold for binary classification), the corresponding balance can be calculated using the <em>log odds</em> equation above:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-cb8bd63a-07f2-4b80-b6a4-904a0ece1d33">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-cb8bd63a-07f2-4b80-b6a4-904a0ece1d33" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ba2e8be7-4ae0-4084-afb9-10f9a3ed85b5">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-ba2e8be7-4ae0-4084-afb9-10f9a3ed85b5" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \ln \left(\frac{\pi}{1-\pi}\right) &amp;= \beta_0 + \beta_1 \times x \\
 \ln \left(\frac{0.5}{1-0.5}\right) &amp;= \beta_0 + \beta_1 \times x \\
@@ -1483,10 +1483,12 @@ intercept : [-7.36798384]
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training Accuracy:  0.9972451790633609
-AUC:  0.9999931698654464
 </pre></div>
 </div>
-<img alt="../_images/logistic-regression_47_1.png" src="../_images/logistic-regression_47_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AUC:  0.9999931698654464
+</pre></div>
+</div>
+<img alt="../_images/logistic-regression_47_2.png" src="../_images/logistic-regression_47_2.png" />
 </div>
 </div>
 <p><strong>6</strong>. You might notice that the model with all variables is much better than the model from <strong>Exercise-2</strong>. Use the skills you have learnt to explain why. <strong>Hint</strong>: Correlation matrix (See section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/multi-linear-regression.html#interpreting-the-results">2.2.4</a>)</p>

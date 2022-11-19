@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1.5. K-nearest neighbors classification &#8212; Transparent ML Intro</title>
+    <title>1.5. \(K\)-nearest neighbors classification &#8212; Transparent ML Intro</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -188,7 +188,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.5. KNN classifier
+     1.5. $K$-NN classifier
     </a>
    </li>
    <li class="toctree-l2">
@@ -411,7 +411,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../09-pca-kmeans/overview.html">
-   9. PCA &amp; K-means
+   9. PCA &amp; $K$-means
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -710,19 +710,19 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="k-nearest-neighbors-classification">
-<h1><span class="section-number">1.5. </span>K-nearest neighbors classification<a class="headerlink" href="#k-nearest-neighbors-classification" title="Permalink to this headline">¶</a></h1>
-<p>Before we end this introduction, let us look at a simple example of a supervised machine learning model, the K-Nearest Neighbors (KNN) model. It is a <em>non-parametric</em> method used for classification and regression. In both cases, the input consists of the <span class="math notranslate nohighlight">\(k\)</span> closest training examples in the feature space. The output depends on whether KNN is used for classification or regression. Here, we focus on the classification case.</p>
-<p>Watch the 5-minute video below for a visual explanation of the KNN algorithm.</p>
+<h1><span class="section-number">1.5. </span><span class="math notranslate nohighlight">\(K\)</span>-nearest neighbors classification<a class="headerlink" href="#k-nearest-neighbors-classification" title="Permalink to this headline">¶</a></h1>
+<p>Before we end this introduction, let us look at a simple example of a supervised machine learning model, the <span class="math notranslate nohighlight">\(K\)</span>-nearest Neighbors (<span class="math notranslate nohighlight">\(K\)</span>-NN) model. It is a <em>non-parametric</em> method used for classification and regression. In both cases, the input consists of the <span class="math notranslate nohighlight">\(K\)</span> closest training examples in the feature space. The output depends on whether <span class="math notranslate nohighlight">\(K\)</span>-NN is used for classification or regression. Here, we focus on the classification case.</p>
+<p>Watch the 5-minute video below for a visual explanation of the <span class="math notranslate nohighlight">\(K\)</span>-NN algorithm.</p>
 <div class="admonition-video admonition">
 <p class="admonition-title">Video</p>
 <iframe width="700" height="394" src="https://www.youtube.com/embed/HVXime0nQeI?start=21&end=305" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<p><a class="reference external" href="https://www.youtube.com/embed/HVXime0nQeI?start=21&amp;end=305">Explaining K-Nearest Neighbors, by StatQuest</a></p>
+<p><a class="reference external" href="https://www.youtube.com/embed/HVXime0nQeI?start=21&amp;end=305">Explaining <span class="math notranslate nohighlight">\(K\)</span>-nearest Neighbors, by StatQuest</a></p>
 </div>
-<p>Then study the following sections to learn more about KNN.</p>
+<p>Then study the following sections to learn more about <span class="math notranslate nohighlight">\(K\)</span>-NN.</p>
 <div class="section" id="ingredients-transparency">
 <h2><span class="section-number">1.5.1. </span>Ingredients &amp; transparency<a class="headerlink" href="#ingredients-transparency" title="Permalink to this headline">¶</a></h2>
 <p>For all machine learning models covered in this course, we aim to talk about their ingredients and transparency in a standard way to facilitate understanding their similarities and differences. For transparency, we will focus on the system transparency, i.e. system logic. Process transparency is not specific to ML models and it will be discussed when we cover the ML process/lifecycle.</p>
-<p>The ingredients of a KNN model are the training data. The transparency of a KNN model is the distance between the test point and the training points.</p>
+<p>The ingredients of a <span class="math notranslate nohighlight">\(K\)</span>-NN model are the training data. The transparency of a <span class="math notranslate nohighlight">\(K\)</span>-NN model is the distance between the test point and the training points.</p>
 <div class="admonition-ingredients admonition">
 <p class="admonition-title">Ingredients</p>
 <ul class="simple">
@@ -748,7 +748,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="example-iris-classification">
 <h2><span class="section-number">1.5.2. </span>Example: iris classification<a class="headerlink" href="#example-iris-classification" title="Permalink to this headline">¶</a></h2>
-<p>We adapt the <a class="reference external" href="https://scikit-learn.org/1.0/auto_examples/neighbors/plot_classification.html#sphx-glr-auto-examples-neighbors-plot-classification-py">KNN example from scikit-learn</a> to illustrate the use of KNN for classification.</p>
+<p>We adapt the <a class="reference external" href="https://scikit-learn.org/1.0/auto_examples/neighbors/plot_classification.html#sphx-glr-auto-examples-neighbors-plot-classification-py"><span class="math notranslate nohighlight">\(K\)</span>-NN example from scikit-learn</a> to illustrate the use of <span class="math notranslate nohighlight">\(K\)</span>-NN for classification.</p>
 <p>To do so, we use the Iris dataset, which is a classic dataset in machine learning and statistics. It is included in scikit-learn and we load it as follows.</p>
 <div class="admonition-launch admonition">
 <p class="admonition-title">Launch</p>
@@ -829,11 +829,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="hyperparameter-tuning">
 <h3><span class="section-number">1.5.2.4. </span>Hyperparameter tuning<a class="headerlink" href="#hyperparameter-tuning" title="Permalink to this headline">¶</a></h3>
-<p>In the KNN model, there is only one hyperparameter, the number of neighbors <span class="math notranslate nohighlight">\(K\)</span>, which is <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>. We set it to 15. In the following, we will study the effect of this hyperparameter on the model performance by examining five different values of <span class="math notranslate nohighlight">\(K\)</span>.</p>
+<p>In the <span class="math notranslate nohighlight">\(K\)</span>-NN model, there is only one hyperparameter, the number of neighbors <span class="math notranslate nohighlight">\(K\)</span>, which is <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>. We set it to 15. In the following, we will study the effect of this hyperparameter on the model performance by examining five different values of <span class="math notranslate nohighlight">\(K\)</span>.</p>
 </div>
 <div class="section" id="training-and-testing">
 <h3><span class="section-number">1.5.2.5. </span>Training and testing<a class="headerlink" href="#training-and-testing" title="Permalink to this headline">¶</a></h3>
-<p>We create an instance of the KNN Classifier with each of the five <span class="math notranslate nohighlight">\(K\)</span> values and fit the data. Then we make prediction of class labels on values from the grid, all/most of them are not seen in the training. We store the prediction results with different colours for different classes to visualise the decision boundaries.</p>
+<p>We create an instance of the <span class="math notranslate nohighlight">\(K\)</span>-NN Classifier with each of the five <span class="math notranslate nohighlight">\(K\)</span> values and fit the data. Then we make prediction of class labels on values from the grid, all/most of them are not seen in the training. We store the prediction results with different colours for different classes to visualise the decision boundaries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n_neighbors</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">]:</span>
@@ -863,7 +863,7 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">xx</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">yy</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span>
-        <span class="s2">&quot;Decision boundaries of 3-class KNN classification with $K$ = </span><span class="si">%i</span><span class="s2">&quot;</span>
+        <span class="s2">&quot;Decision boundaries of 3-class k-NN classification with $K$ = </span><span class="si">%i</span><span class="s2">&quot;</span>
         <span class="o">%</span> <span class="p">(</span><span class="n">n_neighbors</span><span class="p">)</span>
     <span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -898,11 +898,11 @@ const thebe_selector_output = ".output, .cell_output"
 <h3><span class="section-number">1.5.2.7. </span>Other observations<a class="headerlink" href="#other-observations" title="Permalink to this headline">¶</a></h3>
 <p>We can make the following observations from the above figures.</p>
 <ul class="simple">
-<li><p>We can see that the decision boundaries are not smooth. This is because the KNN model is a non-parametric model, which means that it does not make any assumption on the underlying data distribution. This is also the reason why the model is called <em>lazy</em>. KNN actually does not learn a discriminative function from the training data but memorises the training dataset instead. This is why the model is also called <em>instance-based</em>. The model makes prediction by comparing the test sample with all training samples and assigning the label that is most common among its <span class="math notranslate nohighlight">\(K\)</span> nearest neighbors.</p></li>
-<li><p>KNN is fully transparent in the sense that it is easy to understand the logic behind the model and we can answer the question of for what values of the input variables would the system return a specific value of interest. However, it is not efficient in terms of computational cost. The computational cost of KNN is <span class="math notranslate nohighlight">\(O(n)\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is the number of training samples. This is because the model needs to compute the distance between the test sample and all training samples. This is also the reason why KNN is not suitable for large datasets.</p></li>
+<li><p>We can see that the decision boundaries are not smooth. This is because the <span class="math notranslate nohighlight">\(K\)</span>-NN model is a non-parametric model, which means that it does not make any assumption on the underlying data distribution. This is also the reason why the model is called <em>lazy</em>. <span class="math notranslate nohighlight">\(K\)</span>-NN actually does not learn a discriminative function from the training data but memorises the training dataset instead. This is why the model is also called <em>instance-based</em>. The model makes prediction by comparing the test sample with all training samples and assigning the label that is most common among its <span class="math notranslate nohighlight">\(K\)</span> nearest neighbors.</p></li>
+<li><p><span class="math notranslate nohighlight">\(K\)</span>-NN is fully transparent in the sense that it is easy to understand the logic behind the model and we can answer the question of for what values of the input variables would the system return a specific value of interest. However, it is not efficient in terms of computational cost. The computational cost of <span class="math notranslate nohighlight">\(K\)</span>-NN is <span class="math notranslate nohighlight">\(O(n)\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is the number of training samples. This is because the model needs to compute the distance between the test sample and all training samples. This is also the reason why <span class="math notranslate nohighlight">\(K\)</span>-NN is not suitable for large datasets.</p></li>
 <li><p><strong>Bias-variance trade-off</strong>: When <span class="math notranslate nohighlight">\(K\)</span> = 1, the decision boundary is <em>overly flexible</em>. This corresponds to a classifier that has <em>low bias</em> but <em>very high variance</em>. As <span class="math notranslate nohighlight">\(K\)</span> grows, the method becomes <em>less flexible</em> and produces a decision boundary that is close to (piece-wise) linear. This corresponds to a <em>low-variance</em> but <em>high-bias</em> classifier. This trade-off is common in machine learning and we will discuss it in more details in the following sections. Typically, a <span class="math notranslate nohighlight">\(K\)</span> neither too big (e.g. 100) nor too small (e.g. 1), such as <span class="math notranslate nohighlight">\(K=5\)</span> will give the best performance. Choosing the correct level of flexibility (typically through <em>hyperparameter tuning</em> after selecting a model) is critical to the success of any machine learning method.</p></li>
 </ul>
-<p>Despite the fact that it is a very simple approach, KNN can often produce classifiers with good performance. This is because the decision boundary is very flexible and can adapt to the data distribution. However, it is not suitable for large datasets because of its high computational cost.</p>
+<p>Despite the fact that it is a very simple approach, <span class="math notranslate nohighlight">\(K\)</span>-NN can often produce classifiers with good performance. This is because the decision boundary is very flexible and can adapt to the data distribution. However, it is not suitable for large datasets because of its high computational cost.</p>
 </div>
 </div>
 <div class="section" id="exercises">
@@ -931,18 +931,18 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p><strong>2</strong>.  Why is KNN a lazy model?</p>
+<p><strong>2</strong>.  Why is <span class="math notranslate nohighlight">\(K\)</span>-NN a lazy model?</p>
 <p><em>Compare your answer with the solution below</em></p>
 <div class="toggle docutils container">
-<p>KNN is a lazy model beacuase it is a non-parametric model, which means that it does not make any assumption on the underlying data distribution.</p>
+<p><span class="math notranslate nohighlight">\(K\)</span>-NN is a lazy model because it is a non-parametric model, which means that it does not make any assumption on the underlying data distribution.</p>
 </div>
-<p><strong>3</strong>. Why is  KNN an instance-based model?</p>
+<p><strong>3</strong>. Why is  <span class="math notranslate nohighlight">\(K\)</span>-NN an instance-based model?</p>
 <p><em>Compare your answer with the solution below</em></p>
 <div class="toggle docutils container">
-<p>KNN does not learn a discriminative function from the training data but memorises the training dataset instead thats why it’s called instance-based model.</p>
+<p><span class="math notranslate nohighlight">\(K\)</span>-NN does not learn a discriminative function from the training data but memorises the training dataset instead thats why it’s called instance-based model.</p>
 </div>
 <p><strong>4</strong>. The table below provides a training set containing six observations, three predictors, and one qualitative response variable.</p>
-<table class="colwidths-auto table" id="knnproblem-table">
+<table class="colwidths-auto table" id="k-nnproblem-table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Observations</p></th>
 <th class="head"><p><span class="math notranslate nohighlight">\(X_1\)</span></p></th>
@@ -990,7 +990,7 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </tbody>
 </table>
-<p>Suppose we wish to use the data see to make a prediction for Y when <span class="math notranslate nohighlight">\(X_1 = X_2 = X_3 = 1\)</span> using K-nearest neighbors.</p>
+<p>Suppose we wish to use the data see to make a prediction for Y when <span class="math notranslate nohighlight">\(X_1 = X_2 = X_3 = 1\)</span> using <span class="math notranslate nohighlight">\(K\)</span>-nearest neighbors.</p>
 <p><strong>a</strong>. Compute the Euclidean distance between each observation and the test point,  <span class="math notranslate nohighlight">\(X_1 = X_2 = X_3 = 1\)</span> .</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

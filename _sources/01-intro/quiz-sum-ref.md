@@ -12,7 +12,7 @@ In this topic, you learnt:
 - Machine learning learns a model from data to make predictions or decisions.
 - The software-development life cycle of a machine learning project.
 - The meaning and importance of transparency in machine learning.
-- What a $K$-nearest neighbour (KNN) classifier is and how to use it.
+- What a $K$-nearest neighbour ($K$-NN) classifier is and how to use it.
 
 Next, we are delving into a fundamental statistical machine learning technique, Linear Regression!
 
