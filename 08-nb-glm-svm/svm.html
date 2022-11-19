@@ -577,8 +577,8 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#maximum-margin-classifier">
-   8.2.1. Maximum margin classifier
+  <a class="reference internal nav-link" href="#maximum-margin-classifier-hard-margin">
+   8.2.1. Maximum margin classifier (hard margin)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -587,8 +587,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-maximum-margin-classifier-hard-margin">
-     8.2.1.2. The maximum margin classifier (hard margin)
+    <a class="reference internal nav-link" href="#the-maximum-margin-classifier">
+     8.2.1.2. The maximum margin classifier
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -599,33 +599,67 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#support-vector-classifier-soft-margin">
+   8.2.2. Support vector classifier (soft margin)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-non-separable-case">
+     8.2.2.1. The non-separable case
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#construction-of-support-vector-classifier">
+     8.2.2.2. Construction of support vector classifier
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   8.2.3. Support vector machines
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classification-with-non-linear-decision-boundaries">
+     8.2.3.1. Classification with non-linear decision boundaries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-support-vector-machine-and-kernel-trick">
+     8.2.3.2. The support vector machine and kernel trick
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lab">
-   8.2.2. LAB
+   8.2.4. LAB
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#support-vector-classifier">
-     8.2.2.1. 9.6.1 Support Vector Classifier
+     8.2.4.1. 9.6.1 Support Vector Classifier
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#support-vector-machine">
-     8.2.2.2. 9.6.2 Support Vector Machine
+     8.2.4.2. 9.6.2 Support Vector Machine
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#roc-curves">
-     8.2.2.3. 9.6.3 ROC Curves
+     8.2.4.3. 9.6.3 ROC Curves
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#svm-with-multiple-classes">
-     8.2.2.4. 9.6.4 SVM with Multiple Classes
+     8.2.4.4. 9.6.4 SVM with Multiple Classes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#application-to-gene-expression-data">
-     8.2.2.5. 9.6.5 Application to Gene Expression Data
+     8.2.4.5. 9.6.5 Application to Gene Expression Data
     </a>
    </li>
   </ul>
@@ -651,8 +685,8 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#maximum-margin-classifier">
-   8.2.1. Maximum margin classifier
+  <a class="reference internal nav-link" href="#maximum-margin-classifier-hard-margin">
+   8.2.1. Maximum margin classifier (hard margin)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -661,8 +695,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-maximum-margin-classifier-hard-margin">
-     8.2.1.2. The maximum margin classifier (hard margin)
+    <a class="reference internal nav-link" href="#the-maximum-margin-classifier">
+     8.2.1.2. The maximum margin classifier
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -673,33 +707,67 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#support-vector-classifier-soft-margin">
+   8.2.2. Support vector classifier (soft margin)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-non-separable-case">
+     8.2.2.1. The non-separable case
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#construction-of-support-vector-classifier">
+     8.2.2.2. Construction of support vector classifier
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   8.2.3. Support vector machines
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classification-with-non-linear-decision-boundaries">
+     8.2.3.1. Classification with non-linear decision boundaries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-support-vector-machine-and-kernel-trick">
+     8.2.3.2. The support vector machine and kernel trick
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lab">
-   8.2.2. LAB
+   8.2.4. LAB
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#support-vector-classifier">
-     8.2.2.1. 9.6.1 Support Vector Classifier
+     8.2.4.1. 9.6.1 Support Vector Classifier
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#support-vector-machine">
-     8.2.2.2. 9.6.2 Support Vector Machine
+     8.2.4.2. 9.6.2 Support Vector Machine
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#roc-curves">
-     8.2.2.3. 9.6.3 ROC Curves
+     8.2.4.3. 9.6.3 ROC Curves
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#svm-with-multiple-classes">
-     8.2.2.4. 9.6.4 SVM with Multiple Classes
+     8.2.4.4. 9.6.4 SVM with Multiple Classes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#application-to-gene-expression-data">
-     8.2.2.5. 9.6.5 Application to Gene Expression Data
+     8.2.4.5. 9.6.5 Application to Gene Expression Data
     </a>
    </li>
   </ul>
@@ -716,14 +784,11 @@ const thebe_selector_output = ".output, .cell_output"
   <div class="tex2jax_ignore mathjax_ignore section" id="support-vector-machines">
 <h1><span class="section-number">8.2. </span>Support vector machines<a class="headerlink" href="#support-vector-machines" title="Permalink to this headline">¶</a></h1>
 <p>In this section, we discuss the support vector machine (SVM), an approach for classification that was developed in the computer science community in the 1990s and that has grown in popularity since then. SVMs have been shown to perform well in a variety of settings, and are often considered one of the best “out of the box” classifiers.</p>
-<ul class="simple">
-<li><p><a class="reference external" href="#9.6.1-Support-Vector-Classifier">Lab: 9.6.1 Support Vector Classifier</a></p></li>
-<li><p><a class="reference external" href="#9.6.2-Support-Vector-Machine">Lab: 9.6.2 Support Vector Machine</a></p></li>
-<li><p><a class="reference external" href="#9.6.3-ROC-Curves">Lab: 9.6.3 ROC Curves</a></p></li>
-<li><p><a class="reference external" href="#9.6.4-SVM-with-Multiple-Classes">Lab: 9.6.4 SVM with Multiple Classes</a></p></li>
-<li><p><a class="reference external" href="#9.6.5-Application-to-Gene-Expression-Data">Lab: 9.6.5 Application to Gene Expression Data</a></p></li>
-</ul>
-<div class="cell docutils container">
+<!-- - [Lab: 9.6.1 Support Vector Classifier](#9.6.1-Support-Vector-Classifier)
+- [Lab: 9.6.2 Support Vector Machine](#9.6.2-Support-Vector-Machine)
+- [Lab: 9.6.3 ROC Curves](#9.6.3-ROC-Curves)
+- [Lab: 9.6.4 SVM with Multiple Classes](#9.6.4-SVM-with-Multiple-Classes)
+- [Lab: 9.6.5 Application to Gene Expression Data](#9.6.5-Application-to-Gene-Expression-Data) --><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ../standard_import.txt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -742,8 +807,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="maximum-margin-classifier">
-<h2><span class="section-number">8.2.1. </span>Maximum margin classifier<a class="headerlink" href="#maximum-margin-classifier" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="maximum-margin-classifier-hard-margin">
+<h2><span class="section-number">8.2.1. </span>Maximum margin classifier (hard margin)<a class="headerlink" href="#maximum-margin-classifier-hard-margin" title="Permalink to this headline">¶</a></h2>
 <p>In this section, we define a hyperplane and introduce the concept of an optimal separating hyperplane.</p>
 <p>In a <span class="math notranslate nohighlight">\(D\)</span>-dimensional space, a hyperplane is a flat affine subspace of dimension <span class="math notranslate nohighlight">\(D − 1\)</span>. For instance, in two dimensions, a hyperplane is a flat one-dimensional subspace—in other words, a line. In three dimensions, a hyperplane is a flat two-dimensional subspace—that is, a plane. In <span class="math notranslate nohighlight">\(D &gt; 3\)</span> dimensions, it can be hard to visualize a hyperplane, but the notion of a <span class="math notranslate nohighlight">\((D − 1)\)</span>-dimensional flat subspace still applies.</p>
 <p>The mathematical definition of a hyperplane is quite simple. In two dimensions, a hyperplane is defined by the equation,</p>
@@ -814,12 +879,12 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
 \]</div>
 <div class="margin-caption figure align-default" id="svm2">
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm2.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm2.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm2.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.1 </span><span class="caption-text">Two classes of observations are shown in blue and in purple, respectively. Left: Three separating hyperplanes, out of many possible, are shown in black. Right: A separating hyperplane is shown in black. The blue and purple grid indicates the decision rule made by a classifier based on this separating hyperplane: a test observation that falls in the blue portion of the grid will be assigned to the blue class, and one that falls in the purple portion of the grid will be assigned to the purple class.</span><a class="headerlink" href="#svm2" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8.1 </span><span class="caption-text">Two classes of observations are shown in blue and in purple, respectively. Left: Three separating hyperplanes, out of many possible, are shown in black. Right: A separating hyperplane is shown in black. The blue and purple grid indicates the decision rule made by a classifier based on this separating hyperplane: a test observation that falls in the blue portion of the grid will be assigned to the blue class, and one that falls in the purple portion of the grid will be assigned to the purple class (figure source: <a class="reference external" href="https://trevorhastie.github.io/ISLR/">https://trevorhastie.github.io/ISLR/</a>).</span><a class="headerlink" href="#svm2" title="Permalink to this image">¶</a></p>
 </div>
 <p>A shown in <a class="reference internal" href="#svm2"><span class="std std-numref">Fig. 8.1</span></a>, if a separating hyperplane exists, we can use it to construct a very natural classifier: a test observation is assigned a class depending on which side of the hyperplane it is located.</p>
 </div>
-<div class="section" id="the-maximum-margin-classifier-hard-margin">
-<h3><span class="section-number">8.2.1.2. </span>The maximum margin classifier (hard margin)<a class="headerlink" href="#the-maximum-margin-classifier-hard-margin" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="the-maximum-margin-classifier">
+<h3><span class="section-number">8.2.1.2. </span>The maximum margin classifier<a class="headerlink" href="#the-maximum-margin-classifier" title="Permalink to this headline">¶</a></h3>
 <p>In general, if the data can be perfectly separated using a hyperplane, then there will in fact exist an infinite number of such hyperplanes. This is because a given separating hyperplane can usually be shifted a tiny bit up or down, or rotated, without coming into contact with any of the observations.</p>
 <p>A natural choice is the <em>maximal margin hyperplane</em> (also known as the optimal separating hyperplane), which is the separating hyperplane that is farthest from the training observations. That is, we can compute the (perpendicular) distance from each training observation to a given separating hyperplane; the smallest such distance is the minimal distance from the observations to the hyperplane, and is known as the margin. The maximal margin hyperplane is the separating hyperplane for which the margin is margin largest—that is, it is the hyperplane that has the farthest minimum distance to the training observations. We can then classify a test observation based on which side of the maximal margin hyperplane it lies. This is known as the maximal margin classifier. We hope that a classifier that has a large margin on the training data will also have a large margin on the test data, and hence will classify the test observations correctly.</p>
 <div class="margin-caption figure align-default" id="svm3">
@@ -830,19 +895,87 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
 </div>
 <div class="section" id="construction-of-maximum-margin-classifier">
 <h3><span class="section-number">8.2.1.3. </span>Construction of maximum margin classifier<a class="headerlink" href="#construction-of-maximum-margin-classifier" title="Permalink to this headline">¶</a></h3>
+<p>The maximal margin hyperplane is the solution to the following optimization problem</p>
 <div class="math notranslate nohighlight" id="equation-eq-max-margin-classifier">
 <span class="eqno">(8.1)<a class="headerlink" href="#equation-eq-max-margin-classifier" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
 &amp; \max_{\beta_0, \beta_1, \ldots, \beta_D} M \\
 &amp; \text{subject to } \sum_{j=1}^D \beta_j^2 = 1 ,\\
 &amp; y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) \geq M, \text{ for } i = 1, \ldots, N.
 \end{aligned}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(M\)</span> represents the margin of our hyperplane, and the optimization problem chooses <span class="math notranslate nohighlight">\( \beta_0, \beta_1, \ldots, \beta_D \)</span> to maximize M. This is exactly the definition of the maximal margin hyperplane! The problem <a class="reference internal" href="#equation-eq-max-margin-classifier">(8.1)</a> can be solved efficiently via quadratic programming, but details of this optimization are outside of the scope of this course.</p>
+<p>where <span class="math notranslate nohighlight">\( y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) \)</span> in the constraint represents the perpendicular distance from the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation to the hyperplane. This constraint guarantees that each observation is on the correct side of the hyperplane and at least a distance <span class="math notranslate nohighlight">\( M \)</span> from the hyperplane. Therefore, <span class="math notranslate nohighlight">\(M\)</span> represents the margin of our hyperplane, and the optimization problem chooses <span class="math notranslate nohighlight">\( \beta_0, \beta_1, \ldots, \beta_D \)</span> to maximize M. This is exactly the definition of the maximal margin hyperplane! The problem <a class="reference internal" href="#equation-eq-max-margin-classifier">(8.1)</a> can be solved efficiently via quadratic programming, but details of this optimization are outside of the scope of this course.</p>
+</div>
+</div>
+<div class="section" id="support-vector-classifier-soft-margin">
+<h2><span class="section-number">8.2.2. </span>Support vector classifier (soft margin)<a class="headerlink" href="#support-vector-classifier-soft-margin" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-non-separable-case">
+<h3><span class="section-number">8.2.2.1. </span>The non-separable case<a class="headerlink" href="#the-non-separable-case" title="Permalink to this headline">¶</a></h3>
+<p>The maximal margin classifier is a very natural way to perform classification, if a separating hyperplane exists. However, in many cases no separating hyperplane exists, and so there is no maximal margin classifier, as shown in <a class="reference internal" href="#svm4"><span class="std std-numref">Fig. 8.3</span></a>.</p>
+<div class="margin-caption figure align-default" id="svm4">
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm4.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm4.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm4.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8.3 </span><span class="caption-text">Two classes of observations are shown in blue and in purple, respectively. The two classes are not separable by a hyperplane, and so the maximal margin classifier cannot be used.</span><a class="headerlink" href="#svm4" title="Permalink to this image">¶</a></p>
+</div>
+<p>In this case, we might be willing to consider allowing some observations to be on the incorrect side of the margin, or even the incorrect side of the hyperplane, rather than seeking the largest possible margin so that every observation is not only on the correct side of the hyperplane but also on the correct side of the margin. This is the idea behind the <em>support vector classifier</em>, also known as the <em>soft margin classifier</em>.</p>
+<div class="margin-caption figure align-default" id="svm5">
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm5.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm5.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm5.png" style="width: 700px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8.4 </span><span class="caption-text">Left: Two classes of observations are shown in blue and in purple, along with the maximal margin hyperplane. Right: An additional blue observation has been added, leading to a dramatic shift in the maximal margin hyperplane shown as a solid line. The dashed line indicates the maximal margin hyperplane that was obtained in the absence of this additional point.</span><a class="headerlink" href="#svm5" title="Permalink to this image">¶</a></p>
+</div>
+<p>An example is shown in the left-hand panel of <a class="reference internal" href="#svm5"><span class="std std-numref">Fig. 8.4</span></a>. Most of the observations are on the correct side of the margin.
+However, a small subset of the observations are on the wrong side of the margin.</p>
+<p>An observation can be not only on the wrong side of the margin, but also on the wrong side of the hyperplane. In fact, when there is no separating hyperplane, such a situation is inevitable. Observations on the wrong side of the hyperplane correspond to training observations that are misclassified by the support vector classifier. The right-hand panel of <a class="reference internal" href="#svm5"><span class="std std-numref">Fig. 8.4</span></a> illustrates
+such a scenario.</p>
+<div class="margin-caption figure align-default" id="svm6">
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm6.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm6.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm6.png" style="width: 700px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8.5 </span><span class="caption-text">Left: A support vector classifier was fit to a small data set. The hyperplane is shown as a solid line and the margins are shown as dashed lines. Purple observations: Observations 3, 4, 5, and 6 are on the correct side of the margin, observation 2 is on the margin, and observation 1 is on the wrong side of the margin. Blue observations: Observations 7 and 10 are on the correct side of the margin, observation 9 is on the margin, and observation 8 is on the wrong side of the margin. No observations are on the wrong side of the hyperplane. Right: Same as left panel with two additional points, 11 and 12. These two observations are on the wrong side of the hyperplane and the wrong side of the margin.</span><a class="headerlink" href="#svm6" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="construction-of-support-vector-classifier">
+<h3><span class="section-number">8.2.2.2. </span>Construction of support vector classifier<a class="headerlink" href="#construction-of-support-vector-classifier" title="Permalink to this headline">¶</a></h3>
+<p>The support vector classifier classifies a test observation depending on which side of a hyperplane it lies. The hyperplane is chosen to correctly separate most of the training observations into the two classes, but may misclassify a few observations. It is the solution to the optimization problem</p>
+<div class="math notranslate nohighlight" id="equation-eq-soft-margin-classifier">
+<span class="eqno">(8.2)<a class="headerlink" href="#equation-eq-soft-margin-classifier" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+&amp; \max_{\beta_0, \beta_1, \ldots, \beta_D, \epsilon_1, \ldots, \epsilon_N} M \\
+&amp; \text{subject to } \sum_{j=1}^D \beta_j^2 = 1 ,\\
+&amp; y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) \geq M(1 - \epsilon_i),\\
+&amp; \epsilon_i \geq 0, \sum_{i = 1}^N \epsilon_i \leq C, \text{ for } i = 1, \ldots, N,
+\end{aligned}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\( \epsilon_i \)</span> is a slack variable that measures the amount by which the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation is on the wrong side of the margin. The slack variables are constrained to be non-negative, and the constraint <span class="math notranslate nohighlight">\( \sum_{i = 1}^N \epsilon_i \leq C \)</span> places an upper bound on the total amount by which the observations can be on the wrong side of the margin. The parameter <span class="math notranslate nohighlight">\( C \)</span> is a tuning parameter that controls the trade-off between the two competing goals of the support vector classifier: maximizing the margin and minimizing the number of training observations that are misclassified. When <span class="math notranslate nohighlight">\( C \)</span> is very large, the support vector classifier will attempt to maximize the margin, and so it will misclassify very few training observations. When <span class="math notranslate nohighlight">\( C \)</span> is very small, the support vector classifier will attempt to minimize the number of training observations that are misclassified, and so it will have a smaller margin. In practice, <span class="math notranslate nohighlight">\( C \)</span> is often tuned using cross-validation. <a class="reference internal" href="#svm7"><span class="std std-numref">Fig. 8.6</span></a> illustrates the effect of <span class="math notranslate nohighlight">\( C \)</span> on the support vector classifier.</p>
+<div class="margin-caption figure align-default" id="svm7">
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm7.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm7.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm7.png" style="width: 700px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8.6 </span><span class="caption-text">A support vector classifier was fit using four different values of the tuning parameter <span class="math notranslate nohighlight">\( C \)</span> of Equation <a class="reference internal" href="#equation-eq-soft-margin-classifier">(8.2)</a>. The largest value of <span class="math notranslate nohighlight">\( C \)</span> was used in the top left panel, and smaller values were used in the top right, bottom left, and bottom right panels. When <span class="math notranslate nohighlight">\( C \)</span> is large, then there is a high tolerance for observations being on the wrong side of the margin, and so the margin will be large. As <span class="math notranslate nohighlight">\( C \)</span> decreases, the tolerance for observations being on the wrong side of the margin decreases, and the margin narrows.</span><a class="headerlink" href="#svm7" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><span class="section-number">8.2.3. </span>Support vector machines<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="classification-with-non-linear-decision-boundaries">
+<h3><span class="section-number">8.2.3.1. </span>Classification with non-linear decision boundaries<a class="headerlink" href="#classification-with-non-linear-decision-boundaries" title="Permalink to this headline">¶</a></h3>
+<p>The support vector classifier is a natural approach for classification in the two-class setting, if the boundary between the two classes is linear. However, in practice we are sometimes faced with non-linear class boundaries, as the example shown in the left panel of <a class="reference internal" href="#svm8"><span class="std std-numref">Fig. 8.7</span></a>.</p>
+<div class="margin-caption figure align-default" id="svm8">
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm8.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm8.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm8.png" style="width: 700px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8.7 </span><span class="caption-text">Left: A support vector classifier was fit to a small data set. The hyperplane is shown as a solid line and the margins are shown as dashed lines. Purple observations: Observations 3, 4, 5, and 6 are on the correct side of the margin, observation 2 is on the margin, and observation 1 is on the wrong side of the margin. Blue observations: Observations 7 and 10 are on the correct side of the margin, observation 9 is on the margin, and observation 8 is on the wrong side of the margin. No observations are on the wrong side of the hyperplane. Right: Same as left panel with two additional points, 11 and 12. These two observations are on the wrong side of the hyperplane and the wrong side of the margin.</span><a class="headerlink" href="#svm8" title="Permalink to this image">¶</a></p>
+</div>
+<p>In <a class="reference internal" href="../02-linear-reg/extension-limitation.html"><span class="doc">Linear regression</span></a>, we discussed using higher-order polynomials as a way to fit a non-linear relationship between the predictors and the response. Foe example, rather than fitting a support vector classifier using <span class="math notranslate nohighlight">\(D\)</span> features: <span class="math notranslate nohighlight">\( x_{1}, x_{2}, \ldots, x_{D} \)</span>, we could fit a support vector classifier using <span class="math notranslate nohighlight">\( 2 \times D \)</span> features: <span class="math notranslate nohighlight">\( x_{1}, x_{2}, \ldots, x_{D'}, x_{1}^2, x_{2}^2, \ldots, x_{D'}^2 \)</span>. Then the optimisation problem becomes</p>
+<div class="math notranslate nohighlight" id="equation-eq-svm-polynomial">
+<span class="eqno">(8.3)<a class="headerlink" href="#equation-eq-svm-polynomial" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+&amp; \max_{\beta_0, \beta_{1,1}, \ldots, \beta_{D,2}, \epsilon_1, \ldots, \epsilon_N} M \\
+&amp; \text{subject to } y_i\left(\beta_0 + \sum_{j=1}^{D} \beta_{j,1} x_{ij} + \beta_{j,2} x_{ij}^2\right) \geq M(1 - \epsilon_i), \\
+&amp; \sum_{j=1}^{D} \beta_{j,1}^2 + \beta_{j,2}^2 = 1, \epsilon_i \geq 0, \sum_{i = 1}^N \epsilon_i \leq C, \text{ for } i = 1, \ldots, N,
+\end{aligned}\end{split}\]</div>
+<p>the decision boundary that results from Equation <a class="reference internal" href="#equation-eq-svm-polynomial">(8.3)</a> is in fact linear. But in the original feature space, the decision boundary is of the form <span class="math notranslate nohighlight">\( q(x) = 0 \)</span>, where <span class="math notranslate nohighlight">\( q(\cdot) \)</span> is a quadratic polynomial, and its solutions are generally non-linear.</p>
+</div>
+<div class="section" id="the-support-vector-machine-and-kernel-trick">
+<h3><span class="section-number">8.2.3.2. </span>The support vector machine and kernel trick<a class="headerlink" href="#the-support-vector-machine-and-kernel-trick" title="Permalink to this headline">¶</a></h3>
+<p>The <em>support vector machine (SVM)</em> is an extension of the support vector classifier that results from enlarging the feature space in a specific way, using <em>kernels</em>.</p>
+<div class="margin-caption figure align-default" id="svm9">
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm9.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm9.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm9.png" style="width: 700px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8.8 </span><span class="caption-text">Left: An SVM with a polynomial kernel of degree 3 is applied to the non-linear data from <a class="reference internal" href="#svm8"><span class="std std-numref">Fig. 8.7</span></a>, resulting in a far more appropriate decision rule. Right: An SVM with a radial kernel is applied. In this example, either kernel is capable of capturing the decision boundary.</span><a class="headerlink" href="#svm9" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 </div>
 <div class="section" id="lab">
-<h2><span class="section-number">8.2.2. </span>LAB<a class="headerlink" href="#lab" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.2.4. </span>LAB<a class="headerlink" href="#lab" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="support-vector-classifier">
-<h3><span class="section-number">8.2.2.1. </span>9.6.1 Support Vector Classifier<a class="headerlink" href="#support-vector-classifier" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.2.4.1. </span>9.6.1 Support Vector Classifier<a class="headerlink" href="#support-vector-classifier" title="Permalink to this headline">¶</a></h3>
 <p>Define a function to plot a classifier with support vectors.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -890,7 +1023,7 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;X2&#39;)
 </pre></div>
 </div>
-<img alt="../_images/svm_12_1.png" src="../_images/svm_12_1.png" />
+<img alt="../_images/svm_15_1.png" src="../_images/svm_15_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -933,7 +1066,7 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
    2.80982096]]
 </pre></div>
 </div>
-<img alt="../_images/svm_14_1.png" src="../_images/svm_14_1.png" />
+<img alt="../_images/svm_17_1.png" src="../_images/svm_17_1.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  13
 </pre></div>
 </div>
@@ -965,7 +1098,7 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
    2.80982096]]
 </pre></div>
 </div>
-<img alt="../_images/svm_15_1.png" src="../_images/svm_15_1.png" />
+<img alt="../_images/svm_18_1.png" src="../_images/svm_18_1.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  16
 </pre></div>
 </div>
@@ -988,14 +1121,14 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00039923, 0.00037923, 0.00038035, 0.00039206, 0.00042403,
-        0.00041401, 0.0005372 ]),
- &#39;std_fit_time&#39;: array([4.71995630e-05, 1.18502429e-05, 1.28662338e-05, 1.77044699e-05,
-        5.45866353e-05, 2.08657124e-05, 4.67739094e-05]),
- &#39;mean_score_time&#39;: array([0.00027292, 0.00026677, 0.00026798, 0.00026891, 0.00027525,
-        0.00026858, 0.00027328]),
- &#39;std_score_time&#39;: array([2.14767504e-05, 6.99054495e-06, 7.92181383e-06, 7.28285835e-06,
-        1.04699423e-05, 3.57031325e-06, 7.58740673e-06]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00039556, 0.00038414, 0.00037498, 0.00039551, 0.00041873,
+        0.00041492, 0.00054877]),
+ &#39;std_fit_time&#39;: array([4.12022142e-05, 1.19475068e-05, 3.64055099e-06, 3.31603219e-05,
+        3.65451510e-05, 2.14722504e-05, 4.82400448e-05]),
+ &#39;mean_score_time&#39;: array([0.00027716, 0.00026748, 0.00026867, 0.0002737 , 0.00026996,
+        0.0002697 , 0.00027549]),
+ &#39;std_score_time&#39;: array([1.95951210e-05, 3.78395148e-06, 6.57832246e-06, 1.60609911e-05,
+        4.26236145e-06, 2.97746530e-06, 2.92828102e-06]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,
@@ -1080,7 +1213,7 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;X2&#39;)
 </pre></div>
 </div>
-<img alt="../_images/svm_18_1.png" src="../_images/svm_18_1.png" />
+<img alt="../_images/svm_21_1.png" src="../_images/svm_21_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1195,7 +1328,7 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;X2&#39;)
 </pre></div>
 </div>
-<img alt="../_images/svm_21_1.png" src="../_images/svm_21_1.png" />
+<img alt="../_images/svm_24_1.png" src="../_images/svm_24_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1225,7 +1358,7 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
  [ 0.7684613  0.7684613  0.7684613 ...  0.7684613  0.7684613  0.7684613]]
 </pre></div>
 </div>
-<img alt="../_images/svm_23_1.png" src="../_images/svm_23_1.png" />
+<img alt="../_images/svm_26_1.png" src="../_images/svm_26_1.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  4
 </pre></div>
 </div>
@@ -1259,7 +1392,7 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
  [ 0.7684613  0.7684613  0.7684613 ...  0.7684613  0.7684613  0.7684613]]
 </pre></div>
 </div>
-<img alt="../_images/svm_25_1.png" src="../_images/svm_25_1.png" />
+<img alt="../_images/svm_28_1.png" src="../_images/svm_28_1.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  5
 </pre></div>
 </div>
@@ -1267,7 +1400,7 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
 </div>
 </div>
 <div class="section" id="support-vector-machine">
-<h3><span class="section-number">8.2.2.2. </span>9.6.2 Support Vector Machine<a class="headerlink" href="#support-vector-machine" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.2.4.2. </span>9.6.2 Support Vector Machine<a class="headerlink" href="#support-vector-machine" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generating test data</span>
@@ -1286,7 +1419,7 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/svm_27_0.png" src="../_images/svm_27_0.png" />
+<img alt="../_images/svm_30_0.png" src="../_images/svm_30_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1322,7 +1455,7 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
    4.88182852]]
 </pre></div>
 </div>
-<img alt="../_images/svm_29_1.png" src="../_images/svm_29_1.png" />
+<img alt="../_images/svm_32_1.png" src="../_images/svm_32_1.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  51
 </pre></div>
 </div>
@@ -1362,7 +1495,7 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
    4.88182852]]
 </pre></div>
 </div>
-<img alt="../_images/svm_31_1.png" src="../_images/svm_31_1.png" />
+<img alt="../_images/svm_34_1.png" src="../_images/svm_34_1.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  36
 </pre></div>
 </div>
@@ -1385,30 +1518,30 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00053968, 0.00053408, 0.00056174, 0.0005713 , 0.00058978,
-        0.00052018, 0.00055823, 0.00060358, 0.00063121, 0.00065408,
-        0.00053518, 0.00056674, 0.00066593, 0.00067914, 0.00068929,
-        0.00055523, 0.00057437, 0.00070062, 0.00072539, 0.00071697,
-        0.00060091, 0.00064082, 0.00069728, 0.00071399, 0.00071015]),
- &#39;std_fit_time&#39;: array([4.10929067e-05, 1.24377971e-05, 1.01882873e-05, 6.53440912e-06,
-        1.51308665e-05, 1.21456892e-05, 8.31612753e-06, 1.00000608e-05,
-        1.73578714e-05, 1.45040821e-05, 4.84014438e-05, 1.80504910e-05,
-        2.28074383e-05, 1.41007004e-05, 1.06156257e-05, 5.71081729e-05,
-        1.68430366e-05, 2.98496252e-05, 2.83892862e-05, 1.74025312e-05,
-        3.32940598e-05, 4.25087423e-05, 1.96695183e-05, 1.74931824e-05,
-        2.39700685e-05]),
- &#39;mean_score_time&#39;: array([0.00029957, 0.00029664, 0.00030332, 0.00030322, 0.0003047 ,
-        0.00030134, 0.00029674, 0.00030191, 0.0003067 , 0.00030825,
-        0.00029063, 0.00029962, 0.00030348, 0.0003051 , 0.00031116,
-        0.00028665, 0.0002907 , 0.00030117, 0.0003027 , 0.00030806,
-        0.00028307, 0.00029163, 0.00029705, 0.00030494, 0.00031161]),
- &#39;std_score_time&#39;: array([1.84734402e-05, 7.79654272e-06, 8.81813604e-06, 1.07705049e-05,
-        7.36323658e-06, 3.17041941e-05, 5.87903669e-06, 4.65624832e-06,
-        8.23507574e-06, 7.55937303e-06, 5.01926322e-06, 9.29162811e-06,
-        6.24497408e-06, 1.08211835e-05, 1.27492426e-05, 8.63460460e-06,
-        8.17469826e-06, 7.45819656e-06, 7.09286257e-06, 9.44598042e-06,
-        3.44685987e-06, 7.60312326e-06, 3.49500819e-06, 9.81114904e-06,
-        1.64176772e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00052626, 0.00053699, 0.0005671 , 0.00057142, 0.000578  ,
+        0.00051355, 0.00055878, 0.00059979, 0.00062706, 0.00064833,
+        0.00052242, 0.00056467, 0.00065312, 0.0006727 , 0.00068412,
+        0.00053988, 0.00057347, 0.00068996, 0.00071969, 0.00071797,
+        0.00059712, 0.0006346 , 0.00069165, 0.00070224, 0.00070066]),
+ &#39;std_fit_time&#39;: array([3.79722363e-05, 1.78387611e-05, 2.62724293e-05, 1.49502138e-05,
+        6.42585620e-06, 1.10205104e-05, 1.23684105e-05, 1.68968140e-05,
+        1.49282971e-05, 1.22037013e-05, 1.63109676e-05, 2.16394776e-05,
+        1.91873490e-05, 1.50778782e-05, 7.75223427e-06, 2.90446676e-05,
+        1.37731052e-05, 3.28172500e-05, 3.20713668e-05, 2.23491699e-05,
+        2.90859429e-05, 4.01845374e-05, 2.40389308e-05, 2.08125081e-05,
+        2.41342261e-05]),
+ &#39;mean_score_time&#39;: array([0.00031633, 0.00029659, 0.00030348, 0.00030468, 0.00030499,
+        0.0002924 , 0.00030186, 0.00030389, 0.00030591, 0.00030727,
+        0.00029428, 0.00029843, 0.00030463, 0.00030398, 0.00030637,
+        0.00028679, 0.00028911, 0.00030222, 0.00031264, 0.0003031 ,
+        0.00028708, 0.00029075, 0.00029902, 0.00030429, 0.0003056 ]),
+ &#39;std_score_time&#39;: array([4.80314687e-05, 4.57738836e-06, 7.08424210e-06, 7.39132204e-06,
+        7.95961060e-06, 5.42442876e-06, 1.10875919e-05, 8.09654892e-06,
+        8.07915401e-06, 7.36771276e-06, 9.82623019e-06, 9.98916943e-06,
+        7.09674838e-06, 9.37382296e-06, 6.37786410e-06, 6.64024635e-06,
+        3.59087192e-06, 6.81910481e-06, 1.74290504e-05, 2.90841351e-06,
+        9.52388970e-06, 8.54207555e-06, 6.09232950e-06, 7.79526672e-06,
+        7.64710635e-06]),
  &#39;param_C&#39;: masked_array(data=[0.01, 0.01, 0.01, 0.01, 0.01, 0.1, 0.1, 0.1, 0.1, 0.1,
                     1, 1, 1, 1, 1, 10, 10, 10, 10, 10, 100, 100, 100, 100,
                     100],
@@ -1585,7 +1718,7 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
 </div>
 </div>
 <div class="section" id="roc-curves">
-<h3><span class="section-number">8.2.2.3. </span>9.6.3 ROC Curves<a class="headerlink" href="#roc-curves" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.2.4.3. </span>9.6.3 ROC Curves<a class="headerlink" href="#roc-curves" title="Permalink to this headline">¶</a></h3>
 <p>Comparing the ROC curves of two models on train/test data. One model is more flexible than the other.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1668,13 +1801,13 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/svm_40_0.png" src="../_images/svm_40_0.png" />
+<img alt="../_images/svm_43_0.png" src="../_images/svm_43_0.png" />
 </div>
 </div>
 <p>As expected, the more flexible model scores better on training data but worse on the test data.</p>
 </div>
 <div class="section" id="svm-with-multiple-classes">
-<h3><span class="section-number">8.2.2.4. </span>9.6.4 SVM with Multiple Classes<a class="headerlink" href="#svm-with-multiple-classes" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.2.4.4. </span>9.6.4 SVM with Multiple Classes<a class="headerlink" href="#svm-with-multiple-classes" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding a third class of observations</span>
@@ -1690,7 +1823,7 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/svm_43_0.png" src="../_images/svm_43_0.png" />
+<img alt="../_images/svm_46_0.png" src="../_images/svm_46_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1726,7 +1859,7 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
    6.72182852]]
 </pre></div>
 </div>
-<img alt="../_images/svm_45_1.png" src="../_images/svm_45_1.png" />
+<img alt="../_images/svm_48_1.png" src="../_images/svm_48_1.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  128
 </pre></div>
 </div>
@@ -1734,7 +1867,7 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
 </div>
 </div>
 <div class="section" id="application-to-gene-expression-data">
-<h3><span class="section-number">8.2.2.5. </span>9.6.5 Application to Gene Expression Data<a class="headerlink" href="#application-to-gene-expression-data" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.2.4.5. </span>9.6.5 Application to Gene Expression Data<a class="headerlink" href="#application-to-gene-expression-data" title="Permalink to this headline">¶</a></h3>
 <p>In R, I exported the dataset from package ‘ISLR’ to csv files.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
