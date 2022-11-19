@@ -719,7 +719,10 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="extensions-limitations-of-linear-regression">
 <h1><span class="section-number">2.3. </span>Extensions/limitations of linear regression<a class="headerlink" href="#extensions-limitations-of-linear-regression" title="Permalink to this headline">¶</a></h1>
-<p><strong>Reminder</strong>: Please read the html first before launching rocket, some figures and equations may not be displayed properly in the notebook.</p>
+<div class="admonition-read-then-launch admonition">
+<p class="admonition-title">Read then Launch </p>
+<p>This content is best viewed in html because jupyter notebook cannot display some content (e.g. figures, equations) properly. You should finish reading this page first and then launch it as an interactive notebook in Google Colab (faster, Google account needed) or Binder by clicking the rocket symbol (<i class="fas fa-rocket"></i>) at the top.</p>
+</div>
 <p>This section studies how to extend linear regression to more complicated types of variables and relationships, and the limitations of linear regression. We will use three datasets to illustrate these concepts:</p>
 <ol class="simple">
 <li><p>The <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Advertising.csv">Advertising dataset</a> that has been used in the previous sections.</p></li>
@@ -961,8 +964,8 @@ memory usage: 30.6+ KB
 y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon.
 \]</div>
 <p>This model can be extended to include an interaction term between <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-22d97cf4-071e-4785-97f7-45a7c43b4675">
-<span class="eqno">(2.22)<a class="headerlink" href="#equation-22d97cf4-071e-4785-97f7-45a7c43b4675" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d40805db-e205-4bb7-9361-a97523d05a5b">
+<span class="eqno">(2.22)<a class="headerlink" href="#equation-d40805db-e205-4bb7-9361-a97523d05a5b" title="Permalink to this equation">¶</a></span>\[\begin{align}
 y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 &amp;= \beta_0 + (\beta_1 + \beta_3 x_2) x_1 + \beta_2 x_2 + \epsilon \\
 &amp;= \beta_0 + \tilde{\beta}_1 x_1 + \beta_2 x_2 + \epsilon,
@@ -1100,8 +1103,8 @@ dtype: float64
 </div>
 </div>
 <p>The figure shows a strong relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>, but it is clearly not linear. We can use a polynomial regression to fit a non-linear model to the data. We can fit a polynomial regression of degree 2 (quadratic) to the data using the following regression:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1c3ab8b1-5590-43e8-9fa2-a7cf119b11f3">
-<span class="eqno">(2.23)<a class="headerlink" href="#equation-1c3ab8b1-5590-43e8-9fa2-a7cf119b11f3" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-411062f9-7a9b-4f0e-b89a-b392e384f47b">
+<span class="eqno">(2.23)<a class="headerlink" href="#equation-411062f9-7a9b-4f0e-b89a-b392e384f47b" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \textrm{mpg} = \beta_0 + \beta_1 \times \textrm{horsepower} + \beta_2 \times \textrm{horsepower}^2 + \epsilon.
 \end{equation}\]</div>
 <p>Run the following code to display the relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> (gas mileage in miles per gallon) and <span class="math notranslate nohighlight">\(\textrm{horsepower}^2\)</span> as well as <span class="math notranslate nohighlight">\(\textrm{horsepower}^5\)</span> (Figure 3.8 of the textbook) for cars in the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset.</p>
@@ -1750,7 +1753,7 @@ chas
   <th>Date:</th>             <td>Sat, 19 Nov 2022</td> <th>  Prob (F-statistic):</th> <td>1.57e-56</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>16:27:01</td>     <th>  Log-Likelihood:    </th> <td> -1653.3</td>
+  <th>Time:</th>                 <td>18:21:03</td>     <th>  Log-Likelihood:    </th> <td> -1653.3</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   506</td>      <th>  AIC:               </th> <td>   3335.</td>

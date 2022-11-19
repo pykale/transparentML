@@ -711,7 +711,10 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="k-nearest-neighbors-classification">
 <h1><span class="section-number">1.5. </span>K-nearest neighbors classification<a class="headerlink" href="#k-nearest-neighbors-classification" title="Permalink to this headline">¶</a></h1>
-<p><strong>Reminder</strong>: Please read the html first before launching rocket, some figures and equations may not be displayed properly in the notebook.</p>
+<div class="admonition-read-then-launch admonition">
+<p class="admonition-title">Read then Launch </p>
+<p>This content is best viewed in html because jupyter notebook cannot display some content (e.g. figures, equations) properly. You should finish reading this page first and then launch it as an interactive notebook in Google Colab (faster, Google account needed) or Binder by clicking the rocket symbol (<i class="fas fa-rocket"></i>) at the top.</p>
+</div>
 <p>Before we end this introduction, let us look at a simple example of a supervised machine learning model, the K-Nearest Neighbors (KNN) model. It is a <em>non-parametric</em> method used for classification and regression. In both cases, the input consists of the <span class="math notranslate nohighlight">\(k\)</span> closest training examples in the feature space. The output depends on whether KNN is used for classification or regression. Here, we focus on the classification case.</p>
 <p>Watch the 5-minute video below for a visual explanation of the KNN algorithm.</p>
 <div class="admonition-video admonition">
@@ -751,10 +754,6 @@ const thebe_selector_output = ".output, .cell_output"
 <h2><span class="section-number">1.5.2. </span>Example: iris classification<a class="headerlink" href="#example-iris-classification" title="Permalink to this headline">¶</a></h2>
 <p>We adapt the <a class="reference external" href="https://scikit-learn.org/1.0/auto_examples/neighbors/plot_classification.html#sphx-glr-auto-examples-neighbors-plot-classification-py">KNN example from scikit-learn</a> to illustrate the use of KNN for classification.</p>
 <p>To do so, we use the Iris dataset, which is a classic dataset in machine learning and statistics. It is included in scikit-learn and we load it as follows.</p>
-<div class="admonition-launch admonition">
-<p class="admonition-title">Launch</p>
-<p>Click the rocket symbol (<i class="fas fa-rocket"></i>) to launch this page as an interactive notebook in Google Colab (faster but requiring a Google account) or Binder.</p>
-</div>
 <div class="section" id="import-libraries">
 <h3><span class="section-number">1.5.2.1. </span>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h3>
 <p>Get ready by importing the application programming interfaces (APIs) needed from respective libraries.</p>
