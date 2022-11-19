@@ -813,7 +813,7 @@ the sign of the left hand side of the hyperplane equation. The following code pl
 y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0, \text{ for } i = 1, \ldots, N.
 \]</div>
 <div class="margin-caption figure align-default" id="svm2">
-<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm3.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm3.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm3.png" style="width: 700px;" /></a>
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm2.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm2.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm2.png" style="width: 700px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.1 </span><span class="caption-text">Two classes of observations are shown in blue and in purple, respectively. Left: Three separating hyperplanes, out of many possible, are shown in black. Right: A separating hyperplane is shown in black. The blue and purple grid indicates the decision rule made by a classifier based on this separating hyperplane: a test observation that falls in the blue portion of the grid will be assigned to the blue class, and one that falls in the purple portion of the grid will be assigned to the purple class.</span><a class="headerlink" href="#svm2" title="Permalink to this image">¶</a></p>
 </div>
 <p>A shown in <a class="reference internal" href="#svm2"><span class="std std-numref">Fig. 8.1</span></a>, if a separating hyperplane exists, we can use it to construct a very natural classifier: a test observation is assigned a class depending on which side of the hyperplane it is located.</p>
@@ -823,7 +823,7 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
 <p>In general, if the data can be perfectly separated using a hyperplane, then there will in fact exist an infinite number of such hyperplanes. This is because a given separating hyperplane can usually be shifted a tiny bit up or down, or rotated, without coming into contact with any of the observations.</p>
 <p>A natural choice is the <em>maximal margin hyperplane</em> (also known as the optimal separating hyperplane), which is the separating hyperplane that is farthest from the training observations. That is, we can compute the (perpendicular) distance from each training observation to a given separating hyperplane; the smallest such distance is the minimal distance from the observations to the hyperplane, and is known as the margin. The maximal margin hyperplane is the separating hyperplane for which the margin is margin largest—that is, it is the hyperplane that has the farthest minimum distance to the training observations. We can then classify a test observation based on which side of the maximal margin hyperplane it lies. This is known as the maximal margin classifier. We hope that a classifier that has a large margin on the training data will also have a large margin on the test data, and hence will classify the test observations correctly.</p>
 <div class="margin-caption figure align-default" id="svm3">
-<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm2.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm2.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm2.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm3.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm3.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm3.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.2 </span><span class="caption-text">Two classes of observations are shown in blue and in purple, respectively. The maximal margin hyperplane is shown as a solid line. The margin is the distance from the solid line to either of the dashed lines. The two blue points and the purple point that lie on the dashed lines are the support vectors, and the distance from those points to the hyperplane is indicated by arrows. The purple and blue grid indicates the decision rule made by a classifier based on this separating hyperplane.</span><a class="headerlink" href="#svm3" title="Permalink to this image">¶</a></p>
 </div>
 <p><a class="reference internal" href="#svm3"><span class="std std-numref">Fig. 8.2</span></a> shows a maximal margin hyperplane. Comparing to the right-hand panel of <a class="reference internal" href="#svm2"><span class="std std-numref">Fig. 8.1</span></a>, we see that the maximal margin hyperplane in <a class="reference internal" href="#svm3"><span class="std std-numref">Fig. 8.2</span></a> results in a greater minimal distance between the observations and the separating hyperplane—that is, a larger margin. We can also see that three training observations are equidistant from the maximal margin hyperplane and lie along the dashed lines indicating the width of the margin. These three observations are known as <em>support vectors</em>, and the distance from the support vectors to the hyperplane is known as the <em>margin width</em>.</p>
@@ -988,14 +988,14 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00039299, 0.00038028, 0.00037639, 0.00039248, 0.00041597,
-        0.0004138 , 0.00053935]),
- &#39;std_fit_time&#39;: array([4.16557652e-05, 1.28675371e-05, 1.02531355e-05, 3.01193163e-05,
-        4.20722061e-05, 1.55551268e-05, 5.25933012e-05]),
- &#39;mean_score_time&#39;: array([0.00027184, 0.00026176, 0.0002635 , 0.00026557, 0.0002672 ,
-        0.00026586, 0.0002701 ]),
- &#39;std_score_time&#39;: array([2.06236343e-05, 1.51709922e-06, 4.99974618e-06, 6.85672103e-06,
-        3.25517768e-06, 5.53567689e-06, 3.78845547e-06]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00039241, 0.00038898, 0.00039012, 0.00045376, 0.00042896,
+        0.00043709, 0.00052323]),
+ &#39;std_fit_time&#39;: array([3.85148150e-05, 3.85971993e-05, 3.30135358e-05, 6.29284872e-05,
+        3.98221554e-05, 5.01291774e-05, 9.60583810e-05]),
+ &#39;mean_score_time&#39;: array([0.00028124, 0.00026956, 0.00027897, 0.00030105, 0.00028942,
+        0.00029514, 0.00027261]),
+ &#39;std_score_time&#39;: array([2.76812492e-05, 2.81629165e-05, 2.66556770e-05, 1.48713003e-05,
+        2.47632904e-05, 3.56134555e-05, 4.16503269e-05]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,
@@ -1385,30 +1385,30 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00052099, 0.00052314, 0.00056033, 0.00056787, 0.00057697,
-        0.00051415, 0.00055878, 0.00060499, 0.00063076, 0.00065742,
-        0.00052829, 0.00055854, 0.0006515 , 0.00067213, 0.0006773 ,
-        0.00053232, 0.00057187, 0.00068715, 0.00071237, 0.00071471,
-        0.0006057 , 0.00063009, 0.00069618, 0.00069468, 0.00069885]),
- &#39;std_fit_time&#39;: array([3.52267465e-05, 7.44370143e-06, 9.46722922e-06, 1.14151469e-05,
-        7.42856588e-06, 1.05602207e-05, 1.41814169e-05, 1.38628667e-05,
-        2.18746155e-05, 3.40893883e-05, 2.03740638e-05, 2.09320243e-05,
-        2.02729268e-05, 1.84959503e-05, 1.09971716e-05, 2.61811501e-05,
-        1.80444279e-05, 3.32792455e-05, 2.75491508e-05, 1.78314306e-05,
-        4.76458220e-05, 4.40784049e-05, 3.15349469e-05, 2.01144050e-05,
-        2.37649153e-05]),
- &#39;mean_score_time&#39;: array([0.00030169, 0.00029533, 0.00029874, 0.00030077, 0.00030227,
-        0.00028718, 0.00029938, 0.00030019, 0.00030475, 0.00030453,
-        0.00029287, 0.00030851, 0.00030508, 0.00030003, 0.00030417,
-        0.00028353, 0.00028541, 0.00029776, 0.00029998, 0.0003089 ,
-        0.00029898, 0.00028832, 0.000295  , 0.00030091, 0.00030313]),
- &#39;std_score_time&#39;: array([2.23796702e-05, 1.12467126e-05, 8.82664092e-06, 9.62529201e-06,
-        1.06782782e-05, 8.74382058e-07, 1.47141355e-05, 8.58071745e-06,
-        1.08588081e-05, 6.09722596e-06, 1.18339224e-05, 4.27115423e-05,
-        1.30640329e-05, 6.76386408e-06, 6.53179887e-06, 9.33176532e-06,
-        3.23485780e-06, 8.28959834e-06, 7.00788414e-06, 2.03001065e-05,
-        3.48081327e-05, 1.10375443e-05, 6.18607776e-06, 1.48790959e-05,
-        1.35350376e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.0005713 , 0.00057492, 0.00060008, 0.00060704, 0.00057454,
+        0.00052788, 0.00058444, 0.0006207 , 0.00062284, 0.00062056,
+        0.00049555, 0.00055206, 0.00062039, 0.00067508, 0.00071006,
+        0.00053747, 0.00056512, 0.00076292, 0.0006943 , 0.0007719 ,
+        0.00062444, 0.00061867, 0.00071454, 0.00073545, 0.00077729]),
+ &#39;std_fit_time&#39;: array([4.32610890e-05, 2.97554028e-05, 4.27685253e-05, 5.70863354e-05,
+        6.65516584e-05, 6.32047114e-05, 4.35771576e-05, 6.89654084e-05,
+        7.99302118e-05, 8.72186390e-05, 7.91317154e-05, 7.43235457e-05,
+        4.85855240e-05, 7.48159059e-05, 8.88075636e-05, 9.45440180e-05,
+        6.44087736e-05, 7.24683811e-05, 9.48273416e-05, 5.89111226e-05,
+        6.91015400e-05, 9.01406039e-05, 7.39189112e-05, 7.81938830e-05,
+        5.70439358e-05]),
+ &#39;mean_score_time&#39;: array([0.0003274 , 0.00033171, 0.00033307, 0.00033331, 0.00031188,
+        0.00031035, 0.00030677, 0.00030246, 0.00030158, 0.00029862,
+        0.00028083, 0.00029762, 0.00028481, 0.00030415, 0.00031562,
+        0.00030382, 0.00030601, 0.00033414, 0.00029509, 0.00033369,
+        0.00030479, 0.00029831, 0.00031588, 0.00031836, 0.00033765]),
+ &#39;std_score_time&#39;: array([2.35913467e-05, 1.70944791e-05, 2.20405049e-05, 2.24746662e-05,
+        4.13198658e-05, 2.76612923e-05, 3.88064672e-05, 3.82297631e-05,
+        2.69314761e-05, 4.06047560e-05, 4.33741587e-05, 3.70344797e-05,
+        2.97154496e-05, 3.74871120e-05, 4.66324800e-05, 4.04637913e-05,
+        3.43372835e-05, 3.20795277e-05, 4.37626443e-05, 2.57072725e-05,
+        3.17611134e-05, 4.08796865e-05, 2.36682412e-05, 3.60852722e-05,
+        2.90150219e-05]),
  &#39;param_C&#39;: masked_array(data=[0.01, 0.01, 0.01, 0.01, 0.01, 0.1, 0.1, 0.1, 0.1, 0.1,
                     1, 1, 1, 1, 1, 10, 10, 10, 10, 10, 100, 100, 100, 100,
                     100],
