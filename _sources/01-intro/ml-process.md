@@ -5,7 +5,7 @@ Machine learning process can be described in terms of lifecycle phases. The phas
 ```{figure} https://upload.wikimedia.org/wikipedia/commons/7/7e/SDLC-Maintenance-Highlighted.png
 ---
 name: SDLC-Maintenance-Highlighted
-width: 200px
+width: 300px
 ---
 A general systems development life cycle, from Wikipedia.
 ```
