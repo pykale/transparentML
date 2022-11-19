@@ -964,8 +964,8 @@ memory usage: 30.6+ KB
 y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon.
 \]</div>
 <p>This model can be extended to include an interaction term between <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d40805db-e205-4bb7-9361-a97523d05a5b">
-<span class="eqno">(2.22)<a class="headerlink" href="#equation-d40805db-e205-4bb7-9361-a97523d05a5b" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-af6356b5-99e7-4fe6-ad5e-3b811242f8ab">
+<span class="eqno">(2.22)<a class="headerlink" href="#equation-af6356b5-99e7-4fe6-ad5e-3b811242f8ab" title="Permalink to this equation">¶</a></span>\[\begin{align}
 y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 &amp;= \beta_0 + (\beta_1 + \beta_3 x_2) x_1 + \beta_2 x_2 + \epsilon \\
 &amp;= \beta_0 + \tilde{\beta}_1 x_1 + \beta_2 x_2 + \epsilon,
@@ -998,7 +998,7 @@ y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 </tr>
 </table></div></div>
 </div>
-<p>The small <span class="math notranslate nohighlight">\(p\)</span>-value for the interaction term suggests that the true relationship is not additive and there is a strong evidence of the associate between <code class="docutils literal notranslate"><span class="pre">Sales</span></code> and the interaction between <code class="docutils literal notranslate"><span class="pre">TV</span></code> and <code class="docutils literal notranslate"><span class="pre">Radio</span></code>. Without including the interaction term, our understanding of the relationship between <code class="docutils literal notranslate"><span class="pre">Sales</span></code> and <code class="docutils literal notranslate"><span class="pre">TV</span></code> and <code class="docutils literal notranslate"><span class="pre">Radio</span></code> is not complete.</p>
+<p>The small <span class="math notranslate nohighlight">\(p\)</span>-value for the interaction term suggests that the true relationship is not additive and there is strong evidence of the association between <code class="docutils literal notranslate"><span class="pre">Sales</span></code> and the interaction between <code class="docutils literal notranslate"><span class="pre">TV</span></code> and <code class="docutils literal notranslate"><span class="pre">Radio</span></code>. Without including the interaction term, our understanding of the relationship between <code class="docutils literal notranslate"><span class="pre">Sales</span></code> and <code class="docutils literal notranslate"><span class="pre">TV</span></code> and <code class="docutils literal notranslate"><span class="pre">Radio</span></code> is not complete.</p>
 <div class="section" id="interaction-between-qualitative-and-quantitative-variables">
 <h4><span class="section-number">2.3.3.1.1. </span>Interaction between qualitative and quantitative variables<a class="headerlink" href="#interaction-between-qualitative-and-quantitative-variables" title="Permalink to this headline">¶</a></h4>
 <p>The concept of interactions also applies to qualitative variables. In fact, sometimes an interaction between a qualitative variable and a quantitative variable has a particularly nice interpretation. For example, run the following code to predict <code class="docutils literal notranslate"><span class="pre">Balance</span></code> using the <code class="docutils literal notranslate"><span class="pre">Income</span></code> (quantitative) and <code class="docutils literal notranslate"><span class="pre">Student</span></code> (qualitative) variables, and compare the differences between including and excluding the interaction term between <code class="docutils literal notranslate"><span class="pre">Income</span></code> and <code class="docutils literal notranslate"><span class="pre">Student</span></code>.</p>
@@ -1103,8 +1103,8 @@ dtype: float64
 </div>
 </div>
 <p>The figure shows a strong relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>, but it is clearly not linear. We can use a polynomial regression to fit a non-linear model to the data. We can fit a polynomial regression of degree 2 (quadratic) to the data using the following regression:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-411062f9-7a9b-4f0e-b89a-b392e384f47b">
-<span class="eqno">(2.23)<a class="headerlink" href="#equation-411062f9-7a9b-4f0e-b89a-b392e384f47b" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-82b2de9f-e68e-4a47-a221-1b2e827f52eb">
+<span class="eqno">(2.23)<a class="headerlink" href="#equation-82b2de9f-e68e-4a47-a221-1b2e827f52eb" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \textrm{mpg} = \beta_0 + \beta_1 \times \textrm{horsepower} + \beta_2 \times \textrm{horsepower}^2 + \epsilon.
 \end{equation}\]</div>
 <p>Run the following code to display the relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> (gas mileage in miles per gallon) and <span class="math notranslate nohighlight">\(\textrm{horsepower}^2\)</span> as well as <span class="math notranslate nohighlight">\(\textrm{horsepower}^5\)</span> (Figure 3.8 of the textbook) for cars in the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset.</p>
@@ -1753,7 +1753,7 @@ chas
   <th>Date:</th>             <td>Sat, 19 Nov 2022</td> <th>  Prob (F-statistic):</th> <td>1.57e-56</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>18:21:03</td>     <th>  Log-Likelihood:    </th> <td> -1653.3</td>
+  <th>Time:</th>                 <td>19:28:38</td>     <th>  Log-Likelihood:    </th> <td> -1653.3</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   506</td>      <th>  AIC:               </th> <td>   3335.</td>
