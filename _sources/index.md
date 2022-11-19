@@ -11,7 +11,8 @@
 **[Turing Course: An Introduction to Transparent Machine Learning](https://github.com/alan-turing-institute/Intro-to-transparent-ML-course/)**
 
 ```{admonition} Version
-Pre-alpha: under design and development
+- Primary topics: Alpha - ready for usage, test and feedback
+- Secondary topics: Pre-alpha - under design and development
 ```
 
 Welcome to [An Introduction to Transparent Machine Learning](https://github.com/alan-turing-institute/Intro-to-transparent-ML-course/), part of the [Alan Turing Institute](https://www.turing.ac.uk/)'s [online learning courses in responsible AI](https://www.turing.ac.uk/funding-call-online-learning-courses-responsible-ai). This self-paced online learning course aims to introduce essential materials on transparent machine learning for learners of diverse backgrounds to understand and apply transparent machine learning in real-world applications with confidence and trust, targeting a missing gap in the online educational space.
