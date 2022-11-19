@@ -712,7 +712,7 @@ memory usage: 30.6+ KB
 <p>Suppose that we wish to estimate the uncertainty of a coefficient estimate <span class="math notranslate nohighlight">\(\beta_1\)</span> from a linear regression fit, we take <span class="math notranslate nohighlight">\(M\)</span> (<span class="math notranslate nohighlight">\( M &lt;N \)</span>) repeated samples with replacement from our dataset and train our linear regression model <span class="math notranslate nohighlight">\(B\)</span> times and record each value <span class="math notranslate nohighlight">\(\hat{\beta}_1^{*1}, \hat{\beta}_1^{*2}, \dots, \hat{\beta}_1^{*B}\)</span>. With enough resampling, e.g. <span class="math notranslate nohighlight">\(B = 1000\)</span> or <span class="math notranslate nohighlight">\(B = 10,000\)</span>, we can plot the distribution of these bootstrapped estimates <span class="math notranslate nohighlight">\(\hat{\beta}_1^{*b}, b = 1,\cdots, B \)</span>. Then, we can use the resulting distribution to quantify the variability (or uncertainty, confidence) of this estimate by calculating useful summary statistics, such as standard errors and confidence intervals.</p>
 <p>The power of the bootstrap lies in the ability to take repeated samples of the dataset, instead of collecting a new dataset each time. Also, in contrast to standard error estimates typically reported with statistical software that rely on algebraic methods and underlying assumptions (which may be wrong), bootstrapped standard error estimates are more accurate as they are calculated computationally without any pre-specified assumptions.</p>
 <!-- **Bootstrap example using `scikit-learn`** (adapted from this [blog post](https://ethanwicker.com/2021-02-23-bootstrap-resampling-001/)) -->
-<p>Let us study the bootstrap on the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset using the <code class="docutils literal notranslate"><span class="pre">scikit-learn's</span> <span class="pre">[</span></code>resample` API](https://scikit-learn.org/stable/modules/generated/sklearn.utils.resample.html) (adapted from this <a class="reference external" href="https://ethanwicker.com/2021-02-23-bootstrap-resampling-001/">blog post</a>).</p>
+<p>Let us study the bootstrap on the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset using the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>’s <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.resample.html"><code class="docutils literal notranslate"><span class="pre">resample</span></code> API</a> (adapted from this <a class="reference external" href="https://ethanwicker.com/2021-02-23-bootstrap-resampling-001/">blog post</a>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Defining number of iterations for bootstrap resample</span>
@@ -851,6 +851,92 @@ memory usage: 30.6+ KB
 </div>
 </div>
 <p>In this way, we can easily estimate the uncertainty of ANY coefficient estimates and ANY test scores.</p>
+<p>We can use the resulting distribution to quantify the variability (or uncertainty, confidence) of this estimate by calculating useful summary statistics, such as standard errors and confidence intervals.</p>
+<p>First, calculate the mean.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrapped_stats</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>intercept          45.628857
+beta_horsepower    -0.047742
+beta_weight        -0.005776
+r_squared           0.698822
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, calculate the standard deviation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrapped_stats</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>intercept          0.783889
+beta_horsepower    0.011256
+beta_weight        0.000491
+r_squared          0.026071
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, calculate the 95% confidence interval.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrapped_stats</span><span class="o">.</span><span class="n">quantile</span><span class="p">([</span><span class="mf">0.025</span><span class="p">,</span> <span class="mf">0.975</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>intercept</th>
+      <th>beta_horsepower</th>
+      <th>beta_weight</th>
+      <th>r_squared</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.025</th>
+      <td>44.011519</td>
+      <td>-0.070634</td>
+      <td>-0.006737</td>
+      <td>0.648188</td>
+    </tr>
+    <tr>
+      <th>0.975</th>
+      <td>47.110089</td>
+      <td>-0.026996</td>
+      <td>-0.004826</td>
+      <td>0.749205</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">5.2.3. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
@@ -955,7 +1041,7 @@ memory usage: 30.6+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bootstrap_24_0.png" src="../_images/bootstrap_24_0.png" />
+<img alt="../_images/bootstrap_30_0.png" src="../_images/bootstrap_30_0.png" />
 </div>
 </div>
 </div>
