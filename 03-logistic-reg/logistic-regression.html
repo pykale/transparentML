@@ -756,6 +756,11 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matplotlib is building the font cache; this may take a moment.
+</pre></div>
+</div>
+</div>
 </div>
 <p>Load the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Default.csv">Default dataset</a> and inspect the first three rows.</p>
 <div class="cell docutils container">
@@ -1017,8 +1022,8 @@ intercept : [-10.65132548]
 <ul class="simple">
 <li><p>When the probability of <code class="docutils literal notranslate"><span class="pre">default</span></code> 0.5 (the commonly used threshold for binary classification), the corresponding balance can be calculated using the <em>log odds</em> equation above:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-ba2e8be7-4ae0-4084-afb9-10f9a3ed85b5">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-ba2e8be7-4ae0-4084-afb9-10f9a3ed85b5" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5453f379-59ad-48e3-a92e-a81a01261344">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-5453f379-59ad-48e3-a92e-a81a01261344" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \ln \left(\frac{\pi}{1-\pi}\right) &amp;= \beta_0 + \beta_1 \times x \\
 \ln \left(\frac{0.5}{1-0.5}\right) &amp;= \beta_0 + \beta_1 \times x \\
