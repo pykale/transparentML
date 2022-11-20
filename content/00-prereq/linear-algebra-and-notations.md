@@ -148,16 +148,16 @@ This section introduces the basic concepts of linear algebra and notations used 
     **a , c, d**
    ```
 
-**2**. **A** = $\begin{bmatrix} 8 & 5 & 9 \\ 7 & 19 & 14 \end{bmatrix}$
-   **B** = $ \begin{bmatrix} 6 & 13 & 15 \\ 17 & 22 & 12 \\ 0 & 3 & 9 \end{bmatrix}$
+**2**. **$A$** = $\begin{bmatrix} 8 & 5 & 9 \\ 7 & 19 & 14 \end{bmatrix}$
+   **$B$** = $ \begin{bmatrix} 6 & 13 & 15 \\ 17 & 22 & 12 \\ 0 & 3 & 9 \end{bmatrix}$
 
     Calculate the following matrix operations by hand.
 
-        a. AB = ?
+        a. $AB$ = ?
 
-        b. 2A = ?
+        b. $2A$ = ?
 
-        c. AB + 2A = ?
+        c. $AB + 2A$ = ?
 
 
 *Compare your answer with the reference solution below*
