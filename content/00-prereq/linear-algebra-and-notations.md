@@ -151,21 +151,21 @@ This section introduces the basic concepts of linear algebra and notations used 
 **2**. **$A$** = $\begin{bmatrix} 8 & 5 & 9 \\ 7 & 19 & 14 \end{bmatrix}$
    **$B$** = $ \begin{bmatrix} 6 & 13 & 15 \\ 17 & 22 & 12 \\ 0 & 3 & 9 \end{bmatrix}$
 
-    Calculate the following matrix operations by hand.
+Calculate the following matrix operations by hand.
 
-        a. $AB$ = ?
+  i. $AB$= ?
 
-        b. $2A$ = ?
+  ii. $2A$ = ?
 
-        c. $AB + 2A$ = ?
+  iii. $AB + 2A$ = ?
 
 
 *Compare your answer with the reference solution below*
    ```{toggle}
-    a. $\begin{bmatrix} 133 & 241 & 261 \\ 365 & 551 & 459 \end{bmatrix}$
+    i. $\begin{bmatrix} 133 & 241 & 261 \\ 365 & 551 & 459 \end{bmatrix}$
 
-    b. $\begin{bmatrix} 16 & 10 & 18 \\ 14 & 38 & 28 \end{bmatrix}$
+    ii. $\begin{bmatrix} 16 & 10 & 18 \\ 14 & 38 & 28 \end{bmatrix}$
 
-    c. $\begin{bmatrix} 149 & 251 & 279 \\ 379 & 589 & 487 \end{bmatrix}$
+    iii. $\begin{bmatrix} 149 & 251 & 279 \\ 379 & 589 & 487 \end{bmatrix}$
 
    ```
