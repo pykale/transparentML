@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>8.2. Support vector machines &#8212; Transparent ML Intro</title>
+    <title>8.3. Support vector machines &#8212; Transparent ML Intro</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,8 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8.3. Quiz and summary" href="quiz-sum-ref.html" />
-    <link rel="prev" title="8.1. Generalised linear models" href="glm.html" />
+    <link rel="next" title="8.4. Quiz and summary" href="quiz-sum-ref.html" />
+    <link rel="prev" title="8.2. Hyperplane and maximum margin classifier" href="max-margin.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -397,14 +397,19 @@ const thebe_selector_output = ".output, .cell_output"
      8.1. Generalised linear models
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="max-margin.html">
+     8.2. Hyperplane and maximum margin classifier
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     8.2. Support vector machines
+     8.3. Support vector machines
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="quiz-sum-ref.html">
-     8.3. Quiz &amp; summary
+     8.4. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -577,89 +582,50 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#maximum-margin-classifier-hard-margin">
-   8.2.1. Maximum margin classifier (hard margin)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#classification-using-a-separating-hyperplane">
-     8.2.1.1. Classification Using a Separating Hyperplane
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-maximum-margin-classifier">
-     8.2.1.2. The maximum margin classifier
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#construction-of-maximum-margin-classifier">
-     8.2.1.3. Construction of maximum margin classifier
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#support-vector-classifier-soft-margin">
-   8.2.2. Support vector classifier (soft margin)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-non-separable-case">
-     8.2.2.1. The non-separable case
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#construction-of-support-vector-classifier">
-     8.2.2.2. Construction of support vector classifier
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   8.2.3. Support vector machines
+   8.3.1. Support vector machines
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#classification-with-non-linear-decision-boundaries">
-     8.2.3.1. Classification with non-linear decision boundaries
+     8.3.1.1. Classification with non-linear decision boundaries
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-support-vector-machine-and-kernel-trick">
-     8.2.3.2. The support vector machine and kernel trick
+     8.3.1.2. The support vector machine and kernel trick
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-svms-toy-data-using-scikit-learn">
+     8.3.1.3. Example: SVMs toy data using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       scikit-learn
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluating-with-roc-curves">
+     8.3.1.4. Evaluating with ROC curves
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lab">
-   8.2.4. LAB
+  <a class="reference internal nav-link" href="#svms-with-more-than-two-classes">
+   8.3.2. SVMs with more than two classes
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#support-vector-classifier">
-     8.2.4.1. 9.6.1 Support Vector Classifier
+    <a class="reference internal nav-link" href="#one-vs-one">
+     8.3.2.1. One-vs-one
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#support-vector-machine">
-     8.2.4.2. 9.6.2 Support Vector Machine
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#roc-curves">
-     8.2.4.3. 9.6.3 ROC Curves
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#svm-with-multiple-classes">
-     8.2.4.4. 9.6.4 SVM with Multiple Classes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#application-to-gene-expression-data">
-     8.2.4.5. 9.6.5 Application to Gene Expression Data
+    <a class="reference internal nav-link" href="#one-vs-all">
+     8.3.2.2. One-vs-all
     </a>
    </li>
   </ul>
@@ -685,89 +651,50 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#maximum-margin-classifier-hard-margin">
-   8.2.1. Maximum margin classifier (hard margin)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#classification-using-a-separating-hyperplane">
-     8.2.1.1. Classification Using a Separating Hyperplane
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-maximum-margin-classifier">
-     8.2.1.2. The maximum margin classifier
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#construction-of-maximum-margin-classifier">
-     8.2.1.3. Construction of maximum margin classifier
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#support-vector-classifier-soft-margin">
-   8.2.2. Support vector classifier (soft margin)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-non-separable-case">
-     8.2.2.1. The non-separable case
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#construction-of-support-vector-classifier">
-     8.2.2.2. Construction of support vector classifier
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   8.2.3. Support vector machines
+   8.3.1. Support vector machines
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#classification-with-non-linear-decision-boundaries">
-     8.2.3.1. Classification with non-linear decision boundaries
+     8.3.1.1. Classification with non-linear decision boundaries
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-support-vector-machine-and-kernel-trick">
-     8.2.3.2. The support vector machine and kernel trick
+     8.3.1.2. The support vector machine and kernel trick
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-svms-toy-data-using-scikit-learn">
+     8.3.1.3. Example: SVMs toy data using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       scikit-learn
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluating-with-roc-curves">
+     8.3.1.4. Evaluating with ROC curves
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lab">
-   8.2.4. LAB
+  <a class="reference internal nav-link" href="#svms-with-more-than-two-classes">
+   8.3.2. SVMs with more than two classes
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#support-vector-classifier">
-     8.2.4.1. 9.6.1 Support Vector Classifier
+    <a class="reference internal nav-link" href="#one-vs-one">
+     8.3.2.1. One-vs-one
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#support-vector-machine">
-     8.2.4.2. 9.6.2 Support Vector Machine
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#roc-curves">
-     8.2.4.3. 9.6.3 ROC Curves
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#svm-with-multiple-classes">
-     8.2.4.4. 9.6.4 SVM with Multiple Classes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#application-to-gene-expression-data">
-     8.2.4.5. 9.6.5 Application to Gene Expression Data
+    <a class="reference internal nav-link" href="#one-vs-all">
+     8.3.2.2. One-vs-all
     </a>
    </li>
   </ul>
@@ -782,7 +709,7 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="support-vector-machines">
-<h1><span class="section-number">8.2. </span>Support vector machines<a class="headerlink" href="#support-vector-machines" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">8.3. </span>Support vector machines<a class="headerlink" href="#support-vector-machines" title="Permalink to this headline">¶</a></h1>
 <p>In this section, we discuss the support vector machine (SVM), an approach for classification that was developed in the computer science community in the 1990s and that has grown in popularity since then. SVMs have been shown to perform well in a variety of settings, and are often considered one of the best “out of the box” classifiers.</p>
 <!-- - [Lab: 9.6.1 Support Vector Classifier](#9.6.1-Support-Vector-Classifier)
 - [Lab: 9.6.2 Support Vector Machine](#9.6.2-Support-Vector-Machine)
@@ -790,8 +717,86 @@ const thebe_selector_output = ".output, .cell_output"
 - [Lab: 9.6.4 SVM with Multiple Classes](#9.6.4-SVM-with-Multiple-Classes)
 - [Lab: 9.6.5 Application to Gene Expression Data](#9.6.5-Application-to-Gene-Expression-Data) --><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ../standard_import.txt</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # plot hyperplane</span>
+<span class="c1"># x = np.arange(-1.5, 1.51, 0.01)</span>
+<span class="c1"># y = np.arange(-1.5, 1.51, 0.01)</span>
+
+<span class="c1"># X, Y = np.meshgrid(x, y)</span>
+<span class="c1"># zz = np.array([X.ravel(), Y.ravel()]).T</span>
+<span class="c1"># Z = zz[:, 0] * 2 + zz[:, 1] * 3 + 1</span>
+<span class="c1"># Z[np.where(Z &gt; 0)] = 1</span>
+<span class="c1"># Z[np.where(Z &lt;= 0)] = -1</span>
+<span class="c1"># Z = Z.reshape(X.shape)</span>
+<span class="c1"># plt.contourf(X, Y, Z, cmap=plt.cm.Paired, alpha=0.2)</span>
+<span class="c1"># plt.show()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><span class="section-number">8.3.1. </span>Support vector machines<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="classification-with-non-linear-decision-boundaries">
+<h3><span class="section-number">8.3.1.1. </span>Classification with non-linear decision boundaries<a class="headerlink" href="#classification-with-non-linear-decision-boundaries" title="Permalink to this headline">¶</a></h3>
+<p>The support vector classifier is a natural approach for classification in the two-class setting, if the boundary between the two classes is linear. However, in practice we are sometimes faced with non-linear class boundaries, as the example shown in the left panel of <a class="reference internal" href="#svm8"><span class="std std-numref">Fig. 8.8</span></a>.</p>
+<div class="margin-caption figure align-default" id="svm8">
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm8.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm8.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm8.png" style="width: 700px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8.8 </span><span class="caption-text">Left: A support vector classifier was fit to a small data set. The hyperplane is shown as a solid line and the margins are shown as dashed lines. Purple observations: Observations 3, 4, 5, and 6 are on the correct side of the margin, observation 2 is on the margin, and observation 1 is on the wrong side of the margin. Blue observations: Observations 7 and 10 are on the correct side of the margin, observation 9 is on the margin, and observation 8 is on the wrong side of the margin. No observations are on the wrong side of the hyperplane. Right: Same as left panel with two additional points, 11 and 12. These two observations are on the wrong side of the hyperplane and the wrong side of the margin.</span><a class="headerlink" href="#svm8" title="Permalink to this image">¶</a></p>
+</div>
+<p>In <a class="reference internal" href="../02-linear-reg/extension-limitation.html"><span class="doc">Linear regression</span></a>, we discussed using higher-order polynomials as a way to fit a non-linear relationship between the predictors and the response. Foe example, rather than fitting a support vector classifier using <span class="math notranslate nohighlight">\(D\)</span> features: <span class="math notranslate nohighlight">\( x_{1}, x_{2}, \ldots, x_{D} \)</span>, we could fit a support vector classifier using <span class="math notranslate nohighlight">\( 2 \times D \)</span> features: <span class="math notranslate nohighlight">\( x_{1}, x_{2}, \ldots, x_{D'}, x_{1}^2, x_{2}^2, \ldots, x_{D'}^2 \)</span>. Then the optimisation problem becomes</p>
+<div class="math notranslate nohighlight" id="equation-eq-svm-polynomial">
+<span class="eqno">(8.3)<a class="headerlink" href="#equation-eq-svm-polynomial" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+&amp; \max_{\beta_0, \beta_{1,1}, \ldots, \beta_{D,2}, \epsilon_1, \ldots, \epsilon_N} M \\
+&amp; \text{subject to } y_i\left(\beta_0 + \sum_{j=1}^{D} \beta_{j,1} x_{ij} + \beta_{j,2} x_{ij}^2\right) \geq M(1 - \epsilon_i), \\
+&amp; \sum_{j=1}^{D} \beta_{j,1}^2 + \beta_{j,2}^2 = 1, \epsilon_i \geq 0, \sum_{i = 1}^N \epsilon_i \leq C, \text{ for } i = 1, \ldots, N.
+\end{aligned}\end{split}\]</div>
+<p>The decision boundary that results from Equation <a class="reference internal" href="#equation-eq-svm-polynomial">(8.3)</a> is in fact linear. But in the original feature space, the decision boundary is of the form <span class="math notranslate nohighlight">\( q(x) = 0 \)</span>, where <span class="math notranslate nohighlight">\( q(\cdot) \)</span> is a quadratic polynomial, and its solutions are generally non-linear.</p>
+</div>
+<div class="section" id="the-support-vector-machine-and-kernel-trick">
+<h3><span class="section-number">8.3.1.2. </span>The support vector machine and kernel trick<a class="headerlink" href="#the-support-vector-machine-and-kernel-trick" title="Permalink to this headline">¶</a></h3>
+<p>The <em>support vector machine (SVM)</em> is an extension of the support vector classifier that results from enlarging the feature space in a specific way, using <em>kernels</em>. As described above, the main idea is to enlarge our feature space in order to accommodate a non-linear boundary between the classes. The kernel approach that we describe here is simply an efficient computational approach for enacting this idea.</p>
+<p>We have not discussed exactly how the support vector classifier is computed because the details become somewhat technical. However, it turns
+out that the solution to the support vector classifier problem <a class="reference internal" href="max-margin.html#equation-eq-soft-margin-classifier">(8.2)</a> involves only the inner products of the observations (as opposed to the observations themselves). The inner product of two <span class="math notranslate nohighlight">\(D\)</span>-vectors <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is defined as <span class="math notranslate nohighlight">\(⟨a, b⟩ = \sum_{i=1}^{D} a_i b_i \)</span>. Thus the inner product of two observations <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_{i'}\)</span> is <span class="math notranslate nohighlight">\(⟨\mathbf{x}_i, \mathbf{x}_{i'}⟩ = \sum_{j=1}^{D} x_{ij} x_{i'j} \)</span>. As a result, the linear svm classifier can be written as</p>
+<div class="math notranslate nohighlight" id="equation-eq-svm-inner-product">
+<span class="eqno">(8.4)<a class="headerlink" href="#equation-eq-svm-inner-product" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+f(x) = \beta_0 + \sum_{i=1}^{N} \alpha_i y_i ⟨\mathbf{x}, \mathbf{x}_i⟩,
+\end{equation}\]</div>
+<p>where there are <span class="math notranslate nohighlight">\(N\)</span> parameters <span class="math notranslate nohighlight">\(\alpha_i, \text{ for } i = 1, \ldots N \)</span>, one per training observation. To estimate the parameters <span class="math notranslate nohighlight">\(\alpha_i\)</span>, all we need are the inner products of the training observations. The inner product can be denoted in the following generalised form:</p>
+<div class="math notranslate nohighlight">
+\[
+⟨x_i, x_{i'}⟩ =k(x_i, x_{i'}),
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( k(\cdot, \cdot) \)</span> is some function that we will refer to as a <em>kernel</em>, which quantifies the similarity of two observations. For instance, we could simply take</p>
+<div class="math notranslate nohighlight">
+\[
+k(\mathbf{x}_i, \mathbf{x}_{i'}) = \sum_{j=1}^{D} x_{ij} x_{i'j},
+\]</div>
+<p>which knows as the <em>linear kernel</em>. However, we could also take</p>
+<div class="math notranslate nohighlight">
+\[
+k(\mathbf{x}_i, \mathbf{x}_{i'}) = \left(1 + \sum_{j=1}^{D} x_{ij} x_{i'j}\right)^d,
+\]</div>
+<p>which is known as <em>polynomial kernel</em>  of degree <span class="math notranslate nohighlight">\(d\)</span>, and <span class="math notranslate nohighlight">\( d &gt; 1 \)</span> is a positive integer. Another popular choice is the radial kernel, which takes the form</p>
+<div class="math notranslate nohighlight">
+\[
+k(\mathbf{x}_i, \mathbf{x}_{i'}) = \exp\left(-\gamma \sum_{j=1}^{D} (x_{ij} - x_{i'j})^2\right),
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \gamma &gt; 0 \)</span> is a positive tuning parameter. The radial kernel is also known as the <em>Gaussian kernel</em>. <a class="reference internal" href="#svm9"><span class="std std-numref">Fig. 8.9</span></a> shows the decision boundaries that result from using the polynomial (left) and radial kernels (right).</p>
+<p>When the support vector classifier is combined with a non-linear kernel, the resulting classifier is known as a support vector machine:</p>
+<div class="math notranslate nohighlight" id="equation-eq-svm">
+<span class="eqno">(8.5)<a class="headerlink" href="#equation-eq-svm" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+f(x) = \beta_0 + \sum_{i=1}^{N} \alpha_i k(\mathbf{x}, \mathbf{x}_i).
+\end{equation}\]</div>
+<div class="margin-caption figure align-default" id="svm9">
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm9.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm9.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm9.png" style="width: 700px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8.9 </span><span class="caption-text">Left: An SVM with a polynomial kernel of degree 3 is applied to the non-linear data from <a class="reference internal" href="#svm8"><span class="std std-numref">Fig. 8.8</span></a>, resulting in a far more appropriate decision rule. Right: An SVM with a radial kernel is applied. In this example, either kernel is capable of capturing the decision boundary.</span><a class="headerlink" href="#svm9" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="example-svms-toy-data-using-scikit-learn">
+<h3><span class="section-number">8.3.1.3. </span>Example: SVMs toy data using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code><a class="headerlink" href="#example-svms-toy-data-using-scikit-learn" title="Permalink to this headline">¶</a></h3>
+<p>Import the required libraries</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -807,175 +812,6 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="maximum-margin-classifier-hard-margin">
-<h2><span class="section-number">8.2.1. </span>Maximum margin classifier (hard margin)<a class="headerlink" href="#maximum-margin-classifier-hard-margin" title="Permalink to this headline">¶</a></h2>
-<p>In this section, we define a hyperplane and introduce the concept of an optimal separating hyperplane.</p>
-<p>In a <span class="math notranslate nohighlight">\(D\)</span>-dimensional space, a hyperplane is a flat affine subspace of dimension <span class="math notranslate nohighlight">\(D − 1\)</span>. For instance, in two dimensions, a hyperplane is a flat one-dimensional subspace—in other words, a line. In three dimensions, a hyperplane is a flat two-dimensional subspace—that is, a plane. In <span class="math notranslate nohighlight">\(D &gt; 3\)</span> dimensions, it can be hard to visualize a hyperplane, but the notion of a <span class="math notranslate nohighlight">\((D − 1)\)</span>-dimensional flat subspace still applies.</p>
-<p>The mathematical definition of a hyperplane is quite simple. In two dimensions, a hyperplane is defined by the equation,</p>
-<div class="math notranslate nohighlight">
-\[
-\beta_0 + \beta_1 x_1 + \beta_2 x_2 = 0
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(\beta_0, \beta_1, \beta_2\)</span> are parameters. When we say that the above equation “defines” the hyperplane, we mean that any <span class="math notranslate nohighlight">\(\mathbf{x} = [x_1, x_2]^\top \)</span> satisfies the equation is a point on the hyperplane. Note the equation above is simply the equation of a line, since indeed in two dimensions a hyperplane is a line. In the <span class="math notranslate nohighlight">\(D\)</span>-dimensional case, the equation defining a hyperplane is</p>
-<div class="math notranslate nohighlight">
-\[
-\beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_D x_D = 0
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(\beta_0, \beta_1, \beta_2, \ldots, \beta_D\)</span> are parameters. In this equation, any <span class="math notranslate nohighlight">\(\mathbf{x} = [x_1, x_2, \ldots, x_D]^\top\)</span> satisfies the above equation is a point on the hyperplane. If <span class="math notranslate nohighlight">\(\mathbf{x} \)</span> does not satisfy the equation, e.g.</p>
-<div class="math notranslate nohighlight">
-\[
-\beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_D x_D &gt; 0
-\]</div>
-<p>then <span class="math notranslate nohighlight">\(\mathbf{x} \)</span> is on one side of the hyperplane, and if</p>
-<div class="math notranslate nohighlight">
-\[
-\beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_D x_D &lt; 0
-\]</div>
-<p>then <span class="math notranslate nohighlight">\(\mathbf{x} \)</span> is on the other side of the hyperplane. So we can think of the hyperplane as dividing <span class="math notranslate nohighlight">\(D\)</span>-dimensional space into two halves. One can easily determine on which side of the hyperplane a point lies by simply calculating
-the sign of the left hand side of the hyperplane equation. The following code plots a hyperplane in two dimensions.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot hyperplane</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.51</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.51</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
-
-<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">zz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">X</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">Y</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span><span class="o">.</span><span class="n">T</span>
-<span class="n">Z</span> <span class="o">=</span> <span class="n">zz</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">zz</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="n">Z</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Z</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">Z</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Z</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-<span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/svm_4_0.png" src="../_images/svm_4_0.png" />
-</div>
-</div>
-<div class="section" id="classification-using-a-separating-hyperplane">
-<h3><span class="section-number">8.2.1.1. </span>Classification Using a Separating Hyperplane<a class="headerlink" href="#classification-using-a-separating-hyperplane" title="Permalink to this headline">¶</a></h3>
-<p>Suppose we have a set of observations <span class="math notranslate nohighlight">\(\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_N\)</span> in <span class="math notranslate nohighlight">\(D\)</span>-dimensional space</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{x}_1 = \begin{bmatrix} x_{11} \\ x_{12} \\ \vdots \\ x_{1D} \end{bmatrix}, \ldots, \mathbf{x}_N = \begin{bmatrix} x_{N1} \\ x_{N2} \\ \vdots \\ x_{ND} \end{bmatrix},
-\end{split}\]</div>
-<p>and that these observations fall into two classes, <span class="math notranslate nohighlight">\(y_1, \ldots, y_N \in \{-1, 1\}\)</span>, where 1 represents one class and -1 the other class. We also have a test observation <span class="math notranslate nohighlight">\(\mathbf{x}^* = [x^*_1, \ldots, x^*_N]^\top\)</span> that we would like to classify. We can do so by finding the hyperplane that separates the two classes. Such a hyperplane is known as an separating hyperplane.</p>
-<p>We can label the observations from the blue class as <span class="math notranslate nohighlight">\( y_i = 1 \)</span> and those from the purple class as <span class="math notranslate nohighlight">\( y_i = −1 \)</span>. Then a separating hyperplane has the property that</p>
-<div class="math notranslate nohighlight">
-\[
-\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD} &gt; 0, \text{ if } y_i = 1
-\]</div>
-<p>and</p>
-<div class="math notranslate nohighlight">
-\[
-\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD} &lt; 0, \text{ if } y_i = -1.
-\]</div>
-<p>Equivalently, we can write this as</p>
-<div class="math notranslate nohighlight">
-\[
-y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0, \text{ for } i = 1, \ldots, N.
-\]</div>
-<div class="margin-caption figure align-default" id="svm2">
-<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm2.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm2.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm2.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.1 </span><span class="caption-text">Two classes of observations are shown in blue and in purple, respectively. Left: Three separating hyperplanes, out of many possible, are shown in black. Right: A separating hyperplane is shown in black. The blue and purple grid indicates the decision rule made by a classifier based on this separating hyperplane: a test observation that falls in the blue portion of the grid will be assigned to the blue class, and one that falls in the purple portion of the grid will be assigned to the purple class (figure source: <a class="reference external" href="https://trevorhastie.github.io/ISLR/">https://trevorhastie.github.io/ISLR/</a>).</span><a class="headerlink" href="#svm2" title="Permalink to this image">¶</a></p>
-</div>
-<p>A shown in <a class="reference internal" href="#svm2"><span class="std std-numref">Fig. 8.1</span></a>, if a separating hyperplane exists, we can use it to construct a very natural classifier: a test observation is assigned a class depending on which side of the hyperplane it is located.</p>
-</div>
-<div class="section" id="the-maximum-margin-classifier">
-<h3><span class="section-number">8.2.1.2. </span>The maximum margin classifier<a class="headerlink" href="#the-maximum-margin-classifier" title="Permalink to this headline">¶</a></h3>
-<p>In general, if the data can be perfectly separated using a hyperplane, then there will in fact exist an infinite number of such hyperplanes. This is because a given separating hyperplane can usually be shifted a tiny bit up or down, or rotated, without coming into contact with any of the observations.</p>
-<p>A natural choice is the <em>maximal margin hyperplane</em> (also known as the optimal separating hyperplane), which is the separating hyperplane that is farthest from the training observations. That is, we can compute the (perpendicular) distance from each training observation to a given separating hyperplane; the smallest such distance is the minimal distance from the observations to the hyperplane, and is known as the margin. The maximal margin hyperplane is the separating hyperplane for which the margin is margin largest—that is, it is the hyperplane that has the farthest minimum distance to the training observations. We can then classify a test observation based on which side of the maximal margin hyperplane it lies. This is known as the maximal margin classifier. We hope that a classifier that has a large margin on the training data will also have a large margin on the test data, and hence will classify the test observations correctly.</p>
-<div class="margin-caption figure align-default" id="svm3">
-<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm3.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm3.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm3.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.2 </span><span class="caption-text">Two classes of observations are shown in blue and in purple, respectively. The maximal margin hyperplane is shown as a solid line. The margin is the distance from the solid line to either of the dashed lines. The two blue points and the purple point that lie on the dashed lines are the support vectors, and the distance from those points to the hyperplane is indicated by arrows. The purple and blue grid indicates the decision rule made by a classifier based on this separating hyperplane.</span><a class="headerlink" href="#svm3" title="Permalink to this image">¶</a></p>
-</div>
-<p><a class="reference internal" href="#svm3"><span class="std std-numref">Fig. 8.2</span></a> shows a maximal margin hyperplane. Comparing to the right-hand panel of <a class="reference internal" href="#svm2"><span class="std std-numref">Fig. 8.1</span></a>, we see that the maximal margin hyperplane in <a class="reference internal" href="#svm3"><span class="std std-numref">Fig. 8.2</span></a> results in a greater minimal distance between the observations and the separating hyperplane—that is, a larger margin. We can also see that three training observations are equidistant from the maximal margin hyperplane and lie along the dashed lines indicating the width of the margin. These three observations are known as <em>support vectors</em>, and the distance from the support vectors to the hyperplane is known as the <em>margin width</em>.</p>
-</div>
-<div class="section" id="construction-of-maximum-margin-classifier">
-<h3><span class="section-number">8.2.1.3. </span>Construction of maximum margin classifier<a class="headerlink" href="#construction-of-maximum-margin-classifier" title="Permalink to this headline">¶</a></h3>
-<p>The maximal margin hyperplane is the solution to the following optimization problem</p>
-<div class="math notranslate nohighlight" id="equation-eq-max-margin-classifier">
-<span class="eqno">(8.1)<a class="headerlink" href="#equation-eq-max-margin-classifier" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
-&amp; \max_{\beta_0, \beta_1, \ldots, \beta_D} M \\
-&amp; \text{subject to } \sum_{j=1}^D \beta_j^2 = 1 ,\\
-&amp; y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) \geq M, \text{ for } i = 1, \ldots, N.
-\end{aligned}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\( y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) \)</span> in the constraint represents the perpendicular distance from the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation to the hyperplane. This constraint guarantees that each observation is on the correct side of the hyperplane and at least a distance <span class="math notranslate nohighlight">\( M \)</span> from the hyperplane. Therefore, <span class="math notranslate nohighlight">\(M\)</span> represents the margin of our hyperplane, and the optimization problem chooses <span class="math notranslate nohighlight">\( \beta_0, \beta_1, \ldots, \beta_D \)</span> to maximize M. This is exactly the definition of the maximal margin hyperplane! The problem <a class="reference internal" href="#equation-eq-max-margin-classifier">(8.1)</a> can be solved efficiently via quadratic programming, but details of this optimization are outside of the scope of this course.</p>
-</div>
-</div>
-<div class="section" id="support-vector-classifier-soft-margin">
-<h2><span class="section-number">8.2.2. </span>Support vector classifier (soft margin)<a class="headerlink" href="#support-vector-classifier-soft-margin" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="the-non-separable-case">
-<h3><span class="section-number">8.2.2.1. </span>The non-separable case<a class="headerlink" href="#the-non-separable-case" title="Permalink to this headline">¶</a></h3>
-<p>The maximal margin classifier is a very natural way to perform classification, if a separating hyperplane exists. However, in many cases no separating hyperplane exists, and so there is no maximal margin classifier, as shown in <a class="reference internal" href="#svm4"><span class="std std-numref">Fig. 8.3</span></a>.</p>
-<div class="margin-caption figure align-default" id="svm4">
-<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm4.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm4.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm4.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.3 </span><span class="caption-text">Two classes of observations are shown in blue and in purple, respectively. The two classes are not separable by a hyperplane, and so the maximal margin classifier cannot be used.</span><a class="headerlink" href="#svm4" title="Permalink to this image">¶</a></p>
-</div>
-<p>In this case, we might be willing to consider allowing some observations to be on the incorrect side of the margin, or even the incorrect side of the hyperplane, rather than seeking the largest possible margin so that every observation is not only on the correct side of the hyperplane but also on the correct side of the margin. This is the idea behind the <em>support vector classifier</em>, also known as the <em>soft margin classifier</em>.</p>
-<div class="margin-caption figure align-default" id="svm5">
-<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm5.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm5.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm5.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.4 </span><span class="caption-text">Left: Two classes of observations are shown in blue and in purple, along with the maximal margin hyperplane. Right: An additional blue observation has been added, leading to a dramatic shift in the maximal margin hyperplane shown as a solid line. The dashed line indicates the maximal margin hyperplane that was obtained in the absence of this additional point.</span><a class="headerlink" href="#svm5" title="Permalink to this image">¶</a></p>
-</div>
-<p>An example is shown in the left-hand panel of <a class="reference internal" href="#svm5"><span class="std std-numref">Fig. 8.4</span></a>. Most of the observations are on the correct side of the margin.
-However, a small subset of the observations are on the wrong side of the margin.</p>
-<p>An observation can be not only on the wrong side of the margin, but also on the wrong side of the hyperplane. In fact, when there is no separating hyperplane, such a situation is inevitable. Observations on the wrong side of the hyperplane correspond to training observations that are misclassified by the support vector classifier. The right-hand panel of <a class="reference internal" href="#svm5"><span class="std std-numref">Fig. 8.4</span></a> illustrates
-such a scenario.</p>
-<div class="margin-caption figure align-default" id="svm6">
-<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm6.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm6.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm6.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.5 </span><span class="caption-text">Left: A support vector classifier was fit to a small data set. The hyperplane is shown as a solid line and the margins are shown as dashed lines. Purple observations: Observations 3, 4, 5, and 6 are on the correct side of the margin, observation 2 is on the margin, and observation 1 is on the wrong side of the margin. Blue observations: Observations 7 and 10 are on the correct side of the margin, observation 9 is on the margin, and observation 8 is on the wrong side of the margin. No observations are on the wrong side of the hyperplane. Right: Same as left panel with two additional points, 11 and 12. These two observations are on the wrong side of the hyperplane and the wrong side of the margin.</span><a class="headerlink" href="#svm6" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="construction-of-support-vector-classifier">
-<h3><span class="section-number">8.2.2.2. </span>Construction of support vector classifier<a class="headerlink" href="#construction-of-support-vector-classifier" title="Permalink to this headline">¶</a></h3>
-<p>The support vector classifier classifies a test observation depending on which side of a hyperplane it lies. The hyperplane is chosen to correctly separate most of the training observations into the two classes, but may misclassify a few observations. It is the solution to the optimization problem</p>
-<div class="math notranslate nohighlight" id="equation-eq-soft-margin-classifier">
-<span class="eqno">(8.2)<a class="headerlink" href="#equation-eq-soft-margin-classifier" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
-&amp; \max_{\beta_0, \beta_1, \ldots, \beta_D, \epsilon_1, \ldots, \epsilon_N} M \\
-&amp; \text{subject to } \sum_{j=1}^D \beta_j^2 = 1 ,\\
-&amp; y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) \geq M(1 - \epsilon_i),\\
-&amp; \epsilon_i \geq 0, \sum_{i = 1}^N \epsilon_i \leq C, \text{ for } i = 1, \ldots, N,
-\end{aligned}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\( \epsilon_i \)</span> is a slack variable that measures the amount by which the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation is on the wrong side of the margin. The slack variables are constrained to be non-negative, and the constraint <span class="math notranslate nohighlight">\( \sum_{i = 1}^N \epsilon_i \leq C \)</span> places an upper bound on the total amount by which the observations can be on the wrong side of the margin. The parameter <span class="math notranslate nohighlight">\( C \)</span> is a tuning parameter that controls the trade-off between the two competing goals of the support vector classifier: maximizing the margin and minimizing the number of training observations that are misclassified. When <span class="math notranslate nohighlight">\( C \)</span> is very large, the support vector classifier will attempt to maximize the margin, and so it will misclassify very few training observations. When <span class="math notranslate nohighlight">\( C \)</span> is very small, the support vector classifier will attempt to minimize the number of training observations that are misclassified, and so it will have a smaller margin. In practice, <span class="math notranslate nohighlight">\( C \)</span> is often tuned using cross-validation. <a class="reference internal" href="#svm7"><span class="std std-numref">Fig. 8.6</span></a> illustrates the effect of <span class="math notranslate nohighlight">\( C \)</span> on the support vector classifier.</p>
-<div class="margin-caption figure align-default" id="svm7">
-<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm7.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm7.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm7.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.6 </span><span class="caption-text">A support vector classifier was fit using four different values of the tuning parameter <span class="math notranslate nohighlight">\( C \)</span> of Equation <a class="reference internal" href="#equation-eq-soft-margin-classifier">(8.2)</a>. The largest value of <span class="math notranslate nohighlight">\( C \)</span> was used in the top left panel, and smaller values were used in the top right, bottom left, and bottom right panels. When <span class="math notranslate nohighlight">\( C \)</span> is large, then there is a high tolerance for observations being on the wrong side of the margin, and so the margin will be large. As <span class="math notranslate nohighlight">\( C \)</span> decreases, the tolerance for observations being on the wrong side of the margin decreases, and the margin narrows.</span><a class="headerlink" href="#svm7" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-</div>
-<div class="section" id="id1">
-<h2><span class="section-number">8.2.3. </span>Support vector machines<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="classification-with-non-linear-decision-boundaries">
-<h3><span class="section-number">8.2.3.1. </span>Classification with non-linear decision boundaries<a class="headerlink" href="#classification-with-non-linear-decision-boundaries" title="Permalink to this headline">¶</a></h3>
-<p>The support vector classifier is a natural approach for classification in the two-class setting, if the boundary between the two classes is linear. However, in practice we are sometimes faced with non-linear class boundaries, as the example shown in the left panel of <a class="reference internal" href="#svm8"><span class="std std-numref">Fig. 8.7</span></a>.</p>
-<div class="margin-caption figure align-default" id="svm8">
-<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm8.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm8.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm8.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.7 </span><span class="caption-text">Left: A support vector classifier was fit to a small data set. The hyperplane is shown as a solid line and the margins are shown as dashed lines. Purple observations: Observations 3, 4, 5, and 6 are on the correct side of the margin, observation 2 is on the margin, and observation 1 is on the wrong side of the margin. Blue observations: Observations 7 and 10 are on the correct side of the margin, observation 9 is on the margin, and observation 8 is on the wrong side of the margin. No observations are on the wrong side of the hyperplane. Right: Same as left panel with two additional points, 11 and 12. These two observations are on the wrong side of the hyperplane and the wrong side of the margin.</span><a class="headerlink" href="#svm8" title="Permalink to this image">¶</a></p>
-</div>
-<p>In <a class="reference internal" href="../02-linear-reg/extension-limitation.html"><span class="doc">Linear regression</span></a>, we discussed using higher-order polynomials as a way to fit a non-linear relationship between the predictors and the response. Foe example, rather than fitting a support vector classifier using <span class="math notranslate nohighlight">\(D\)</span> features: <span class="math notranslate nohighlight">\( x_{1}, x_{2}, \ldots, x_{D} \)</span>, we could fit a support vector classifier using <span class="math notranslate nohighlight">\( 2 \times D \)</span> features: <span class="math notranslate nohighlight">\( x_{1}, x_{2}, \ldots, x_{D'}, x_{1}^2, x_{2}^2, \ldots, x_{D'}^2 \)</span>. Then the optimisation problem becomes</p>
-<div class="math notranslate nohighlight" id="equation-eq-svm-polynomial">
-<span class="eqno">(8.3)<a class="headerlink" href="#equation-eq-svm-polynomial" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
-&amp; \max_{\beta_0, \beta_{1,1}, \ldots, \beta_{D,2}, \epsilon_1, \ldots, \epsilon_N} M \\
-&amp; \text{subject to } y_i\left(\beta_0 + \sum_{j=1}^{D} \beta_{j,1} x_{ij} + \beta_{j,2} x_{ij}^2\right) \geq M(1 - \epsilon_i), \\
-&amp; \sum_{j=1}^{D} \beta_{j,1}^2 + \beta_{j,2}^2 = 1, \epsilon_i \geq 0, \sum_{i = 1}^N \epsilon_i \leq C, \text{ for } i = 1, \ldots, N,
-\end{aligned}\end{split}\]</div>
-<p>the decision boundary that results from Equation <a class="reference internal" href="#equation-eq-svm-polynomial">(8.3)</a> is in fact linear. But in the original feature space, the decision boundary is of the form <span class="math notranslate nohighlight">\( q(x) = 0 \)</span>, where <span class="math notranslate nohighlight">\( q(\cdot) \)</span> is a quadratic polynomial, and its solutions are generally non-linear.</p>
-</div>
-<div class="section" id="the-support-vector-machine-and-kernel-trick">
-<h3><span class="section-number">8.2.3.2. </span>The support vector machine and kernel trick<a class="headerlink" href="#the-support-vector-machine-and-kernel-trick" title="Permalink to this headline">¶</a></h3>
-<p>The <em>support vector machine (SVM)</em> is an extension of the support vector classifier that results from enlarging the feature space in a specific way, using <em>kernels</em>.</p>
-<div class="margin-caption figure align-default" id="svm9">
-<a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm9.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm9.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm9.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.8 </span><span class="caption-text">Left: An SVM with a polynomial kernel of degree 3 is applied to the non-linear data from <a class="reference internal" href="#svm8"><span class="std std-numref">Fig. 8.7</span></a>, resulting in a far more appropriate decision rule. Right: An SVM with a radial kernel is applied. In this example, either kernel is capable of capturing the decision boundary.</span><a class="headerlink" href="#svm9" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-</div>
-<div class="section" id="lab">
-<h2><span class="section-number">8.2.4. </span>LAB<a class="headerlink" href="#lab" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="support-vector-classifier">
-<h3><span class="section-number">8.2.4.1. </span>9.6.1 Support Vector Classifier<a class="headerlink" href="#support-vector-classifier" title="Permalink to this headline">¶</a></h3>
 <p>Define a function to plot a classifier with support vectors.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -983,8 +819,6 @@ such a scenario.</p>
     <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">pad</span>
     <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">pad</span>
     <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">yy</span><span class="p">)</span>
     <span class="n">Z</span> <span class="o">=</span> <span class="n">svc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
     <span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
@@ -1005,406 +839,10 @@ such a scenario.</p>
 </div>
 </div>
 </div>
+<p>Generating data</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generating random data: 20 observations of 2 features and divide into two classes.</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span>
-
-<span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X1&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;X2&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;X2&#39;)
-</pre></div>
-</div>
-<img alt="../_images/svm_15_1.png" src="../_images/svm_15_1.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1,  1,  1,  1,  1,  1,  1,  1,  1,  1, -1, -1, -1, -1, -1, -1, -1,
-       -1, -1, -1])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Support Vector Classifier with linear kernel.</span>
-<span class="n">svc</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
-<span class="n">svc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-
-<span class="n">plot_svc</span><span class="p">(</span><span class="n">svc</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(189, 230)
-[[-0.95017904 -0.95017904 -0.95017904 ... -0.95017904 -0.95017904
-  -0.95017904]
- [-0.93017904 -0.93017904 -0.93017904 ... -0.93017904 -0.93017904
-  -0.93017904]
- [-0.91017904 -0.91017904 -0.91017904 ... -0.91017904 -0.91017904
-  -0.91017904]
- ...
- [ 2.76982096  2.76982096  2.76982096 ...  2.76982096  2.76982096
-   2.76982096]
- [ 2.78982096  2.78982096  2.78982096 ...  2.78982096  2.78982096
-   2.78982096]
- [ 2.80982096  2.80982096  2.80982096 ...  2.80982096  2.80982096
-   2.80982096]]
-</pre></div>
-</div>
-<img alt="../_images/svm_17_1.png" src="../_images/svm_17_1.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  13
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># When using a smaller cost parameter (C=0.1) the margin is wider, resulting in more support vectors.</span>
-<span class="n">svc2</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
-<span class="n">svc2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">plot_svc</span><span class="p">(</span><span class="n">svc2</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(189, 230)
-[[-0.95017904 -0.95017904 -0.95017904 ... -0.95017904 -0.95017904
-  -0.95017904]
- [-0.93017904 -0.93017904 -0.93017904 ... -0.93017904 -0.93017904
-  -0.93017904]
- [-0.91017904 -0.91017904 -0.91017904 ... -0.91017904 -0.91017904
-  -0.91017904]
- ...
- [ 2.76982096  2.76982096  2.76982096 ...  2.76982096  2.76982096
-   2.76982096]
- [ 2.78982096  2.78982096  2.78982096 ...  2.78982096  2.78982096
-   2.78982096]
- [ 2.80982096  2.80982096  2.80982096 ...  2.80982096  2.80982096
-   2.80982096]]
-</pre></div>
-</div>
-<img alt="../_images/svm_18_1.png" src="../_images/svm_18_1.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  16
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select the optimal C parameter by cross-validation</span>
-<span class="n">tuned_parameters</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]}]</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
-    <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">),</span>
-    <span class="n">tuned_parameters</span><span class="p">,</span>
-    <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
-    <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">cv_results_</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.0004034 , 0.00036113, 0.00036998, 0.00035563, 0.00040953,
-        0.00042055, 0.00050259]),
- &#39;std_fit_time&#39;: array([5.43044046e-05, 4.93930626e-05, 8.55442274e-05, 4.90645741e-05,
-        5.29650026e-05, 4.34971747e-05, 9.55442934e-05]),
- &#39;mean_score_time&#39;: array([0.00026665, 0.00025587, 0.00023959, 0.00024467, 0.00026877,
-        0.00028319, 0.00025609]),
- &#39;std_score_time&#39;: array([3.36236474e-05, 3.63356172e-05, 2.54714185e-05, 3.10341507e-05,
-        3.57629538e-05, 6.91500034e-05, 4.63618951e-05]),
- &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
-              mask=[False, False, False, False, False, False, False],
-        fill_value=&#39;?&#39;,
-             dtype=object),
- &#39;params&#39;: [{&#39;C&#39;: 0.001},
-  {&#39;C&#39;: 0.01},
-  {&#39;C&#39;: 0.1},
-  {&#39;C&#39;: 1},
-  {&#39;C&#39;: 5},
-  {&#39;C&#39;: 10},
-  {&#39;C&#39;: 100}],
- &#39;split0_test_score&#39;: array([0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]),
- &#39;split1_test_score&#39;: array([0.5, 0.5, 0.5, 0. , 0. , 0. , 0. ]),
- &#39;split2_test_score&#39;: array([0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]),
- &#39;split3_test_score&#39;: array([1., 1., 1., 1., 1., 1., 1.]),
- &#39;split4_test_score&#39;: array([1., 1., 1., 1., 1., 1., 1.]),
- &#39;split5_test_score&#39;: array([1., 1., 1., 1., 1., 1., 1.]),
- &#39;split6_test_score&#39;: array([1., 1., 1., 1., 1., 1., 1.]),
- &#39;split7_test_score&#39;: array([1., 1., 1., 1., 1., 1., 1.]),
- &#39;split8_test_score&#39;: array([0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]),
- &#39;split9_test_score&#39;: array([1., 1., 1., 1., 1., 1., 1.]),
- &#39;mean_test_score&#39;: array([0.8 , 0.8 , 0.8 , 0.75, 0.75, 0.75, 0.75]),
- &#39;std_test_score&#39;: array([0.24494897, 0.24494897, 0.24494897, 0.3354102 , 0.3354102 ,
-        0.3354102 , 0.3354102 ]),
- &#39;rank_test_score&#39;: array([1, 1, 1, 4, 4, 4, 4], dtype=int32),
- &#39;split0_train_score&#39;: array([0.83333333, 0.83333333, 0.77777778, 0.77777778, 0.77777778,
-        0.77777778, 0.77777778]),
- &#39;split1_train_score&#39;: array([0.83333333, 0.83333333, 0.83333333, 0.88888889, 0.88888889,
-        0.88888889, 0.88888889]),
- &#39;split2_train_score&#39;: array([0.83333333, 0.83333333, 0.77777778, 0.83333333, 0.83333333,
-        0.83333333, 0.83333333]),
- &#39;split3_train_score&#39;: array([0.77777778, 0.77777778, 0.72222222, 0.72222222, 0.72222222,
-        0.72222222, 0.72222222]),
- &#39;split4_train_score&#39;: array([0.77777778, 0.77777778, 0.72222222, 0.77777778, 0.77777778,
-        0.77777778, 0.77777778]),
- &#39;split5_train_score&#39;: array([0.77777778, 0.77777778, 0.72222222, 0.72222222, 0.72222222,
-        0.72222222, 0.72222222]),
- &#39;split6_train_score&#39;: array([0.77777778, 0.77777778, 0.72222222, 0.77777778, 0.72222222,
-        0.72222222, 0.72222222]),
- &#39;split7_train_score&#39;: array([0.72222222, 0.72222222, 0.72222222, 0.77777778, 0.72222222,
-        0.72222222, 0.72222222]),
- &#39;split8_train_score&#39;: array([0.83333333, 0.83333333, 0.77777778, 0.77777778, 0.77777778,
-        0.77777778, 0.77777778]),
- &#39;split9_train_score&#39;: array([0.77777778, 0.77777778, 0.72222222, 0.72222222, 0.72222222,
-        0.72222222, 0.72222222]),
- &#39;mean_train_score&#39;: array([0.79444444, 0.79444444, 0.75      , 0.77777778, 0.76666667,
-        0.76666667, 0.76666667]),
- &#39;std_train_score&#39;: array([0.03557291, 0.03557291, 0.0372678 , 0.0496904 , 0.05443311,
-        0.05443311, 0.05443311])}
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 0.001 is best according to GridSearchCV.</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">best_params_</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;C&#39;: 0.001}
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generating test data</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">y_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">20</span><span class="p">)</span>
-<span class="n">X_test</span><span class="p">[</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_test</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X1&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;X2&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;X2&#39;)
-</pre></div>
-</div>
-<img alt="../_images/svm_21_1.png" src="../_images/svm_21_1.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># svc2 : C = 0.1</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">svc2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">svc</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">svc</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>-1</th>
-      <th>1</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>-1</th>
-      <td>2</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0</td>
-      <td>12</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svc3</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
-<span class="n">svc3</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-
-<span class="c1"># svc3 : C = 0.001</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">svc3</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">svc3</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">svc3</span><span class="o">.</span><span class="n">classes_</span>
-<span class="p">)</span>
-<span class="c1"># The misclassification is the same</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>-1</th>
-      <th>1</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>-1</th>
-      <td>2</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0</td>
-      <td>12</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Changing the test data so that the classes are really seperable with a hyperplane.</span>
-<span class="n">X_test</span><span class="p">[</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_test</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X1&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;X2&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;X2&#39;)
-</pre></div>
-</div>
-<img alt="../_images/svm_24_1.png" src="../_images/svm_24_1.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svc4</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
-<span class="n">svc4</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>SVC(C=10.0, kernel=&#x27;linear&#x27;)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">SVC</label><div class="sk-toggleable__content"><pre>SVC(C=10.0, kernel=&#x27;linear&#x27;)</pre></div></div></div></div></div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_svc</span><span class="p">(</span><span class="n">svc4</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(267, 263)
-[[-4.5515387 -4.5515387 -4.5515387 ... -4.5515387 -4.5515387 -4.5515387]
- [-4.5315387 -4.5315387 -4.5315387 ... -4.5315387 -4.5315387 -4.5315387]
- [-4.5115387 -4.5115387 -4.5115387 ... -4.5115387 -4.5115387 -4.5115387]
- ...
- [ 0.7284613  0.7284613  0.7284613 ...  0.7284613  0.7284613  0.7284613]
- [ 0.7484613  0.7484613  0.7484613 ...  0.7484613  0.7484613  0.7484613]
- [ 0.7684613  0.7684613  0.7684613 ...  0.7684613  0.7684613  0.7684613]]
-</pre></div>
-</div>
-<img alt="../_images/svm_26_1.png" src="../_images/svm_26_1.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  4
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Increase the margin. Now there is one misclassification: increased bias, lower variance.</span>
-<span class="n">svc5</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
-<span class="n">svc5</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-2 {color: black;background-color: white;}#sk-container-id-2 pre{padding: 0;}#sk-container-id-2 div.sk-toggleable {background-color: white;}#sk-container-id-2 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-2 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-2 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-2 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-2 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-2 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-2 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-2 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-2 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-2 div.sk-item {position: relative;z-index: 1;}#sk-container-id-2 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-2 div.sk-item::before, #sk-container-id-2 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-2 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-2 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-2 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-2 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-2 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-2 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-2 div.sk-label-container {text-align: center;}#sk-container-id-2 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-2 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>SVC(C=1, kernel=&#x27;linear&#x27;)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">SVC</label><div class="sk-toggleable__content"><pre>SVC(C=1, kernel=&#x27;linear&#x27;)</pre></div></div></div></div></div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_svc</span><span class="p">(</span><span class="n">svc5</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(267, 263)
-[[-4.5515387 -4.5515387 -4.5515387 ... -4.5515387 -4.5515387 -4.5515387]
- [-4.5315387 -4.5315387 -4.5315387 ... -4.5315387 -4.5315387 -4.5315387]
- [-4.5115387 -4.5115387 -4.5115387 ... -4.5115387 -4.5115387 -4.5115387]
- ...
- [ 0.7284613  0.7284613  0.7284613 ...  0.7284613  0.7284613  0.7284613]
- [ 0.7484613  0.7484613  0.7484613 ...  0.7484613  0.7484613  0.7484613]
- [ 0.7684613  0.7684613  0.7684613 ...  0.7684613  0.7684613  0.7684613]]
-</pre></div>
-</div>
-<img alt="../_images/svm_28_1.png" src="../_images/svm_28_1.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  5
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="support-vector-machine">
-<h3><span class="section-number">8.2.4.2. </span>9.6.2 Support Vector Machine<a class="headerlink" href="#support-vector-machine" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generating test data</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">X</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span>
 <span class="n">X</span><span class="p">[</span><span class="mi">101</span><span class="p">:</span><span class="mi">150</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">101</span><span class="p">:</span><span class="mi">150</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span>
@@ -1414,48 +852,25 @@ such a scenario.</p>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X1&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;X2&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;X2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/svm_30_0.png" src="../_images/svm_30_0.png" />
+<img alt="../_images/svm_9_0.png" src="../_images/svm_9_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">svm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">plot_svc</span><span class="p">(</span><span class="n">svm</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-3 {color: black;background-color: white;}#sk-container-id-3 pre{padding: 0;}#sk-container-id-3 div.sk-toggleable {background-color: white;}#sk-container-id-3 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-3 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-3 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-3 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-3 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-3 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-3 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-3 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-3 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-3 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-3 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-3 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-3 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-3 div.sk-item {position: relative;z-index: 1;}#sk-container-id-3 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-3 div.sk-item::before, #sk-container-id-3 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-3 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-3 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-3 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-3 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-3 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-3 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-3 div.sk-label-container {text-align: center;}#sk-container-id-3 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-3 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>SVC(gamma=1)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" checked><label for="sk-estimator-id-3" class="sk-toggleable__label sk-toggleable__label-arrow">SVC</label><div class="sk-toggleable__content"><pre>SVC(gamma=1)</pre></div></div></div></div></div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_svc</span><span class="p">(</span><span class="n">svm</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(483, 457)
-[[-4.75817148 -4.75817148 -4.75817148 ... -4.75817148 -4.75817148
-  -4.75817148]
- [-4.73817148 -4.73817148 -4.73817148 ... -4.73817148 -4.73817148
-  -4.73817148]
- [-4.71817148 -4.71817148 -4.71817148 ... -4.71817148 -4.71817148
-  -4.71817148]
- ...
- [ 4.84182852  4.84182852  4.84182852 ...  4.84182852  4.84182852
-   4.84182852]
- [ 4.86182852  4.86182852  4.86182852 ...  4.86182852  4.86182852
-   4.86182852]
- [ 4.88182852  4.88182852  4.88182852 ...  4.88182852  4.88182852
-   4.88182852]]
-</pre></div>
-</div>
-<img alt="../_images/svm_32_1.png" src="../_images/svm_32_1.png" />
+<img alt="../_images/svm_10_0.png" src="../_images/svm_10_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  51
 </pre></div>
 </div>
@@ -1466,45 +881,21 @@ such a scenario.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Increasing C parameter, allowing more flexibility</span>
 <span class="n">svm2</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 <span class="n">svm2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">plot_svc</span><span class="p">(</span><span class="n">svm2</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-4 {color: black;background-color: white;}#sk-container-id-4 pre{padding: 0;}#sk-container-id-4 div.sk-toggleable {background-color: white;}#sk-container-id-4 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-4 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-4 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-4 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-4 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-4 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-4 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-4 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-4 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-4 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-4 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-4 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-4 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-4 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-4 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-4 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-4 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-4 div.sk-item {position: relative;z-index: 1;}#sk-container-id-4 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-4 div.sk-item::before, #sk-container-id-4 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-4 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-4 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-4 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-4 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-4 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-4 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-4 div.sk-label-container {text-align: center;}#sk-container-id-4 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-4 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-4" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>SVC(C=100, gamma=1.0)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" checked><label for="sk-estimator-id-4" class="sk-toggleable__label sk-toggleable__label-arrow">SVC</label><div class="sk-toggleable__content"><pre>SVC(C=100, gamma=1.0)</pre></div></div></div></div></div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_svc</span><span class="p">(</span><span class="n">svm2</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(483, 457)
-[[-4.75817148 -4.75817148 -4.75817148 ... -4.75817148 -4.75817148
-  -4.75817148]
- [-4.73817148 -4.73817148 -4.73817148 ... -4.73817148 -4.73817148
-  -4.73817148]
- [-4.71817148 -4.71817148 -4.71817148 ... -4.71817148 -4.71817148
-  -4.71817148]
- ...
- [ 4.84182852  4.84182852  4.84182852 ...  4.84182852  4.84182852
-   4.84182852]
- [ 4.86182852  4.86182852  4.86182852 ...  4.86182852  4.86182852
-   4.86182852]
- [ 4.88182852  4.88182852  4.88182852 ...  4.88182852  4.88182852
-   4.88182852]]
-</pre></div>
-</div>
-<img alt="../_images/svm_34_1.png" src="../_images/svm_34_1.png" />
+<img alt="../_images/svm_11_0.png" src="../_images/svm_11_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  36
 </pre></div>
 </div>
 </div>
 </div>
+<p>Choosing the parameters by cross-validation</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the parameters by cross-validation</span>
-<span class="n">tuned_parameters</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]}]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tuned_parameters</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]}]</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
     <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">),</span>
     <span class="n">tuned_parameters</span><span class="p">,</span>
@@ -1518,30 +909,30 @@ such a scenario.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.0005554 , 0.0004864 , 0.0005826 , 0.00050621, 0.00051072,
-        0.00044012, 0.00051327, 0.0005497 , 0.00058258, 0.00056376,
-        0.00046136, 0.00049574, 0.00057557, 0.0006036 , 0.00065012,
-        0.00055761, 0.00055044, 0.00062687, 0.00069242, 0.00067675,
-        0.00058284, 0.00060046, 0.00063775, 0.00063312, 0.00070269]),
- &#39;std_fit_time&#39;: array([3.13653578e-04, 6.92295836e-05, 7.76491063e-05, 7.55552803e-05,
-        7.00324656e-05, 4.49664014e-05, 7.71812018e-05, 7.69896527e-05,
-        7.70534950e-05, 5.40288485e-05, 6.80408739e-05, 6.40024051e-05,
-        7.77331922e-05, 7.84586279e-05, 9.53970386e-05, 8.65320058e-05,
-        7.04570307e-05, 7.53892252e-05, 9.29421432e-05, 1.11164960e-04,
-        6.04876158e-05, 1.01933367e-04, 7.19806539e-05, 5.77781491e-05,
-        1.03174661e-04]),
- &#39;mean_score_time&#39;: array([0.0002713 , 0.00028265, 0.00031967, 0.00026789, 0.00027056,
-        0.0002543 , 0.00029039, 0.00027845, 0.00029325, 0.00026524,
-        0.00027084, 0.00027318, 0.00028775, 0.00026422, 0.00028255,
-        0.00030782, 0.0002965 , 0.00027544, 0.0002929 , 0.00028846,
-        0.00029263, 0.00027783, 0.00027554, 0.00029001, 0.00029037]),
- &#39;std_score_time&#39;: array([4.39530907e-05, 4.35602228e-05, 4.67084815e-05, 3.32436559e-05,
-        3.44413442e-05, 2.98010254e-05, 4.97862295e-05, 4.26464731e-05,
-        4.38771810e-05, 2.22346897e-05, 4.56479128e-05, 4.49266648e-05,
-        4.25371687e-05, 1.45168529e-05, 4.31610662e-05, 4.11851033e-05,
-        4.08310455e-05, 3.61521585e-05, 4.29737502e-05, 3.55029922e-05,
-        3.44511464e-05, 4.45239340e-05, 2.82288101e-05, 3.04741849e-05,
-        3.58165416e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00069177, 0.00071275, 0.00075397, 0.00077057, 0.00078802,
+        0.00066276, 0.00071931, 0.00083499, 0.00086789, 0.00089622,
+        0.0006635 , 0.00071552, 0.00089495, 0.0009414 , 0.00094798,
+        0.00068166, 0.00072622, 0.00096929, 0.00102375, 0.0010149 ,
+        0.0007535 , 0.00078642, 0.00092733, 0.00100236, 0.00097404]),
+ &#39;std_fit_time&#39;: array([5.70518523e-05, 6.28985311e-05, 3.17611134e-05, 2.27101675e-05,
+        3.13251166e-05, 1.38179148e-05, 3.57193683e-05, 4.71762596e-05,
+        3.07613191e-05, 3.81003035e-05, 2.87555837e-05, 2.04749928e-05,
+        4.34470419e-05, 4.61246299e-05, 2.56382463e-05, 4.25519993e-05,
+        2.91064073e-05, 4.74876007e-05, 7.21404705e-05, 4.73236316e-05,
+        8.44322429e-05, 4.38778612e-05, 2.16366010e-05, 5.51166622e-05,
+        2.93307571e-05]),
+ &#39;mean_score_time&#39;: array([0.00042791, 0.00043054, 0.00043056, 0.00042682, 0.00045388,
+        0.00043278, 0.00042968, 0.00042427, 0.00045028, 0.0004467 ,
+        0.00042706, 0.00041997, 0.00043542, 0.00042651, 0.00043664,
+        0.00042276, 0.00041425, 0.00044909, 0.00042725, 0.00044396,
+        0.00041389, 0.00041139, 0.00042255, 0.00043249, 0.00042257]),
+ &#39;std_score_time&#39;: array([2.57804910e-05, 2.66519128e-05, 1.47717387e-05, 9.33907213e-06,
+        6.71595176e-05, 3.79468916e-05, 3.15851621e-05, 8.61892232e-06,
+        4.29745372e-05, 5.02202803e-05, 3.73290409e-05, 9.16920164e-06,
+        2.53738422e-05, 8.77979452e-06, 2.96802309e-05, 2.22212767e-05,
+        1.00635519e-05, 2.95308528e-05, 1.05390721e-05, 6.35223744e-05,
+        1.69418169e-05, 8.09377527e-06, 1.26483472e-05, 1.99378383e-05,
+        8.00191857e-06]),
  &#39;param_C&#39;: masked_array(data=[0.01, 0.01, 0.01, 0.01, 0.01, 0.1, 0.1, 0.1, 0.1, 0.1,
                     1, 1, 1, 1, 1, 10, 10, 10, 10, 10, 100, 100, 100, 100,
                     100],
@@ -1717,8 +1108,8 @@ such a scenario.</p>
 </div>
 </div>
 </div>
-<div class="section" id="roc-curves">
-<h3><span class="section-number">8.2.4.3. </span>9.6.3 ROC Curves<a class="headerlink" href="#roc-curves" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="evaluating-with-roc-curves">
+<h3><span class="section-number">8.3.1.4. </span>Evaluating with ROC curves<a class="headerlink" href="#evaluating-with-roc-curves" title="Permalink to this headline">¶</a></h3>
 <p>Comparing the ROC curves of two models on train/test data. One model is more flexible than the other.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1728,7 +1119,7 @@ such a scenario.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-5 {color: black;background-color: white;}#sk-container-id-5 pre{padding: 0;}#sk-container-id-5 div.sk-toggleable {background-color: white;}#sk-container-id-5 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-5 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-5 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-5 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-5 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-5 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-5 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-5 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-5 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-5 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-5 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-5 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-5 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-5 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-5 div.sk-item {position: relative;z-index: 1;}#sk-container-id-5 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-5 div.sk-item::before, #sk-container-id-5 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-5 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-5 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-5 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-5 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-5 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-5 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-5 div.sk-label-container {text-align: center;}#sk-container-id-5 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-5 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-5" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>SVC(C=1, gamma=2)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-5" type="checkbox" checked><label for="sk-estimator-id-5" class="sk-toggleable__label sk-toggleable__label-arrow">SVC</label><div class="sk-toggleable__content"><pre>SVC(C=1, gamma=2)</pre></div></div></div></div></div></div></div>
+<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>SVC(C=1, gamma=2)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">SVC</label><div class="sk-toggleable__content"><pre>SVC(C=1, gamma=2)</pre></div></div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1739,7 +1130,7 @@ such a scenario.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-6 {color: black;background-color: white;}#sk-container-id-6 pre{padding: 0;}#sk-container-id-6 div.sk-toggleable {background-color: white;}#sk-container-id-6 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-6 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-6 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-6 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-6 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-6 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-6 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-6 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-6 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-6 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-6 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-6 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-6 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-6 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-6 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-6 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-6 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-6 div.sk-item {position: relative;z-index: 1;}#sk-container-id-6 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-6 div.sk-item::before, #sk-container-id-6 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-6 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-6 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-6 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-6 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-6 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-6 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-6 div.sk-label-container {text-align: center;}#sk-container-id-6 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-6 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-6" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>SVC(C=1, gamma=50)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-6" type="checkbox" checked><label for="sk-estimator-id-6" class="sk-toggleable__label sk-toggleable__label-arrow">SVC</label><div class="sk-toggleable__content"><pre>SVC(C=1, gamma=50)</pre></div></div></div></div></div></div></div>
+<div class="output text_html"><style>#sk-container-id-2 {color: black;background-color: white;}#sk-container-id-2 pre{padding: 0;}#sk-container-id-2 div.sk-toggleable {background-color: white;}#sk-container-id-2 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-2 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-2 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-2 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-2 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-2 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-2 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-2 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-2 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-2 div.sk-item {position: relative;z-index: 1;}#sk-container-id-2 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-2 div.sk-item::before, #sk-container-id-2 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-2 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-2 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-2 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-2 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-2 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-2 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-2 div.sk-label-container {text-align: center;}#sk-container-id-2 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-2 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>SVC(C=1, gamma=50)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">SVC</label><div class="sk-toggleable__content"><pre>SVC(C=1, gamma=50)</pre></div></div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1801,13 +1192,22 @@ such a scenario.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/svm_43_0.png" src="../_images/svm_43_0.png" />
+<img alt="../_images/svm_21_0.png" src="../_images/svm_21_0.png" />
 </div>
 </div>
 <p>As expected, the more flexible model scores better on training data but worse on the test data.</p>
 </div>
-<div class="section" id="svm-with-multiple-classes">
-<h3><span class="section-number">8.2.4.4. </span>9.6.4 SVM with Multiple Classes<a class="headerlink" href="#svm-with-multiple-classes" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="svms-with-more-than-two-classes">
+<h2><span class="section-number">8.3.2. </span>SVMs with more than two classes<a class="headerlink" href="#svms-with-more-than-two-classes" title="Permalink to this headline">¶</a></h2>
+<p>So far, our discussion has been limited to the case of binary classification: that is, classification in the two-class setting. How can we extend SVMs to the more general case where we have some arbitrary number of classes? It turns out that the concept of separating hyperplanes upon which SVMs are based does not lend itself naturally to more than two classes. Though a number of proposals for extending SVMs to the K-class case have been made, the two most popular are the one-versus-one and one-versus-all approaches.</p>
+<div class="section" id="one-vs-one">
+<h3><span class="section-number">8.3.2.1. </span>One-vs-one<a class="headerlink" href="#one-vs-one" title="Permalink to this headline">¶</a></h3>
+<p>Suppose that we would like to perform classification using SVMs, and there are <span class="math notranslate nohighlight">\(K\)</span> &gt; 2 classes. A one-versus-one or all-pairs approach constructs <span class="math notranslate nohighlight">\(K(K-1)/2\)</span> binary classifiers, one for each pair of classes. For example, if there are three classes, then we would construct three binary classifiers, one for each pair of classes. The first classifier would distinguish between class 1 and class 2, the second classifier would distinguish between class 1 and class 3, and the third classifier would distinguish between class 2 and class 3. To classify a new observation, we would apply each of the three classifiers, and assign the observation to the class that receives the most votes.</p>
+</div>
+<div class="section" id="one-vs-all">
+<h3><span class="section-number">8.3.2.2. </span>One-vs-all<a class="headerlink" href="#one-vs-all" title="Permalink to this headline">¶</a></h3>
+<p>The one-versus-all approach is an alternative procedure for applying SVMs in the case of <span class="math notranslate nohighlight">\(K\)</span> &gt; 2 classes. We fit <span class="math notranslate nohighlight">\(K\)</span> SVMs, each time comparing one of the <span class="math notranslate nohighlight">\(K\)</span> classes to the remaining <span class="math notranslate nohighlight">\(K − 1\)</span> classes. For example, if there are three classes, then we would fit three SVMs, one for each class. The first SVM would separate class 1 from classes 2 and 3, the second SVM would separate class 2 from classes 1 and 3, and the third SVM would separate class 3 from classes 1 and 2. To classify a new observation, we would apply each of the three classifiers, and assign the observation to the class that receives the most votes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding a third class of observations</span>
@@ -1823,113 +1223,20 @@ such a scenario.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/svm_46_0.png" src="../_images/svm_46_0.png" />
+<img alt="../_images/svm_24_0.png" src="../_images/svm_24_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm5</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">)</span>
 <span class="n">svm5</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">XX</span><span class="p">,</span> <span class="n">yy</span><span class="p">)</span>
+<span class="n">plot_svc</span><span class="p">(</span><span class="n">svm5</span><span class="p">,</span> <span class="n">XX</span><span class="p">,</span> <span class="n">yy</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-7 {color: black;background-color: white;}#sk-container-id-7 pre{padding: 0;}#sk-container-id-7 div.sk-toggleable {background-color: white;}#sk-container-id-7 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-7 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-7 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-7 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-7 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-7 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-7 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-7 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-7 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-7 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-7 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-7 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-7 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-7 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-7 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-7 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-7 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-7 div.sk-item {position: relative;z-index: 1;}#sk-container-id-7 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-7 div.sk-item::before, #sk-container-id-7 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-7 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-7 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-7 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-7 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-7 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-7 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-7 div.sk-label-container {text-align: center;}#sk-container-id-7 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-7 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-7" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>SVC(C=1)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-7" type="checkbox" checked><label for="sk-estimator-id-7" class="sk-toggleable__label sk-toggleable__label-arrow">SVC</label><div class="sk-toggleable__content"><pre>SVC(C=1)</pre></div></div></div></div></div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_svc</span><span class="p">(</span><span class="n">svm5</span><span class="p">,</span> <span class="n">XX</span><span class="p">,</span> <span class="n">yy</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(575, 573)
-[[-4.75817148 -4.75817148 -4.75817148 ... -4.75817148 -4.75817148
-  -4.75817148]
- [-4.73817148 -4.73817148 -4.73817148 ... -4.73817148 -4.73817148
-  -4.73817148]
- [-4.71817148 -4.71817148 -4.71817148 ... -4.71817148 -4.71817148
-  -4.71817148]
- ...
- [ 6.68182852  6.68182852  6.68182852 ...  6.68182852  6.68182852
-   6.68182852]
- [ 6.70182852  6.70182852  6.70182852 ...  6.70182852  6.70182852
-   6.70182852]
- [ 6.72182852  6.72182852  6.72182852 ...  6.72182852  6.72182852
-   6.72182852]]
-</pre></div>
-</div>
-<img alt="../_images/svm_48_1.png" src="../_images/svm_48_1.png" />
+<img alt="../_images/svm_25_0.png" src="../_images/svm_25_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  128
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="application-to-gene-expression-data">
-<h3><span class="section-number">8.2.4.5. </span>9.6.5 Application to Gene Expression Data<a class="headerlink" href="#application-to-gene-expression-data" title="Permalink to this headline">¶</a></h3>
-<p>In R, I exported the dataset from package ‘ISLR’ to csv files.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># X_train = pd.read_csv(&quot;Data/Khan_xtrain.csv&quot;).drop(&quot;Unnamed: 0&quot;, axis=1)</span>
-<span class="c1"># y_train = (</span>
-<span class="c1">#     pd.read_csv(&quot;Data/Khan_ytrain.csv&quot;).drop(&quot;Unnamed: 0&quot;, axis=1).as_matrix().ravel()</span>
-<span class="c1"># )</span>
-<span class="c1"># X_test = pd.read_csv(&quot;Data/Khan_xtest.csv&quot;).drop(&quot;Unnamed: 0&quot;, axis=1)</span>
-<span class="c1"># y_test = (</span>
-<span class="c1">#     pd.read_csv(&quot;Data/Khan_ytest.csv&quot;).drop(&quot;Unnamed: 0&quot;, axis=1).as_matrix().ravel()</span>
-<span class="c1"># )</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># y_train counts</span>
-<span class="c1"># pd.Series(y_train).value_counts(sort=False)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># y_test counts</span>
-<span class="c1"># pd.Series(y_test).value_counts(sort=False)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model gives identical results to the svm() of the R package e1071, also based on libsvm library.</span>
-<span class="c1"># svc = SVC(kernel=&quot;linear&quot;)</span>
-
-<span class="c1"># # This model is based on liblinear library and gives 100 score on the test data.</span>
-<span class="c1"># # svc = LinearSVC()</span>
-
-<span class="c1"># svc.fit(X_train, y_train)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># cm = confusion_matrix(y_train, svc.predict(X_train))</span>
-<span class="c1"># cm_df = pd.DataFrame(cm.T, index=svc.classes_, columns=svc.classes_)</span>
-<span class="c1"># cm_df.index.name = &quot;Predicted&quot;</span>
-<span class="c1"># cm_df.columns.name = &quot;True&quot;</span>
-<span class="c1"># print(cm_df)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># cm = confusion_matrix(y_test, svc.predict(X_test))</span>
-<span class="c1"># cm_df = pd.DataFrame(cm.T, index=svc.classes_, columns=svc.classes_)</span>
-<span class="c1"># cm_df.index.name = &quot;Predicted&quot;</span>
-<span class="c1"># cm_df.columns.name = &quot;True&quot;</span>
-<span class="c1"># print(cm_df)</span>
 </pre></div>
 </div>
 </div>
@@ -1963,17 +1270,17 @@ such a scenario.</p>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="glm.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="max-margin.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">8.1. </span>Generalised linear models</p>
+            <p class="prev-next-title"><span class="section-number">8.2. </span>Hyperplane and maximum margin classifier</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="quiz-sum-ref.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8.3. </span>Quiz and summary</p>
+        <p class="prev-next-title"><span class="section-number">8.4. </span>Quiz and summary</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
