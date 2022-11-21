@@ -54,7 +54,7 @@ The function $f$ is called the **model** or **predictive function**. The model $
     **a. True. Deep learning is a branch of AI that specialises in deep neural networks.**
    ```
 
-**2**. We collected a set of data on the top $5000$ firms in the US. For each firm, we record **profit**, **number of employees**, **industry**, and the **CEO's salary**.
+**2**. We collected a set of data on the top $5000$ firms in the US. For each firm, we record **profit**, **number of employees**, **industry**, and the **CEO's salary**. Wwe want to predict the CEO's salary. 
 
     a. What are the features here?
 
@@ -68,5 +68,5 @@ The function $f$ is called the **model** or **predictive function**. The model $
 *Compare your answer with the solution below*
 
    ```{toggle}
-    **CEO's salary**
+    **CEO's salary as we want to predict it**
    ```

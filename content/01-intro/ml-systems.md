@@ -92,7 +92,7 @@ From the above, we can see that reproducibility is a minimal requirement for rep
 
 *Compare your answer with the solution below*
    ```{toggle}
-    **b. False**
+    **b. False. Weight and biases are the parameters of a model. Hyperparameters are the high-level parameters of a model that typically need to be specified before learning a model.**
    ```
 
 **3**. Which of the following are **true**?
@@ -133,7 +133,7 @@ We are interested in **predicting** house prices from their **description**. One
 *Compare your answer with the solution below*
 
    ```{toggle}
-    **a, d**
+    **a, d. As the label is known, so it is a supervised problem, and then we are trying to predict a continuous value which means its a regression problem.**
    ```
   **4.2**. What are the features? You can choose multiple answers.
 
@@ -160,13 +160,13 @@ We are interested in **predicting** house prices from their **description**. One
    ```{toggle}
     **b**
    ```
-  **4.4**. What is a record (a sample)? You have to choose a single answer.
+  **4.4**. What is a record/sample? You have to choose a single answer.
 
-     a. each house description is a record
+     a. each house description is a record/sample
 
-     b. each house price is a record
+     b. each house price is a record/sample
 
-     c. each attribute/features of description (as the house size) is a record
+     c. each attribute/features of description (as the house size) is a record/sample.
 
 *Compare your answer with the solution below*
 

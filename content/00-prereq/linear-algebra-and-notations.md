@@ -145,7 +145,7 @@ This section introduces the basic concepts of linear algebra and notations used 
 
 *Compare your answer with the solution below*
    ```{toggle}
-    **a , c, d**
+    **a , c, d. The given matrix has values only in the diagonal; that's why it's a diagonal matrix. The diagonal values are not 1, so it's not an identity matrix. If you transpose the given matrix, it will equal the given matrix, so it's symmetric. We know $XX^-1=I$ for the inverse matrix, our given matrix matched this condition, so it's an inverse matrix for the orthogonal matrix $XX^T=I$, which is not valid for our given matrix, so it's not an orthogonal matrix.**
    ```
 
 **2**. **$A$** = $\begin{bmatrix} 8 & 5 & 9 \\ 7 & 19 & 14 \end{bmatrix}$
