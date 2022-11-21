@@ -101,7 +101,7 @@ For example, in [Hypothesis testing on synthetic dat](https://pykale.github.io/t
 To make your code reproducible, setting random seeds is only the most basic step. Version control software, such as Git, is also needed to track changes to your code, which is one of the reasons we recommend you to use GitHub for your software development. You can also use [Docker](https://www.docker.com/) to package your code and its dependencies into a container image, which can be used to run your code in a reproducible environment. More advanced methods include the use of [Continuous Integration (CI)](https://en.wikipedia.org/wiki/Continuous_integration) to automatically run your code and tests on a remote server every time you push your code to GitHub, which we have used for the course website as well as our own [PyKale](https://github.com/pykale/pykale) library via GitHub Actions (workflows).
 
 ## Exercises
-**1**. The SDLC elaboration phase aims to determine whether the project is feasible and to identify the project’s scope.
+**1**. The **SDLC elaboration phase** aims to determine whether the project is feasible and to identify the project’s scope.
 
        a. True
 
@@ -113,7 +113,7 @@ To make your code reproducible, setting random seeds is only the most basic step
     **b. False**
    ```
 
-**2**. Agile model is an iterative and incremental approach, where requirements and solutions evolve through collaboration between self-organizing, cross-functional teams.
+**2**. **Agile model** is an **iterative** and **incremental** approach, where requirements and solutions evolve through collaboration between self-organizing, cross-functional teams.
 
        a. True
 
@@ -125,4 +125,4 @@ To make your code reproducible, setting random seeds is only the most basic step
     **a. True**
    ```
 
-**3**. Create a Github profile of your own (if you don't have any) and try to upload one of the exercise notebooks you have completed in this course. **Hint**: See section [4.2.2](https://pykale.github.io/transparentML/04-hypo-test-sw-dev/software-development.html#github-for-software-development)
+**3**. Create a **Github** profile of your own (if you don't have any) and try to upload **one** of the exercise notebooks you have **completed** in this course. **Hint**: See section [4.2.2](https://pykale.github.io/transparentML/04-hypo-test-sw-dev/software-development.html#github-for-software-development)
