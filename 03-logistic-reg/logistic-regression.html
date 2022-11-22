@@ -1022,8 +1022,8 @@ intercept : [-10.65132978]
 <ul class="simple">
 <li><p>When the probability of <code class="docutils literal notranslate"><span class="pre">default</span></code> 0.5 (the commonly used threshold for binary classification), the corresponding balance can be calculated using the <em>log odds</em> equation above:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-4dedca97-d1d7-45b8-abc5-15b30c685d2f">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-4dedca97-d1d7-45b8-abc5-15b30c685d2f" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ce908021-231e-44b8-b103-a756b7e1edb1">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-ce908021-231e-44b8-b103-a756b7e1edb1" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \ln \left(\frac{\pi}{1-\pi}\right) &amp;= \beta_0 + \beta_1 \times x \\
 \ln \left(\frac{0.5}{1-0.5}\right) &amp;= \beta_0 + \beta_1 \times x \\
@@ -1344,7 +1344,7 @@ intercept : [-10.85951046]
 </div>
 <div class="section" id="exercise">
 <h2><span class="section-number">3.2.6. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
-<p><strong>1</strong>. Logistic regression is a classification algorithm.</p>
+<p><strong>1</strong>. Logistic regression is a <strong>classification</strong> algorithm.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    a. True
     
     b. False
@@ -1355,7 +1355,7 @@ intercept : [-10.85951046]
 <p><strong>a. True</strong></p>
 </div>
 <p><strong>2</strong>. All the following exercises will use <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Weekly.csv">Weekly</a> dataset.</p>
-<p>Load the dataset, convert the categories to numerical values, and fit a logistic regression model using <strong>Volume</strong> variable as a predictor and <strong>Direction</strong> variable as the response using Scikit-Learn or StatsModel. Find out the fitted model’s <strong>weight</strong> and <strong>bias</strong>.</p>
+<p>Load the dataset, convert the categories to numerical values, and fit a logistic regression model using <strong>Volume</strong> variable as a predictor and <strong>Direction</strong> variable as the response using <strong>scikit-learn or statsmodel</strong>. Find out the fitted model’s <strong>weight</strong> and <strong>bias</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1395,7 +1395,7 @@ intercept : [0.25689958]
 </div>
 </div>
 </div>
-<p><strong>3</strong>. Plot the ROC curve and find out the training Accuracy and AUC of the fitted model from <strong>Exercise-2</strong>.</p>
+<p><strong>3</strong>. Plot the <strong>ROC curve</strong> and find out the <strong>training accuracy</strong> and <strong>AUC</strong> of the fitted model from <strong>Exercise 2</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1420,7 +1420,7 @@ intercept : [0.25689958]
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># From the ROC curve we can say that the result is almost random as it is almost close to 50%.</span>
-<span class="c1"># The model from Exercise-4 has not learnt anything at all.</span>
+<span class="c1"># The model from Exercise-2 has not learnt anything at all.</span>
 </pre></div>
 </div>
 </div>
@@ -1432,7 +1432,7 @@ AUC:  0.5142783962844069
 <img alt="../_images/logistic-regression_39_1.png" src="../_images/logistic-regression_39_1.png" />
 </div>
 </div>
-<p><strong>4</strong>. Train another logistic regression model using <strong>Direction</strong> as a response and all the other features as predictors. Print out all the parameter values.</p>
+<p><strong>4</strong>. Train another logistic regression model using <strong>Direction</strong> as a response and all the other features as predictors. Print out all the <strong>parameter values</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1462,7 +1462,7 @@ intercept : [-7.36769879]
 </div>
 </div>
 </div>
-<p><strong>5</strong>. Plot the ROC curve and find out the Accuracy and AUC metrics of the fitted model from <strong>Exercise-6</strong>.</p>
+<p><strong>5</strong>. Plot the <strong>ROC curve</strong> and find out the <strong>training accuracy</strong> and <strong>AUC</strong> metrics of the fitted model from <strong>Exercise 6</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1483,6 +1483,8 @@ intercept : [-7.36769879]
 
 <span class="n">clf_disp</span> <span class="o">=</span> <span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># The model from Exercise 4 learnt very well on the training dataset.</span>
 </pre></div>
 </div>
 </div>
@@ -1494,7 +1496,7 @@ AUC:  0.9999931698654464
 <img alt="../_images/logistic-regression_47_1.png" src="../_images/logistic-regression_47_1.png" />
 </div>
 </div>
-<p><strong>6</strong>. You might notice that the model with all variables is much better than the model from <strong>Exercise-2</strong>. Use the skills you have learnt to explain why. <strong>Hint</strong>: Correlation matrix (See section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/multi-linear-regression.html#interpreting-the-results">2.2.4</a>)</p>
+<p><strong>6</strong>. You might notice that the model with all variables is much better than the model from <strong>Exercise 2</strong>. Use the skills you have learnt to explain why. <strong>Hint</strong>: Correlation matrix (See section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/multi-linear-regression.html#interpreting-the-results">2.2.4</a>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1516,11 +1518,14 @@ AUC:  0.9999931698654464
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Direction&quot;</span><span class="p">,</span> <span class="s2">&quot;Today&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">clf_disp</span> <span class="o">=</span> <span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="c1"># Without today feature the model performed very bad</span>
 
 <span class="c1"># model with only &quot;Today&quot;</span>
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Today&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">clf_disp</span> <span class="o">=</span> <span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="c1"># with today feature the model performed very well</span>
+<span class="c1"># from this experiment we analyzed the important of correlation between feature and target variable</span>
 </pre></div>
 </div>
 </div>

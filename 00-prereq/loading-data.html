@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Quiz and summary" href="quiz-sum-ref.html" />
@@ -1376,8 +1378,8 @@ dtype: int64
 </div>
 <div class="section" id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p><strong>1</strong>. This exercise is related to the <strong><a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/College.csv">College</a></strong> dataset. It contains a number of features for 777 different universities and colleges in the US.</p>
-<p><strong>a</strong>. Use the read_csv() function to read the data. Call the loaded data college_df. Print the first 20 rows of the loaded data. Make sure that you have the directory set to the correct location for the data.</p>
+<p><strong>1</strong>. This exercise is related to the <strong><a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/College.csv">College</a></strong> dataset. It contains a number of features for <span class="math notranslate nohighlight">\(777\)</span> different universities and colleges in the US.</p>
+<p><strong>a</strong>. Use the <strong>read_csv()</strong> function to read the data and print the first <span class="math notranslate nohighlight">\(20\)</span> rows of the loaded data. Make sure that you have the directory set to the correct <strong>location</strong> for the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1860,7 +1862,7 @@ dtype: int64
 </table>
 </div></div></div>
 </div>
-<p><strong>b</strong>. Find the number of variables/features in the dataset and print them.</p>
+<p><strong>b</strong>. Find the number of <strong>variables/features</strong> in the dataset and print them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1883,7 +1885,7 @@ The list of the features =  [&#39;Private&#39;, &#39;Apps&#39;, &#39;Accept&#39;
 </div>
 </div>
 </div>
-<p><strong>c</strong>. Use the describe() function to get statistical summary of the variables/features in the data set.</p>
+<p><strong>c</strong>. Use the <strong>describe()</strong> function to get a statistical summary of the <strong>variables/features</strong> of the data set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1895,6 +1897,8 @@ The list of the features =  [&#39;Private&#39;, &#39;Apps&#39;, &#39;Accept&#39;
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+
+<span class="c1"># From the statistical summary, we know how much data is present for each feature, each feature&#39;s mean and standard deviation, and the maximum and minimum value of each feature.</span>
 </pre></div>
 </div>
 </div>
@@ -2101,7 +2105,7 @@ The list of the features =  [&#39;Private&#39;, &#39;Apps&#39;, &#39;Accept&#39;
 </table>
 </div></div></div>
 </div>
-<p><strong>d.</strong> Produce side-by-side boxplots of Outstate versus Private.</p>
+<p><strong>d.</strong> Now, produce a side-by-side <strong>boxplots</strong> of <strong>Outstate</strong> versus <strong>Private</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -2114,15 +2118,20 @@ The list of the features =  [&#39;Private&#39;, &#39;Apps&#39;, &#39;Accept&#39;
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">college_df</span><span class="p">[</span><span class="s2">&quot;Private&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">college_df</span><span class="p">[</span><span class="s2">&quot;Outstate&quot;</span><span class="p">]);</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">college_df</span><span class="p">[</span><span class="s2">&quot;Private&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">college_df</span><span class="p">[</span><span class="s2">&quot;Outstate&quot;</span><span class="p">])</span>
+
+<span class="c1"># From the box plot, we can state that for an outstate range of 9000 to 13500, we can get Private = Yes, and for the range from 5500 to 7500, we get Private = No.</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/loading-data_42_0.png" src="../_images/loading-data_42_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;Private&#39;, ylabel=&#39;Outstate&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/loading-data_42_1.png" src="../_images/loading-data_42_1.png" />
 </div>
 </div>
-<p><strong>e</strong>. How many quantitative and qualitative featuress are the in this dataset?</p>
+<p><strong>e</strong>. How many <strong>quantitative</strong> and <strong>qualitative</strong> featuress are there in this dataset?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -2151,7 +2160,7 @@ The list of the features =  [&#39;Private&#39;, &#39;Apps&#39;, &#39;Accept&#39;
 </div>
 </div>
 </div>
-<p><strong>f</strong>. Create a new qualitative variable, called Elite, by binning the Top10perc variable. We are going to divide universities into two groups based on whether or not the proportion of students coming from the top 10% of their high school classes exceeds 50 %. Now see how many elite universities there are.</p>
+<p><strong>f</strong>. Create a new <strong>qualitative</strong> variable, called <strong>Elite</strong>, by binning the <strong>Top10perc</strong> variable. We are going to divide universities into <strong>two groups</strong> based on whether or not the proportion of students coming from the top <span class="math notranslate nohighlight">\(10\)</span>% of their high school classes exceeds <span class="math notranslate nohighlight">\(50\)</span>%. Now see how many <strong>elite universities</strong> there are.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -2173,7 +2182,7 @@ The list of the features =  [&#39;Private&#39;, &#39;Apps&#39;, &#39;Accept&#39;
 </div>
 </div>
 </div>
-<p><strong>e</strong>. Use the hist() function to produce histogram of any 4 variables/features chosen by you.</p>
+<p><strong>e</strong>. Use the <strong>hist()</strong> function to produce <strong>histogram</strong> of any <span class="math notranslate nohighlight">\(4\)</span> <strong>variables/features</strong> from the dataset chosen by you.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -2188,6 +2197,8 @@ The list of the features =  [&#39;Private&#39;, &#39;Apps&#39;, &#39;Accept&#39;
 
 <span class="n">college_df</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Accept&quot;</span><span class="p">,</span> <span class="s2">&quot;Books&quot;</span><span class="p">,</span> <span class="s2">&quot;Grad.Rate&quot;</span><span class="p">,</span> <span class="s2">&quot;Enroll&quot;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># We chose Accept, Books, Grad.Rate and Enroll features where the count for every features value is shown with a histogram which indicates the most frequent values for every feature.</span>
 </pre></div>
 </div>
 </div>
@@ -2195,7 +2206,7 @@ The list of the features =  [&#39;Private&#39;, &#39;Apps&#39;, &#39;Accept&#39;
 <img alt="../_images/loading-data_54_0.png" src="../_images/loading-data_54_0.png" />
 </div>
 </div>
-<p><strong>f</strong>. Continue exploring the data, and provide a brief summary of what you discover.</p>
+<p><strong>f</strong>. Continue exploring the data, and provide a <strong>brief summary</strong> of what you discover.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to continue exploring the data</span>

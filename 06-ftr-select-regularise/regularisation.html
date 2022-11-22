@@ -1163,7 +1163,7 @@ Equation <a class="reference internal" href="#equation-ridge-regression1">(6.2)<
 <div class="section" id="exercises">
 <h2><span class="section-number">6.2.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <p><strong>1</strong>. All the following exercises use the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Carseats.csv">Carseats</a> dataset to study feature selection on real-world data.</p>
-<p>Load the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Carseats.csv">Carseats</a> dataset, convert the values of variables (predictors) from category to numbers, and inspect the first five rows. <strong>(Use 2022 as random seed value)</strong></p>
+<p>Load the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Carseats.csv">Carseats</a> dataset, convert the values of variables (predictors) from category to numbers, and inspect the first five rows. <strong>(Use <span class="math notranslate nohighlight">\(2022\)</span> as random seed value)</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1298,7 +1298,7 @@ Equation <a class="reference internal" href="#equation-ridge-regression1">(6.2)<
 </table>
 </div></div></div>
 </div>
-<p><strong>2</strong>. In continuation of <strong>Question 1</strong>, Fit a ridge regression model using a set of 10 <em>lambda</em> values that are logarithmically spaced between 1 and 6. Plot the coefficient estimates for each lambda value and analyze which lambda value coefficient estimates are close to zero.</p>
+<p><strong>2</strong>. In continuation of <strong>Exercise 1</strong>, Fit a <strong>ridge regression</strong> model using a set of <span class="math notranslate nohighlight">\(10\)</span> <em>lambda</em> values that are logarithmically spaced between <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(6\)</span>. Plot the coefficient estimates for each lambda value and analyze which lambda value coefficient estimates are close to <strong>zero</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1348,7 +1348,7 @@ Equation <a class="reference internal" href="#equation-ridge-regression1">(6.2)<
 <img alt="../_images/regularisation_35_0.png" src="../_images/regularisation_35_0.png" />
 </div>
 </div>
-<p><strong>3</strong>. In continuation of <strong>Question 2</strong>, find the Mean Squared Errors (MSE) on the test data for all the lambda values and show the best MSE score.</p>
+<p><strong>3</strong>. In continuation of <strong>Exefcise 2</strong>, find the <strong>Mean Squared Errors (MSE)</strong> on the test data for all the <strong>lambda</strong> values and show the <strong>best MSE</strong> score.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1386,7 +1386,7 @@ Equation <a class="reference internal" href="#equation-ridge-regression1">(6.2)<
 </div>
 </div>
 </div>
-<p><strong>4</strong>. Plot the MSE scores for each lambda value and annotate the optimal point.</p>
+<p><strong>4</strong>. Plot the <strong>MSE scores</strong> for each <strong>lambda</strong> value and annotate the <strong>optimal point</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1424,7 +1424,7 @@ Equation <a class="reference internal" href="#equation-ridge-regression1">(6.2)<
 <img alt="../_images/regularisation_43_0.png" src="../_images/regularisation_43_0.png" />
 </div>
 </div>
-<p><strong>5</strong>. Lasso is also known as the L2 regularization method.</p>
+<p><strong>5</strong>. <strong>Lasso</strong> is also known as the <strong><span class="math notranslate nohighlight">\(L2\)</span> regularization</strong> method.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   a. True
 
    b. False
@@ -1463,7 +1463,7 @@ Equation <a class="reference internal" href="#equation-ridge-regression1">(6.2)<
 </div>
 <p><em>Compare your answer with the solution below</em></p>
 <div class="toggle docutils container">
-<p><strong>a. True. As λ is increased the variance of the model will decrease quickly for a small increase in bias resulting in improved test MSE. At some point the bias will start to increase dramatically outweighing any benefits from further reduction in variance, at the expense of test MSE.</strong></p>
+<p><strong>a. True. As <span class="math notranslate nohighlight">\(\alpha\)</span> is increased the variance of the model will decrease quickly for a small increase in bias resulting in improved test MSE. At some point the bias will start to increase dramatically outweighing any benefits from further reduction in variance, at the expense of test MSE.</strong></p>
 </div>
 <p><strong>iv</strong>. Less flexible and hence will give improved prediction accuracy when its increase in variance is less than its decrease in bias.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   a. True

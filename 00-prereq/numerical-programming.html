@@ -802,11 +802,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0 7 3 1 7]
-[[0.37443898 0.66701729 0.29921945]
- [0.86824703 0.13307054 0.42844038]]
-[ 0.89357621 -0.09353578  0.27546341  1.84477491  1.76183095]
-[20.85577342 19.82765062 20.28779179 21.86135611 21.78866017]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 5 0 3 4]
+[[0.11305376 0.82654804 0.14178643]
+ [0.49934513 0.85732662 0.07945753]]
+[0.51232155 0.54882958 1.10951228 0.58367947 2.4788445 ]
+[20.47884224 20.64198876 21.04456981 20.55255873 22.48004782]
 </pre></div>
 </div>
 </div>
@@ -957,7 +957,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.         1.41421356 1.73205081 2.         2.23606798 2.44948974]
-[ 1  4  9 16 25 36]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1  4  9 16 25 36]
 [ 1  4  9 16 25 36]
 </pre></div>
 </div>
@@ -1171,15 +1173,11 @@ The min value of the array x is:  9
 - Conditional probability
 - Joint probability
 -->
-<p><strong>1</strong>. <strong>A</strong> = <span class="math notranslate nohighlight">\(\begin{bmatrix} 8 &amp; 5 &amp; 9 \\ 7 &amp; 19 &amp; 14 \end{bmatrix}\)</span>
-<strong>B</strong> = <span class="math notranslate nohighlight">\( \begin{bmatrix} 6 &amp; 13 &amp; 15 \\ 17 &amp; 22 &amp; 12 \\ 0 &amp; 3 &amp; 9 \end{bmatrix}\)</span></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    a. AB = ?
-
-    b. 2A = ?
-
-    c. AB + 2A = ?
-</pre></div>
-</div>
+<p><strong>1</strong>. <strong><span class="math notranslate nohighlight">\(A\)</span></strong> = <span class="math notranslate nohighlight">\(\begin{bmatrix} 8 &amp; 5 &amp; 9 \\ 7 &amp; 19 &amp; 14 \end{bmatrix}\)</span>
+<strong><span class="math notranslate nohighlight">\(B\)</span></strong> = <span class="math notranslate nohighlight">\( \begin{bmatrix} 6 &amp; 13 &amp; 15 \\ 17 &amp; 22 &amp; 12 \\ 0 &amp; 3 &amp; 9 \end{bmatrix}\)</span></p>
+<p>i. <span class="math notranslate nohighlight">\(AB\)</span> = ?</p>
+<p>ii. <span class="math notranslate nohighlight">\(2A\)</span> = ?</p>
+<p>iii. <span class="math notranslate nohighlight">\(AB + 2A\)</span> = ?</p>
 <p>You have to do it programmatically. Match the result with <a class="reference external" href="https://pykale.github.io/transparentML/00-prereq/linear-algebra-and-notations.html#exercises">Linear Algebra Excercise 2</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1196,32 +1194,32 @@ The min value of the array x is:  9
 <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">14</span><span class="p">]])</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;i.&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ii.&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;c.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;iii.&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>i.
 [[133 241 261]
  [365 551 459]]
-b.
+ii.
 [[16 10 18]
  [14 38 28]]
-c.
+iii.
 [[149 251 279]
  [379 589 487]]
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>2</strong>. Create two <span class="math notranslate nohighlight">\(3 \times 3\)</span> matrices using the NumPy random() function. Output the result of multiplying the 2 matrices (as a NumPy array). Don’t forget to use the seed() function to create reproducible results.</p>
+<p><strong>2</strong>. Create two <span class="math notranslate nohighlight">\(3 \times 3\)</span> matrices using the <strong>NumPy</strong> <strong>random()</strong> function. Output the result of multiplying the <span class="math notranslate nohighlight">\(2\)</span> matrices (as a NumPy array). Don’t forget to use the <strong>seed()</strong> function to create <strong>reproducible</strong> results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>

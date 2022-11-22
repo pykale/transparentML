@@ -1026,11 +1026,11 @@ Since <span class="math notranslate nohighlight">\((\mathbf{x}_i , y_i)\)</span>
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">5.1.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p><strong>1</strong>. Explain how <strong>k-fold cross-validation</strong> is implemented.</p>
+<p><strong>1</strong>. Explain how <strong><span class="math notranslate nohighlight">\(k\)</span>-fold cross-validation</strong> is implemented.</p>
 <p><em>Compare your answer with the solution below</em></p>
 <div class="toggle docutils container">
-<p><strong>In k-fold cross validation k independant samples are taken from the set of all available observations each of size, <span class="math notranslate nohighlight">\(1 - (n/k)\)</span>. The model is then fitted to each of these training samples, and then tested on the observations that were excluded from that sample. This produces k error scores which are then averaged to produce the final cross-validation score.</strong></p>
-<p><strong>Note that the proportion of observations that are included in each training increases increases with k.</strong></p>
+<p><strong>In <span class="math notranslate nohighlight">\(k\)</span>-fold cross validation <span class="math notranslate nohighlight">\(k\)</span> independant samples are taken from the set of all available observations each of size, <span class="math notranslate nohighlight">\(1 - (n/k)\)</span>. The model is then fitted to each of these training samples, and then tested on the observations that were excluded from that sample. This produces <span class="math notranslate nohighlight">\(k\)</span> error scores which are then averaged to produce the final cross-validation score.</strong></p>
+<p><strong>Note that the proportion of observations that are included in each training increases increases with <span class="math notranslate nohighlight">\(k\)</span>.</strong></p>
 </div>
 <p><strong>2</strong>. In <strong>Chapter 3</strong>, we used logistic regression on the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Default.csv">Default</a> data set to predict the probability of someone defaulting on a loan, by looking at their income and balance. We will now estimate the test error of this logistic regression model using the validation set approach. Do not forget to set a random seed before beginning your analysis and convert the categories to numerical values.</p>
 <p><strong>a</strong>. Fit a logistic regression model that uses <strong>income</strong> and <strong>balance</strong> to predict <strong>default</strong> and uses the <strong>validation set approach</strong> to estimate the <strong>test error</strong> of this model. In order to do this, you must perform the following steps:</p>
@@ -1094,7 +1094,7 @@ Since <span class="math notranslate nohighlight">\((\mathbf{x}_i , y_i)\)</span>
 </div>
 </div>
 </div>
-<p><strong>b</strong>. Repeat the process in <strong>4(a)</strong> three times, using three different splits of the observations into a training set and a validation set. Comment on the results obtained. <strong>Hint</strong>: Try using different <strong>random seed</strong> values.</p>
+<p><strong>b</strong>. Repeat the process in <strong>Exercise 2(a)</strong> three times, using three different splits of the observations into a training set and a validation set. Comment on the results obtained. <strong>Hint</strong>: Try using different <strong>random seed</strong> values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1119,6 +1119,8 @@ Since <span class="math notranslate nohighlight">\((\mathbf{x}_i , y_i)\)</span>
 
     <span class="n">total_error_rate_pct</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;total_error_rate: </span><span class="si">{}</span><span class="s2">%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">total_error_rate_pct</span><span class="p">))</span>
+
+<span class="c1"># For different seed value we gets different error rate as our train_test_split is random. We can use random state parameter inside the train_test)split also to control the randomness</span>
 </pre></div>
 </div>
 </div>
@@ -1176,7 +1178,7 @@ total_error_rate: 3.4000000000000004%
 </div>
 </div>
 </div>
-<p><strong>d</strong>. Fit a logistic regression model that uses <strong>income</strong> and <strong>balance</strong> to predict <strong>default</strong> by performing <strong>LeaveOneOut</strong> cross-validation and <strong>5-fold</strong> cross-validation to estimate the test error. For simplicity, use the <strong>first 1000 samples</strong> from the dataset to perform this experiment. <strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/05-cross-val-bootstrap/cross-validation.html#leave-one-out-cross-validation">5.1.3</a> and <a class="reference external" href="https://pykale.github.io/transparentML/05-cross-val-bootstrap/cross-validation.html#k-fold-cross-validation">5.1.4</a>.</p>
+<p><strong>d</strong>. Fit a logistic regression model that uses <strong>income</strong> and <strong>balance</strong> to predict <strong>default</strong> by performing <strong>LeaveOneOut</strong> cross-validation and <strong><span class="math notranslate nohighlight">\(5\)</span>-fold</strong> cross-validation to estimate the test error. For simplicity, use the <strong>first <span class="math notranslate nohighlight">\(1000\)</span> samples</strong> from the dataset to perform this experiment. <strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/05-cross-val-bootstrap/cross-validation.html#leave-one-out-cross-validation">5.1.3</a> and <a class="reference external" href="https://pykale.github.io/transparentML/05-cross-val-bootstrap/cross-validation.html#k-fold-cross-validation">5.1.4</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1213,6 +1215,8 @@ total_error_rate: 3.4000000000000004%
 <span class="n">kf_score</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">regr</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kf_5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_squared_error&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;total_error_rate for loocv: </span><span class="si">{}</span><span class="s2">%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">loocv_score</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;total_error_rate for 5-Fold: </span><span class="si">{}</span><span class="s2">%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">kf_score</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
+
+<span class="c1"># Test error for loocv is lower then the 5-fold cross validation</span>
 </pre></div>
 </div>
 </div>

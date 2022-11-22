@@ -931,7 +931,7 @@ y = \begin{cases} 1 &amp; \text{if stroke}, \\ 0 &amp; \text{if drug overdose}. 
 <div class="section" id="exercise">
 <h2><span class="section-number">3.1.3. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
 <p><strong>1</strong>. All the following exercises involve the use of <strong><a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Weekly.csv">Weekly</a></strong> dataset.</p>
-<p>Load the dataset, convert the <strong>Direction</strong> categories to numerical values, and inspect the first 10 rows.</p>
+<p>Load the dataset, convert the <strong>Direction</strong> categories to numerical values, and inspect the first <span class="math notranslate nohighlight">\(10\)</span> rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1142,6 +1142,10 @@ y = \begin{cases} 1 &amp; \text{if stroke}, \\ 0 &amp; \text{if drug overdose}. 
 <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Volume&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Direction&quot;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">c_palette</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Today&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Direction&quot;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax3</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">c_palette</span><span class="p">)</span>
 <span class="n">gs</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">())</span>
+
+<span class="c1"># From the left-hand panel, it appears that it is very tough to predict the dicrection from the volume</span>
+<span class="c1"># as the mean value of Volume for both&#39;s classes of the direction is almost same.</span>
+<span class="c1"># From the right-hand panels, it appears that positive today&#39;s value indicate the up direction and negative value indicate down.</span>
 </pre></div>
 </div>
 </div>

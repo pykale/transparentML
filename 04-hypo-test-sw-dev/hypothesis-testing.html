@@ -1477,7 +1477,7 @@ memory usage: 781.4 KB
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">4.1.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p><strong>1</strong>. The alternative hypothesis is a statement about the population that is assumed to be true.</p>
+<p><strong>1</strong>. The <strong>alternative hypothesis</strong> is a statement about the population that is assumed to be true.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   a. True
 
    b. False
@@ -1487,17 +1487,7 @@ memory usage: 781.4 KB
 <div class="toggle docutils container">
 <p><strong>b. False. The null hypothesis is assumed to be true, and we are carrying out the experiment to see if we can reject the null hypothesis in favour of the alternative hypothesis.</strong></p>
 </div>
-<p><strong>2</strong>. Normally, we focus on using data to reject null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> and there can be only one reasons for failing to reject <span class="math notranslate nohighlight">\(H_0\)</span>.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   a. True
-
-   b. False
-</pre></div>
-</div>
-<p><em>Compare your answer with the solution below</em></p>
-<div class="toggle docutils container">
-<p><strong>b. False</strong></p>
-</div>
-<p><strong>3</strong>.  The larger the <span class="math notranslate nohighlight">\(p\)</span>-value, the more evidence there is in favor of the null hypothesis.</p>
+<p><strong>2</strong>.  The larger the <span class="math notranslate nohighlight">\(p\)</span>-value, the more evidence there is in favor of the <strong>null hypothesis</strong>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   a. True
 
    b. False
@@ -1507,7 +1497,7 @@ memory usage: 781.4 KB
 <div class="toggle docutils container">
 <p><strong>a. True</strong></p>
 </div>
-<p><strong>4</strong>. A test statistic allows us to standardise our <span class="math notranslate nohighlight">\(p\)</span>-value.</p>
+<p><strong>3</strong>. A <strong>test statistic</strong> allows us to standardise our <span class="math notranslate nohighlight">\(p\)</span>-value.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   a. True
 
    b. False
@@ -1515,9 +1505,9 @@ memory usage: 781.4 KB
 </div>
 <p><em>Compare your answer with the solution below</em></p>
 <div class="toggle docutils container">
-<p><strong>b. False</strong></p>
+<p><strong>b. False. A <span class="math notranslate nohighlight">\(p\)</span>-value allows us to transform (or standardise) our test statistic, which is measured on some arbitrary and uninterpretable scale, into a number between 0 and 1 that can be more easily interpreted.</strong></p>
 </div>
-<p><strong>5</strong>. A Type II error occurs when we fail to reject <span class="math notranslate nohighlight">\(H_0\)</span> when it is false.</p>
+<p><strong>4</strong>. A <strong>Type II</strong> error occurs when we fail to reject <span class="math notranslate nohighlight">\(H_0\)</span> when it is false.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   a. True
 
    b. False
@@ -1527,7 +1517,7 @@ memory usage: 781.4 KB
 <div class="toggle docutils container">
 <p><strong>a. True</strong></p>
 </div>
-<p><strong>6</strong>. When we perform hypothesis testing, we typically require a low Type II error rate while trying to make the Type I error small.</p>
+<p><strong>5</strong>. When we perform hypothesis testing, we typically require a <strong>low Type II error rate</strong> while trying to make the <strong>Type I error small</strong>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   a. True
 
    b. False
@@ -1535,9 +1525,9 @@ memory usage: 781.4 KB
 </div>
 <p><em>Compare your answer with the solution below</em></p>
 <div class="toggle docutils container">
-<p><strong>b. False</strong></p>
+<p><strong>b. False. We require high Type II error to make the Type I error small</strong></p>
 </div>
-<p><strong>7</strong>. All the following exercises involve the use of <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Weekly.csv">Weekly</a> dataset.</p>
+<p><strong>6</strong>. All the following exercises involve the use of <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Weekly.csv">Weekly</a> dataset.</p>
 <p><strong>a</strong>. Load the dataset and inspect the first few rows of the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1652,8 +1642,8 @@ memory usage: 781.4 KB
 </table>
 </div></div></div>
 </div>
-<p><strong>b</strong>. Perform a one-sample <span class="math notranslate nohighlight">\(t\)</span>-tests of the null hypothesis that the population mean (popmean) is 0.05, <span class="math notranslate nohighlight">\(H_0: \mu_i = 0.5\)</span> for variable <strong>Today</strong> from <strong>Weekly</strong> dataset using the <strong>ttest_1samp</strong> function from the <strong>scipy.stats</strong> module and find out the t-statistic and p-value for the variable <strong>Today</strong> and state whether we can <strong>reject</strong> the null hypothesis for this variable.
-The T-test is calculated for the mean of one set of values. The null hypothesis is that the expected mean of a sample of independent observations is equal to the specified population mean, popmean = 0.5. <strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/04-hypo-test-sw-dev/hypothesis-testing.html#hypothesis-testing-on-synthetic-data">4.1.4</a></p>
+<p><strong>b</strong>. Perform a one-sample <span class="math notranslate nohighlight">\(t\)</span>-tests of the null hypothesis that the population mean (popmean) is <span class="math notranslate nohighlight">\(0.05\)</span>, <span class="math notranslate nohighlight">\(H_0: \mu_i = 0.5\)</span> for variable <strong>Today</strong> from <strong>Weekly</strong> dataset using the <strong>ttest_1samp</strong> function from the <strong>scipy.stats</strong> module and find out the <span class="math notranslate nohighlight">\(t\)</span>-statistic and <span class="math notranslate nohighlight">\(p\)</span>-value for the variable <strong>Today</strong> and state whether we can <strong>reject</strong> the null hypothesis for this variable.
+The <span class="math notranslate nohighlight">\(t\)</span>-test is calculated for the mean of one set of values. The null hypothesis is that the expected mean of a sample of independent observations is equal to the specified population mean, popmean = <span class="math notranslate nohighlight">\(0.5\)</span>. <strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/04-hypo-test-sw-dev/hypothesis-testing.html#hypothesis-testing-on-synthetic-data">4.1.4</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1682,7 +1672,7 @@ Variable Volume p-value:  1.0936150729006281e-06
 </div>
 </div>
 </div>
-<p><strong>c</strong>. Now, do another one-sample <span class="math notranslate nohighlight">\(t\)</span>-test of the null hypothesis that the population mean (popmean) is 0.05, <span class="math notranslate nohighlight">\(H_0: \mu_i = 0.5\)</span> for all the <strong>lagging indicator</strong> variables <strong>(Lag1, Lag2, Lag3, Lag4, Lag5)</strong> from the <strong>Weekly</strong> dataset and show all the <strong>p-values</strong>. <strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/04-hypo-test-sw-dev/hypothesis-testing.html#multiple-hypothesis-testing">4.1.5</a></p>
+<p><strong>c</strong>. Now, do another one-sample <span class="math notranslate nohighlight">\(t\)</span>-test of the null hypothesis that the population mean (popmean) is <span class="math notranslate nohighlight">\(0.05\)</span>, <span class="math notranslate nohighlight">\(H_0: \mu_i = 0.5\)</span> for all the <strong>lagging indicator</strong> variables <strong>(Lag1, Lag2, Lag3, Lag4, Lag5)</strong> from the <strong>Weekly</strong> dataset and show all the <strong><span class="math notranslate nohighlight">\(p\)</span>-values</strong>. <strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/04-hypo-test-sw-dev/hypothesis-testing.html#multiple-hypothesis-testing">4.1.5</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1709,12 +1699,12 @@ Variable Volume p-value:  1.0936150729006281e-06
 </div>
 </div>
 </div>
-<p><strong>d</strong>. According to the resulting p-values from <strong>7(b)</strong>, can we reject all the null hypotheses as the p-values are low?</p>
+<p><strong>d</strong>. According to the resulting <span class="math notranslate nohighlight">\(p\)</span>-values from <strong>Exercise 6(c)</strong>, can we reject all the null hypotheses as the <span class="math notranslate nohighlight">\(p\)</span>-values are low?</p>
 <p><em>Compare your answer with the solution below</em></p>
 <div class="toggle docutils container">
 <p>The <span class="math notranslate nohighlight">\(p\)</span>-values are low for all the lagging indicators. However, we cannot simply reject <span class="math notranslate nohighlight">\(H_{0}^{1}\)</span>, <span class="math notranslate nohighlight">\(H_{0}^{2}\)</span>, <span class="math notranslate nohighlight">\(H_{0}^{3}\)</span>, <span class="math notranslate nohighlight">\(H_{0}^{4}\)</span>and <span class="math notranslate nohighlight">\(H_{0}^{5}\)</span>, since this would fail to account for the multiple testing that we have performed.</p>
 </div>
-<p><strong>e</strong>. Now, use the <strong>Bonferroni correction</strong> to adjust the significance level <span class="math notranslate nohighlight">\(\alpha\)</span> for multiple testing performed in <strong>Question 7(c)</strong> using the <strong>multipletests</strong> function from the <strong>statsmodels</strong> module and state which null hypothesis we can reject. <strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/04-hypo-test-sw-dev/hypothesis-testing.html#family-wise-error-rate-fwer">4.1.5.2</a>.</p>
+<p><strong>e</strong>. Now, use the <strong>Bonferroni correction</strong> to adjust the significance level <span class="math notranslate nohighlight">\(\alpha\)</span> for multiple testing performed in <strong>Exercise 6(c)</strong> using the <strong>multipletests</strong> function from the <strong>statsmodels</strong> module and state which null hypothesis we can reject. <strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/04-hypo-test-sw-dev/hypothesis-testing.html#family-wise-error-rate-fwer">4.1.5.2</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1745,10 +1735,10 @@ Variable Volume p-value:  1.0936150729006281e-06
 </div>
 </div>
 </div>
-<p><strong>f</strong>. If we want to test <strong>100 null hypotheses</strong>, can we control FWER using Bonferroni correction?</p>
+<p><strong>f</strong>. If we want to test <strong><span class="math notranslate nohighlight">\(100\)</span> null hypotheses</strong>, can we control FWER using Bonferroni correction?</p>
 <p><em>Compare your answer with the solution below</em></p>
 <div class="toggle docutils container">
-<p>It is reasonable to control the FWER when <span class="math notranslate nohighlight">\(M\)</span> (number of the null hypothesis) takes on a small value, like 5 or 10. However, for  <span class="math notranslate nohighlight">\(M\)</span>= 100 or 1,000, attempting to control the FWER will make it almost impossible to reject any of the false null hypotheses. In that case, we control the false discovery rate (FDR) using the Benjamini-Hochberg procedure rather than the FWER.</p>
+<p>It is reasonable to control the FWER when <span class="math notranslate nohighlight">\(M\)</span> (number of the null hypothesis) takes on a small value, like <span class="math notranslate nohighlight">\(5\)</span> or <span class="math notranslate nohighlight">\(10\)</span>. However, for  <span class="math notranslate nohighlight">\(M= 100\)</span> or <span class="math notranslate nohighlight">\(1,000\)</span>, attempting to control the FWER will make it almost impossible to reject any of the false null hypotheses. In that case, we control the false discovery rate (FDR) using the Benjamini-Hochberg procedure rather than the FWER.</p>
 </div>
 </div>
 </div>
