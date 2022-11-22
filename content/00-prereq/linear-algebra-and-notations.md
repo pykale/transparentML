@@ -145,27 +145,29 @@ This section introduces the basic concepts of linear algebra and notations used 
 
 *Compare your answer with the solution below*
    ```{toggle}
-    **a , c, d**
+    **a , c, d.**
+
+    **The given matrix has values only in the diagonal; that's why it's a diagonal matrix. The diagonal values are not 1, so it's not an identity matrix. If you transpose the given matrix, it will equal the given matrix, so it's symmetric. We know $XX^-1=I$ for the inverse matrix, this condition is valid for our given matrix, so it's an inverse matrix. For the orthogonal matrix $XX^T=I$, which is not valid for our given matrix, so it's not an orthogonal matrix.**
    ```
 
-**2**. **A** = $\begin{bmatrix} 8 & 5 & 9 \\ 7 & 19 & 14 \end{bmatrix}$
-   **B** = $ \begin{bmatrix} 6 & 13 & 15 \\ 17 & 22 & 12 \\ 0 & 3 & 9 \end{bmatrix}$
+**2**. **$A$** = $\begin{bmatrix} 8 & 5 & 9 \\ 7 & 19 & 14 \end{bmatrix}$
+   **$B$** = $ \begin{bmatrix} 6 & 13 & 15 \\ 17 & 22 & 12 \\ 0 & 3 & 9 \end{bmatrix}$
 
-    Calculate the following matrix operations by hand.
+Calculate the following matrix operations by hand.
 
-        a. AB = ?
+  i. $AB$= ?
 
-        b. 2A = ?
+  ii. $2A$ = ?
 
-        c. AB + 2A = ?
+  iii. $AB + 2A$ = ?
 
 
 *Compare your answer with the reference solution below*
    ```{toggle}
-    a. $\begin{bmatrix} 133 & 241 & 261 \\ 365 & 551 & 459 \end{bmatrix}$
+    i. $\begin{bmatrix} 133 & 241 & 261 \\ 365 & 551 & 459 \end{bmatrix}$
 
-    b. $\begin{bmatrix} 16 & 10 & 18 \\ 14 & 38 & 28 \end{bmatrix}$
+    ii. $\begin{bmatrix} 16 & 10 & 18 \\ 14 & 38 & 28 \end{bmatrix}$
 
-    c. $\begin{bmatrix} 149 & 251 & 279 \\ 379 & 589 & 487 \end{bmatrix}$
+    iii. $\begin{bmatrix} 149 & 251 & 279 \\ 379 & 589 & 487 \end{bmatrix}$
 
    ```
