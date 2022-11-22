@@ -37,7 +37,7 @@ Learners from diverse backgrounds, preferably with knowledge and skills of basic
 
 ## Discussion forum for Q&A etc
 
-We have a [discussion forum](https://github.com/pykale/transparentML/discussions) as our primary communication channel, e.g. for Q&A, information sharing, and discussion. Please ask questions or post information there, rather than emailing the instructors directly. This will help others to benefit from the answers and help build an engaging community. You will need a [GitHub account](https://github.com/join) to post questions. Please follow the [Code of Conduct](https://github.com/pykale/transparentML/blob/main/CODE_OF_CONDUCT.md) when using the discussion forum.
+We have a [discussion forum](https://github.com/pykale/transparentML/discussions) as our primary communication channel, e.g. for Q&A, information sharing, and discussion. We also provide a rich set of [labels](https://github.com/pykale/transparentML/labels) for you to label your posted messages so that similar messages can be easily found. Please ask questions or post information there, rather than emailing the instructors directly. This will help others to benefit from the answers and help build an engaging community. You will need a [GitHub account](https://github.com/join) to post questions. Please follow the [Code of Conduct](https://github.com/pykale/transparentML/blob/main/CODE_OF_CONDUCT.md) when using the discussion forum.
 
 ## How to go through the course
 
