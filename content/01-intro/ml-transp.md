@@ -144,7 +144,7 @@ The applicability and implications of transparency trade-offs depend on context 
 
 ## Exercises
 
-**1**. Transparency is the key motivation for accountability.
+**1**. Transparency is the key motivation for **accountability**.
 
        a. True
 
@@ -153,31 +153,9 @@ The applicability and implications of transparency trade-offs depend on context 
 *Compare your answer with the solution below*
 
 ```{toggle}
-**b. False**
+**b. False. Accountability is a key motivation for transparency**
 ```
-**2**. Transparency acts as an enabler to other ML/AI ethics principles.
-
-       a. True
-
-       b. False
-
-*Compare your answer with the solution below*
-
-```{toggle}
-**a. True**
-```
-**3**. Transparency is a property of the information.
-
-       a. True
-
-       b. False
-
-*Compare your answer with the solution below*
-
-```{toggle}
-**b. False**
-```
-**4**. Transparency is not a fixed property of ML systems.
+**2**. Transparency acts as an **enabler** to other ML/AI ethics principles.
 
        a. True
 
@@ -188,7 +166,7 @@ The applicability and implications of transparency trade-offs depend on context 
 ```{toggle}
 **a. True**
 ```
-**5**. Deep learning models has high interpretability but low flexibility.
+**3**. Transparency is a property of the **information**.
 
        a. True
 
@@ -197,9 +175,31 @@ The applicability and implications of transparency trade-offs depend on context 
 *Compare your answer with the solution below*
 
 ```{toggle}
-**b. False**
+**b. False. Transparency is a property of the system.**
 ```
-**6**. Stakeholder's transparency interests can differ even when their reasons for seeking information are the same.
+**4**. Transparency is not a **fixed property** of ML systems.
+
+       a. True
+
+       b. False
+
+*Compare your answer with the solution below*
+
+```{toggle}
+**a. True**
+```
+**5**. Deep learning models has **high interpretability** but **low flexibility**.
+
+       a. True
+
+       b. False
+
+*Compare your answer with the solution below*
+
+```{toggle}
+**b. . Deep learning has high flexibility and low interpretability.**
+```
+**6**. **Stakeholder's transparency** interests can differ even when their reasons for seeking information are the same.
 
        a. True
 

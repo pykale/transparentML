@@ -1,8 +1,8 @@
 # Quiz and summary
 
-## Quiz-0
+## Quiz 0
 
-Complete [**Quiz-0**](https://docs.google.com/forms/d/e/1FAIpQLScuoQvL2b5-6HFcomzdDprkbYHogXRzKj00edzusaFuLn7gIA/viewform?usp=share_link) to check your understanding of this topic. You are advised to score at least 50% to proceed to the next topic.
+Complete [**Quiz 0**](https://docs.google.com/forms/d/e/1FAIpQLScuoQvL2b5-6HFcomzdDprkbYHogXRzKj00edzusaFuLn7gIA/viewform?usp=share_link) to check your understanding of this topic. You are advised to score at least 50% to proceed to the next topic.
 
 ## Summary
 
