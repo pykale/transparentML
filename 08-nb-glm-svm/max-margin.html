@@ -621,8 +621,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-svms-toy-data-using-scikit-learn">
-   8.2.3. Example: SVMs toy data using
+  <a class="reference internal nav-link" href="#example-support-vector-classifiers-on-toy-data-using-scikit-learn">
+   8.2.3. Example: support vector classifiers on toy data using
    <code class="docutils literal notranslate">
     <span class="pre">
      scikit-learn
@@ -695,8 +695,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-svms-toy-data-using-scikit-learn">
-   8.2.3. Example: SVMs toy data using
+  <a class="reference internal nav-link" href="#example-support-vector-classifiers-on-toy-data-using-scikit-learn">
+   8.2.3. Example: support vector classifiers on toy data using
    <code class="docutils literal notranslate">
     <span class="pre">
      scikit-learn
@@ -775,7 +775,7 @@ y_i(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_D x_{iD}) &gt; 0,
 \]</div>
 <div class="margin-caption figure align-default" id="svm2">
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm2.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm2.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm2.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.2 </span><span class="caption-text">Two classes of observations are shown in blue and in purple, respectively. Left: Three separating hyperplanes, out of many possible, are shown in black. Right: A separating hyperplane is shown in black. The blue and purple grid indicates the decision rule made by a classifier based on this separating hyperplane: a test observation that falls in the blue portion of the grid will be assigned to the blue class, and one that falls in the purple portion of the grid will be assigned to the purple class (figure source: <a class="reference external" href="https://trevorhastie.github.io/ISLR/">https://trevorhastie.github.io/ISLR/</a>).</span><a class="headerlink" href="#svm2" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8.2 </span><span class="caption-text">Two classes of observations are shown in blue and in purple, respectively. Left: Three separating hyperplanes, out of many possible, are shown in black. Right: A separating hyperplane is shown in black. The blue and purple grid indicates the decision rule made by a classifier based on this separating hyperplane: a test observation that falls in the blue portion of the grid will be assigned to the blue class, and one that falls in the purple portion of the grid will be assigned to the purple class.</span><a class="headerlink" href="#svm2" title="Permalink to this image">¶</a></p>
 </div>
 <p>A shown in <a class="reference internal" href="#svm2"><span class="std std-numref">Fig. 8.2</span></a>, if a separating hyperplane exists, we can use it to construct a very natural classifier: a test observation is assigned a class depending on which side of the hyperplane it is located.</p>
 </div>
@@ -841,8 +841,8 @@ such a scenario.</p>
 </div>
 </div>
 </div>
-<div class="section" id="example-svms-toy-data-using-scikit-learn">
-<h2><span class="section-number">8.2.3. </span>Example: SVMs toy data using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code><a class="headerlink" href="#example-svms-toy-data-using-scikit-learn" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example-support-vector-classifiers-on-toy-data-using-scikit-learn">
+<h2><span class="section-number">8.2.3. </span>Example: support vector classifiers on toy data using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code><a class="headerlink" href="#example-support-vector-classifiers-on-toy-data-using-scikit-learn" title="Permalink to this headline">¶</a></h2>
 <p>Import the required libraries</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -855,7 +855,13 @@ such a scenario.</p>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">GridSearchCV</span>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span><span class="p">,</span> <span class="n">LinearSVC</span>
 <span class="kn">from</span> <span class="nn">sklearn.discriminant_analysis</span> <span class="kn">import</span> <span class="n">LinearDiscriminantAnalysis</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span><span class="p">,</span> <span class="n">classification_report</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">confusion_matrix</span><span class="p">,</span>
+    <span class="n">ConfusionMatrixDisplay</span><span class="p">,</span>
+    <span class="n">roc_curve</span><span class="p">,</span>
+    <span class="n">auc</span><span class="p">,</span>
+    <span class="n">classification_report</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -921,7 +927,7 @@ such a scenario.</p>
 </div>
 </div>
 </div>
-<p>Visualize the data with decision boundary and support vectors.</p>
+<p>Fit a support vector classifier and visualise decision boundary and support vectors with data points. Different values of hyper-parameter <span class="math notranslate nohighlight">\(C\)</span> described in Equation <a class="reference internal" href="#equation-eq-soft-margin-classifier">(8.2)</a> are used to see the effect of <span class="math notranslate nohighlight">\(C\)</span> on the decision boundary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svc</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
@@ -955,7 +961,7 @@ such a scenario.</p>
 </div>
 </div>
 </div>
-<p>Select the optimal C parameter by cross-validation</p>
+<p>Select the optimal hyper-parameter <span class="math notranslate nohighlight">\(C\)</span> by cross-validation</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tuned_parameters</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]}]</span>
@@ -972,14 +978,14 @@ such a scenario.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.0004554 , 0.00048628, 0.00043676, 0.00043542, 0.00045536,
-        0.00047431, 0.00062671]),
- &#39;std_fit_time&#39;: array([4.55438712e-05, 1.13553851e-04, 1.08297949e-05, 7.86423602e-06,
-        1.01827065e-05, 1.26780411e-05, 5.33855562e-05]),
- &#39;mean_score_time&#39;: array([0.00031662, 0.00031774, 0.00031013, 0.00031095, 0.00031304,
-        0.00031023, 0.00031374]),
- &#39;std_score_time&#39;: array([2.15567843e-05, 2.48726805e-05, 8.05826582e-06, 9.95939216e-06,
-        1.11690898e-05, 6.24529265e-06, 1.27635021e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00039554, 0.00037472, 0.0003793 , 0.00040026, 0.0003958 ,
+        0.00040498, 0.00052691]),
+ &#39;std_fit_time&#39;: array([5.10180107e-05, 1.07140174e-05, 1.61472756e-05, 6.09248625e-05,
+        1.28624338e-05, 1.35669180e-05, 4.70475436e-05]),
+ &#39;mean_score_time&#39;: array([0.00027723, 0.00026586, 0.00026882, 0.00027039, 0.0002702 ,
+        0.00026724, 0.00027242]),
+ &#39;std_score_time&#39;: array([2.60906191e-05, 7.08103180e-06, 9.84714913e-06, 1.06935185e-05,
+        7.46752719e-06, 5.80827002e-06, 6.82743562e-06]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,
@@ -1033,6 +1039,7 @@ such a scenario.</p>
 </div>
 </div>
 </div>
+<p>Display the optimal hyper-parameter <span class="math notranslate nohighlight">\(C\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span><span class="o">.</span><span class="n">best_params_</span>
@@ -1045,6 +1052,7 @@ such a scenario.</p>
 </div>
 </div>
 </div>
+<p>Generate a test data set and predict the class labels for the test data set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -1060,54 +1068,23 @@ such a scenario.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/max-margin_15_0.png" src="../_images/max-margin_15_0.png" />
+<img alt="../_images/max-margin_17_0.png" src="../_images/max-margin_17_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># svc2 : C = 0.1</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">svc2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">svc</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">svc</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">svc</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>-1</th>
-      <th>1</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>-1</th>
-      <td>2</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0</td>
-      <td>12</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<img alt="../_images/max-margin_18_0.png" src="../_images/max-margin_18_0.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1116,55 +1093,22 @@ such a scenario.</p>
 
 <span class="c1"># svc3 : C = 0.001</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">svc3</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">svc3</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">svc3</span><span class="o">.</span><span class="n">classes_</span>
-<span class="p">)</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">svc</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="c1"># The misclassification is the same</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>-1</th>
-      <th>1</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>-1</th>
-      <td>2</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0</td>
-      <td>12</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<img alt="../_images/max-margin_19_0.png" src="../_images/max-margin_19_0.png" />
 </div>
+</div>
+<p>Changing the test data so that the classes are really separable with a hyperplane.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Changing the test data so that the classes are really seperable with a hyperplane.</span>
-<span class="n">X_test</span><span class="p">[</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_test</span><span class="p">[</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_test</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X1&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;X2&quot;</span><span class="p">)</span>
@@ -1173,7 +1117,7 @@ such a scenario.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/max-margin_18_0.png" src="../_images/max-margin_18_0.png" />
+<img alt="../_images/max-margin_21_0.png" src="../_images/max-margin_21_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1185,7 +1129,7 @@ such a scenario.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/max-margin_19_0.png" src="../_images/max-margin_19_0.png" />
+<img alt="../_images/max-margin_22_0.png" src="../_images/max-margin_22_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  4
 </pre></div>
 </div>
@@ -1201,7 +1145,7 @@ such a scenario.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/max-margin_20_0.png" src="../_images/max-margin_20_0.png" />
+<img alt="../_images/max-margin_23_0.png" src="../_images/max-margin_23_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  5
 </pre></div>
 </div>

@@ -582,8 +582,8 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   8.3.1. Support vector machines
+  <a class="reference internal nav-link" href="#non-linear-decision-boundaries-and-kernel-methods">
+   8.3.1. Non-linear decision boundaries and kernel methods
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -592,13 +592,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-support-vector-machine-and-kernel-trick">
-     8.3.1.2. The support vector machine and kernel trick
+    <a class="reference internal nav-link" href="#kernel-methods">
+     8.3.1.2. Kernel methods
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-svms-toy-data-using-scikit-learn">
-     8.3.1.3. Example: SVMs toy data using
+    <a class="reference internal nav-link" href="#example-svms-on-toy-data-using-scikit-learn">
+     8.3.1.3. Example: SVMs on toy data using
      <code class="docutils literal notranslate">
       <span class="pre">
        scikit-learn
@@ -651,8 +651,8 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   8.3.1. Support vector machines
+  <a class="reference internal nav-link" href="#non-linear-decision-boundaries-and-kernel-methods">
+   8.3.1. Non-linear decision boundaries and kernel methods
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -661,13 +661,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-support-vector-machine-and-kernel-trick">
-     8.3.1.2. The support vector machine and kernel trick
+    <a class="reference internal nav-link" href="#kernel-methods">
+     8.3.1.2. Kernel methods
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-svms-toy-data-using-scikit-learn">
-     8.3.1.3. Example: SVMs toy data using
+    <a class="reference internal nav-link" href="#example-svms-on-toy-data-using-scikit-learn">
+     8.3.1.3. Example: SVMs on toy data using
      <code class="docutils literal notranslate">
       <span class="pre">
        scikit-learn
@@ -710,31 +710,8 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="support-vector-machines">
 <h1><span class="section-number">8.3. </span>Support vector machines<a class="headerlink" href="#support-vector-machines" title="Permalink to this headline">¶</a></h1>
-<p>In this section, we discuss the support vector machine (SVM), an approach for classification that was developed in the computer science community in the 1990s and that has grown in popularity since then. SVMs have been shown to perform well in a variety of settings, and are often considered one of the best “out of the box” classifiers.</p>
-<!-- - [Lab: 9.6.1 Support Vector Classifier](#9.6.1-Support-Vector-Classifier)
-- [Lab: 9.6.2 Support Vector Machine](#9.6.2-Support-Vector-Machine)
-- [Lab: 9.6.3 ROC Curves](#9.6.3-ROC-Curves)
-- [Lab: 9.6.4 SVM with Multiple Classes](#9.6.4-SVM-with-Multiple-Classes)
-- [Lab: 9.6.5 Application to Gene Expression Data](#9.6.5-Application-to-Gene-Expression-Data) --><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # plot hyperplane</span>
-<span class="c1"># x = np.arange(-1.5, 1.51, 0.01)</span>
-<span class="c1"># y = np.arange(-1.5, 1.51, 0.01)</span>
-
-<span class="c1"># X, Y = np.meshgrid(x, y)</span>
-<span class="c1"># zz = np.array([X.ravel(), Y.ravel()]).T</span>
-<span class="c1"># Z = zz[:, 0] * 2 + zz[:, 1] * 3 + 1</span>
-<span class="c1"># Z[np.where(Z &gt; 0)] = 1</span>
-<span class="c1"># Z[np.where(Z &lt;= 0)] = -1</span>
-<span class="c1"># Z = Z.reshape(X.shape)</span>
-<span class="c1"># plt.contourf(X, Y, Z, cmap=plt.cm.Paired, alpha=0.2)</span>
-<span class="c1"># plt.show()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="id1">
-<h2><span class="section-number">8.3.1. </span>Support vector machines<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="non-linear-decision-boundaries-and-kernel-methods">
+<h2><span class="section-number">8.3.1. </span>Non-linear decision boundaries and kernel methods<a class="headerlink" href="#non-linear-decision-boundaries-and-kernel-methods" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="classification-with-non-linear-decision-boundaries">
 <h3><span class="section-number">8.3.1.1. </span>Classification with non-linear decision boundaries<a class="headerlink" href="#classification-with-non-linear-decision-boundaries" title="Permalink to this headline">¶</a></h3>
 <p>The support vector classifier is a natural approach for classification in the two-class setting, if the boundary between the two classes is linear. However, in practice we are sometimes faced with non-linear class boundaries, as the example shown in the left panel of <a class="reference internal" href="#svm8"><span class="std std-numref">Fig. 8.8</span></a>.</p>
@@ -751,8 +728,8 @@ const thebe_selector_output = ".output, .cell_output"
 \end{aligned}\end{split}\]</div>
 <p>The decision boundary that results from Equation <a class="reference internal" href="#equation-eq-svm-polynomial">(8.3)</a> is in fact linear. But in the original feature space, the decision boundary is of the form <span class="math notranslate nohighlight">\( q(x) = 0 \)</span>, where <span class="math notranslate nohighlight">\( q(\cdot) \)</span> is a quadratic polynomial, and its solutions are generally non-linear.</p>
 </div>
-<div class="section" id="the-support-vector-machine-and-kernel-trick">
-<h3><span class="section-number">8.3.1.2. </span>The support vector machine and kernel trick<a class="headerlink" href="#the-support-vector-machine-and-kernel-trick" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="kernel-methods">
+<h3><span class="section-number">8.3.1.2. </span>Kernel methods<a class="headerlink" href="#kernel-methods" title="Permalink to this headline">¶</a></h3>
 <p>The <em>support vector machine (SVM)</em> is an extension of the support vector classifier that results from enlarging the feature space in a specific way, using <em>kernels</em>. As described above, the main idea is to enlarge our feature space in order to accommodate a non-linear boundary between the classes. The kernel approach that we describe here is simply an efficient computational approach for enacting this idea.</p>
 <p>We have not discussed exactly how the support vector classifier is computed because the details become somewhat technical. However, it turns
 out that the solution to the support vector classifier problem <a class="reference internal" href="max-margin.html#equation-eq-soft-margin-classifier">(8.2)</a> involves only the inner products of the observations (as opposed to the observations themselves). The inner product of two <span class="math notranslate nohighlight">\(D\)</span>-vectors <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is defined as <span class="math notranslate nohighlight">\(⟨a, b⟩ = \sum_{i=1}^{D} a_i b_i \)</span>. Thus the inner product of two observations <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_{i'}\)</span> is <span class="math notranslate nohighlight">\(⟨\mathbf{x}_i, \mathbf{x}_{i'}⟩ = \sum_{j=1}^{D} x_{ij} x_{i'j} \)</span>. As a result, the linear svm classifier can be written as</p>
@@ -791,21 +768,23 @@ f(x) = \beta_0 + \sum_{i=1}^{N} \alpha_i k(\mathbf{x}, \mathbf{x}_i).
 <p class="caption"><span class="caption-number">Fig. 8.9 </span><span class="caption-text">Left: An SVM with a polynomial kernel of degree 3 is applied to the non-linear data from <a class="reference internal" href="#svm8"><span class="std std-numref">Fig. 8.8</span></a>, resulting in a far more appropriate decision rule. Right: An SVM with a radial kernel is applied. In this example, either kernel is capable of capturing the decision boundary.</span><a class="headerlink" href="#svm9" title="Permalink to this image">¶</a></p>
 </div>
 </div>
-<div class="section" id="example-svms-toy-data-using-scikit-learn">
-<h3><span class="section-number">8.3.1.3. </span>Example: SVMs toy data using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code><a class="headerlink" href="#example-svms-toy-data-using-scikit-learn" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="example-svms-on-toy-data-using-scikit-learn">
+<h3><span class="section-number">8.3.1.3. </span>Example: SVMs on toy data using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code><a class="headerlink" href="#example-svms-on-toy-data-using-scikit-learn" title="Permalink to this headline">¶</a></h3>
 <p>Import the required libraries</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import pandas as pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">label_binarize</span>
+<span class="c1"># import seaborn as sns</span>
+
+<span class="c1"># from sklearn.preprocessing import label_binarize</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">GridSearchCV</span>
-<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span><span class="p">,</span> <span class="n">LinearSVC</span>
-<span class="kn">from</span> <span class="nn">sklearn.discriminant_analysis</span> <span class="kn">import</span> <span class="n">LinearDiscriminantAnalysis</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span><span class="p">,</span> <span class="n">classification_report</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+
+<span class="c1"># from sklearn.discriminant_analysis import LinearDiscriminantAnalysis</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -858,7 +837,7 @@ f(x) = \beta_0 + \sum_{i=1}^{N} \alpha_i k(\mathbf{x}, \mathbf{x}_i).
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/svm_9_0.png" src="../_images/svm_9_0.png" />
+<img alt="../_images/svm_6_0.png" src="../_images/svm_6_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -870,7 +849,7 @@ f(x) = \beta_0 + \sum_{i=1}^{N} \alpha_i k(\mathbf{x}, \mathbf{x}_i).
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/svm_10_0.png" src="../_images/svm_10_0.png" />
+<img alt="../_images/svm_7_0.png" src="../_images/svm_7_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  51
 </pre></div>
 </div>
@@ -886,7 +865,7 @@ f(x) = \beta_0 + \sum_{i=1}^{N} \alpha_i k(\mathbf{x}, \mathbf{x}_i).
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/svm_11_0.png" src="../_images/svm_11_0.png" />
+<img alt="../_images/svm_8_0.png" src="../_images/svm_8_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  36
 </pre></div>
 </div>
@@ -895,7 +874,7 @@ f(x) = \beta_0 + \sum_{i=1}^{N} \alpha_i k(\mathbf{x}, \mathbf{x}_i).
 <p>Choosing the parameters by cross-validation</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tuned_parameters</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]}]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tuned_parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]}</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
     <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">),</span>
     <span class="n">tuned_parameters</span><span class="p">,</span>
@@ -909,30 +888,30 @@ f(x) = \beta_0 + \sum_{i=1}^{N} \alpha_i k(\mathbf{x}, \mathbf{x}_i).
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00060673, 0.00060074, 0.00064614, 0.00065837, 0.0006619 ,
-        0.00058763, 0.00063195, 0.00068831, 0.00071576, 0.00075288,
-        0.00059264, 0.00064077, 0.00076041, 0.00078149, 0.00079665,
-        0.0006108 , 0.00064964, 0.00080302, 0.00083015, 0.0008383 ,
-        0.00068536, 0.00072081, 0.00080333, 0.00082037, 0.00081413]),
- &#39;std_fit_time&#39;: array([5.41360137e-05, 7.53119723e-06, 1.23754861e-05, 1.90622177e-05,
-        8.31243564e-06, 1.24599885e-05, 9.37818807e-06, 1.52740551e-05,
-        2.12418645e-05, 1.21110067e-05, 1.62908294e-05, 1.60695537e-05,
-        3.51230625e-05, 1.85341273e-05, 1.69971546e-05, 3.08072325e-05,
-        1.72479982e-05, 3.77282542e-05, 3.07959751e-05, 2.41703883e-05,
-        4.81253911e-05, 4.33182414e-05, 2.52870301e-05, 2.64989032e-05,
-        2.85601277e-05]),
- &#39;mean_score_time&#39;: array([0.00035033, 0.00034432, 0.00034764, 0.00034988, 0.00034728,
-        0.00033767, 0.00034482, 0.00034573, 0.00035224, 0.00036829,
-        0.00033724, 0.00033937, 0.00035055, 0.00035379, 0.00035555,
-        0.00033376, 0.00034084, 0.00035241, 0.00035248, 0.00035551,
-        0.00033402, 0.00033753, 0.00035002, 0.00034723, 0.00034842]),
- &#39;std_score_time&#39;: array([2.55869237e-05, 5.79489587e-06, 4.31458587e-06, 1.03602406e-05,
-        2.66815850e-06, 6.55980461e-06, 7.84904235e-06, 2.24024674e-06,
-        1.05224467e-05, 3.32405522e-05, 8.01189308e-06, 6.25111509e-06,
-        5.50333917e-06, 7.12664201e-06, 7.92041448e-06, 9.61300045e-06,
-        8.85249179e-06, 1.02428184e-05, 1.14287830e-05, 7.41742386e-06,
-        1.26810895e-05, 1.23821903e-05, 1.03460753e-05, 2.99345896e-06,
-        1.16377577e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00052836, 0.00052564, 0.00056329, 0.00056429, 0.00058155,
+        0.00051072, 0.00055547, 0.00059812, 0.00062327, 0.00064175,
+        0.00052061, 0.00056183, 0.00065911, 0.0006763 , 0.00068469,
+        0.00053651, 0.00060232, 0.00069087, 0.00071685, 0.00071807,
+        0.00059831, 0.00063725, 0.00069053, 0.00070329, 0.00069926]),
+ &#39;std_fit_time&#39;: array([6.27009541e-05, 8.94056956e-06, 1.36362922e-05, 8.52778965e-06,
+        2.04417481e-05, 7.07701688e-06, 1.24990471e-05, 1.46696416e-05,
+        1.87905909e-05, 1.02542442e-05, 1.67475094e-05, 1.37863881e-05,
+        2.83439985e-05, 1.61686473e-05, 1.70013679e-05, 2.21936964e-05,
+        5.81755061e-05, 2.63835878e-05, 2.72647152e-05, 2.06084695e-05,
+        2.42300029e-05, 3.73256907e-05, 1.66804597e-05, 1.94949436e-05,
+        2.43988423e-05]),
+ &#39;mean_score_time&#39;: array([0.00030165, 0.00029683, 0.0003022 , 0.00030251, 0.00030248,
+        0.00029275, 0.00029628, 0.00029931, 0.00030599, 0.00030682,
+        0.0002878 , 0.00031164, 0.0003021 , 0.00030568, 0.0003052 ,
+        0.00029876, 0.00031056, 0.00029795, 0.0003058 , 0.00030324,
+        0.00028505, 0.00028689, 0.00029879, 0.00030243, 0.00030379]),
+ &#39;std_score_time&#39;: array([2.58654602e-05, 8.04287328e-06, 6.47098945e-06, 8.36016711e-06,
+        8.41117635e-06, 8.38979363e-06, 6.65956484e-06, 2.46668189e-06,
+        8.38216794e-06, 8.30261679e-06, 3.66955549e-06, 4.25477243e-05,
+        4.18076343e-06, 8.09812842e-06, 4.92834906e-06, 4.33339066e-05,
+        4.37675993e-05, 2.44550528e-06, 8.17202069e-06, 2.99962411e-06,
+        4.86420648e-06, 1.71942613e-06, 6.55004876e-06, 9.34421391e-06,
+        1.03369234e-05]),
  &#39;param_C&#39;: masked_array(data=[0.01, 0.01, 0.01, 0.01, 0.01, 0.1, 0.1, 0.1, 0.1, 0.1,
                     1, 1, 1, 1, 1, 10, 10, 10, 10, 10, 100, 100, 100, 100,
                     100],
@@ -1069,6 +1048,7 @@ f(x) = \beta_0 + \sum_{i=1}^{N} \alpha_i k(\mathbf{x}, \mathbf{x}_i).
 </div>
 </div>
 </div>
+<p>Display the best combination of parameters</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span><span class="o">.</span><span class="n">best_params_</span>
@@ -1083,15 +1063,15 @@ f(x) = \beta_0 + \sum_{i=1}^{N} \alpha_i k(\mathbf{x}, \mathbf{x}_i).
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">clf</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[66,  7],
-       [ 6, 21]])
-</pre></div>
-</div>
+<img alt="../_images/svm_13_0.png" src="../_images/svm_13_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1110,8 +1090,8 @@ f(x) = \beta_0 + \sum_{i=1}^{N} \alpha_i k(\mathbf{x}, \mathbf{x}_i).
 </div>
 <div class="section" id="evaluating-with-roc-curves">
 <h3><span class="section-number">8.3.1.4. </span>Evaluating with ROC curves<a class="headerlink" href="#evaluating-with-roc-curves" title="Permalink to this headline">¶</a></h3>
-<p>Comparing the ROC curves of two models on train/test data. One model is more flexible than the other.</p>
-<div class="cell docutils container">
+<p>Comparing the ROC curves of two models on train/test data with different hyper-parameter <span class="math notranslate nohighlight">\(\gamma\)</span> of Gaussian kernels (RBF kernel).</p>
+<!-- One model is more flexible than the other. --><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm3</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">svm3</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -1192,10 +1172,10 @@ f(x) = \beta_0 + \sum_{i=1}^{N} \alpha_i k(\mathbf{x}, \mathbf{x}_i).
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/svm_21_0.png" src="../_images/svm_21_0.png" />
+<img alt="../_images/svm_19_0.png" src="../_images/svm_19_0.png" />
 </div>
 </div>
-<p>As expected, the more flexible model scores better on training data but worse on the test data.</p>
+<p>The more flexible model (<span class="math notranslate nohighlight">\( \gamma = 50 \)</span>) scores better on training data but worse on the test data.</p>
 </div>
 </div>
 <div class="section" id="svms-with-more-than-two-classes">
@@ -1208,6 +1188,7 @@ f(x) = \beta_0 + \sum_{i=1}^{N} \alpha_i k(\mathbf{x}, \mathbf{x}_i).
 <div class="section" id="one-vs-all">
 <h3><span class="section-number">8.3.2.2. </span>One-vs-all<a class="headerlink" href="#one-vs-all" title="Permalink to this headline">¶</a></h3>
 <p>The one-versus-all approach is an alternative procedure for applying SVMs in the case of <span class="math notranslate nohighlight">\(K\)</span> &gt; 2 classes. We fit <span class="math notranslate nohighlight">\(K\)</span> SVMs, each time comparing one of the <span class="math notranslate nohighlight">\(K\)</span> classes to the remaining <span class="math notranslate nohighlight">\(K − 1\)</span> classes. For example, if there are three classes, then we would fit three SVMs, one for each class. The first SVM would separate class 1 from classes 2 and 3, the second SVM would separate class 2 from classes 1 and 3, and the third SVM would separate class 3 from classes 1 and 2. To classify a new observation, we would apply each of the three classifiers, and assign the observation to the class that receives the most votes.</p>
+<p>The following code shows how to train a SVM using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>, the strategy for multi-class classification is “one vs one” internally. However, we can get “one vs rest” hyper-plane by setting <code class="docutils literal notranslate"><span class="pre">decision_function_shape='ovr'</span></code> in the <code class="docutils literal notranslate"><span class="pre">SVC</span></code> object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding a third class of observations</span>
@@ -1223,7 +1204,7 @@ f(x) = \beta_0 + \sum_{i=1}^{N} \alpha_i k(\mathbf{x}, \mathbf{x}_i).
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/svm_24_0.png" src="../_images/svm_24_0.png" />
+<img alt="../_images/svm_22_0.png" src="../_images/svm_22_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1235,7 +1216,7 @@ f(x) = \beta_0 + \sum_{i=1}^{N} \alpha_i k(\mathbf{x}, \mathbf{x}_i).
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/svm_25_0.png" src="../_images/svm_25_0.png" />
+<img alt="../_images/svm_23_0.png" src="../_images/svm_23_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  128
 </pre></div>
 </div>

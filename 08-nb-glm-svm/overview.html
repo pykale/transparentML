@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="8.1. Generalised linear models" href="glm.html" />
@@ -577,36 +579,41 @@ const thebe_selector_output = ".output, .cell_output"
 <!-- File names should be all lowercase, with words separated by hyphens (-), and no spaces.  Each chapter must include an "overview.md" and "quiz-sum-ref.md"-->
 <div class="admonition-status admonition">
 <p class="admonition-title">Status</p>
-<p>Drafting</p>
+<p>Ready for HP review</p>
 </div>
 <div class="admonition-objectives admonition">
 <p class="admonition-title">Objectives</p>
 <ul class="simple">
-<li><p>Objective 1</p></li>
+<li><p>Understand the relationships between linear regression, poisson regression, and logistic regression under GLM framework.</p></li>
+<li><p>Understand the basic concepts of support vector machine.</p></li>
+<li><p>Apply support vector machine in training and testing a classification model.</p></li>
+<li><p>Evaluate the performance of a classifier using ROC curve and confusion matrix.</p></li>
+<li><p>Interpret the results of a SVM classifier.</p></li>
 </ul>
 </div>
 <p><strong>Expected time to complete</strong>: x hours</p>
-<p>In this chapter, we will [… (intro paragraph)].</p>
-<div class="admonition-ingredients admonition">
-<p class="admonition-title">Ingredients</p>
+<p>In this chapter, we will introduce generalised linear models (GLMs) and support vector machines (SVMs). GLM is a a flexible generalisation of ordinary linear regression. The GLM generalises linear regression by allowing the linear model to be related to the response variable via a link function and by allowing the magnitude of the variance of each measurement to be a function of its predicted value. It is a general framework that includes linear regression, poisson regression, logistic regression, and many other regression models.</p>
+<p>SVM is an approach for classification that was developed in the computer science community in the 1990s and that has grown in popularity since then. SVMs have been shown to perform well in a variety of settings, and are often considered one of the best “out of the box” classifiers.</p>
+<div class="admonition-ingredients-svm admonition">
+<p class="admonition-title">Ingredients: SVM</p>
 <ul class="simple">
-<li><p>Input: …</p></li>
-<li><p>Output: …</p></li>
-<li><p>Model: …</p>
+<li><p>Input: features of data samples.</p></li>
+<li><p>Output: class labels of data samples.</p></li>
+<li><p>Model: fit a plane/hyperplane to the training data to separate the data points by their class labels with the largest margin.</p>
 <ul>
-<li><p>Hyperparameter(s): …</p></li>
-<li><p>Parameter(s): …</p></li>
+<li><p>Hyperparameter(s): <span class="math notranslate nohighlight">\(C\)</span> for controlling the trade-off between the margin and the misclassification/margin violation penalty. Other hyper-parameters include the kernel type and the kernel parameters.</p></li>
+<li><p>Parameter(s): Intercept (<span class="math notranslate nohighlight">\(\beta_0\)</span>) and coefficients (<span class="math notranslate nohighlight">\(\alpha_1, \alpha_2, \ldots, \alpha_N\)</span>) for each training observation.</p></li>
 </ul>
 </li>
-<li><p>Loss function: …</p></li>
-<li><p>Learning algorithm: …</p></li>
+<li><p>Loss function: maximises the margin and minimises the misclassification/margin violation penalty.</p></li>
+<li><p>Learning algorithm: quadratic programming.</p></li>
 </ul>
 </div>
-<div class="admonition-transparency admonition">
-<p class="admonition-title">Transparency</p>
+<div class="admonition-transparency-svm admonition">
+<p class="admonition-title">Transparency: SVM</p>
 <p>System logic</p>
 <ul class="simple">
-<li><p>Condition to produce certain output:</p></li>
+<li><p>Condition to produce certain output: to produce an output <span class="math notranslate nohighlight">\(y\)</span>, find out this class on which side of the fitted hyperplane, and then all corresponding data points <span class="math notranslate nohighlight">\(x\)</span> (or <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>) on this side of the hyperplane will be classified as <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
 </ul>
 </div>
 <!-- - What input to produce certain output:
