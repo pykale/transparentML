@@ -425,8 +425,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../09-pca-kmeans/pca.html">
+     9.1. Principal component analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../09-pca-kmeans/quiz-sum-ref.html">
-     9.1. Quiz &amp; summary
+     9.2. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -710,6 +715,13 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="support-vector-machines">
 <h1><span class="section-number">8.3. </span>Support vector machines<a class="headerlink" href="#support-vector-machines" title="Permalink to this headline">¶</a></h1>
+<p>This section introduces support vector machines (SVMs) for non-linear separation of data points.</p>
+<p>Watch the 9-minute video below for a visual explanation of non-linear (polynomial) kernel and SVM.</p>
+<div class="admonition-video admonition">
+<p class="admonition-title">Video</p>
+<iframe width="700" height="394" src="https://www.youtube.com/embed/efR1C6CvhmE?start=744&end=1205" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p><a class="reference external" href="https://www.youtube.com/embed/efR1C6CvhmE?start=744&amp;end=1205">Explaining non-linear (polynomial) kernel and SVM, by StatQuest</a></p>
+</div>
 <div class="section" id="non-linear-decision-boundaries-and-kernel-methods">
 <h2><span class="section-number">8.3.1. </span>Non-linear decision boundaries and kernel methods<a class="headerlink" href="#non-linear-decision-boundaries-and-kernel-methods" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="classification-with-non-linear-decision-boundaries">
@@ -888,30 +900,30 @@ f(x) = \beta_0 + \sum_{i=1}^{N} \alpha_i k(\mathbf{x}, \mathbf{x}_i).
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00059881, 0.00062406, 0.00065372, 0.00071507, 0.000701  ,
-        0.00060902, 0.00067172, 0.00083032, 0.00075541, 0.00079832,
-        0.0006    , 0.00064645, 0.00080884, 0.00089242, 0.0008436 ,
-        0.00059879, 0.00065417, 0.00083084, 0.00089197, 0.00095685,
-        0.00066013, 0.00073092, 0.00106399, 0.00090978, 0.0009033 ]),
- &#39;std_fit_time&#39;: array([4.34656360e-05, 4.44715843e-05, 2.47129684e-05, 6.02014041e-05,
-        7.43515745e-05, 7.74848058e-05, 7.96134722e-05, 1.29619049e-04,
-        2.66760879e-05, 7.09445881e-05, 4.18724662e-05, 5.24123214e-05,
-        4.91135618e-05, 7.78672634e-05, 4.58997625e-05, 4.74283114e-05,
-        5.77408059e-05, 5.06376366e-05, 5.89993065e-05, 7.29715146e-05,
-        5.22760993e-05, 8.62277997e-05, 3.64210707e-04, 8.68084273e-05,
-        7.52980870e-05]),
- &#39;mean_score_time&#39;: array([0.00037241, 0.0003988 , 0.000418  , 0.00037615, 0.0003752 ,
-        0.00036519, 0.00037446, 0.0003979 , 0.00037589, 0.00040753,
-        0.00039325, 0.00037246, 0.00039828, 0.00039935, 0.00037525,
-        0.00038502, 0.00041542, 0.00037842, 0.00041034, 0.00042205,
-        0.00043921, 0.00038822, 0.0004153 , 0.00040522, 0.00038354]),
- &#39;std_score_time&#39;: array([3.11027979e-05, 3.53644841e-05, 6.90048448e-05, 1.84450481e-05,
-        1.54181629e-05, 1.26492460e-05, 1.61182950e-05, 2.51859523e-05,
-        1.14794027e-05, 9.98756486e-05, 6.75495166e-05, 1.34129470e-05,
-        4.26080417e-05, 5.62788053e-05, 4.96397559e-06, 8.58219758e-05,
-        8.93289353e-05, 2.74348830e-05, 6.01827670e-05, 3.97381337e-05,
-        2.16754952e-04, 3.70601033e-05, 5.85982669e-05, 4.70591652e-05,
-        2.70333553e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00067732, 0.00066409, 0.00068872, 0.00079763, 0.0008055 ,
+        0.00064278, 0.0007668 , 0.00079474, 0.00083518, 0.00103548,
+        0.00067053, 0.0007472 , 0.00089173, 0.00093272, 0.00093451,
+        0.00065696, 0.00068507, 0.00087461, 0.00101078, 0.0010016 ,
+        0.00072076, 0.00082061, 0.00092721, 0.00100069, 0.00121002]),
+ &#39;std_fit_time&#39;: array([7.38588627e-05, 5.86512806e-05, 6.29160430e-05, 1.06569545e-04,
+        5.57795794e-05, 5.03036082e-05, 2.20533752e-04, 7.42415855e-05,
+        4.96310522e-05, 4.12791244e-04, 5.79111023e-05, 4.07224237e-05,
+        1.26942649e-04, 6.70807059e-05, 1.41176586e-04, 8.57944710e-05,
+        4.70278698e-05, 5.07939242e-05, 1.25381892e-04, 5.51379241e-05,
+        4.55291412e-05, 1.00992965e-04, 5.42823136e-05, 5.87139141e-05,
+        7.47420942e-04]),
+ &#39;mean_score_time&#39;: array([0.00048006, 0.00044203, 0.00040448, 0.00044611, 0.00042396,
+        0.00042911, 0.00045002, 0.00042117, 0.0004287 , 0.00042064,
+        0.00041835, 0.00043585, 0.00040114, 0.00040674, 0.00045466,
+        0.00044019, 0.00040963, 0.00051892, 0.00041134, 0.00044515,
+        0.00040431, 0.00040104, 0.00042322, 0.00043385, 0.00050352]),
+ &#39;std_score_time&#39;: array([2.03176286e-04, 1.52749892e-04, 4.48266558e-05, 8.62717192e-05,
+        2.77451625e-05, 8.50405216e-05, 1.29454669e-04, 3.72835510e-05,
+        3.17477324e-05, 2.71049630e-05, 1.62065194e-05, 5.83021376e-05,
+        2.17147501e-05, 3.88867938e-05, 1.15425425e-04, 1.08563164e-04,
+        4.68098254e-05, 3.20894673e-04, 3.33177574e-05, 7.92691724e-05,
+        2.68090640e-05, 2.47113583e-05, 4.13098220e-05, 3.03854260e-05,
+        2.25738519e-04]),
  &#39;param_C&#39;: masked_array(data=[0.01, 0.01, 0.01, 0.01, 0.01, 0.1, 0.1, 0.1, 0.1, 0.1,
                     1, 1, 1, 1, 1, 10, 10, 10, 10, 10, 100, 100, 100, 100,
                     100],

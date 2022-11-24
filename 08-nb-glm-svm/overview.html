@@ -425,8 +425,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../09-pca-kmeans/pca.html">
+     9.1. Principal component analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../09-pca-kmeans/quiz-sum-ref.html">
-     9.1. Quiz &amp; summary
+     9.2. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -594,6 +599,28 @@ const thebe_selector_output = ".output, .cell_output"
 <p><strong>Expected time to complete</strong>: x hours</p>
 <p>In this chapter, we will introduce generalised linear models (GLMs) and support vector machines (SVMs). GLM is a a flexible generalisation of ordinary linear regression. The GLM generalises linear regression by allowing the linear model to be related to the response variable via a link function and by allowing the magnitude of the variance of each measurement to be a function of its predicted value. It is a general framework that includes linear regression, poisson regression, logistic regression, and many other regression models.</p>
 <p>SVM is an approach for classification that was developed in the computer science community in the 1990s and that has grown in popularity since then. SVMs have been shown to perform well in a variety of settings, and are often considered one of the best “out of the box” classifiers.</p>
+<div class="admonition-ingredients-poisson-regression admonition">
+<p class="admonition-title">Ingredients: Poisson regression</p>
+<ul class="simple">
+<li><p>Input: features of data samples</p></li>
+<li><p>Output: target values of data samples</p></li>
+<li><p>Model: fit a line (or plane/hyperplane) to the training data and assign the value on the fitted line (or plane/hyperplane) to the test data</p>
+<ul>
+<li><p>Hyperparameter(s): None</p></li>
+<li><p>Parameters: the intercept(s) and slope(s) of the fitted line (or plane/hyperplane), also known as the bias(es) and weight(s), respectively</p></li>
+</ul>
+</li>
+<li><p>Loss function: maximise the likelihood (probability) of the log of the target values given the training data points.</p></li>
+<li><p>Learning algorithm: Gradient descent on the negative log likelihood (or cross-entropy)</p></li>
+</ul>
+</div>
+<div class="admonition-transparency-poisson-regression admonition">
+<p class="admonition-title">Transparency: Poisson regression</p>
+<p>System logic</p>
+<ul class="simple">
+<li><p>Condition to produce certain output: to produce an output <span class="math notranslate nohighlight">\(y\)</span>, locate this <span class="math notranslate nohighlight">\(\log(y)\)</span> value on the fitted line (or plane/hyperplane) and then find the corresponding input <span class="math notranslate nohighlight">\(x\)</span> (or <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>) value</p></li>
+</ul>
+</div>
 <div class="admonition-ingredients-svm admonition">
 <p class="admonition-title">Ingredients: SVM</p>
 <ul class="simple">

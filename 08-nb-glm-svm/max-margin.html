@@ -425,8 +425,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../09-pca-kmeans/pca.html">
+     9.1. Principal component analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../09-pca-kmeans/quiz-sum-ref.html">
-     9.1. Quiz &amp; summary
+     9.2. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -720,6 +725,13 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="hyperplane-and-maximum-margin-classifier">
 <h1><span class="section-number">8.2. </span>Hyperplane and maximum margin classifier<a class="headerlink" href="#hyperplane-and-maximum-margin-classifier" title="Permalink to this headline">¶</a></h1>
+<p>This section introduces the concept of hyperplane and maximum margin classifier, which are the fundamental concepts of support vector machine (SVM). Hyperplanes are used to separate the data points by their class labels. The margin is the distance between the hyperplane and the nearest data points. The maximum margin classifier is a special case of the support vector machine (SVM) classifier.</p>
+<p>Watch the 11-minute video below for a visual explanation of maximum margin, soft margin, and support vector classifier.</p>
+<div class="admonition-video admonition">
+<p class="admonition-title">Video</p>
+<iframe width="700" height="394" src="https://www.youtube.com/embed/efR1C6CvhmE?start=40&end=743" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p><a class="reference external" href="https://www.youtube.com/embed/efR1C6CvhmE?start=40&amp;end=743">Explaining maximum margin, soft margin, and support vector classifier, by StatQuest</a></p>
+</div>
 <div class="section" id="hyperplane-for-classification">
 <h2><span class="section-number">8.2.1. </span>Hyperplane for classification<a class="headerlink" href="#hyperplane-for-classification" title="Permalink to this headline">¶</a></h2>
 <p>In this section, we define a hyperplane and introduce the concept of an optimal separating hyperplane.</p>
@@ -978,14 +990,14 @@ such a scenario.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00054991, 0.00051577, 0.0004853 , 0.00051026, 0.00053504,
-        0.00053453, 0.00119896]),
- &#39;std_fit_time&#39;: array([1.33013221e-04, 5.82400568e-05, 1.07104090e-05, 3.82741358e-05,
-        6.66473072e-05, 4.23271884e-05, 1.57478596e-03]),
- &#39;mean_score_time&#39;: array([0.00040202, 0.00039394, 0.0003695 , 0.00036912, 0.00037172,
-        0.00038826, 0.00037794]),
- &#39;std_score_time&#39;: array([5.93265531e-05, 6.30331155e-05, 1.85325938e-05, 1.47225355e-05,
-        1.65763336e-05, 3.28471674e-05, 9.19245086e-06]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00055552, 0.00052342, 0.00053816, 0.00059419, 0.00056846,
+        0.00056939, 0.00075626]),
+ &#39;std_fit_time&#39;: array([7.57799867e-05, 1.18026589e-05, 3.02903838e-05, 1.76703293e-04,
+        5.54582371e-05, 2.91929507e-05, 1.21906616e-04]),
+ &#39;mean_score_time&#39;: array([0.00039747, 0.00038176, 0.00039074, 0.0003773 , 0.00040786,
+        0.00038536, 0.00041282]),
+ &#39;std_score_time&#39;: array([6.75659450e-05, 1.53789409e-05, 2.81456036e-05, 5.63419979e-06,
+        8.11253366e-05, 1.75467166e-05, 8.82358945e-05]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,

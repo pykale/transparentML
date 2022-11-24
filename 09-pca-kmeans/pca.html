@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. Linear Regression &#8212; Transparent ML Intro</title>
+    <title>9.1. Principal components analysis &#8212; Transparent ML Intro</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,8 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.1. Simple linear regression" href="simple-linear-regression.html" />
-    <link rel="prev" title="1.7. Quiz and summary" href="../01-intro/quiz-sum-ref.html" />
+    <link rel="next" title="9.2. Quiz and summary" href="quiz-sum-ref.html" />
+    <link rel="prev" title="9. Principal Component Analysis &amp; \(K\)-Means Clustering" href="overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -155,7 +155,7 @@ const thebe_selector_output = ".output, .cell_output"
   Primary
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../01-intro/overview.html">
    1. Intro ML &amp; Transparency
@@ -203,33 +203,33 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02-linear-reg/overview.html">
    2. Linear regression
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="simple-linear-regression.html">
+    <a class="reference internal" href="../02-linear-reg/simple-linear-regression.html">
      2.1. Simple linear regression
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="multi-linear-regression.html">
+    <a class="reference internal" href="../02-linear-reg/multi-linear-regression.html">
      2.2. Multiple linear regression
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="extension-limitation.html">
+    <a class="reference internal" href="../02-linear-reg/extension-limitation.html">
      2.3. Extensions &amp; limitations
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="quiz-sum-ref.html">
+    <a class="reference internal" href="../02-linear-reg/quiz-sum-ref.html">
      2.4. Quiz &amp; summary
     </a>
    </li>
@@ -322,7 +322,7 @@ const thebe_selector_output = ".output, .cell_output"
   Secondary
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../06-ftr-select-regularise/overview.html">
    6. Feature selection/regularisation
@@ -414,23 +414,23 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../09-pca-kmeans/overview.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="overview.html">
    9. PCA &amp; $K$-means
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09-pca-kmeans/pca.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      9.1. Principal component analysis
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../09-pca-kmeans/quiz-sum-ref.html">
+    <a class="reference internal" href="quiz-sum-ref.html">
      9.2. Quiz &amp; summary
     </a>
    </li>
@@ -516,9 +516,9 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/02-linear-reg/overview.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/09-pca-kmeans/pca.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -536,10 +536,10 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F02-linear-reg/overview.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F09-pca-kmeans/pca.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/02-linear-reg/overview.md"><button
+        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/09-pca-kmeans/pca.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -554,11 +554,51 @@ const thebe_selector_output = ".output, .cell_output"
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/09-pca-kmeans/pca.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/09-pca-kmeans/pca.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-principal-components">
+   9.1.1. What are principal components?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   9.1.2. Exercises
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -566,74 +606,72 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Linear Regression</h1>
+                <h1>Principal components analysis</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-principal-components">
+   9.1.1. What are principal components?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   9.1.2. Exercises
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="linear-regression">
-<h1><span class="section-number">2. </span>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h1>
-<div class="admonition-status admonition">
-<p class="admonition-title">Status</p>
-<p>Ready for review and feedback</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="principal-components-analysis">
+<h1><span class="section-number">9.1. </span>Principal components analysis<a class="headerlink" href="#principal-components-analysis" title="Permalink to this headline">¶</a></h1>
+<p>Principal components analysis (PCA) is a technique for reducing the dimension of an data matrix <span class="math notranslate nohighlight">\(\mathbf{X} \in \mathbb{R}^{D \times N}\)</span>.</p>
+<!-- The first principal component direction of the data is that along which the observations vary the most. -->
+<p>When faced with a large set of correlated variables, principal components allow us to summarize this set with a smaller number of representative variables that collectively explain most of the variability in the original set.</p>
+<p>PCA refers to the process by which principal components are computed, and the subsequent use of these components in understanding the data. PCA is an unsupervised approach, since
+it involves only a set of features <span class="math notranslate nohighlight">\(x_1, \ldots, x_D\)</span> and no associated response <span class="math notranslate nohighlight">\(y\)</span>. Apart from producing derived variables for use in supervised learning problems, PCA also serves as a tool for data visualization (visualisation of the observations or visualisation of the variables). It can also be used as a tool for data imputation — that is, for filling in missing values in a data matrix.</p>
+<div class="admonition-video admonition">
+<p class="admonition-title">Video</p>
+<iframe width="700" height="394" src="https://www.youtube.com/embed/HMOI_lkzW08?start=10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p><a class="reference external" href="https://www.youtube.com/embed/HMOI_lkzW08?start=10">Explaining main ideas behine principal components analysis, by StatQuest</a></p>
 </div>
-<div class="admonition-objectives admonition">
-<p class="admonition-title">Objectives</p>
-<ul class="simple">
-<li><p>Understand the basic concepts of linear regression.</p></li>
-<li><p>Apply linear regression to real data.</p></li>
-<li><p>Evaluate the performance of a linear regression model.</p></li>
-<li><p>Interpret the results of a linear regression.</p></li>
-</ul>
+<div class="section" id="what-are-principal-components">
+<h2><span class="section-number">9.1.1. </span>What are principal components?<a class="headerlink" href="#what-are-principal-components" title="Permalink to this headline">¶</a></h2>
+<p>Suppose that we wish to visualize n observations with measurements on a set of <span class="math notranslate nohighlight">\( D \)</span>features, <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_D \)</span>, as part of an exploratory data analysis. We could do this by examining two-dimensional scatterplots of the data, each of which contains the <span class="math notranslate nohighlight">\(N\)</span> observations’ measurements on two of the features. However, there are <span class="math notranslate nohighlight">\( D(D-1)/2 \)</span> such scatterplots, and it is difficult to visualise more than a few of them at a time. If <span class="math notranslate nohighlight">\( D \)</span>is large, then it will certainly not be possible to look at all of them; moreover, most likely none of them will be informative since they each contain just a small fraction of the total information present in the data set. Clearly, a better method is required to visualize the n observations when <span class="math notranslate nohighlight">\( D \)</span>is large. In particular, we would like to find a low-dimensional representation of the data that captures as much of the information as possible. For instance, if we can obtain a two-dimensional representation of the data that captures most of the information, then we can plot the observations in this low-dimensional space.</p>
+<p>PCA provides a tool to do just this. It finds a low-dimensional representation of a data set that contains as much as possible of the variation. The idea is that each of the n observations lives in <span class="math notranslate nohighlight">\( D \)</span> -dimensional space, but not all of these dimensions are equally interesting. PCA seeks a small number of dimensions that are as interesting as possible, where the concept of interesting is measured by the amount that the observations vary along each dimension. Each of the dimensions found by PCA is a linear combination of the <span class="math notranslate nohighlight">\( D \)</span> features. We now explain the manner in which these dimensions, or principal components, are found.</p>
+<p>The first principal component of a set of features <span class="math notranslate nohighlight">\(x_1, \ldots, x_D\)</span> is the normalized linear combination of the features</p>
+<div class="math notranslate nohighlight">
+\[
+z_1 = \phi_{1,1}x_1 + \phi_{1,2}x_2 + \cdots + \phi_{1,D}x_D
+\]</div>
+<p>that has the largest variance. By normalized, we mean that <span class="math notranslate nohighlight">\(\sum_{j=1}^N \phi_{j,1}^2 = 1\)</span>. We refer to the elements <span class="math notranslate nohighlight">\(\phi_{i, 1}, \ldots, \phi_{i, D} \)</span> as the loadings of the first principal loading component; together, the loadings make up the principal component loading vector, <span class="math notranslate nohighlight">\(\boldsymbol{\phi} = [\phi_{1,1}, \ldots, \phi_{1,D}]^\top\)</span>. We constrain the loadings so that their sum of squares is equal to one, since otherwise setting these elements to be arbitrarily large in absolute value could result in an arbitrarily large variance.</p>
+<p>Given a <span class="math notranslate nohighlight">\(D \times N\)</span> data set <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>, how do we compute the first principal component? Since we are only interested in variance, we assume that each of the variables in <span class="math notranslate nohighlight">\( \mathbf{X} \)</span> has been centred to have mean zero (that is, the column means of <span class="math notranslate nohighlight">\( \mathbf{X} \)</span> are zero). We then look for the linear combination of the sample feature values of the form</p>
+<div class="math notranslate nohighlight">
+\[
+z_1 = \phi_{1,1}x_1 + \phi_{1,2}x_2 + \cdots + \phi_{1,D}x_D
+\]</div>
+<p>that has largest sample variance, subject to the constraint that <span class="math notranslate nohighlight">\(\sum_{j=1}^N \phi_{j,1}^2 = 1\)</span>. In other words, the first principal component loading vector solves the optimization problem</p>
+<div class="math notranslate nohighlight" id="equation-eq-1stpc">
+<span class="eqno">(9.1)<a class="headerlink" href="#equation-eq-1stpc" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+\arg\max_{\boldsymbol{\phi}} \left\{\frac{1}{N} \sum_{i=1}^N \left(\sum_{j=1}^D \phi_{j,1} x_{j,i} \right)^2\right\} \quad \text{subject to} \quad \sum_{j=1}^D \phi_{j,1}^2 = 1
+\end{equation}\]</div>
+<p>where the objective can also be written as <span class="math notranslate nohighlight">\(\frac{1}{N} \sum_{i=1}^N z_{i,1}^2 \)</span>. Equation <a class="reference internal" href="#equation-eq-1stpc">(9.1)</a> maximises the sample variance of the <span class="math notranslate nohighlight">\( N \)</span> values of <span class="math notranslate nohighlight">\( z_{i,1} \)</span>. We refer <span class="math notranslate nohighlight">\( z_{1,1}, \ldots, z_{N,1} \)</span> as the first principal component scores. Equation <a class="reference internal" href="#equation-eq-1stpc">(9.1)</a> can be solved via a standard technique in linear algebra, <a class="reference external" href="https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix"><em>eigen decomposition</em></a>, the mathematical details of which are beyond the scope of this course.</p>
 </div>
-<p><strong>Expected time to complete</strong>: 4 hours</p>
-<p>Linear regression is a fundamental model for regression problems, where we aim to predict a continuous value (i.e. a quantitative response) based on one or more explanatory variables. It is a linear model that assumes a linear relationship between the input variable(s) <span class="math notranslate nohighlight">\(x\)</span> or <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and the single output variable <span class="math notranslate nohighlight">\(y\)</span>. Thus, it can be used to understand the relationship between two or more variables. In this chapter, we will learn how to use linear regression to make predictions and understand the relationship between variables. We will learn the basic concepts of linear regression and apply it to real data. We will also learn how to evaluate the performance of a linear regression model and interpret the results.</p>
-<p>We will mainly use the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Advertising.csv">Advertising</a> data to explain the key ideas underlying linear regression. The <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> dataset contains sales revenue generated with respect to advertisement spends across multiple channels (TV, radio, newspaper) for a single product in a single market. The goal is to predict <code class="docutils literal notranslate"><span class="pre">sales</span></code> revenue based on the advertisement spends.</p>
-<!-- By analysing this dataset, we will try to answer the 7 following questions:
-
-1. Is there a relationship between advertising budget and sales?
-2. How strong is the relationship between advertising budget and sales?
-3. Which media are associated with sales?
-4. How large is the association between each medium and sales?
-5. How accurately can we predict future sales?
-6. Is the relationship linear?
-7. Is there synergy among the advertising media? -->
-<div class="admonition-ingredients admonition">
-<p class="admonition-title">Ingredients</p>
-<ul class="simple">
-<li><p>Input: features of data samples</p></li>
-<li><p>Output: target values of data samples</p></li>
-<li><p>Model: fit a line (or plane/hyperplane) to the training data and assign the value on the fitted line (or plane/hyperplane) to the test data</p>
-<ul>
-<li><p>Hyperparameter(s): None</p></li>
-<li><p>Parameters: the intercept(s) and slope(s) of the fitted line (or plane/hyperplane), also known as the bias(es) and weight(s), respectively</p></li>
-</ul>
-</li>
-<li><p>Loss function: minimise the total distances of the training data points to the fitted line (or plane/hyperplane)</p></li>
-<li><p>Learning algorithm: closed-form analytical solution based on linear algebra</p></li>
-</ul>
-</div>
-<div class="admonition-system-transparency admonition">
-<p class="admonition-title">System transparency</p>
-<p>System logic</p>
-<ul class="simple">
-<li><p>Condition to produce certain output: to produce an output <span class="math notranslate nohighlight">\(y\)</span>, locate this <span class="math notranslate nohighlight">\(y\)</span> value on the fitted line (or plane/hyperplane) and then find the corresponding input <span class="math notranslate nohighlight">\(x\)</span> (or <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>) value</p></li>
-</ul>
-</div>
-<!-- Generated by Copilot -->
-<!-- This chapter introduces the linear regression model, which is the most common model used in statistics and machine learning. The l -->
-<!-- parameters that must be estimated from the data is the same as the number of input variables. The linear regression model is also a linear model, meaning that the model output $y$ is a linear function of the model coefficients `(β)`. The linear regression model is a supervised learning model, meaning that it is trained on data that contains the input and output variables that we are interested in modelling. The linear regression model is a predictive modelling problem, meaning that we are interested in using the model to make predictions on new data. The linear regression model is a regression model, meaning that the output variable $y$ is a real value, such as a price or a probability. The linear regression model is a simple model, meaning that it has a small number of parameters, and is easy to interpret. The linear regression model is a closed-form model, meaning that the model can be fit directly without the use of iterative optimization algorithms. The linear regression model is a model that can be used for both regression and classification predictive modelling problems. The linear regression model is a model that can be used for both regression and classification predictive modelling problems. -->
-<!-- - [Load Datasets](#Load-Datasets)
-- [3.1 Simple Linear Regression](#3.1-Simple-Linear-Regression)
-- [3.2 Multiple Linear Regression](#3.2-Multiple-Linear-Regression)
-- [3.3 Other Considerations in the Regression Model](#3.3-Other-Considerations-in-the-Regression-Model) -->
-<div class="toctree-wrapper compound">
+<div class="section" id="exercises">
+<h2><span class="section-number">9.1.2. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p>min 3 max 5</p>
 </div>
 </div>
 
@@ -650,7 +688,7 @@ const thebe_selector_output = ".output, .cell_output"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./02-linear-reg"
+            path: "./09-pca-kmeans"
         },
         predefinedOutput: true
     }
@@ -662,17 +700,17 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../01-intro/quiz-sum-ref.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="overview.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1.7. </span>Quiz and summary</p>
+            <p class="prev-next-title"><span class="section-number">9. </span>Principal Component Analysis &amp; <span class="math notranslate nohighlight">\(K\)</span>-Means Clustering</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="simple-linear-regression.html" title="next page">
+    <a class='right-next' id="next-link" href="quiz-sum-ref.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.1. </span>Simple linear regression</p>
+        <p class="prev-next-title"><span class="section-number">9.2. </span>Quiz and summary</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
