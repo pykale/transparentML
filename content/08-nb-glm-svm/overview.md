@@ -22,6 +22,21 @@ In this chapter, we will introduce generalised linear models (GLMs) and support 
 
 SVM is an approach for classification that was developed in the computer science community in the 1990s and that has grown in popularity since then. SVMs have been shown to perform well in a variety of settings, and are often considered one of the best "out of the box" classifiers.
 
+```{admonition} Ingredients: Poisson regression
+- Input: features of data samples
+- Output: target values of data samples
+- Model: fit a line (or plane/hyperplane) to the training data and assign the value on the fitted line (or plane/hyperplane) to the test data
+  - Hyperparameter(s): None
+  - Parameters: the intercept(s) and slope(s) of the fitted line (or plane/hyperplane), also known as the bias(es) and weight(s), respectively
+- Loss function: maximise the likelihood (probability) of the log of the target values given the training data points.
+- Learning algorithm: Gradient descent on the negative log likelihood (or cross-entropy)
+```
+
+```{admonition} Transparency: Poisson regression
+System logic
+- Condition to produce certain output: to produce an output $y$, locate this $\log(y)$ value on the fitted line (or plane/hyperplane) and then find the corresponding input $x$ (or $\mathbf{x}$) value
+```
+
 ```{admonition} Ingredients: SVM
 - Input: features of data samples.
 - Output: class labels of data samples.
