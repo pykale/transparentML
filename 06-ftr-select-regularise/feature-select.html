@@ -1002,7 +1002,7 @@ Optimal number of features on average: 10
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">6.1.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p><strong>1</strong>. <strong>Best subset selection</strong> algorithm may suffer from underfitting when <span class="math notranslate nohighlight">\(D\)</span> is large, where the model performs well on the training data but poorly on the test data.</p>
+<p><strong>1</strong>. <em>Best subset selection</em> algorithm may suffer from <strong>underfitting</strong> when <span class="math notranslate nohighlight">\(D\)</span> is large, where the model performs well on the training data but poorly on the test data.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   a. True
 
    b. False
@@ -1010,7 +1010,7 @@ Optimal number of features on average: 10
 </div>
 <p><em>Compare your answer with the solution below</em></p>
 <div class="toggle docutils container">
-<p><strong>b. False</strong></p>
+<p><strong>b. False. The model is likely to <strong>overfit</strong> the training data when D is large.</strong></p>
 </div>
 <p><strong>2</strong>. Suppose we have a dataset with <span class="math notranslate nohighlight">\(13\)</span> predictors/features. Now calculate how many models we need to fit for the <strong>best subset selection</strong> and <strong>forward stepwise selection</strong> methods.</p>
 <p><em>Compare your answer with the solution below</em></p>
@@ -1025,7 +1025,7 @@ Optimal number of features on average: 10
 </div>
 <p><em>Compare your answer with the solution below</em></p>
 <div class="toggle docutils container">
-<p><strong>b. False</strong></p>
+<p><strong>b. False. We can only expect to find a local optimum, not a global optimum.</strong></p>
 </div>
 <p><strong>4</strong>. All the following exercises use the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Carseats.csv">Carseats</a> dataset to study feature selection on real-world data.</p>
 <p><strong>a</strong>. Load the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Carseats.csv">Carseats</a> dataset, convert the values of variables (predictors) from category to numbers, and inspect the first five rows. <strong>(Use <span class="math notranslate nohighlight">\(2022\)</span> as random seed value)</strong></p>
@@ -1239,7 +1239,7 @@ Optimal number of features on average: 9
 <img alt="../_images/feature-select_31_1.png" src="../_images/feature-select_31_1.png" />
 </div>
 </div>
-<p><strong>c</strong>. Finally, find the <strong>mea</strong>n and <strong>standard deviation (variance)</strong> of the cross-validation scores from <strong>Exercise 4(b)</strong> for each number of features.</p>
+<p><strong>c</strong>. Finally, find the <strong>mean</strong> and <strong>standard deviation (variance)</strong> of the cross-validation scores from <strong>Exercise 4(b)</strong> for each number of features.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1269,7 +1269,7 @@ Optimal number of features on average: 9
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="c1"># From the outputs above, we can observe the large variance (inconsistency) across the 10 folds,</span>
+<span class="c1"># From the outputs above, we can observe the some variance (inconsistency) across the 10 folds,</span>
 <span class="c1"># where the optimal number of features varies from 8 to 10</span>
 </pre></div>
 </div>

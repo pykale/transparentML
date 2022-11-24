@@ -1138,7 +1138,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>and</p>
 <div class="math notranslate nohighlight" id="equation-ridge-regression2">
 <span class="eqno">(6.5)<a class="headerlink" href="#equation-ridge-regression2" title="Permalink to this equation">¶</a></span>\[\min_{\boldsymbol{\beta} \in \mathbb{R}^D} \left\{ \sum_{n=1}^N \left( y_n - \beta_0 - \sum_{d=1}^D x_{nd} \beta_d \right)^2 \right\} \quad \text{subject to} \quad \sum_{d=1}^D \beta_d^2 \leq t,\]</div>
-<p>respectively. Thus, the lasso and ridge regression solutions are the unique minimisers of the corresponding constrained optimisation problems with <span class="math notranslate nohighlight">\(L_1\)</span> and <span class="math notranslate nohighlight">\(L_2\)</span> constraints (penalties), respectively.</p>
+<p>respectively, where <em>t</em> is a threshold. Thus, the lasso and ridge regression solutions are the unique minimisers of the corresponding constrained optimisation problems with <span class="math notranslate nohighlight">\(L_1\)</span> and <span class="math notranslate nohighlight">\(L_2\)</span> constraints (penalties), respectively.</p>
 <!-- In other words, for every value of $\lambda$, there is some $t$ such that will give the same ridge regression or lasso coefficient estimates. -->
 </div>
 <div class="section" id="feature-selection-property-of-the-lasso">
