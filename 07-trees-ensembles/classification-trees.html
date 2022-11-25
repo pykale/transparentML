@@ -1222,8 +1222,16 @@ weighted avg       0.71      0.71      0.71        97
 <div class="section" id="exercises">
 <h2><span class="section-number">7.2.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <p><strong>1.</strong> All the following exercises use the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Caravan.csv">Caravan</a>.</p>
-<p>Load the <strong>Caravan</strong> dataset inspect the first five rows.</p>
+<p>Load the <strong>Caravan</strong> dataset and inspect the first five rows.</p>
 <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
@@ -1401,19 +1409,30 @@ weighted avg       0.71      0.71      0.71        97
 <p>5 rows × 86 columns</p>
 </div></div></div>
 </div>
-<p><strong>2.</strong> Lets train a DecisionTreeClassifier on the 70% dataset from Exercise 1 and find out the testing accuracy and AUC.</p>
+<p><strong>2.</strong> Let’s test the testing accuracy and AUC of a <strong>DecisionTreeClassifier</strong> with <span class="math notranslate nohighlight">\(8\)</span> <strong>maximum leaf nodes</strong> and <span class="math notranslate nohighlight">\(6\)</span> <strong>maximum features</strong> on the 70% dataset from <strong>Exercise 1</strong>. (Use <span class="math notranslate nohighlight">\(2022\)</span> as the random seed value)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">plot_tree</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">plot_roc_curve</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
 
 <span class="n">X2</span> <span class="o">=</span> <span class="n">caravan_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Purchase&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">y2</span> <span class="o">=</span> <span class="n">caravan_df</span><span class="o">.</span><span class="n">Purchase</span>
 
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.20</span><span class="p">)</span>
 
-<span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_leaf_nodes</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_leaf_nodes</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 
 <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 
@@ -1430,26 +1449,32 @@ weighted avg       0.71      0.71      0.71        97
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy:  0.9399141630901288
-AUC:  0.63235485975212
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy:  0.944206008583691
+AUC:  0.7101761252446184
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>3.</strong> Now, train another DecisionTreeClassifier using the ‘entropy’ as the split criterion at each node to fit a classification tree to the training data and find out the testing accuracy and AUC.</p>
+<p><strong>3.</strong> Now, train another <strong>DecisionTreeClassifier</strong> using <strong>entropy</strong> as the split criterion at each node to fit a classification tree with a <strong>maximum depth</strong> of <span class="math notranslate nohighlight">\(4\)</span> and a <strong>minimum sample leaf</strong> of <span class="math notranslate nohighlight">\(3\)</span> to the training data and find out the <strong>testing accuracy</strong> and <strong>AUC</strong>. (Use <span class="math notranslate nohighlight">\(2022\)</span> as the random seed value)</p>
 <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">plot_tree</span>
 
-<span class="n">X2</span> <span class="o">=</span> <span class="n">caravan_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Purchase&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">y2</span> <span class="o">=</span> <span class="n">caravan_df</span><span class="o">.</span><span class="n">Purchase</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
 
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.20</span><span class="p">)</span>
 
 <span class="n">criteria</span> <span class="o">=</span> <span class="s2">&quot;entropy&quot;</span>
-<span class="n">max_depth</span> <span class="o">=</span> <span class="mi">6</span>
-<span class="n">min_sample_leaf</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">max_depth</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">min_sample_leaf</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">clf_gini</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span>
     <span class="n">criterion</span><span class="o">=</span><span class="n">criteria</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="n">min_sample_leaf</span>
 <span class="p">)</span>
@@ -1467,16 +1492,31 @@ AUC:  0.63235485975212
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy:  0.9373390557939915
-AUC:  0.701508870407086
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy:  0.9399141630901288
+AUC:  0.7402804957599478
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>4.</strong> Build the confusion matrix and classification to evaluate the model trained in Exercise 2 in accuracy for test datasets.</p>
+<p><strong>4.</strong> Compare the performance of the trained model in <strong>Exercise 3</strong> with <strong>Exercise 2</strong>.</p>
+<p><em>Compare your answer with the solution below</em></p>
+<div class="toggle docutils container">
+<p>In terms of testing accuracy, the Exercise 2 model outperformed the Exercise 3 model, but accuracy is not a proper metric to evaluate a model. So now, if you see the AUC score, which is a much better metric than accuracy in model evaluation, the Exercise 3 model outperformed the Exercise 2 model. The Exercise 3 model trained better than Exercise 2.</p>
+</div>
+<p><strong>5.</strong> Create a <strong>confusion matrix</strong> and a <strong>classification report</strong> to help you evaluate the model you trained in <strong>Exercise 3</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf_gini</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf_gini</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">cm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;No&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;No&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">]</span>
 <span class="p">)</span>
@@ -1489,19 +1529,29 @@ AUC:  0.701508870407086
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confusion matrix
         No  Yes
-No   1091   70
-Yes     3    1
+No   1093   68
+Yes     2    2
               precision    recall  f1-score   support
 
-          No       0.94      1.00      0.97      1094
-         Yes       0.25      0.01      0.03        71
+          No       0.94      1.00      0.97      1095
+         Yes       0.50      0.03      0.05        70
 
     accuracy                           0.94      1165
-   macro avg       0.59      0.51      0.50      1165
-weighted avg       0.90      0.94      0.91      1165
+   macro avg       0.72      0.51      0.51      1165
+weighted avg       0.91      0.94      0.91      1165
 </pre></div>
 </div>
 </div>
+</div>
+<p><strong>a</strong>. What is the testing accuracy of the model trained in <strong>Exercise 3</strong>?</p>
+<p><em>Compare your answer with the solution below</em></p>
+<div class="toggle docutils container">
+<p>The testing accuracy of the model trained in Exercise is 0.94.</p>
+</div>
+<p><strong>b</strong>. Does the model predicted well?</p>
+<p><em>Compare your answer with the solution below</em></p>
+<div class="toggle docutils container">
+<p>If you see the testing accuracy, you might think that the model predicted well, but it’s the exact opposite. This model is biased toward only the “NO” class. If you look at the confusion matrix, we can see that it predicts almost all the “NO” class samples, but in the case of “yes” it didn’t predict well. Only two of the 70 samples correctly predicted the “yes” class. That is why accuracy is also not a good metric for evaluating models. So the model didn’t predict well.</p>
 </div>
 </div>
 </div>
