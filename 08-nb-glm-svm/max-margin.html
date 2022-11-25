@@ -883,7 +883,7 @@ such a scenario.</p>
 <p>Define a function to plot a classifier with support vectors.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_svc</span><span class="p">(</span><span class="n">svc</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.25</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_svc</span><span class="p">(</span><span class="n">svc</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">pad</span>
     <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">pad</span>
     <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
@@ -901,8 +901,9 @@ such a scenario.</p>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X1&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;X2&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of support vectors: &quot;</span><span class="p">,</span> <span class="n">svc</span><span class="o">.</span><span class="n">support_</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -945,35 +946,97 @@ such a scenario.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svc</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
 <span class="n">svc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="n">plot_svc</span><span class="p">(</span><span class="n">svc</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plot_svc</span><span class="p">(</span><span class="n">svc</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">3</span>
+<span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/max-margin_10_0.png" src="../_images/max-margin_10_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  13
+</pre></div>
+</div>
+<img alt="../_images/max-margin_10_1.png" src="../_images/max-margin_10_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="p">:],</span> <span class="n">svc</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">svc</span><span class="o">.</span><span class="n">intercept_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.59101244])
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># When using a smaller cost parameter (C=0.1) the margin is wider, resulting in more support vectors.</span>
-<span class="n">svc2</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Input: &quot;</span><span class="p">,</span> <span class="n">X</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="p">:])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Intercept: &quot;</span><span class="p">,</span> <span class="n">svc</span><span class="o">.</span><span class="n">intercept_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot; Coefficients: &quot;</span><span class="p">,</span> <span class="n">svc</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1"># print(&quot;Margin: &quot;, 1 / np.linalg.norm(svc.coef_))</span>
+<span class="c1"># print(&quot;Margin: &quot;, 1 / np.sqrt(np.sum(svc.coef_ ** 2)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prediction score: &quot;</span><span class="p">,</span> <span class="n">svc</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prediction: &quot;</span><span class="p">,</span> <span class="n">svc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Input:  [-1.19276461 -0.20487651]
+Intercept:  0.5729441305210916  Coefficients:  [-0.73273926 -0.70326681]
+Prediction score:  1.5910124372951457
+Prediction:  1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="important admonition">
+<p class="admonition-title">System transparency</p>
+<p>The coefficients of the support vector classifier are <span class="math notranslate nohighlight">\( \beta_0 = 0.5729441305210916, \beta_1 = -0.73273926, \beta_2 = -0.70326681 \)</span></p>
+<ul class="simple">
+<li><p>The data point <span class="math notranslate nohighlight">\([-1.19276461, -0.20487651]\)</span> marked by a black circle, its prediction score is <span class="math notranslate nohighlight">\( -0.73273926 \times -1.19276461 + -0.70326681 \times -0.20487651 + 0.5729441305210916 = 1.5910124372951457 \)</span>, which is positive. The predicted label is <span class="math notranslate nohighlight">\( 1 \)</span>.</p></li>
+<li><p>According to the definition, the data points on the hyperplane satisfies <span class="math notranslate nohighlight">\( \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} = 0 \)</span>, i.e. <span class="math notranslate nohighlight">\( 0.5729441305210916 + -0.73273926 \times x_1 + -0.70326681 \times x_2 = 0 \)</span>. To get a data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> of class <span class="math notranslate nohighlight">\( 1 \)</span>, we need:</p></li>
+</ul>
+<p>\begin{align}
+\begin{aligned}
+0.5729441305210916 + (-0.73273926 \times x_1) + (-0.70326681 \times x_2) &amp; &gt; 0 \
+-0.73273926 \times x_1 &amp; &gt; 0.70326681 \times x_2 - 0.5729441305210916 \
+x_1 &amp; &gt; - 0.9597777113785332 \times x_2 + 0.7819208848193716.
+\begin{aligned}
+\begin{align}</p>
+<p>Similarly, we need data points <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> satisfy <span class="math notranslate nohighlight">\( x_1 &amp; &lt; - 0.9597777113785332 \times x_2 + 0.7819208848193716 \)</span> for  class <span class="math notranslate nohighlight">\( -1 \)</span>. Note that if <span class="math notranslate nohighlight">\( 0 &lt; 0.5729441305210916 + (-0.73273926 \times x_1) + (-0.70326681 \times x_2) &lt; 1 \)</span>, the data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> belongs to class <span class="math notranslate nohighlight">\( 1 \)</span> but violates the margin, and the same applies to data points <span class="math notranslate nohighlight">\( -1 &lt; 0.5729441305210916 + (-0.73273926 \times x_1) + (-0.70326681 \times x_2) &lt; 0 \)</span>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-1.19276461, -0.20487651])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svc2</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
 <span class="n">svc2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">plot_svc</span><span class="p">(</span><span class="n">svc2</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/max-margin_11_0.png" src="../_images/max-margin_11_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  16
 </pre></div>
 </div>
+<img alt="../_images/max-margin_15_1.png" src="../_images/max-margin_15_1.png" />
 </div>
 </div>
-<p>Select the optimal hyper-parameter <span class="math notranslate nohighlight">\(C\)</span> by cross-validation</p>
+<p>When using a smaller cost parameter (<span class="math notranslate nohighlight">\(C=0.1\)</span>) the margin is wider, resulting in more support vectors. We can select the optimal hyper-parameter <span class="math notranslate nohighlight">\(C\)</span> by cross-validation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tuned_parameters</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]}]</span>
@@ -990,14 +1053,14 @@ such a scenario.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00039873, 0.00038264, 0.0003794 , 0.00039058, 0.00040047,
-        0.00040717, 0.00053561]),
- &#39;std_fit_time&#39;: array([4.54108477e-05, 1.72778475e-05, 1.06207650e-05, 2.90207028e-05,
-        9.85511207e-06, 1.09276887e-05, 4.51162357e-05]),
- &#39;mean_score_time&#39;: array([0.00027783, 0.00026708, 0.00026753, 0.00026667, 0.00026846,
-        0.00027688, 0.00027871]),
- &#39;std_score_time&#39;: array([3.38896810e-05, 1.37275281e-05, 1.38165367e-05, 8.10219861e-06,
-        5.21586620e-06, 1.59180964e-05, 1.30046353e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00079713, 0.00071375, 0.00067179, 0.00058458, 0.00062323,
+        0.00060909, 0.00077236]),
+ &#39;std_fit_time&#39;: array([4.65225865e-04, 3.43092720e-04, 1.38231426e-04, 2.62270082e-05,
+        8.70184701e-05, 4.63949384e-05, 5.20186779e-05]),
+ &#39;mean_score_time&#39;: array([0.00043528, 0.00041561, 0.00044067, 0.00040071, 0.00042179,
+        0.00040023, 0.00040963]),
+ &#39;std_score_time&#39;: array([4.58539179e-05, 1.59739736e-05, 4.86983649e-05, 4.34164095e-06,
+        2.76525367e-05, 7.25282485e-06, 1.00166736e-05]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,
@@ -1080,7 +1143,7 @@ such a scenario.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/max-margin_17_0.png" src="../_images/max-margin_17_0.png" />
+<img alt="../_images/max-margin_21_0.png" src="../_images/max-margin_21_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1095,7 +1158,7 @@ such a scenario.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/max-margin_18_0.png" src="../_images/max-margin_18_0.png" />
+<img alt="../_images/max-margin_22_0.png" src="../_images/max-margin_22_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1114,7 +1177,7 @@ such a scenario.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/max-margin_19_0.png" src="../_images/max-margin_19_0.png" />
+<img alt="../_images/max-margin_23_0.png" src="../_images/max-margin_23_0.png" />
 </div>
 </div>
 <p>Changing the test data so that the classes are really separable with a hyperplane.</p>
@@ -1129,7 +1192,7 @@ such a scenario.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/max-margin_21_0.png" src="../_images/max-margin_21_0.png" />
+<img alt="../_images/max-margin_25_0.png" src="../_images/max-margin_25_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1141,10 +1204,10 @@ such a scenario.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/max-margin_22_0.png" src="../_images/max-margin_22_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  4
 </pre></div>
 </div>
+<img alt="../_images/max-margin_26_1.png" src="../_images/max-margin_26_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1157,10 +1220,10 @@ such a scenario.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/max-margin_23_0.png" src="../_images/max-margin_23_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  5
 </pre></div>
 </div>
+<img alt="../_images/max-margin_27_1.png" src="../_images/max-margin_27_1.png" />
 </div>
 </div>
 </div>
