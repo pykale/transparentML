@@ -119,6 +119,8 @@ parts:
     sections:
     - file: 09-pca-kmeans/pca
       title: Principal component analysis
+    - file: 09-pca-kmeans/kmeans
+      title: $K$-means clustering
     - file: 09-pca-kmeans/quiz-sum-ref
       title: Quiz & summary
   - file: 10-deep-cnn-rnn/overview
