@@ -745,8 +745,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="math notranslate nohighlight" id="equation-eq-svm-polynomial">
 <span class="eqno">(8.4)<a class="headerlink" href="#equation-eq-svm-polynomial" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
 &amp; \max_{\beta_0, \beta_{1,1}, \ldots, \beta_{D,2}, \epsilon_1, \ldots, \epsilon_N} M \\
-&amp; \text{subject to } y_i\left(\beta_0 + \sum_{j=1}^{D} \beta_{j,1} x_{ij} + \beta_{j,2} x_{ij}^2\right) \geq M(1 - \epsilon_i), \\
-&amp; \sum_{j=1}^{D} \beta_{j,1}^2 + \beta_{j,2}^2 = 1, \epsilon_i \geq 0, \sum_{i = 1}^N \epsilon_i \leq C, \text{ for } i = 1, \ldots, N.
+&amp; \text{subject to } y_n \left(\beta_0 + \sum_{d = 1}^{D} \beta_{d,1} x_{nd} + \beta_{d,2} x_{nd}^2\right) \geq M(1 - \epsilon_n), \\
+&amp; \sum_{d = 1}^{D} \beta_{d,1}^2 + \beta_{d,2}^2 = 1, \epsilon_n \geq 0, \sum_{n = 1}^N \epsilon_n \leq C, \text{ for } n =  1, \ldots, N.
 \end{aligned}\end{split}\]</div>
 <p>The decision boundary that results from Equation <a class="reference internal" href="#equation-eq-svm-polynomial">(8.4)</a> is in fact linear. But in the original feature space, the decision boundary is of the form <span class="math notranslate nohighlight">\( q(x) = 0 \)</span>, where <span class="math notranslate nohighlight">\( q(\cdot) \)</span> is a quadratic polynomial, and its solutions are generally non-linear.</p>
 </div>
@@ -758,36 +758,36 @@ const thebe_selector_output = ".output, .cell_output"
 <p class="sidebar-title"></p>
 <p>Mathematical details can be find <a class="reference external" href="https://scikit-learn.org/stable/modules/svm.html#svc">here</a></p>
 </div>
-<p>The inner product of two <span class="math notranslate nohighlight">\(D\)</span>-vectors <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is defined as <span class="math notranslate nohighlight">\(⟨a, b⟩ = \sum_{i=1}^{D} a_i b_i \)</span>. Thus the inner product of two observations <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_{i'}\)</span> is <span class="math notranslate nohighlight">\(⟨\mathbf{x}_i, \mathbf{x}_{i'}⟩ = \sum_{j=1}^{D} x_{ij} x_{i'j} \)</span>. As a result, the linear svm classifier can be written as</p>
+<p>The inner product of two <span class="math notranslate nohighlight">\(D\)</span>-vectors <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is defined as <span class="math notranslate nohighlight">\(⟨a, b⟩ = \sum_{d = 1}^{D} a_d b_d \)</span>. Thus the inner product of two observations <span class="math notranslate nohighlight">\(\mathbf{x}_n\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_{n'}\)</span> is <span class="math notranslate nohighlight">\(⟨\mathbf{x}_n, \mathbf{x}_{n'}⟩ = \sum_{d = 1}^{D} x_{nd} x_{n'd} \)</span>. As a result, the linear svm classifier can be written as</p>
 <div class="math notranslate nohighlight" id="equation-eq-svm-inner-product">
 <span class="eqno">(8.5)<a class="headerlink" href="#equation-eq-svm-inner-product" title="Permalink to this equation">¶</a></span>\[\begin{equation}
-f(x) = \beta_0 + \sum_{i=1}^{N} \alpha_i y_i ⟨\mathbf{x}, \mathbf{x}_i⟩,
+f(x) = \beta_0 + \sum_{n = 1}^{N} \alpha_n y_n ⟨\mathbf{x}, \mathbf{x}_n⟩,
 \end{equation}\]</div>
-<p>where there are <span class="math notranslate nohighlight">\(N\)</span> parameters <span class="math notranslate nohighlight">\(\alpha_i, \text{ for } i = 1, \ldots N \)</span>, one per training observation. To estimate the parameters <span class="math notranslate nohighlight">\(\alpha_i\)</span>, all we need are the inner products of the training observations. The inner product can be denoted in the following generalised form:</p>
+<p>where there are <span class="math notranslate nohighlight">\(N\)</span> parameters <span class="math notranslate nohighlight">\(\alpha_n, \text{ for } n =  1, \ldots N \)</span>, one per training observation. To estimate the parameters <span class="math notranslate nohighlight">\(\alpha_n\)</span>, all we need are the inner products of the training observations. The inner product can be denoted in the following generalised form:</p>
 <div class="math notranslate nohighlight">
 \[
-⟨x_i, x_{i'}⟩ =k(x_i, x_{i'}),
+⟨x_n, x_{n'}⟩ =k(x_n, x_{n'}),
 \]</div>
 <p>where <span class="math notranslate nohighlight">\( k(\cdot, \cdot) \)</span> is some function that we will refer to as a <em>kernel</em>, which quantifies the similarity of two observations. For instance, we could simply take</p>
 <div class="math notranslate nohighlight">
 \[
-k(\mathbf{x}_i, \mathbf{x}_{i'}) = \sum_{j=1}^{D} x_{ij} x_{i'j},
+k(\mathbf{x}_n, \mathbf{x}_{n'}) = \sum_{d=1}^{D} x_{nd} x_{n'd},
 \]</div>
 <p>which knows as the <em>linear kernel</em>. However, we could also take</p>
 <div class="math notranslate nohighlight">
 \[
-k(\mathbf{x}_i, \mathbf{x}_{i'}) = \left(1 + \sum_{j=1}^{D} x_{ij} x_{i'j}\right)^d,
+k(\mathbf{x}_n, \mathbf{x}_{n'}) = \left(1 + \sum_{d = 1}^{D} x_{nd} x_{n'd}\right)^{\tilde{d}},
 \]</div>
-<p>which is known as <em>polynomial kernel</em>  of degree <span class="math notranslate nohighlight">\(d\)</span>, and <span class="math notranslate nohighlight">\( d &gt; 1 \)</span> is a positive integer. Another popular choice is the radial kernel, which takes the form</p>
+<p>which is known as <em>polynomial kernel</em>  of degree <span class="math notranslate nohighlight">\( \tilde{d} \)</span>, and <span class="math notranslate nohighlight">\( \tilde{d} &gt; 1 \)</span> is a positive integer. Another popular choice is the radial kernel, which takes the form</p>
 <div class="math notranslate nohighlight">
 \[
-k(\mathbf{x}_i, \mathbf{x}_{i'}) = \exp\left(-\gamma \sum_{j=1}^{D} (x_{ij} - x_{i'j})^2\right),
+k(\mathbf{x}_n, \mathbf{x}_{n'}) = \exp\left(-\gamma \sum_{d = 1}^{D} (x_{nd} - x_{n'd})^2\right),
 \]</div>
 <p>where <span class="math notranslate nohighlight">\( \gamma &gt; 0 \)</span> is a positive tuning parameter. The radial kernel is also known as the <em>Gaussian kernel</em>. <a class="reference internal" href="#svm9"><span class="std std-numref">Fig. 8.9</span></a> shows the decision boundaries that result from using the polynomial (left) and radial kernels (right).</p>
 <p>When the support vector classifier is combined with a non-linear kernel, the resulting classifier is known as a support vector machine:</p>
 <div class="math notranslate nohighlight" id="equation-eq-svm">
 <span class="eqno">(8.6)<a class="headerlink" href="#equation-eq-svm" title="Permalink to this equation">¶</a></span>\[\begin{equation}
-f(x) = \beta_0 + \sum_{i=1}^{N} \alpha_i k(\mathbf{x}, \mathbf{x}_i).
+f(x) = \beta_0 + \sum_{n = 1}^{N} \alpha_n k(\mathbf{x}, \mathbf{x}_n).
 \end{equation}\]</div>
 <div class="margin-caption figure align-default" id="svm9">
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm9.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm9.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm9.png" style="width: 700px;" /></a>
@@ -916,30 +916,30 @@ f(x) = \beta_0 + \sum_{i=1}^{N} \alpha_i k(\mathbf{x}, \mathbf{x}_i).
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00055535, 0.00056188, 0.00059118, 0.00059068, 0.00060973,
-        0.00051525, 0.0005537 , 0.00059748, 0.00063455, 0.00065329,
-        0.00052502, 0.00057173, 0.00065711, 0.00068221, 0.0006881 ,
-        0.00052578, 0.00056076, 0.00070868, 0.00070453, 0.000758  ,
-        0.00061154, 0.00061352, 0.0006968 , 0.00074275, 0.00074172]),
- &#39;std_fit_time&#39;: array([4.74070690e-05, 3.69834866e-05, 3.24671835e-05, 4.75028003e-05,
-        5.72469968e-05, 3.78083233e-05, 4.45385050e-05, 5.28978781e-05,
-        6.94929631e-05, 5.59261536e-05, 3.28821404e-05, 5.99482171e-05,
-        6.77907877e-05, 4.20046175e-05, 5.35927049e-05, 4.99043803e-05,
-        9.47465954e-05, 7.05489560e-05, 9.80624630e-05, 6.83686259e-05,
-        6.58924428e-05, 7.96294533e-05, 6.60339585e-05, 5.10886066e-05,
-        5.90928036e-05]),
- &#39;mean_score_time&#39;: array([0.00033364, 0.00032494, 0.00032246, 0.00032036, 0.00032356,
-        0.00030165, 0.0003077 , 0.00032711, 0.00030894, 0.00031056,
-        0.00031142, 0.00028932, 0.00031281, 0.00032141, 0.00031502,
-        0.00029478, 0.00028203, 0.0003129 , 0.00030305, 0.00032468,
-        0.00030327, 0.00030344, 0.00030291, 0.00031414, 0.00032709]),
- &#39;std_score_time&#39;: array([3.56012830e-05, 2.55631974e-05, 1.74003916e-05, 2.36664639e-05,
-        3.30025832e-05, 3.25328769e-05, 2.51689631e-05, 2.92971715e-05,
-        2.49543058e-05, 3.08569648e-05, 3.52241645e-05, 2.59776162e-05,
-        2.98175773e-05, 3.78762188e-05, 2.93433224e-05, 2.65509250e-05,
-        3.49317718e-05, 2.19651195e-05, 3.10100828e-05, 2.58025306e-05,
-        2.92099250e-05, 3.08503047e-05, 4.05289495e-05, 3.50123508e-05,
-        3.16575436e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00054629, 0.00052047, 0.0005466 , 0.00056446, 0.00057228,
+        0.00050254, 0.00054693, 0.00059297, 0.00062323, 0.00063941,
+        0.00051873, 0.00056968, 0.00065155, 0.00068703, 0.00067732,
+        0.00053494, 0.00056915, 0.00068302, 0.00070477, 0.00071018,
+        0.00059583, 0.00063205, 0.00068707, 0.00070167, 0.00069489]),
+ &#39;std_fit_time&#39;: array([1.20713615e-04, 9.89709954e-06, 9.02923613e-06, 1.27246075e-05,
+        1.07558493e-05, 7.68640201e-06, 1.12071949e-05, 1.43013194e-05,
+        1.78390638e-05, 6.88072054e-06, 1.83675328e-05, 4.42225269e-05,
+        2.47567130e-05, 3.43746679e-05, 1.07608160e-05, 2.73011761e-05,
+        1.64324893e-05, 3.19509007e-05, 2.19679143e-05, 1.75616122e-05,
+        3.15539491e-05, 3.76503627e-05, 1.43538281e-05, 2.39716810e-05,
+        2.28395044e-05]),
+ &#39;mean_score_time&#39;: array([0.0003021 , 0.0002959 , 0.00029967, 0.00029969, 0.00030379,
+        0.00029023, 0.00029292, 0.0003011 , 0.00030627, 0.00030518,
+        0.00028648, 0.00029802, 0.00030353, 0.00030303, 0.00030601,
+        0.00028296, 0.00029414, 0.000299  , 0.00030229, 0.00030558,
+        0.00028172, 0.00028541, 0.00029464, 0.00029721, 0.00030012]),
+ &#39;std_score_time&#39;: array([3.28517011e-05, 8.50887150e-06, 8.39521212e-06, 4.79215413e-06,
+        8.66138964e-06, 1.08217087e-05, 3.53181537e-06, 9.81198910e-06,
+        1.28985112e-05, 9.49013766e-06, 3.24319383e-06, 1.09537705e-05,
+        6.79342354e-06, 4.95773076e-06, 8.08042035e-06, 3.53599751e-06,
+        1.09558720e-05, 6.58350503e-06, 7.73700433e-06, 1.23771395e-05,
+        2.65534511e-06, 3.21370204e-06, 4.67057067e-06, 2.89695743e-06,
+        6.75511828e-06]),
  &#39;param_C&#39;: masked_array(data=[0.01, 0.01, 0.01, 0.01, 0.01, 0.1, 0.1, 0.1, 0.1, 0.1,
                     1, 1, 1, 1, 1, 10, 10, 10, 10, 10, 100, 100, 100, 100,
                     100],
