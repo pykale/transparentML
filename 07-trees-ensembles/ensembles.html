@@ -430,8 +430,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../09-pca-kmeans/kmeans.html">
+     9.2. $K$-means clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../09-pca-kmeans/quiz-sum-ref.html">
-     9.2. Quiz &amp; summary
+     9.3. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -754,7 +759,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Import the APIs and set a random seed for reproducibility.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -766,7 +771,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
 
-<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>  <span class="c1"># set random seed for reproducibility</span>
 </pre></div>
@@ -778,7 +783,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Load the Boston dataset and split it into training and test sets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">boston_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Boston.csv&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boston_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Boston.csv&quot;</span>
 <span class="n">boston_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">boston_url</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">boston_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;medv&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">boston_df</span><span class="o">.</span><span class="n">medv</span>
@@ -792,7 +797,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Apply bagging, random forests, and boosting to the Boston dataset for regression.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">num_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">regr_bagging</span> <span class="o">=</span> <span class="n">BaggingRegressor</span><span class="p">(</span>
     <span class="n">base_estimator</span><span class="o">=</span><span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">),</span>
     <span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
@@ -826,6 +831,17 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE for Bagging: 16.26
+MSE for Random Forest: 15.01
+MSE for Boosting: 12.58
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
+</pre></div>
+</div>
+<img alt="../_images/ensembles_5_2.png" src="../_images/ensembles_5_2.png" />
+</div>
 </div>
 </div>
 <div class="section" id="examine-feature-importance">
@@ -833,7 +849,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Let us examine the feature importance for random forests and boosting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rf_importances</span> <span class="o">=</span> <span class="n">regr_rf</span><span class="o">.</span><span class="n">feature_importances_</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rf_importances</span> <span class="o">=</span> <span class="n">regr_rf</span><span class="o">.</span><span class="n">feature_importances_</span>
 <span class="n">rf_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">rf_importances</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">rf_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">rf_indices</span><span class="p">]</span>
 
@@ -854,6 +870,12 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;feature&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/ensembles_7_1.png" src="../_images/ensembles_7_1.png" />
+</div>
 </div>
 <p>We can see that random forests and boosting agree on the top two most important features, i.e. <code class="docutils literal notranslate"><span class="pre">LSTAT</span></code> and <code class="docutils literal notranslate"><span class="pre">RM</span></code>, but the level of importance is different. Also, they start to disagree on which features are the next most important features from the third most important feature onwards. Random forests consider <code class="docutils literal notranslate"><span class="pre">CRIM</span></code> to be the third most important feature, while boosting considers <code class="docutils literal notranslate"><span class="pre">DIS</span></code> to be the third most important feature.</p>
 </div>
@@ -862,7 +884,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h2><span class="section-number">7.3.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
@@ -878,11 +900,171 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AtBat</th>
+      <th>Hits</th>
+      <th>HmRun</th>
+      <th>Runs</th>
+      <th>RBI</th>
+      <th>Walks</th>
+      <th>Years</th>
+      <th>CAtBat</th>
+      <th>CHits</th>
+      <th>CHmRun</th>
+      <th>CRuns</th>
+      <th>CRBI</th>
+      <th>CWalks</th>
+      <th>League</th>
+      <th>Division</th>
+      <th>PutOuts</th>
+      <th>Assists</th>
+      <th>Errors</th>
+      <th>Salary</th>
+      <th>NewLeague</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>315</td>
+      <td>81</td>
+      <td>7</td>
+      <td>24</td>
+      <td>38</td>
+      <td>39</td>
+      <td>14</td>
+      <td>3449</td>
+      <td>835</td>
+      <td>69</td>
+      <td>321</td>
+      <td>414</td>
+      <td>375</td>
+      <td>0</td>
+      <td>0</td>
+      <td>632</td>
+      <td>43</td>
+      <td>10</td>
+      <td>475.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>479</td>
+      <td>130</td>
+      <td>18</td>
+      <td>66</td>
+      <td>72</td>
+      <td>76</td>
+      <td>3</td>
+      <td>1624</td>
+      <td>457</td>
+      <td>63</td>
+      <td>224</td>
+      <td>266</td>
+      <td>263</td>
+      <td>1</td>
+      <td>0</td>
+      <td>880</td>
+      <td>82</td>
+      <td>14</td>
+      <td>480.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>496</td>
+      <td>141</td>
+      <td>20</td>
+      <td>65</td>
+      <td>78</td>
+      <td>37</td>
+      <td>11</td>
+      <td>5628</td>
+      <td>1575</td>
+      <td>225</td>
+      <td>828</td>
+      <td>838</td>
+      <td>354</td>
+      <td>0</td>
+      <td>1</td>
+      <td>200</td>
+      <td>11</td>
+      <td>3</td>
+      <td>500.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>321</td>
+      <td>87</td>
+      <td>10</td>
+      <td>39</td>
+      <td>42</td>
+      <td>30</td>
+      <td>2</td>
+      <td>396</td>
+      <td>101</td>
+      <td>12</td>
+      <td>48</td>
+      <td>46</td>
+      <td>33</td>
+      <td>0</td>
+      <td>1</td>
+      <td>805</td>
+      <td>40</td>
+      <td>4</td>
+      <td>91.5</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>594</td>
+      <td>169</td>
+      <td>4</td>
+      <td>74</td>
+      <td>51</td>
+      <td>35</td>
+      <td>11</td>
+      <td>4408</td>
+      <td>1133</td>
+      <td>19</td>
+      <td>501</td>
+      <td>336</td>
+      <td>194</td>
+      <td>1</td>
+      <td>0</td>
+      <td>282</td>
+      <td>421</td>
+      <td>25</td>
+      <td>750.0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>bagging, random forests, and boosting</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">BaggingRegressor</span><span class="p">,</span>
     <span class="n">GradientBoostingRegressor</span><span class="p">,</span>
@@ -932,13 +1114,26 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE for Bagging: 85200.41
+MSE for Random Forest: 86194.81
+MSE for Boosting: 90029.64
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
+</pre></div>
+</div>
+<img alt="../_images/ensembles_14_2.png" src="../_images/ensembles_14_2.png" />
+</div>
 </div>
 <p>feature importance</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">boosting_importances</span> <span class="o">=</span> <span class="n">regr_boosting</span><span class="o">.</span><span class="n">feature_importances_</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rf_importances</span> <span class="o">=</span> <span class="n">regr_rf</span><span class="o">.</span><span class="n">feature_importances_</span>
+<span class="n">boosting_importances</span> <span class="o">=</span> <span class="n">regr_boosting</span><span class="o">.</span><span class="n">feature_importances_</span>
 <span class="n">boosting_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">boosting_importances</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">boosting_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">boosting_indices</span><span class="p">]</span>
+
 
 <span class="n">importances</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="p">{</span>
@@ -952,6 +1147,12 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">sorted_importances</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">rot</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;feature&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/ensembles_17_1.png" src="../_images/ensembles_17_1.png" />
 </div>
 </div>
 </div>
