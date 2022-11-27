@@ -608,8 +608,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-proportion-of-variance-explained">
+   9.1.3. The proportion of variance explained
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   9.1.3. Exercises
+   9.1.4. Exercises
   </a>
  </li>
 </ul>
@@ -649,8 +654,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-proportion-of-variance-explained">
+   9.1.3. The proportion of variance explained
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   9.1.3. Exercises
+   9.1.4. Exercises
   </a>
  </li>
 </ul>
@@ -668,7 +678,7 @@ const thebe_selector_output = ".output, .cell_output"
 <!-- The first principal component direction of the data is that along which the observations vary the most. -->
 <p>When faced with a large set of correlated variables, principal components allow us to summarize this set with a smaller number of representative variables that collectively explain most of the variability in the original set.</p>
 <p>PCA refers to the process by which principal components are computed, and the subsequent use of these components in understanding the data. PCA is an unsupervised approach, since
-it involves only a set of features <span class="math notranslate nohighlight">\(x_1, \ldots, x_D\)</span> and no associated response <span class="math notranslate nohighlight">\(y\)</span>. Apart from producing derived variables for use in supervised learning problems, PCA also serves as a tool for data visualization (visualisation of the observations or visualisation of the variables). It can also be used as a tool for data imputation — that is, for filling in missing values in a data matrix.</p>
+it involves only a set of features <span class="math notranslate nohighlight">\(x_1, \ldots, x_D\)</span> and no associated response <span class="math notranslate nohighlight">\(y\)</span>. Apart from producing derived variables for use in supervised learning problems, PCA also serves as a tool for data visualisation (visualisation of the observations or visualisation of the variables). It can also be used as a tool for data imputation — that is, for filling in missing values in a data matrix.</p>
 <div class="admonition-video admonition">
 <p class="admonition-title">Video</p>
 <iframe width="700" height="394" src="https://www.youtube.com/embed/HMOI_lkzW08?start=10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -689,7 +699,7 @@ z_1 = \phi_{1,1}x_1 + \phi_{1,2}x_2 + \cdots + \phi_{1,D}x_D
 \[
 z_{n,1} = \phi_{1,1}x_{n,1} + \phi_{2,1}x_{n,2} + \cdots + \phi_{D,1}x_{n,D}
 \]</div>
-<p>that has largest sample variance, subject to the constraint that <span class="math notranslate nohighlight">\(\sum_{d=1}^N \phi_{d,1}^2 = 1\)</span>. In other words, the first principal component loading vector solves the optimization problem</p>
+<p>that has largest sample variance, subject to the constraint that <span class="math notranslate nohighlight">\(\sum_{d=1}^N \phi_{d,1}^2 = 1\)</span>. In other words, the first principal component loading vector solves the optimisation problem</p>
 <div class="math notranslate nohighlight" id="equation-eq-1stpc">
 <span class="eqno">(9.1)<a class="headerlink" href="#equation-eq-1stpc" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \arg\max_{\boldsymbol{\phi}} \left\{\frac{1}{N} \sum_{n=1}^N \left(\sum_{d=1}^D \phi_{d,1} x_{d,n} \right)^2\right\} \quad \text{subject to} \quad \sum_{d=1}^D \phi_{d,1}^2 = 1
@@ -708,6 +718,7 @@ For instance, we can plot the score vector <span class="math notranslate nohighl
 <div class="section" id="pca-on-usarrests-dataset">
 <h2><span class="section-number">9.1.2. </span>PCA on <code class="docutils literal notranslate"><span class="pre">USArrests</span></code> dataset<a class="headerlink" href="#pca-on-usarrests-dataset" title="Permalink to this headline">¶</a></h2>
 <p>We illustrate the use of PCA on the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/USArrests.csv">USArrests dataset</a>. For each of the 50 states in the United States, the data set contains the number of arrests per 100,000 residents for each of three crimes: <code class="docutils literal notranslate"><span class="pre">Assault</span></code>, <code class="docutils literal notranslate"><span class="pre">Murder</span></code>, and <code class="docutils literal notranslate"><span class="pre">Rape</span></code>. We also record <code class="docutils literal notranslate"><span class="pre">UrbanPop</span></code> (the percent of the population in each state living in urban areas). The principal component score vectors have length <span class="math notranslate nohighlight">\(N = 50\)</span>, and the principal component loading vectors have length <span class="math notranslate nohighlight">\(D = 4\)</span>. PCA was performed after standardizing each variable to have mean zero and standard deviation one.</p>
+<p><strong>Import libraries and load data</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1286,6 +1297,91 @@ dtype: float64
 <img alt="../_images/pca_9_0.png" src="../_images/pca_9_0.png" />
 </div>
 </div>
+<p>In the figure above, we can see that the first loading vector places approximately equal weight on <code class="docutils literal notranslate"><span class="pre">Assault</span></code>, <code class="docutils literal notranslate"><span class="pre">Murder</span></code>, and <code class="docutils literal notranslate"><span class="pre">Rape</span></code>, but with much less weight on <code class="docutils literal notranslate"><span class="pre">UrbanPop</span></code>. Hence this component roughly corresponds to a measure of overall rates of serious crimes. The second loading vector places most of its weight on <code class="docutils literal notranslate"><span class="pre">UrbanPop</span></code> and much less weight on the other three features. Hence, this component roughly corresponds to the level of urbanisation of the state. Overall, we see that the crime-related variables ( <code class="docutils literal notranslate"><span class="pre">Murder</span></code>, <code class="docutils literal notranslate"><span class="pre">Assault</span></code>, and <code class="docutils literal notranslate"><span class="pre">Rape</span></code>) are located close to each other, and that the <code class="docutils literal notranslate"><span class="pre">UrbanPop</span></code> variable is far from the other three. This indicates that the crime-related variables are correlated with each other—states with high murder rates tend to have high assault and rape rates—and that the <code class="docutils literal notranslate"><span class="pre">UrbanPop</span></code> variable is less correlated with the other three.</p>
+<p>We can examine differences between the states via the two principal component score vectors shown in the figure above. Our discussion of the loading vectors suggests that states with large positive scores on the first component, such as California, Nevada and Florida, have high crime rates, while states like North Dakota, with negative scores on the first component, have low crime rates. California also has a high score on the second component, indicating a high level of urbanisation, while the opposite is true for states like Mississippi. States close to zero on both components, such as Indiana, have approximately average levels of both crime and urbanisation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca_loadings</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>V1</th>
+      <th>V2</th>
+      <th>V3</th>
+      <th>V4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Murder</th>
+      <td>0.535899</td>
+      <td>0.418181</td>
+      <td>-0.341233</td>
+      <td>0.649228</td>
+    </tr>
+    <tr>
+      <th>Assault</th>
+      <td>0.583184</td>
+      <td>0.187986</td>
+      <td>-0.268148</td>
+      <td>-0.743407</td>
+    </tr>
+    <tr>
+      <th>UrbanPop</th>
+      <td>0.278191</td>
+      <td>-0.872806</td>
+      <td>-0.378016</td>
+      <td>0.133878</td>
+    </tr>
+    <tr>
+      <th>Rape</th>
+      <td>0.543432</td>
+      <td>-0.167319</td>
+      <td>0.817778</td>
+      <td>0.089024</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="the-proportion-of-variance-explained">
+<h2><span class="section-number">9.1.3. </span>The proportion of variance explained<a class="headerlink" href="#the-proportion-of-variance-explained" title="Permalink to this headline">¶</a></h2>
+<p>We can now ask a natural question: how much of the information in a given data set is lost by projecting the observations onto the first few principal components? That is, how much of the variance in the data is not contained in the first few principal components? More generally, we are interested in knowing the proportion of variance explained (PVE) by each principal component. The total variance present in a data set (assuming that the variables have been centred to have mean zero) is defined as</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{d=1}^D \textrm{Var}(\mathbf{x}_d) = \sum_{d=1}^D \frac{1}{N} \sum_{n=1}^N x_{d,n}^2.
+\]</div>
+<p>and the variance explained by the <span class="math notranslate nohighlight">\(i\textrm{th}\)</span> principal component is</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{N}\sum_{n=1}^N z_{n,i}^2 = \frac{1}{N}\sum_{n=1}^N \left(\sum_{d=1}^D \phi_{d,i} x_{n,d}\right)^2.
+\]</div>
+<p>Therefore, the PVE of the <span class="math notranslate nohighlight">\(i\textrm{th}\)</span> principal component is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-pve">
+<span class="eqno">(9.2)<a class="headerlink" href="#equation-eq-pve" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+\frac{\sum_{n=1}^N z_{n,i}^2}{\sum_{d=1}^D\sum_{n=1}^N  x_{d,n}} = \frac{\sum_{n=1}^N \left(\sum_{d=1}^D \phi_{d,i} x_{n,d}\right)^2}{\sum_{d=1}^D\sum_{n=1}^N  x_{d,n}}.
+\end{equation}\]</div>
+<p>The PVE of each principal component is a positive quantity. In order to compute the cumulative PVE of the first <span class="math notranslate nohighlight">\(i\)</span> principal components, we can simply sum Equation <code class="xref eq docutils literal notranslate"><span class="pre">pve</span></code> over each of the first i PVEs. In total, there are <span class="math notranslate nohighlight">\( \min (N − 1, D) \)</span> principal components, and their PVEs sum to one.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># in previous chapter, we talked about PCR. In that case, we could use the downstream task&#39;s (i.e. regression RMSE)</span>
@@ -1303,6 +1399,7 @@ dtype: float64
 </div>
 </div>
 </div>
+<p>In the <code class="docutils literal notranslate"><span class="pre">USArrests</span></code> data, the first principal component explains 62.0 % of the variance in the data, and the next principal component explains 24.7 % of the variance. Together, the first two principal components explain almost 87 % of the variance in the data, and the last two principal components explain only 13 % of the variance. Run the code cell below to plot The PVE of each principal component, as well as the cumulative PVE.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -1329,7 +1426,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/pca_11_0.png" src="../_images/pca_11_0.png" />
+<img alt="../_images/pca_15_0.png" src="../_images/pca_15_0.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;\nIn this case, if we want to preserve 80% of variance of the data, we need to select 2 PCs.\n&#39;
 </pre></div>
 </div>
@@ -1389,7 +1486,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/pca_15_0.png" src="../_images/pca_15_0.png" />
+<img alt="../_images/pca_19_0.png" src="../_images/pca_19_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1470,7 +1567,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/pca_17_0.png" src="../_images/pca_17_0.png" />
+<img alt="../_images/pca_21_0.png" src="../_images/pca_21_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1494,12 +1591,12 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/pca_18_0.png" src="../_images/pca_18_0.png" />
+<img alt="../_images/pca_22_0.png" src="../_images/pca_22_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="exercises">
-<h2><span class="section-number">9.1.3. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.1.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <p>min 3 max 5</p>
 </div>
 </div>

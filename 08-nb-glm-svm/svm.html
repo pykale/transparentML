@@ -606,41 +606,43 @@ const thebe_selector_output = ".output, .cell_output"
      8.3.1.2. Kernel methods
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-svms-on-toy-data-using-scikit-learn">
-     8.3.1.3. Example: SVMs on toy data using
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       scikit-learn
-      </span>
-     </code>
-    </a>
-   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-svms-with-non-linear-kernel-on-toy-data-using-scikit-learn">
+   8.3.2. Example: SVMs with non-linear kernel on toy data using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     scikit-learn
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#training-svms">
-     8.3.1.4. Training SVMs
+     8.3.2.1. Training SVMs
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#evaluating-with-roc-curves">
-     8.3.1.5. Evaluating with ROC curves
+     8.3.2.2. Evaluating with ROC curves
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#svms-with-more-than-two-classes">
-   8.3.2. SVMs with more than two classes
+   8.3.3. SVMs with more than two classes
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#one-vs-one">
-     8.3.2.1. One-vs-one
+     8.3.3.1. One-vs-one
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#one-vs-all">
-     8.3.2.2. One-vs-all
+     8.3.3.2. One-vs-all
     </a>
    </li>
   </ul>
@@ -680,41 +682,43 @@ const thebe_selector_output = ".output, .cell_output"
      8.3.1.2. Kernel methods
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-svms-on-toy-data-using-scikit-learn">
-     8.3.1.3. Example: SVMs on toy data using
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       scikit-learn
-      </span>
-     </code>
-    </a>
-   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-svms-with-non-linear-kernel-on-toy-data-using-scikit-learn">
+   8.3.2. Example: SVMs with non-linear kernel on toy data using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     scikit-learn
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#training-svms">
-     8.3.1.4. Training SVMs
+     8.3.2.1. Training SVMs
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#evaluating-with-roc-curves">
-     8.3.1.5. Evaluating with ROC curves
+     8.3.2.2. Evaluating with ROC curves
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#svms-with-more-than-two-classes">
-   8.3.2. SVMs with more than two classes
+   8.3.3. SVMs with more than two classes
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#one-vs-one">
-     8.3.2.1. One-vs-one
+     8.3.3.1. One-vs-one
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#one-vs-all">
-     8.3.2.2. One-vs-all
+     8.3.3.2. One-vs-all
     </a>
    </li>
   </ul>
@@ -799,8 +803,9 @@ f(x) = \beta_0 + \sum_{n = 1}^{N} \alpha_n k(\mathbf{x}, \mathbf{x}_n).
 <p class="caption"><span class="caption-number">Fig. 8.9 </span><span class="caption-text">Left: An SVM with a polynomial kernel of degree 3 is applied to the non-linear data from <a class="reference internal" href="#svm8"><span class="std std-numref">Fig. 8.8</span></a>, resulting in a far more appropriate decision rule. Right: An SVM with a radial kernel is applied. In this example, either kernel is capable of capturing the decision boundary.</span><a class="headerlink" href="#svm9" title="Permalink to this image">¶</a></p>
 </div>
 </div>
-<div class="section" id="example-svms-on-toy-data-using-scikit-learn">
-<h3><span class="section-number">8.3.1.3. </span>Example: SVMs on toy data using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code><a class="headerlink" href="#example-svms-on-toy-data-using-scikit-learn" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="example-svms-with-non-linear-kernel-on-toy-data-using-scikit-learn">
+<h2><span class="section-number">8.3.2. </span>Example: SVMs with non-linear kernel on toy data using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code><a class="headerlink" href="#example-svms-with-non-linear-kernel-on-toy-data-using-scikit-learn" title="Permalink to this headline">¶</a></h2>
 <p>Import the required libraries</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -849,9 +854,8 @@ f(x) = \beta_0 + \sum_{n = 1}^{N} \alpha_n k(\mathbf{x}, \mathbf{x}_n).
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="training-svms">
-<h3><span class="section-number">8.3.1.4. </span>Training SVMs<a class="headerlink" href="#training-svms" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.3.2.1. </span>Training SVMs<a class="headerlink" href="#training-svms" title="Permalink to this headline">¶</a></h3>
 <p>Generating data</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -921,30 +925,30 @@ f(x) = \beta_0 + \sum_{n = 1}^{N} \alpha_n k(\mathbf{x}, \mathbf{x}_n).
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00049195, 0.00047963, 0.00051603, 0.00052359, 0.00053706,
-        0.00047019, 0.00050924, 0.00055902, 0.00058718, 0.00060201,
-        0.00047505, 0.00052066, 0.00062716, 0.00064242, 0.00065055,
-        0.00049858, 0.0005574 , 0.0006561 , 0.00067658, 0.00068069,
-        0.00055978, 0.00059514, 0.00065484, 0.00066454, 0.00066524]),
- &#39;std_fit_time&#39;: array([4.92083703e-05, 7.33543105e-06, 1.13509280e-05, 1.52287523e-05,
-        1.27500229e-05, 7.90633539e-06, 1.73677585e-05, 9.15294483e-06,
-        1.57860468e-05, 1.33884292e-05, 1.25858140e-05, 1.27190446e-05,
-        3.21522725e-05, 1.24404475e-05, 1.52927260e-05, 2.74595280e-05,
-        4.42657272e-05, 2.61351680e-05, 2.60417707e-05, 2.05875513e-05,
-        2.94617167e-05, 3.48116926e-05, 1.54314848e-05, 1.77400246e-05,
-        2.69334495e-05]),
- &#39;mean_score_time&#39;: array([0.0002773 , 0.00026908, 0.00027342, 0.00027432, 0.00027399,
-        0.00026536, 0.00027099, 0.00027585, 0.00028043, 0.0002785 ,
-        0.00026813, 0.0002718 , 0.00028911, 0.00028708, 0.00029168,
-        0.00027204, 0.00027173, 0.00028234, 0.00028832, 0.00028579,
-        0.00026879, 0.00027361, 0.00028152, 0.00028589, 0.00027864]),
- &#39;std_score_time&#39;: array([2.72895972e-05, 8.62086768e-06, 7.19044505e-06, 8.47188140e-06,
-        9.26206316e-06, 7.41094537e-06, 7.34638793e-06, 8.20104464e-06,
-        1.09785478e-05, 8.31014447e-06, 8.34137989e-06, 1.14659260e-05,
-        8.19910366e-06, 9.27962967e-06, 1.12740480e-05, 1.88048640e-05,
-        9.97094319e-06, 1.36373760e-05, 8.90170177e-06, 2.89076997e-06,
-        9.19207983e-06, 2.75618477e-06, 6.32488138e-06, 7.10907274e-06,
-        8.38206622e-06]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00050943, 0.00049572, 0.00051241, 0.00053151, 0.00053501,
+        0.00047052, 0.00050809, 0.0005594 , 0.00058622, 0.00060518,
+        0.0004777 , 0.00051761, 0.00062304, 0.00063772, 0.0006474 ,
+        0.00049336, 0.00053623, 0.00064793, 0.00067668, 0.00067685,
+        0.00056183, 0.00058994, 0.00064967, 0.00066993, 0.00066237]),
+ &#39;std_fit_time&#39;: array([1.11971582e-04, 1.07255507e-05, 9.84400258e-06, 1.00192837e-05,
+        1.32510121e-05, 6.90364864e-06, 1.30362648e-05, 1.31666863e-05,
+        1.84320230e-05, 1.01522931e-05, 1.66689203e-05, 1.77085791e-05,
+        2.46153299e-05, 1.38995373e-05, 1.63650346e-05, 3.06426870e-05,
+        2.63284612e-05, 2.99524721e-05, 2.54125128e-05, 2.34702354e-05,
+        3.21648224e-05, 3.58926007e-05, 1.84910324e-05, 2.40690493e-05,
+        1.98391766e-05]),
+ &#39;mean_score_time&#39;: array([0.0002723 , 0.00027142, 0.00027075, 0.00027289, 0.00027034,
+        0.00026152, 0.00026848, 0.0002779 , 0.00028062, 0.00028267,
+        0.00026414, 0.0002732 , 0.00028269, 0.00028477, 0.00028636,
+        0.00026097, 0.0002708 , 0.00027878, 0.00028343, 0.00028563,
+        0.00026705, 0.00027156, 0.00028257, 0.00027919, 0.00028124]),
+ &#39;std_score_time&#39;: array([2.10204752e-05, 1.07464117e-05, 7.05267788e-06, 9.05877658e-06,
+        7.72376849e-06, 9.24034258e-06, 6.79258674e-06, 9.61935502e-06,
+        9.16656652e-06, 1.03870632e-05, 1.14313939e-05, 1.26602061e-05,
+        1.19219064e-05, 7.67707825e-06, 1.16554502e-05, 7.87301325e-06,
+        1.04886834e-05, 1.16927482e-05, 9.82261398e-06, 4.11574280e-06,
+        4.67622656e-06, 9.98857191e-06, 1.10136997e-05, 7.00074251e-06,
+        6.14472721e-06]),
  &#39;param_C&#39;: masked_array(data=[0.01, 0.01, 0.01, 0.01, 0.01, 0.1, 0.1, 0.1, 0.1, 0.1,
                     1, 1, 1, 1, 1, 10, 10, 10, 10, 10, 100, 100, 100, 100,
                     100],
@@ -1122,7 +1126,7 @@ f(x) = \beta_0 + \sum_{n = 1}^{N} \alpha_n k(\mathbf{x}, \mathbf{x}_n).
 </div>
 </div>
 <div class="section" id="evaluating-with-roc-curves">
-<h3><span class="section-number">8.3.1.5. </span>Evaluating with ROC curves<a class="headerlink" href="#evaluating-with-roc-curves" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.3.2.2. </span>Evaluating with ROC curves<a class="headerlink" href="#evaluating-with-roc-curves" title="Permalink to this headline">¶</a></h3>
 <p>Comparing the ROC curves of two models on train/test data with different hyper-parameter <span class="math notranslate nohighlight">\(\gamma\)</span> of RBF kernel. Please set <code class="docutils literal notranslate"><span class="pre">probability=True</span></code> in the <code class="docutils literal notranslate"><span class="pre">SVC</span></code> constructor if you would like to have the probability output. Read the <a class="reference external" href="https://scikit-learn.org/stable/modules/svm.html#scores-and-probabilities">docs</a> of <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> for more details.</p>
 <!-- One model is more flexible than the other. --><div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1220,14 +1224,14 @@ f(x) = \beta_0 + \sum_{n = 1}^{N} \alpha_n k(\mathbf{x}, \mathbf{x}_n).
 </div>
 </div>
 <div class="section" id="svms-with-more-than-two-classes">
-<h2><span class="section-number">8.3.2. </span>SVMs with more than two classes<a class="headerlink" href="#svms-with-more-than-two-classes" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.3.3. </span>SVMs with more than two classes<a class="headerlink" href="#svms-with-more-than-two-classes" title="Permalink to this headline">¶</a></h2>
 <p>So far, our discussion has been limited to the case of binary classification: that is, classification in the two-class setting. How can we extend SVMs to the more general case where we have some arbitrary number of classes? It turns out that the concept of separating hyperplanes upon which SVMs are based does not lend itself naturally to more than two classes. Though a number of proposals for extending SVMs to the K-class case have been made, the two most popular are the one-versus-one and one-versus-all approaches.</p>
 <div class="section" id="one-vs-one">
-<h3><span class="section-number">8.3.2.1. </span>One-vs-one<a class="headerlink" href="#one-vs-one" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.3.3.1. </span>One-vs-one<a class="headerlink" href="#one-vs-one" title="Permalink to this headline">¶</a></h3>
 <p>Suppose that we would like to perform classification using SVMs, and there are <span class="math notranslate nohighlight">\(K\)</span> &gt; 2 classes. A one-versus-one or all-pairs approach constructs <span class="math notranslate nohighlight">\(K(K-1)/2\)</span> binary classifiers, one for each pair of classes. For example, if there are three classes, then we would construct three binary classifiers, one for each pair of classes. The first classifier would distinguish between class 1 and class 2, the second classifier would distinguish between class 1 and class 3, and the third classifier would distinguish between class 2 and class 3. To classify a new observation, we would apply each of the three classifiers, and assign the observation to the class that receives the most votes.</p>
 </div>
 <div class="section" id="one-vs-all">
-<h3><span class="section-number">8.3.2.2. </span>One-vs-all<a class="headerlink" href="#one-vs-all" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.3.3.2. </span>One-vs-all<a class="headerlink" href="#one-vs-all" title="Permalink to this headline">¶</a></h3>
 <p>The one-versus-all approach is an alternative procedure for applying SVMs in the case of <span class="math notranslate nohighlight">\(K\)</span> &gt; 2 classes. We fit <span class="math notranslate nohighlight">\(K\)</span> SVMs, each time comparing one of the <span class="math notranslate nohighlight">\(K\)</span> classes to the remaining <span class="math notranslate nohighlight">\(K − 1\)</span> classes. For example, if there are three classes, then we would fit three SVMs, one for each class. The first SVM would separate class 1 from classes 2 and 3, the second SVM would separate class 2 from classes 1 and 3, and the third SVM would separate class 3 from classes 1 and 2. To classify a new observation, we would apply each of the three classifiers, and assign the observation to the class that receives the most votes.</p>
 <p>The following code shows how to train a SVM using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>, the strategy for multi-class classification is “one vs one” internally. However, we can get “one vs rest” hyper-plane by setting <code class="docutils literal notranslate"><span class="pre">decision_function_shape='ovr'</span></code> in the <code class="docutils literal notranslate"><span class="pre">SVC</span></code> object.</p>
 <div class="cell docutils container">
