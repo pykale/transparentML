@@ -16,7 +16,7 @@ Ready for HP review
 - Interpret the results of a SVM classifier.
 ```
 
-**Expected time to complete**: x hours
+**Expected time to complete**: 4 hours
 
 In this chapter, we will introduce generalised linear models (GLMs) and support vector machines (SVMs). GLM is a a flexible generalisation of ordinary linear regression. The GLM generalises linear regression by allowing the linear model to be related to the response variable via a link function and by allowing the magnitude of the variance of each measurement to be a function of its predicted value. It is a general framework that includes linear regression, poisson regression, logistic regression, and many other regression models.
 
