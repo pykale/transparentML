@@ -38,7 +38,7 @@ parts:
     - file: 01-intro/ml-transp
       title: ML transparency
     - file: 01-intro/knn
-      title: $K$-NN classifier
+      title: K-NN classifier
     - file: 01-intro/organisation
     - file: 01-intro/quiz-sum-ref
       title: Quiz & summary
@@ -103,24 +103,24 @@ parts:
       title: Ensemble learning
     - file: 07-trees-ensembles/quiz-sum-ref
       title: Quiz & summary
-  - file: 08-nb-glm-svm/overview
+  - file: 08-glm-svm/overview
     title: GLM & SVM
     sections:
-    - file: 08-nb-glm-svm/glm
+    - file: 08-glm-svm/glm
       title: Generalised linear models
-    - file: 08-nb-glm-svm/max-margin
+    - file: 08-glm-svm/max-margin
       title: Hyperplane and maximum margin classifier
-    - file: 08-nb-glm-svm/svm
+    - file: 08-glm-svm/svm
       title: Support vector machines
-    - file: 08-nb-glm-svm/quiz-sum-ref
+    - file: 08-glm-svm/quiz-sum-ref
       title: Quiz & summary
   - file: 09-pca-kmeans/overview
-    title: PCA & $K$-means
+    title: PCA & K-means
     sections:
     - file: 09-pca-kmeans/pca
       title: Principal component analysis
     - file: 09-pca-kmeans/kmeans
-      title: $K$-means clustering
+      title: K-means clustering
     - file: 09-pca-kmeans/quiz-sum-ref
       title: Quiz & summary
   - file: 10-deep-cnn-rnn/overview
