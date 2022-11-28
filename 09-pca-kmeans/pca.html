@@ -688,7 +688,7 @@ it involves only a set of features <span class="math notranslate nohighlight">\(
 <div class="section" id="what-are-principal-components">
 <h2><span class="section-number">9.1.1. </span>What are principal components?<a class="headerlink" href="#what-are-principal-components" title="Permalink to this headline">¶</a></h2>
 <p>Suppose that we wish to visualise n observations with measurements on a set of <span class="math notranslate nohighlight">\( D \)</span>features, <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_D \)</span>, as part of an exploratory data analysis. We could do this by examining two-dimensional scatterplots of the data, each of which contains the <span class="math notranslate nohighlight">\(N\)</span> observations’ measurements on two of the features. However, there are <span class="math notranslate nohighlight">\( D(D-1)/2 \)</span> such scatterplots, and it is difficult to visualise more than a few of them at a time. If <span class="math notranslate nohighlight">\( D \)</span> is large, then it will certainly not be possible to look at all of them; moreover, most likely none of them will be informative since they each contain just a small fraction of the total information present in the data set. Clearly, a better method is required to visualise the n observations when <span class="math notranslate nohighlight">\( D \)</span>is large. In particular, we would like to find a low-dimensional representation of the data that captures as much of the information as possible. For instance, if we can obtain a two-dimensional representation of the data that captures most of the information, then we can plot the observations in this low-dimensional space.</p>
-<p>PCA provides a tool to do just this. It finds a low-dimensional representation of a data set that contains as much as possible of the variation. The idea is that each of the n observations lives in <span class="math notranslate nohighlight">\( D \)</span> -dimensional space, but not all of these dimensions are equally interesting. PCA seeks a small number of dimensions that are as interesting as possible, where the concept of interesting is measured by the amount that the observations vary along each dimension. Each of the dimensions found by PCA is a linear combination of the <span class="math notranslate nohighlight">\( D \)</span> features. We now explain the manner in which these dimensions, or principal components, are found.</p>
+<p>PCA provides a tool to do just this. It finds a low-dimensional representation of a data set that contains as much as possible of the variation. The idea is that each of the n observations lives in <span class="math notranslate nohighlight">\(D\)</span>-dimensional space, but not all of these dimensions are equally interesting. PCA seeks a small number of dimensions that are as interesting as possible, where the concept of interesting is measured by the amount that the observations vary along each dimension. Each of the dimensions found by PCA is a linear combination of the <span class="math notranslate nohighlight">\( D \)</span> features. We now explain the manner in which these dimensions, or principal components, are found.</p>
 <p>The first principal component of a set of features <span class="math notranslate nohighlight">\(x_1, \ldots, x_D\)</span> is the normalised linear combination of the features</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1431,6 +1431,10 @@ dtype: float64
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="exercises">
+<h2><span class="section-number">9.1.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p>min 3 max 5</p>
 <p>PCA on the NCI60 Data</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1485,7 +1489,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/pca_19_0.png" src="../_images/pca_19_0.png" />
+<img alt="../_images/pca_20_0.png" src="../_images/pca_20_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1566,7 +1570,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/pca_21_0.png" src="../_images/pca_21_0.png" />
+<img alt="../_images/pca_22_0.png" src="../_images/pca_22_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1590,13 +1594,9 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/pca_22_0.png" src="../_images/pca_22_0.png" />
+<img alt="../_images/pca_23_0.png" src="../_images/pca_23_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="exercises">
-<h2><span class="section-number">9.1.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p>min 3 max 5</p>
 </div>
 </div>
 

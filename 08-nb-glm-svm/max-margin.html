@@ -770,7 +770,7 @@ the sign of the left hand side of the hyperplane equation.</p>
 \[\begin{split}
 \mathbf{x}_1 = \begin{bmatrix} x_{11} \\ x_{12} \\ \vdots \\ x_{1D} \end{bmatrix}, \ldots, \mathbf{x}_N = \begin{bmatrix} x_{N1} \\ x_{N2} \\ \vdots \\ x_{ND} \end{bmatrix},
 \end{split}\]</div>
-<p>and that these observations fall into two classes, <span class="math notranslate nohighlight">\(y_1, \ldots, y_N \in \{-1, 1\}\)</span>, where 1 represents one class and -1 the other class. We also have a test observation <span class="math notranslate nohighlight">\(\mathbf{x}^* = [x^*_1, \ldots, x^*_N]^\top\)</span> that we would like to classify. We can do so by finding the hyperplane that separates the two classes. Such a hyperplane is known as an separating hyperplane. <a class="reference internal" href="#svm1"><span class="std std-numref">Fig. 8.1</span></a>shows a hyperplane in two dimensions.</p>
+<p>and that these observations fall into two classes, <span class="math notranslate nohighlight">\(y_1, \ldots, y_N \in \{-1, 1\}\)</span>, where 1 represents one class and -1 the other class. We also have a test observation <span class="math notranslate nohighlight">\( \mathbf{x}^* = [x^*_1, \ldots, x^*_N]^\top\)</span> that we would like to classify. We can do so by finding the hyperplane that separates the two classes. Such a hyperplane is known as an separating hyperplane. <a class="reference internal" href="#svm1"><span class="std std-numref">Fig. 8.1</span></a> shows a hyperplane in two dimensions.</p>
 <div class="margin-caption figure align-default" id="svm1">
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm1.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm1.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm1.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.1 </span><span class="caption-text">The hyperplane <span class="math notranslate nohighlight">\(1 + 2x_1 + 3x_2 = 0\)</span> is shown. The blue region is the set of points for which <span class="math notranslate nohighlight">\(1 + 2x_1 + 3x_2 &gt; 0\)</span>, and the purple region is the set of points for which <span class="math notranslate nohighlight">\(1 + 2x_1 + 3x_2\)</span> &lt; 0 (source of figures in this section: <a class="reference external" href="https://trevorhastie.github.io/ISLR/">https://trevorhastie.github.io/ISLR/</a>).</span><a class="headerlink" href="#svm1" title="Permalink to this image">¶</a></p>
@@ -978,7 +978,7 @@ such a scenario.</p>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Input:  [-1.19276461 -0.20487651]
 Intercept:  0.5729441305210916  Coefficients:  [-0.73273926 -0.70326681]
-Prediction score:  1.5910124372951466
+Prediction score:  1.5910124372951457
 Prediction:  1
 </pre></div>
 </div>
@@ -991,8 +991,8 @@ Prediction:  1
 <li><p>The data point <span class="math notranslate nohighlight">\([-1.19276461, -0.20487651]\)</span> marked by a black circle, its prediction score is <span class="math notranslate nohighlight">\( -0.7327 \times -1.19276461 + -0.7033 \times -0.20487651 + 0.5729 \approx 1.5910 \)</span>, which is positive. The predicted label is <span class="math notranslate nohighlight">\( 1 \)</span>.</p></li>
 <li><p>According to the definition, the data points on the hyperplane satisfies <span class="math notranslate nohighlight">\( \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} = 0 \)</span>, i.e. <span class="math notranslate nohighlight">\( 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 = 0 \)</span>. To get a data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> of class <span class="math notranslate nohighlight">\( 1 \)</span>, the relationship between <span class="math notranslate nohighlight">\( x_1 \)</span> and <span class="math notranslate nohighlight">\( x_2 \)</span> should satisfy:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-ccca834b-57bd-4783-a500-aa5989248eee">
-<span class="eqno">(8.5)<a class="headerlink" href="#equation-ccca834b-57bd-4783-a500-aa5989248eee" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6e77eabb-d813-4482-b7f7-b55ebd62e56f">
+<span class="eqno">(8.5)<a class="headerlink" href="#equation-6e77eabb-d813-4482-b7f7-b55ebd62e56f" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} &amp; &gt; 0 \\
 \beta_1 x_{1} &amp; &gt; - \beta_0 - \beta_2 x_{2} \\
@@ -1001,7 +1001,7 @@ x_{1} &amp; &gt; \frac{- 0.5729 - (-0.7033 \times x_2)}{-0.7327} \\
 x_1 &amp; &gt; 0.7819 - 0.9598 \times x_2.
 \end{aligned}
 \end{align}\]</div>
-<p>Similarly, we need data points <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> satisfy <span class="math notranslate nohighlight">\( x_1 &lt; 0.7819 - 0.9598 \times x_2 \)</span> for class <span class="math notranslate nohighlight">\( -1 \)</span>. Note that the data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> belongs to class <span class="math notranslate nohighlight">\( 1 \)</span> but violates the margin if <span class="math notranslate nohighlight">\( 0 &lt; 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 &lt; 1 \)</span>, and the same applies to data points if <span class="math notranslate nohighlight">\( -1 &lt; 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 &lt; 0 \)</span>.</p>
+<p>Similarly, we need data points <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> satisfy <span class="math notranslate nohighlight">\( x_1 &lt; 0.7819 - 0.9598 \times x_2 \)</span> for class <span class="math notranslate nohighlight">\( -1 \)</span>. Note that the data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> belongs to class <span class="math notranslate nohighlight">\( 1 \)</span> but violates the margin if <span class="math notranslate nohighlight">\( 0 &lt; 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 &lt; 1 \)</span>, and the same applies to data points belongs to class <span class="math notranslate nohighlight">\( -1 \)</span> if <span class="math notranslate nohighlight">\( -1 &lt; 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 &lt; 0 \)</span>.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1035,14 +1035,14 @@ x_1 &amp; &gt; 0.7819 - 0.9598 \times x_2.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00039306, 0.00037215, 0.00036986, 0.00037503, 0.00040562,
-        0.00039842, 0.00053155]),
- &#39;std_fit_time&#39;: array([4.33589210e-05, 7.11227038e-06, 4.19785996e-06, 8.22941366e-06,
-        3.87463642e-05, 9.27962967e-06, 4.94528929e-05]),
- &#39;mean_score_time&#39;: array([0.0002717 , 0.0002619 , 0.00026379, 0.00026503, 0.0002651 ,
-        0.00026257, 0.00026858]),
- &#39;std_score_time&#39;: array([2.01889159e-05, 2.08735432e-06, 6.35751088e-06, 5.99204281e-06,
-        2.42308826e-06, 1.30173051e-06, 9.78678501e-07]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00056319, 0.0006031 , 0.00056071, 0.00055699, 0.00059125,
+        0.00067253, 0.0006645 ]),
+ &#39;std_fit_time&#39;: array([6.36284471e-05, 1.01767774e-04, 8.67618149e-05, 5.51879841e-05,
+        5.97778141e-05, 2.92955180e-04, 7.71345419e-05]),
+ &#39;mean_score_time&#39;: array([0.0004791 , 0.00042195, 0.00040164, 0.00041785, 0.00040929,
+        0.00044463, 0.00041618]),
+ &#39;std_score_time&#39;: array([9.05811926e-05, 2.08674968e-05, 2.32421310e-05, 3.74027310e-05,
+        3.01506759e-05, 5.00931506e-05, 8.44542551e-05]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,
