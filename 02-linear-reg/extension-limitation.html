@@ -188,7 +188,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../01-intro/knn.html">
-     1.5. $K$-NN classifier
+     1.5. K-NN classifier
     </a>
    </li>
    <li class="toctree-l2">
@@ -383,7 +383,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../08-nb-glm-svm/overview.html">
+  <a class="reference internal" href="../08-glm-svm/overview.html">
    8. GLM &amp; SVM
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
@@ -393,22 +393,22 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-nb-glm-svm/glm.html">
+    <a class="reference internal" href="../08-glm-svm/glm.html">
      8.1. Generalised linear models
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-nb-glm-svm/max-margin.html">
+    <a class="reference internal" href="../08-glm-svm/max-margin.html">
      8.2. Hyperplane and maximum margin classifier
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-nb-glm-svm/svm.html">
+    <a class="reference internal" href="../08-glm-svm/svm.html">
      8.3. Support vector machines
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-nb-glm-svm/quiz-sum-ref.html">
+    <a class="reference internal" href="../08-glm-svm/quiz-sum-ref.html">
      8.4. Quiz &amp; summary
     </a>
    </li>
@@ -416,7 +416,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../09-pca-kmeans/overview.html">
-   9. PCA &amp; $K$-means
+   9. PCA &amp; K-means
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -431,7 +431,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../09-pca-kmeans/kmeans.html">
-     9.2. $K$-means clustering
+     9.2. K-means clustering
     </a>
    </li>
    <li class="toctree-l2">
@@ -979,8 +979,8 @@ memory usage: 30.6+ KB
 y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon.
 \]</div>
 <p>This model can be extended to include an interaction term between <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-60f47beb-649b-4ae8-aab7-fa15bb4ffbbe">
-<span class="eqno">(2.22)<a class="headerlink" href="#equation-60f47beb-649b-4ae8-aab7-fa15bb4ffbbe" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-abc4ae01-6063-440a-8701-23d92dba2914">
+<span class="eqno">(2.22)<a class="headerlink" href="#equation-abc4ae01-6063-440a-8701-23d92dba2914" title="Permalink to this equation">¶</a></span>\[\begin{align}
 y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 &amp;= \beta_0 + (\beta_1 + \beta_3 x_2) x_1 + \beta_2 x_2 + \epsilon \\
 &amp;= \beta_0 + \tilde{\beta}_1 x_1 + \beta_2 x_2 + \epsilon,
@@ -1118,8 +1118,8 @@ dtype: float64
 </div>
 </div>
 <p>The figure shows a strong relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>, but it is clearly not linear. We can use a polynomial regression to fit a non-linear model to the data. We can fit a polynomial regression of degree 2 (quadratic) to the data using the following regression:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-09fcb12a-d01e-43f7-8b92-e06c2ac555d5">
-<span class="eqno">(2.23)<a class="headerlink" href="#equation-09fcb12a-d01e-43f7-8b92-e06c2ac555d5" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-88318eef-46b0-42a7-a82d-5ea0fa2b6504">
+<span class="eqno">(2.23)<a class="headerlink" href="#equation-88318eef-46b0-42a7-a82d-5ea0fa2b6504" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \textrm{mpg} = \beta_0 + \beta_1 \times \textrm{horsepower} + \beta_2 \times \textrm{horsepower}^2 + \epsilon.
 \end{equation}\]</div>
 <p>Run the following code to display the relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> (gas mileage in miles per gallon) and <span class="math notranslate nohighlight">\(\textrm{horsepower}^2\)</span> as well as <span class="math notranslate nohighlight">\(\textrm{horsepower}^5\)</span> (Figure 3.8 of the textbook) for cars in the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset.</p>
@@ -1768,7 +1768,7 @@ chas
   <th>Date:</th>             <td>Mon, 28 Nov 2022</td> <th>  Prob (F-statistic):</th> <td>1.57e-56</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>12:53:08</td>     <th>  Log-Likelihood:    </th> <td> -1653.3</td>
+  <th>Time:</th>                 <td>13:16:13</td>     <th>  Log-Likelihood:    </th> <td> -1653.3</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   506</td>      <th>  AIC:               </th> <td>   3335.</td>

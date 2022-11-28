@@ -188,7 +188,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../01-intro/knn.html">
-     1.5. $K$-NN classifier
+     1.5. K-NN classifier
     </a>
    </li>
    <li class="toctree-l2">
@@ -416,7 +416,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../09-pca-kmeans/overview.html">
-   9. PCA &amp; $K$-means
+   9. PCA &amp; K-means
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -431,7 +431,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../09-pca-kmeans/kmeans.html">
-     9.2. $K$-means clustering
+     9.2. K-means clustering
     </a>
    </li>
    <li class="toctree-l2">
@@ -521,7 +521,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/08-nb-glm-svm/glm.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/08-glm-svm/glm.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -541,10 +541,10 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F08-nb-glm-svm/glm.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F08-glm-svm/glm.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/08-nb-glm-svm/glm.ipynb"><button
+        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/08-glm-svm/glm.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -564,7 +564,7 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/08-nb-glm-svm/glm.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/08-glm-svm/glm.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -572,7 +572,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/08-nb-glm-svm/glm.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/08-glm-svm/glm.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -850,7 +850,7 @@ const thebe_selector_output = ".output, .cell_output"
   <th>Date:</th>             <td>Mon, 28 Nov 2022</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
 </tr>
 <tr>
-  <th>Time:</th>                 <td>12:51:47</td>     <th>  Log-Likelihood:    </th> <td> -49743.</td> 
+  <th>Time:</th>                 <td>13:17:53</td>     <th>  Log-Likelihood:    </th> <td> -49743.</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  8645</td>      <th>  AIC:               </th> <td>9.957e+04</td>
@@ -1110,7 +1110,7 @@ const thebe_selector_output = ".output, .cell_output"
 \[
 \log(y) = \beta_0 + \sum_{d=1}^{D}x_d\beta_d + \epsilon.
 \]</div>
-<p>Transforming the response avoids the possibility of negative predictions, and it overcomes much of the heteroscedasticity in the untransformed data, as is shown in the right-hand panel of the figure above. However, it is not quite a satisfactory solution, since predictions and inference are made in terms of the log of the response, rather than the response. This leads to challenges in interpretation, e.g. ``a one-unit increase in <span class="math notranslate nohighlight">\(x_d\)</span> is associated with an increase in the mean of the log of <span class="math notranslate nohighlight">\(y\)</span> by an amount <span class="math notranslate nohighlight">\(\beta_d\)</span>. Furthermore, a log transformation of the response cannot be applied in settings where the response can take on a value of 0. Thus, while fitting a linear model to a transformation of the response may be an adequate approach for some count-valued data sets, it often leaves something to be desired. We will see in the next section that a Poisson regression model provides a much more natural and elegant approach for this task.</p>
+<p>Transforming the response avoids the possibility of negative predictions, and it overcomes much of the heteroscedasticity in the untransformed data, as is shown in the right-hand panel of the figure above. However, it is not quite a satisfactory solution, since predictions and inference are made in terms of the log of the response, rather than the response. This leads to challenges in interpretation, e.g. a one-unit increase in <span class="math notranslate nohighlight">\(x_d\)</span> is associated with an increase in the mean of the log of <span class="math notranslate nohighlight">\(y\)</span> by an amount <span class="math notranslate nohighlight">\(\beta_d\)</span>. Furthermore, a log transformation of the response cannot be applied in settings where the response can take on a value of 0. Thus, while fitting a linear model to a transformation of the response may be an adequate approach for some count-valued data sets, it often leaves something to be desired. We will see in the next section that a Poisson regression model provides a much more natural and elegant approach for this task.</p>
 </div>
 <div class="section" id="poisson-regression-on-the-bikeshare-data">
 <h2><span class="section-number">8.1.2. </span>Poisson regression on the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> data<a class="headerlink" href="#poisson-regression-on-the-bikeshare-data" title="Permalink to this headline">¶</a></h2>
@@ -1166,7 +1166,7 @@ const thebe_selector_output = ".output, .cell_output"
   <th>Date:</th>            <td>Mon, 28 Nov 2022</td> <th>  Pseudo R-squ.:     </th>   <td>0.7459</td>   
 </tr>
 <tr>
-  <th>Time:</th>                <td>12:51:50</td>     <th>  Log-Likelihood:    </th> <td>-1.4054e+05</td>
+  <th>Time:</th>                <td>13:17:55</td>     <th>  Log-Likelihood:    </th> <td>-1.4054e+05</td>
 </tr>
 <tr>
   <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th> <td>-5.5298e+05</td>
@@ -1383,7 +1383,7 @@ const thebe_selector_output = ".output, .cell_output"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./08-nb-glm-svm"
+            path: "./08-glm-svm"
         },
         predefinedOutput: true
     }

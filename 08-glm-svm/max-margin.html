@@ -188,7 +188,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../01-intro/knn.html">
-     1.5. $K$-NN classifier
+     1.5. K-NN classifier
     </a>
    </li>
    <li class="toctree-l2">
@@ -416,7 +416,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../09-pca-kmeans/overview.html">
-   9. PCA &amp; $K$-means
+   9. PCA &amp; K-means
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -431,7 +431,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../09-pca-kmeans/kmeans.html">
-     9.2. $K$-means clustering
+     9.2. K-means clustering
     </a>
    </li>
    <li class="toctree-l2">
@@ -521,7 +521,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/08-nb-glm-svm/max-margin.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/08-glm-svm/max-margin.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -541,10 +541,10 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F08-nb-glm-svm/max-margin.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F08-glm-svm/max-margin.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/08-nb-glm-svm/max-margin.ipynb"><button
+        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/08-glm-svm/max-margin.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -564,7 +564,7 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/08-nb-glm-svm/max-margin.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/08-glm-svm/max-margin.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -572,7 +572,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/08-nb-glm-svm/max-margin.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/08-glm-svm/max-margin.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -978,7 +978,7 @@ such a scenario.</p>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Input:  [-1.19276461 -0.20487651]
 Intercept:  0.5729441305210916  Coefficients:  [-0.73273926 -0.70326681]
-Prediction score:  1.5910124372951457
+Prediction score:  1.5910124372951466
 Prediction:  1
 </pre></div>
 </div>
@@ -991,8 +991,8 @@ Prediction:  1
 <li><p>The data point <span class="math notranslate nohighlight">\([-1.19276461, -0.20487651]\)</span> marked by a black circle, its prediction score is <span class="math notranslate nohighlight">\( -0.7327 \times -1.19276461 + -0.7033 \times -0.20487651 + 0.5729 \approx 1.5910 \)</span>, which is positive. The predicted label is <span class="math notranslate nohighlight">\( 1 \)</span>.</p></li>
 <li><p>According to the definition, the data points on the hyperplane satisfies <span class="math notranslate nohighlight">\( \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} = 0 \)</span>, i.e. <span class="math notranslate nohighlight">\( 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 = 0 \)</span>. To get a data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> of class <span class="math notranslate nohighlight">\( 1 \)</span>, the relationship between <span class="math notranslate nohighlight">\( x_1 \)</span> and <span class="math notranslate nohighlight">\( x_2 \)</span> should satisfy:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-6e77eabb-d813-4482-b7f7-b55ebd62e56f">
-<span class="eqno">(8.5)<a class="headerlink" href="#equation-6e77eabb-d813-4482-b7f7-b55ebd62e56f" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-eb2be464-d0c3-46aa-9e14-ded3b4dd1613">
+<span class="eqno">(8.5)<a class="headerlink" href="#equation-eb2be464-d0c3-46aa-9e14-ded3b4dd1613" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} &amp; &gt; 0 \\
 \beta_1 x_{1} &amp; &gt; - \beta_0 - \beta_2 x_{2} \\
@@ -1035,14 +1035,14 @@ x_1 &amp; &gt; 0.7819 - 0.9598 \times x_2.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00056319, 0.0006031 , 0.00056071, 0.00055699, 0.00059125,
-        0.00067253, 0.0006645 ]),
- &#39;std_fit_time&#39;: array([6.36284471e-05, 1.01767774e-04, 8.67618149e-05, 5.51879841e-05,
-        5.97778141e-05, 2.92955180e-04, 7.71345419e-05]),
- &#39;mean_score_time&#39;: array([0.0004791 , 0.00042195, 0.00040164, 0.00041785, 0.00040929,
-        0.00044463, 0.00041618]),
- &#39;std_score_time&#39;: array([9.05811926e-05, 2.08674968e-05, 2.32421310e-05, 3.74027310e-05,
-        3.01506759e-05, 5.00931506e-05, 8.44542551e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00036077, 0.00034173, 0.00033836, 0.00033987, 0.00036378,
+        0.00038087, 0.00051155]),
+ &#39;std_fit_time&#39;: array([4.53751084e-05, 1.55718729e-05, 1.17130270e-05, 8.69443618e-06,
+        1.06633626e-05, 3.26492895e-05, 4.60829502e-05]),
+ &#39;mean_score_time&#39;: array([0.00025058, 0.00023713, 0.0002322 , 0.00023675, 0.00023932,
+        0.00024507, 0.00025427]),
+ &#39;std_score_time&#39;: array([2.80039850e-05, 9.51060050e-06, 6.52278549e-06, 6.94530959e-06,
+        7.15239843e-06, 9.67723949e-06, 7.32550541e-06]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,
@@ -1228,7 +1228,7 @@ x_1 &amp; &gt; 0.7819 - 0.9598 \times x_2.
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./08-nb-glm-svm"
+            path: "./08-glm-svm"
         },
         predefinedOutput: true
     }

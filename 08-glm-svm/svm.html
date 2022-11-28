@@ -188,7 +188,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../01-intro/knn.html">
-     1.5. $K$-NN classifier
+     1.5. K-NN classifier
     </a>
    </li>
    <li class="toctree-l2">
@@ -416,7 +416,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../09-pca-kmeans/overview.html">
-   9. PCA &amp; $K$-means
+   9. PCA &amp; K-means
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -431,7 +431,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../09-pca-kmeans/kmeans.html">
-     9.2. $K$-means clustering
+     9.2. K-means clustering
     </a>
    </li>
    <li class="toctree-l2">
@@ -521,7 +521,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/08-nb-glm-svm/svm.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/08-glm-svm/svm.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -541,10 +541,10 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F08-nb-glm-svm/svm.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F08-glm-svm/svm.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/08-nb-glm-svm/svm.ipynb"><button
+        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/08-glm-svm/svm.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -564,7 +564,7 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/08-nb-glm-svm/svm.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/08-glm-svm/svm.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -572,7 +572,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/08-nb-glm-svm/svm.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/08-glm-svm/svm.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -925,30 +925,30 @@ f(x) = \beta_0 + \sum_{n = 1}^{N} \alpha_n k(\mathbf{x}, \mathbf{x}_n).
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00061812, 0.00063162, 0.00061665, 0.00071638, 0.00063703,
-        0.00054655, 0.00060413, 0.0007395 , 0.00080962, 0.00076776,
-        0.00056014, 0.00060253, 0.00080907, 0.00090904, 0.00082722,
-        0.00060847, 0.00068707, 0.00083232, 0.00086718, 0.00082343,
-        0.00062683, 0.00067139, 0.00076303, 0.00083122, 0.00080044]),
- &#39;std_fit_time&#39;: array([1.23524719e-04, 6.15779206e-05, 2.97594143e-05, 7.61525550e-05,
-        8.53059844e-05, 7.52459159e-05, 6.52635271e-05, 1.49685634e-04,
-        1.08992698e-04, 6.25653963e-05, 5.13874952e-05, 7.49816235e-05,
-        1.55054666e-04, 7.06962186e-05, 1.12627342e-04, 8.05426835e-05,
-        1.14984898e-04, 1.34243253e-04, 1.50200480e-04, 7.75517442e-05,
-        7.80460551e-05, 5.84335679e-05, 8.71877674e-05, 9.96387840e-05,
-        7.67193090e-05]),
- &#39;mean_score_time&#39;: array([0.00041211, 0.00038538, 0.00036726, 0.00036261, 0.00036843,
-        0.00033445, 0.00038047, 0.00037405, 0.00039406, 0.00043304,
-        0.00038245, 0.00036287, 0.00039904, 0.00042691, 0.00039861,
-        0.00039389, 0.00039396, 0.0003876 , 0.0003804 , 0.00036995,
-        0.00033069, 0.00037374, 0.00036714, 0.00037477, 0.00039303]),
- &#39;std_score_time&#39;: array([7.14116978e-05, 3.86523800e-05, 2.01872265e-05, 2.23041696e-05,
-        6.94142130e-05, 9.97023055e-06, 7.11881946e-05, 4.39186761e-05,
-        2.73063287e-05, 8.42317724e-05, 7.31106170e-05, 3.99001880e-05,
-        6.69828119e-05, 5.21223803e-05, 4.69387331e-05, 6.98655492e-05,
-        6.49433304e-05, 1.00475827e-04, 4.12665646e-05, 4.26901166e-05,
-        8.66611360e-06, 5.13851722e-05, 2.86198540e-05, 4.96651081e-05,
-        7.37943248e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00048709, 0.00048273, 0.00051613, 0.00052421, 0.0005332 ,
+        0.00046549, 0.00050948, 0.00056059, 0.00058348, 0.00060651,
+        0.00047524, 0.00051427, 0.0006175 , 0.00063295, 0.00064018,
+        0.00049014, 0.00052793, 0.00064638, 0.00068054, 0.00068069,
+        0.00055146, 0.00060117, 0.0006551 , 0.00066628, 0.00065603]),
+ &#39;std_fit_time&#39;: array([3.97232829e-05, 7.26378894e-06, 1.25331093e-05, 9.30996313e-06,
+        1.04937765e-05, 1.39250330e-05, 1.19073075e-05, 1.54696917e-05,
+        2.26201441e-05, 1.35850270e-05, 1.77934551e-05, 1.47407480e-05,
+        2.51424798e-05, 1.64587583e-05, 1.16569132e-05, 2.69342937e-05,
+        1.56958576e-05, 3.08783725e-05, 3.20085622e-05, 2.63216703e-05,
+        2.60518531e-05, 5.12542555e-05, 2.14126034e-05, 1.74990792e-05,
+        2.51671562e-05]),
+ &#39;mean_score_time&#39;: array([0.0002738 , 0.00027075, 0.00027368, 0.00027282, 0.00027399,
+        0.00026333, 0.00027235, 0.00027657, 0.00027876, 0.00028217,
+        0.00026293, 0.00027354, 0.0002846 , 0.00028591, 0.00028281,
+        0.0002641 , 0.0002703 , 0.00028429, 0.00028565, 0.00028088,
+        0.00026679, 0.0002784 , 0.00027864, 0.00028088, 0.00027959]),
+ &#39;std_score_time&#39;: array([2.61522903e-05, 1.06598437e-05, 1.01536368e-05, 1.00831893e-05,
+        9.15030504e-06, 9.28134468e-06, 8.38884503e-06, 8.60423551e-06,
+        1.02391273e-05, 1.18861884e-05, 9.05601518e-06, 1.19090259e-05,
+        6.90924537e-06, 8.04979650e-06, 5.67496321e-06, 1.49654148e-05,
+        8.62933643e-06, 8.96352397e-06, 9.53641533e-06, 8.96812048e-06,
+        2.25932269e-06, 8.94946622e-06, 9.19260545e-06, 3.75227217e-06,
+        1.14832892e-05]),
  &#39;param_C&#39;: masked_array(data=[0.01, 0.01, 0.01, 0.01, 0.01, 0.1, 0.1, 0.1, 0.1, 0.1,
                     1, 1, 1, 1, 1, 10, 10, 10, 10, 10, 100, 100, 100, 100,
                     100],
@@ -1284,7 +1284,7 @@ f(x) = \beta_0 + \sum_{n = 1}^{N} \alpha_n k(\mathbf{x}, \mathbf{x}_n).
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./08-nb-glm-svm"
+            path: "./08-glm-svm"
         },
         predefinedOutput: true
     }
