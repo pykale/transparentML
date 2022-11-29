@@ -610,10 +610,10 @@ const thebe_selector_output = ".output, .cell_output"
 <p class="admonition-title">Ingredients: Poisson regression</p>
 <ul class="simple">
 <li><p>Input: features of data samples</p></li>
-<li><p>Output: target values of data samples in the form of counts (integers)</p></li>
-<li><p>Model: transform the target values (counts) to its probability of occurrence modelled by a <a class="reference external" href="https://en.wikipedia.org/wiki/Poisson_distribution">Poisson distribution</a> and fit a line (or plane/hyperplane) to the transformed training data and map the value on the fitted line (or plane/hyperplane) for the test data to a count value via the inverse of the Poisson distribution</p>
+<li><p>Output: target values of data samples in the form of counts (non-negative integers)</p></li>
+<li><p>Model: transform the target values (counts) to the log of its expected values based the <a class="reference external" href="https://en.wikipedia.org/wiki/Poisson_distribution">Poisson distribution</a> and fit a line (or plane/hyperplane) to the transformed training data and map the estimated value on the fitted line (or plane/hyperplane) for the test data to a count value via exponential function</p>
 <ul>
-<li><p>Hyperparameter(s): <span class="math notranslate nohighlight">\(\lambda\)</span>, the rate parameter of the Poisson distribution</p></li>
+<li><p>Hyperparameter(s): None.</p></li>
 <li><p>Parameters: the intercept(s) and slope(s) of the fitted line (or plane/hyperplane), also known as the bias(es) and weight(s), respectively</p></li>
 </ul>
 </li>
@@ -625,7 +625,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p class="admonition-title">Transparency: Poisson regression</p>
 <p>System logic</p>
 <ul class="simple">
-<li><p>Condition to produce certain output: to produce an output count <span class="math notranslate nohighlight">\(y\)</span>, transform the count to its probability of occurrence modelled by a Poisson distribution with rate parameter <span class="math notranslate nohighlight">\(\lambda\)</span>, locate this probability on the fitted line (or plane/hyperplane) and then find the corresponding input <span class="math notranslate nohighlight">\(x\)</span> (or <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>) value.</p></li>
+<li><p>Condition to produce certain output: to produce an output count <span class="math notranslate nohighlight">\(y\)</span>, take the log of <span class="math notranslate nohighlight">\(y\)</span>, locate this <span class="math notranslate nohighlight">\(\log(y)\)</span> value on the fitted line (or plane/hyperplane) and then find the corresponding input <span class="math notranslate nohighlight">\(x\)</span> (or <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>) value.</p></li>
 </ul>
 </div>
 <div class="admonition-ingredients-svm-for-binary-classification admonition">

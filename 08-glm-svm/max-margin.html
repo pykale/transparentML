@@ -810,12 +810,12 @@ y_n(\beta_0 + \beta_1 x_{n1} + \beta_2 x_{n2} + \cdots + \beta_D x_{nD}) &gt; 0,
 <h3><span class="section-number">8.2.1.3. </span>Construction of maximum margin classifier<a class="headerlink" href="#construction-of-maximum-margin-classifier" title="Permalink to this headline">¶</a></h3>
 <p>The maximal margin hyperplane is the solution to the following optimisation problem</p>
 <div class="math notranslate nohighlight" id="equation-eq-max-margin-classifier">
-<span class="eqno">(8.3)<a class="headerlink" href="#equation-eq-max-margin-classifier" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(8.4)<a class="headerlink" href="#equation-eq-max-margin-classifier" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
 &amp; \max_{\beta_0, \beta_1, \ldots, \beta_D} M \\
 &amp; \text{subject to } \sum_{d=1}^D \beta_d^2 = 1 ,\\
 &amp; y_n(\beta_0 + \beta_1 x_{n1} + \beta_2 x_{n2} + \cdots + \beta_D x_{nD}) \geq M, \text{ for } n = 1, \ldots, N.
 \end{aligned}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\( y_n(\beta_0 + \beta_1 x_{n1} + \beta_2 x_{n2} + \cdots + \beta_D x_{nD}) \)</span> in the constraint represents the perpendicular distance from the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation to the hyperplane. This constraint guarantees that each observation is on the correct side of the hyperplane and at least a distance <span class="math notranslate nohighlight">\( M \)</span> from the hyperplane. Therefore, <span class="math notranslate nohighlight">\(M\)</span> represents the margin of our hyperplane, and the optimisation problem chooses <span class="math notranslate nohighlight">\( \beta_0, \beta_1, \ldots, \beta_D \)</span> to maximise M. This is exactly the definition of the maximal margin hyperplane! The problem <a class="reference internal" href="#equation-eq-max-margin-classifier">(8.3)</a> can be solved efficiently via quadratic programming, but details of this optimisation are outside of the scope of this course.</p>
+<p>where <span class="math notranslate nohighlight">\( y_n(\beta_0 + \beta_1 x_{n1} + \beta_2 x_{n2} + \cdots + \beta_D x_{nD}) \)</span> in the constraint represents the perpendicular distance from the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation to the hyperplane. This constraint guarantees that each observation is on the correct side of the hyperplane and at least a distance <span class="math notranslate nohighlight">\( M \)</span> from the hyperplane. Therefore, <span class="math notranslate nohighlight">\(M\)</span> represents the margin of our hyperplane, and the optimisation problem chooses <span class="math notranslate nohighlight">\( \beta_0, \beta_1, \ldots, \beta_D \)</span> to maximise M. This is exactly the definition of the maximal margin hyperplane! The problem <a class="reference internal" href="#equation-eq-max-margin-classifier">(8.4)</a> can be solved efficiently via quadratic programming, but details of this optimisation are outside of the scope of this course.</p>
 </div>
 </div>
 <div class="section" id="support-vector-classifier-soft-margin">
@@ -845,7 +845,7 @@ such a scenario.</p>
 <h3><span class="section-number">8.2.2.2. </span>Construction of support vector classifier<a class="headerlink" href="#construction-of-support-vector-classifier" title="Permalink to this headline">¶</a></h3>
 <p>The support vector classifier classifies a test observation depending on which side of a hyperplane it lies. The hyperplane is chosen to correctly separate most of the training observations into the two classes, but may misclassify a few observations. It is the solution to the optimisation problem</p>
 <div class="math notranslate nohighlight" id="equation-eq-soft-margin-classifier">
-<span class="eqno">(8.4)<a class="headerlink" href="#equation-eq-soft-margin-classifier" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(8.5)<a class="headerlink" href="#equation-eq-soft-margin-classifier" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
 &amp; \max_{\beta_0, \beta_1, \ldots, \beta_D, \epsilon_1, \ldots, \epsilon_N} M \\
 &amp; \text{subject to } \sum_{d=1}^D \beta_d^2 = 1 ,\\
 &amp; y_n(\beta_0 + \beta_1 x_{n1} + \beta_2 x_{n2} + \cdots + \beta_D x_{nD}) \geq M(1 - \epsilon_n),\\
@@ -854,7 +854,7 @@ such a scenario.</p>
 <p>where <span class="math notranslate nohighlight">\( \epsilon_n \)</span> is a slack variable that measures the amount by which the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation is on the wrong side of the margin. The slack variables are constrained to be non-negative, and the constraint <span class="math notranslate nohighlight">\( \sum_{n = 1}^N \epsilon_n \leq C \)</span> places an upper bound on the total amount by which the observations can be on the wrong side of the margin. The parameter <span class="math notranslate nohighlight">\( C \)</span> is a tuning parameter that controls the trade-off between the two competing goals of the support vector classifier: maximizing the margin and minimizing the number of training observations that are misclassified. When <span class="math notranslate nohighlight">\( C \)</span> is very large, the support vector classifier will attempt to maximise the margin, and so it will misclassify very few training observations. When <span class="math notranslate nohighlight">\( C \)</span> is very small, the support vector classifier will attempt to minimise the number of training observations that are misclassified, and so it will have a smaller margin. In practice, <span class="math notranslate nohighlight">\( C \)</span> is often tuned using cross-validation. <a class="reference internal" href="#svm7"><span class="std std-numref">Fig. 8.7</span></a> illustrates the effect of <span class="math notranslate nohighlight">\( C \)</span> on the support vector classifier.</p>
 <div class="margin-caption figure align-default" id="svm7">
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm7.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm7.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm7.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.7 </span><span class="caption-text">A support vector classifier was fit using four different values of the tuning parameter <span class="math notranslate nohighlight">\( C \)</span> of Equation <a class="reference internal" href="#equation-eq-soft-margin-classifier">(8.4)</a>. The largest value of <span class="math notranslate nohighlight">\( C \)</span> was used in the top left panel, and smaller values were used in the top right, bottom left, and bottom right panels. When <span class="math notranslate nohighlight">\( C \)</span> is large, then there is a high tolerance for observations being on the wrong side of the margin, and so the margin will be large. As <span class="math notranslate nohighlight">\( C \)</span> decreases, the tolerance for observations being on the wrong side of the margin decreases, and the margin narrows.</span><a class="headerlink" href="#svm7" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8.7 </span><span class="caption-text">A support vector classifier was fit using four different values of the tuning parameter <span class="math notranslate nohighlight">\( C \)</span> of Equation <a class="reference internal" href="#equation-eq-soft-margin-classifier">(8.5)</a>. The largest value of <span class="math notranslate nohighlight">\( C \)</span> was used in the top left panel, and smaller values were used in the top right, bottom left, and bottom right panels. When <span class="math notranslate nohighlight">\( C \)</span> is large, then there is a high tolerance for observations being on the wrong side of the margin, and so the margin will be large. As <span class="math notranslate nohighlight">\( C \)</span> decreases, the tolerance for observations being on the wrong side of the margin decreases, and the margin narrows.</span><a class="headerlink" href="#svm7" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -945,7 +945,7 @@ plt.show()
 </div>
 </div>
 </div>
-<p>Fit a support vector classifier and visualise decision boundary and support vectors with data points. Different values of hyper-parameter <span class="math notranslate nohighlight">\(C\)</span> described in Equation <a class="reference internal" href="#equation-eq-soft-margin-classifier">(8.4)</a> are used to see the effect of <span class="math notranslate nohighlight">\(C\)</span> on the decision boundary.</p>
+<p>Fit a support vector classifier and visualise decision boundary and support vectors with data points. Different values of hyper-parameter <span class="math notranslate nohighlight">\(C\)</span> described in Equation <a class="reference internal" href="#equation-eq-soft-margin-classifier">(8.5)</a> are used to see the effect of <span class="math notranslate nohighlight">\(C\)</span> on the decision boundary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svc = SVC(C=1.0, kernel=&quot;linear&quot;)
@@ -978,7 +978,7 @@ print(&quot;Prediction: &quot;, svc.predict(X[5, :].reshape(1, -1))[0])
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Input:  [-1.19276461 -0.20487651]
 Intercept:  0.5729441305210916  Coefficients:  [-0.73273926 -0.70326681]
-Prediction score:  1.5910124372951457
+Prediction score:  1.5910124372951466
 Prediction:  1
 </pre></div>
 </div>
@@ -991,8 +991,8 @@ Prediction:  1
 <li><p>The data point <span class="math notranslate nohighlight">\([-1.19276461, -0.20487651]\)</span> marked by a black circle, its prediction score is <span class="math notranslate nohighlight">\( -0.7327 \times -1.19276461 + -0.7033 \times -0.20487651 + 0.5729 \approx 1.5910 \)</span>, which is positive. The predicted label is <span class="math notranslate nohighlight">\( 1 \)</span>.</p></li>
 <li><p>According to the definition, the data points on the hyperplane satisfies <span class="math notranslate nohighlight">\( \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} = 0 \)</span>, i.e. <span class="math notranslate nohighlight">\( 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 = 0 \)</span>. To get a data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> of class <span class="math notranslate nohighlight">\( 1 \)</span>, the relationship between <span class="math notranslate nohighlight">\( x_1 \)</span> and <span class="math notranslate nohighlight">\( x_2 \)</span> should satisfy:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-8770800d-c377-4bc7-86db-503462038ac5">
-<span class="eqno">(8.5)<a class="headerlink" href="#equation-8770800d-c377-4bc7-86db-503462038ac5" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-cb1a4c80-192e-4354-ba33-b8c5e4c4e287">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-cb1a4c80-192e-4354-ba33-b8c5e4c4e287" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} &amp; &gt; 0 \\
 \beta_1 x_{1} &amp; &gt; - \beta_0 - \beta_2 x_{2} \\
@@ -1035,14 +1035,14 @@ clf.cv_results_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00060093, 0.00063183, 0.00059586, 0.00057685, 0.00059462,
-        0.00061011, 0.00078342]),
- &#39;std_fit_time&#39;: array([9.58255404e-05, 9.00544216e-05, 6.72306405e-05, 1.90780306e-05,
-        6.88050574e-05, 5.84609940e-05, 6.41068014e-05]),
- &#39;mean_score_time&#39;: array([0.00047164, 0.00042186, 0.00043144, 0.00043159, 0.00041883,
-        0.00042493, 0.00047235]),
- &#39;std_score_time&#39;: array([1.10386041e-04, 2.10644400e-05, 2.66003343e-05, 3.50257585e-05,
-        4.44799940e-05, 4.38876799e-05, 5.27377154e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00039611, 0.00037436, 0.00037637, 0.00038841, 0.00039217,
+        0.00041175, 0.00053277]),
+ &#39;std_fit_time&#39;: array([5.05143875e-05, 7.59414637e-06, 1.21482162e-05, 3.54877786e-05,
+        9.97459110e-06, 2.19811069e-05, 4.57429764e-05]),
+ &#39;mean_score_time&#39;: array([0.00027955, 0.00026445, 0.0002646 , 0.00026312, 0.00026786,
+        0.000267  , 0.00026963]),
+ &#39;std_score_time&#39;: array([3.83079010e-05, 7.38004676e-06, 7.26750515e-06, 2.81535900e-06,
+        8.20191100e-06, 4.51921143e-06, 1.96445914e-06]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,

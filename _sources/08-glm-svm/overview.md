@@ -28,9 +28,9 @@ SVM is a supervised machine learning model that was developed for classification
 
 ```{admonition} Ingredients: Poisson regression
 - Input: features of data samples
-- Output: target values of data samples in the form of counts (integers)
-- Model: transform the target values (counts) to its probability of occurrence modelled by a [Poisson distribution](https://en.wikipedia.org/wiki/Poisson_distribution) and fit a line (or plane/hyperplane) to the transformed training data and map the value on the fitted line (or plane/hyperplane) for the test data to a count value via the inverse of the Poisson distribution
-  - Hyperparameter(s): $\lambda$, the rate parameter of the Poisson distribution
+- Output: target values of data samples in the form of counts (non-negative integers)
+- Model: transform the target values (counts) to the log of its expected values based the [Poisson distribution](https://en.wikipedia.org/wiki/Poisson_distribution) and fit a line (or plane/hyperplane) to the transformed training data and map the estimated value on the fitted line (or plane/hyperplane) for the test data to a count value via exponential function
+  - Hyperparameter(s): None.
   - Parameters: the intercept(s) and slope(s) of the fitted line (or plane/hyperplane), also known as the bias(es) and weight(s), respectively
 - Loss function: maximise the likelihood (probability) of the log of the target values for the training data points.
 - Learning algorithm: Gradient descent on the negative log likelihood of the training data points
@@ -38,7 +38,7 @@ SVM is a supervised machine learning model that was developed for classification
 
 ```{admonition} Transparency: Poisson regression
 System logic
-- Condition to produce certain output: to produce an output count $y$, transform the count to its probability of occurrence modelled by a Poisson distribution with rate parameter $\lambda$, locate this probability on the fitted line (or plane/hyperplane) and then find the corresponding input $x$ (or $\mathbf{x}$) value.
+- Condition to produce certain output: to produce an output count $y$, take the log of $y$, locate this $\log(y)$ value on the fitted line (or plane/hyperplane) and then find the corresponding input $x$ (or $\mathbf{x}$) value.
 ```
 
 ```{admonition} Ingredients: SVM for binary classification

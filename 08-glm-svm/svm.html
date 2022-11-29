@@ -752,24 +752,24 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>In <a class="reference internal" href="../02-linear-reg/extension-limitation.html"><span class="doc">Linear regression</span></a>, we discussed using higher-order polynomials as a way to fit a non-linear relationship between the predictors and the response. Foe example, rather than fitting a support vector classifier using <span class="math notranslate nohighlight">\(D\)</span> features: <span class="math notranslate nohighlight">\( x_{1}, x_{2}, \ldots, x_{D} \)</span>, we could fit a support vector classifier using <span class="math notranslate nohighlight">\( 2 \times D \)</span> features: <span class="math notranslate nohighlight">\( x_{1}, x_{2}, \ldots, x_{D'}, x_{1}^2, x_{2}^2, \ldots, x_{D'}^2 \)</span>. Then the optimisation problem becomes</p>
 <div class="math notranslate nohighlight" id="equation-eq-svm-polynomial">
-<span class="eqno">(8.6)<a class="headerlink" href="#equation-eq-svm-polynomial" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(8.7)<a class="headerlink" href="#equation-eq-svm-polynomial" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
 &amp; \max_{\beta_0, \beta_{1,1}, \ldots, \beta_{D,2}, \epsilon_1, \ldots, \epsilon_N} M \\
 &amp; \text{subject to } y_n \left(\beta_0 + \sum_{d = 1}^{D} \beta_{d,1} x_{nd} + \beta_{d,2} x_{nd}^2\right) \geq M(1 - \epsilon_n), \\
 &amp; \sum_{d = 1}^{D} \beta_{d,1}^2 + \beta_{d,2}^2 = 1, \epsilon_n \geq 0, \sum_{n = 1}^N \epsilon_n \leq C, \text{ for } n =  1, \ldots, N.
 \end{aligned}\end{split}\]</div>
-<p>The decision boundary that results from Equation <a class="reference internal" href="#equation-eq-svm-polynomial">(8.6)</a> is in fact linear. But in the original feature space, the decision boundary is of the form <span class="math notranslate nohighlight">\( q(x) = 0 \)</span>, where <span class="math notranslate nohighlight">\( q(\cdot) \)</span> is a quadratic polynomial, and its solutions are generally non-linear.</p>
+<p>The decision boundary that results from Equation <a class="reference internal" href="#equation-eq-svm-polynomial">(8.7)</a> is in fact linear. But in the original feature space, the decision boundary is of the form <span class="math notranslate nohighlight">\( q(x) = 0 \)</span>, where <span class="math notranslate nohighlight">\( q(\cdot) \)</span> is a quadratic polynomial, and its solutions are generally non-linear.</p>
 </div>
 <div class="section" id="kernel-methods">
 <h3><span class="section-number">8.3.1.2. </span>Kernel methods<a class="headerlink" href="#kernel-methods" title="Permalink to this headline">¶</a></h3>
 <p>The <em>support vector machine (SVM)</em> is an extension of the support vector classifier that results from enlarging the feature space in a specific way, using <em>kernels</em>. As described above, the main idea is to enlarge our feature space in order to accommodate a non-linear boundary between the classes. The kernel approach that we describe here is simply an efficient computational approach for enacting this idea.</p>
-<p>We have not discussed exactly how the support vector classifier is computed because the details become somewhat technical. However, it turns out that the solution to the support vector classifier problem <a class="reference internal" href="max-margin.html#equation-eq-soft-margin-classifier">(8.4)</a> involves only the inner products of the observations (as opposed to the observations themselves).</p>
+<p>We have not discussed exactly how the support vector classifier is computed because the details become somewhat technical. However, it turns out that the solution to the support vector classifier problem <a class="reference internal" href="max-margin.html#equation-eq-soft-margin-classifier">(8.5)</a> involves only the inner products of the observations (as opposed to the observations themselves).</p>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>Mathematical details can be find <a class="reference external" href="https://scikit-learn.org/stable/modules/svm.html#svc">here</a></p>
 </div>
 <p>The inner product of two <span class="math notranslate nohighlight">\(D\)</span>-vectors <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is defined as <span class="math notranslate nohighlight">\(⟨a, b⟩ = \sum_{d = 1}^{D} a_d b_d \)</span>. Thus the inner product of two observations <span class="math notranslate nohighlight">\(\mathbf{x}_n\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_{n'}\)</span> is <span class="math notranslate nohighlight">\(⟨\mathbf{x}_n, \mathbf{x}_{n'}⟩ = \sum_{d = 1}^{D} x_{nd} x_{n'd} \)</span>. As a result, the linear svm classifier can be written as</p>
 <div class="math notranslate nohighlight" id="equation-eq-svm-inner-product">
-<span class="eqno">(8.7)<a class="headerlink" href="#equation-eq-svm-inner-product" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<span class="eqno">(8.8)<a class="headerlink" href="#equation-eq-svm-inner-product" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 f(x) = \beta_0 + \sum_{n = 1}^{N} \alpha_n y_n ⟨\mathbf{x}, \mathbf{x}_n⟩,
 \end{equation}\]</div>
 <p>where there are <span class="math notranslate nohighlight">\(N\)</span> parameters <span class="math notranslate nohighlight">\(\alpha_n, \text{ for } n =  1, \ldots N \)</span>, one per training observation. To estimate the parameters <span class="math notranslate nohighlight">\(\alpha_n\)</span>, all we need are the inner products of the training observations. The inner product can be denoted in the following generalised form:</p>
@@ -795,7 +795,7 @@ k(\mathbf{x}_n, \mathbf{x}_{n'}) = \exp\left(-\gamma \sum_{d = 1}^{D} (x_{nd} - 
 <p>where <span class="math notranslate nohighlight">\( \gamma &gt; 0 \)</span> is a positive tuning parameter. The radial kernel is also known as the <em>Gaussian kernel</em>. <a class="reference internal" href="#svm9"><span class="std std-numref">Fig. 8.9</span></a> shows the decision boundaries that result from using the polynomial (left) and radial kernels (right).</p>
 <p>When the support vector classifier is combined with a non-linear kernel, the resulting classifier is known as a support vector machine:</p>
 <div class="math notranslate nohighlight" id="equation-eq-svm">
-<span class="eqno">(8.8)<a class="headerlink" href="#equation-eq-svm" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<span class="eqno">(8.9)<a class="headerlink" href="#equation-eq-svm" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 f(x) = \beta_0 + \sum_{n = 1}^{N} \alpha_n k(\mathbf{x}, \mathbf{x}_n).
 \end{equation}\]</div>
 <div class="margin-caption figure align-default" id="svm9">
@@ -925,30 +925,30 @@ clf.cv_results_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00072756, 0.00069945, 0.0007864 , 0.00078316, 0.00080068,
-        0.00066843, 0.00075269, 0.00085402, 0.00092783, 0.00153012,
-        0.00082841, 0.00075133, 0.00093181, 0.00095384, 0.00097094,
-        0.00070798, 0.00075266, 0.0009948 , 0.00103831, 0.00107334,
-        0.00079618, 0.00085773, 0.0009552 , 0.00104787, 0.00109947]),
- &#39;std_fit_time&#39;: array([8.07353888e-05, 4.90586478e-05, 7.53285151e-05, 5.92899407e-05,
-        6.16643787e-05, 5.29406509e-05, 3.89601054e-05, 1.35221552e-04,
-        6.49110246e-05, 1.08488490e-03, 1.53029971e-04, 4.50009052e-05,
-        5.54331195e-05, 4.21969970e-05, 8.95390616e-05, 4.16054083e-05,
-        7.48151613e-05, 6.10639506e-05, 5.38342605e-05, 7.89101712e-05,
-        7.89506988e-05, 1.04818374e-04, 6.72794419e-05, 1.02385358e-04,
-        1.98455428e-04]),
- &#39;mean_score_time&#39;: array([0.00046086, 0.00052187, 0.00043108, 0.00044453, 0.00041859,
-        0.00045447, 0.00046301, 0.00043852, 0.00047083, 0.00051868,
-        0.00053623, 0.00042443, 0.00043378, 0.0004391 , 0.00045242,
-        0.00044501, 0.00057631, 0.00045121, 0.00050805, 0.00052497,
-        0.00041502, 0.00042179, 0.00046997, 0.00042388, 0.0010118 ]),
- &#39;std_score_time&#39;: array([6.25611442e-05, 1.57439053e-04, 4.41654507e-05, 3.14868271e-05,
-        5.22026775e-05, 8.37827312e-05, 3.95783459e-05, 3.82891702e-05,
-        5.30949986e-05, 2.03194051e-04, 1.33114687e-04, 4.23583066e-05,
-        3.48034292e-05, 5.05382212e-05, 9.41877840e-05, 5.20230487e-05,
-        4.99148013e-04, 6.20114991e-05, 1.94425270e-04, 2.21880109e-04,
-        2.30305560e-05, 3.38610540e-05, 1.01485567e-04, 2.13321218e-05,
-        1.69705902e-03]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.0005228 , 0.00052085, 0.00054572, 0.00056498, 0.00058134,
+        0.00050323, 0.00060592, 0.00059602, 0.00061958, 0.00064409,
+        0.00051587, 0.00055761, 0.00064967, 0.00066822, 0.00067446,
+        0.00052831, 0.00056713, 0.00068421, 0.0007092 , 0.00071671,
+        0.00058844, 0.00062656, 0.00068588, 0.00070009, 0.00075309]),
+ &#39;std_fit_time&#39;: array([5.53332284e-05, 9.72630924e-06, 8.92809934e-06, 1.45701064e-05,
+        3.86602986e-05, 4.84294983e-06, 1.82106889e-04, 2.19975090e-05,
+        2.25788940e-05, 1.62482743e-05, 1.67884775e-05, 2.79722610e-05,
+        2.04971907e-05, 1.41709914e-05, 1.00342503e-05, 2.83955327e-05,
+        1.77832293e-05, 3.47618540e-05, 2.51178697e-05, 2.61245084e-05,
+        3.10765517e-05, 4.09290474e-05, 1.80688568e-05, 1.81556022e-05,
+        1.50158249e-04]),
+ &#39;mean_score_time&#39;: array([0.00029969, 0.00029144, 0.00029714, 0.00030117, 0.00029891,
+        0.00028827, 0.00030093, 0.00030334, 0.00030138, 0.00030386,
+        0.00028625, 0.00029075, 0.00029981, 0.00030148, 0.00030453,
+        0.00028257, 0.00028653, 0.00029798, 0.00030425, 0.00030217,
+        0.00028689, 0.00028219, 0.00029726, 0.00029929, 0.00030649]),
+ &#39;std_score_time&#39;: array([2.33319106e-05, 4.47465371e-06, 6.40636534e-06, 1.23379254e-05,
+        4.34425868e-06, 6.55668432e-06, 1.81942590e-05, 8.47647627e-06,
+        8.99090972e-06, 7.32705718e-06, 5.30362116e-06, 3.90635582e-06,
+        1.07496113e-05, 7.46234918e-06, 6.29808750e-06, 8.03141569e-06,
+        3.64834962e-06, 8.70198419e-06, 9.33885909e-06, 5.16020650e-06,
+        7.55982419e-06, 2.56385900e-06, 1.03704134e-05, 6.64760425e-06,
+        1.12972424e-05]),
  &#39;param_C&#39;: masked_array(data=[0.01, 0.01, 0.01, 0.01, 0.01, 0.1, 0.1, 0.1, 0.1, 0.1,
                     1, 1, 1, 1, 1, 10, 10, 10, 10, 10, 100, 100, 100, 100,
                     100],
