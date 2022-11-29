@@ -698,14 +698,14 @@ H = - \sum_{c=1}^C p_c \log_2 p_c,
 <p>Get ready by importing the APIs needed from respective libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">plot_tree</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">classification_report</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
+import matplotlib.pyplot as plt
 
-<span class="o">%</span><span class="k">matplotlib</span> inline
+%matplotlib inline
 </pre></div>
 </div>
 </div>
@@ -713,7 +713,7 @@ H = - \sum_{c=1}^C p_c \log_2 p_c,
 <p>Set a random seed for reproducibility.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.random.seed(2022)
 </pre></div>
 </div>
 </div>
@@ -722,10 +722,10 @@ H = - \sum_{c=1}^C p_c \log_2 p_c,
 <p>Load the dataset and <em>remove the rows with missing values</em>. Inspect the first few rows of the dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heart_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Heart.csv&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>heart_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Heart.csv&quot;
 
-<span class="n">heart_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">heart_url</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="n">heart_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+heart_df = pd.read_csv(heart_url).dropna()
+heart_df.head()
 </pre></div>
 </div>
 </div>
@@ -863,7 +863,7 @@ H = - \sum_{c=1}^C p_c \log_2 p_c,
 <p>Take a look at the structure of the dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heart_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>heart_df.info()
 </pre></div>
 </div>
 </div>
@@ -897,8 +897,8 @@ memory usage: 37.1+ KB
 <p>Use the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.factorize.html"><code class="docutils literal notranslate"><span class="pre">factorize</span></code> method</a> from the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> library to convert categorical variables to numerical variables. This is because the <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> library only accepts numerical variables. <code class="docutils literal notranslate"><span class="pre">ChestPain</span></code> is a categorical variable that indicates the type of chest pain. <code class="docutils literal notranslate"><span class="pre">Thal</span></code> is a categorical variable that indicates the type of thalassemia.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heart_df</span><span class="o">.</span><span class="n">ChestPain</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">factorize</span><span class="p">(</span><span class="n">heart_df</span><span class="o">.</span><span class="n">ChestPain</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">heart_df</span><span class="o">.</span><span class="n">Thal</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">factorize</span><span class="p">(</span><span class="n">heart_df</span><span class="o">.</span><span class="n">Thal</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>heart_df.ChestPain = pd.factorize(heart_df.ChestPain)[0]
+heart_df.Thal = pd.factorize(heart_df.Thal)[0]
 </pre></div>
 </div>
 </div>
@@ -906,8 +906,8 @@ memory usage: 37.1+ KB
 <p>Get the feature matrix <code class="docutils literal notranslate"><span class="pre">X</span></code> and the target vector <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">heart_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;AHD&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">factorize</span><span class="p">(</span><span class="n">heart_df</span><span class="o">.</span><span class="n">AHD</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X = heart_df.drop(&quot;AHD&quot;, axis=1)
+y = pd.factorize(heart_df.AHD)[0]
 </pre></div>
 </div>
 </div>
@@ -915,8 +915,8 @@ memory usage: 37.1+ KB
 <p>Fit a classification tree to the data using the <code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code> class from the <code class="docutils literal notranslate"><span class="pre">sklearn.tree</span></code> module. Set the <code class="docutils literal notranslate"><span class="pre">max_leaf_nodes</span></code> parameter to 6. This will limit the number of leaf nodes to 6. Set the <code class="docutils literal notranslate"><span class="pre">max_features</span></code> parameter to 3. This will limit the number of features to consider when looking for the best split to 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_leaf_nodes</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>clf = DecisionTreeClassifier(max_leaf_nodes=6, max_features=3)
+clf.fit(X, y)
 </pre></div>
 </div>
 </div>
@@ -926,7 +926,7 @@ memory usage: 37.1+ KB
 <p>Compute the accuracy of the classification tree on the training data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>clf.score(X, y)
 </pre></div>
 </div>
 </div>
@@ -939,11 +939,11 @@ memory usage: 37.1+ KB
 <p>Visualise the classification tree using the <code class="docutils literal notranslate"><span class="pre">plot_tree</span></code> function from the <code class="docutils literal notranslate"><span class="pre">sklearn.tree</span></code> module. Set the <code class="docutils literal notranslate"><span class="pre">filled</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">True</span></code> to colour the nodes in the tree according to the majority class in each region. Set the <code class="docutils literal notranslate"><span class="pre">feature_names</span></code> parameter to the list of feature names. Set the <code class="docutils literal notranslate"><span class="pre">class_names</span></code> parameter to the list of class names.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">plot_tree</span><span class="p">(</span>
-    <span class="n">clf</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">class_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;No&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span>
-<span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize=(20, 10))
+plot_tree(
+    clf, filled=True, feature_names=X.columns, class_names=[&quot;No&quot;, &quot;Yes&quot;], fontsize=14
+)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -959,14 +959,14 @@ memory usage: 37.1+ KB
 <p>Inspect the first few rows of the dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carseats_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Carseats.csv&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>carseats_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Carseats.csv&quot;
 
-<span class="n">carseats_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">carseats_url</span><span class="p">)</span>
-<span class="n">carseats_df</span><span class="p">[</span><span class="s2">&quot;High&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">carseats_df</span><span class="o">.</span><span class="n">Sales</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;Y&quot;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">8</span> <span class="k">else</span> <span class="s2">&quot;N&quot;</span><span class="p">)</span>
-<span class="n">carseats_df</span><span class="o">.</span><span class="n">ShelveLoc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">factorize</span><span class="p">(</span><span class="n">carseats_df</span><span class="o">.</span><span class="n">ShelveLoc</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">carseats_df</span><span class="o">.</span><span class="n">Urban</span> <span class="o">=</span> <span class="n">carseats_df</span><span class="o">.</span><span class="n">Urban</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s2">&quot;Yes&quot;</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">carseats_df</span><span class="o">.</span><span class="n">US</span> <span class="o">=</span> <span class="n">carseats_df</span><span class="o">.</span><span class="n">US</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s2">&quot;Yes&quot;</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">carseats_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+carseats_df = pd.read_csv(carseats_url)
+carseats_df[&quot;High&quot;] = carseats_df.Sales.map(lambda x: &quot;Y&quot; if x &gt; 8 else &quot;N&quot;)
+carseats_df.ShelveLoc = pd.factorize(carseats_df.ShelveLoc)[0]
+carseats_df.Urban = carseats_df.Urban.map(lambda x: 1 if x == &quot;Yes&quot; else 0)
+carseats_df.US = carseats_df.US.map(lambda x: 1 if x == &quot;Yes&quot; else 0)
+carseats_df.head()
 </pre></div>
 </div>
 </div>
@@ -1086,7 +1086,7 @@ memory usage: 37.1+ KB
 <p>Take a look at the structure of the dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carseats_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>carseats_df.info()
 </pre></div>
 </div>
 </div>
@@ -1117,12 +1117,12 @@ memory usage: 37.6+ KB
 <p>Split the dataset into training (200 samples) and test sets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X2</span> <span class="o">=</span> <span class="n">carseats_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Sales&quot;</span><span class="p">,</span> <span class="s2">&quot;High&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">y2</span> <span class="o">=</span> <span class="n">carseats_df</span><span class="o">.</span><span class="n">High</span>
-<span class="n">train_size</span> <span class="o">=</span> <span class="mi">200</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
-    <span class="n">X2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="n">train_size</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">train_size</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X2 = carseats_df.drop([&quot;Sales&quot;, &quot;High&quot;], axis=1)
+y2 = carseats_df.High
+train_size = 200
+X_train, X_test, y_train, y_test = train_test_split(
+    X2, y2, train_size=train_size, test_size=X.shape[0] - train_size
+)
 </pre></div>
 </div>
 </div>
@@ -1130,14 +1130,14 @@ memory usage: 37.6+ KB
 <p>For this dataset, let us use ‘entropy’ as the split criterion at each node to fit a classification tree to the training data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">criteria</span> <span class="o">=</span> <span class="s2">&quot;entropy&quot;</span>
-<span class="n">max_depth</span> <span class="o">=</span> <span class="mi">6</span>
-<span class="n">min_sample_leaf</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">clf_gini</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span>
-    <span class="n">criterion</span><span class="o">=</span><span class="n">criteria</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="n">min_sample_leaf</span>
-<span class="p">)</span>
-<span class="n">clf_gini</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">clf_gini</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>criteria = &quot;entropy&quot;
+max_depth = 6
+min_sample_leaf = 4
+clf_gini = DecisionTreeClassifier(
+    criterion=criteria, max_depth=max_depth, min_samples_leaf=min_sample_leaf
+)
+clf_gini.fit(X_train, y_train)
+print(clf_gini.score(X_train, y_train))
 </pre></div>
 </div>
 </div>
@@ -1150,16 +1150,16 @@ memory usage: 37.6+ KB
 <p>Visualise the classification tree.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># one attractive feature of a tree is visulization.</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>  <span class="c1"># customize according to the size of your tree</span>
-<span class="n">plot_tree</span><span class="p">(</span>
-    <span class="n">clf_gini</span><span class="p">,</span>
-    <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">feature_names</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
-    <span class="n">class_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;No&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">],</span>
-    <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># one attractive feature of a tree is visulization.
+plt.figure(figsize=(40, 20))  # customize according to the size of your tree
+plot_tree(
+    clf_gini,
+    filled=True,
+    feature_names=X_train.columns,
+    class_names=[&quot;No&quot;, &quot;Yes&quot;],
+    fontsize=14,
+)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1170,22 +1170,22 @@ memory usage: 37.6+ KB
 <p>Build the confusion matrix to evaluate the model in accuracy for both training and test datasets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">clf_gini</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-<span class="n">cm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
-    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;No&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">],</span>
-    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;No&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">],</span>
-<span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train Accuracy is &quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>y_pred_train = clf_gini.predict(X_train)
+cm = pd.DataFrame(
+    confusion_matrix(y_train, y_pred_train).T,
+    index=[&quot;No&quot;, &quot;Yes&quot;],
+    columns=[&quot;No&quot;, &quot;Yes&quot;],
+)
+print(cm)
+print(&quot;Train Accuracy is &quot;, accuracy_score(y_train, y_pred_train) * 100)
 
 
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf_gini</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">cm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;No&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;No&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">]</span>
-<span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test Accuracy is &quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+y_pred = clf_gini.predict(X_test)
+cm = pd.DataFrame(
+    confusion_matrix(y_test, y_pred).T, index=[&quot;No&quot;, &quot;Yes&quot;], columns=[&quot;No&quot;, &quot;Yes&quot;]
+)
+print(cm)
+print(&quot;Test Accuracy is &quot;, accuracy_score(y_test, y_pred) * 100)
 </pre></div>
 </div>
 </div>
@@ -1206,7 +1206,7 @@ Test Accuracy is  71.1340206185567
 <p>Compute more metrics such as precision, recall, f1-score, etc.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(classification_report(y_test, y_pred))
 </pre></div>
 </div>
 </div>
@@ -1230,7 +1230,7 @@ weighted avg       0.71      0.71      0.71        97
 <p>Load the <strong>Caravan</strong> dataset and inspect the first five rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
 </pre></div>
 </div>
 </div>
@@ -1238,11 +1238,11 @@ weighted avg       0.71      0.71      0.71        97
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
 
-<span class="n">caravan_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Caravan.csv&quot;</span>
-<span class="n">caravan_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">caravan_url</span><span class="p">)</span>
-<span class="n">caravan_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+caravan_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Caravan.csv&quot;
+caravan_df = pd.read_csv(caravan_url)
+caravan_df.head()
 </pre></div>
 </div>
 </div>
@@ -1417,7 +1417,7 @@ weighted avg       0.71      0.71      0.71        97
 <p><strong>2.</strong> Let’s test the testing accuracy and AUC of a <strong>DecisionTreeClassifier</strong> with <span class="math notranslate nohighlight">\(8\)</span> <strong>maximum leaf nodes</strong> and <span class="math notranslate nohighlight">\(6\)</span> <strong>maximum features</strong> on the 70% dataset from <strong>Exercise 1</strong>. (Use <span class="math notranslate nohighlight">\(2022\)</span> as the random seed value)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
 </pre></div>
 </div>
 </div>
@@ -1425,31 +1425,31 @@ weighted avg       0.71      0.71      0.71        97
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">plot_tree</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">plot_roc_curve</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+from sklearn.metrics import accuracy_score, roc_auc_score, plot_roc_curve
 
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
+np.random.seed(2022)
 
-<span class="n">X2</span> <span class="o">=</span> <span class="n">caravan_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Purchase&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">y2</span> <span class="o">=</span> <span class="n">caravan_df</span><span class="o">.</span><span class="n">Purchase</span>
+X2 = caravan_df.drop([&quot;Purchase&quot;], axis=1)
+y2 = caravan_df.Purchase
 
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.20</span><span class="p">)</span>
+X_train, X_test, y_train, y_test = train_test_split(X2, y2, test_size=0.20)
 
-<span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_leaf_nodes</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+clf = DecisionTreeClassifier(max_leaf_nodes=8, max_features=6)
 
-<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-
-
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">accuarcy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy: &quot;</span><span class="p">,</span> <span class="n">accuarcy</span><span class="p">)</span>
+clf.fit(X_test, y_test)
 
 
-<span class="n">y_prob</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">roc_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AUC: &quot;</span><span class="p">,</span> <span class="n">roc_auc</span><span class="p">)</span>
+y_pred = clf.predict(X_test)
+accuarcy = accuracy_score(y_test, y_pred)
+print(&quot;Accuracy: &quot;, accuarcy)
+
+
+y_prob = clf.predict_proba(X_test)[:, 1]
+roc_auc = roc_auc_score(y_test, y_prob)
+print(&quot;AUC: &quot;, roc_auc)
 </pre></div>
 </div>
 </div>
@@ -1463,7 +1463,7 @@ AUC:  0.7101761252446184
 <p><strong>3.</strong> Now, train another <strong>DecisionTreeClassifier</strong> using <strong>entropy</strong> as the split criterion at each node to fit a classification tree with a <strong>maximum depth</strong> of <span class="math notranslate nohighlight">\(4\)</span> and a <strong>minimum sample leaf</strong> of <span class="math notranslate nohighlight">\(3\)</span> to the training data and find out the <strong>testing accuracy</strong> and <strong>AUC</strong>. (Use <span class="math notranslate nohighlight">\(2022\)</span> as the random seed value)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
 </pre></div>
 </div>
 </div>
@@ -1471,28 +1471,28 @@ AUC:  0.7101761252446184
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">plot_tree</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier, plot_tree
 
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
-
-
-<span class="n">criteria</span> <span class="o">=</span> <span class="s2">&quot;entropy&quot;</span>
-<span class="n">max_depth</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">min_sample_leaf</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">clf_gini</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span>
-    <span class="n">criterion</span><span class="o">=</span><span class="n">criteria</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="n">min_sample_leaf</span>
-<span class="p">)</span>
-<span class="n">clf_gini</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf_gini</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">accuarcy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy: &quot;</span><span class="p">,</span> <span class="n">accuarcy</span><span class="p">)</span>
+np.random.seed(2022)
 
 
-<span class="n">y_prob</span> <span class="o">=</span> <span class="n">clf_gini</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">roc_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AUC: &quot;</span><span class="p">,</span> <span class="n">roc_auc</span><span class="p">)</span>
+criteria = &quot;entropy&quot;
+max_depth = 4
+min_sample_leaf = 3
+clf_gini = DecisionTreeClassifier(
+    criterion=criteria, max_depth=max_depth, min_samples_leaf=min_sample_leaf
+)
+clf_gini.fit(X_train, y_train)
+
+y_pred = clf_gini.predict(X_test)
+accuarcy = accuracy_score(y_test, y_pred)
+print(&quot;Accuracy: &quot;, accuarcy)
+
+
+y_prob = clf_gini.predict_proba(X_test)[:, 1]
+roc_auc = roc_auc_score(y_test, y_prob)
+print(&quot;AUC: &quot;, roc_auc)
 </pre></div>
 </div>
 </div>
@@ -1511,7 +1511,7 @@ AUC:  0.7402804957599478
 <p><strong>5.</strong> Create a <strong>confusion matrix</strong> and a <strong>classification report</strong> to help you evaluate the model you trained in <strong>Exercise 3</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
 </pre></div>
 </div>
 </div>
@@ -1519,15 +1519,15 @@ AUC:  0.7402804957599478
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.metrics import confusion_matrix, classification_report
 
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf_gini</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">cm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;No&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;No&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">]</span>
-<span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confusion matrix</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">cm</span><span class="p">)</span>
+y_pred = clf_gini.predict(X_test)
+cm = pd.DataFrame(
+    confusion_matrix(y_test, y_pred).T, index=[&quot;No&quot;, &quot;Yes&quot;], columns=[&quot;No&quot;, &quot;Yes&quot;]
+)
+print(&quot;Confusion matrix\n&quot;, cm)
 
-<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+print(classification_report(y_test, y_pred))
 </pre></div>
 </div>
 </div>

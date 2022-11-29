@@ -708,14 +708,14 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Get ready by importing the APIs needed from respective libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span><span class="p">,</span> <span class="n">plot_tree</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeRegressor, plot_tree
+from sklearn.metrics import mean_squared_error
+import matplotlib.pyplot as plt
 
-<span class="o">%</span><span class="k">matplotlib</span> inline
+%matplotlib inline
 </pre></div>
 </div>
 </div>
@@ -723,7 +723,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Set a random seed for reproducibility.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.random.seed(2022)
 </pre></div>
 </div>
 </div>
@@ -732,10 +732,10 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Load the dataset and <em>remove the rows with missing values</em>. Inspect the first few rows of the dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hitters_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Hitters.csv&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>hitters_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Hitters.csv&quot;
 
-<span class="n">hitters_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">hitters_url</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="n">hitters_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+hitters_df = pd.read_csv(hitters_url).dropna()
+hitters_df.head()
 </pre></div>
 </div>
 </div>
@@ -903,7 +903,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Take a look at the structure of the dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hitters_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>hitters_df.info()
 </pre></div>
 </div>
 </div>
@@ -942,14 +942,14 @@ memory usage: 43.1+ KB
 <p>Take a look at the distribution of the <code class="docutils literal notranslate"><span class="pre">Salary</span></code> variable on the original scale and on the log scale, via a histogram. We can see that the distribution of <code class="docutils literal notranslate"><span class="pre">Salary</span></code> is skewed (to the left), and that the log distribution is more symmetric, closer to a bell shape, i.e. the normal/Gaussian distribution that is preferred in many machine learning models. Therefore, we will use the <em>log-transform</em> of <code class="docutils literal notranslate"><span class="pre">Salary</span></code> as the target variable in our regression tree model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">hitters_df</span><span class="p">[[</span><span class="s2">&quot;Years&quot;</span><span class="p">,</span> <span class="s2">&quot;Hits&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">hitters_df</span><span class="p">[</span><span class="s2">&quot;Salary&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>  <span class="c1"># log transform the target variable</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X = hitters_df[[&quot;Years&quot;, &quot;Hits&quot;]].values
+y = np.log(hitters_df[&quot;Salary&quot;].values)  # log transform the target variable
 
-<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">hitters_df</span><span class="o">.</span><span class="n">Salary</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Salary&quot;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Log(Salary)&quot;</span><span class="p">);</span>
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 4))
+ax1.hist(hitters_df.Salary.values, bins=20)
+ax1.set_xlabel(&quot;Salary&quot;)
+ax2.hist(y, bins=20)
+ax2.set_xlabel(&quot;Log(Salary)&quot;);
 </pre></div>
 </div>
 </div>
@@ -960,8 +960,8 @@ memory usage: 43.1+ KB
 <p>Let’s fit a regression tree to the data. We will use the <code class="docutils literal notranslate"><span class="pre">DecisionTreeRegressor</span></code> class from the <code class="docutils literal notranslate"><span class="pre">sklearn.tree</span></code> module. We will set the <code class="docutils literal notranslate"><span class="pre">max_leaf_nodes</span></code> hyperparameter to 3, which means that the tree will have at most 3 leaf nodes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regr</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_leaf_nodes</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">regr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>regr = DecisionTreeRegressor(max_leaf_nodes=3)
+regr.fit(X, y)
 </pre></div>
 </div>
 </div>
@@ -971,9 +971,9 @@ memory usage: 43.1+ KB
 <p>One attractive feature of a tree-based model is visulisation.  Let us visualise the learnt tree using the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html"><code class="docutils literal notranslate"><span class="pre">plot_tree</span></code> function</a> from the <code class="docutils literal notranslate"><span class="pre">sklearn.tree</span></code> module. We will set the <code class="docutils literal notranslate"><span class="pre">filled</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">True</span></code> to colour the leaf nodes according to the predicted value (the larger the value, the darker the colour). We will set the <code class="docutils literal notranslate"><span class="pre">feature_names</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">['Years',</span> <span class="pre">'Hits']</span></code> to label the features.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>  <span class="c1"># customize according to the size of your tree</span>
-<span class="n">plot_tree</span><span class="p">(</span><span class="n">regr</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Years&quot;</span><span class="p">,</span> <span class="s2">&quot;Hits&quot;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize=(15, 10))  # customize according to the size of your tree
+plot_tree(regr, filled=True, feature_names=[&quot;Years&quot;, &quot;Hits&quot;], fontsize=14)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -998,16 +998,16 @@ memory usage: 43.1+ KB
 <p>We can further visualise the tree by plotting the regions in the feature space.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hitters_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Years&quot;</span><span class="p">,</span> <span class="s2">&quot;Hits&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatter&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">ymin</span><span class="o">=-</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mi">24</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">117.5</span><span class="p">,</span> <span class="mi">238</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="mf">117.5</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=</span><span class="mf">4.5</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;R1&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">117.5</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;xx-large&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;R2&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">60</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;xx-large&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;R3&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">170</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;xx-large&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>hitters_df.plot(&quot;Years&quot;, &quot;Hits&quot;, kind=&quot;scatter&quot;, color=&quot;orange&quot;, figsize=(7, 6))
+plt.xlim(0, 25)
+plt.ylim(ymin=-5)
+plt.xticks([1, 4.5, 24])
+plt.yticks([1, 117.5, 238])
+plt.vlines(4.5, ymin=-5, ymax=250)
+plt.hlines(117.5, xmin=4.5, xmax=25)
+plt.annotate(&quot;R1&quot;, xy=(2, 117.5), fontsize=&quot;xx-large&quot;)
+plt.annotate(&quot;R2&quot;, xy=(11, 60), fontsize=&quot;xx-large&quot;)
+plt.annotate(&quot;R3&quot;, xy=(11, 170), fontsize=&quot;xx-large&quot;);
 </pre></div>
 </div>
 </div>
@@ -1046,10 +1046,10 @@ the splitting rules are also called <em>decision rules</em>.</p>
 <p>Load the dataset and inspect the first few rows of the dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boston_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Boston.csv&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>boston_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Boston.csv&quot;
 
-<span class="n">boston_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">boston_url</span><span class="p">)</span>
-<span class="n">boston_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+boston_df = pd.read_csv(boston_url)
+boston_df.head()
 </pre></div>
 </div>
 </div>
@@ -1181,7 +1181,7 @@ the splitting rules are also called <em>decision rules</em>.</p>
 <p>Take a look at the structure of the dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boston_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>boston_df.info()
 </pre></div>
 </div>
 </div>
@@ -1214,14 +1214,14 @@ memory usage: 55.5 KB
 <p>Split the dataset into training (50%) and test sets and fit a regression tree.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X2</span> <span class="o">=</span> <span class="n">boston_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;medv&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">y2</span> <span class="o">=</span> <span class="n">boston_df</span><span class="o">.</span><span class="n">medv</span>
-<span class="n">train_size</span> <span class="o">=</span> <span class="mf">0.5</span>
-<span class="n">max_depth</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X2 = boston_df.drop(&quot;medv&quot;, axis=1)
+y2 = boston_df.medv
+train_size = 0.5
+max_depth = 3
 
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="n">train_size</span><span class="p">)</span>
-<span class="n">regr_tree</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">)</span>
-<span class="n">regr_tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+X_train, X_test, y_train, y_test = train_test_split(X2, y2, train_size=train_size)
+regr_tree = DecisionTreeRegressor(max_depth=max_depth)
+regr_tree.fit(X_train, y_train)
 </pre></div>
 </div>
 </div>
@@ -1231,9 +1231,9 @@ memory usage: 55.5 KB
 <p>Visualise the tree.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>  <span class="c1"># customize according to the size of your tree</span>
-<span class="n">plot_tree</span><span class="p">(</span><span class="n">regr_tree</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">X2</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize=(28, 10))  # customize according to the size of your tree
+plot_tree(regr_tree, filled=True, feature_names=X2.columns, fontsize=14)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1244,8 +1244,8 @@ memory usage: 55.5 KB
 <p>Compute the test set MSEs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">regr_tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>y_pred = regr_tree.predict(X_test)
+print(mean_squared_error(y_test, y_pred))
 </pre></div>
 </div>
 </div>
@@ -1262,7 +1262,7 @@ memory usage: 55.5 KB
 <p>Load the <strong>Carseat</strong>s dataset, convert the values of variables (predictors) from category to numbers, and inspect the first five rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
 </pre></div>
 </div>
 </div>
@@ -1270,15 +1270,15 @@ memory usage: 55.5 KB
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
 
-<span class="n">carseat_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Carseats.csv&quot;</span>
+carseat_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Carseats.csv&quot;
 
-<span class="n">carseat_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">carseat_url</span><span class="p">)</span>
-<span class="n">carseat_df</span><span class="p">[</span><span class="s2">&quot;ShelveLoc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">carseat_df</span><span class="p">[</span><span class="s2">&quot;ShelveLoc&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">factorize</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">carseat_df</span><span class="p">[</span><span class="s2">&quot;Urban&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">carseat_df</span><span class="p">[</span><span class="s2">&quot;Urban&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">factorize</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">carseat_df</span><span class="p">[</span><span class="s2">&quot;US&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">carseat_df</span><span class="p">[</span><span class="s2">&quot;US&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">factorize</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">carseat_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+carseat_df = pd.read_csv(carseat_url)
+carseat_df[&quot;ShelveLoc&quot;] = carseat_df[&quot;ShelveLoc&quot;].factorize()[0]
+carseat_df[&quot;Urban&quot;] = carseat_df[&quot;Urban&quot;].factorize()[0]
+carseat_df[&quot;US&quot;] = carseat_df[&quot;US&quot;].factorize()[0]
+carseat_df.head()
 </pre></div>
 </div>
 </div>
@@ -1392,7 +1392,7 @@ memory usage: 55.5 KB
 <p><strong>2.</strong> Create the training set with <span class="math notranslate nohighlight">\(80\%\)</span> of the data from <strong>Exercise 1</strong> and rest of the <span class="math notranslate nohighlight">\(20\%\)</span> is for testing. Fit a <strong>Decisiontree regressor</strong> to the data where we will try to predict the <strong>Sales</strong> of the carseats. Calculate the <strong>MSE</strong> and <span class="math notranslate nohighlight">\(R^2\)</span> score of the model.(Use <span class="math notranslate nohighlight">\(2022\)</span> as random seed value)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
 </pre></div>
 </div>
 </div>
@@ -1400,25 +1400,25 @@ memory usage: 55.5 KB
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.metrics import mean_squared_error
+from sklearn.metrics import r2_score
 
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
-<span class="n">X2</span> <span class="o">=</span> <span class="n">carseat_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Sales&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">y2</span> <span class="o">=</span> <span class="n">carseat_df</span><span class="o">.</span><span class="n">Sales</span>
-<span class="n">train_size</span> <span class="o">=</span> <span class="mf">0.8</span>
-<span class="n">max_depth</span> <span class="o">=</span> <span class="mi">3</span>
+np.random.seed(2022)
+X2 = carseat_df.drop(&quot;Sales&quot;, axis=1)
+y2 = carseat_df.Sales
+train_size = 0.8
+max_depth = 3
 
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="n">train_size</span><span class="p">)</span>
-<span class="n">regr_tree</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">)</span>
-<span class="n">regr_tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+X_train, X_test, y_train, y_test = train_test_split(X2, y2, train_size=train_size)
+regr_tree = DecisionTreeRegressor(max_depth=max_depth)
+regr_tree.fit(X_train, y_train)
 
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">regr_tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+y_pred = regr_tree.predict(X_test)
+print(mean_squared_error(y_test, y_pred))
+print(r2_score(y_test, y_pred))
 </pre></div>
 </div>
 </div>
@@ -1432,7 +1432,7 @@ memory usage: 55.5 KB
 <p><strong>3.</strong> Now, Plot the <strong>model tree</strong> of the trained model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
 </pre></div>
 </div>
 </div>
@@ -1440,12 +1440,12 @@ memory usage: 55.5 KB
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">plot_tree</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+from sklearn.tree import plot_tree
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>  <span class="c1"># customize according to the size of your tree</span>
-<span class="n">plot_tree</span><span class="p">(</span><span class="n">regr_tree</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">X2</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+plt.figure(figsize=(28, 10))  # customize according to the size of your tree
+plot_tree(regr_tree, filled=True, feature_names=X2.columns, fontsize=14)
+plt.show()
 </pre></div>
 </div>
 </div>

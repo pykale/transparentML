@@ -667,17 +667,17 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Get ready by importing the APIs needed from respective libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
-<span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">resample</span>
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.utils import resample
 
-<span class="o">%</span><span class="k">matplotlib</span> inline
+%matplotlib inline
 </pre></div>
 </div>
 </div>
@@ -685,7 +685,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Set a random seed for reproducibility.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.random.seed(2022)
 </pre></div>
 </div>
 </div>
@@ -693,10 +693,10 @@ const thebe_selector_output = ".output, .cell_output"
 <p>We use the same <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Auto.csv">Auto dataset</a> as in the previous section.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Auto.csv&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>auto_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Auto.csv&quot;
 
-<span class="n">auto_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">auto_url</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="n">auto_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+auto_df = pd.read_csv(auto_url, na_values=&quot;?&quot;).dropna()
+auto_df.info()
 </pre></div>
 </div>
 </div>
@@ -730,48 +730,48 @@ memory usage: 30.6+ KB
 <p>Let us study the bootstrap on the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset using the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>’s <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.resample.html"><code class="docutils literal notranslate"><span class="pre">resample</span></code> API</a> (adapted from this <a class="reference external" href="https://ethanwicker.com/2021-02-23-bootstrap-resampling-001/">blog post</a>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Defining number of iterations for bootstrap resample</span>
-<span class="n">n_iterations</span> <span class="o">=</span> <span class="mi">1000</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Defining number of iterations for bootstrap resample
+n_iterations = 1000
 
-<span class="c1"># Initializing estimator</span>
-<span class="n">lin_reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+# Initializing estimator
+lin_reg = LinearRegression()
 
-<span class="c1"># Initializing DataFrame, to hold bootstrapped statistics</span>
-<span class="n">bootstrapped_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+# Initializing DataFrame, to hold bootstrapped statistics
+bootstrapped_stats = pd.DataFrame()
 
-<span class="c1"># Each loop iteration is a single bootstrap resample and model fit</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_iterations</span><span class="p">):</span>
+# Each loop iteration is a single bootstrap resample and model fit
+for i in range(n_iterations):
 
-    <span class="c1"># Sampling n_samples from data, with replacement, as train</span>
-    <span class="c1"># Defining test to be all observations not in train</span>
-    <span class="n">train</span> <span class="o">=</span> <span class="n">resample</span><span class="p">(</span><span class="n">auto_df</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">n_samples</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">auto_df</span><span class="p">))</span>
-    <span class="n">test</span> <span class="o">=</span> <span class="n">auto_df</span><span class="p">[</span><span class="o">~</span><span class="n">auto_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
+    # Sampling n_samples from data, with replacement, as train
+    # Defining test to be all observations not in train
+    train = resample(auto_df, replace=True, n_samples=len(auto_df))
+    test = auto_df[~auto_df.index.isin(train.index)]
 
-    <span class="n">X_train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;horsepower&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="p">]]</span>
-    <span class="n">y_train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;mpg&quot;</span><span class="p">]]</span>
+    X_train = train.loc[:, [&quot;horsepower&quot;, &quot;weight&quot;]]
+    y_train = train.loc[:, [&quot;mpg&quot;]]
 
-    <span class="n">X_test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;horsepower&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="p">]]</span>
-    <span class="n">y_test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;mpg&quot;</span><span class="p">]]</span>
+    X_test = test.loc[:, [&quot;horsepower&quot;, &quot;weight&quot;]]
+    y_test = test.loc[:, [&quot;mpg&quot;]]
 
-    <span class="c1"># Fitting linear regression model</span>
-    <span class="n">lin_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    # Fitting linear regression model
+    lin_reg.fit(X_train, y_train)
 
-    <span class="c1"># Storing stats in DataFrame, and concatenating with stats</span>
-    <span class="n">intercept</span> <span class="o">=</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">intercept_</span>
-    <span class="n">beta_horsepower</span> <span class="o">=</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">beta_weight</span> <span class="o">=</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">r_squared</span> <span class="o">=</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+    # Storing stats in DataFrame, and concatenating with stats
+    intercept = lin_reg.intercept_
+    beta_horsepower = lin_reg.coef_.ravel()[0]
+    beta_weight = lin_reg.coef_.ravel()[1]
+    r_squared = lin_reg.score(X_test, y_test)
 
-    <span class="n">bootstrapped_stats_i</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-        <span class="n">data</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
-            <span class="n">intercept</span><span class="o">=</span><span class="n">intercept</span><span class="p">,</span>
-            <span class="n">beta_horsepower</span><span class="o">=</span><span class="n">beta_horsepower</span><span class="p">,</span>
-            <span class="n">beta_weight</span><span class="o">=</span><span class="n">beta_weight</span><span class="p">,</span>
-            <span class="n">r_squared</span><span class="o">=</span><span class="n">r_squared</span><span class="p">,</span>
-        <span class="p">)</span>
-    <span class="p">)</span>
+    bootstrapped_stats_i = pd.DataFrame(
+        data=dict(
+            intercept=intercept,
+            beta_horsepower=beta_horsepower,
+            beta_weight=beta_weight,
+            r_squared=r_squared,
+        )
+    )
 
-    <span class="n">bootstrapped_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">objs</span><span class="o">=</span><span class="p">[</span><span class="n">bootstrapped_stats</span><span class="p">,</span> <span class="n">bootstrapped_stats_i</span><span class="p">])</span>
+    bootstrapped_stats = pd.concat(objs=[bootstrapped_stats, bootstrapped_stats_i])
 </pre></div>
 </div>
 </div>
@@ -779,7 +779,7 @@ memory usage: 30.6+ KB
 <p>Let us inspect a few estimates.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrapped_stats</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bootstrapped_stats.head()
 </pre></div>
 </div>
 </div>
@@ -851,13 +851,13 @@ memory usage: 30.6+ KB
 <p>Plot the distribution of the bootstrapped estimates of the coefficients and the corresponding test scores for the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting histograms</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">bootstrapped_stats</span><span class="p">[</span><span class="s2">&quot;intercept&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;royalblue&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">bootstrapped_stats</span><span class="p">[</span><span class="s2">&quot;beta_horsepower&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;olive&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">bootstrapped_stats</span><span class="p">[</span><span class="s2">&quot;beta_weight&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gold&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">bootstrapped_stats</span><span class="p">[</span><span class="s2">&quot;r_squared&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;teal&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Plotting histograms
+fig, axes = plt.subplots(1, 4, figsize=(18, 5))
+sns.histplot(bootstrapped_stats[&quot;intercept&quot;], color=&quot;royalblue&quot;, ax=axes[0], kde=True)
+sns.histplot(bootstrapped_stats[&quot;beta_horsepower&quot;], color=&quot;olive&quot;, ax=axes[1], kde=True)
+sns.histplot(bootstrapped_stats[&quot;beta_weight&quot;], color=&quot;gold&quot;, ax=axes[2], kde=True)
+sns.histplot(bootstrapped_stats[&quot;r_squared&quot;], color=&quot;teal&quot;, ax=axes[3], kde=True)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -870,7 +870,7 @@ memory usage: 30.6+ KB
 <p>First, calculate the mean.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrapped_stats</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bootstrapped_stats.mean()
 </pre></div>
 </div>
 </div>
@@ -887,7 +887,7 @@ dtype: float64
 <p>Next, calculate the standard deviation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrapped_stats</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bootstrapped_stats.std()
 </pre></div>
 </div>
 </div>
@@ -904,7 +904,7 @@ dtype: float64
 <p>Finally, calculate the 95% confidence interval.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrapped_stats</span><span class="o">.</span><span class="n">quantile</span><span class="p">([</span><span class="mf">0.025</span><span class="p">,</span> <span class="mf">0.975</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bootstrapped_stats.quantile([0.025, 0.975])
 </pre></div>
 </div>
 </div>
@@ -978,7 +978,7 @@ dtype: float64
 <p><strong>3</strong>. Apply bootstrap on the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Advertising.csv">Advertising</a> dataset to fit a multiple linear regressing model using <strong>TV</strong>, <strong>Radio</strong>, and <strong>newspaper</strong> as predictors and <strong>sales</strong> as a response, and plot the distribution of the <strong>bootstrapped</strong> estimates of the <strong>coefficients</strong> and the <strong>mean squared error (MSE)</strong> test score. <strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/05-cross-val-bootstrap/bootstrap.html#bootstrap-for-uncertainty-estimation">5.2.2</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
 </pre></div>
 </div>
 </div>
@@ -986,72 +986,72 @@ dtype: float64
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">resample</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+from sklearn.linear_model import LinearRegression
+from sklearn.utils import resample
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.metrics import mean_squared_error
 
-<span class="n">auto_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Advertising.csv&quot;</span>
+auto_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Advertising.csv&quot;
 
-<span class="n">ad_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">auto_url</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+ad_df = pd.read_csv(auto_url, na_values=&quot;?&quot;).dropna()
 
-<span class="c1"># Defining number of iterations for bootstrap resample</span>
-<span class="n">n_iterations</span> <span class="o">=</span> <span class="mi">1000</span>
+# Defining number of iterations for bootstrap resample
+n_iterations = 1000
 
-<span class="c1"># Initializing estimator</span>
-<span class="n">lin_reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+# Initializing estimator
+lin_reg = LinearRegression()
 
-<span class="c1"># Initializing DataFrame, to hold bootstrapped statistics</span>
-<span class="n">bootstrapped_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+# Initializing DataFrame, to hold bootstrapped statistics
+bootstrapped_stats = pd.DataFrame()
 
-<span class="c1"># Each loop iteration is a single bootstrap resample and model fit</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_iterations</span><span class="p">):</span>
+# Each loop iteration is a single bootstrap resample and model fit
+for i in range(n_iterations):
 
-    <span class="c1"># Sampling n_samples from data, with replacement, as train</span>
-    <span class="c1"># Defining test to be all observations not in train</span>
-    <span class="n">train</span> <span class="o">=</span> <span class="n">resample</span><span class="p">(</span><span class="n">ad_df</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">n_samples</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">ad_df</span><span class="p">))</span>
-    <span class="n">test</span> <span class="o">=</span> <span class="n">ad_df</span><span class="p">[</span><span class="o">~</span><span class="n">ad_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
+    # Sampling n_samples from data, with replacement, as train
+    # Defining test to be all observations not in train
+    train = resample(ad_df, replace=True, n_samples=len(ad_df))
+    test = ad_df[~ad_df.index.isin(train.index)]
 
-    <span class="n">X_train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;TV&quot;</span><span class="p">,</span> <span class="s2">&quot;Newspaper&quot;</span><span class="p">,</span> <span class="s2">&quot;Radio&quot;</span><span class="p">]]</span>
-    <span class="n">y_train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;Sales&quot;</span><span class="p">]]</span>
+    X_train = train.loc[:, [&quot;TV&quot;, &quot;Newspaper&quot;, &quot;Radio&quot;]]
+    y_train = train.loc[:, [&quot;Sales&quot;]]
 
-    <span class="n">X_test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;TV&quot;</span><span class="p">,</span> <span class="s2">&quot;Newspaper&quot;</span><span class="p">,</span> <span class="s2">&quot;Radio&quot;</span><span class="p">]]</span>
-    <span class="n">y_test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;Sales&quot;</span><span class="p">]]</span>
+    X_test = test.loc[:, [&quot;TV&quot;, &quot;Newspaper&quot;, &quot;Radio&quot;]]
+    y_test = test.loc[:, [&quot;Sales&quot;]]
 
-    <span class="c1"># Fitting linear regression model</span>
-    <span class="n">lin_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    # Fitting linear regression model
+    lin_reg.fit(X_train, y_train)
 
-    <span class="c1"># Storing stats in DataFrame, and concatenating with stats</span>
-    <span class="n">intercept</span> <span class="o">=</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">intercept_</span>
-    <span class="n">beta_tv</span> <span class="o">=</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">beta_newspaper</span> <span class="o">=</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">beta_radio</span> <span class="o">=</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
+    # Storing stats in DataFrame, and concatenating with stats
+    intercept = lin_reg.intercept_
+    beta_tv = lin_reg.coef_.ravel()[0]
+    beta_newspaper = lin_reg.coef_.ravel()[1]
+    beta_radio = lin_reg.coef_.ravel()[2]
 
-    <span class="n">pred</span> <span class="o">=</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-    <span class="n">MSE</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
+    pred = lin_reg.predict(X_test)
+    MSE = mean_squared_error(y_test, pred)
 
-    <span class="n">bootstrapped_stats_i</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-        <span class="n">data</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
-            <span class="n">intercept</span><span class="o">=</span><span class="n">intercept</span><span class="p">,</span>
-            <span class="n">beta_tv</span><span class="o">=</span><span class="n">beta_tv</span><span class="p">,</span>
-            <span class="n">beta_newspaper</span><span class="o">=</span><span class="n">beta_newspaper</span><span class="p">,</span>
-            <span class="n">beta_radio</span><span class="o">=</span><span class="n">beta_radio</span><span class="p">,</span>
-            <span class="n">MSE</span><span class="o">=</span><span class="n">MSE</span><span class="p">,</span>
-        <span class="p">)</span>
-    <span class="p">)</span>
+    bootstrapped_stats_i = pd.DataFrame(
+        data=dict(
+            intercept=intercept,
+            beta_tv=beta_tv,
+            beta_newspaper=beta_newspaper,
+            beta_radio=beta_radio,
+            MSE=MSE,
+        )
+    )
 
-    <span class="n">bootstrapped_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">objs</span><span class="o">=</span><span class="p">[</span><span class="n">bootstrapped_stats</span><span class="p">,</span> <span class="n">bootstrapped_stats_i</span><span class="p">])</span>
+    bootstrapped_stats = pd.concat(objs=[bootstrapped_stats, bootstrapped_stats_i])
 
-<span class="c1"># Plotting histograms</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">bootstrapped_stats</span><span class="p">[</span><span class="s2">&quot;intercept&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;royalblue&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">bootstrapped_stats</span><span class="p">[</span><span class="s2">&quot;beta_tv&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;olive&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">bootstrapped_stats</span><span class="p">[</span><span class="s2">&quot;beta_newspaper&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gold&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">bootstrapped_stats</span><span class="p">[</span><span class="s2">&quot;beta_radio&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">bootstrapped_stats</span><span class="p">[</span><span class="s2">&quot;MSE&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;teal&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+# Plotting histograms
+fig, axes = plt.subplots(1, 5, figsize=(18, 5))
+sns.histplot(bootstrapped_stats[&quot;intercept&quot;], color=&quot;royalblue&quot;, ax=axes[0], kde=True)
+sns.histplot(bootstrapped_stats[&quot;beta_tv&quot;], color=&quot;olive&quot;, ax=axes[1], kde=True)
+sns.histplot(bootstrapped_stats[&quot;beta_newspaper&quot;], color=&quot;gold&quot;, ax=axes[2], kde=True)
+sns.histplot(bootstrapped_stats[&quot;beta_radio&quot;], color=&quot;red&quot;, ax=axes[3], kde=True)
+sns.histplot(bootstrapped_stats[&quot;MSE&quot;], color=&quot;teal&quot;, ax=axes[4], kde=True)
+plt.show()
 </pre></div>
 </div>
 </div>

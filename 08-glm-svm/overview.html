@@ -594,58 +594,60 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="admonition-objectives admonition">
 <p class="admonition-title">Objectives</p>
 <ul class="simple">
-<li><p>Understand the relationships between linear regression, poisson regression, and logistic regression under GLM framework.</p></li>
-<li><p>Understand the basic concepts of support vector machine.</p></li>
-<li><p>Apply support vector machine in training and testing a classification model.</p></li>
-<li><p>Evaluate the performance of a classifier using ROC curve and confusion matrix.</p></li>
-<li><p>Interpret the results of a SVM classifier.</p></li>
+<li><p>Understand linear, poisson, and logistic regression as generalised linear models (GLMs).</p></li>
+<li><p>Apply GLMs to real-world problems and interpret the results.</p></li>
+<li><p>Understand the basic concepts of support vector machine (SVM).</p></li>
+<li><p>Apply SVM to real-world problems and interpret the results.</p></li>
 </ul>
 </div>
+<!-- - Evaluate the performance of a classifier using ROC curve and confusion matrix. -->
 <p><strong>Expected time to complete</strong>: 4 hours</p>
-<p>In this chapter, we will introduce generalised linear models (GLMs) and support vector machines (SVMs). GLM is a a flexible generalisation of ordinary linear regression. The GLM generalises linear regression by allowing the linear model to be related to the response variable via a link function and by allowing the magnitude of the variance of each measurement to be a function of its predicted value. It is a general framework that includes linear regression, poisson regression, logistic regression, and many other regression models.</p>
-<p>SVM is an approach for classification that was developed in the computer science community in the 1990s and that has grown in popularity since then. SVMs have been shown to perform well in a variety of settings, and are often considered one of the best “out of the box” classifiers.</p>
+<p>In this chapter, we will study <a class="reference external" href="https://en.wikipedia.org/wiki/Generalized_linear_model">generalised linear models (GLMs)</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Support_vector_machine">support vector machines (SVMs)</a>.</p>
+<p>GLM is a a flexible generalisation of <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/overview.html">linear regression</a> to allow the linear model to be related to the response variable in a more complex way than a simple relationship. The <a class="reference external" href="https://pykale.github.io/transparentML/03-logistic-reg/overview.html">logistic regression</a> in Chapter 3 is such a generalised linear model. In this chapter, we will another GLM, the <a class="reference external" href="https://en.wikipedia.org/wiki/Poisson_regression">poisson regression</a>, which can deal with count data.</p>
+<p>SVM is a supervised machine learning model that was developed for classification problems but can be used for regression problems as well. In binary classification, it embodies the idea of finding a hyperplane that best separates the classes by maximising the margin between the hyperplane and the nearest data points from the two classes. SVM has been shown to perform well in a variety of settings, and is often considered one of the best “out of the box” classifiers.</p>
+<!-- SVM is an approach for classification that was developed in the computer science community in the 1990s and that has grown in popularity since then.  -->
 <div class="admonition-ingredients-poisson-regression admonition">
 <p class="admonition-title">Ingredients: Poisson regression</p>
 <ul class="simple">
 <li><p>Input: features of data samples</p></li>
-<li><p>Output: target values of data samples</p></li>
-<li><p>Model: fit a line (or plane/hyperplane) to the training data and assign the value on the fitted line (or plane/hyperplane) to the test data</p>
+<li><p>Output: target values of data samples in the form of counts (integers)</p></li>
+<li><p>Model: transform the target values (counts) to its probability of occurrence modelled by a <a class="reference external" href="https://en.wikipedia.org/wiki/Poisson_distribution">Poisson distribution</a> and fit a line (or plane/hyperplane) to the transformed training data and map the value on the fitted line (or plane/hyperplane) for the test data to a count value via the inverse of the Poisson distribution</p>
 <ul>
-<li><p>Hyperparameter(s): None</p></li>
+<li><p>Hyperparameter(s): <span class="math notranslate nohighlight">\(\lambda\)</span>, the rate parameter of the Poisson distribution</p></li>
 <li><p>Parameters: the intercept(s) and slope(s) of the fitted line (or plane/hyperplane), also known as the bias(es) and weight(s), respectively</p></li>
 </ul>
 </li>
-<li><p>Loss function: maximise the likelihood (probability) of the log of the target values given the training data points.</p></li>
-<li><p>Learning algorithm: Gradient descent on the negative log likelihood (or cross-entropy)</p></li>
+<li><p>Loss function: maximise the likelihood (probability) of the log of the target values for the training data points.</p></li>
+<li><p>Learning algorithm: Gradient descent on the negative log likelihood of the training data points</p></li>
 </ul>
 </div>
 <div class="admonition-transparency-poisson-regression admonition">
 <p class="admonition-title">Transparency: Poisson regression</p>
 <p>System logic</p>
 <ul class="simple">
-<li><p>Condition to produce certain output: to produce an output <span class="math notranslate nohighlight">\(y\)</span>, locate this <span class="math notranslate nohighlight">\(\log(y)\)</span> value on the fitted line (or plane/hyperplane) and then find the corresponding input <span class="math notranslate nohighlight">\(x\)</span> (or <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>) value</p></li>
+<li><p>Condition to produce certain output: to produce an output count <span class="math notranslate nohighlight">\(y\)</span>, transform the count to its probability of occurrence modelled by a Poisson distribution with rate parameter <span class="math notranslate nohighlight">\(\lambda\)</span>, locate this probability on the fitted line (or plane/hyperplane) and then find the corresponding input <span class="math notranslate nohighlight">\(x\)</span> (or <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>) value.</p></li>
 </ul>
 </div>
-<div class="admonition-ingredients-svm admonition">
-<p class="admonition-title">Ingredients: SVM</p>
+<div class="admonition-ingredients-svm-for-binary-classification admonition">
+<p class="admonition-title">Ingredients: SVM for binary classification</p>
 <ul class="simple">
 <li><p>Input: features of data samples.</p></li>
-<li><p>Output: class labels of data samples.</p></li>
+<li><p>Output: binary class labels of data samples.</p></li>
 <li><p>Model: fit a plane/hyperplane to the training data to separate the data points by their class labels with the largest margin.</p>
 <ul>
-<li><p>Hyperparameter(s): <span class="math notranslate nohighlight">\(C\)</span> for controlling the trade-off between the margin and the misclassification/margin violation penalty. Other hyper-parameters include the kernel type and the kernel parameters.</p></li>
-<li><p>Parameter(s): Intercept (<span class="math notranslate nohighlight">\(\beta_0\)</span>) and coefficients (<span class="math notranslate nohighlight">\(\alpha_1, \alpha_2, \ldots, \alpha_N\)</span>) for each training observation.</p></li>
+<li><p>Hyperparameter(s): <span class="math notranslate nohighlight">\(\lambda\)</span> for controlling the trade-off between the margin and the misclassification/margin violation penalty. If a kernel is used, related hyperparameters include the kernel type and the kernel parameters.</p></li>
+<li><p>Parameter(s): Intercept (<span class="math notranslate nohighlight">\(\beta_0\)</span>) and coefficients (<span class="math notranslate nohighlight">\(\alpha_1, \alpha_2, \ldots, \alpha_N\)</span>) for each training data sample.</p></li>
 </ul>
 </li>
 <li><p>Loss function: maximises the margin and minimises the misclassification/margin violation penalty.</p></li>
 <li><p>Learning algorithm: quadratic programming.</p></li>
 </ul>
 </div>
-<div class="admonition-transparency-svm admonition">
-<p class="admonition-title">Transparency: SVM</p>
+<div class="admonition-transparency-svm-for-binary-classification admonition">
+<p class="admonition-title">Transparency: SVM for binary classification</p>
 <p>System logic</p>
 <ul class="simple">
-<li><p>Condition to produce certain output: to produce an output <span class="math notranslate nohighlight">\(y\)</span>, find out this class on which side of the fitted hyperplane, and then all corresponding data points <span class="math notranslate nohighlight">\(x\)</span> (or <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>) on this side of the hyperplane will be classified as <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+<li><p>Condition to produce certain output: to produce a class label <span class="math notranslate nohighlight">\(y\)</span>, find out on which side of the fitted hyperplane this class label is located, and then all corresponding data points <span class="math notranslate nohighlight">\(x\)</span> (or <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>) on this side of the hyperplane will be likely candidates to produce a label <span class="math notranslate nohighlight">\(y\)</span>, the further away from the hyperplane, the more likely.</p></li>
 </ul>
 </div>
 <!-- - What input to produce certain output:

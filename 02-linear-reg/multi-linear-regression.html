@@ -759,7 +759,7 @@ const thebe_selector_output = ".output, .cell_output"
 <!-- The following `matplotlib` upgrade is necessary when using Google Colab (as of 19/11/2022) for this notebook. You may comment it if you are running the code locally on your own computer: --><p>If you are using Google Colab, please uncomment the following code to update the version of <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>. Once complete, click the <code class="docutils literal notranslate"><span class="pre">RESTART</span> <span class="pre">RUNTIME</span></code> button to restart the runtime in order to use newly installed versions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install mpl_toolkits statsmodels</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># !pip install mpl_toolkits statsmodels
 </pre></div>
 </div>
 </div>
@@ -770,16 +770,16 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Get ready by importing the APIs needed from respective libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ../standard_import.txt</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">axes3d</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># %load ../standard_import.txt
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import axes3d
 
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-<span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
+from sklearn.linear_model import LinearRegression
+from statsmodels.formula.api import ols
 
-<span class="o">%</span><span class="k">matplotlib</span> inline
+%matplotlib inline
 </pre></div>
 </div>
 </div>
@@ -788,8 +788,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Load the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Advertising.csv">Advertising dataset</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Advertising.csv&quot;</span>
-<span class="n">advertising_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Advertising.csv&quot;
+advertising_df = pd.read_csv(data_url, header=0, index_col=0)
 </pre></div>
 </div>
 </div>
@@ -798,8 +798,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>The following code runs a simple linear regression model of <code class="docutils literal notranslate"><span class="pre">radio</span></code>, and <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> onto <code class="docutils literal notranslate"><span class="pre">sales</span></code> using <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code>, respectively (Table 3.3 in the textbook).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Sales ~ Radio&quot;</span><span class="p">,</span> <span class="n">advertising_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">est</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>est = ols(&quot;Sales ~ Radio&quot;, advertising_df).fit()
+est.summary().tables[1]
 </pre></div>
 </div>
 </div>
@@ -818,8 +818,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Sales ~ Newspaper&quot;</span><span class="p">,</span> <span class="n">advertising_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">est</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>est = ols(&quot;Sales ~ Newspaper&quot;, advertising_df).fit()
+est.summary().tables[1]
 </pre></div>
 </div>
 </div>
@@ -838,42 +838,42 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>However, fitting a separate simple linear regression model for each predictor is problematic: 1) It is unclear how to make a single prediction given the three advertising media budgets; 2) each separate linear regression model ignores  the effect of the other two predictors, which can lead to misleading estimates.</p>
 <p>A better approach is to use <em>multiple linear regression</em>. Multiple linear regression is an extension of simple linear regression. It allows us to predict a quantitative response using more than one predictor variable. The equation for a multiple linear regression model with <span class="math notranslate nohighlight">\(D\)</span> predictor variables is given by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-889787a3-74ae-4abc-9df2-1cf1854d760a">
-<span class="eqno">(2.13)<a class="headerlink" href="#equation-889787a3-74ae-4abc-9df2-1cf1854d760a" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8275f4a0-b8aa-4559-868f-65eefe7e52b4">
+<span class="eqno">(2.13)<a class="headerlink" href="#equation-8275f4a0-b8aa-4559-868f-65eefe7e52b4" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_D x_D + \epsilon,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(y\)</span> is the response, <span class="math notranslate nohighlight">\(x_1, x_2, ..., x_D\)</span> are the <span class="math notranslate nohighlight">\(D\)</span> predictors, <span class="math notranslate nohighlight">\(D\)</span> is the total number of predictor variables (features), and <span class="math notranslate nohighlight">\(\epsilon\)</span> is the error term. The <span class="math notranslate nohighlight">\(\beta\)</span>s are called the <em>regression coefficients</em>, where <span class="math notranslate nohighlight">\(\beta_0\)</span> is the bias (intercept), and <span class="math notranslate nohighlight">\(\beta_1, \beta_2, ..., \beta_D\)</span> are the weights (slopes). Considering <span class="math notranslate nohighlight">\(N\)</span> samples, the equation can be written in matrix form as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f0f1dc76-9338-4c2c-8db7-1a97b91fc167">
-<span class="eqno">(2.14)<a class="headerlink" href="#equation-f0f1dc76-9338-4c2c-8db7-1a97b91fc167" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4321fd47-8186-4eb1-8b95-097253d16411">
+<span class="eqno">(2.14)<a class="headerlink" href="#equation-4321fd47-8186-4eb1-8b95-097253d16411" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \mathbf{y} = \mathbf{X} \boldsymbol{\beta} + \boldsymbol{\epsilon},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> is an <span class="math notranslate nohighlight">\(N \times 1\)</span> vector of responses, <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> is an <span class="math notranslate nohighlight">\(N \times (D+1)\)</span> matrix of predictors, <span class="math notranslate nohighlight">\(\boldsymbol{\beta}\)</span> is a <span class="math notranslate nohighlight">\((D+1) \times 1\)</span> vector of regression coefficients, and <span class="math notranslate nohighlight">\(\boldsymbol{\epsilon}\)</span> is an <span class="math notranslate nohighlight">\(N \times 1\)</span> vector of errors. The predictor (feature) matrix <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> contains a column of 1s to account for the intercept. The vector <span class="math notranslate nohighlight">\(\boldsymbol{\beta}\)</span> contains the intercept in the first position and the slopes for the remaining <span class="math notranslate nohighlight">\(D\)</span> predictors. The vector <span class="math notranslate nohighlight">\(\boldsymbol{\epsilon}\)</span> contains the error terms for each observation.</p>
 <p>Using the <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> dataset as an example, we can fit a multiple linear regression model to the three predictor variables <code class="docutils literal notranslate"><span class="pre">TV</span></code>, <code class="docutils literal notranslate"><span class="pre">radio</span></code>, and <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> to predict <code class="docutils literal notranslate"><span class="pre">sales</span></code> as follows:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6e7e6e95-29e9-4bdf-bcb7-84e2f8a0c6da">
-<span class="eqno">(2.15)<a class="headerlink" href="#equation-6e7e6e95-29e9-4bdf-bcb7-84e2f8a0c6da" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-927f3069-f939-462d-ab5c-354211bd9b93">
+<span class="eqno">(2.15)<a class="headerlink" href="#equation-927f3069-f939-462d-ab5c-354211bd9b93" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{Sales} = \beta_0 + \beta_1 \times \text{TV} + \beta_2 \times \text{Radio} + \beta_3 \times \text{Newspaper} + \epsilon.
 \end{equation}\]</div>
 </div>
 <div class="section" id="estimating-the-regression-coefficients">
 <h2><span class="section-number">2.2.3. </span>Estimating the regression coefficients<a class="headerlink" href="#estimating-the-regression-coefficients" title="Permalink to this headline">¶</a></h2>
 <p>Similar to simple linear regression, we can estimate the regression coefficients using least squares. The least squares estimates for the regression coefficients are given by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dccd0e22-ba52-436e-8d5d-e8bf2d984b2e">
-<span class="eqno">(2.16)<a class="headerlink" href="#equation-dccd0e22-ba52-436e-8d5d-e8bf2d984b2e" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a31ec370-fcbb-4f34-8b95-403eb1beaafd">
+<span class="eqno">(2.16)<a class="headerlink" href="#equation-a31ec370-fcbb-4f34-8b95-403eb1beaafd" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \text{RSS} = &amp; \sum_{i=1}^N (y_i - \hat{y}_i)^2 \\
 = &amp; \sum_{i=1}^N (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_{i1} - \hat{\beta}_2 x_{i2} - ... - \hat{\beta}_D x_{iD})^2,
 \end{aligned}
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>th response, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>th predicted response, <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> is the intercept, <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> is the slope for <span class="math notranslate nohighlight">\(x_{i1}\)</span>, <span class="math notranslate nohighlight">\(\hat{\beta}_2\)</span> is the slope for <span class="math notranslate nohighlight">\(x_{i2}\)</span>, and so on. <span class="math notranslate nohighlight">\(\hat{\beta}\)</span>s are the least squares estimates for the regression coefficients, which can be obtained in matrix form as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5c20eb7f-f7f2-4431-990d-4aa381f6f5d3">
-<span class="eqno">(2.17)<a class="headerlink" href="#equation-5c20eb7f-f7f2-4431-990d-4aa381f6f5d3" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c831cc5e-3c6f-4503-ba03-3295cd21dbef">
+<span class="eqno">(2.17)<a class="headerlink" href="#equation-c831cc5e-3c6f-4503-ba03-3295cd21dbef" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{\boldsymbol{\beta}} = (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{y}.
 \end{equation}\]</div>
 <p>The following code run a multiple linear regression model to regress <code class="docutils literal notranslate"><span class="pre">TV</span></code>, <code class="docutils literal notranslate"><span class="pre">radio</span></code>, and <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> onto <code class="docutils literal notranslate"><span class="pre">sales</span></code> using <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code>, and display the learnt coefficients (Table 3.4 in the textbook).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Sales ~ TV + Radio + Newspaper&quot;</span><span class="p">,</span> <span class="n">advertising_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">est</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>est = ols(&quot;Sales ~ TV + Radio + Newspaper&quot;, advertising_df).fit()
+est.summary()
 </pre></div>
 </div>
 </div>
@@ -890,10 +890,10 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_D x_D + \epsilon,
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   570.3</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Mon, 28 Nov 2022</td> <th>  Prob (F-statistic):</th> <td>1.58e-96</td>
+  <th>Date:</th>             <td>Tue, 29 Nov 2022</td> <th>  Prob (F-statistic):</th> <td>1.58e-96</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>13:17:09</td>     <th>  Log-Likelihood:    </th> <td> -386.18</td>
+  <th>Time:</th>                 <td>10:47:31</td>     <th>  Log-Likelihood:    </th> <td> -386.18</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   200</td>      <th>  AIC:               </th> <td>   780.4</td>
@@ -960,7 +960,7 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_D x_D + \epsilon,
 <p>Why the relationship between <code class="docutils literal notranslate"><span class="pre">sales</span></code> and <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> are opposite in the simple linear regression and multiple linear regression? Use following code displays the correlation matrix of the <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> dataset for further analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">advertising_df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>advertising_df.corr()
 </pre></div>
 </div>
 </div>
@@ -1043,8 +1043,8 @@ H_0: \beta_1 = \beta_2 = ... = \beta_D = 0.
 H_1: \text{at least one of the regression coefficients is non-zero}. 
 \]</div>
 <p>This hypothesis test is performed by computing the <a class="reference external" href="https://en.wikipedia.org/wiki/F-test"><span class="math notranslate nohighlight">\(F\)</span>-statistic</a>, which is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-df7e6d12-fc0e-4952-a47a-0bf67cc7cdb5">
-<span class="eqno">(2.18)<a class="headerlink" href="#equation-df7e6d12-fc0e-4952-a47a-0bf67cc7cdb5" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1a0321f6-8e5f-43c3-8eaf-fe7c349ef42e">
+<span class="eqno">(2.18)<a class="headerlink" href="#equation-1a0321f6-8e5f-43c3-8eaf-fe7c349ef42e" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 F = \frac{(\text{TSS} - \text{RSS})/D}{\text{RSS}/(N-D-1)},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\text{TSS} = \sum(y_i - \bar{y})^2\)</span> and <span class="math notranslate nohighlight">\(\text{RSS} = \sum(y_i - \hat{y}_i)^2\)</span>. Remember, <span class="math notranslate nohighlight">\(y_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>th target, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>th prediction and <span class="math notranslate nohighlight">\(\bar{y}\)</span> is the sample mean. When there is no relationship between the response and predictors, one would expect the <span class="math notranslate nohighlight">\(F\)</span>-statistic to take on a value close to 1. On the other hand, if <span class="math notranslate nohighlight">\(H_1\)</span> a is true, we can expect <span class="math notranslate nohighlight">\(F\)</span> to be greater than 1.</p>
@@ -1072,14 +1072,14 @@ F = \frac{(\text{TSS} - \text{RSS})/D}{\text{RSS}/(N-D-1)},
 <div class="section" id="how-well-does-the-model-fit-the-data">
 <h3><span class="section-number">2.2.5.3. </span>How well does the model fit the data?<a class="headerlink" href="#how-well-does-the-model-fit-the-data" title="Permalink to this headline">¶</a></h3>
 <p>Similar to simple linear regression. We can answer this question by computing the <span class="math notranslate nohighlight">\(R^2\)</span> and RSE statistics. The <span class="math notranslate nohighlight">\(R^2\)</span> for multiple linear regression is defined in the same way as in simple linear regression as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-433fb56d-57a2-490b-b8ff-e19d677166a5">
-<span class="eqno">(2.19)<a class="headerlink" href="#equation-433fb56d-57a2-490b-b8ff-e19d677166a5" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d8287c6a-af5f-4d8d-b62e-b74e975742d0">
+<span class="eqno">(2.19)<a class="headerlink" href="#equation-d8287c6a-af5f-4d8d-b62e-b74e975742d0" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 R^2 = 1 - \frac{\text{RSS}}{\text{TSS}} = 1 - \frac{\sum(y_i - \hat{y}_i)^2}{\sum(y_i - \bar{y})^2}.
 \end{equation}\]</div>
 <p>The <span class="math notranslate nohighlight">\(R^2\)</span> statistic provides an indication of the proportion of the variance in the response that is predictable from the predictors. In this case, the <span class="math notranslate nohighlight">\(R^2\)</span> statistic is 0.897, which indicates that 89.7% of the variance in <code class="docutils literal notranslate"><span class="pre">sales</span></code> is predictable from <code class="docutils literal notranslate"><span class="pre">TV</span></code>, <code class="docutils literal notranslate"><span class="pre">radio</span></code>, and <code class="docutils literal notranslate"><span class="pre">newspaper</span></code>.</p>
 <p>The RSE for multiple linear regression is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b581866c-278c-464c-b5cc-f14b85e65dde">
-<span class="eqno">(2.20)<a class="headerlink" href="#equation-b581866c-278c-464c-b5cc-f14b85e65dde" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-587530b6-230b-4506-9204-272d4735059d">
+<span class="eqno">(2.20)<a class="headerlink" href="#equation-587530b6-230b-4506-9204-272d4735059d" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{RSE} = \sqrt{\frac{\text{RSS}}{N-D-1}} = \sqrt{\frac{\sum(y_i - \hat{y}_i)^2}{N-D-1}}.
 \end{equation}\]</div>
 <p>You can verify that when <span class="math notranslate nohighlight">\(D=1\)</span>, the RSE for multiple linear regression is the same as the RSE for <a class="reference internal" href="simple-linear-regression.html"><span class="doc">simple linear regression</span></a>.</p>
@@ -1087,14 +1087,14 @@ R^2 = 1 - \frac{\text{RSS}}{\text{TSS}} = 1 - \frac{\sum(y_i - \hat{y}_i)^2}{\su
 <p>Firstly, fit a linear regression to <code class="docutils literal notranslate"><span class="pre">sales</span></code> using <code class="docutils literal notranslate"><span class="pre">TV</span></code> and <code class="docutils literal notranslate"><span class="pre">radio</span></code> as predictors.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>regr = LinearRegression()
 
-<span class="n">X</span> <span class="o">=</span> <span class="n">advertising_df</span><span class="p">[[</span><span class="s2">&quot;Radio&quot;</span><span class="p">,</span> <span class="s2">&quot;TV&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">advertising_df</span><span class="o">.</span><span class="n">Sales</span>
+X = advertising_df[[&quot;Radio&quot;, &quot;TV&quot;]].values
+y = advertising_df.Sales
 
-<span class="n">regr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+regr.fit(X, y)
+print(regr.coef_)
+print(regr.intercept_)
 </pre></div>
 </div>
 </div>
@@ -1108,7 +1108,7 @@ R^2 = 1 - \frac{\text{RSS}}{\text{TSS}} = 1 - \frac{\sum(y_i - \hat{y}_i)^2}{\su
 <p>Find out the min/max values of Radio &amp; TV to set up the grid (range) for plotting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">advertising_df</span><span class="p">[[</span><span class="s2">&quot;Radio&quot;</span><span class="p">,</span> <span class="s2">&quot;TV&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>advertising_df[[&quot;Radio&quot;, &quot;TV&quot;]].describe()
 </pre></div>
 </div>
 </div>
@@ -1183,16 +1183,16 @@ R^2 = 1 - \frac{\text{RSS}}{\text{TSS}} = 1 - \frac{\sum(y_i - \hat{y}_i)^2}{\su
 <p>Create a coordinate grid</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">radio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">tv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>radio = np.arange(0, 50)
+tv = np.arange(0, 300)
 
-<span class="n">beta_1</span><span class="p">,</span> <span class="n">beta_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">radio</span><span class="p">,</span> <span class="n">tv</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s2">&quot;xy&quot;</span><span class="p">)</span>
-<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">tv</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">radio</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+beta_1, beta_2 = np.meshgrid(radio, tv, indexing=&quot;xy&quot;)
+Z = np.zeros((tv.size, radio.size))
 
-<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">ndenumerate</span><span class="p">(</span><span class="n">Z</span><span class="p">):</span>
-    <span class="n">Z</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="n">beta_1</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">beta_2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="p">)</span>
+for (i, j), v in np.ndenumerate(Z):
+    Z[i, j] = (
+        regr.intercept_ + beta_1[i, j] * regr.coef_[0] + beta_2[i, j] * regr.coef_[1]
+    )
 </pre></div>
 </div>
 </div>
@@ -1200,22 +1200,22 @@ R^2 = 1 - \frac{\text{RSS}}{\text{TSS}} = 1 - \frac{\sum(y_i - \hat{y}_i)^2}{\su
 <p>Create 3D plot of <code class="docutils literal notranslate"><span class="pre">sales</span></code> vs <code class="docutils literal notranslate"><span class="pre">TV</span></code> and <code class="docutils literal notranslate"><span class="pre">radio</span></code>.</p>
 <!-- [ToDo] If possible, change the following to stem plot, such as in the [stem3d_demo](https://matplotlib.org/stable/gallery/mplot3d/stem3d_demo.html) to better visualisation as the textbook. --><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create plot</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Regression: Sales ~ Radio + TV Advertising&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Create plot
+fig = plt.figure(figsize=(10, 6))
+fig.suptitle(&quot;Regression: Sales ~ Radio + TV Advertising&quot;, fontsize=20)
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">axes3d</span><span class="o">.</span><span class="n">Axes3D</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">auto_add_to_figure</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+ax = axes3d.Axes3D(fig, auto_add_to_figure=False)
+fig.add_axes(ax)
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">beta_1</span><span class="p">,</span> <span class="n">beta_2</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">rstride</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter3D</span><span class="p">(</span><span class="n">advertising_df</span><span class="o">.</span><span class="n">Radio</span><span class="p">,</span> <span class="n">advertising_df</span><span class="o">.</span><span class="n">TV</span><span class="p">,</span> <span class="n">advertising_df</span><span class="o">.</span><span class="n">Sales</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+ax.plot_surface(beta_1, beta_2, Z, rstride=10, cstride=5, alpha=0.4)
+ax.scatter3D(advertising_df.Radio, advertising_df.TV, advertising_df.Sales, c=&quot;r&quot;)
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Radio&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;TV&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;Sales&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+ax.set_xlabel(&quot;Radio&quot;)
+ax.set_xlim(0, 50)
+ax.set_ylabel(&quot;TV&quot;)
+ax.set_ylim(bottom=0)
+ax.set_zlabel(&quot;Sales&quot;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1228,8 +1228,8 @@ R^2 = 1 - \frac{\text{RSS}}{\text{TSS}} = 1 - \frac{\sum(y_i - \hat{y}_i)^2}{\su
 <h3><span class="section-number">2.2.5.4. </span>Given a set of predictor values, what response value should we predict, and how accurate is our prediction?<a class="headerlink" href="#given-a-set-of-predictor-values-what-response-value-should-we-predict-and-how-accurate-is-our-prediction" title="Permalink to this headline">¶</a></h3>
 <!-- **[Advanced, add more content of prediction interval/or remove this sub-section later]** -->
 <p>Once we have fit a multiple linear regression model, we can use the model to make predictions of the response for a given set of predictor values.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-14ef9db2-abba-4d61-bb6b-aa9ddd4f9d34">
-<span class="eqno">(2.21)<a class="headerlink" href="#equation-14ef9db2-abba-4d61-bb6b-aa9ddd4f9d34" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d65ff375-42d3-4032-ae23-3ccd929b3e59">
+<span class="eqno">(2.21)<a class="headerlink" href="#equation-d65ff375-42d3-4032-ae23-3ccd929b3e59" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_D x_D.
 \end{equation}\]</div>
 <p>However, we must be careful when making predictions, because the observed values of the predictors may not have been part of the data used to fit the model. In this case, the prediction may not be very accurate and using a confidence interval can help quantify the uncertainty associated with the prediction.</p>
@@ -1240,7 +1240,7 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_D x_D.
 <p><strong>1</strong>. All the following exercises involve the use of <strong><a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Carseats.csv">Carseats</a></strong> dataset. Fit a multiple regression model to predict <strong>Sales</strong> using <strong>Price</strong>, <strong>Income</strong>, and <strong>CompPrice</strong>. <strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/multi-linear-regression.html#important-questions-in-multiple-linear-regression">2.2.5</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
 </pre></div>
 </div>
 </div>
@@ -1248,30 +1248,30 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_D x_D.
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LinearRegression
 
-<span class="c1"># Load data</span>
-<span class="n">carseats_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
-    <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Carseats.csv&quot;</span>
-<span class="p">)</span>
+# Load data
+carseats_df = pd.read_csv(
+    &quot;https://github.com/pykale/transparentML/raw/main/data/Carseats.csv&quot;
+)
 
-<span class="n">regr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+regr = LinearRegression()
 
-<span class="n">X</span> <span class="o">=</span> <span class="n">carseats_df</span><span class="p">[[</span><span class="s2">&quot;Price&quot;</span><span class="p">,</span> <span class="s2">&quot;Income&quot;</span><span class="p">,</span> <span class="s2">&quot;CompPrice&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">carseats_df</span><span class="o">.</span><span class="n">Sales</span>
+X = carseats_df[[&quot;Price&quot;, &quot;Income&quot;, &quot;CompPrice&quot;]].values
+y = carseats_df.Sales
 
-<span class="n">regr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Regression model slop/coeffcient (weight):&quot;</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Regression model intercept (bias):&quot;</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+regr.fit(X, y)
+print(&quot;Regression model slop/coeffcient (weight):&quot;, regr.coef_)
+print(&quot;Regression model intercept (bias):&quot;, regr.intercept_)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Regression model slop/coeffcient (weight): [-0.08719674  0.01525145  0.09278583]
-Regression model intercept (bias): 4.95023560366637
+Regression model intercept (bias): 4.950235603666373
 </pre></div>
 </div>
 </div>
@@ -1279,7 +1279,7 @@ Regression model intercept (bias): 4.95023560366637
 <p><strong>i</strong>. How well does the model fit the data?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
 </pre></div>
 </div>
 </div>
@@ -1287,12 +1287,12 @@ Regression model intercept (bias): 4.95023560366637
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.metrics import mean_squared_error, r2_score
 
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R2 score:&quot;</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+y_pred = regr.predict(X)
+print(&quot;R2 score:&quot;, r2_score(y, y_pred))
 
-<span class="c1"># The model didn&#39;t fit the data well as the R2 score is still way below 1.</span>
+# The model didn&#39;t fit the data well as the R2 score is still way below 1.
 </pre></div>
 </div>
 </div>
@@ -1315,7 +1315,7 @@ Regression model intercept (bias): 4.95023560366637
 <p><strong>2</strong>. Find the correlation between <strong>Sales, Price, Income, and CompPrice</strong> and interpret the result. <strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/multi-linear-regression.html#interpreting-the-results">2.2.4</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
 </pre></div>
 </div>
 </div>
@@ -1323,9 +1323,9 @@ Regression model intercept (bias): 4.95023560366637
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carseats_df</span><span class="p">[[</span><span class="s2">&quot;Sales&quot;</span><span class="p">,</span> <span class="s2">&quot;Price&quot;</span><span class="p">,</span> <span class="s2">&quot;Income&quot;</span><span class="p">,</span> <span class="s2">&quot;CompPrice&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>carseats_df[[&quot;Sales&quot;, &quot;Price&quot;, &quot;Income&quot;, &quot;CompPrice&quot;]].corr()
 
-<span class="c1"># The correlation between Price and CompPrice is 0.58, which is much higher than the other pair-wise correlations. This indicates that by increasing the component price(Price) of a caraseat, there is a tendency for the overall price(CompPrice) to increase as well.</span>
+# The correlation between Price and CompPrice is 0.58, which is much higher than the other pair-wise correlations. This indicates that by increasing the component price(Price) of a caraseat, there is a tendency for the overall price(CompPrice) to increase as well.
 </pre></div>
 </div>
 </div>
@@ -1390,7 +1390,7 @@ Regression model intercept (bias): 4.95023560366637
 <p><strong>3</strong>. Perform a multiple linear regression using <strong>statsmodels</strong> library with <strong>Sales</strong> as the response and <strong>Price</strong>, <strong>Income</strong>, and <strong>CompPrice</strong> as predictors. Use the <strong>summary()</strong> function to print the results. Compare the regression coefficients/weights with <strong>Exercise 1</strong>. <strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/multi-linear-regression.html#estimating-the-regression-coefficients">2.2.3</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
 </pre></div>
 </div>
 </div>
@@ -1398,16 +1398,16 @@ Regression model intercept (bias): 4.95023560366637
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">patsy</span>
-<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import patsy
+import statsmodels.api as sm
 
-<span class="n">f</span> <span class="o">=</span> <span class="s2">&quot;Sales ~ Price + Income + CompPrice&quot;</span>
-<span class="n">y</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">patsy</span><span class="o">.</span><span class="n">dmatrices</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">carseats_df</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s2">&quot;dataframe&quot;</span><span class="p">)</span>
+f = &quot;Sales ~ Price + Income + CompPrice&quot;
+y, X = patsy.dmatrices(f, carseats_df, return_type=&quot;dataframe&quot;)
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+model = sm.OLS(y, X).fit()
+print(model.summary())
 
-<span class="c1"># The regression coeffcients are same as scikit learn model</span>
+# The regression coeffcients are same as scikit learn model
 </pre></div>
 </div>
 </div>
@@ -1417,8 +1417,8 @@ Regression model intercept (bias): 4.95023560366637
 Dep. Variable:                  Sales   R-squared:                       0.381
 Model:                            OLS   Adj. R-squared:                  0.376
 Method:                 Least Squares   F-statistic:                     81.08
-Date:                Mon, 28 Nov 2022   Prob (F-statistic):           6.52e-41
-Time:                        13:17:09   Log-Likelihood:                -886.58
+Date:                Tue, 29 Nov 2022   Prob (F-statistic):           6.52e-41
+Time:                        10:47:32   Log-Likelihood:                -886.58
 No. Observations:                 400   AIC:                             1781.
 Df Residuals:                     396   BIC:                             1797.
 Df Model:                           3                                         
@@ -1448,7 +1448,7 @@ strong multicollinearity or other numerical problems.
 <p><strong>4</strong>. From the <strong>Exercise 3</strong> fitted model, for which predictors can you reject the null hypothesis <span class="math notranslate nohighlight">\(H_0 : \beta_j = 0\)</span> ? <strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/multi-linear-regression.html#important-questions-in-multiple-linear-regression">2.2.5</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
 </pre></div>
 </div>
 </div>
@@ -1456,8 +1456,8 @@ strong multicollinearity or other numerical problems.
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The following predictors have P-values &lt; 0.05 which suggests we can reject the null hypothesis</span>
-<span class="n">model</span><span class="o">.</span><span class="n">pvalues</span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">pvalues</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># The following predictors have P-values &lt; 0.05 which suggests we can reject the null hypothesis
+model.pvalues[model.pvalues &lt; 0.05].sort_values()
 </pre></div>
 </div>
 </div>
@@ -1484,7 +1484,7 @@ dtype: float64
 <p><strong>5</strong>. Using the fitted model from <strong>Exercise 3</strong>, obtain <strong><span class="math notranslate nohighlight">\(95\%\)</span></strong> confidence intervals for the coefficients. <strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/simple-linear-regression.html#confidence-intervals">2.1.9</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
 </pre></div>
 </div>
 </div>
@@ -1492,15 +1492,15 @@ dtype: float64
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract 95% confidence intervals</span>
-<span class="n">conf_inter_95</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">conf_int</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
-<span class="n">conf_inter_95</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
-    <span class="n">index</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
-    <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
-        <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;min.&quot;</span><span class="p">,</span>
-        <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;max.&quot;</span><span class="p">,</span>
-    <span class="p">},</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Extract 95% confidence intervals
+conf_inter_95 = model.conf_int(alpha=0.05)
+conf_inter_95.rename(
+    index=str,
+    columns={
+        0: &quot;min.&quot;,
+        1: &quot;max.&quot;,
+    },
+)
 </pre></div>
 </div>
 </div>
