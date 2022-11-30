@@ -797,7 +797,7 @@ const thebe_selector_output = ".output, .cell_output"
 \[
 \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_D x_D &lt; 0
 \]</div>
-<p>then <span class="math notranslate nohighlight">\(\mathbf{x} \)</span> is _on the other side of the hyperpla_ne. So we can think of the hyperplane as dividing <span class="math notranslate nohighlight">\(D\)</span>-dimensional space into two halves. One can easily determine on which side of the hyperplane a point lies by simply calculating
+<p>then <span class="math notranslate nohighlight">\(\mathbf{x} \)</span> is <em>on the other side of the hyperplane</em>. So we can think of the hyperplane as dividing <span class="math notranslate nohighlight">\(D\)</span>-dimensional space into two halves. One can easily determine on which side of the hyperplane a point lies by simply calculating
 the sign of the left hand side of the hyperplane equation.</p>
 </div>
 <div class="section" id="classification-using-a-separating-hyperplane">
@@ -1033,8 +1033,8 @@ Prediction:  1
 <li><p>For the data point <span class="math notranslate nohighlight">\([-1.19276461, -0.20487651]\)</span> marked by a black circle, its prediction score is <span class="math notranslate nohighlight">\( -0.7327 \times -1.19276461 + -0.7033 \times -0.20487651 + 0.5729 \approx 1.5910 \)</span>, which is positive. So the predicted label is <span class="math notranslate nohighlight">\( 1 \)</span>.</p></li>
 <li><p>According to the definition, the data points on the hyperplane satisfies <span class="math notranslate nohighlight">\( \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} = 0 \)</span>, i.e. <span class="math notranslate nohighlight">\( 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 = 0 \)</span>. To get a data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> of class <span class="math notranslate nohighlight">\( 1 \)</span>, the relationship between <span class="math notranslate nohighlight">\( x_1 \)</span> and <span class="math notranslate nohighlight">\( x_2 \)</span> should satisfy:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-662a4659-faf6-4a3e-be56-3f6e303cc6a4">
-<span class="eqno">(8.6)<a class="headerlink" href="#equation-662a4659-faf6-4a3e-be56-3f6e303cc6a4" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-cec28925-d56b-49c4-9df0-0b1a4bce9991">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-cec28925-d56b-49c4-9df0-0b1a4bce9991" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} &amp; &gt; 0 \\
 \beta_1 x_{1} &amp; &gt; - \beta_0 - \beta_2 x_{2} \\
@@ -1078,14 +1078,14 @@ clf.cv_results_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00037353, 0.00033805, 0.00033457, 0.00034173, 0.00035694,
-        0.00038593, 0.00050905]),
- &#39;std_fit_time&#39;: array([3.74247383e-05, 8.59329489e-06, 1.28498767e-05, 1.21971785e-05,
-        1.36647129e-05, 2.84784082e-05, 4.45602283e-05]),
- &#39;mean_score_time&#39;: array([0.00025349, 0.00023923, 0.00023825, 0.00023968, 0.00024152,
-        0.00024848, 0.00026457]),
- &#39;std_score_time&#39;: array([2.22159041e-05, 6.74197830e-06, 9.68815884e-06, 6.83064028e-06,
-        8.42127362e-06, 1.13005376e-05, 8.80475003e-06]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00045054, 0.00043778, 0.00044703, 0.00043056, 0.00046055,
+        0.00048022, 0.00059173]),
+ &#39;std_fit_time&#39;: array([4.25155949e-05, 9.42812095e-06, 2.69668171e-05, 1.79671615e-05,
+        1.72691598e-05, 4.33976568e-05, 4.01393026e-05]),
+ &#39;mean_score_time&#39;: array([0.00032091, 0.00031765, 0.00030177, 0.00030091, 0.00031042,
+        0.00030251, 0.00030792]),
+ &#39;std_score_time&#39;: array([3.20177600e-05, 3.16804468e-05, 9.40291562e-06, 1.63675527e-05,
+        8.59696535e-06, 1.78695640e-05, 2.01804815e-05]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,
