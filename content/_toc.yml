@@ -109,7 +109,7 @@ parts:
     - file: 08-glm-svm/glm
       title: Generalised linear models
     - file: 08-glm-svm/max-margin
-      title: Hyperplane and maximum margin classifier
+      title: Max margin & support vectors
     - file: 08-glm-svm/svm
       title: Support vector machines
     - file: 08-glm-svm/quiz-sum-ref
