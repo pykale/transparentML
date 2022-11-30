@@ -399,7 +399,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-glm-svm/max-margin.html">
-     8.2. Hyperplane and maximum margin classifier
+     8.2. Max margin &amp; support vectors
     </a>
    </li>
    <li class="toctree-l2">
@@ -816,11 +816,11 @@ print(y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[8 3 9 2 7]
-[[0.91254496 0.27144827 0.17423676]
- [0.78070298 0.57196221 0.70176551]]
-[ 1.4469731   0.1311802  -1.56600021 -0.39157973 -0.75532669]
-[21.42390922 20.04277071 18.40212382 19.6818307  19.33551101]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[9 1 4 2 9]
+[[0.18828454 0.94031938 0.13354238]
+ [0.8998531  0.05469825 0.71429592]]
+[ 1.81643964 -0.8818632   1.7581519  -1.79558869  0.27796186]
+[21.85584448 18.97825209 21.75874178 18.03808323 20.26647373]
 </pre></div>
 </div>
 </div>
@@ -1219,9 +1219,7 @@ print(np.dot(a, b) + (2 * a))
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>i.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[133 241 261]
+[[133 241 261]
  [365 551 459]]
 ii.
 [[16 10 18]
@@ -1258,6 +1256,9 @@ print(np.dot(x, y))
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.56600587 0.29748762 0.66145826]
  [0.84396992 0.30934893 0.76255113]
  [1.03984767 0.46521201 1.07199874]]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>

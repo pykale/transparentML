@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>8.2. Hyperplane and maximum margin classifier &#8212; Transparent ML Intro</title>
+    <title>8.2. Maximal margin and support vectors &#8212; Transparent ML Intro</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -399,7 +399,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     8.2. Hyperplane and maximum margin classifier
+     8.2. Max margin &amp; support vectors
     </a>
    </li>
    <li class="toctree-l2">
@@ -597,18 +597,23 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hyperplane-and-its-two-sides">
+     8.2.1.1. Hyperplane and its two sides
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#classification-using-a-separating-hyperplane">
-     8.2.1.1. Classification Using a Separating Hyperplane
+     8.2.1.2. Classification using a separating hyperplane
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-maximum-margin-classifier-hard-margin">
-     8.2.1.2. The maximum margin classifier (hard margin)
+    <a class="reference internal nav-link" href="#the-maximal-margin-classifier-hard-margin">
+     8.2.1.3. The maximal margin classifier (hard margin)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#construction-of-maximum-margin-classifier">
-     8.2.1.3. Construction of maximum margin classifier
+    <a class="reference internal nav-link" href="#construction-of-maximal-margin-classifier">
+     8.2.1.4. Construction of maximal margin classifier
     </a>
    </li>
   </ul>
@@ -631,14 +636,26 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-support-vector-classifiers-on-toy-data-using-scikit-learn">
-   8.2.3. Example: support vector classifiers on toy data using
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     scikit-learn
-    </span>
-   </code>
+  <a class="reference internal nav-link" href="#example-support-vector-classifiers-on-toy-data">
+   8.2.3. Example: support vector classifiers on toy data
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#support-vector-visualisation-and-interpretation">
+     8.2.3.1. Support vector visualisation and interpretation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prediction-with-support-vector-classifiers">
+     8.2.3.2. Prediction with support vector classifiers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decision-boundary-on-linearly-separable-data">
+     8.2.3.3. Decision boundary on linearly separable data
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
@@ -655,7 +672,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Hyperplane and maximum margin classifier</h1>
+                <h1>Maximal margin and support vectors</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -671,18 +688,23 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hyperplane-and-its-two-sides">
+     8.2.1.1. Hyperplane and its two sides
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#classification-using-a-separating-hyperplane">
-     8.2.1.1. Classification Using a Separating Hyperplane
+     8.2.1.2. Classification using a separating hyperplane
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-maximum-margin-classifier-hard-margin">
-     8.2.1.2. The maximum margin classifier (hard margin)
+    <a class="reference internal nav-link" href="#the-maximal-margin-classifier-hard-margin">
+     8.2.1.3. The maximal margin classifier (hard margin)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#construction-of-maximum-margin-classifier">
-     8.2.1.3. Construction of maximum margin classifier
+    <a class="reference internal nav-link" href="#construction-of-maximal-margin-classifier">
+     8.2.1.4. Construction of maximal margin classifier
     </a>
    </li>
   </ul>
@@ -705,14 +727,26 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-support-vector-classifiers-on-toy-data-using-scikit-learn">
-   8.2.3. Example: support vector classifiers on toy data using
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     scikit-learn
-    </span>
-   </code>
+  <a class="reference internal nav-link" href="#example-support-vector-classifiers-on-toy-data">
+   8.2.3. Example: support vector classifiers on toy data
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#support-vector-visualisation-and-interpretation">
+     8.2.3.1. Support vector visualisation and interpretation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prediction-with-support-vector-classifiers">
+     8.2.3.2. Prediction with support vector classifiers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decision-boundary-on-linearly-separable-data">
+     8.2.3.3. Decision boundary on linearly separable data
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
@@ -728,52 +762,55 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="hyperplane-and-maximum-margin-classifier">
-<h1><span class="section-number">8.2. </span>Hyperplane and maximum margin classifier<a class="headerlink" href="#hyperplane-and-maximum-margin-classifier" title="Permalink to this headline">¶</a></h1>
-<p>This section introduces the concept of hyperplane and maximum margin classifier, which are the fundamental concepts of support vector machine (SVM). Hyperplanes are used to separate the data points by their class labels. The margin is the distance between the hyperplane and the nearest data points. The maximum margin classifier is a special case of the support vector machine (SVM) classifier.</p>
-<p>Watch the 11-minute video below for a visual explanation of maximum margin, soft margin, and support vector classifier.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="maximal-margin-and-support-vectors">
+<h1><span class="section-number">8.2. </span>Maximal margin and support vectors<a class="headerlink" href="#maximal-margin-and-support-vectors" title="Permalink to this headline">¶</a></h1>
+<p>This section introduces the concept of an optimal separating hyperplane, and the maximal margin classifier, which are fundamental to support vector machines (SVMs). A separating hyperplane is a hyperplane that separates two classes of data. The maximal margin classifier is a separating hyperplane that maximizes the distance between the hyperplane and the nearest data points from either class. The maximal margin classifier is a special case of a support vector machine.</p>
+<p>Watch the 11-minute video below for a visual explanation of maximal margin, soft margin, and support vector classifier.</p>
 <div class="admonition-video admonition">
 <p class="admonition-title">Video</p>
 <iframe width="700" height="394" src="https://www.youtube.com/embed/efR1C6CvhmE?start=40&end=743" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<p><a class="reference external" href="https://www.youtube.com/embed/efR1C6CvhmE?start=40&amp;end=743">Explaining maximum margin, soft margin, and support vector classifier, by StatQuest</a></p>
+<p><a class="reference external" href="https://www.youtube.com/embed/efR1C6CvhmE?start=40&amp;end=743">Explaining maximal margin, soft margin, and support vector classifier, by StatQuest</a></p>
 </div>
 <div class="section" id="hyperplane-for-classification">
 <h2><span class="section-number">8.2.1. </span>Hyperplane for classification<a class="headerlink" href="#hyperplane-for-classification" title="Permalink to this headline">¶</a></h2>
-<p>In this section, we define a hyperplane and introduce the concept of an optimal separating hyperplane.</p>
-<p>In a <span class="math notranslate nohighlight">\(D\)</span>-dimensional space, a hyperplane is a flat affine subspace of dimension <span class="math notranslate nohighlight">\(D − 1\)</span>. For instance, in two dimensions, a hyperplane is a flat one-dimensional subspace—in other words, a line. In three dimensions, a hyperplane is a flat two-dimensional subspace—that is, a plane. In <span class="math notranslate nohighlight">\(D &gt; 3\)</span> dimensions, it can be hard to visualise a hyperplane, but the notion of a <span class="math notranslate nohighlight">\((D − 1)\)</span>-dimensional flat subspace still applies.</p>
+<p>Firstly, we define a hyperplane and introduce the concept of an optimal separating hyperplane.</p>
+<div class="section" id="hyperplane-and-its-two-sides">
+<h3><span class="section-number">8.2.1.1. </span>Hyperplane and its two sides<a class="headerlink" href="#hyperplane-and-its-two-sides" title="Permalink to this headline">¶</a></h3>
+<p>In a <span class="math notranslate nohighlight">\(D\)</span>-dimensional space, a hyperplane is a flat affine subspace of dimension <span class="math notranslate nohighlight">\(D − 1\)</span>. For example, in two dimensions, a hyperplane is a flat one-dimensional subspace—in other words, a line. In three dimensions, a hyperplane is a flat two-dimensional subspace—that is, a plane. In <span class="math notranslate nohighlight">\(D &gt; 3\)</span> dimensions, it can be hard to visualise a hyperplane, but the notion of a <span class="math notranslate nohighlight">\((D − 1)\)</span>-dimensional flat subspace still applies.</p>
 <p>The mathematical definition of a hyperplane is quite simple. In two dimensions, a hyperplane is defined by the equation,</p>
 <div class="math notranslate nohighlight">
 \[
 \beta_0 + \beta_1 x_1 + \beta_2 x_2 = 0
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\beta_0, \beta_1, \beta_2\)</span> are parameters. When we say that the above equation “defines” the hyperplane, we mean that any <span class="math notranslate nohighlight">\(\mathbf{x} = [x_1, x_2]^\top \)</span> satisfies the equation is a point on the hyperplane. Note the equation above is simply the equation of a line, since indeed in two dimensions a hyperplane is a line. In the <span class="math notranslate nohighlight">\(D\)</span>-dimensional case, the equation defining a hyperplane is</p>
+<p>where <span class="math notranslate nohighlight">\(\beta_0, \beta_1, \beta_2\)</span> are parameters. When we say that the above equation “defines” the hyperplane, we mean that any <span class="math notranslate nohighlight">\(\mathbf{x} = [x_1, x_2]^\top \)</span> satisfying the equation is a point on the hyperplane. Note the equation above is simply the equation of a line, since indeed in two dimensions a hyperplane is a line. In the <span class="math notranslate nohighlight">\(D\)</span>-dimensional case, the equation defining a hyperplane is</p>
 <div class="math notranslate nohighlight">
 \[
 \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_D x_D = 0
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\beta_0, \beta_1, \beta_2, \ldots, \beta_D\)</span> are parameters. In this equation, any <span class="math notranslate nohighlight">\(\mathbf{x} = [x_1, x_2, \ldots, x_D]^\top\)</span> satisfies the above equation is a point on the hyperplane. If <span class="math notranslate nohighlight">\(\mathbf{x} \)</span> does not satisfy the equation, e.g.</p>
+<p>where <span class="math notranslate nohighlight">\(\beta_0, \beta_1, \beta_2, \cdots, \beta_D\)</span> are parameters. In this equation, any <span class="math notranslate nohighlight">\(\mathbf{x} = [x_1, x_2, \cdots, x_D]^\top\)</span> satisfying the above equation is a point on the hyperplane. If <span class="math notranslate nohighlight">\(\mathbf{x} \)</span> does not satisfy the equation, e.g.</p>
 <div class="math notranslate nohighlight">
 \[
 \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_D x_D &gt; 0
 \]</div>
-<p>then <span class="math notranslate nohighlight">\(\mathbf{x} \)</span> is on one side of the hyperplane, and if</p>
+<p>then <span class="math notranslate nohighlight">\(\mathbf{x} \)</span> is <em>on one side of the hyperplane</em>, and if</p>
 <div class="math notranslate nohighlight">
 \[
 \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_D x_D &lt; 0
 \]</div>
-<p>then <span class="math notranslate nohighlight">\(\mathbf{x} \)</span> is on the other side of the hyperplane. So we can think of the hyperplane as dividing <span class="math notranslate nohighlight">\(D\)</span>-dimensional space into two halves. One can easily determine on which side of the hyperplane a point lies by simply calculating
+<p>then <span class="math notranslate nohighlight">\(\mathbf{x} \)</span> is _on the other side of the hyperpla_ne. So we can think of the hyperplane as dividing <span class="math notranslate nohighlight">\(D\)</span>-dimensional space into two halves. One can easily determine on which side of the hyperplane a point lies by simply calculating
 the sign of the left hand side of the hyperplane equation.</p>
+</div>
 <div class="section" id="classification-using-a-separating-hyperplane">
-<h3><span class="section-number">8.2.1.1. </span>Classification Using a Separating Hyperplane<a class="headerlink" href="#classification-using-a-separating-hyperplane" title="Permalink to this headline">¶</a></h3>
-<p>Suppose we have a set of observations <span class="math notranslate nohighlight">\(\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_N\)</span> in <span class="math notranslate nohighlight">\(D\)</span>-dimensional space</p>
+<h3><span class="section-number">8.2.1.2. </span>Classification using a separating hyperplane<a class="headerlink" href="#classification-using-a-separating-hyperplane" title="Permalink to this headline">¶</a></h3>
+<p>Suppose we have a set of observations (samples) <span class="math notranslate nohighlight">\(\mathbf{x}_1, \mathbf{x}_2, \cdots, \mathbf{x}_N\)</span> in <span class="math notranslate nohighlight">\(D\)</span>-dimensional space</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\mathbf{x}_1 = \begin{bmatrix} x_{11} \\ x_{12} \\ \vdots \\ x_{1D} \end{bmatrix}, \ldots, \mathbf{x}_N = \begin{bmatrix} x_{N1} \\ x_{N2} \\ \vdots \\ x_{ND} \end{bmatrix},
+\mathbf{x}_1 = \begin{bmatrix} x_{11} \\ x_{12} \\ \vdots \\ x_{1D} \end{bmatrix}, \cdots, \mathbf{x}_N = \begin{bmatrix} x_{N1} \\ x_{N2} \\ \vdots \\ x_{ND} \end{bmatrix}.
 \end{split}\]</div>
-<p>and that these observations fall into two classes, <span class="math notranslate nohighlight">\(y_1, \ldots, y_N \in \{-1, 1\}\)</span>, where 1 represents one class and -1 the other class. We also have a test observation <span class="math notranslate nohighlight">\( \mathbf{x}^* = [x^*_1, \ldots, x^*_N]^\top\)</span> that we would like to classify. We can do so by finding the hyperplane that separates the two classes. Such a hyperplane is known as an separating hyperplane. <a class="reference internal" href="#svm1"><span class="std std-numref">Fig. 8.1</span></a> shows a hyperplane in two dimensions.</p>
-<div class="margin-caption figure align-default" id="svm1">
+<p>These observations fall into two classes, <span class="math notranslate nohighlight">\(y_1, \cdots, y_N \in \{-1, 1\}\)</span>, where 1 represents one class and -1 the other class. We also have a test observation <span class="math notranslate nohighlight">\( \mathbf{x}^* = [x^*_1, \cdots, x^*_N]^\top\)</span> that we would like to classify. We can do so by finding the hyperplane that separates the two classes. Such a hyperplane is known as a <em>separating hyperplane</em>. <a class="reference internal" href="#svm1"><span class="std std-numref">Fig. 8.1</span></a> below shows a hyperplane in two dimensions.</p>
+<div class="figure align-default" id="svm1">
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm1.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm1.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm1.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.1 </span><span class="caption-text">The hyperplane <span class="math notranslate nohighlight">\(1 + 2x_1 + 3x_2 = 0\)</span> is shown. The blue region is the set of points for which <span class="math notranslate nohighlight">\(1 + 2x_1 + 3x_2 &gt; 0\)</span>, and the purple region is the set of points for which <span class="math notranslate nohighlight">\(1 + 2x_1 + 3x_2\)</span> &lt; 0 (source of figures in this section: <a class="reference external" href="https://trevorhastie.github.io/ISLR/">https://trevorhastie.github.io/ISLR/</a>).</span><a class="headerlink" href="#svm1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8.1 </span><span class="caption-text">The hyperplane <span class="math notranslate nohighlight">\(1 + 2x_1 + 3x_2 = 0\)</span> is shown. The blue region (top right) is the set of points for which <span class="math notranslate nohighlight">\(1 + 2x_1 + 3x_2 &gt; 0\)</span>, and the purple region (bottom left) is the set of points for which <span class="math notranslate nohighlight">\(1 + 2x_1 + 3x_2\)</span> &lt; 0 (source of figures in this section: <a class="reference external" href="https://trevorhastie.github.io/ISLR/">https://trevorhastie.github.io/ISLR/</a>).</span><a class="headerlink" href="#svm1" title="Permalink to this image">¶</a></p>
 </div>
 <p>We can label the observations from the blue class as <span class="math notranslate nohighlight">\( y_n = 1 \)</span> and those from the purple class as <span class="math notranslate nohighlight">\( y_n = −1 \)</span>. Then a separating hyperplane has the property that</p>
 <div class="math notranslate nohighlight">
@@ -785,82 +822,84 @@ the sign of the left hand side of the hyperplane equation.</p>
 \[
 \beta_0 + \beta_1 x_{n1} + \beta_2 x_{n2} + \cdots + \beta_D x_{nD} &lt; 0, \text{ if } y_n = -1.
 \]</div>
-<p>Equivalently, we can write this as</p>
+<p>Equivalently, we can write this compactly as</p>
 <div class="math notranslate nohighlight">
 \[
-y_n(\beta_0 + \beta_1 x_{n1} + \beta_2 x_{n2} + \cdots + \beta_D x_{nD}) &gt; 0, \text{ for } n = 1, \ldots, N.
+y_n(\beta_0 + \beta_1 x_{n1} + \beta_2 x_{n2} + \cdots + \beta_D x_{nD}) &gt; 0, \text{ for } n = 1, \cdots, N.
 \]</div>
-<div class="margin-caption figure align-default" id="svm2">
+<div class="figure align-default" id="svm2">
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm2.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm2.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm2.png" style="width: 700px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.2 </span><span class="caption-text">Two classes of observations are shown in blue and in purple, respectively. Left: Three separating hyperplanes, out of many possible, are shown in black. Right: A separating hyperplane is shown in black. The blue and purple grid indicates the decision rule made by a classifier based on this separating hyperplane: a test observation that falls in the blue portion of the grid will be assigned to the blue class, and one that falls in the purple portion of the grid will be assigned to the purple class.</span><a class="headerlink" href="#svm2" title="Permalink to this image">¶</a></p>
 </div>
-<p>A shown in <a class="reference internal" href="#svm2"><span class="std std-numref">Fig. 8.2</span></a>, if a separating hyperplane exists, we can use it to construct a very natural classifier: a test observation is assigned a class depending on which side of the hyperplane it is located.</p>
+<p>As shown in <a class="reference internal" href="#svm2"><span class="std std-numref">Fig. 8.2</span></a> above, if a separating hyperplane exists, we can use it to construct a very natural classifier: a test observation is assigned a class depending on which side of the hyperplane it is located.</p>
 </div>
-<div class="section" id="the-maximum-margin-classifier-hard-margin">
-<h3><span class="section-number">8.2.1.2. </span>The maximum margin classifier (hard margin)<a class="headerlink" href="#the-maximum-margin-classifier-hard-margin" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="the-maximal-margin-classifier-hard-margin">
+<h3><span class="section-number">8.2.1.3. </span>The maximal margin classifier (hard margin)<a class="headerlink" href="#the-maximal-margin-classifier-hard-margin" title="Permalink to this headline">¶</a></h3>
 <p>In general, if the data can be perfectly separated using a hyperplane, then there will in fact exist an infinite number of such hyperplanes. This is because a given separating hyperplane can usually be shifted a tiny bit up or down, or rotated, without coming into contact with any of the observations.</p>
-<p>A natural choice is the <em>maximal margin hyperplane</em> (also known as the optimal separating hyperplane), which is the separating hyperplane that is farthest from the training observations. That is, we can compute the (perpendicular) distance from each training observation to a given separating hyperplane; the smallest such distance is the minimal distance from the observations to the hyperplane, and is known as the margin. The maximal margin hyperplane is the separating hyperplane for which the margin is margin largest—that is, it is the hyperplane that has the farthest minimum distance to the training observations. We can then classify a test observation based on which side of the maximal margin hyperplane it lies. This is known as the maximal margin classifier. We hope that a classifier that has a large margin on the training data will also have a large margin on the test data, and hence will classify the test observations correctly.</p>
-<div class="margin-caption figure align-default" id="svm3">
+<p>A natural choice is the maximal margin hyperplane (also known as the optimal separating hyperplane), which is the separating hyperplane that is farthest from the training observations. That is, we can compute the (perpendicular) distance from each training observation to a given separating hyperplane; the smallest such distance is the minimal distance from the observations to the hyperplane, and is known as the <em>margin</em>. The <em>maximal margin hyperplane</em> is the separating hyperplane for which the margin is largest, i.e. the hyperplane that has the farthest minimum distance to the training observations. We can then classify a test observation based on which side of the maximal margin hyperplane it lies. This is known as the <em>maximal margin classifier</em>. We hope that a classifier that has a large margin on the training data will also have a large margin on the test data, and hence will classify the test observations correctly.</p>
+<div class="figure align-default" id="svm3">
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm3.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm3.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm3.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.3 </span><span class="caption-text">Two classes of observations are shown in blue and in purple, respectively. The maximal margin hyperplane is shown as a solid line. The margin is the distance from the solid line to either of the dashed lines. The two blue points and the purple point that lie on the dashed lines are the support vectors, and the distance from those points to the hyperplane is indicated by arrows. The purple and blue grid indicates the decision rule made by a classifier based on this separating hyperplane.</span><a class="headerlink" href="#svm3" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8.3 </span><span class="caption-text">Two classes of observations are shown in blue and in purple, respectively. The <em>maximal margin hyperplane</em> is shown as a solid line. The margin is the distance from the solid line to either of the dashed lines. The two blue points and the purple point that lie on the dashed lines are the <em>support vectors</em>, and the distance from those points to the hyperplane is indicated by arrows. The purple and blue grid indicates the decision rule made by a classifier based on this separating hyperplane.</span><a class="headerlink" href="#svm3" title="Permalink to this image">¶</a></p>
 </div>
-<p><a class="reference internal" href="#svm3"><span class="std std-numref">Fig. 8.3</span></a> shows a maximal margin hyperplane. Comparing to the right-hand panel of <a class="reference internal" href="#svm2"><span class="std std-numref">Fig. 8.2</span></a>, we see that the maximal margin hyperplane in <a class="reference internal" href="#svm3"><span class="std std-numref">Fig. 8.3</span></a> results in a greater minimal distance between the observations and the separating hyperplane—that is, a larger margin. We can also see that three training observations are equidistant from the maximal margin hyperplane and lie along the dashed lines indicating the width of the margin. These three observations are known as <em>support vectors</em>, and the distance from the support vectors to the hyperplane is known as the <em>margin width</em>.</p>
+<p><a class="reference internal" href="#svm3"><span class="std std-numref">Fig. 8.3</span></a> above shows a maximal margin hyperplane. Comparing to the right-hand panel of <a class="reference internal" href="#svm2"><span class="std std-numref">Fig. 8.2</span></a>, we see that the maximal margin hyperplane in <a class="reference internal" href="#svm3"><span class="std std-numref">Fig. 8.3</span></a> results in a greater minimal distance between the observations and the separating hyperplane, i.e. a larger <em>margin</em>. We can also see that three training observations are equidistant from the maximal margin hyperplane and lie along the dashed lines indicating the width of the margin. These three observations are known as <em>support vectors</em>, and the distance from the support vectors to the hyperplane is known as the <em>margin width</em>.</p>
 </div>
-<div class="section" id="construction-of-maximum-margin-classifier">
-<h3><span class="section-number">8.2.1.3. </span>Construction of maximum margin classifier<a class="headerlink" href="#construction-of-maximum-margin-classifier" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="construction-of-maximal-margin-classifier">
+<h3><span class="section-number">8.2.1.4. </span>Construction of maximal margin classifier<a class="headerlink" href="#construction-of-maximal-margin-classifier" title="Permalink to this headline">¶</a></h3>
 <p>The maximal margin hyperplane is the solution to the following optimisation problem</p>
 <div class="math notranslate nohighlight" id="equation-eq-max-margin-classifier">
 <span class="eqno">(8.4)<a class="headerlink" href="#equation-eq-max-margin-classifier" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
-&amp; \max_{\beta_0, \beta_1, \ldots, \beta_D} M \\
+&amp; \max_{\beta_0, \beta_1, \cdots, \beta_D} M \\
 &amp; \text{subject to } \sum_{d=1}^D \beta_d^2 = 1 ,\\
-&amp; y_n(\beta_0 + \beta_1 x_{n1} + \beta_2 x_{n2} + \cdots + \beta_D x_{nD}) \geq M, \text{ for } n = 1, \ldots, N.
+&amp; y_n(\beta_0 + \beta_1 x_{n1} + \beta_2 x_{n2} + \cdots + \beta_D x_{nD}) \geq M, \text{ for } n = 1, \cdots, N.
 \end{aligned}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\( y_n(\beta_0 + \beta_1 x_{n1} + \beta_2 x_{n2} + \cdots + \beta_D x_{nD}) \)</span> in the constraint represents the perpendicular distance from the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation to the hyperplane. This constraint guarantees that each observation is on the correct side of the hyperplane and at least a distance <span class="math notranslate nohighlight">\( M \)</span> from the hyperplane. Therefore, <span class="math notranslate nohighlight">\(M\)</span> represents the margin of our hyperplane, and the optimisation problem chooses <span class="math notranslate nohighlight">\( \beta_0, \beta_1, \ldots, \beta_D \)</span> to maximise M. This is exactly the definition of the maximal margin hyperplane! The problem <a class="reference internal" href="#equation-eq-max-margin-classifier">(8.4)</a> can be solved efficiently via quadratic programming, but details of this optimisation are outside of the scope of this course.</p>
+<p>where <span class="math notranslate nohighlight">\( y_n(\beta_0 + \beta_1 x_{n1} + \beta_2 x_{n2} + \cdots + \beta_D x_{nD}) \)</span> in the constraint represents the perpendicular distance from the <span class="math notranslate nohighlight">\(n\text{th}\)</span> observation to the hyperplane. This constraint guarantees that each observation is on the correct side of the hyperplane and at least a distance <span class="math notranslate nohighlight">\( M \)</span> from the hyperplane. Therefore, <span class="math notranslate nohighlight">\(M\)</span> represents the margin of our hyperplane, and the optimisation problem chooses <span class="math notranslate nohighlight">\( \beta_0, \beta_1, \cdots, \beta_D \)</span> to maximise M. This is exactly the definition of the maximal margin hyperplane! The problem <a class="reference internal" href="#equation-eq-max-margin-classifier">(8.4)</a> can be solved efficiently via quadratic programming, but details of this optimisation are outside of the scope of this course.</p>
 </div>
 </div>
 <div class="section" id="support-vector-classifier-soft-margin">
 <h2><span class="section-number">8.2.2. </span>Support vector classifier (soft margin)<a class="headerlink" href="#support-vector-classifier-soft-margin" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="the-non-separable-case">
 <h3><span class="section-number">8.2.2.1. </span>The non-separable case<a class="headerlink" href="#the-non-separable-case" title="Permalink to this headline">¶</a></h3>
-<p>The maximal margin classifier is a very natural way to perform classification, if a separating hyperplane exists. However, in many cases no separating hyperplane exists, and so there is no maximal margin classifier, as shown in <a class="reference internal" href="#svm4"><span class="std std-numref">Fig. 8.4</span></a>.</p>
-<div class="margin-caption figure align-default" id="svm4">
+<p>The maximal margin classifier is a very natural way to perform classification, if a separating hyperplane exists. However, in many cases, no separating hyperplane exists, and so there is no maximal margin classifier. For the example in<a class="reference internal" href="#svm4"><span class="std std-numref">Fig. 8.4</span></a> below, the observations that belong to two classes are not separable by a hyperplane.</p>
+<div class="figure align-default" id="svm4">
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm4.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm4.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm4.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.4 </span><span class="caption-text">Two classes of observations are shown in blue and in purple, respectively. The two classes are not separable by a hyperplane, and so the maximal margin classifier cannot be used.</span><a class="headerlink" href="#svm4" title="Permalink to this image">¶</a></p>
 </div>
-<p>In this case, we might be willing to consider allowing some observations to be on the incorrect side of the margin, or even the incorrect side of the hyperplane, rather than seeking the largest possible margin so that every observation is not only on the correct side of the hyperplane but also on the correct side of the margin. This is the idea behind the <em>support vector classifier</em>, also known as the <em>soft margin classifier</em>.</p>
-<div class="margin-caption figure align-default" id="svm5">
+<p>Even if a separating hyperplane does exist, it is also possible that a classifier based on a separating hyperplane might not be desirable. As shown in the example in <a class="reference internal" href="#svm5"><span class="std std-numref">Fig. 8.5</span></a> below, a classifier based on a separating hyperplane perfectly classifying all of the training observations can lead to sensitivity to individual observations, a symptom of  <em>overfitting</em>.</p>
+<div class="figure align-default" id="svm5">
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm5.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm5.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm5.png" style="width: 700px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.5 </span><span class="caption-text">Left: Two classes of observations are shown in blue and in purple, along with the maximal margin hyperplane. Right: An additional blue observation has been added, leading to a dramatic shift in the maximal margin hyperplane shown as a solid line. The dashed line indicates the maximal margin hyperplane that was obtained in the absence of this additional point.</span><a class="headerlink" href="#svm5" title="Permalink to this image">¶</a></p>
 </div>
-<p>An example is shown in the left-hand panel of <a class="reference internal" href="#svm5"><span class="std std-numref">Fig. 8.5</span></a>. Most of the observations are on the correct side of the margin.
-However, a small subset of the observations are on the wrong side of the margin.</p>
-<p>An observation can be not only on the wrong side of the margin, but also on the wrong side of the hyperplane. In fact, when there is no separating hyperplane, such a situation is inevitable. Observations on the wrong side of the hyperplane correspond to training observations that are misclassified by the support vector classifier. The right-hand panel of <a class="reference internal" href="#svm5"><span class="std std-numref">Fig. 8.5</span></a> illustrates
-such a scenario.</p>
-<div class="margin-caption figure align-default" id="svm6">
+<p>As we can see, the addition of a single observation in the right panel of <a class="reference internal" href="#svm5"><span class="std std-numref">Fig. 8.5</span></a> leads to a dramatic change in the maximal margin hyperplane, and the resulting maximal margin hyperplane has only a tiny margin. As the distance of an observation from the hyperplane can be seen as a measure of our confidence that the observation was correctly classified, this tiny margin indicates that the classifier is not very confident about its classification of the training observations.</p>
+<p>Based on the above observations, we might be willing to consider allowing some observations to be on the incorrect side of the margin, or even the incorrect side of the hyperplane, rather than seeking the largest possible margin so that every observation is not only on the correct side of the hyperplane but also on the correct side of the margin. This is the idea behind the <em>support vector classifier</em>, also known as the <em>soft margin classifier</em>.</p>
+<p>An example is shown in the left-hand panel of <a class="reference internal" href="#svm6"><span class="std std-numref">Fig. 8.6</span></a> below. Most of the observations are on the correct side of the margin. However, a small subset of the observations (1 and 8) are on the wrong side of the margin.</p>
+<div class="figure align-default" id="svm6">
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm6.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm6.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm6.png" style="width: 700px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.6 </span><span class="caption-text">Left: A support vector classifier was fit to a small data set. The hyperplane is shown as a solid line and the margins are shown as dashed lines. Purple observations: Observations 3, 4, 5, and 6 are on the correct side of the margin, observation 2 is on the margin, and observation 1 is on the wrong side of the margin. Blue observations: Observations 7 and 10 are on the correct side of the margin, observation 9 is on the margin, and observation 8 is on the wrong side of the margin. No observations are on the wrong side of the hyperplane. Right: Same as left panel with two additional points, 11 and 12. These two observations are on the wrong side of the hyperplane and the wrong side of the margin.</span><a class="headerlink" href="#svm6" title="Permalink to this image">¶</a></p>
 </div>
+<p>An observation can be not only on the wrong side of the margin, but also on the wrong side of the hyperplane. In fact, when there is no separating hyperplane, such a situation is inevitable. Observations on the wrong side of the hyperplane correspond to training observations that are misclassified by the support vector classifier. The right-hand panel of <a class="reference internal" href="#svm6"><span class="std std-numref">Fig. 8.6</span></a> above illustrates such a scenario.</p>
 </div>
 <div class="section" id="construction-of-support-vector-classifier">
 <h3><span class="section-number">8.2.2.2. </span>Construction of support vector classifier<a class="headerlink" href="#construction-of-support-vector-classifier" title="Permalink to this headline">¶</a></h3>
-<p>The support vector classifier classifies a test observation depending on which side of a hyperplane it lies. The hyperplane is chosen to correctly separate most of the training observations into the two classes, but may misclassify a few observations. It is the solution to the optimisation problem</p>
+<p>The support vector classifier classifies a test observation depending on which side of a hyperplane it lies. The hyperplane is chosen to correctly separate most of the training observations into the two classes, but may misclassify a few observations. It is the solution to the “soft margin” optimisation problem below that is a modification of the “hard margin” optimisation problem <a class="reference internal" href="#equation-eq-max-margin-classifier">(8.4)</a> for the maximal margin classifier:</p>
 <div class="math notranslate nohighlight" id="equation-eq-soft-margin-classifier">
 <span class="eqno">(8.5)<a class="headerlink" href="#equation-eq-soft-margin-classifier" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
-&amp; \max_{\beta_0, \beta_1, \ldots, \beta_D, \epsilon_1, \ldots, \epsilon_N} M \\
+&amp; \max_{\beta_0, \beta_1, \cdots, \beta_D, \epsilon_1, \cdots, \epsilon_N} M \\
 &amp; \text{subject to } \sum_{d=1}^D \beta_d^2 = 1 ,\\
 &amp; y_n(\beta_0 + \beta_1 x_{n1} + \beta_2 x_{n2} + \cdots + \beta_D x_{nD}) \geq M(1 - \epsilon_n),\\
-&amp; \epsilon_n \geq 0, \sum_{n = 1}^N \epsilon_n \leq C, \text{ for } n = 1, \ldots, N,
+&amp; \epsilon_n \geq 0, \sum_{n = 1}^N \epsilon_n \leq \Xi, \text{ for } n = 1, \cdots, N,
 \end{aligned}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\( \epsilon_n \)</span> is a slack variable that measures the amount by which the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation is on the wrong side of the margin. The slack variables are constrained to be non-negative, and the constraint <span class="math notranslate nohighlight">\( \sum_{n = 1}^N \epsilon_n \leq C \)</span> places an upper bound on the total amount by which the observations can be on the wrong side of the margin. The parameter <span class="math notranslate nohighlight">\( C \)</span> is a tuning parameter that controls the trade-off between the two competing goals of the support vector classifier: maximizing the margin and minimizing the number of training observations that are misclassified. When <span class="math notranslate nohighlight">\( C \)</span> is very large, the support vector classifier will attempt to maximise the margin, and so it will misclassify very few training observations. When <span class="math notranslate nohighlight">\( C \)</span> is very small, the support vector classifier will attempt to minimise the number of training observations that are misclassified, and so it will have a smaller margin. In practice, <span class="math notranslate nohighlight">\( C \)</span> is often tuned using cross-validation. <a class="reference internal" href="#svm7"><span class="std std-numref">Fig. 8.7</span></a> illustrates the effect of <span class="math notranslate nohighlight">\( C \)</span> on the support vector classifier.</p>
-<div class="margin-caption figure align-default" id="svm7">
+<p>where <span class="math notranslate nohighlight">\( \epsilon_n \)</span> is a <a class="reference external" href="https://en.wikipedia.org/wiki/Slack_variable">slack variable</a> that measures the amount by which the <span class="math notranslate nohighlight">\(n\text{th}\)</span> observation is on the wrong side of the margin. The slack variables are constrained to be non-negative, and the constraint <span class="math notranslate nohighlight">\( \sum_{n = 1}^N \epsilon_n \leq \Xi \)</span> places an upper bound on the total amount by which the observations can be on the wrong side of the margin. The parameter <span class="math notranslate nohighlight">\( \Xi \)</span> is a tuning (hyper)parameter that controls the trade-off between the two competing goals of the support vector classifier: <em>maximising the margin</em> and <em>minimising the number of training observations that are misclassified</em>. <span class="math notranslate nohighlight">\( \Xi \)</span> can also be viewed as a <em>budget</em> for the amount that the margin can be violated by the observations. When <span class="math notranslate nohighlight">\( \Xi \)</span> is very large (highly tolerant), the support vector classifier will attempt to maximise the margin, and so it will misclassify a larger number of training observations. When <span class="math notranslate nohighlight">\( \Xi \)</span> is very small (highly intolerant), the support vector classifier will attempt to minimise the number of training observations that are misclassified, and so it will have a smaller margin. In practice, <span class="math notranslate nohighlight">\( \Xi \)</span> is often tuned using cross-validation. <a class="reference internal" href="#svm7"><span class="std std-numref">Fig. 8.7</span></a> below illustrates the effect of <span class="math notranslate nohighlight">\( \Xi \)</span> on the support vector classifier.</p>
+<div class="figure align-default" id="svm7">
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm7.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm7.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm7.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.7 </span><span class="caption-text">A support vector classifier was fit using four different values of the tuning parameter <span class="math notranslate nohighlight">\( C \)</span> of Equation <a class="reference internal" href="#equation-eq-soft-margin-classifier">(8.5)</a>. The largest value of <span class="math notranslate nohighlight">\( C \)</span> was used in the top left panel, and smaller values were used in the top right, bottom left, and bottom right panels. When <span class="math notranslate nohighlight">\( C \)</span> is large, then there is a high tolerance for observations being on the wrong side of the margin, and so the margin will be large. As <span class="math notranslate nohighlight">\( C \)</span> decreases, the tolerance for observations being on the wrong side of the margin decreases, and the margin narrows.</span><a class="headerlink" href="#svm7" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8.7 </span><span class="caption-text">A support vector classifier was fit using four different values of the tuning parameter <span class="math notranslate nohighlight">\( \Xi \)</span> of Equation <a class="reference internal" href="#equation-eq-soft-margin-classifier">(8.5)</a>. The largest value of <span class="math notranslate nohighlight">\( \Xi \)</span> was used in the top left panel, and smaller values were used in the top right, bottom left, and bottom right panels. When <span class="math notranslate nohighlight">\( \Xi \)</span> is large, then there is a high tolerance for observations being on the wrong side of the margin, and so the margin will be large. As <span class="math notranslate nohighlight">\( \Xi \)</span> decreases, the tolerance for observations being on the wrong side of the margin decreases, and the margin narrows.</span><a class="headerlink" href="#svm7" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
-<div class="section" id="example-support-vector-classifiers-on-toy-data-using-scikit-learn">
-<h2><span class="section-number">8.2.3. </span>Example: support vector classifiers on toy data using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code><a class="headerlink" href="#example-support-vector-classifiers-on-toy-data-using-scikit-learn" title="Permalink to this headline">¶</a></h2>
-<p>Import the required libraries</p>
+<div class="section" id="example-support-vector-classifiers-on-toy-data">
+<h2><span class="section-number">8.2.3. </span>Example: support vector classifiers on toy data<a class="headerlink" href="#example-support-vector-classifiers-on-toy-data" title="Permalink to this headline">¶</a></h2>
+ <!-- using `scikit-learn` -->
+<p>In this example, we will use the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> package to fit support vector classifiers to a small toy dataset.</p>
+<p>Get ready by importing the APIs needed from respective libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
@@ -869,7 +908,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 from sklearn.preprocessing import label_binarize
-from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.model_selection import GridSearchCV
 from sklearn.svm import SVC, LinearSVC
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.metrics import (
@@ -913,7 +952,7 @@ from sklearn.metrics import (
 </div>
 </div>
 </div>
-<p>Generating random data: 20 observations of 2 features and divide into two classes.</p>
+<p>Generate synthetic data randomly: 20 observations of 2 features and divide into two classes. Set a seed for reproducibility.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.random.seed(5)
@@ -945,7 +984,10 @@ plt.show()
 </div>
 </div>
 </div>
-<p>Fit a support vector classifier and visualise decision boundary and support vectors with data points. Different values of hyper-parameter <span class="math notranslate nohighlight">\(C\)</span> described in Equation <a class="reference internal" href="#equation-eq-soft-margin-classifier">(8.5)</a> are used to see the effect of <span class="math notranslate nohighlight">\(C\)</span> on the decision boundary.</p>
+<div class="section" id="support-vector-visualisation-and-interpretation">
+<h3><span class="section-number">8.2.3.1. </span>Support vector visualisation and interpretation<a class="headerlink" href="#support-vector-visualisation-and-interpretation" title="Permalink to this headline">¶</a></h3>
+<p>Fit a support vector classifier and visualise decision boundary and support vectors with data points. We will study different values of hyperparameter <span class="math notranslate nohighlight">\( \Xi \)</span> in Equation <a class="reference internal" href="#equation-eq-soft-margin-classifier">(8.5)</a> to see its effect on the decision boundary.</p>
+<p><strong>Note:</strong> The <code class="docutils literal notranslate"><span class="pre">C</span></code> setting of the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html"><code class="docutils literal notranslate"><span class="pre">SVC</span></code> class</a> in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> is inversely proportional to <span class="math notranslate nohighlight">\( \Xi \)</span>. The larger the value of <code class="docutils literal notranslate"><span class="pre">C</span></code>, the smaller the value of <span class="math notranslate nohighlight">\( \Xi \)</span> (the less tolerance for observations being on the wrong side of the margin). The smaller the value of <code class="docutils literal notranslate"><span class="pre">C</span></code>, the larger the value of <span class="math notranslate nohighlight">\( \Xi \)</span> (the more tolerance for observations being on the wrong side of the margin).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svc = SVC(C=1.0, kernel=&quot;linear&quot;)
@@ -988,11 +1030,11 @@ Prediction:  1
 <p class="admonition-title">System transparency</p>
 <p>The coefficients of the support vector classifier are <span class="math notranslate nohighlight">\( \beta_0 \approx 0.5729, \beta_1 \approx -0.7327, \beta_2 \approx -0.7033 \)</span></p>
 <ul class="simple">
-<li><p>The data point <span class="math notranslate nohighlight">\([-1.19276461, -0.20487651]\)</span> marked by a black circle, its prediction score is <span class="math notranslate nohighlight">\( -0.7327 \times -1.19276461 + -0.7033 \times -0.20487651 + 0.5729 \approx 1.5910 \)</span>, which is positive. The predicted label is <span class="math notranslate nohighlight">\( 1 \)</span>.</p></li>
+<li><p>For the data point <span class="math notranslate nohighlight">\([-1.19276461, -0.20487651]\)</span> marked by a black circle, its prediction score is <span class="math notranslate nohighlight">\( -0.7327 \times -1.19276461 + -0.7033 \times -0.20487651 + 0.5729 \approx 1.5910 \)</span>, which is positive. So the predicted label is <span class="math notranslate nohighlight">\( 1 \)</span>.</p></li>
 <li><p>According to the definition, the data points on the hyperplane satisfies <span class="math notranslate nohighlight">\( \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} = 0 \)</span>, i.e. <span class="math notranslate nohighlight">\( 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 = 0 \)</span>. To get a data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> of class <span class="math notranslate nohighlight">\( 1 \)</span>, the relationship between <span class="math notranslate nohighlight">\( x_1 \)</span> and <span class="math notranslate nohighlight">\( x_2 \)</span> should satisfy:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-cb1a4c80-192e-4354-ba33-b8c5e4c4e287">
-<span class="eqno">(8.6)<a class="headerlink" href="#equation-cb1a4c80-192e-4354-ba33-b8c5e4c4e287" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b7096952-66e7-4dc5-b6b0-63179ab4e9d4">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-b7096952-66e7-4dc5-b6b0-63179ab4e9d4" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} &amp; &gt; 0 \\
 \beta_1 x_{1} &amp; &gt; - \beta_0 - \beta_2 x_{2} \\
@@ -1003,6 +1045,7 @@ x_1 &amp; &gt; 0.7819 - 0.9598 \times x_2.
 \end{align}\]</div>
 <p>Similarly, we need data points <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> satisfy <span class="math notranslate nohighlight">\( x_1 &lt; 0.7819 - 0.9598 \times x_2 \)</span> for class <span class="math notranslate nohighlight">\( -1 \)</span>. Note that the data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> belongs to class <span class="math notranslate nohighlight">\( 1 \)</span> but violates the margin if <span class="math notranslate nohighlight">\( 0 &lt; 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 &lt; 1 \)</span>, and the same applies to data points belongs to class <span class="math notranslate nohighlight">\( -1 \)</span> if <span class="math notranslate nohighlight">\( -1 &lt; 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 &lt; 0 \)</span>.</p>
 </div>
+<p>Let us use a smaller value of <span class="math notranslate nohighlight">\( \Xi \)</span> (<code class="docutils literal notranslate"><span class="pre">C=0.1</span></code>) to see how the decision boundary changes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svc2 = SVC(C=0.1, kernel=&quot;linear&quot;)
@@ -1015,10 +1058,10 @@ plot_svc(svc2, X, y)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  16
 </pre></div>
 </div>
-<img alt="../_images/max-margin_13_1.png" src="../_images/max-margin_13_1.png" />
+<img alt="../_images/max-margin_14_1.png" src="../_images/max-margin_14_1.png" />
 </div>
 </div>
-<p>When using a smaller cost parameter (<span class="math notranslate nohighlight">\(C=0.1\)</span>) the margin is wider, resulting in more support vectors. We can select the optimal hyper-parameter <span class="math notranslate nohighlight">\(C\)</span> by cross-validation:</p>
+<p>As shown above, when using a smaller <code class="docutils literal notranslate"><span class="pre">C=0.1</span></code>, we have a larger <span class="math notranslate nohighlight">\( \Xi \)</span> and a larger tolerance for observations being on the wrong side of the margin. As a result, the margin is wider, resulting in more support vectors. We can select the optimal hyperparameter <code class="docutils literal notranslate"><span class="pre">C</span></code> in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> (inversely proportional to <span class="math notranslate nohighlight">\( \Xi \)</span>) using cross-validation, as we do below using <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> from <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tuned_parameters = [{&quot;C&quot;: [0.001, 0.01, 0.1, 1, 5, 10, 100]}]
@@ -1035,14 +1078,14 @@ clf.cv_results_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00039611, 0.00037436, 0.00037637, 0.00038841, 0.00039217,
-        0.00041175, 0.00053277]),
- &#39;std_fit_time&#39;: array([5.05143875e-05, 7.59414637e-06, 1.21482162e-05, 3.54877786e-05,
-        9.97459110e-06, 2.19811069e-05, 4.57429764e-05]),
- &#39;mean_score_time&#39;: array([0.00027955, 0.00026445, 0.0002646 , 0.00026312, 0.00026786,
-        0.000267  , 0.00026963]),
- &#39;std_score_time&#39;: array([3.83079010e-05, 7.38004676e-06, 7.26750515e-06, 2.81535900e-06,
-        8.20191100e-06, 4.51921143e-06, 1.96445914e-06]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00046599, 0.00043201, 0.00041475, 0.00041265, 0.00044281,
+        0.00044858, 0.00061748]),
+ &#39;std_fit_time&#39;: array([5.65991094e-05, 1.80657735e-05, 3.54325946e-05, 2.19339391e-05,
+        2.29306250e-05, 1.72247317e-05, 5.36876555e-05]),
+ &#39;mean_score_time&#39;: array([0.00032768, 0.00029817, 0.00030239, 0.00028872, 0.00028918,
+        0.00029685, 0.00030532]),
+ &#39;std_score_time&#39;: array([4.11615988e-05, 7.76102831e-06, 4.31325568e-05, 1.63232301e-05,
+        1.70693217e-05, 1.49963012e-05, 3.96138335e-05]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,
@@ -1096,7 +1139,7 @@ clf.cv_results_
 </div>
 </div>
 </div>
-<p>Display the optimal hyper-parameter <span class="math notranslate nohighlight">\(C\)</span></p>
+<p>Display the optimal hyperparameter <code class="docutils literal notranslate"><span class="pre">C</span></code> in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> (inversely proportional to <span class="math notranslate nohighlight">\( \Xi \)</span>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>clf.best_params_
@@ -1109,7 +1152,10 @@ clf.cv_results_
 </div>
 </div>
 </div>
-<p>Generate a test data set and predict the class labels for the test data set.</p>
+</div>
+<div class="section" id="prediction-with-support-vector-classifiers">
+<h3><span class="section-number">8.2.3.2. </span>Prediction with support vector classifiers<a class="headerlink" href="#prediction-with-support-vector-classifiers" title="Permalink to this headline">¶</a></h3>
+<p>Generate a test dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.random.seed(1)
@@ -1125,9 +1171,10 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/max-margin_19_0.png" src="../_images/max-margin_19_0.png" />
+<img alt="../_images/max-margin_20_0.png" src="../_images/max-margin_20_0.png" />
 </div>
 </div>
+<p>Predict the class labels for the test dataset and display the confusion matrix.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># svc2 : C = 0.1
@@ -1140,29 +1187,32 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/max-margin_20_0.png" src="../_images/max-margin_20_0.png" />
+<img alt="../_images/max-margin_22_0.png" src="../_images/max-margin_22_0.png" />
 </div>
 </div>
+<p>Repeat with a smaller value of <code class="docutils literal notranslate"><span class="pre">C</span></code> (larger <span class="math notranslate nohighlight">\( \Xi \)</span> and larger tolerance) to see how the confusion matrix changes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svc3 = SVC(C=0.001, kernel=&quot;linear&quot;)
 svc3.fit(X, y)
 
-# svc3 : C = 0.001
 y_pred = svc3.predict(X_test)
 cm = confusion_matrix(y_test, y_pred)
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=svc.classes_)
 disp.plot()
 plt.show()
-# The misclassification is the same
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/max-margin_21_0.png" src="../_images/max-margin_21_0.png" />
+<img alt="../_images/max-margin_24_0.png" src="../_images/max-margin_24_0.png" />
 </div>
 </div>
-<p>Changing the test data so that the classes are really separable with a hyperplane.</p>
+<p>The prediction results are the same as the previous case for this particular example.</p>
+</div>
+<div class="section" id="decision-boundary-on-linearly-separable-data">
+<h3><span class="section-number">8.2.3.3. </span>Decision boundary on linearly separable data<a class="headerlink" href="#decision-boundary-on-linearly-separable-data" title="Permalink to this headline">¶</a></h3>
+<p>Let us modify the test dataset so that the classes are linearly separable with a hyperplane.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_test[y_test == 1] = X_test[y_test == 1] - 1
@@ -1174,9 +1224,10 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/max-margin_23_0.png" src="../_images/max-margin_23_0.png" />
+<img alt="../_images/max-margin_26_0.png" src="../_images/max-margin_26_0.png" />
 </div>
 </div>
+<p>Set <code class="docutils literal notranslate"><span class="pre">C</span></code> to be very large (meaning small <span class="math notranslate nohighlight">\( \Xi \)</span> and small tolerance) to see whether the decision boundary can separate the two classes perfectly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svc4 = SVC(C=10.0, kernel=&quot;linear&quot;)
@@ -1189,13 +1240,14 @@ plot_svc(svc4, X_test, y_test)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  4
 </pre></div>
 </div>
-<img alt="../_images/max-margin_24_1.png" src="../_images/max-margin_24_1.png" />
+<img alt="../_images/max-margin_28_1.png" src="../_images/max-margin_28_1.png" />
 </div>
 </div>
+<p>Indeed, we have a perfect separation of the two classes.</p>
+<p>Let us increase the margin tolerance (reduce <code class="docutils literal notranslate"><span class="pre">C</span></code> in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>) to see how the decision boundary changes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Increase the margin. Now there is one misclassification: increased bias, lower variance.
-svc5 = SVC(C=1, kernel=&quot;linear&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svc5 = SVC(C=1, kernel=&quot;linear&quot;)
 svc5.fit(X_test, y_test)
 plot_svc(svc5, X_test, y_test)
 </pre></div>
@@ -1205,8 +1257,10 @@ plot_svc(svc5, X_test, y_test)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  5
 </pre></div>
 </div>
-<img alt="../_images/max-margin_25_1.png" src="../_images/max-margin_25_1.png" />
+<img alt="../_images/max-margin_30_1.png" src="../_images/max-margin_30_1.png" />
 </div>
+</div>
+<p>Now there is one misclassification. Thus, this version (with <code class="docutils literal notranslate"><span class="pre">C=1</span></code>) has lowered variance (and overfitting) at the expense of increased bias.</p>
 </div>
 </div>
 <div class="section" id="exercises">
