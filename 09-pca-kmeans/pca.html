@@ -1597,6 +1597,97 @@ for ax in fig.axes:
 <img alt="../_images/pca_23_0.png" src="../_images/pca_23_0.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rng = np.random.RandomState(0)
+n_samples = 500
+cov = [[3, 3], [3, 4]]
+X = rng.multivariate_normal(mean=[0, 0], cov=cov, size=n_samples)
+pca = PCA(n_components=2).fit(X)
+
+fig = plt.figure(figsize=(5, 8))
+
+plt.scatter(X[:, 0], X[:, 1], alpha=0.3, label=&quot;samples&quot;)
+plt.scatter(
+    X[1, 0],
+    X[1, 1],
+    alpha=0.8,
+    facecolors=&quot;none&quot;,
+    marker=&quot;o&quot;,
+    edgecolors=&quot;r&quot;,
+    linewidths=3,
+)
+for i, (comp, var) in enumerate(zip(pca.components_, pca.explained_variance_)):
+    comp = comp * var  # scale component by its variance explanation power
+    plt.plot(
+        [0, comp[0]],
+        [0, comp[1]],
+        label=f&quot;Component {i}&quot;,
+        linewidth=5,
+        color=f&quot;C{i + 2}&quot;,
+    )
+
+plt.plot([0, X[1, 0]], [0, X[1, 1]], linewidth=2, color=&quot;k&quot;)
+plt.plot(
+    [0, -pca.components_[1, 0]],
+    [0, -pca.components_[1, 1]],
+    linewidth=2,
+    color=&quot;orange&quot;,
+)
+
+# plt.scatter(pca.transform(X[1, :].reshape(1, -1))[:, 0], pca.transform(X[1, :].reshape(1, -1))[:, 1],
+#             alpha=0.3, facecolors=&quot;none&quot;, marker=&quot;o&quot;, edgecolors=&quot;k&quot;, linewidths=3)
+
+plt.gca().set(
+    aspect=&quot;equal&quot;,
+    title=&quot;2-dimensional dataset with principal components&quot;,
+    xlabel=&quot;first feature&quot;,
+    ylabel=&quot;second feature&quot;,
+)
+plt.legend()
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/pca_24_0.png" src="../_images/pca_24_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;Data point: &quot;, X[1, :])
+print(&quot;Scores of the data poirnt: &quot;, pca.transform(X[1, :].reshape(1, -1)))
+print(&quot;Mean of the training data: &quot;, pca.mean_)
+print(&quot;PCA loadings: \n&quot;, pca.components_)
+print(&quot;Explained variance: &quot;, pca.explained_variance_)
+print(&quot;Explained variance ratio: &quot;, pca.explained_variance_ratio_)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data point:  [-2.77595836 -0.929101  ]
+Scores of the data poirnt:  [[ 2.6656729 -1.5428128]]
+Mean of the training data:  [0.12105555 0.11655374]
+PCA loadings: 
+ [[-0.64402153 -0.76500736]
+ [ 0.76500736 -0.64402153]]
+Explained variance:  [6.21234881 0.45942259]
+Explained variance ratio:  [0.93113934 0.06886066]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="important admonition">
+<p class="admonition-title">System transparency</p>
+<ul class="simple">
+<li><p>For data point <span class="math notranslate nohighlight">\( [-2.77595836 -0.929101]^{\top} \)</span>, the score vector of PCA can be obtained by</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split} \underbrace{\left[\begin{matrix} -0.64402153, -0.76500736 \\ 0.76500736 -0.64402153 \end{matrix}\right]^{\top}}_{\text{Loading}}\left(\underbrace{\left[\begin{matrix} -2.77595836 \\ -0.929101\end{matrix}\right]}_{\text{Input Data}} - \underbrace{\left[\begin{matrix}0.12105555 \\ 0.11655374\end{matrix}\right]}_{\text{Mean of Training Data}}\right) = \left[\begin{matrix}-2.77595836 \\ -0.929101\end{matrix}\right] \end{split}\]</div>
+</div>
+<!-- For data point $ [-2.77595836 -0.929101]^{\top} $, the score vector of PCA can be obtained by 
+
+$$ \underbrace{\left[\begin{matrix} -0.64402153, -0.76500736 \\ 0.76500736 -0.64402153 \end{matrix}\right]^{\top}}_{\text{Loading}}\left(\underbrace{\left[\begin{matrix} -2.77595836 \\ -0.929101\end{matrix}\right]}_{\text{Input Data}} - \underbrace{\left[\begin{matrix}0.12105555 \\ 0.11655374\end{matrix}\right]}_{\text{Mean of Training Data}}\right) = \left[\begin{matrix}-2.77595836 \\ -0.929101\end{matrix}\right] $$ -->
 </div>
 </div>
 
