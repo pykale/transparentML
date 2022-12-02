@@ -613,8 +613,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pca-on-toy-data-and-system-transparency">
+   9.1.4. PCA on toy data and system transparency
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   9.1.4. Exercises
+   9.1.5. Exercises
   </a>
  </li>
 </ul>
@@ -659,8 +664,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pca-on-toy-data-and-system-transparency">
+   9.1.4. PCA on toy data and system transparency
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   9.1.4. Exercises
+   9.1.5. Exercises
   </a>
  </li>
 </ul>
@@ -1432,8 +1442,145 @@ In this case, if we want to preserve 80% of variance of the data, we need to sel
 </div>
 </div>
 </div>
+<div class="section" id="pca-on-toy-data-and-system-transparency">
+<h2><span class="section-number">9.1.4. </span>PCA on toy data and system transparency<a class="headerlink" href="#pca-on-toy-data-and-system-transparency" title="Permalink to this headline">¶</a></h2>
+<p>The example is adapted from <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/cross_decomposition/plot_pcr_vs_pls.html#sphx-glr-auto-examples-cross-decomposition-plot-pcr-vs-pls-py">“Principal Component Regression vs Partial Least Squares Regression”</a> in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rng = np.random.RandomState(0)
+n_samples = 500
+cov = [[3, 3], [3, 4]]
+X = rng.multivariate_normal(mean=[0, 0], cov=cov, size=n_samples)
+pca = PCA(n_components=2).fit(X)
+
+fig = plt.figure(figsize=(5, 8))
+
+plt.scatter(X[:, 0], X[:, 1], alpha=0.3, label=&quot;samples&quot;)
+
+for i, (comp, var) in enumerate(zip(pca.components_, pca.explained_variance_)):
+    # comp = comp * var  # scale component by its variance explanation power
+    comp = comp
+    # plt.plot(
+    #     [0, comp[0]],
+    #     [0, comp[1]],
+    #     label=f&quot;Component {i}&quot;,
+    #     linewidth=5,
+    #     color=f&quot;C{i + 2}&quot;,
+    # )
+    plt.arrow(
+        x=0,
+        y=0,
+        dx=comp[0],
+        dy=comp[1],
+        color=f&quot;C{i + 2}&quot;,
+        width=0.1,
+        label=f&quot;Component {i}&quot;,
+        head_width=0.3
+        # [comp[0], comp[1]],
+        # width=3,
+        # label=f&quot;Component {i}&quot;,
+        # # linewidth=5,
+        # color=f&quot;C{i + 2}&quot;,
+    )
+
+# plt.plot([0, X[1, 0]], [0, X[1, 1]], linewidth=2, color=&quot;k&quot;)
+plt.arrow(
+    x=0,
+    y=0,
+    dx=X[1, 0] * 0.85,
+    dy=X[1, 1] * 0.85,
+    color=&quot;k&quot;,
+    width=0.1,
+    head_width=0.3,
+    label=&quot;Input Data Sample&quot;,
+)
+plt.scatter(
+    X[1, 0],
+    X[1, 1],
+    alpha=0.8,
+    facecolors=&quot;none&quot;,
+    marker=&quot;o&quot;,
+    edgecolors=&quot;r&quot;,
+    linewidths=3,
+)
+
+# plt.plot(
+#     [0, -pca.components_[1, 0]],
+#     [0, -pca.components_[1, 1]],
+#     linewidth=2,
+#     color=&quot;orange&quot;,
+# )
+
+# plt.scatter(pca.transform(X[1, :].reshape(1, -1))[:, 0], pca.transform(X[1, :].reshape(1, -1))[:, 1],
+#             alpha=0.3, facecolors=&quot;none&quot;, marker=&quot;o&quot;, edgecolors=&quot;k&quot;, linewidths=3)
+
+plt.gca().set(
+    aspect=&quot;equal&quot;,
+    title=&quot;2-dimensional dataset with principal components&quot;,
+    xlabel=&quot;first feature&quot;,
+    ylabel=&quot;second feature&quot;,
+)
+plt.legend()
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/pca_18_0.png" src="../_images/pca_18_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;The numbers display below round off to 2 decimal places.&quot;)
+print(&quot;Data point: &quot;, np.around(X[1, :], 2))
+print(
+    &quot;Scores of the data poirnt: &quot;, np.around(pca.transform(X[1, :].reshape(1, -1)), 2)
+)
+print(&quot;Mean of the training data: &quot;, np.around(pca.mean_, 2))
+print(&quot;PCA loadings: \n&quot;, np.around(pca.components_, 2))
+print(&quot;Explained variance: &quot;, np.around(pca.explained_variance_, 2))
+print(&quot;Explained variance ratio: &quot;, np.around(pca.explained_variance_ratio_, 2))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The numbers display below round off to 2 decimal places.
+Data point:  [-2.78 -0.93]
+Scores of the data poirnt:  [[ 2.67 -1.54]]
+Mean of the training data:  [0.12 0.12]
+PCA loadings: 
+ [[-0.64 -0.77]
+ [ 0.77 -0.64]]
+Explained variance:  [6.21 0.46]
+Explained variance ratio:  [0.93 0.07]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="important admonition">
+<p class="admonition-title">System transparency</p>
+<p>Numbers are limited to two decimal places for the sake of clarity.</p>
+<ul class="simple">
+<li><p>For data point <span class="math notranslate nohighlight">\( [-2.78 -0.93]^{\top} \)</span>, the score vector of PCA can be obtained by</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split} \underbrace{\left[\begin{matrix} -0.64 &amp; -0.77 \\ 0.77 &amp; -0.64 \end{matrix}\right]}_{\text{Loading}}\left(\underbrace{\left[\begin{matrix} -2.78 \\ -0.93 \end{matrix}\right]}_{\text{Input Data}} - \underbrace{\left[\begin{matrix}0.12 \\ 0.12 \end{matrix}\right]}_{\text{Mean}}\right) = \underbrace{\left[\begin{matrix} 2.67 \\ -1.54 \end{matrix}\right]}_{\text{Scores}} \end{split}\]</div>
+<ul class="simple">
+<li><p>The above process can be used inversely to obtain the input data from the scores:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\underbrace{\left[\begin{matrix} -0.64 &amp; -0.77   \\ 0.77 &amp;  -0.64  \end{matrix}\right]^{\top}}_{\text{Loading}} \underbrace{\left[\begin{matrix} 2.67 \\ -1.54 \end{matrix}\right]}_{\text{Scores}} + \underbrace{\left[\begin{matrix}0.12 \\ 0.12 \end{matrix}\right]}_{\text{Mean}} = \underbrace{\left[\begin{matrix} -2.78 \\ -0.93 \end{matrix}\right]}_{\text{Reconstructed Input}}
+\end{split}\]</div>
+<p>The reconstruction can also be interpreted from the geometric perspective. As displayed in the figure above, the input data point <span class="math notranslate nohighlight">\( [-2.78 -0.93]^{\top} \)</span> (the black vector), can be viewed as the linear combination of the two loading vectors (components 0 and 1 in green and red, respectively). The scores of the input data point are the coefficients of the linear combination. The reconstructed input data point is the linear combination of the scores and the loading vectors:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\underbrace{\left[\begin{matrix} -0.64 \\ -0.77 \end{matrix}\right]}_{\text{Component 0}} \times \underbrace{2.67}_{\text{Score 0}} + \underbrace{\left[\begin{matrix} 0.77 \\ -0.64 \end{matrix}\right]}_{\text{Component 1}} \times \underbrace{(-1.54)}_{\text{Score 1}} + \underbrace{\left[\begin{matrix}0.12 \\ 0.12 \end{matrix}\right]}_{\text{Mean}} = \underbrace{\left[\begin{matrix} -2.78 \\ -0.93 \end{matrix}\right]}_{\text{Reconstructed Input}}
+\end{split}\]</div>
+</div>
+</div>
 <div class="section" id="exercises">
-<h2><span class="section-number">9.1.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.1.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <p>min 3 max 5</p>
 <p>PCA on the NCI60 Data</p>
 <div class="cell docutils container">
@@ -1489,7 +1636,7 @@ for ax in fig.axes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/pca_20_0.png" src="../_images/pca_20_0.png" />
+<img alt="../_images/pca_25_0.png" src="../_images/pca_25_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1570,7 +1717,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/pca_22_0.png" src="../_images/pca_22_0.png" />
+<img alt="../_images/pca_27_0.png" src="../_images/pca_27_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1594,96 +1741,8 @@ for ax in fig.axes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/pca_23_0.png" src="../_images/pca_23_0.png" />
+<img alt="../_images/pca_28_0.png" src="../_images/pca_28_0.png" />
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rng = np.random.RandomState(0)
-n_samples = 500
-cov = [[3, 3], [3, 4]]
-X = rng.multivariate_normal(mean=[0, 0], cov=cov, size=n_samples)
-pca = PCA(n_components=2).fit(X)
-
-fig = plt.figure(figsize=(5, 8))
-
-plt.scatter(X[:, 0], X[:, 1], alpha=0.3, label=&quot;samples&quot;)
-plt.scatter(
-    X[1, 0],
-    X[1, 1],
-    alpha=0.8,
-    facecolors=&quot;none&quot;,
-    marker=&quot;o&quot;,
-    edgecolors=&quot;r&quot;,
-    linewidths=3,
-)
-for i, (comp, var) in enumerate(zip(pca.components_, pca.explained_variance_)):
-    comp = comp * var  # scale component by its variance explanation power
-    plt.plot(
-        [0, comp[0]],
-        [0, comp[1]],
-        label=f&quot;Component {i}&quot;,
-        linewidth=5,
-        color=f&quot;C{i + 2}&quot;,
-    )
-
-plt.plot([0, X[1, 0]], [0, X[1, 1]], linewidth=2, color=&quot;k&quot;)
-plt.plot(
-    [0, -pca.components_[1, 0]],
-    [0, -pca.components_[1, 1]],
-    linewidth=2,
-    color=&quot;orange&quot;,
-)
-
-# plt.scatter(pca.transform(X[1, :].reshape(1, -1))[:, 0], pca.transform(X[1, :].reshape(1, -1))[:, 1],
-#             alpha=0.3, facecolors=&quot;none&quot;, marker=&quot;o&quot;, edgecolors=&quot;k&quot;, linewidths=3)
-
-plt.gca().set(
-    aspect=&quot;equal&quot;,
-    title=&quot;2-dimensional dataset with principal components&quot;,
-    xlabel=&quot;first feature&quot;,
-    ylabel=&quot;second feature&quot;,
-)
-plt.legend()
-plt.show()
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/pca_24_0.png" src="../_images/pca_24_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;Data point: &quot;, X[1, :])
-print(&quot;Scores of the data poirnt: &quot;, pca.transform(X[1, :].reshape(1, -1)))
-print(&quot;Mean of the training data: &quot;, pca.mean_)
-print(&quot;PCA loadings: \n&quot;, pca.components_)
-print(&quot;Explained variance: &quot;, pca.explained_variance_)
-print(&quot;Explained variance ratio: &quot;, pca.explained_variance_ratio_)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data point:  [-2.77595836 -0.929101  ]
-Scores of the data poirnt:  [[ 2.6656729 -1.5428128]]
-Mean of the training data:  [0.12105555 0.11655374]
-PCA loadings: 
- [[-0.64402153 -0.76500736]
- [ 0.76500736 -0.64402153]]
-Explained variance:  [6.21234881 0.45942259]
-Explained variance ratio:  [0.93113934 0.06886066]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="important admonition">
-<p class="admonition-title">System transparency</p>
-<ul class="simple">
-<li><p>For data point <span class="math notranslate nohighlight">\( [-2.77595836 -0.929101]^{\top} \)</span>, the score vector of PCA can be obtained by</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split} \underbrace{\left[\begin{matrix} -0.64402153, -0.76500736 \\ 0.76500736 -0.64402153 \end{matrix}\right]^{\top}}_{\text{Loading}}\left(\underbrace{\left[\begin{matrix} -2.77595836 \\ -0.929101\end{matrix}\right]}_{\text{Input Data}} - \underbrace{\left[\begin{matrix}0.12105555 \\ 0.11655374\end{matrix}\right]}_{\text{Mean of Training Data}}\right) = \left[\begin{matrix}-2.77595836 \\ -0.929101\end{matrix}\right] \end{split}\]</div>
 </div>
 <!-- For data point $ [-2.77595836 -0.929101]^{\top} $, the score vector of PCA can be obtained by 
 

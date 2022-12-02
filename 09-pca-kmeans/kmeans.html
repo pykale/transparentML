@@ -721,8 +721,8 @@ K-means clustering,</p>
 <div class="math notranslate nohighlight" id="equation-kmeans-obj">
 <span class="eqno">(9.5)<a class="headerlink" href="#equation-kmeans-obj" title="Permalink to this equation">¶</a></span>\[\min_{C_1, \ldots, C_K} \left\{\sum_{k=1}^K \frac{1}{|C_k|} \sum_{i,j \in C_k} \sum_{d=1}^{D} \left( x_{i,d} - x_{j,d} \right)^2\right\}.\]</div>
 <p>Now, we would like to find an algorithm to solve Equation <a class="reference internal" href="#equation-kmeans-obj">(9.5)</a>—that is, a method to partition the observations into K clusters such that the objective of Equation <a class="reference internal" href="#equation-kmeans-obj">(9.5)</a> is minimised. This is in fact a very difficult problem to solve precisely, since there are almost <span class="math notranslate nohighlight">\(K^N\)</span> ways to partition <span class="math notranslate nohighlight">\(N\)</span> observations into <span class="math notranslate nohighlight">\(K\)</span> clusters. This is a huge number unless <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(N\)</span> are tiny! Fortunately, a very simple algorithm can be shown to provide a local optimum—a pretty good
-solution—to the <span class="math notranslate nohighlight">\(K\)</span>-means optimisation problem <a class="reference internal" href="#equation-kmeans-obj">(9.5)</a>. This approach is laid out in Algorithm <code class="xref std std-numref docutils literal notranslate"><span class="pre">kmeans-algorithm</span></code>.</p>
-<div class="proof algorithm admonition" id="kmeans-algorithm">
+solution—to the <span class="math notranslate nohighlight">\(K\)</span>-means optimisation problem <a class="reference internal" href="#equation-kmeans-obj">(9.5)</a>. This approach is laid out in <a class="reference internal" href="#alg:kmeans-algorithm">Algorithm 9.1</a>.</p>
+<div class="proof algorithm admonition" id="alg:kmeans-algorithm">
 <p class="admonition-title"><span class="caption-number">Algorithm 9.1 </span> (K-Means Clustering)</p>
 <div class="algorithm-content section" id="proof-content">
 <ul class="simple">
