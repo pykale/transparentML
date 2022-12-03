@@ -874,7 +874,7 @@ y_n(\beta_0 + \beta_1 x_{n1} + \beta_2 x_{n2} + \cdots + \beta_D x_{nD}) &gt; 0,
 <p>An example is shown in the left-hand panel of <a class="reference internal" href="#svm6"><span class="std std-numref">Fig. 8.6</span></a> below. Most of the observations are on the correct side of the margin. However, a small subset of the observations (1 and 8) are on the wrong side of the margin.</p>
 <div class="figure align-default" id="svm6">
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm6.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm6.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm6.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.6 </span><span class="caption-text">Left: A support vector classifier was fit to a small data set. The hyperplane is shown as a solid line and the margins are shown as dashed lines. Purple observations: Observations 3, 4, 5, and 6 are on the correct side of the margin, observation 2 is on the margin, and observation 1 is on the wrong side of the margin. Blue observations: Observations 7 and 10 are on the correct side of the margin, observation 9 is on the margin, and observation 8 is on the wrong side of the margin. No observations are on the wrong side of the hyperplane. Right: Same as left panel with two additional points, 11 and 12. These two observations are on the wrong side of the hyperplane and the wrong side of the margin.</span><a class="headerlink" href="#svm6" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8.6 </span><span class="caption-text">Left: A support vector classifier was fit to a small dataset. The hyperplane is shown as a solid line and the margins are shown as dashed lines. Purple observations: Observations 3, 4, 5, and 6 are on the correct side of the margin, observation 2 is on the margin, and observation 1 is on the wrong side of the margin. Blue observations: Observations 7 and 10 are on the correct side of the margin, observation 9 is on the margin, and observation 8 is on the wrong side of the margin. No observations are on the wrong side of the hyperplane. Right: Same as left panel with two additional points, 11 and 12. These two observations are on the wrong side of the hyperplane and the wrong side of the margin.</span><a class="headerlink" href="#svm6" title="Permalink to this image">¶</a></p>
 </div>
 <p>An observation can be not only on the wrong side of the margin, but also on the wrong side of the hyperplane. In fact, when there is no separating hyperplane, such a situation is inevitable. Observations on the wrong side of the hyperplane correspond to training observations that are misclassified by the support vector classifier. The right-hand panel of <a class="reference internal" href="#svm6"><span class="std std-numref">Fig. 8.6</span></a> above illustrates such a scenario.</p>
 </div>
@@ -1020,7 +1020,7 @@ print(&quot;Prediction: &quot;, svc.predict(X[5, :].reshape(1, -1))[0])
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Input:  [-1.19276461 -0.20487651]
 Intercept:  0.5729441305210916  Coefficients:  [-0.73273926 -0.70326681]
-Prediction score:  1.5910124372951466
+Prediction score:  1.5910124372951457
 Prediction:  1
 </pre></div>
 </div>
@@ -1033,8 +1033,8 @@ Prediction:  1
 <li><p>For the data point <span class="math notranslate nohighlight">\([-1.19276461, -0.20487651]\)</span> marked by a black circle, its prediction score is <span class="math notranslate nohighlight">\( -0.7327 \times -1.19276461 + -0.7033 \times -0.20487651 + 0.5729 \approx 1.5910 \)</span>, which is positive. So the predicted label is <span class="math notranslate nohighlight">\( 1 \)</span>.</p></li>
 <li><p>According to the definition, the data points on the hyperplane satisfies <span class="math notranslate nohighlight">\( \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} = 0 \)</span>, i.e. <span class="math notranslate nohighlight">\( 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 = 0 \)</span>. To get a data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> of class <span class="math notranslate nohighlight">\( 1 \)</span>, the relationship between <span class="math notranslate nohighlight">\( x_1 \)</span> and <span class="math notranslate nohighlight">\( x_2 \)</span> should satisfy:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-8829e1a1-be98-4959-a286-76cf31524253">
-<span class="eqno">(8.6)<a class="headerlink" href="#equation-8829e1a1-be98-4959-a286-76cf31524253" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ab694403-2f81-4dad-b2f8-e3166ee2952f">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-ab694403-2f81-4dad-b2f8-e3166ee2952f" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} &amp; &gt; 0 \\
 \beta_1 x_{1} &amp; &gt; - \beta_0 - \beta_2 x_{2} \\
@@ -1078,14 +1078,14 @@ clf.cv_results_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00037472, 0.00033321, 0.00033476, 0.00033557, 0.00035813,
-        0.000372  , 0.00050681]),
- &#39;std_fit_time&#39;: array([5.49335291e-05, 9.17288953e-06, 1.09923377e-05, 7.39347508e-06,
-        7.65947284e-06, 7.92758805e-06, 4.83992123e-05]),
- &#39;mean_score_time&#39;: array([0.00025878, 0.00024123, 0.00024447, 0.00024023, 0.00024354,
-        0.00024502, 0.0002579 ]),
- &#39;std_score_time&#39;: array([2.72855872e-05, 1.11333052e-05, 1.02260172e-05, 1.15986167e-05,
-        1.30579616e-05, 1.06186239e-05, 6.86715871e-06]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00063288, 0.00060186, 0.00057869, 0.00058215, 0.00061834,
+        0.00058138, 0.00076694]),
+ &#39;std_fit_time&#39;: array([8.80606857e-05, 5.87081437e-05, 5.52409005e-05, 5.26677434e-05,
+        6.93724528e-05, 3.22303209e-05, 8.31232486e-05]),
+ &#39;mean_score_time&#39;: array([0.00044434, 0.00045633, 0.00045865, 0.00046053, 0.00044031,
+        0.00044653, 0.00046015]),
+ &#39;std_score_time&#39;: array([3.05486778e-05, 2.15575754e-05, 3.64148849e-05, 5.49867059e-05,
+        2.40343903e-05, 3.93125343e-05, 3.83063800e-05]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,

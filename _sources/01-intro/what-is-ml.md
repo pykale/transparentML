@@ -33,7 +33,7 @@ The relationships between AI, ML, deep learning, and data science, by [Jen Loope
 
 ## A motivating example
 
-Let us assume we are a consultant firm hired by a client to investigate the association between advertising and sales of a product. The [Advertising data set](https://github.com/pykale/transparentML/blob/main/data/Advertising.csv) consists of the sales of the product in 200 different markets, and advertising budgets for the product in each of those markets for three different media: TV, radio, and newspaper. You can click the link above to view the dataset.
+Let us assume we are a consultant firm hired by a client to investigate the association between advertising and sales of a product. The [Advertising dataset](https://github.com/pykale/transparentML/blob/main/data/Advertising.csv) consists of the sales of the product in 200 different markets, and advertising budgets for the product in each of those markets for three different media: TV, radio, and newspaper. You can click the link above to view the dataset.
 
 Our goal is to develop an accurate model that can be used to predict sales on the basis of the three media budgets so that our client can increase sales by adjusting their limited advertising budget. In this setting, the advertising budgets are input variables or _features_ while sales is an output variable or _target_.
 

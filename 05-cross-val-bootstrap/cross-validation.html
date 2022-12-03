@@ -890,11 +890,11 @@ fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))
 
 # Left plot (first split)
 ax1.plot(X.T[0], Z.T[0], &quot;-o&quot;)
-ax1.set_title(&quot;Random split of the data set&quot;)
+ax1.set_title(&quot;Random split of the dataset&quot;)
 
 # Right plot (all splits)
 ax2.plot(X, Z)
-ax2.set_title(&quot;10 random splits of the data set&quot;)
+ax2.set_title(&quot;10 random splits of the dataset&quot;)
 
 for ax in fig.axes:
     ax.set_ylabel(&quot;Mean Squared Error&quot;)
@@ -911,7 +911,7 @@ for ax in fig.axes:
 </div>
 <p>The left-hand panel of the figure above shows the results on one possible split of the data into a training set and a validation set using the polynomial regression model of different degrees. The training set is used to fit the model, and the validation set is used to evaluate the model fit. The validation set error rate is an estimate of the test error rate. The validation set error is lowest when the model is a function of <code class="docutils literal notranslate"><span class="pre">horsepower</span></code><span class="math notranslate nohighlight">\(^6\)</span> in this case. Is this really/always the case?</p>
 <p>If we repeat the process of randomly splitting, we will get a somewhat different estimate for the test MSE. Ten different validation set MSE curves are shown in the right-hand panel of the figure above.</p>
-<!-- As an illustration, the right-hand panel of Figure 5.2 displays ten different validation set MSE curves from the Auto data set, produced using ten different random splits of the observations into training and validation sets.  -->
+<!-- As an illustration, the right-hand panel of Figure 5.2 displays ten different validation set MSE curves from the Auto dataset, produced using ten different random splits of the observations into training and validation sets.  -->
 <p>We can observe:</p>
 <ul class="simple">
 <li><p>model with a quadratic term has a dramatically smaller validation set MSE than the model with only a linear term</p></li>
@@ -922,7 +922,7 @@ for ax in fig.axes:
 <p>Based on the variability among these curves, all that we can conclude with any confidence is that the linear fit is not adequate for this data. The validation set approach is conceptually simple and is easy to implement. But it has two drawbacks:</p>
 <ol class="simple">
 <li><p>As is shown in the right-hand panel of the Figure above, the validation estimate of the test error rate can be highly variable, depending on precisely which observations are included in the training set and which observations are included in the validation set.</p></li>
-<li><p>In the validation approach, only a subset of the observations—those that are included in the training set rather than in the validation set—are used to fit the model. Since machine learning models tend to perform worse when trained on fewer observations, this suggests that the validation set error rate may tend to <em>overestimate</em> the test error rate for the model fit on the entire data set.</p></li>
+<li><p>In the validation approach, only a subset of the observations—those that are included in the training set rather than in the validation set—are used to fit the model. Since machine learning models tend to perform worse when trained on fewer observations, this suggests that the validation set error rate may tend to <em>overestimate</em> the test error rate for the model fit on the entire dataset.</p></li>
 </ol>
 <p>Cross-validation below is a refinement of the validation set approach that addresses these two issues.</p>
 </div>
@@ -937,7 +937,7 @@ Since <span class="math notranslate nohighlight">\((\mathbf{x}_i , y_i)\)</span>
 \[\textrm{MSE}_{LOOCV} = \frac{1}{N}\sum_{i=1}^N \epsilon_i = \frac{1}{N}\sum_{i=1}^N (y_i − \hat{y}_i)^2 \]</div>
 <p>Compared to the validation set approach, LOOCV has the following advantages:</p>
 <ul class="simple">
-<li><p>LOOCV has far less bias. In LOOCV, we repeatedly fit the machine learning model using training sets that contain <span class="math notranslate nohighlight">\(N − 1\)</span> observations, almost as many as are in the entire data set. This is in contrast to the validation set approach, in which the training set is typically around half the size of the original data set. Consequently, the LOOCV approach tends not to overestimate the test error rate as much as the validation set approach does.</p></li>
+<li><p>LOOCV has far less bias. In LOOCV, we repeatedly fit the machine learning model using training sets that contain <span class="math notranslate nohighlight">\(N − 1\)</span> observations, almost as many as are in the entire dataset. This is in contrast to the validation set approach, in which the training set is typically around half the size of the original dataset. Consequently, the LOOCV approach tends not to overestimate the test error rate as much as the validation set approach does.</p></li>
 <li><p>In contrast to the validation set approach which will yield different results when applied repeatedly due to randomness in the training/validation set splits, performing LOOCV multiple times will <em>always yield the same results</em>: there is <em>no randomness</em> in the training/validation set splits.</p></li>
 </ul>
 </div>
@@ -1042,7 +1042,7 @@ for ax in fig.axes:
 <p><strong>In <span class="math notranslate nohighlight">\(k\)</span>-fold cross validation <span class="math notranslate nohighlight">\(k\)</span> independant samples are taken from the set of all available observations each of size, <span class="math notranslate nohighlight">\(1 - (n/k)\)</span>. The model is then fitted to each of these training samples, and then tested on the observations that were excluded from that sample. This produces <span class="math notranslate nohighlight">\(k\)</span> error scores which are then averaged to produce the final cross-validation score.</strong></p>
 <p><strong>Note that the proportion of observations that are included in each training increases increases with <span class="math notranslate nohighlight">\(k\)</span>.</strong></p>
 </div>
-<p><strong>2</strong>. In <strong>Chapter 3</strong>, we used logistic regression on the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Default.csv">Default</a> data set to predict the probability of someone defaulting on a loan, by looking at their income and balance. We will now estimate the test error of this logistic regression model using the validation set approach. Do not forget to set a random seed before beginning your analysis and convert the categories to numerical values.</p>
+<p><strong>2</strong>. In <strong>Chapter 3</strong>, we used logistic regression on the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Default.csv">Default</a> dataset to predict the probability of someone defaulting on a loan, by looking at their income and balance. We will now estimate the test error of this logistic regression model using the validation set approach. Do not forget to set a random seed before beginning your analysis and convert the categories to numerical values.</p>
 <p><strong>a</strong>. Fit a logistic regression model that uses <strong>income</strong> and <strong>balance</strong> to predict <strong>default</strong> and uses the <strong>validation set approach</strong> to estimate the <strong>test error</strong> of this model. In order to do this, you must perform the following steps:</p>
 <p><strong>i</strong>. Split the sample set into a training set and a validation set.</p>
 <p><strong>ii</strong>. Fit a multiple logistic regression model using only the training observations.</p>

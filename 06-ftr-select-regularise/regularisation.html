@@ -998,7 +998,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best MSE:  12385.885432230521
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best MSE:  12385.885432230525
 </pre></div>
 </div>
 <img alt="../_images/regularisation_14_1.png" src="../_images/regularisation_14_1.png" />
@@ -1007,7 +1007,7 @@ plt.show()
 <p>Ridge regression’s advantage over least squares is that it can alleviate overfitting, which is rooted in the bias-variance trade-off. As <span class="math notranslate nohighlight">\(\lambda\)</span> increases, the flexibility of the ridge regression fit decreases, leading to decreased variance but increased bias. In other words, ridge regression reduces the variance of the least squares estimates, but at the expense of increasing the bias. As shown in the figure above, for values of <span class="math notranslate nohighlight">\(\lambda\)</span> up to about 10, the MSE drops as <span class="math notranslate nohighlight">\(\lambda\)</span> increases. Beyond this point, the MSE increases considerably. This is because the bias introduced by ridge regression becomes too large, and the model becomes too rigid to to capture the true relationship between the predictors and the response.</p>
 <div class="tip admonition">
 <p class="admonition-title">Bias-variance trade-off</p>
-<p><strong>Variance</strong> refers to the amount by which <span class="math notranslate nohighlight">\(\hat{f}(\mathbf{x})\)</span> would change if we estimated it using a different training data set. If a method has high variance, then small changes in the training data can result in large changes in the estimated values of <span class="math notranslate nohighlight">\(\hat{f}(\mathbf{x})\)</span>.</p>
+<p><strong>Variance</strong> refers to the amount by which <span class="math notranslate nohighlight">\(\hat{f}(\mathbf{x})\)</span> would change if we estimated it using a different training dataset. If a method has high variance, then small changes in the training data can result in large changes in the estimated values of <span class="math notranslate nohighlight">\(\hat{f}(\mathbf{x})\)</span>.</p>
 <p><strong>Bias</strong> refers to the error that is introduced by approximating a real-life problem, which may be extremely complicated, by a much simpler model. For example, linear regression assumes a linear relationship between the predictors and the response, but many real-life relationships are nonlinear. In this case, the linear regression model will have high bias, since it will not be able to capture the nonlinear relationship between the predictors and the response.</p>
 <p>Generally, more flexible methods have higher variance and lower bias, and less flexible methods (such as linear methods) have lower variance and higher bias.</p>
 </div>
@@ -1132,7 +1132,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best MSE:  12956.572451521926
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best MSE:  12956.57245152192
 </pre></div>
 </div>
 <img alt="../_images/regularisation_22_1.png" src="../_images/regularisation_22_1.png" />
@@ -1389,7 +1389,7 @@ print(&quot;Best MSE: &quot;, np.min(mses))
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best MSE:  2.3886905447334126
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best MSE:  2.3886905447334117
 </pre></div>
 </div>
 </div>

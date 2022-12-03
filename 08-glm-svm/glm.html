@@ -871,10 +871,10 @@ est.summary()
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   457.3</td> 
 </tr>
 <tr>
-  <th>Date:</th>             <td>Fri, 02 Dec 2022</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
+  <th>Date:</th>             <td>Sat, 03 Dec 2022</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
 </tr>
 <tr>
-  <th>Time:</th>                 <td>20:05:05</td>     <th>  Log-Likelihood:    </th> <td> -49743.</td> 
+  <th>Time:</th>                 <td>23:47:10</td>     <th>  Log-Likelihood:    </th> <td> -49743.</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  8645</td>      <th>  AIC:               </th> <td>9.957e+04</td>
@@ -1090,7 +1090,7 @@ plt.show()
 <img alt="../_images/glm_11_0.png" src="../_images/glm_11_0.png" />
 </div>
 </div>
-<p>By careful inspection, we can identify several issues from the figure above, e.g. 9.6% of the fitted values are negative! Thus, the linear regression model predicts a negative number of users during 9.6% of the hours in the data set, which does not make sense. Furthermore, the fitted values are not integers, which is also not desirable.</p>
+<p>By careful inspection, we can identify several issues from the figure above, e.g. 9.6% of the fitted values are negative! Thus, the linear regression model predicts a negative number of users during 9.6% of the hours in the dataset, which does not make sense. Furthermore, the fitted values are not integers, which is also not desirable.</p>
 <p>This casts doubt on the suitability of linear regression for performing meaningful predictions on the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> data. It also raises concerns about the accuracy of the coefficient estimates, confidence intervals, and other outputs of the regression model.</p>
 <p>Let us further examine the distribution of the response variable <code class="docutils literal notranslate"><span class="pre">bikers</span></code> against the <code class="docutils literal notranslate"><span class="pre">hr</span></code> feature using the original scale and the log scale.</p>
 <div class="cell docutils container">
@@ -1134,18 +1134,18 @@ plt.show()
 </div>
 </div>
 <p>This figure corresponds to Figure 4.14 in the textbook. Intuitively, when the expected number of bikers is small, its variance should be small as well. For example, at 2 AM during a heavy December snow storm, we expect that extremely few people will use a bike, and moreover that there should be little variance associated with the number of users during those conditions. This is borne out in the data: between 1 AM and 4 AM, in December, January, and February, when it is raining, there are 5.05 users, on average, with a standard deviation of 3.73. By contrast, between 7 AM and 10 AM, in April, May, and June, when skies are clear, there are 243.59 users, on average, with a standard deviation of 131.7. The mean-variance relationship is displayed in the left-hand panel of the figure above. This is a major violation of the assumptions of a linear model, which state that <span class="math notranslate nohighlight">\(y = \sum_{d=1}^{D}x_d\beta_d + \epsilon\)</span>, where <span class="math notranslate nohighlight">\(\epsilon\)</span> is a mean-zero error term with variance <span class="math notranslate nohighlight">\(\sigma^2\)</span> that is constant, and not a function of the features (covariates). Therefore, the heteroscedasticity of the data calls into question the suitability of a linear regression model.</p>
-<p>Finally, the response <code class="docutils literal notranslate"><span class="pre">bikers</span></code> is integer-valued. But under a linear model, <span class="math notranslate nohighlight">\(y = \beta_0 + \sum_{d=1}^{D}x_d\beta_d + \epsilon\)</span>, where <span class="math notranslate nohighlight">\(\epsilon\)</span> is a continuous-valued error term. This means that in a linear model, the response <span class="math notranslate nohighlight">\(y\)</span> is necessarily continuous-valued (quantitative). Thus, the integer nature of the response <code class="docutils literal notranslate"><span class="pre">bikers</span></code> suggests that a linear regression model is not entirely satisfactory for this data set.</p>
+<p>Finally, the response <code class="docutils literal notranslate"><span class="pre">bikers</span></code> is integer-valued. But under a linear model, <span class="math notranslate nohighlight">\(y = \beta_0 + \sum_{d=1}^{D}x_d\beta_d + \epsilon\)</span>, where <span class="math notranslate nohighlight">\(\epsilon\)</span> is a continuous-valued error term. This means that in a linear model, the response <span class="math notranslate nohighlight">\(y\)</span> is necessarily continuous-valued (quantitative). Thus, the integer nature of the response <code class="docutils literal notranslate"><span class="pre">bikers</span></code> suggests that a linear regression model is not entirely satisfactory for this dataset.</p>
 <p>Some of the problems that arise when fitting a linear regression model to the Bikeshare data can be overcome by transforming the response; for instance, we can fit the model</p>
 <div class="math notranslate nohighlight">
 \[
 \log(y) = \beta_0 + \sum_{d=1}^{D}x_d\beta_d + \epsilon.
 \]</div>
 <p>Transforming the response <em>avoids the possibility of negative predictions</em>, and it <em>overcomes much of the heteroscedasticity in the untransformed data</em>, as is shown in the right-hand panel of the figure above.</p>
-<p>However, it is not quite a satisfactory solution, since predictions and inference are made in terms of the log of the response, rather than the response. This leads to challenges in <em>interpretation</em>, e.g. a one-unit increase in <span class="math notranslate nohighlight">\(x_d\)</span> is associated with an increase in the mean of the log of <span class="math notranslate nohighlight">\(y\)</span> by an amount <span class="math notranslate nohighlight">\(\beta_d\)</span>. Furthermore, a log transformation of the response cannot be applied in settings where the response can take on a value of 0. Thus, while fitting a linear model to a transformation of the response may be an adequate approach for some count-valued data sets, it often leaves something to be desired. This motivates the development of a Poisson regression model that provides a much more natural and elegant approach for this task.</p>
+<p>However, it is not quite a satisfactory solution, since predictions and inference are made in terms of the log of the response, rather than the response. This leads to challenges in <em>interpretation</em>, e.g. a one-unit increase in <span class="math notranslate nohighlight">\(x_d\)</span> is associated with an increase in the mean of the log of <span class="math notranslate nohighlight">\(y\)</span> by an amount <span class="math notranslate nohighlight">\(\beta_d\)</span>. Furthermore, a log transformation of the response cannot be applied in settings where the response can take on a value of 0. Thus, while fitting a linear model to a transformation of the response may be an adequate approach for some count-valued datasets, it often leaves something to be desired. This motivates the development of a Poisson regression model that provides a much more natural and elegant approach for this task.</p>
 </div>
 <div class="section" id="poisson-regression-for-predicting-the-number-of-bikers">
 <h2><span class="section-number">8.1.3. </span>Poisson regression for predicting the number of bikers<a class="headerlink" href="#poisson-regression-for-predicting-the-number-of-bikers" title="Permalink to this headline">¶</a></h2>
-<p>To overcome the inadequacies of linear regression for analysing the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> data set, we will study a GLM approach called Poisson regression.</p>
+<p>To overcome the inadequacies of linear regression for analysing the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> dataset, we will study a GLM approach called Poisson regression.</p>
 <div class="section" id="the-poisson-distribution">
 <h3><span class="section-number">8.1.3.1. </span>The Poisson distribution<a class="headerlink" href="#the-poisson-distribution" title="Permalink to this headline">¶</a></h3>
 <p>Let us first introduce the Poisson distribution. Suppose that a random variable <span class="math notranslate nohighlight">\(y\)</span> takes on nonnegative integer values, i.e. <span class="math notranslate nohighlight">\(y \in \{0, 1, 2, \dots\}\)</span>. If <span class="math notranslate nohighlight">\(y\)</span> follows the Poisson distribution, then</p>
@@ -1201,10 +1201,10 @@ est.summary()
   <th>Method:</th>                 <td>MLE</td>       <th>  Df Model:          </th>   <td>    39</td>   
 </tr>
 <tr>
-  <th>Date:</th>            <td>Fri, 02 Dec 2022</td> <th>  Pseudo R-squ.:     </th>   <td>0.7459</td>   
+  <th>Date:</th>            <td>Sat, 03 Dec 2022</td> <th>  Pseudo R-squ.:     </th>   <td>0.7459</td>   
 </tr>
 <tr>
-  <th>Time:</th>                <td>20:05:07</td>     <th>  Log-Likelihood:    </th> <td>-1.4054e+05</td>
+  <th>Time:</th>                <td>23:47:13</td>     <th>  Log-Likelihood:    </th> <td>-1.4054e+05</td>
 </tr>
 <tr>
   <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th> <td>-5.5298e+05</td>
@@ -1369,7 +1369,7 @@ plt.show()
 <ul class="simple">
 <li><p><em>Interpretation</em>: To interpret the coefficients in the Poisson regression model, we must pay close attention to Equation <a class="reference internal" href="#equation-eq-poisson-regression">(8.2)</a>, which states that an increase in <span class="math notranslate nohighlight">\(x_d\)</span> by one unit is associated with a change in <span class="math notranslate nohighlight">\(\mathbb{E}(y) = \lambda\)</span> by a factor of <span class="math notranslate nohighlight">\(\textrm{exp}(\beta_d)\)</span>. For example, a change in weather from clear to cloudy skies is associated with a change in mean bike usage by a factor of <span class="math notranslate nohighlight">\(\textrm{exp}(−0.08) = 0.923\)</span>, i.e. on average, only 92.3% as many people will use bikes when it is cloudy relative to when it is clear. If the weather worsens further and it begins to rain, then the mean bike usage will further change by a factor of <span class="math notranslate nohighlight">\( \textrm{exp} (−0.5) = 0.607\)</span>, i.e. on average only 60.7% as many people will use bikes when it is rainy relative to when it is cloudy.</p></li>
 <li><p><em>Mean-variance relationship</em>: As mentioned earlier, under the Poisson model,  <span class="math notranslate nohighlight">\( \lambda = \mathbb{E}(y) = \text{Var}(y) \)</span>. Thus, by modelling bike usage with a Poisson regression, we implicitly assume that mean bike usage in a given hour equals the variance of bike usage during that hour. By contrast, under a linear regression model, the variance of bike usage always takes on a constant value. From the above figure (the one corresponding to Figure 4.14 in the textbook), in the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> data, when biking conditions are favourable, both the mean and the variance in bike usage are much higher than when conditions are unfavourable. Thus, the Poisson regression model is able to handle the mean-variance relationship seen in the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> data in a way that the linear regression model is not.</p></li>
-<li><p><em>Nonnegative fitted values</em>: There are no negative predictions using the Poisson regression model. This is because the Poisson model itself only allows for nonnegative values, as shown in Equation <a class="reference internal" href="#equation-eq-poisson-distribution">(8.1)</a>. By contrast, when we fit a linear regression model to the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> data set, almost 10% of the predictions were negative.</p></li>
+<li><p><em>Nonnegative fitted values</em>: There are no negative predictions using the Poisson regression model. This is because the Poisson model itself only allows for nonnegative values, as shown in Equation <a class="reference internal" href="#equation-eq-poisson-distribution">(8.1)</a>. By contrast, when we fit a linear regression model to the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> dataset, almost 10% of the predictions were negative.</p></li>
 </ul>
 </div>
 </div>
