@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>9.2. \(K\)-means clustering &#8212; Transparent ML Intro</title>
+    <title>9.2. Clustering &#8212; Transparent ML Intro</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -592,18 +592,48 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#clustering">
+  <a class="reference internal nav-link" href="#id1">
    9.2.1. Clustering
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
+  <a class="reference internal nav-link" href="#k-means-clustering">
    9.2.2.
    <span class="math notranslate nohighlight">
     \(K\)
    </span>
    -means clustering
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#k-means-algorithm">
+     9.2.2.1.
+     <span class="math notranslate nohighlight">
+      \(K\)
+     </span>
+     -means algorithm
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#k-means-clustering-on-toy-data-with-scikit-learn">
+     9.2.2.2.
+     <span class="math notranslate nohighlight">
+      \(K\)
+     </span>
+     -means clustering on toy data with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       scikit-learn
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hierarchical-clustering">
+     9.2.2.3. Hierarchical Clustering
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
@@ -620,7 +650,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>K-means clustering</h1>
+                <h1>Clustering</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -631,18 +661,48 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#clustering">
+  <a class="reference internal nav-link" href="#id1">
    9.2.1. Clustering
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
+  <a class="reference internal nav-link" href="#k-means-clustering">
    9.2.2.
    <span class="math notranslate nohighlight">
     \(K\)
    </span>
    -means clustering
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#k-means-algorithm">
+     9.2.2.1.
+     <span class="math notranslate nohighlight">
+      \(K\)
+     </span>
+     -means algorithm
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#k-means-clustering-on-toy-data-with-scikit-learn">
+     9.2.2.2.
+     <span class="math notranslate nohighlight">
+      \(K\)
+     </span>
+     -means clustering on toy data with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       scikit-learn
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hierarchical-clustering">
+     9.2.2.3. Hierarchical Clustering
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
@@ -658,8 +718,8 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="k-means-clustering">
-<h1><span class="section-number">9.2. </span><span class="math notranslate nohighlight">\(K\)</span>-means clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="clustering">
+<h1><span class="section-number">9.2. </span>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h1>
 <p>In this chapter, we will introduce the <span class="math notranslate nohighlight">\(K\)</span>-means clustering algorithm.</p>
 <p>Watch the 8-minute video below for a visual explanation of <span class="math notranslate nohighlight">\(K\)</span>-means clustering.</p>
 <div class="admonition-video admonition">
@@ -667,17 +727,15 @@ const thebe_selector_output = ".output, .cell_output"
 <iframe width="700" height="394" src="https://www.youtube.com/embed/4b5d3muPQmA?start=14" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <p><a class="reference external" href="https://www.youtube.com/embed/4b5d3muPQmA?start=14">Explaining <span class="math notranslate nohighlight">\(K\)</span>-Means Clustering, by StatQuest</a></p>
 </div>
-<div class="section" id="clustering">
-<h2><span class="section-number">9.2.1. </span>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h2>
-<p><em>Clustering</em> refers to a very broad set of techniques for finding subgroups, or clusters, in a dataset. When we cluster the observations of a dataset, we seek to partition them into distinct groups so that the observations within each group are quite similar to each other, while observations in different groups are quite different from each other. Of course, to make this concrete, we must define what it means for two or more observations to be similar or different. Indeed, this is often a domain-specific consideration that must be made based on knowledge of the data being studied.</p>
-<p>For instance, suppose that we have a set of n observations, each with <span class="math notranslate nohighlight">\(D\)</span> features. We might define the similarity between two observations as the Euclidean distance between them, which is given by features. The n observations could correspond to tissue samples for patients with breast cancer, and the <span class="math notranslate nohighlight">\(D\)</span> features could correspond to measurements collected for each tissue sample; these could be clinical measurements, such as tumour stage or grade, or they could be gene expression measurements. We may have a reason to believe that there is some heterogeneity among the n tissue samples; for instance, perhaps there are a few different unknown subtypes of breast cancer. Clustering could be used to find these subgroups. This is an unsupervised problem because we are trying to discover structure—in this case, distinct clusters—on the basis of a dataset. The goal in supervised problems, on the other hand, is to try to predict some outcome vector such as survival time or response to drug treatment.</p>
+<div class="section" id="id1">
+<h2><span class="section-number">9.2.1. </span>Clustering<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><em>Clustering</em> refers to a very broad set of techniques for finding subgroups, or clusters, in a dataset. When we cluster the observations of a dataset, we seek to partition them into distinct groups so that the observations within each group are quite similar to each other, while observations in different groups are quite different from each other. For instance, suppose that we have a set of <span class="math notranslate nohighlight">\(N\)</span> observations, each with <span class="math notranslate nohighlight">\(D\)</span> features. We might define the similarity between two observations as the Euclidean distance between them, which is given by features.</p>
 <p>Both clustering and PCA seek to simplify the data via a small number of summaries, but their mechanisms are different:</p>
 <ul class="simple">
 <li><p>PCA looks to find a low-dimensional representation of the observations that explain a good fraction of the variance;</p></li>
 <li><p>Clustering looks to find homogeneous subgroups among the observations.</p></li>
 </ul>
-<p>Another application of clustering arises in marketing. We may have access to a large number of measurements (e.g. median household income, occupation, distance from nearest urban area, and so forth) for a large number of people. Our goal is to perform market segmentation by identifying subgroups of people who might be more receptive to a particular form of advertising, or more likely to purchase a particular product. The task of performing market segmentation amounts to clustering the people in the dataset.</p>
-<p>Since clustering is popular in many fields, there exist a great number of clustering methods. In this section we focus on perhaps the two best-known clustering approaches: <span class="math notranslate nohighlight">\(K\)</span>-<em>means clustering</em> and <em>hierarchical clustering</em>. In <span class="math notranslate nohighlight">\(K\)</span>-means clustering, we seek to partition the observations into a pre-specified number of clusters. On the other hand, in hierarchical clustering, we do not know in advance how many clusters we want; in fact, we end up with a tree-like visual representation of the observations, called a dendrogram, that allows us to view at once the clusterings obtained for each possible number of clusters, from 1 to n. There are advantages and disadvantages to each of these clustering approaches, which we highlight in this chapter.</p>
+<p>Since clustering is popular in many fields, there exist a great number of clustering methods. In this section we focus on perhaps the two best-known clustering approaches: <span class="math notranslate nohighlight">\(K\)</span>-<em>means clustering</em> and <em>hierarchical clustering</em>. In <span class="math notranslate nohighlight">\(K\)</span>-means clustering, we seek to partition the observations into a pre-specified number of clusters. On the other hand, in hierarchical clustering, we do not know in advance how many clusters we want; in fact, we end up with a tree-like visual representation of the observations, called a dendrogram, that allows us to view at once the clusterings obtained for each possible number of clusters, from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(N\)</span>.</p>
 <p>In general, we can cluster observations on the basis of the features in order to identify subgroups among the observations, or we can cluster features on the basis of the observations in order to discover subgroups among the features. In what follows, for simplicity we will discuss clustering observations on the basis of the features, though the converse can be performed by simply transposing the data matrix.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -698,8 +756,10 @@ from scipy.cluster import hierarchy
 </div>
 </div>
 </div>
-<div class="section" id="id1">
-<h2><span class="section-number">9.2.2. </span><span class="math notranslate nohighlight">\(K\)</span>-means clustering<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="k-means-clustering">
+<h2><span class="section-number">9.2.2. </span><span class="math notranslate nohighlight">\(K\)</span>-means clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="k-means-algorithm">
+<h3><span class="section-number">9.2.2.1. </span><span class="math notranslate nohighlight">\(K\)</span>-means algorithm<a class="headerlink" href="#k-means-algorithm" title="Permalink to this headline">¶</a></h3>
 <p><span class="math notranslate nohighlight">\(K\)</span>-means clustering is a simple and elegant approach for partitioning a dataset into K distinct, non-overlapping clusters. To perform <span class="math notranslate nohighlight">\(K\)</span>-means clustering, we must first specify the desired number of clusters <span class="math notranslate nohighlight">\(K\)</span>; then the <span class="math notranslate nohighlight">\(K\)</span>-means algorithm will assign each observation to exactly one of the <span class="math notranslate nohighlight">\(K\)</span> clusters. Figure 12.7 shows the results obtained from performing <span class="math notranslate nohighlight">\(K\)</span>-means
 clustering on a simulated example consisting of 150 observations in two dimensions, using three different values of K.</p>
 <p>The <span class="math notranslate nohighlight">\(K\)</span>-means clustering procedure results from a simple and intuitive mathematical problem. We begin by defining some notation. Let <span class="math notranslate nohighlight">\(C_1, \ldots, C_K\)</span> denote sets containing the indices of the observations in each cluster. These sets satisfy two properties:</p>
@@ -717,13 +777,13 @@ for cluster <span class="math notranslate nohighlight">\(C_k\)</span> is a measu
 <span class="eqno">(9.4)<a class="headerlink" href="#equation-within-cluster-var" title="Permalink to this equation">¶</a></span>\[W(C_k) = \frac{1}{|C_k|} \sum_{i,j \in C_k} \sum_{d=1}^{D} \left( x_{i,d} - x_{j,d} \right)^2,\]</div>
 <p>where <span class="math notranslate nohighlight">\(|C_k|\)</span> denotes the number of observations in the <span class="math notranslate nohighlight">\(k\text{th}\)</span>  cluster. In other words, the within-cluster variation for the kth cluster is the sum of all of the pairwise squared Euclidean distances between the observations in the <span class="math notranslate nohighlight">\(k\text{th}\)</span> cluster, divided by the total number of observations in the <span class="math notranslate nohighlight">\(k\text{th}\)</span>  cluster.</p>
 <p>Combining Equations <a class="reference internal" href="#equation-kmeans-problem">(9.3)</a> and <a class="reference internal" href="#equation-within-cluster-var">(9.4)</a>, gives the optimization problem that defines
-K-means clustering,</p>
+<span class="math notranslate nohighlight">\(k\)</span>-means clustering,</p>
 <div class="math notranslate nohighlight" id="equation-kmeans-obj">
 <span class="eqno">(9.5)<a class="headerlink" href="#equation-kmeans-obj" title="Permalink to this equation">¶</a></span>\[\min_{C_1, \ldots, C_K} \left\{\sum_{k=1}^K \frac{1}{|C_k|} \sum_{i,j \in C_k} \sum_{d=1}^{D} \left( x_{i,d} - x_{j,d} \right)^2\right\}.\]</div>
 <p>Now, we would like to find an algorithm to solve Equation <a class="reference internal" href="#equation-kmeans-obj">(9.5)</a>—that is, a method to partition the observations into K clusters such that the objective of Equation <a class="reference internal" href="#equation-kmeans-obj">(9.5)</a> is minimised. This is in fact a very difficult problem to solve precisely, since there are almost <span class="math notranslate nohighlight">\(K^N\)</span> ways to partition <span class="math notranslate nohighlight">\(N\)</span> observations into <span class="math notranslate nohighlight">\(K\)</span> clusters. This is a huge number unless <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(N\)</span> are tiny! Fortunately, a very simple algorithm can be shown to provide a local optimum—a pretty good
 solution—to the <span class="math notranslate nohighlight">\(K\)</span>-means optimisation problem <a class="reference internal" href="#equation-kmeans-obj">(9.5)</a>. This approach is laid out in <a class="reference internal" href="#alg:kmeans-algorithm">Algorithm 9.1</a>.</p>
 <div class="proof algorithm admonition" id="alg:kmeans-algorithm">
-<p class="admonition-title"><span class="caption-number">Algorithm 9.1 </span> (K-Means Clustering)</p>
+<p class="admonition-title"><span class="caption-number">Algorithm 9.1 </span> (<span class="math notranslate nohighlight">\(k\)</span>-means Clustering)</p>
 <div class="algorithm-content section" id="proof-content">
 <ul class="simple">
 <li><p>Randomly assign a number, from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(K\)</span>, to each of the observations. These serve as initial cluster assignments for the observations.</p></li>
@@ -735,10 +795,14 @@ solution—to the <span class="math notranslate nohighlight">\(K\)</span>-means 
 </li>
 </ul>
 </div>
-</div><p><a class="reference internal" href="#alg:kmeans-algorithm">Algorithm 9.1</a> is guaranteed to decrease the value of the objective eq}<code class="docutils literal notranslate"><span class="pre">kmeans-obj</span></code> at each step. To understand why, the following identity is illuminating:</p>
+</div><p><a class="reference internal" href="#alg:kmeans-algorithm">Algorithm 9.1</a> is guaranteed to decrease the value of the objective <a class="reference internal" href="#equation-kmeans-obj">(9.5)</a> at each step. To understand why, the following identity is illuminating:</p>
 <div class="math notranslate nohighlight" id="equation-kmeans-obj-identity">
 <span class="eqno">(9.6)<a class="headerlink" href="#equation-kmeans-obj-identity" title="Permalink to this equation">¶</a></span>\[\frac{1}{|C_k|} \sum_{i,j \in C_k} \sum_{d=1}^{D} \left( x_{i,d} - x_{j,d} \right)^2 = 2 \sum_{i \in C_k} \sum_{d=1}^{D} \left( x_{i,d} - \bar{x}_{k,d} \right)^2,\]</div>
-<p>where <span class="math notranslate nohighlight">\(\bar{x}_{k,d}\)</span> is the mean of the <span class="math notranslate nohighlight">\(d\text{th}\)</span> feature for the observations in the <span class="math notranslate nohighlight">\(k\text{th}\)</span> cluster. In Step 2(a) the cluster means for each feature are the constants that minimise the sum-of-squared deviations, and in Step 2(b), reallocating the observations can only improve Equation <a class="reference internal" href="#equation-kmeans-obj-identity">(9.6)</a>. This means that as the algorithm is run, the clustering obtained will continually improve until the result no longer changes; the objective of Equation <a class="reference internal" href="#equation-kmeans-obj">(9.5)</a> will never increase. When the result no longer changes, a local optimum has been reached.</p>
+<p>where <span class="math notranslate nohighlight">\(\bar{x}_{k,d}\)</span> is the mean of the <span class="math notranslate nohighlight">\(d\text{th}\)</span> feature for the observations in the <span class="math notranslate nohighlight">\(k\text{th}\)</span> cluster. In Step 2(a) of <a class="reference internal" href="#alg:kmeans-algorithm">Algorithm 9.1</a>, the cluster means for each feature are the constants that minimise the sum-of-squared deviations. In Step 2(b), reallocating the observations can only improve Equation <a class="reference internal" href="#equation-kmeans-obj-identity">(9.6)</a>. This means that as the algorithm is run, the clustering obtained will continually improve until the result no longer changes; the objective of Equation <a class="reference internal" href="#equation-kmeans-obj">(9.5)</a> will never increase. When the result no longer changes, a local optimum has been reached.</p>
+<p>Because the <span class="math notranslate nohighlight">\(k\)</span>-means algorithm finds a local rather than a global optimum, the results obtained will depend on the initial (random) cluster assignment of each observation in Step 1 of <a class="reference internal" href="#alg:kmeans-algorithm">Algorithm 9.1</a>. For this reason, it is important to run the algorithm multiple times from different random initial configurations. Then one selects the best solution, i.e. that for which the objective in Eq. <a class="reference internal" href="#equation-kmeans-obj">(9.5)</a> is the smallest.</p>
+</div>
+<div class="section" id="k-means-clustering-on-toy-data-with-scikit-learn">
+<h3><span class="section-number">9.2.2.2. </span><span class="math notranslate nohighlight">\(K\)</span>-means clustering on toy data with <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code><a class="headerlink" href="#k-means-clustering-on-toy-data-with-scikit-learn" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># generate data
@@ -810,10 +874,13 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/kmeans_8_0.png" src="../_images/kmeans_8_0.png" />
+<img alt="../_images/kmeans_9_0.png" src="../_images/kmeans_9_0.png" />
 </div>
 </div>
-<p>Hierarchical Clustering</p>
+</div>
+<div class="section" id="hierarchical-clustering">
+<h3><span class="section-number">9.2.2.3. </span>Hierarchical Clustering<a class="headerlink" href="#hierarchical-clustering" title="Permalink to this headline">¶</a></h3>
+<p>One potential disadvantage of <span class="math notranslate nohighlight">\(k\)</span>-means clustering is that it requires us to pre-specify the number of clusters K. Hierarchical clustering is an alternative approach which does not require that we commit to a particular choice of <span class="math notranslate nohighlight">\(K\)</span>. Hierarchical clustering has an added advantage over <span class="math notranslate nohighlight">\(k\)</span>-means clustering in that it results in an attractive tree-based representation of the observations, called a dendrogram.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(15, 18))
@@ -833,7 +900,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/kmeans_10_0.png" src="../_images/kmeans_10_0.png" />
+<img alt="../_images/kmeans_11_0.png" src="../_images/kmeans_11_0.png" />
 </div>
 </div>
 <p>Clustering the Observations of the NCI60 Data</p>
@@ -879,7 +946,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/kmeans_14_0.png" src="../_images/kmeans_14_0.png" />
+<img alt="../_images/kmeans_15_0.png" src="../_images/kmeans_15_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -900,7 +967,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/kmeans_15_0.png" src="../_images/kmeans_15_0.png" />
+<img alt="../_images/kmeans_16_0.png" src="../_images/kmeans_16_0.png" />
 </div>
 </div>
 <p><span class="math notranslate nohighlight">\(K\)</span>-means</p>
@@ -954,7 +1021,7 @@ pca_cluster = hierarchy.dendrogram(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/kmeans_21_0.png" src="../_images/kmeans_21_0.png" />
+<img alt="../_images/kmeans_22_0.png" src="../_images/kmeans_22_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -972,7 +1039,8 @@ pca_cluster = hierarchy.dendrogram(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/kmeans_22_0.png" src="../_images/kmeans_22_0.png" />
+<img alt="../_images/kmeans_23_0.png" src="../_images/kmeans_23_0.png" />
+</div>
 </div>
 </div>
 </div>

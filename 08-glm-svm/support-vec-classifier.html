@@ -1020,7 +1020,7 @@ print(&quot;Prediction: &quot;, svc.predict(X[5, :].reshape(1, -1))[0])
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Input:  [-1.19276461 -0.20487651]
 Intercept:  0.5729441305210916  Coefficients:  [-0.73273926 -0.70326681]
-Prediction score:  1.5910124372951457
+Prediction score:  1.5910124372951466
 Prediction:  1
 </pre></div>
 </div>
@@ -1033,8 +1033,8 @@ Prediction:  1
 <li><p>For the data point <span class="math notranslate nohighlight">\([-1.19276461, -0.20487651]\)</span> marked by a black circle, its prediction score is <span class="math notranslate nohighlight">\( -0.7327 \times -1.19276461 + -0.7033 \times -0.20487651 + 0.5729 \approx 1.5910 \)</span>, which is positive. So the predicted label is <span class="math notranslate nohighlight">\( 1 \)</span>.</p></li>
 <li><p>According to the definition, the data points on the hyperplane satisfies <span class="math notranslate nohighlight">\( \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} = 0 \)</span>, i.e. <span class="math notranslate nohighlight">\( 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 = 0 \)</span>. To get a data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> of class <span class="math notranslate nohighlight">\( 1 \)</span>, the relationship between <span class="math notranslate nohighlight">\( x_1 \)</span> and <span class="math notranslate nohighlight">\( x_2 \)</span> should satisfy:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-ab694403-2f81-4dad-b2f8-e3166ee2952f">
-<span class="eqno">(8.6)<a class="headerlink" href="#equation-ab694403-2f81-4dad-b2f8-e3166ee2952f" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-49f5b3f9-350a-4b5c-a6ff-d2015df7b216">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-49f5b3f9-350a-4b5c-a6ff-d2015df7b216" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} &amp; &gt; 0 \\
 \beta_1 x_{1} &amp; &gt; - \beta_0 - \beta_2 x_{2} \\
@@ -1078,14 +1078,14 @@ clf.cv_results_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00063288, 0.00060186, 0.00057869, 0.00058215, 0.00061834,
-        0.00058138, 0.00076694]),
- &#39;std_fit_time&#39;: array([8.80606857e-05, 5.87081437e-05, 5.52409005e-05, 5.26677434e-05,
-        6.93724528e-05, 3.22303209e-05, 8.31232486e-05]),
- &#39;mean_score_time&#39;: array([0.00044434, 0.00045633, 0.00045865, 0.00046053, 0.00044031,
-        0.00044653, 0.00046015]),
- &#39;std_score_time&#39;: array([3.05486778e-05, 2.15575754e-05, 3.64148849e-05, 5.49867059e-05,
-        2.40343903e-05, 3.93125343e-05, 3.83063800e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00039387, 0.00037613, 0.00047774, 0.00038326, 0.00039418,
+        0.00040576, 0.00052397]),
+ &#39;std_fit_time&#39;: array([3.88282791e-05, 1.21687871e-05, 8.85426900e-05, 2.81136350e-05,
+        1.68314230e-05, 1.71629750e-05, 4.55758863e-05]),
+ &#39;mean_score_time&#39;: array([0.00027084, 0.00026524, 0.00027223, 0.00026577, 0.00026505,
+        0.00026715, 0.00027232]),
+ &#39;std_score_time&#39;: array([1.87603761e-05, 5.67641542e-06, 8.18286464e-06, 8.79764557e-06,
+        2.66143916e-06, 6.02803082e-06, 7.49317392e-06]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,
