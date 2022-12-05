@@ -11,7 +11,7 @@ Ready for HP review
 
 ```{admonition} Objectives
 - Understand the difference between supervised and unsupervised learning.
-- Understand the principal components analysis (PCA) method.
+- Understand the principal component analysis (PCA) method.
 - Apply PCA to a dataset to reduce the dimensionality.
 - Understand the $K$-means and hierarchical clustering methods.
 - Apply $K$-means and hierarchical clustering to a dataset.
@@ -21,7 +21,7 @@ Ready for HP review
 
 In the previous chapters, we introduced supervised learning methods such as regression and classification. In the supervised learning setting, we typically have access to a set of $D$ features $x_1, x_2, \ldots, x_D$ and a corresponding response $y$. The goal of supervised learning is to predict $y$ using $x_1, x_2, \ldots, x_D$.
 
-This chapter will instead focus on unsupervised learning, a set of statistical tools intended for the setting in which we have only a set of features $x_1, x_2, \ldots, x_D$ measured on $N$ observations. We are not interested in prediction, because we do not have an associated response variable $y$. Rather, the goal is to discover interesting things about the measurements on $x_1, x_2, \ldots, x_D$. Is there an informative way to visualise the data? Can we discover subgroups among the variables or among the observations? Unsupervised learning refers to a diverse set of techniques for answering questions such as these. In this chapter, we will focus on two particular types of unsupervised learning: principal components analysis, a tool used for data visualisation or data pre-processing before supervised techniques are applied, and clustering, a broad class of methods for discovering unknown subgroups in data.
+This chapter will instead focus on unsupervised learning, a set of statistical tools intended for the setting in which we have only a set of features $x_1, x_2, \ldots, x_D$ measured on $N$ observations. We are not interested in prediction, because we do not have an associated response variable $y$. Rather, the goal is to discover interesting things about the measurements on $x_1, x_2, \ldots, x_D$. Is there an informative way to visualise the data? Can we discover subgroups among the variables or among the observations? Unsupervised learning refers to a diverse set of techniques for answering questions such as these. In this chapter, we will focus on two particular types of unsupervised learning: principal component analysis, a tool used for data visualisation or data pre-processing before supervised techniques are applied, and clustering, a broad class of methods for discovering unknown subgroups in data.
 
 ```{admonition} Ingredients: Principal components analysis
 - Input: features of data samples
