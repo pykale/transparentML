@@ -416,7 +416,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../09-pca-kmeans/overview.html">
-   9. PCA &amp; K-means
+   9. Dimension reduction &amp; clustering
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -426,12 +426,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../09-pca-kmeans/pca.html">
-     9.1. Principal component analysis
+     9.1. Dimension reduction
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../09-pca-kmeans/kmeans.html">
-     9.2. K-means clustering
+     9.2. Clustering
     </a>
    </li>
    <li class="toctree-l2">
@@ -816,11 +816,11 @@ print(y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[8 1 9 4 7]
-[[0.20055085 0.18988845 0.18701135]
- [0.94419016 0.35691901 0.01597554]]
-[-1.49732094  1.97840531  0.82610588 -0.78790363  1.03510293]
-[18.47959399 22.1069117  20.77374788 19.19634196 20.91325615]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[9 0 4 4 6]
+[[0.05501867 0.41089746 0.12907823]
+ [0.15640763 0.56468496 0.95005275]]
+[ 0.46442721  0.1847343  -0.82591193 -0.67153251  1.04635971]
+[20.38667142 20.28868559 18.93172936 19.35113056 21.02810155]
 </pre></div>
 </div>
 </div>
@@ -1256,9 +1256,6 @@ print(np.dot(x, y))
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.56600587 0.29748762 0.66145826]
  [0.84396992 0.30934893 0.76255113]
  [1.03984767 0.46521201 1.07199874]]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>

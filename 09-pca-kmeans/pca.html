@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>9.1. Principal components analysis &#8212; Transparent ML Intro</title>
+    <title>9.1. Dimension reduction &#8212; Transparent ML Intro</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="9.2. Clustering" href="kmeans.html" />
-    <link rel="prev" title="9. Principal Component Analysis &amp; \(K\)-Means Clustering" href="overview.html" />
+    <link rel="prev" title="9. Dimension reduction and clustering" href="overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -416,7 +416,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="overview.html">
-   9. PCA &amp; K-means
+   9. Dimension reduction &amp; clustering
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -426,12 +426,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     9.1. Principal component analysis
+     9.1. Dimension reduction
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="kmeans.html">
-     9.2. K-means clustering
+     9.2. Clustering
     </a>
    </li>
    <li class="toctree-l2">
@@ -592,8 +592,8 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-are-principal-components">
-   9.1.1. What are principal components?
+  <a class="reference internal nav-link" href="#principal-components-analysis-pca">
+   9.1.1. Principal components analysis (PCA)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -632,7 +632,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Principal components analysis</h1>
+                <h1>Dimension reduction</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -643,8 +643,8 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-are-principal-components">
-   9.1.1. What are principal components?
+  <a class="reference internal nav-link" href="#principal-components-analysis-pca">
+   9.1.1. Principal components analysis (PCA)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -682,9 +682,9 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="principal-components-analysis">
-<h1><span class="section-number">9.1. </span>Principal components analysis<a class="headerlink" href="#principal-components-analysis" title="Permalink to this headline">¶</a></h1>
-<p>Principal components analysis (PCA) is a technique for reducing the dimension of an data matrix <span class="math notranslate nohighlight">\(\mathbf{X} \in \mathbb{R}^{D \times N}\)</span>.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="dimension-reduction">
+<h1><span class="section-number">9.1. </span>Dimension reduction<a class="headerlink" href="#dimension-reduction" title="Permalink to this headline">¶</a></h1>
+<p>This section introduces principal components analysis (PCA), which is a technique for reducing the dimension of an data matrix <span class="math notranslate nohighlight">\(\mathbf{X} \in \mathbb{R}^{D \times N}\)</span>.</p>
 <!-- The first principal component direction of the data is that along which the observations vary the most. -->
 <p>When faced with a large set of correlated variables, principal components allow us to summarise this set with a smaller number of representative variables that collectively explain most of the variability in the original set.</p>
 <p>PCA refers to the process by which principal components are computed, and the subsequent use of these components in understanding the data. PCA is an unsupervised approach, since
@@ -695,8 +695,8 @@ it involves only a set of features <span class="math notranslate nohighlight">\(
 <iframe width="700" height="394" src="https://www.youtube.com/embed/HMOI_lkzW08?start=10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <p><a class="reference external" href="https://www.youtube.com/embed/HMOI_lkzW08?start=10">Explaining main ideas behine principal components analysis, by StatQuest</a></p>
 </div>
-<div class="section" id="what-are-principal-components">
-<h2><span class="section-number">9.1.1. </span>What are principal components?<a class="headerlink" href="#what-are-principal-components" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="principal-components-analysis-pca">
+<h2><span class="section-number">9.1.1. </span>Principal components analysis (PCA)<a class="headerlink" href="#principal-components-analysis-pca" title="Permalink to this headline">¶</a></h2>
 <p>Suppose that we wish to visualise observations with measurements on a set of <span class="math notranslate nohighlight">\( D \)</span> features, <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_D \)</span>, as part of an exploratory data analysis. We could do this by examining two-dimensional scatterplots of the data, each of which contains the <span class="math notranslate nohighlight">\(N\)</span> observations’ measurements on two of the features. However, there are <span class="math notranslate nohighlight">\( D(D-1)/2 \)</span> such scatterplots, and it is difficult to visualise more than a few of them at a time. If <span class="math notranslate nohighlight">\( D \)</span> is large, then it will certainly not be possible to look at all of them; moreover, most likely none of them will be informative since they each contain just a small fraction of the total information present in the dataset. Clearly, a better method is required to visualise the <span class="math notranslate nohighlight">\(N\)</span> observations when <span class="math notranslate nohighlight">\(D\)</span> is large. In particular, we would like to find a low-dimensional representation of the data that captures as much of the information as possible. For instance, if we can obtain a two-dimensional representation of the data that captures most of the information, then we can plot the observations in this low-dimensional space.</p>
 <p>PCA provides a tool to do just this. It finds a low-dimensional representation of a dataset that contains as much as possible of the variation. The idea is that each of the <span class="math notranslate nohighlight">\(N\)</span> observations lives in <span class="math notranslate nohighlight">\(D\)</span>-dimensional space, but not all of these dimensions are equally interesting. PCA seeks a small number of dimensions that are as interesting as possible, where the concept of interesting is measured by the amount that the observations vary along each dimension. Each of the dimensions found by PCA is a linear combination of the <span class="math notranslate nohighlight">\( D \)</span> features. We now explain the manner in which these dimensions, or principal components, are found.</p>
 <p>The first principal component of a set of features <span class="math notranslate nohighlight">\(x_1, \ldots, x_D\)</span> is the normalised linear combination of the features</p>
@@ -1535,7 +1535,6 @@ Explained variance ratio:  [0.93 0.07]
 </div>
 <div class="important admonition">
 <p class="admonition-title">System transparency</p>
-<p>Numbers are limited to two decimal places for the sake of clarity.</p>
 <ul class="simple">
 <li><p>For data point <span class="math notranslate nohighlight">\( [-2.78 -0.93]^{\top} \)</span>, the score vector of PCA can be obtained by</p></li>
 </ul>
@@ -1553,6 +1552,7 @@ Explained variance ratio:  [0.93 0.07]
 \[\begin{split}
 \underbrace{\left[\begin{matrix} -0.64 \\ -0.77 \end{matrix}\right]}_{\text{Component 0}} \times \underbrace{2.67}_{\text{Score 0}} + \underbrace{\left[\begin{matrix} 0.77 \\ -0.64 \end{matrix}\right]}_{\text{Component 1}} \times \underbrace{(-1.54)}_{\text{Score 1}} + \underbrace{\left[\begin{matrix}0.12 \\ 0.12 \end{matrix}\right]}_{\text{Mean}} = \underbrace{\left[\begin{matrix} -2.78 \\ -0.93 \end{matrix}\right]}_{\text{Reconstructed Input}}
 \end{split}\]</div>
+<p>Note: numbers are limited to two decimal places for the sake of clarity.</p>
 </div>
 </div>
 <div class="section" id="exercises">
@@ -1755,7 +1755,7 @@ $$ \underbrace{\left[\begin{matrix} -0.64402153, -0.76500736 \\ 0.76500736 -0.64
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">9. </span>Principal Component Analysis &amp; <span class="math notranslate nohighlight">\(K\)</span>-Means Clustering</p>
+            <p class="prev-next-title"><span class="section-number">9. </span>Dimension reduction and clustering</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="kmeans.html" title="next page">

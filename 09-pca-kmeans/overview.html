@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>9. Principal Component Analysis &amp; \(K\)-Means Clustering &#8212; Transparent ML Intro</title>
+    <title>9. Dimension reduction and clustering &#8212; Transparent ML Intro</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.1. Principal components analysis" href="pca.html" />
+    <link rel="next" title="9.1. Dimension reduction" href="pca.html" />
     <link rel="prev" title="8.4. Quiz and summary" href="../08-glm-svm/quiz-sum-ref.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -416,7 +416,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
-   9. PCA &amp; K-means
+   9. Dimension reduction &amp; clustering
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -426,12 +426,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="pca.html">
-     9.1. Principal component analysis
+     9.1. Dimension reduction
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="kmeans.html">
-     9.2. K-means clustering
+     9.2. Clustering
     </a>
    </li>
    <li class="toctree-l2">
@@ -571,7 +571,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Principal Component Analysis & K-Means Clustering</h1>
+                <h1>Dimension reduction and clustering</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -582,43 +582,71 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="principal-component-analysis-k-means-clustering">
-<h1><span class="section-number">9. </span>Principal Component Analysis &amp; <span class="math notranslate nohighlight">\(K\)</span>-Means Clustering<a class="headerlink" href="#principal-component-analysis-k-means-clustering" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="dimension-reduction-and-clustering">
+<h1><span class="section-number">9. </span>Dimension reduction and clustering<a class="headerlink" href="#dimension-reduction-and-clustering" title="Permalink to this headline">¶</a></h1>
+<!-- # Principal Component Analysis & $K$-Means Clustering -->
 <!-- Capitalise initials. As compact as possible, prefer ONE line. -->
 <!-- We use **UK** English spelling. -->
 <!-- File names should be all lowercase, with words separated by hyphens (-), and no spaces.  Each chapter must include an "overview.md" and "quiz-sum-ref.md"-->
 <div class="admonition-status admonition">
 <p class="admonition-title">Status</p>
-<p>Drafting</p>
+<p>Ready for HP review</p>
 </div>
 <div class="admonition-objectives admonition">
 <p class="admonition-title">Objectives</p>
 <ul class="simple">
-<li><p>Objective 1</p></li>
+<li><p>Understand the difference between supervised and unsupervised learning.</p></li>
+<li><p>Understand the principal components analysis (PCA) method.</p></li>
+<li><p>Apply PCA to a dataset to reduce the dimensionality.</p></li>
+<li><p>Understand the <span class="math notranslate nohighlight">\(K\)</span>-means and hierarchical clustering methods.</p></li>
+<li><p>Apply <span class="math notranslate nohighlight">\(K\)</span>-means and hierarchical clustering to a dataset.</p></li>
 </ul>
 </div>
 <p><strong>Expected time to complete</strong>: x hours</p>
-<p>In this chapter, we will [… (intro paragraph)].</p>
-<div class="admonition-ingredients admonition">
-<p class="admonition-title">Ingredients</p>
+<p>In the previous chapters, we introduced supervised learning methods such as regression and classification. In the supervised learning setting, we typically have access to a set of <span class="math notranslate nohighlight">\(D\)</span> features <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_D\)</span> and a corresponding response <span class="math notranslate nohighlight">\(y\)</span>. The goal of supervised learning is to predict <span class="math notranslate nohighlight">\(y\)</span> using <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_D\)</span>.</p>
+<p>This chapter will instead focus on unsupervised learning, a set of statistical tools intended for the setting in which we have only a set of features <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_D\)</span> measured on <span class="math notranslate nohighlight">\(N\)</span> observations. We are not interested in prediction, because we do not have an associated response variable <span class="math notranslate nohighlight">\(y\)</span>. Rather, the goal is to discover interesting things about the measurements on <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_D\)</span>. Is there an informative way to visualise the data? Can we discover subgroups among the variables or among the observations? Unsupervised learning refers to a diverse set of techniques for answering questions such as these. In this chapter, we will focus on two particular types of unsupervised learning: principal components analysis, a tool used for data visualisation or data pre-processing before supervised techniques are applied, and clustering, a broad class of methods for discovering unknown subgroups in data.</p>
+<div class="admonition-ingredients-principal-components-analysis admonition">
+<p class="admonition-title">Ingredients: Principal components analysis</p>
 <ul class="simple">
-<li><p>Input: …</p></li>
-<li><p>Output: …</p></li>
-<li><p>Model: …</p>
+<li><p>Input: features of data samples</p></li>
+<li><p>Output: features of data samples in a lower-dimensional space</p></li>
+<li><p>Model: transformation of the data</p>
 <ul>
-<li><p>Hyperparameter(s): …</p></li>
-<li><p>Parameter(s): …</p></li>
+<li><p>Hyperparameter(s): None</p></li>
+<li><p>Parameter(s): A <span class="math notranslate nohighlight">\(D \times d\)</span> transformation matrix</p></li>
 </ul>
 </li>
-<li><p>Loss function: …</p></li>
-<li><p>Learning algorithm: …</p></li>
+<li><p>Loss function: maximise the variance of the projected data</p></li>
+<li><p>Learning algorithm: eigendecomposition</p></li>
 </ul>
 </div>
-<div class="admonition-transparency admonition">
-<p class="admonition-title">Transparency</p>
+<div class="admonition-transparency-principal-components-analysis admonition">
+<p class="admonition-title">Transparency: Principal components analysis</p>
 <p>System logic</p>
 <ul class="simple">
-<li><p>Condition to produce certain output:</p></li>
+<li><p>Condition to produce certain output: Using the transformation matrix inversely to project the lower-dimensional embedding back to the original space, to reconstruct the data point in the original space.</p></li>
+</ul>
+</div>
+<div class="admonition-ingredients-k-means-clustering admonition">
+<p class="admonition-title">Ingredients: <span class="math notranslate nohighlight">\(K\)</span>-means clustering</p>
+<ul class="simple">
+<li><p>Input: features of data samples</p></li>
+<li><p>Output: cluster assignments/labels</p></li>
+<li><p>Model: cluster centres</p>
+<ul>
+<li><p>Hyperparameter(s): <span class="math notranslate nohighlight">\(K\)</span>, the number of clusters</p></li>
+<li><p>Parameter(s): coordinates of <span class="math notranslate nohighlight">\(K\)</span> cluster centres</p></li>
+</ul>
+</li>
+<li><p>Loss function: minimise the sum of squared distances between data points and their assigned cluster centres</p></li>
+<li><p>Learning algorithm: repeated random initialisation and local search</p></li>
+</ul>
+</div>
+<div class="admonition-transparency-k-means-clustering admonition">
+<p class="admonition-title">Transparency: <span class="math notranslate nohighlight">\(K\)</span>-means clustering</p>
+<p>System logic</p>
+<ul class="simple">
+<li><p>Condition to produce certain output: to produce a certain cluster assignment <span class="math notranslate nohighlight">\(y\)</span>, locate the data point <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> whose distance to the cluster centre <span class="math notranslate nohighlight">\(\mathbf{c}_y\)</span> is smaller than the distance to any other cluster centre.</p></li>
 </ul>
 </div>
 <!-- - What input to produce certain output:
@@ -662,7 +690,7 @@ const thebe_selector_output = ".output, .cell_output"
     <a class='right-next' id="next-link" href="pca.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9.1. </span>Principal components analysis</p>
+        <p class="prev-next-title"><span class="section-number">9.1. </span>Dimension reduction</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

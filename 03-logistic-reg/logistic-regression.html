@@ -416,7 +416,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../09-pca-kmeans/overview.html">
-   9. PCA &amp; K-means
+   9. Dimension reduction &amp; clustering
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -426,12 +426,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../09-pca-kmeans/pca.html">
-     9.1. Principal component analysis
+     9.1. Dimension reduction
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../09-pca-kmeans/kmeans.html">
-     9.2. K-means clustering
+     9.2. Clustering
     </a>
    </li>
    <li class="toctree-l2">
@@ -1032,8 +1032,8 @@ plt.show()
 <ul class="simple">
 <li><p>When the probability of <code class="docutils literal notranslate"><span class="pre">default</span></code> 0.5 (the commonly used threshold for binary classification), the corresponding balance can be calculated using the <em>log odds</em> equation above:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-e0b2042e-4053-4b86-8943-475d4867994d">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-e0b2042e-4053-4b86-8943-475d4867994d" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6a0455e1-7d9f-47b8-b4cc-0d308cbb4592">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-6a0455e1-7d9f-47b8-b4cc-0d308cbb4592" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \ln \left(\frac{\pi}{1-\pi}\right) &amp;= \beta_0 + \beta_1 \times x \\
 \ln \left(\frac{0.5}{1-0.5}\right) &amp;= \beta_0 + \beta_1 \times x \\

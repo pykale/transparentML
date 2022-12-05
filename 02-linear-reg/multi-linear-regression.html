@@ -416,7 +416,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../09-pca-kmeans/overview.html">
-   9. PCA &amp; K-means
+   9. Dimension reduction &amp; clustering
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -426,12 +426,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../09-pca-kmeans/pca.html">
-     9.1. Principal component analysis
+     9.1. Dimension reduction
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../09-pca-kmeans/kmeans.html">
-     9.2. K-means clustering
+     9.2. Clustering
     </a>
    </li>
    <li class="toctree-l2">
@@ -838,35 +838,35 @@ est.summary().tables[1]
 </div>
 <p>However, fitting a separate simple linear regression model for each predictor is problematic: 1) It is unclear how to make a single prediction given the three advertising media budgets; 2) each separate linear regression model ignores  the effect of the other two predictors, which can lead to misleading estimates.</p>
 <p>A better approach is to use <em>multiple linear regression</em>. Multiple linear regression is an extension of simple linear regression. It allows us to predict a quantitative response using more than one predictor variable. The equation for a multiple linear regression model with <span class="math notranslate nohighlight">\(D\)</span> predictor variables is given by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a11c028a-0279-491e-a21a-737714fb6a78">
-<span class="eqno">(2.13)<a class="headerlink" href="#equation-a11c028a-0279-491e-a21a-737714fb6a78" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-81d42a8f-7ca6-40ac-a5cc-609e1a70f477">
+<span class="eqno">(2.13)<a class="headerlink" href="#equation-81d42a8f-7ca6-40ac-a5cc-609e1a70f477" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_D x_D + \epsilon,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(y\)</span> is the response, <span class="math notranslate nohighlight">\(x_1, x_2, ..., x_D\)</span> are the <span class="math notranslate nohighlight">\(D\)</span> predictors, <span class="math notranslate nohighlight">\(D\)</span> is the total number of predictor variables (features), and <span class="math notranslate nohighlight">\(\epsilon\)</span> is the error term. The <span class="math notranslate nohighlight">\(\beta\)</span>s are called the <em>regression coefficients</em>, where <span class="math notranslate nohighlight">\(\beta_0\)</span> is the bias (intercept), and <span class="math notranslate nohighlight">\(\beta_1, \beta_2, ..., \beta_D\)</span> are the weights (slopes). Considering <span class="math notranslate nohighlight">\(N\)</span> samples, the equation can be written in matrix form as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4384650d-07a1-459e-9a4d-4d0a91235976">
-<span class="eqno">(2.14)<a class="headerlink" href="#equation-4384650d-07a1-459e-9a4d-4d0a91235976" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d2358080-3efa-4a52-9187-976029e7d548">
+<span class="eqno">(2.14)<a class="headerlink" href="#equation-d2358080-3efa-4a52-9187-976029e7d548" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \mathbf{y} = \mathbf{X} \boldsymbol{\beta} + \boldsymbol{\epsilon},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> is an <span class="math notranslate nohighlight">\(N \times 1\)</span> vector of responses, <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> is an <span class="math notranslate nohighlight">\(N \times (D+1)\)</span> matrix of predictors, <span class="math notranslate nohighlight">\(\boldsymbol{\beta}\)</span> is a <span class="math notranslate nohighlight">\((D+1) \times 1\)</span> vector of regression coefficients, and <span class="math notranslate nohighlight">\(\boldsymbol{\epsilon}\)</span> is an <span class="math notranslate nohighlight">\(N \times 1\)</span> vector of errors. The predictor (feature) matrix <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> contains a column of 1s to account for the intercept. The vector <span class="math notranslate nohighlight">\(\boldsymbol{\beta}\)</span> contains the intercept in the first position and the slopes for the remaining <span class="math notranslate nohighlight">\(D\)</span> predictors. The vector <span class="math notranslate nohighlight">\(\boldsymbol{\epsilon}\)</span> contains the error terms for each observation.</p>
 <p>Using the <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> dataset as an example, we can fit a multiple linear regression model to the three predictor variables <code class="docutils literal notranslate"><span class="pre">TV</span></code>, <code class="docutils literal notranslate"><span class="pre">radio</span></code>, and <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> to predict <code class="docutils literal notranslate"><span class="pre">sales</span></code> as follows:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a2075388-2bfd-4521-9e02-1c1354c75851">
-<span class="eqno">(2.15)<a class="headerlink" href="#equation-a2075388-2bfd-4521-9e02-1c1354c75851" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e7fac3c5-d670-4953-b066-d4775f250a78">
+<span class="eqno">(2.15)<a class="headerlink" href="#equation-e7fac3c5-d670-4953-b066-d4775f250a78" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{Sales} = \beta_0 + \beta_1 \times \text{TV} + \beta_2 \times \text{Radio} + \beta_3 \times \text{Newspaper} + \epsilon.
 \end{equation}\]</div>
 </div>
 <div class="section" id="estimating-the-regression-coefficients">
 <h2><span class="section-number">2.2.3. </span>Estimating the regression coefficients<a class="headerlink" href="#estimating-the-regression-coefficients" title="Permalink to this headline">¶</a></h2>
 <p>Similar to simple linear regression, we can estimate the regression coefficients using least squares. The least squares estimates for the regression coefficients are given by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ce4d8490-42ae-469e-9c09-ee24bf2a4d44">
-<span class="eqno">(2.16)<a class="headerlink" href="#equation-ce4d8490-42ae-469e-9c09-ee24bf2a4d44" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d9f45dbd-b076-4439-a82a-1b7cd13ac2a3">
+<span class="eqno">(2.16)<a class="headerlink" href="#equation-d9f45dbd-b076-4439-a82a-1b7cd13ac2a3" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \text{RSS} = &amp; \sum_{i=1}^N (y_i - \hat{y}_i)^2 \\
 = &amp; \sum_{i=1}^N (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_{i1} - \hat{\beta}_2 x_{i2} - ... - \hat{\beta}_D x_{iD})^2,
 \end{aligned}
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>th response, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>th predicted response, <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> is the intercept, <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> is the slope for <span class="math notranslate nohighlight">\(x_{i1}\)</span>, <span class="math notranslate nohighlight">\(\hat{\beta}_2\)</span> is the slope for <span class="math notranslate nohighlight">\(x_{i2}\)</span>, and so on. <span class="math notranslate nohighlight">\(\hat{\beta}\)</span>s are the least squares estimates for the regression coefficients, which can be obtained in matrix form as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-03514743-6ed5-4c8b-b2cb-0b407e090d81">
-<span class="eqno">(2.17)<a class="headerlink" href="#equation-03514743-6ed5-4c8b-b2cb-0b407e090d81" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-019343d9-ea96-427c-99da-997c0ff78c44">
+<span class="eqno">(2.17)<a class="headerlink" href="#equation-019343d9-ea96-427c-99da-997c0ff78c44" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{\boldsymbol{\beta}} = (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{y}.
 \end{equation}\]</div>
 <p>The following code run a multiple linear regression model to regress <code class="docutils literal notranslate"><span class="pre">TV</span></code>, <code class="docutils literal notranslate"><span class="pre">radio</span></code>, and <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> onto <code class="docutils literal notranslate"><span class="pre">sales</span></code> using <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code>, and display the learnt coefficients (Table 3.4 in the textbook).</p>
@@ -890,10 +890,10 @@ est.summary()
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   570.3</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Sun, 04 Dec 2022</td> <th>  Prob (F-statistic):</th> <td>1.58e-96</td>
+  <th>Date:</th>             <td>Mon, 05 Dec 2022</td> <th>  Prob (F-statistic):</th> <td>1.58e-96</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>23:53:14</td>     <th>  Log-Likelihood:    </th> <td> -386.18</td>
+  <th>Time:</th>                 <td>20:49:05</td>     <th>  Log-Likelihood:    </th> <td> -386.18</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   200</td>      <th>  AIC:               </th> <td>   780.4</td>
@@ -1043,8 +1043,8 @@ H_0: \beta_1 = \beta_2 = ... = \beta_D = 0.
 H_1: \text{at least one of the regression coefficients is non-zero}. 
 \]</div>
 <p>This hypothesis test is performed by computing the <a class="reference external" href="https://en.wikipedia.org/wiki/F-test"><span class="math notranslate nohighlight">\(F\)</span>-statistic</a>, which is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-69861ddd-cfc3-440b-9178-77242daf0e4b">
-<span class="eqno">(2.18)<a class="headerlink" href="#equation-69861ddd-cfc3-440b-9178-77242daf0e4b" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f59cde0a-3edb-482d-9d28-ce956cbea793">
+<span class="eqno">(2.18)<a class="headerlink" href="#equation-f59cde0a-3edb-482d-9d28-ce956cbea793" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 F = \frac{(\text{TSS} - \text{RSS})/D}{\text{RSS}/(N-D-1)},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\text{TSS} = \sum(y_i - \bar{y})^2\)</span> and <span class="math notranslate nohighlight">\(\text{RSS} = \sum(y_i - \hat{y}_i)^2\)</span>. Remember, <span class="math notranslate nohighlight">\(y_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>th target, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>th prediction and <span class="math notranslate nohighlight">\(\bar{y}\)</span> is the sample mean. When there is no relationship between the response and predictors, one would expect the <span class="math notranslate nohighlight">\(F\)</span>-statistic to take on a value close to 1. On the other hand, if <span class="math notranslate nohighlight">\(H_1\)</span> a is true, we can expect <span class="math notranslate nohighlight">\(F\)</span> to be greater than 1.</p>
@@ -1072,14 +1072,14 @@ F = \frac{(\text{TSS} - \text{RSS})/D}{\text{RSS}/(N-D-1)},
 <div class="section" id="how-well-does-the-model-fit-the-data">
 <h3><span class="section-number">2.2.5.3. </span>How well does the model fit the data?<a class="headerlink" href="#how-well-does-the-model-fit-the-data" title="Permalink to this headline">¶</a></h3>
 <p>Similar to simple linear regression. We can answer this question by computing the <span class="math notranslate nohighlight">\(R^2\)</span> and RSE statistics. The <span class="math notranslate nohighlight">\(R^2\)</span> for multiple linear regression is defined in the same way as in simple linear regression as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1686c7d6-0493-4369-a244-d3a1d0540190">
-<span class="eqno">(2.19)<a class="headerlink" href="#equation-1686c7d6-0493-4369-a244-d3a1d0540190" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7a921dba-aee6-439f-82cf-9e41e2aa870d">
+<span class="eqno">(2.19)<a class="headerlink" href="#equation-7a921dba-aee6-439f-82cf-9e41e2aa870d" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 R^2 = 1 - \frac{\text{RSS}}{\text{TSS}} = 1 - \frac{\sum(y_i - \hat{y}_i)^2}{\sum(y_i - \bar{y})^2}.
 \end{equation}\]</div>
 <p>The <span class="math notranslate nohighlight">\(R^2\)</span> statistic provides an indication of the proportion of the variance in the response that is predictable from the predictors. In this case, the <span class="math notranslate nohighlight">\(R^2\)</span> statistic is 0.897, which indicates that 89.7% of the variance in <code class="docutils literal notranslate"><span class="pre">sales</span></code> is predictable from <code class="docutils literal notranslate"><span class="pre">TV</span></code>, <code class="docutils literal notranslate"><span class="pre">radio</span></code>, and <code class="docutils literal notranslate"><span class="pre">newspaper</span></code>.</p>
 <p>The RSE for multiple linear regression is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bb169cf4-f4b1-4120-9c52-885c8bc48345">
-<span class="eqno">(2.20)<a class="headerlink" href="#equation-bb169cf4-f4b1-4120-9c52-885c8bc48345" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2a83e09a-0c84-44b4-8970-9667ed570cc5">
+<span class="eqno">(2.20)<a class="headerlink" href="#equation-2a83e09a-0c84-44b4-8970-9667ed570cc5" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{RSE} = \sqrt{\frac{\text{RSS}}{N-D-1}} = \sqrt{\frac{\sum(y_i - \hat{y}_i)^2}{N-D-1}}.
 \end{equation}\]</div>
 <p>You can verify that when <span class="math notranslate nohighlight">\(D=1\)</span>, the RSE for multiple linear regression is the same as the RSE for <a class="reference internal" href="simple-linear-regression.html"><span class="doc">simple linear regression</span></a>.</p>
@@ -1228,8 +1228,8 @@ plt.show()
 <h3><span class="section-number">2.2.5.4. </span>Given a set of predictor values, what response value should we predict, and how accurate is our prediction?<a class="headerlink" href="#given-a-set-of-predictor-values-what-response-value-should-we-predict-and-how-accurate-is-our-prediction" title="Permalink to this headline">¶</a></h3>
 <!-- **[Advanced, add more content of prediction interval/or remove this sub-section later]** -->
 <p>Once we have fit a multiple linear regression model, we can use the model to make predictions of the response for a given set of predictor values.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-069df122-11d1-4b2c-af8e-3054b53c6876">
-<span class="eqno">(2.21)<a class="headerlink" href="#equation-069df122-11d1-4b2c-af8e-3054b53c6876" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2868881b-67d0-4ce9-9075-581e383ed7de">
+<span class="eqno">(2.21)<a class="headerlink" href="#equation-2868881b-67d0-4ce9-9075-581e383ed7de" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_D x_D.
 \end{equation}\]</div>
 <p>However, we must be careful when making predictions, because the observed values of the predictors may not have been part of the data used to fit the model. In this case, the prediction may not be very accurate and using a confidence interval can help quantify the uncertainty associated with the prediction.</p>
@@ -1417,8 +1417,8 @@ print(model.summary())
 Dep. Variable:                  Sales   R-squared:                       0.381
 Model:                            OLS   Adj. R-squared:                  0.376
 Method:                 Least Squares   F-statistic:                     81.08
-Date:                Sun, 04 Dec 2022   Prob (F-statistic):           6.52e-41
-Time:                        23:53:14   Log-Likelihood:                -886.58
+Date:                Mon, 05 Dec 2022   Prob (F-statistic):           6.52e-41
+Time:                        20:49:06   Log-Likelihood:                -886.58
 No. Observations:                 400   AIC:                             1781.
 Df Residuals:                     396   BIC:                             1797.
 Df Model:                           3                                         
