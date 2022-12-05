@@ -115,7 +115,7 @@ parts:
     - file: 08-glm-svm/quiz-sum-ref
       title: Quiz & summary
   - file: 09-pca-kmeans/overview
-    title: Dimension reduction & clustering
+    title: Dimension reduction/clustering
     sections:
     - file: 09-pca-kmeans/pca
       title: Dimension reduction
