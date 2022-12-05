@@ -416,7 +416,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../09-pca-kmeans/overview.html">
-   9. Dimension reduction &amp; clustering
+   9. Dimension reduction/clustering
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -1033,8 +1033,8 @@ Prediction:  1
 <li><p>For the data point <span class="math notranslate nohighlight">\([-1.19276461, -0.20487651]\)</span> marked by a black circle, its prediction score is <span class="math notranslate nohighlight">\( -0.7327 \times -1.19276461 + -0.7033 \times -0.20487651 + 0.5729 \approx 1.5910 \)</span>, which is positive. So the predicted label is <span class="math notranslate nohighlight">\( 1 \)</span>.</p></li>
 <li><p>According to the definition, the data points on the hyperplane satisfies <span class="math notranslate nohighlight">\( \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} = 0 \)</span>, i.e. <span class="math notranslate nohighlight">\( 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 = 0 \)</span>. To get a data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> of class <span class="math notranslate nohighlight">\( 1 \)</span>, the relationship between <span class="math notranslate nohighlight">\( x_1 \)</span> and <span class="math notranslate nohighlight">\( x_2 \)</span> should satisfy:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-4288b4fb-9855-47bd-9415-260f8b31704c">
-<span class="eqno">(8.6)<a class="headerlink" href="#equation-4288b4fb-9855-47bd-9415-260f8b31704c" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d4bfc3c9-b393-481d-84d3-e786c3ff6666">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-d4bfc3c9-b393-481d-84d3-e786c3ff6666" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} &amp; &gt; 0 \\
 \beta_1 x_{1} &amp; &gt; - \beta_0 - \beta_2 x_{2} \\
@@ -1078,14 +1078,14 @@ clf.cv_results_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00046551, 0.00045948, 0.00044649, 0.00043092, 0.00045738,
-        0.00048432, 0.00062838]),
- &#39;std_fit_time&#39;: array([4.45470616e-05, 3.74931390e-05, 1.27030573e-05, 1.86425035e-05,
-        2.55353310e-05, 4.78356088e-05, 6.17493257e-05]),
- &#39;mean_score_time&#39;: array([0.00032182, 0.00032716, 0.00031748, 0.00031245, 0.00031793,
-        0.0003166 , 0.00031037]),
- &#39;std_score_time&#39;: array([2.45866783e-05, 2.91793173e-05, 1.25074123e-05, 1.78719337e-05,
-        1.81048262e-05, 8.83079373e-06, 1.84809927e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00043147, 0.00033822, 0.00033257, 0.00033998, 0.00035682,
+        0.00038433, 0.00051107]),
+ &#39;std_fit_time&#39;: array([2.09264377e-04, 1.82346420e-05, 1.02244884e-05, 1.26582080e-05,
+        1.21482162e-05, 3.05546223e-05, 4.71183158e-05]),
+ &#39;mean_score_time&#39;: array([0.00026252, 0.00024111, 0.00023906, 0.00023963, 0.00024493,
+        0.00025127, 0.00025735]),
+ &#39;std_score_time&#39;: array([3.30034444e-05, 1.27285380e-05, 6.63990392e-06, 7.46478634e-06,
+        8.95327637e-06, 7.24843456e-06, 8.45777938e-06]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,

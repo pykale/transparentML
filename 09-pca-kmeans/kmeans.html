@@ -416,7 +416,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="overview.html">
-   9. Dimension reduction &amp; clustering
+   9. Dimension reduction/clustering
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -730,6 +730,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>PCA looks to find a low-dimensional representation of the observations that explain a good fraction of the variance;</p></li>
 <li><p>Clustering looks to find homogeneous subgroups among the observations.</p></li>
 </ul>
+<p>Recall <a class="reference internal" href="../01-intro/ml-systems.html#mlproblems-table"><span class="std std-numref">Table 1.1</span></a>, PCA and clustering can be viewed as regression and classification problems under the unsupervised learning paradigm, respectively.</p>
 <p>Since clustering is popular in many fields, there exist a great number of clustering methods. In this section we focus on perhaps the two best-known clustering approaches: <span class="math notranslate nohighlight">\(K\)</span>-<em>means clustering</em> and <em>hierarchical clustering</em>. In <span class="math notranslate nohighlight">\(K\)</span>-means clustering, we seek to partition the observations into a pre-specified number of clusters. On the other hand, in hierarchical clustering, we do not know in advance how many clusters we want; in fact, we end up with a tree-like visual representation of the observations, called a dendrogram, that allows us to view at once the clusterings obtained for each possible number of clusters, from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(N\)</span>.</p>
 <p>In general, we can cluster observations on the basis of the features in order to identify subgroups among the observations, or we can cluster features on the basis of the observations in order to discover subgroups among the features. In what follows, for simplicity we will discuss clustering observations on the basis of the features, though the converse can be performed by simply transposing the data matrix.</p>
 <div class="section" id="k-means-clustering">
