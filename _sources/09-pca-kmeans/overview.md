@@ -17,15 +17,13 @@ Ready for HP review
 - Apply $K$-means and hierarchical clustering to a dataset.
 ```
 
-**Expected time to complete**: x hours
+**Expected time to complete**: 3 hours
 
-In the previous chapters, we introduced supervised learning methods such as regression and classification. In the supervised learning setting, we typically have access to a set of $D$ features $x_1, x_2, \ldots, x_D$ and a corresponding response $y$. The goal of supervised learning is to predict $y$ using $x_1, x_2, \ldots, x_D$.
-
-This chapter will instead focus on unsupervised learning, a set of statistical tools intended for the setting in which we have only a set of features $x_1, x_2, \ldots, x_D$ measured on $N$ observations. We are not interested in prediction, because we do not have an associated response variable $y$. Rather, the goal is to discover interesting things about the measurements on $x_1, x_2, \ldots, x_D$. Is there an informative way to visualise the data? Can we discover subgroups among the variables or among the observations? Unsupervised learning refers to a diverse set of techniques for answering questions such as these. In this chapter, we will focus on two particular types of unsupervised learning: principal component analysis, a tool used for data visualisation or data pre-processing before supervised techniques are applied, and clustering, a broad class of methods for discovering unknown subgroups in data.
+In the previous chapters, we introduced supervised learning methods such as regression and classification. In the supervised learning setting, we typically have access to a set of $D$ features $x_1, x_2, \ldots, x_D$ and a corresponding response $y$. The goal of supervised learning is to predict $y$ using $x_1, x_2, \ldots, x_D$. This chapter will instead focus on unsupervised learning, a set of statistical tools intended for the setting in which we have only a set of features $x_1, x_2, \ldots, x_D$ measured on $N$ observations. We are not interested in prediction, because we do not have an associated response variable $y$. Rather, the goal is to discover interesting things about the measurements on $x_1, x_2, \ldots, x_D$. Is there an informative way to visualise the data? Can we discover subgroups among the variables or among the observations? Unsupervised learning refers to a diverse set of techniques for answering questions such as these. In this chapter, we will focus on two particular types of unsupervised learning: principal component analysis, a tool used for data visualisation or data pre-processing before supervised techniques are applied, and clustering, a broad class of methods for discovering unknown subgroups in data.
 
 ```{admonition} Ingredients: Principal component analysis
-- Input: features of data samples
-- Output: features of data samples in a lower-dimensional space
+- Input: high-dimensional ($D$) features  of data samples
+- Output: lower-dimensional ($d$) features of data samples
 - Model: transformation of the data
   - Hyperparameter(s): None
   - Parameter(s): A $D \times d$ transformation matrix
@@ -35,14 +33,14 @@ This chapter will instead focus on unsupervised learning, a set of statistical t
 
 ```{admonition} Transparency: Principal component analysis
 System logic
-- Condition to produce certain output: Using the transformation matrix inversely to project the lower-dimensional embedding back to the original space, to reconstruct the data point in the original space.
+- Condition to produce certain output: to produce a certain lower-dimensional representation $ \tilde{\mathbf{x}} $, we can use the transformation matrix inversely to project the lower-dimensional representation back to the original space, to reconstruct input data $ \mathbf{x} $.
 ```
 
 ```{admonition} Ingredients: $K$-means clustering
 - Input: features of data samples
 - Output: cluster assignments/labels
 - Model: cluster centres
-  - Hyperparameter(s): $K$, the number of clusters
+  - Hyperparameter(s): the number of clusters $K$
   - Parameter(s): coordinates of $K$ cluster centres
 - Loss function: minimise the sum of squared distances between data points and their assigned cluster centres
 - Learning algorithm: repeated random initialisation and local search

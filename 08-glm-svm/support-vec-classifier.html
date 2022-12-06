@@ -416,7 +416,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../09-pca-kmeans/overview.html">
-   9. Dimension reduction/clustering
+   9. Dimension reduction &amp; clustering
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -1020,7 +1020,7 @@ print(&quot;Prediction: &quot;, svc.predict(X[5, :].reshape(1, -1))[0])
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Input:  [-1.19276461 -0.20487651]
 Intercept:  0.5729441305210916  Coefficients:  [-0.73273926 -0.70326681]
-Prediction score:  1.5910124372951457
+Prediction score:  1.5910124372951466
 Prediction:  1
 </pre></div>
 </div>
@@ -1033,8 +1033,8 @@ Prediction:  1
 <li><p>For the data point <span class="math notranslate nohighlight">\([-1.19276461, -0.20487651]\)</span> marked by a black circle, its prediction score is <span class="math notranslate nohighlight">\( -0.7327 \times -1.19276461 + -0.7033 \times -0.20487651 + 0.5729 \approx 1.5910 \)</span>, which is positive. So the predicted label is <span class="math notranslate nohighlight">\( 1 \)</span>.</p></li>
 <li><p>According to the definition, the data points on the hyperplane satisfies <span class="math notranslate nohighlight">\( \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} = 0 \)</span>, i.e. <span class="math notranslate nohighlight">\( 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 = 0 \)</span>. To get a data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> of class <span class="math notranslate nohighlight">\( 1 \)</span>, the relationship between <span class="math notranslate nohighlight">\( x_1 \)</span> and <span class="math notranslate nohighlight">\( x_2 \)</span> should satisfy:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-8a437e73-dc4d-424d-8cbd-3296479bb169">
-<span class="eqno">(8.6)<a class="headerlink" href="#equation-8a437e73-dc4d-424d-8cbd-3296479bb169" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8d2fb21e-a57b-40d9-a197-25ae7c5fe913">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-8d2fb21e-a57b-40d9-a197-25ae7c5fe913" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} &amp; &gt; 0 \\
 \beta_1 x_{1} &amp; &gt; - \beta_0 - \beta_2 x_{2} \\
@@ -1078,14 +1078,14 @@ clf.cv_results_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00056968, 0.0005291 , 0.00065644, 0.00058403, 0.00058658,
-        0.00058937, 0.00064607]),
- &#39;std_fit_time&#39;: array([1.01952936e-04, 5.78689387e-05, 1.18000292e-04, 5.50118207e-05,
-        8.26860966e-05, 1.02469632e-04, 7.20510887e-05]),
- &#39;mean_score_time&#39;: array([0.00044403, 0.00040314, 0.00042465, 0.00041795, 0.00039976,
-        0.00037863, 0.00041921]),
- &#39;std_score_time&#39;: array([1.29948633e-04, 6.46986891e-05, 4.38808666e-05, 3.44121520e-05,
-        3.02543783e-05, 2.00950092e-05, 6.95911160e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00036676, 0.00035608, 0.00037429, 0.00034528, 0.00036445,
+        0.00037651, 0.00051153]),
+ &#39;std_fit_time&#39;: array([5.19602704e-05, 3.43056499e-05, 5.97164488e-05, 1.53852231e-05,
+        1.36074989e-05, 1.31250673e-05, 4.90679395e-05]),
+ &#39;mean_score_time&#39;: array([0.00025098, 0.00024731, 0.00025198, 0.00024023, 0.00024319,
+        0.00025823, 0.0002594 ]),
+ &#39;std_score_time&#39;: array([2.13005486e-05, 1.25109794e-05, 2.61916564e-05, 7.95918210e-06,
+        8.01313459e-06, 2.81591318e-05, 1.03441796e-05]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,

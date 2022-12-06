@@ -416,7 +416,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
-   9. Dimension reduction/clustering
+   9. Dimension reduction &amp; clustering
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -602,14 +602,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Apply <span class="math notranslate nohighlight">\(K\)</span>-means and hierarchical clustering to a dataset.</p></li>
 </ul>
 </div>
-<p><strong>Expected time to complete</strong>: x hours</p>
-<p>In the previous chapters, we introduced supervised learning methods such as regression and classification. In the supervised learning setting, we typically have access to a set of <span class="math notranslate nohighlight">\(D\)</span> features <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_D\)</span> and a corresponding response <span class="math notranslate nohighlight">\(y\)</span>. The goal of supervised learning is to predict <span class="math notranslate nohighlight">\(y\)</span> using <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_D\)</span>.</p>
-<p>This chapter will instead focus on unsupervised learning, a set of statistical tools intended for the setting in which we have only a set of features <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_D\)</span> measured on <span class="math notranslate nohighlight">\(N\)</span> observations. We are not interested in prediction, because we do not have an associated response variable <span class="math notranslate nohighlight">\(y\)</span>. Rather, the goal is to discover interesting things about the measurements on <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_D\)</span>. Is there an informative way to visualise the data? Can we discover subgroups among the variables or among the observations? Unsupervised learning refers to a diverse set of techniques for answering questions such as these. In this chapter, we will focus on two particular types of unsupervised learning: principal component analysis, a tool used for data visualisation or data pre-processing before supervised techniques are applied, and clustering, a broad class of methods for discovering unknown subgroups in data.</p>
+<p><strong>Expected time to complete</strong>: 3 hours</p>
+<p>In the previous chapters, we introduced supervised learning methods such as regression and classification. In the supervised learning setting, we typically have access to a set of <span class="math notranslate nohighlight">\(D\)</span> features <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_D\)</span> and a corresponding response <span class="math notranslate nohighlight">\(y\)</span>. The goal of supervised learning is to predict <span class="math notranslate nohighlight">\(y\)</span> using <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_D\)</span>. This chapter will instead focus on unsupervised learning, a set of statistical tools intended for the setting in which we have only a set of features <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_D\)</span> measured on <span class="math notranslate nohighlight">\(N\)</span> observations. We are not interested in prediction, because we do not have an associated response variable <span class="math notranslate nohighlight">\(y\)</span>. Rather, the goal is to discover interesting things about the measurements on <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_D\)</span>. Is there an informative way to visualise the data? Can we discover subgroups among the variables or among the observations? Unsupervised learning refers to a diverse set of techniques for answering questions such as these. In this chapter, we will focus on two particular types of unsupervised learning: principal component analysis, a tool used for data visualisation or data pre-processing before supervised techniques are applied, and clustering, a broad class of methods for discovering unknown subgroups in data.</p>
 <div class="admonition-ingredients-principal-component-analysis admonition">
 <p class="admonition-title">Ingredients: Principal component analysis</p>
 <ul class="simple">
-<li><p>Input: features of data samples</p></li>
-<li><p>Output: features of data samples in a lower-dimensional space</p></li>
+<li><p>Input: high-dimensional (<span class="math notranslate nohighlight">\(D\)</span>) features  of data samples</p></li>
+<li><p>Output: lower-dimensional (<span class="math notranslate nohighlight">\(d\)</span>) features of data samples</p></li>
 <li><p>Model: transformation of the data</p>
 <ul>
 <li><p>Hyperparameter(s): None</p></li>
@@ -624,7 +623,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p class="admonition-title">Transparency: Principal component analysis</p>
 <p>System logic</p>
 <ul class="simple">
-<li><p>Condition to produce certain output: Using the transformation matrix inversely to project the lower-dimensional embedding back to the original space, to reconstruct the data point in the original space.</p></li>
+<li><p>Condition to produce certain output: to produce a certain lower-dimensional representation <span class="math notranslate nohighlight">\( \tilde{\mathbf{x}} \)</span>, we can use the transformation matrix inversely to project the lower-dimensional representation back to the original space, to reconstruct input data <span class="math notranslate nohighlight">\( \mathbf{x} \)</span>.</p></li>
 </ul>
 </div>
 <div class="admonition-ingredients-k-means-clustering admonition">
@@ -634,7 +633,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Output: cluster assignments/labels</p></li>
 <li><p>Model: cluster centres</p>
 <ul>
-<li><p>Hyperparameter(s): <span class="math notranslate nohighlight">\(K\)</span>, the number of clusters</p></li>
+<li><p>Hyperparameter(s): the number of clusters <span class="math notranslate nohighlight">\(K\)</span></p></li>
 <li><p>Parameter(s): coordinates of <span class="math notranslate nohighlight">\(K\)</span> cluster centres</p></li>
 </ul>
 </li>
