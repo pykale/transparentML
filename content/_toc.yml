@@ -115,12 +115,12 @@ parts:
     - file: 08-glm-svm/quiz-sum-ref
       title: Quiz & summary
   - file: 09-pca-kmeans/overview
-    title: PCA & K-means
+    title: Dimension reduction & clustering
     sections:
     - file: 09-pca-kmeans/pca
-      title: Principal component analysis
+      title: Dimension reduction
     - file: 09-pca-kmeans/kmeans
-      title: K-means clustering
+      title: Clustering
     - file: 09-pca-kmeans/quiz-sum-ref
       title: Quiz & summary
   - file: 10-deep-cnn-rnn/overview
