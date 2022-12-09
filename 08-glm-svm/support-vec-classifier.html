@@ -415,8 +415,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../09-pca-kmeans/overview.html">
-   9. Dimension reduction &amp; clustering
+  <a class="reference internal" href="../09-pca-clustering/overview.html">
+   9. PCA &amp; clustering
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -425,17 +425,17 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../09-pca-kmeans/pca.html">
-     9.1. Dimension reduction
+    <a class="reference internal" href="../09-pca-clustering/pca.html">
+     9.1. Principal comp. analysis
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../09-pca-kmeans/kmeans.html">
+    <a class="reference internal" href="../09-pca-clustering/clustering.html">
      9.2. Clustering
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../09-pca-kmeans/quiz-sum-ref.html">
+    <a class="reference internal" href="../09-pca-clustering/quiz-sum-ref.html">
      9.3. Quiz &amp; summary
     </a>
    </li>
@@ -1033,8 +1033,8 @@ Prediction:  1
 <li><p>For the data point <span class="math notranslate nohighlight">\([-1.19276461, -0.20487651]\)</span> marked by a black circle, its prediction score is <span class="math notranslate nohighlight">\( -0.7327 \times -1.19276461 + -0.7033 \times -0.20487651 + 0.5729 \approx 1.5910 \)</span>, which is positive. So the predicted label is <span class="math notranslate nohighlight">\( 1 \)</span>.</p></li>
 <li><p>According to the definition, the data points on the hyperplane satisfies <span class="math notranslate nohighlight">\( \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} = 0 \)</span>, i.e. <span class="math notranslate nohighlight">\( 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 = 0 \)</span>. To get a data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> of class <span class="math notranslate nohighlight">\( 1 \)</span>, the relationship between <span class="math notranslate nohighlight">\( x_1 \)</span> and <span class="math notranslate nohighlight">\( x_2 \)</span> should satisfy:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-8d2fb21e-a57b-40d9-a197-25ae7c5fe913">
-<span class="eqno">(8.6)<a class="headerlink" href="#equation-8d2fb21e-a57b-40d9-a197-25ae7c5fe913" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a56e7d5c-9a11-4174-adc3-ce45e3e7e79f">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-a56e7d5c-9a11-4174-adc3-ce45e3e7e79f" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} &amp; &gt; 0 \\
 \beta_1 x_{1} &amp; &gt; - \beta_0 - \beta_2 x_{2} \\
@@ -1078,14 +1078,14 @@ clf.cv_results_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00036676, 0.00035608, 0.00037429, 0.00034528, 0.00036445,
-        0.00037651, 0.00051153]),
- &#39;std_fit_time&#39;: array([5.19602704e-05, 3.43056499e-05, 5.97164488e-05, 1.53852231e-05,
-        1.36074989e-05, 1.31250673e-05, 4.90679395e-05]),
- &#39;mean_score_time&#39;: array([0.00025098, 0.00024731, 0.00025198, 0.00024023, 0.00024319,
-        0.00025823, 0.0002594 ]),
- &#39;std_score_time&#39;: array([2.13005486e-05, 1.25109794e-05, 2.61916564e-05, 7.95918210e-06,
-        8.01313459e-06, 2.81591318e-05, 1.03441796e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.0007237 , 0.0006968 , 0.00069661, 0.0007118 , 0.00071967,
+        0.00072508, 0.00085931]),
+ &#39;std_fit_time&#39;: array([4.18084773e-05, 9.85865870e-06, 2.71216827e-05, 4.18300964e-05,
+        1.36033418e-05, 2.01341067e-05, 5.73454723e-05]),
+ &#39;mean_score_time&#39;: array([0.00041893, 0.00038116, 0.00037653, 0.0003763 , 0.00038764,
+        0.0003854 , 0.00040503]),
+ &#39;std_score_time&#39;: array([1.17382038e-04, 2.83517787e-05, 1.65408377e-05, 1.83811447e-05,
+        1.56535733e-05, 1.90598469e-05, 1.39766169e-05]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,

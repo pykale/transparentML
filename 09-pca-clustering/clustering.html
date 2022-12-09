@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>9.2. Clustering &#8212; Transparent ML Intro</title>
+    <title>9.2. \(K\)-means and hierarchical clustering &#8212; Transparent ML Intro</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="9.3. Quiz and summary" href="quiz-sum-ref.html" />
-    <link rel="prev" title="9.1. Dimension reduction" href="pca.html" />
+    <link rel="prev" title="9.1. Principal component analysis" href="pca.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -416,7 +416,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="overview.html">
-   9. Dimension reduction &amp; clustering
+   9. PCA &amp; clustering
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -426,7 +426,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="pca.html">
-     9.1. Dimension reduction
+     9.1. Principal comp. analysis
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -521,7 +521,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/09-pca-kmeans/kmeans.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/09-pca-clustering/clustering.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -541,10 +541,10 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F09-pca-kmeans/kmeans.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pykale/transparentML/issues/new?title=Issue%20on%20page%20%2F09-pca-clustering/clustering.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/09-pca-kmeans/kmeans.ipynb"><button
+        <a class="edit-button" href="https://github.com/pykale/transparentML/edit/main/content/09-pca-clustering/clustering.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -564,7 +564,7 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/09-pca-kmeans/kmeans.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/pykale/transparentML/main?urlpath=tree/content/09-pca-clustering/clustering.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -572,7 +572,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/09-pca-kmeans/kmeans.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/pykale/transparentML/blob/main/content/09-pca-clustering/clustering.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -652,7 +652,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Clustering</h1>
+                <h1>K-means and hierarchical clustering</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -722,8 +722,8 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="clustering">
-<h1><span class="section-number">9.2. </span>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="k-means-and-hierarchical-clustering">
+<h1><span class="section-number">9.2. </span><span class="math notranslate nohighlight">\(K\)</span>-means and hierarchical clustering<a class="headerlink" href="#k-means-and-hierarchical-clustering" title="Permalink to this headline">¶</a></h1>
 <p><em>Clustering</em> refers to a very broad set of techniques for finding subgroups, or clusters, in a dataset. When we cluster the observations of a dataset, we seek to partition them into distinct groups so that the observations within each group are quite similar to each other, while observations in different groups are quite different from each other. For instance, suppose that we have a set of <span class="math notranslate nohighlight">\(N\)</span> observations, each with <span class="math notranslate nohighlight">\(D\)</span> features. We might define the similarity between two observations as the Euclidean distance between them, which is given by features.</p>
 <p>Both clustering and PCA seek to simplify the data via a small number of summaries, but their mechanisms are different:</p>
 <ul class="simple">
@@ -840,7 +840,7 @@ print(dir(km1))  # we can use dir to see other saved attributes
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1
  1 1 1 1 1 1 1 1 1 1 1 1 1]
-[&#39;__abstractmethods__&#39;, &#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getstate__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;, &#39;__module__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__setstate__&#39;, &#39;__sizeof__&#39;, &#39;__slots__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;_abc_impl&#39;, &#39;_algorithm&#39;, &#39;_check_feature_names&#39;, &#39;_check_mkl_vcomp&#39;, &#39;_check_n_features&#39;, &#39;_check_params&#39;, &#39;_check_test_data&#39;, &#39;_estimator_type&#39;, &#39;_get_param_names&#39;, &#39;_get_tags&#39;, &#39;_init_centroids&#39;, &#39;_more_tags&#39;, &#39;_n_features_out&#39;, &#39;_n_init&#39;, &#39;_n_threads&#39;, &#39;_repr_html_&#39;, &#39;_repr_html_inner&#39;, &#39;_repr_mimebundle_&#39;, &#39;_tol&#39;, &#39;_transform&#39;, &#39;_validate_center_shape&#39;, &#39;_validate_data&#39;, &#39;_warn_mkl_vcomp&#39;, &#39;algorithm&#39;, &#39;cluster_centers_&#39;, &#39;copy_x&#39;, &#39;fit&#39;, &#39;fit_predict&#39;, &#39;fit_transform&#39;, &#39;get_feature_names_out&#39;, &#39;get_params&#39;, &#39;inertia_&#39;, &#39;init&#39;, &#39;labels_&#39;, &#39;max_iter&#39;, &#39;n_clusters&#39;, &#39;n_features_in_&#39;, &#39;n_init&#39;, &#39;n_iter_&#39;, &#39;predict&#39;, &#39;random_state&#39;, &#39;score&#39;, &#39;set_params&#39;, &#39;tol&#39;, &#39;transform&#39;, &#39;verbose&#39;]
+[&#39;__abstractmethods__&#39;, &#39;__annotations__&#39;, &#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getstate__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;, &#39;__module__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__setstate__&#39;, &#39;__sizeof__&#39;, &#39;__slots__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;_abc_impl&#39;, &#39;_algorithm&#39;, &#39;_check_feature_names&#39;, &#39;_check_mkl_vcomp&#39;, &#39;_check_n_features&#39;, &#39;_check_params_vs_input&#39;, &#39;_check_test_data&#39;, &#39;_estimator_type&#39;, &#39;_get_param_names&#39;, &#39;_get_tags&#39;, &#39;_init_centroids&#39;, &#39;_more_tags&#39;, &#39;_n_features_out&#39;, &#39;_n_init&#39;, &#39;_n_threads&#39;, &#39;_parameter_constraints&#39;, &#39;_repr_html_&#39;, &#39;_repr_html_inner&#39;, &#39;_repr_mimebundle_&#39;, &#39;_sklearn_auto_wrap_output_keys&#39;, &#39;_tol&#39;, &#39;_transform&#39;, &#39;_validate_center_shape&#39;, &#39;_validate_data&#39;, &#39;_validate_params&#39;, &#39;_warn_mkl_vcomp&#39;, &#39;algorithm&#39;, &#39;cluster_centers_&#39;, &#39;copy_x&#39;, &#39;fit&#39;, &#39;fit_predict&#39;, &#39;fit_transform&#39;, &#39;get_feature_names_out&#39;, &#39;get_params&#39;, &#39;inertia_&#39;, &#39;init&#39;, &#39;labels_&#39;, &#39;max_iter&#39;, &#39;n_clusters&#39;, &#39;n_features_in_&#39;, &#39;n_init&#39;, &#39;n_iter_&#39;, &#39;predict&#39;, &#39;random_state&#39;, &#39;score&#39;, &#39;set_output&#39;, &#39;set_params&#39;, &#39;tol&#39;, &#39;transform&#39;, &#39;verbose&#39;]
 </pre></div>
 </div>
 </div>
@@ -888,7 +888,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/kmeans_10_0.png" src="../_images/kmeans_10_0.png" />
+<img alt="../_images/clustering_10_0.png" src="../_images/clustering_10_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -957,7 +957,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/kmeans_14_0.png" src="../_images/kmeans_14_0.png" />
+<img alt="../_images/clustering_14_0.png" src="../_images/clustering_14_0.png" />
 </div>
 </div>
 <p>In the top panel of figure above, each leaf of the dendrogram represents one of the 50 toy examples generated previously. However, as we move up the tree, some leaves begin to fuse into branches. These correspond to observations that are similar to each other. As we move higher up the tree, branches themselves fuse, either with leaves or other branches. The earlier (lower in the tree) fusions occur, the more similar the groups of observations are to each other. On the other hand, observations that fuse later (near the top of the tree) can be quite different. In fact, this statement can be made precise: for any two observations, we can look for the point in the tree where branches containing those two observations are first fused. The height of this fusion, as measured on the vertical axis, indicates how different the two observations are. Thus, observations that fuse at the very bottom of the tree are quite similar to each other, whereas observations that fuse close to the top of the tree will tend to be quite different.</p>
@@ -1047,7 +1047,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/kmeans_21_0.png" src="../_images/kmeans_21_0.png" />
+<img alt="../_images/clustering_21_0.png" src="../_images/clustering_21_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1068,7 +1068,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/kmeans_22_0.png" src="../_images/kmeans_22_0.png" />
+<img alt="../_images/clustering_22_0.png" src="../_images/clustering_22_0.png" />
 </div>
 </div>
 <p><span class="math notranslate nohighlight">\(K\)</span>-means</p>
@@ -1122,7 +1122,7 @@ pca_cluster = hierarchy.dendrogram(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/kmeans_28_0.png" src="../_images/kmeans_28_0.png" />
+<img alt="../_images/clustering_28_0.png" src="../_images/clustering_28_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1140,7 +1140,7 @@ pca_cluster = hierarchy.dendrogram(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/kmeans_29_0.png" src="../_images/kmeans_29_0.png" />
+<img alt="../_images/clustering_29_0.png" src="../_images/clustering_29_0.png" />
 </div>
 </div>
 </div>
@@ -1159,7 +1159,7 @@ pca_cluster = hierarchy.dendrogram(
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./09-pca-kmeans"
+            path: "./09-pca-clustering"
         },
         predefinedOutput: true
     }
@@ -1175,7 +1175,7 @@ pca_cluster = hierarchy.dendrogram(
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">9.1. </span>Dimension reduction</p>
+            <p class="prev-next-title"><span class="section-number">9.1. </span>Principal component analysis</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="quiz-sum-ref.html" title="next page">

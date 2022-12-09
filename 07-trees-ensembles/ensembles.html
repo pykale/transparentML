@@ -415,8 +415,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../09-pca-kmeans/overview.html">
-   9. Dimension reduction &amp; clustering
+  <a class="reference internal" href="../09-pca-clustering/overview.html">
+   9. PCA &amp; clustering
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -425,17 +425,17 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../09-pca-kmeans/pca.html">
-     9.1. Dimension reduction
+    <a class="reference internal" href="../09-pca-clustering/pca.html">
+     9.1. Principal comp. analysis
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../09-pca-kmeans/kmeans.html">
+    <a class="reference internal" href="../09-pca-clustering/clustering.html">
      9.2. Clustering
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../09-pca-kmeans/quiz-sum-ref.html">
+    <a class="reference internal" href="../09-pca-clustering/quiz-sum-ref.html">
      9.3. Quiz &amp; summary
     </a>
    </li>
@@ -832,6 +832,10 @@ mses.plot.bar(rot=0, figsize=(6, 4))
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages/sklearn/ensemble/_base.py:166: FutureWarning: `base_estimator` was renamed to `estimator` in version 1.2 and will be removed in 1.4.
+  warnings.warn(
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE for Bagging: 16.26
 MSE for Random Forest: 15.01
 MSE for Boosting: 12.58
@@ -840,7 +844,7 @@ MSE for Boosting: 12.58
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
 </pre></div>
 </div>
-<img alt="../_images/ensembles_5_2.png" src="../_images/ensembles_5_2.png" />
+<img alt="../_images/ensembles_5_3.png" src="../_images/ensembles_5_3.png" />
 </div>
 </div>
 </div>
@@ -1115,6 +1119,10 @@ mses.plot.bar(rot=0, figsize=(6, 4))
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages/sklearn/ensemble/_base.py:166: FutureWarning: `base_estimator` was renamed to `estimator` in version 1.2 and will be removed in 1.4.
+  warnings.warn(
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE for Bagging: 85200.41
 MSE for Random Forest: 86194.81
 MSE for Boosting: 90029.64
@@ -1123,7 +1131,7 @@ MSE for Boosting: 90029.64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
 </pre></div>
 </div>
-<img alt="../_images/ensembles_14_2.png" src="../_images/ensembles_14_2.png" />
+<img alt="../_images/ensembles_14_3.png" src="../_images/ensembles_14_3.png" />
 </div>
 </div>
 <p>feature importance</p>

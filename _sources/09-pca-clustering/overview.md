@@ -1,4 +1,4 @@
-# Dimension reduction and clustering
+# Principal component analysis and clustering
 <!-- # Principal Component Analysis & $K$-Means Clustering -->
 
 <!-- Capitalise initials. As compact as possible, prefer ONE line. -->
