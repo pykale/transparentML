@@ -114,14 +114,14 @@ parts:
       title: Support vector machines
     - file: 08-glm-svm/quiz-sum-ref
       title: Quiz & summary
-  - file: 09-pca-kmeans/overview
-    title: Dimension reduction & clustering
+  - file: 09-pca-clustering/overview
+    title: PCA & clustering
     sections:
-    - file: 09-pca-kmeans/pca
-      title: Dimension reduction
-    - file: 09-pca-kmeans/kmeans
+    - file: 09-pca-clustering/pca
+      title: Principal comp. analysis
+    - file: 09-pca-clustering/clustering
       title: Clustering
-    - file: 09-pca-kmeans/quiz-sum-ref
+    - file: 09-pca-clustering/quiz-sum-ref
       title: Quiz & summary
   - file: 10-deep-cnn-rnn/overview
     title: Convolutional & recurrent NN
