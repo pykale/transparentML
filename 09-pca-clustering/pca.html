@@ -597,14 +597,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pca-on-usarrests-dataset">
-   9.1.2. PCA on
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     USArrests
-    </span>
-   </code>
-   dataset
+  <a class="reference internal nav-link" href="#analysing-crimes-in-the-us-with-pca">
+   9.1.2. Analysing crimes in the US with PCA
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -648,14 +642,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pca-on-usarrests-dataset">
-   9.1.2. PCA on
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     USArrests
-    </span>
-   </code>
-   dataset
+  <a class="reference internal nav-link" href="#analysing-crimes-in-the-us-with-pca">
+   9.1.2. Analysing crimes in the US with PCA
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -698,37 +686,42 @@ it involves only a set of features <span class="math notranslate nohighlight">\(
 </div>
 <div class="section" id="principal-component-analysis-pca">
 <h2><span class="section-number">9.1.1. </span>Principal component analysis (PCA)<a class="headerlink" href="#principal-component-analysis-pca" title="Permalink to this headline">¶</a></h2>
-<p>Suppose that we wish to visualise observations with measurements on a set of <span class="math notranslate nohighlight">\( D \)</span> features, <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_D \)</span>, as part of an exploratory data analysis. We could do this by examining two-dimensional scatterplots of the data, each of which contains the <span class="math notranslate nohighlight">\(N\)</span> observations’ measurements on two of the features. However, there are <span class="math notranslate nohighlight">\( D(D-1)/2 \)</span> such scatterplots, and it is difficult to visualise more than a few of them at a time. If <span class="math notranslate nohighlight">\( D \)</span> is large, then it will certainly not be possible to look at all of them; moreover, most likely none of them will be informative since they each contain just a small fraction of the total information present in the dataset. Clearly, a better method is required to visualise the <span class="math notranslate nohighlight">\(N\)</span> observations when <span class="math notranslate nohighlight">\(D\)</span> is large. In particular, we would like to find a low-dimensional representation of the data that captures as much of the information as possible. For instance, if we can obtain a two-dimensional representation of the data that captures most of the information, then we can plot the observations in this low-dimensional space.</p>
-<p>PCA provides a tool to do just this. It finds a low-dimensional representation of a dataset that contains as much as possible of the variation. The idea is that each of the <span class="math notranslate nohighlight">\(N\)</span> observations lives in <span class="math notranslate nohighlight">\(D\)</span>-dimensional space, but not all of these dimensions are equally interesting. PCA seeks a small number of dimensions that are as interesting as possible, where the concept of interesting is measured by the amount that the observations vary along each dimension. Each of the dimensions found by PCA is a linear combination of the <span class="math notranslate nohighlight">\( D \)</span> features. We now explain the manner in which these dimensions, or principal components, are found.</p>
+<p>Suppose that we wish to visualise observations with measurements on a set of <span class="math notranslate nohighlight">\( D \)</span> features, <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_D \)</span>, as part of an exploratory data analysis. We could do this by examining two-dimensional scatterplots of the data, each of which contains the <span class="math notranslate nohighlight">\(N\)</span> observations’ measurements on two of the features. However, there are <span class="math notranslate nohighlight">\( D(D-1)/2 \)</span> such scatterplots, and it is difficult to visualise more than a few of them at a time. If <span class="math notranslate nohighlight">\( D \)</span> is large, then it will certainly not be possible to look at all of them; moreover, most likely none of them will be informative since they each contain just a small fraction of the total information present in the dataset. Clearly, a better method is required to visualise the <span class="math notranslate nohighlight">\(N\)</span> observations when <span class="math notranslate nohighlight">\(D\)</span> is large. In particular, we would like to find a lower-dimensional representation of the data that captures as much of the information as possible. For instance, if we can obtain a two-dimensional representation of the data that captures most of the information, then we can plot the observations in this lower-dimensional space.</p>
+<p>PCA provides a tool to do just this. It finds a lower-dimensional representation of a dataset that contains as much as possible of the variation. The idea is that each of the <span class="math notranslate nohighlight">\(N\)</span> observations lives in <span class="math notranslate nohighlight">\(D\)</span>-dimensional space, but not all of these dimensions are equally interesting. PCA seeks a small number of dimensions that are as interesting as possible, where the concept of interesting is measured by the amount that the observations vary along each dimension. Each of the dimensions found by PCA is a linear combination of the <span class="math notranslate nohighlight">\( D \)</span> features. We now explain the manner in which these dimensions, or principal components, are found.</p>
 <p>The first principal component of a set of features <span class="math notranslate nohighlight">\(x_1, \ldots, x_D\)</span> is the normalised linear combination of the features</p>
 <div class="math notranslate nohighlight">
 \[
-z_1 = \phi_{1,1}x_1 + \phi_{1,2}x_2 + \cdots + \phi_{1,D}x_D
+y_1 = \phi_{1,1}x_1 + \phi_{1,2}x_2 + \cdots + \phi_{1,D}x_D
 \]</div>
 <p>that has the largest variance. By normalised, we mean that <span class="math notranslate nohighlight">\( \sum_{d=1}^D \phi_{d,1}^2 = 1\)</span>. We refer to the elements <span class="math notranslate nohighlight">\(\phi_{n, 1}, \ldots, \phi_{n, D} \)</span> as the loadings of the first principal loading component; together, the loadings make up the principal component loading vector, <span class="math notranslate nohighlight">\(\boldsymbol{\phi} = [\phi_{1,1}, \ldots, \phi_{1,D}]^\top\)</span>. We constrain the loadings so that their sum of squares is equal to one, since otherwise setting these elements to be arbitrarily large in absolute value could result in an arbitrarily large variance.</p>
 <p>Given a <span class="math notranslate nohighlight">\(D \times N\)</span> dataset <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>, how do we compute the first principal component? Since we are only interested in variance, we assume that each of the variables in <span class="math notranslate nohighlight">\( \mathbf{X} \)</span> has been centred to have mean zero (that is, the column means of <span class="math notranslate nohighlight">\( \mathbf{X} \)</span> are zero). We then look for the linear combination of the sample feature values of the form</p>
 <div class="math notranslate nohighlight">
 \[
-z_{n,1} = \phi_{1,1}x_{n,1} + \phi_{2,1}x_{n,2} + \cdots + \phi_{D,1}x_{n,D}
+y_{n,1} = \phi_{1,1}x_{n,1} + \phi_{2,1}x_{n,2} + \cdots + \phi_{D,1}x_{n,D}
 \]</div>
 <p>that has the largest sample variance, subject to the constraint that <span class="math notranslate nohighlight">\(\sum_{d=1}^D \phi_{d,1}^2 = 1\)</span>. In other words, the first principal component loading vector solves the optimisation problem</p>
 <div class="math notranslate nohighlight" id="equation-eq-1stpc">
 <span class="eqno">(9.1)<a class="headerlink" href="#equation-eq-1stpc" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \arg\max_{\boldsymbol{\phi}} \left\{\frac{1}{N} \sum_{n=1}^N \left(\sum_{d=1}^D \phi_{d,1} x_{d,n} \right)^2\right\} \quad \text{subject to} \quad \sum_{d=1}^D \phi_{d,1}^2 = 1
 \end{equation}\]</div>
-<p>where the objective can also be written as <span class="math notranslate nohighlight">\(\frac{1}{N} \sum_{n=1}^N z_{n,1}^2 \)</span>. Equation <a class="reference internal" href="#equation-eq-1stpc">(9.1)</a> maximises the sample variance of the <span class="math notranslate nohighlight">\(N\)</span> values of <span class="math notranslate nohighlight">\( z_{n,1} \)</span>. We refer <span class="math notranslate nohighlight">\( z_{1,1}, \ldots, z_{N,1} \)</span> as the first principal component scores. Equation <a class="reference internal" href="#equation-eq-1stpc">(9.1)</a> can be solved via a standard technique in linear algebra, <a class="reference external" href="https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix"><em>eigendecomposition</em></a>, the mathematical details of which are beyond the scope of this course.</p>
-<p>There is a nice geometric interpretation for the first principal component. The loading vector <span class="math notranslate nohighlight">\( \boldsymbol{\phi}_1 \)</span> with elements <span class="math notranslate nohighlight">\( \phi_{1,1}, \ldots, \phi_{D, 1} \)</span> defines a direction in feature space along which the data vary the most. If we project the <span class="math notranslate nohighlight">\(N\)</span> data points <span class="math notranslate nohighlight">\(\mathbf{x}_1, \ldots, \mathbf{x}_N\)</span> onto this direction, the projected values are the principal component scores <span class="math notranslate nohighlight">\( z_{1, 1} , \ldots , z_{N, 1}\)</span> themselves.</p>
-<p>After the first principal component <span class="math notranslate nohighlight">\( z_1 \)</span> of the features has been determined, we can find the second principal component <span class="math notranslate nohighlight">\( z_2 \)</span>. The second principal component is the linear combination of <span class="math notranslate nohighlight">\( x_1 , \ldots, x_D \)</span> that has maximal variance out of all linear combinations that are uncorrelated with <span class="math notranslate nohighlight">\( z_1 \)</span>. The second principal component scores <span class="math notranslate nohighlight">\( z_{1,2}, z_{2,2}, \ldots , z_{N,2}\)</span> take the form</p>
+<p>where the objective can also be written as <span class="math notranslate nohighlight">\(\frac{1}{N} \sum_{n=1}^N y_{n,1}^2 \)</span>. Equation <a class="reference internal" href="#equation-eq-1stpc">(9.1)</a> maximises the sample variance of the <span class="math notranslate nohighlight">\(N\)</span> values of <span class="math notranslate nohighlight">\( y_{n,1} \)</span>. We refer <span class="math notranslate nohighlight">\( y_{1,1}, \ldots, y_{N,1} \)</span> as the first principal component scores. Equation <a class="reference internal" href="#equation-eq-1stpc">(9.1)</a> can be solved via a standard technique in linear algebra, <a class="reference external" href="https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix"><em>eigendecomposition</em></a>, the mathematical details of which are beyond the scope of this course.</p>
+<p>There is a nice geometric interpretation for the first principal component. The loading vector <span class="math notranslate nohighlight">\( \boldsymbol{\phi}_1 \)</span> with elements <span class="math notranslate nohighlight">\( \phi_{1,1}, \ldots, \phi_{D, 1} \)</span> defines a direction in feature space along which the data vary the most. If we project the <span class="math notranslate nohighlight">\(N\)</span> data points <span class="math notranslate nohighlight">\(\mathbf{x}_1, \ldots, \mathbf{x}_N\)</span> onto this direction, the projected values are the principal component scores <span class="math notranslate nohighlight">\( y_{1, 1} , \ldots , y_{N, 1}\)</span> themselves.</p>
+<p>After the first principal component <span class="math notranslate nohighlight">\( y_1 \)</span> of the features has been determined, we can find the second principal component <span class="math notranslate nohighlight">\( y_2 \)</span>. The second principal component is the linear combination of <span class="math notranslate nohighlight">\( x_1 , \ldots, x_D \)</span> that has maximal variance out of all linear combinations that are uncorrelated with <span class="math notranslate nohighlight">\( y_1 \)</span>. The second principal component scores <span class="math notranslate nohighlight">\( y_{1,2}, y_{2,2}, \ldots , y_{N,2}\)</span> take the form</p>
 <div class="math notranslate nohighlight">
 \[
-z_{n,1} = \phi_{1,2}x_{n,1} + \phi_{2,2}x_{n,2} + \cdots + \phi_{D,2}x_{n,D},
+y_{n,1} = \phi_{1,2}x_{n,1} + \phi_{2,2}x_{n,2} + \cdots + \phi_{D,2}x_{n,D},
 \]</div>
-<p>where <span class="math notranslate nohighlight">\( \boldsymbol{\phi}_2 \)</span> is the second principal component loading vector, with elements <span class="math notranslate nohighlight">\( \phi_{1,2}, \ldots, \phi_{D, 2} \)</span>. It turns out that constraining <span class="math notranslate nohighlight">\( z_2 \)</span> to be uncorrelated with <span class="math notranslate nohighlight">\( z_1 \)</span> is equivalent to constraining the direction <span class="math notranslate nohighlight">\( \boldsymbol{\phi}_2 \)</span> to be orthogonal (perpendicular) to the direction <span class="math notranslate nohighlight">\( \boldsymbol{\phi}_1 \)</span>.</p>
-<p>Once we have computed the principal components, we can plot them against each other in order to produce low-dimensional views of the data.
-For instance, we can plot the score vector <span class="math notranslate nohighlight">\( z_1 \)</span> against <span class="math notranslate nohighlight">\( z_2 \)</span>, <span class="math notranslate nohighlight">\( z_1 \)</span> against <span class="math notranslate nohighlight">\( z_3 \)</span>, <span class="math notranslate nohighlight">\( z_2 \)</span> against <span class="math notranslate nohighlight">\( z_3 \)</span>, and so forth. Geometrically, this amounts to projecting the original data down onto the subspace spanned by <span class="math notranslate nohighlight">\( \boldsymbol{\phi}_1 \)</span>, <span class="math notranslate nohighlight">\( \boldsymbol{\phi}_2 \)</span>, and <span class="math notranslate nohighlight">\( \boldsymbol{\phi}_3 \)</span>, and plotting the projected points.</p>
+<p>where <span class="math notranslate nohighlight">\( \boldsymbol{\phi}_2 \)</span> is the second principal component loading vector, with elements <span class="math notranslate nohighlight">\( \phi_{1,2}, \ldots, \phi_{D, 2} \)</span>. It turns out that constraining <span class="math notranslate nohighlight">\( y_2 \)</span> to be uncorrelated with <span class="math notranslate nohighlight">\( y_1 \)</span> is equivalent to constraining the direction <span class="math notranslate nohighlight">\( \boldsymbol{\phi}_2 \)</span> to be orthogonal (perpendicular) to the direction <span class="math notranslate nohighlight">\( \boldsymbol{\phi}_1 \)</span>.</p>
+<p>Once we have computed the principal components, we can plot them against each other in order to produce lower-dimensional views of the data. For instance, we can plot the score vector <span class="math notranslate nohighlight">\( y_1 \)</span> against <span class="math notranslate nohighlight">\( y_2 \)</span>, <span class="math notranslate nohighlight">\( y_1 \)</span> against <span class="math notranslate nohighlight">\( y_3 \)</span>, <span class="math notranslate nohighlight">\( y_2 \)</span> against <span class="math notranslate nohighlight">\( y_3 \)</span>, and so forth. Geometrically, this amounts to projecting the original data down onto the subspace spanned by <span class="math notranslate nohighlight">\( \boldsymbol{\phi}_1 \)</span>, <span class="math notranslate nohighlight">\( \boldsymbol{\phi}_2 \)</span>, and <span class="math notranslate nohighlight">\( \boldsymbol{\phi}_3 \)</span>, and plotting the projected points.</p>
+<p>The first <span class="math notranslate nohighlight">\(M\)</span> principal component score vectors and the first <span class="math notranslate nohighlight">\(M\)</span> principal component loading vectors provide the best <span class="math notranslate nohighlight">\(M\)</span>-dimensional approximation (in terms of Euclidean distance) to the <span class="math notranslate nohighlight">\(n\text{th}\)</span> observation <span class="math notranslate nohighlight">\(x_{n, d}\)</span>. This representation can be written as</p>
+<div class="math notranslate nohighlight">
+\[
+x_{n, d} \approx \sum_{m=1}^M \phi_{d, m} y_{n, m}.
+\]</div>
+<p>When <span class="math notranslate nohighlight">\(M\)</span> is sufficiently large, the <span class="math notranslate nohighlight">\(M\)</span> principal component score vectors and <span class="math notranslate nohighlight">\(M\)</span> principal component loading vectors can give a good approximation to the data. When <span class="math notranslate nohighlight">\(M = \min(N − 1, D)\)</span>, then the representation is exact: <span class="math notranslate nohighlight">\(x_{n, d} = \sum_{m=1}^M \phi_{d, m} y_{n, m}\)</span>.</p>
 </div>
-<div class="section" id="pca-on-usarrests-dataset">
-<h2><span class="section-number">9.1.2. </span>PCA on <code class="docutils literal notranslate"><span class="pre">USArrests</span></code> dataset<a class="headerlink" href="#pca-on-usarrests-dataset" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="analysing-crimes-in-the-us-with-pca">
+<h2><span class="section-number">9.1.2. </span>Analysing crimes in the US with PCA<a class="headerlink" href="#analysing-crimes-in-the-us-with-pca" title="Permalink to this headline">¶</a></h2>
 <p>We illustrate the use of PCA on the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/USArrests.csv">USArrests dataset</a>. For each of the 50 states in the United States, the dataset contains the number of arrests per 100,000 residents for each of three crimes: <code class="docutils literal notranslate"><span class="pre">Assault</span></code>, <code class="docutils literal notranslate"><span class="pre">Murder</span></code>, and <code class="docutils literal notranslate"><span class="pre">Rape</span></code>. We also record <code class="docutils literal notranslate"><span class="pre">UrbanPop</span></code> (the percent of the population in each state living in urban areas). The principal component score vectors have length <span class="math notranslate nohighlight">\(N = 50\)</span>, and the principal component loading vectors have length <span class="math notranslate nohighlight">\(D = 4\)</span>. PCA was performed after standardizing each variable to have mean zero and standard deviation one.</p>
 <p><strong>Import libraries and load data</strong></p>
 <div class="cell docutils container">
@@ -1338,12 +1331,12 @@ Rape      0.543432 -0.167319  0.817778  0.089024
 <p>and the variance explained by the <span class="math notranslate nohighlight">\(i\textrm{th}\)</span> principal component is</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{1}{N}\sum_{n=1}^N z_{n,i}^2 = \frac{1}{N}\sum_{n=1}^N \left(\sum_{d=1}^D \phi_{d,i} x_{n,d}\right)^2.
+\frac{1}{N}\sum_{n=1}^N y_{n,i}^2 = \frac{1}{N}\sum_{n=1}^N \left(\sum_{d=1}^D \phi_{d,i} x_{n,d}\right)^2.
 \]</div>
 <p>Therefore, the PVE of the <span class="math notranslate nohighlight">\(i\textrm{th}\)</span> principal component is given by</p>
 <div class="math notranslate nohighlight" id="equation-eq-pve">
 <span class="eqno">(9.2)<a class="headerlink" href="#equation-eq-pve" title="Permalink to this equation">¶</a></span>\[\begin{equation}
-\frac{\sum_{n=1}^N z_{n,i}^2}{\sum_{d=1}^D\sum_{n=1}^N  x_{d,n}} = \frac{\sum_{n=1}^N \left(\sum_{d=1}^D \phi_{d,i} x_{n,d}\right)^2}{\sum_{d=1}^D\sum_{n=1}^N  x_{d,n}}.
+\frac{\sum_{n=1}^N y_{n,i}^2}{\sum_{d=1}^D\sum_{n=1}^N  x_{d,n}} = \frac{\sum_{n=1}^N \left(\sum_{d=1}^D \phi_{d,i} x_{n,d}\right)^2}{\sum_{d=1}^D\sum_{n=1}^N  x_{d,n}}.
 \end{equation}\]</div>
 <p>The PVE of each principal component is a positive quantity. In order to compute the cumulative PVE of the first <span class="math notranslate nohighlight">\(i\)</span> principal components, we can simply sum Equation <a class="reference internal" href="#equation-eq-pve">(9.2)</a> over each of the first i PVEs. In total, there are <span class="math notranslate nohighlight">\( \min (N − 1, D) \)</span> principal components, and their PVEs sum to one.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>, the portion of explained variance to select the number of PCs are  available in the <code class="docutils literal notranslate"><span class="pre">PCA</span></code> object.</p>
@@ -1464,7 +1457,7 @@ plt.show()
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;The numbers display below round off to 2 decimal places.&quot;)
 print(&quot;Data point: &quot;, np.around(X[1, :], 2))
 print(
-    &quot;Scores of the data poirnt: &quot;, np.around(pca.transform(X[1, :].reshape(1, -1)), 2)
+    &quot;Scores of the data point: &quot;, np.around(pca.transform(X[1, :].reshape(1, -1))[0], 2)
 )
 print(&quot;Mean of the training data: &quot;, np.around(pca.mean_, 2))
 print(&quot;PCA loadings: \n&quot;, np.around(pca.components_, 2))
@@ -1476,7 +1469,7 @@ print(&quot;Explained variance ratio: &quot;, np.around(pca.explained_variance_r
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The numbers display below round off to 2 decimal places.
 Data point:  [-2.78 -0.93]
-Scores of the data poirnt:  [[ 2.67 -1.54]]
+Scores of the data point:  [ 2.67 -1.54]
 Mean of the training data:  [0.12 0.12]
 PCA loadings: 
  [[-0.64 -0.77]
@@ -1512,27 +1505,10 @@ Explained variance ratio:  [0.93 0.07]
 <div class="section" id="exercises">
 <h2><span class="section-number">9.1.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <p>min 3 max 5</p>
-<p>PCA on the NCI60 Data</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X = pd.read_csv(&quot;https://github.com/pykale/transparentML/raw/main/data/NCI60_data.csv&quot;)
-y = pd.read_csv(&quot;https://github.com/pykale/transparentML/raw/main/data/NCI60_labs.csv&quot;)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pca2 = PCA()
+<!-- PCA on the NCI60 Data --><!-- X = pd.read_csv("https://github.com/pykale/transparentML/raw/main/data/NCI60_data.csv")
+y = pd.read_csv("https://github.com/pykale/transparentML/raw/main/data/NCI60_labs.csv") --><!-- pca2 = PCA()
 X_scaled = StandardScaler().fit_transform(X)
-df2_plot = pd.DataFrame(pca2.fit_transform(X_scaled))
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
+df2_plot = pd.DataFrame(pca2.fit_transform(X_scaled)) --><!-- fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
 
 color_idx = pd.factorize(y.iloc[:, 0])[0]
 cmap = plt.cm.hsv
@@ -1541,13 +1517,13 @@ cmap = plt.cm.hsv
 ax1.scatter(
     df2_plot.iloc[:, 0], -df2_plot.iloc[:, 1], c=color_idx, cmap=cmap, alpha=0.5, s=50
 )
-ax1.set_ylabel(&quot;Principal Component 2&quot;)
+ax1.set_ylabel("Principal Component 2")
 
 # right plot
 ax2.scatter(
     df2_plot.iloc[:, 0], df2_plot.iloc[:, 2], c=color_idx, cmap=cmap, alpha=0.5, s=50
 )
-ax2.set_ylabel(&quot;Principal Component 3&quot;)
+ax2.set_ylabel("Principal Component 3")
 
 # custom legend for the classes (y) since we do not create scatter plots per class (which could have their own labels).
 handles = []
@@ -1561,120 +1537,31 @@ ax2.legend(handles=handles, bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.0)
 
 # xlabel for both plots
 for ax in fig.axes:
-    ax.set_xlabel(&quot;Principal Component 1&quot;)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/pca_25_0.png" src="../_images/pca_25_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.DataFrame(
+    ax.set_xlabel("Principal Component 1") --><!-- pd.DataFrame(
     [
         df2_plot.iloc[:, :5].std(axis=0, ddof=0).array,
         pca2.explained_variance_ratio_[:5],
         np.cumsum(pca2.explained_variance_ratio_[:5]),
     ],
-    index=[&quot;Standard Deviation&quot;, &quot;Proportion of Variance&quot;, &quot;Cumulative Proportion&quot;],
-    columns=[&quot;PC1&quot;, &quot;PC2&quot;, &quot;PC3&quot;, &quot;PC4&quot;, &quot;PC5&quot;],
-)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>PC1</th>
-      <th>PC2</th>
-      <th>PC3</th>
-      <th>PC4</th>
-      <th>PC5</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Standard Deviation</th>
-      <td>27.853469</td>
-      <td>21.481355</td>
-      <td>19.820465</td>
-      <td>17.032556</td>
-      <td>15.971807</td>
-    </tr>
-    <tr>
-      <th>Proportion of Variance</th>
-      <td>0.113589</td>
-      <td>0.067562</td>
-      <td>0.057518</td>
-      <td>0.042476</td>
-      <td>0.037350</td>
-    </tr>
-    <tr>
-      <th>Cumulative Proportion</th>
-      <td>0.113589</td>
-      <td>0.181151</td>
-      <td>0.238670</td>
-      <td>0.281145</td>
-      <td>0.318495</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df2_plot.iloc[:, :10].var(axis=0, ddof=0).plot(kind=&quot;bar&quot;, rot=0)
-plt.ylabel(&quot;Variances&quot;)
-plt.show()
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/pca_27_0.png" src="../_images/pca_27_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
+    index=["Standard Deviation", "Proportion of Variance", "Cumulative Proportion"],
+    columns=["PC1", "PC2", "PC3", "PC4", "PC5"],
+) --><!-- df2_plot.iloc[:, :10].var(axis=0, ddof=0).plot(kind="bar", rot=0)
+plt.ylabel("Variances")
+plt.show() --><!-- fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
 
 # left plot
-ax1.plot(pca2.explained_variance_ratio_, &quot;-o&quot;)
-ax1.set_ylabel(&quot;Proportion of Variance Explained&quot;)
+ax1.plot(pca2.explained_variance_ratio_, "-o")
+ax1.set_ylabel("Proportion of Variance Explained")
 ax1.set_ylim(ymin=-0.01)
 
 # right plot
-ax2.plot(np.cumsum(pca2.explained_variance_ratio_), &quot;-ro&quot;)
-ax2.set_ylabel(&quot;Cumulative Proportion of Variance Explained&quot;)
+ax2.plot(np.cumsum(pca2.explained_variance_ratio_), "-ro")
+ax2.set_ylabel("Cumulative Proportion of Variance Explained")
 ax2.set_ylim(ymax=1.05)
 
 for ax in fig.axes:
-    ax.set_xlabel(&quot;Principal Component&quot;)
-    ax.set_xlim(-1, 65)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/pca_28_0.png" src="../_images/pca_28_0.png" />
-</div>
-</div>
-<!-- For data point $ [-2.77595836 -0.929101]^{\top} $, the score vector of PCA can be obtained by 
+    ax.set_xlabel("Principal Component")
+    ax.set_xlim(-1, 65) --><!-- For data point $ [-2.77595836 -0.929101]^{\top} $, the score vector of PCA can be obtained by 
 
 $$ \underbrace{\left[\begin{matrix} -0.64402153, -0.76500736 \\ 0.76500736 -0.64402153 \end{matrix}\right]^{\top}}_{\text{Loading}}\left(\underbrace{\left[\begin{matrix} -2.77595836 \\ -0.929101\end{matrix}\right]}_{\text{Input Data}} - \underbrace{\left[\begin{matrix}0.12105555 \\ 0.11655374\end{matrix}\right]}_{\text{Mean of Training Data}}\right) = \left[\begin{matrix}-2.77595836 \\ -0.929101\end{matrix}\right] $$ -->
 </div>

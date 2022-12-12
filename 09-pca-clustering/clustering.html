@@ -635,6 +635,11 @@ const thebe_selector_output = ".output, .cell_output"
      9.2.2.1. The hierarchical clustering Algorithm
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hierarchical-clustering-the-observations-of-the-nci60-data">
+     9.2.2.2. Hierarchical clustering the Observations of the NCI60 Data
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -704,6 +709,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-hierarchical-clustering-algorithm">
      9.2.2.1. The hierarchical clustering Algorithm
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hierarchical-clustering-the-observations-of-the-nci60-data">
+     9.2.2.2. Hierarchical clustering the Observations of the NCI60 Data
     </a>
    </li>
   </ul>
@@ -1001,10 +1011,9 @@ plt.show()
 </tbody>
 </table>
 </div>
-</div>
-<div class="section" id="exercises">
-<h2><span class="section-number">9.2.3. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p>Clustering the Observations of the NCI60 Data</p>
+<div class="section" id="hierarchical-clustering-the-observations-of-the-nci60-data">
+<h3><span class="section-number">9.2.2.2. </span>Hierarchical clustering the Observations of the NCI60 Data<a class="headerlink" href="#hierarchical-clustering-the-observations-of-the-nci60-data" title="Permalink to this headline">¶</a></h3>
+<p>We illustrate these hierarchical clustering on the <code class="docutils literal notranslate"><span class="pre">NCI60</span></code> cancer cell line microarray data, which consists of 6,830 gene expression measurements on 64 cancer cell lines.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X = pd.read_csv(&quot;https://github.com/pykale/transparentML/raw/main/data/NCI60_data.csv&quot;)
@@ -1015,12 +1024,80 @@ y = pd.read_csv(&quot;https://github.com/pykale/transparentML/raw/main/data/NCI6
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>y.head()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CNS</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>CNS</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>CNS</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>RENAL</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>BREAST</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Each cell line is labelled with a cancer type, given in <code class="docutils literal notranslate"><span class="pre">y</span></code>. We do not make use of the cancer types in performing clustering, as these are unsupervised techniques. After performing clustering, we will check to see the extent to which these cancer types agree with the results of these unsupervised techniques.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X.shape
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(64, 6830)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The data has 64 rows and 6,830 columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>scaler = StandardScaler()
 X_scaled = pd.DataFrame(scaler.fit_transform(X), index=y.iloc[:, 0], columns=X.columns)
 </pre></div>
 </div>
 </div>
 </div>
+<p>We now perform hierarchical clustering of the observations using complete, single, and average linkage. Euclidean distance is used as the dissimilarity measure.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(20, 20))
@@ -1047,9 +1124,10 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clustering_21_0.png" src="../_images/clustering_21_0.png" />
+<img alt="../_images/clustering_25_0.png" src="../_images/clustering_25_0.png" />
 </div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">NCI60</span></code> cancer cell line microarray data, clustered with average, complete, and single linkage, and using Euclidean distance as the dissimilarity measure. Complete and average linkage tend to yield evenly sized clusters whereas single linkage tends to yield extended clusters to which single leaves are fused one by one.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize=(10, 20))
@@ -1068,82 +1146,33 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clustering_22_0.png" src="../_images/clustering_22_0.png" />
+<img alt="../_images/clustering_27_0.png" src="../_images/clustering_27_0.png" />
 </div>
 </div>
-<p><span class="math notranslate nohighlight">\(K\)</span>-means</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.random.seed(21)
+</div>
+</div>
+<div class="section" id="exercises">
+<h2><span class="section-number">9.2.3. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<!-- Clustering the Observations of the NCI60 Data --><!-- $K$-means --><!-- np.random.seed(21)
 km3 = KMeans(n_clusters=4, n_init=50)
-km3.fit(X_scaled)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-2 {color: black;background-color: white;}#sk-container-id-2 pre{padding: 0;}#sk-container-id-2 div.sk-toggleable {background-color: white;}#sk-container-id-2 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-2 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-2 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-2 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-2 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-2 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-2 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-2 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-2 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-2 div.sk-item {position: relative;z-index: 1;}#sk-container-id-2 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-2 div.sk-item::before, #sk-container-id-2 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-2 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-2 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-2 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-2 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-2 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-2 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-2 div.sk-label-container {text-align: center;}#sk-container-id-2 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-2 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>KMeans(n_clusters=4, n_init=50)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">KMeans</label><div class="sk-toggleable__content"><pre>KMeans(n_clusters=4, n_init=50)</pre></div></div></div></div></div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>km3.labels_
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-       0, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2,
-       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3],
-      dtype=int32)
-</pre></div>
-</div>
-</div>
-</div>
-<p>Combine with PCA</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pca = PCA()
+km3.fit(X_scaled) --><!-- km3.labels_ --><!-- Combine with PCA --><!-- pca = PCA()
 X_scaled_ = StandardScaler().fit_transform(X)
-df_plot = pd.DataFrame(pca.fit_transform(X_scaled_))
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize=(10, 20))
+df_plot = pd.DataFrame(pca.fit_transform(X_scaled_)) --><!-- plt.figure(figsize=(10, 20))
 pca_cluster = hierarchy.dendrogram(
     hierarchy.complete(X_scaled),
     labels=X_scaled.index,
-    orientation=&quot;right&quot;,
+    orientation="right",
     color_threshold=100,
     leaf_font_size=10,
-)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/clustering_28_0.png" src="../_images/clustering_28_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Hierarchy based on Principal Components 1 to 5
+) --><!-- # Hierarchy based on Principal Components 1 to 5
 plt.figure(figsize=(10, 20))
 pca_cluster = hierarchy.dendrogram(
     hierarchy.complete(df_plot.iloc[:, :5]),
     labels=X_scaled.index,
-    orientation=&quot;right&quot;,
+    orientation="right",
     color_threshold=100,
     leaf_font_size=10,
-)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/clustering_29_0.png" src="../_images/clustering_29_0.png" />
-</div>
-</div>
-</div>
+) --></div>
 </div>
 
     <script type="text/x-thebe-config">
