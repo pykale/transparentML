@@ -10,46 +10,47 @@ Ready for HP review
 ```
 
 ```{admonition} Objectives
-- Understand the difference between supervised and unsupervised learning.
-- Understand the principal component analysis (PCA) method.
-- Apply PCA to a dataset to reduce the dimensionality.
-- Understand the $K$-means and hierarchical clustering methods.
-- Apply $K$-means and hierarchical clustering to a dataset.
+- Understand principal component analysis (PCA) for dimensionality reduction.
+- Apply PCA to real-world problems and interpret the results.
+- Understand $K$-means and hierarchical clustering for data grouping.
+- Apply $K$-means and hierarchical clustering to real-world problems and interpret the results.
 ```
 
 **Expected time to complete**: 3 hours
 
-In the previous chapters, we introduced supervised learning methods such as regression and classification. In the supervised learning setting, we typically have access to a set of $D$ features $x_1, x_2, \ldots, x_D$ and a corresponding response $y$. The goal of supervised learning is to predict $y$ using $x_1, x_2, \ldots, x_D$. This chapter will instead focus on unsupervised learning, a set of statistical tools intended for the setting in which we have only a set of features $x_1, x_2, \ldots, x_D$ measured on $N$ observations. We are not interested in prediction, because we do not have an associated response variable $y$. Rather, the goal is to discover interesting things about the measurements on $x_1, x_2, \ldots, x_D$. Is there an informative way to visualise the data? Can we discover subgroups among the variables or among the observations? Unsupervised learning refers to a diverse set of techniques for answering questions such as these. In this chapter, we will focus on two particular types of unsupervised learning: principal component analysis, a tool used for data visualisation or data pre-processing before supervised techniques are applied, and clustering, a broad class of methods for discovering unknown subgroups in data.
+The previous chapters have introduced various regression and classification methods, which are all supervised learning methods. In supervised learning, we typically have access to a set of $N$ observations (samples), with each having $D$ features $x_1, x_2, \ldots, x_D$ and a corresponding response $y$. The goal of supervised learning is to predict $y$ using $x_1, x_2, \ldots, x_D$.
 
-```{admonition} Ingredients: Principal component analysis
-- Input: high-dimensional ($D$) features  of data samples
-- Output: lower-dimensional ($d$) features of data samples
-- Model: transformation of the data
-  - Hyperparameter(s): None
-  - Parameter(s): A $D \times d$ transformation matrix
-- Loss function: maximise the variance of the projected data
-- Learning algorithm: eigendecomposition
+This chapter will instead focus on unsupervised learning for the setting in which we have only a set of features $x_1, x_2, \ldots, x_D$ measured on $N$ observations. The task here is not to predict a response, because we do not have an associated response variable $y$. Rather, the goal is to discover or explore interesting things about the features $x_1, x_2, \ldots, x_D$. For example, is there an informative way to visualise the data? Can we discover subgroups among the $D$ features (variables) or among the $N$ observations? Unsupervised learning answers questions such as these. Here, we will focus on [principal component analysis (PCA)](https://en.wikipedia.org/wiki/Principal_component_analysis) for data visualisation or data pre-processing (typically before supervised learning methods are applied) and [$K$-means](https://en.wikipedia.org/wiki/K-means_clustering) / [hierarchical clustering](https://en.wikipedia.org/wiki/Hierarchical_clustering) for discovering subgroups in data.
+
+<!-- Q or M for low-dim? Textook use M -->
+```{admonition} Ingredients: principal component analysis
+- Input: high-dimensional ($D$) features of data samples
+- Output: lower-dimensional ($M<D$) features of data samples
+- Model: linear (simple weighted) transformation (mapping) of data samples from high-dimensional space to lower-dimensional space
+  - Hyperparameter(s): $M$, the number of principal components, i.e. the lower dimension
+  - Parameter(s): a $D \times M$ transformation matrix mapping the original $D$-dimensional input to the transformed $M$-dimensional output
+- Loss function: maximise the variance of the lower-dimensional features in the transformed space
+- Learning algorithm: eigendecomposition or singular value decomposition
 ```
 
 ```{admonition} Transparency: Principal component analysis
 System logic
-- Condition to produce certain output: to produce a certain lower-dimensional representation $ \tilde{\mathbf{x}} $, we can use the transformation matrix inversely to project the lower-dimensional representation back to the original space, to reconstruct input data $ \mathbf{x} $.
+- Condition to produce certain output: to produce a certain lower-dimensional representation $ \mathbf{y} $, we can use the same transformation matrix to project the lower-dimensional representation $ \mathbf{y} $ back to the original high-dimensional space to obtain a reconstructed input $ \hat{\mathbf{x}} $. This reconstructed input $ \hat{\mathbf{x}} $ is the input that produces the output $ \mathbf{y} $ with the transformation matrix.
 ```
 
 ```{admonition} Ingredients: $K$-means clustering
 - Input: features of data samples
-- Output: cluster assignments/labels
-- Model: cluster centres
+- Output: cluster memberships for each sample, assigned from $k=1, 2, \cdots, K$
+- Model: find $K$ cluster centres in the feature space so that samples in the same cluster are as similar to each other as possible
   - Hyperparameter(s): the number of clusters $K$
-  - Parameter(s): coordinates of $K$ cluster centres
-- Loss function: minimise the sum of squared distances between data points and their assigned cluster centres
-- Learning algorithm: repeated random initialisation and local search
+  - Parameter(s): the $K$ cluster centres in the feature space, i.e. in terms of the $D$ features, so there are $K \times D$ parameters
+- Loss function: minimise the sum of squared distances between data samples and their assigned cluster centres
+- Learning algorithm: repeated cluster membership assignment and cluster centre update after an initial random assignment of cluster centres
 ```
 
 ```{admonition} Transparency: $K$-means clustering
 System logic
-- Condition to produce certain output: to produce a certain cluster assignment $y$, locate the data point $\mathbf{x}$ whose distance to the cluster centre $\mathbf{c}_y$ is smaller than the distance to any other cluster centre.
+- Condition to produce certain output: to produce a certain cluster assignment $k$ (i.e. an output $y=k$), locate a data point $\mathbf{x}$ whose distance to the centre of the $k$th cluster is smaller than its distance to any other cluster centres.
 ```
-
 <!-- - What input to produce certain output:
 - How to produce certain output: -->
