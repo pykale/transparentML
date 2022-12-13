@@ -914,7 +914,7 @@ H = - \sum_{c=1}^C p_c \log_2 p_c,
 </div>
 </div>
 </div>
-<p><strong>2.</strong> Let’s test the testing accuracy and AUC of a <strong>DecisionTreeClassifier</strong> with <span class="math notranslate nohighlight">\(8\)</span> <strong>maximum leaf nodes</strong> and <span class="math notranslate nohighlight">\(6\)</span> <strong>maximum features</strong> on the 70% dataset from <strong>Exercise 1</strong>. (Use <span class="math notranslate nohighlight">\(2022\)</span> as the random seed value)</p>
+<p><strong>2.</strong> Now, split the Caravan dataset into train and test sets using the proportion 80:20 and fit a <strong>DecisionTreeClassifier</strong> with <span class="math notranslate nohighlight">\(8\)</span> <strong>maximum leaf nodes</strong> and <span class="math notranslate nohighlight">\(6\)</span> <strong>maximum features</strong>. Calculate the testing accuracy and AUC of the fitted model. (Use <span class="math notranslate nohighlight">\(2022\)</span> as the random seed value)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -939,7 +939,7 @@ H = - \sum_{c=1}^C p_c \log_2 p_c,
 
 <span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_leaf_nodes</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 
-<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
@@ -954,7 +954,7 @@ H = - \sum_{c=1}^C p_c \log_2 p_c,
 </div>
 </div>
 </div>
-<p><strong>3.</strong> Now, train another <strong>DecisionTreeClassifier</strong> using <strong>entropy</strong> as the split criterion at each node to fit a classification tree with a <strong>maximum depth</strong> of <span class="math notranslate nohighlight">\(4\)</span> and a <strong>minimum sample leaf</strong> of <span class="math notranslate nohighlight">\(3\)</span> to the training data and find out the <strong>testing accuracy</strong> and <strong>AUC</strong>. (Use <span class="math notranslate nohighlight">\(2022\)</span> as the random seed value)</p>
+<p><strong>3.</strong> Now, train another <strong>DecisionTreeClassifier</strong> using <strong>entropy</strong> as the split criterion at each node to fit a classification tree with a <strong>maximum depth</strong> of <span class="math notranslate nohighlight">\(4\)</span> and a <strong>minimum sample leaf</strong> of <span class="math notranslate nohighlight">\(3\)</span> on the training data and find out the <strong>testing accuracy</strong> and <strong>AUC</strong>. (Use <span class="math notranslate nohighlight">\(2022\)</span> as the random seed value)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -994,7 +994,7 @@ H = - \sum_{c=1}^C p_c \log_2 p_c,
 <p><strong>4.</strong> Compare the performance of the trained model in <strong>Exercise 3</strong> with <strong>Exercise 2</strong>.</p>
 <p><em>Compare your answer with the solution below</em></p>
 <div class="toggle docutils container">
-<p>In terms of testing accuracy, the Exercise 2 model outperformed the Exercise 3 model, but accuracy is not a proper metric to evaluate a model. So now, if you see the AUC score, which is a much better metric than accuracy in model evaluation, the Exercise 3 model outperformed the Exercise 2 model. The Exercise 3 model trained better than Exercise 2.</p>
+<p>In terms of testing accuracy, the Exercise 2 model outperformed the Exercise 3 model, but accuracy is not the only metric to evaluate the models. When we look at the AUC score, which more comprehensively evaluates a model in imbalanced tasks, the Exercise 3 model outperforms the Exercise 2 model. Therefore, in this case we can see the Exercise 3 model is better than the Exercise 2.</p>
 </div>
 <p><strong>5.</strong> Create a <strong>confusion matrix</strong> and a <strong>classification report</strong> to help you evaluate the model you trained in <strong>Exercise 3</strong>.</p>
 <div class="cell docutils container">
@@ -1028,7 +1028,7 @@ H = - \sum_{c=1}^C p_c \log_2 p_c,
 <p><strong>b</strong>. Does the model predicted well?</p>
 <p><em>Compare your answer with the solution below</em></p>
 <div class="toggle docutils container">
-<p>If you see the testing accuracy, you might think that the model predicted well, but it’s the exact opposite. This model is biased toward only the “NO” class. If you look at the confusion matrix, we can see that it predicts almost all the “NO” class samples, but in the case of “yes” it didn’t predict well. Only two of the 70 samples correctly predicted the “yes” class. That is why accuracy is also not a good metric for evaluating models. So the model didn’t predict well.</p>
+<p>If we only consider the test accuracy, we may conclude that the model learned the task effectively, but this is not the whole story. In fact, due to the class imbalance in the training data, this model is biased towards the “NO” class. If we look at the confusion matrix, we see that it predicts “NO” for almost all samples, and has a poor recall and precision rate for the “YES” class. Therefore, this shows that accuracy alone is also not a good method for evaluating models. Considering AUC, recall, precision and plotting a confusion matrix,  we get a much better picture.</p>
 </div>
 </div>
 </div>

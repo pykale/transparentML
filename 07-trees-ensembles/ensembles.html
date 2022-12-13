@@ -886,7 +886,17 @@ sorted_importances.plot.bar(rot=30, figsize=(10, 5))
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">7.3.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p><strong>1.</strong> All the following exercises use the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Hitters.csv">Hitters</a>.</p>
+<p>Load the <strong>Hitters</strong>s dataset, convert the values of variables (predictors) from category to numbers, and inspect the first five rows.</p>
 <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
 import pandas as pd
@@ -1065,8 +1075,16 @@ hitters_df.head()
 </table>
 </div></div></div>
 </div>
-<p>bagging, random forests, and boosting</p>
+<p><strong>2.</strong> Train three models on the dataset loaded in <strong>Exercise 1</strong> using the bagging, random forests, and boosting methods, and compare their performance on the test dataset using MSE as the evaluation metric.</p>
 <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import (
@@ -1131,11 +1149,19 @@ MSE for Boosting: 90029.64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
 </pre></div>
 </div>
-<img alt="../_images/ensembles_14_3.png" src="../_images/ensembles_14_3.png" />
+<img alt="../_images/ensembles_17_3.png" src="../_images/ensembles_17_3.png" />
 </div>
 </div>
-<p>feature importance</p>
+<p><strong>3.</strong> Find and compare the important features of the random forest and boosting models.</p>
 <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rf_importances = regr_rf.feature_importances_
 boosting_importances = regr_boosting.feature_importances_
@@ -1160,7 +1186,7 @@ sorted_importances.plot.bar(rot=30, figsize=(10, 5))
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;feature&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/ensembles_17_1.png" src="../_images/ensembles_17_1.png" />
+<img alt="../_images/ensembles_21_1.png" src="../_images/ensembles_21_1.png" />
 </div>
 </div>
 </div>

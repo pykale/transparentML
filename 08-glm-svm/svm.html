@@ -635,6 +635,11 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   8.3.5. Exercises
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -698,6 +703,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   8.3.5. Exercises
+  </a>
  </li>
 </ul>
 
@@ -903,30 +913,30 @@ clf.cv_results_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00086026, 0.00085537, 0.00087988, 0.00089357, 0.00089695,
-        0.00083108, 0.00087132, 0.00096223, 0.00095046, 0.00097141,
-        0.00083973, 0.00087974, 0.00097382, 0.00099084, 0.00100672,
-        0.00084984, 0.00088334, 0.00100448, 0.00103264, 0.00103972,
-        0.00091908, 0.00094085, 0.00100737, 0.00102656, 0.00101986]),
- &#39;std_fit_time&#39;: array([6.70292794e-05, 1.46133475e-05, 1.25803930e-05, 1.20525013e-05,
-        1.07338417e-05, 1.18063186e-05, 1.40780872e-05, 4.36353485e-05,
-        2.41522257e-05, 1.06390267e-05, 1.83304818e-05, 1.38695078e-05,
-        2.31133871e-05, 9.67841420e-06, 8.80552471e-06, 2.51052047e-05,
-        1.77681836e-05, 2.80519393e-05, 2.66363388e-05, 2.55714235e-05,
-        3.54379284e-05, 3.57687945e-05, 1.44796061e-05, 2.26284353e-05,
-        2.32423755e-05]),
- &#39;mean_score_time&#39;: array([0.00043354, 0.00042472, 0.00043275, 0.00042844, 0.00043159,
-        0.00042341, 0.00044684, 0.00047882, 0.00043063, 0.00043535,
-        0.00042107, 0.00042684, 0.00043423, 0.00043385, 0.00043733,
-        0.00041959, 0.00041997, 0.0004287 , 0.00043488, 0.00043509,
-        0.00042403, 0.00041521, 0.00042431, 0.00042789, 0.00042892]),
- &#39;std_score_time&#39;: array([2.75185447e-05, 7.27250924e-06, 9.70422195e-06, 5.11462035e-06,
-        7.71003072e-06, 7.03027626e-06, 4.01287296e-05, 6.71465665e-05,
-        4.44482830e-06, 3.17911306e-06, 7.70829795e-06, 7.21274326e-06,
-        9.92007536e-06, 7.50776282e-06, 9.85280463e-06, 8.97382321e-06,
-        8.18248256e-06, 7.72818295e-06, 1.09729545e-05, 7.58489656e-06,
-        3.14076550e-05, 7.47072358e-06, 4.99434286e-06, 4.55504295e-06,
-        5.54854897e-06]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00123355, 0.00119388, 0.00124626, 0.0012599 , 0.00133078,
+        0.00118685, 0.00116854, 0.00132208, 0.00134912, 0.00139785,
+        0.00117221, 0.00153835, 0.00135105, 0.00142539, 0.00142963,
+        0.00112107, 0.00116611, 0.00136125, 0.00149784, 0.00145767,
+        0.0012253 , 0.00129335, 0.00141101, 0.00150867, 0.00140445]),
+ &#39;std_fit_time&#39;: array([2.54118696e-04, 7.23018051e-05, 1.12463325e-04, 1.16328977e-04,
+        2.52881969e-04, 1.49437258e-04, 4.22038330e-05, 9.75439028e-05,
+        5.65523844e-05, 1.19090975e-04, 1.99134476e-04, 7.60319369e-04,
+        5.93906423e-05, 7.36598628e-05, 1.15032211e-04, 4.64278113e-05,
+        4.40767542e-05, 6.49763243e-05, 1.27789698e-04, 3.33955330e-05,
+        1.06023648e-04, 1.47179018e-04, 8.37178451e-05, 1.46209921e-04,
+        4.98801127e-05]),
+ &#39;mean_score_time&#39;: array([0.00063052, 0.0006027 , 0.00061076, 0.00064802, 0.00061977,
+        0.00062425, 0.00064051, 0.00073602, 0.00061772, 0.00064263,
+        0.00058384, 0.00088024, 0.00062366, 0.00059602, 0.00059574,
+        0.0005887 , 0.00058954, 0.00064068, 0.00059609, 0.00065651,
+        0.00071683, 0.00061767, 0.00065825, 0.00059505, 0.00066531]),
+ &#39;std_score_time&#39;: array([6.03876374e-05, 9.94319818e-06, 1.81677617e-05, 1.18578146e-04,
+        7.56063057e-05, 5.29338699e-05, 8.37294176e-05, 2.10439087e-04,
+        2.83045030e-05, 5.80315131e-05, 1.65297511e-05, 4.72793372e-04,
+        9.91742080e-05, 1.11387415e-05, 9.62222059e-06, 3.31092594e-05,
+        3.25681961e-05, 1.29619558e-04, 1.65795395e-05, 8.58402379e-05,
+        3.28186568e-04, 8.40689097e-05, 1.19486460e-04, 1.21386670e-05,
+        1.06044942e-04]),
  &#39;param_C&#39;: masked_array(data=[0.01, 0.01, 0.01, 0.01, 0.01, 0.1, 0.1, 0.1, 0.1, 0.1,
                     1, 1, 1, 1, 1, 10, 10, 10, 10, 10, 100, 100, 100, 100,
                     100],
@@ -1248,6 +1258,313 @@ plot_svc(svm5, XX, yy)
 </div>
 </div>
 <p>We can see the classifying three classes (in 2D) is not easy, as expected.</p>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2><span class="section-number">8.3.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p><strong>1.</strong> All the following exercises use the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Heart.csv">Heart</a>.</p>
+<p>Load the <strong>Heart</strong> dataset, convert the values of variables (predictors) from category to numbers, and inspect the first five rows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import pandas as pd
+
+np.random.seed(2022)
+
+heart_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Heart.csv&quot;
+
+heart_df = pd.read_csv(heart_url, index_col=0).dropna()
+# converting categories
+heart_df[&quot;ChestPain&quot;] = heart_df[&quot;ChestPain&quot;].factorize()[0]
+heart_df[&quot;Thal&quot;] = heart_df[&quot;Thal&quot;].factorize()[0]
+heart_df[&quot;AHD&quot;] = heart_df[&quot;AHD&quot;].factorize()[0]
+
+heart_df.head(5)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Sex</th>
+      <th>ChestPain</th>
+      <th>RestBP</th>
+      <th>Chol</th>
+      <th>Fbs</th>
+      <th>RestECG</th>
+      <th>MaxHR</th>
+      <th>ExAng</th>
+      <th>Oldpeak</th>
+      <th>Slope</th>
+      <th>Ca</th>
+      <th>Thal</th>
+      <th>AHD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>63</td>
+      <td>1</td>
+      <td>0</td>
+      <td>145</td>
+      <td>233</td>
+      <td>1</td>
+      <td>2</td>
+      <td>150</td>
+      <td>0</td>
+      <td>2.3</td>
+      <td>3</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>67</td>
+      <td>1</td>
+      <td>1</td>
+      <td>160</td>
+      <td>286</td>
+      <td>0</td>
+      <td>2</td>
+      <td>108</td>
+      <td>1</td>
+      <td>1.5</td>
+      <td>2</td>
+      <td>3.0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>67</td>
+      <td>1</td>
+      <td>1</td>
+      <td>120</td>
+      <td>229</td>
+      <td>0</td>
+      <td>2</td>
+      <td>129</td>
+      <td>1</td>
+      <td>2.6</td>
+      <td>2</td>
+      <td>2.0</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>37</td>
+      <td>1</td>
+      <td>2</td>
+      <td>130</td>
+      <td>250</td>
+      <td>0</td>
+      <td>0</td>
+      <td>187</td>
+      <td>0</td>
+      <td>3.5</td>
+      <td>3</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>41</td>
+      <td>0</td>
+      <td>3</td>
+      <td>130</td>
+      <td>204</td>
+      <td>0</td>
+      <td>2</td>
+      <td>172</td>
+      <td>0</td>
+      <td>1.4</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>2</strong>. Split the loaded dataset into training and testing sets in an <span class="math notranslate nohighlight">\(80:20\)</span> ratio, then train a model using SVC using these hyperparameters <em>(C = 1, kernel = “rbf, gamma = 0.01, probability = true)</em> where kernel =”rbf” means it is a support vector machine (SVM) extend the SVC by enlarging the feature space in a specific way, using rbf kernel.Finally, show the number of support vectors and AUROC of this trained model on the test set. (Use <span class="math notranslate nohighlight">\(2022\)</span> as the random seed value)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.svm import SVC
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import roc_curve, auc
+import matplotlib.pyplot as plt
+
+np.random.seed(2022)
+
+X = heart_df.drop([&quot;AHD&quot;], axis=1)
+y = heart_df[&quot;AHD&quot;]
+
+
+X_train, X_test, y_train, y_test = train_test_split(X, y.ravel(), test_size=0.2)
+
+svm = SVC(C=1, kernel=&quot;rbf&quot;, gamma=0.01, probability=True)
+svm.fit(X_train, y_train)
+print(&quot;Number of Support vectors: &quot;, len(svm.support_vectors_))
+
+y_test_score = svm.decision_function(X_test)
+
+fpr, tpr, _ = roc_curve(y_test, y_test_score)
+roc_auc = auc(fpr, tpr)
+
+plt.plot(fpr, tpr, label=&quot;AUC=&quot; + str(roc_auc))
+plt.ylabel(&quot;True Positive Rate&quot;)
+plt.xlabel(&quot;False Positive Rate&quot;)
+plt.legend(loc=4)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of Support vectors:  234
+</pre></div>
+</div>
+<img alt="../_images/svm_43_1.png" src="../_images/svm_43_1.png" />
+</div>
+</div>
+<p><strong>3.</strong> Train another model in the same manner as in <strong>Exercise 2</strong>, but with the hyperparameter regularisation strength <span class="math notranslate nohighlight">\(C\)</span> set to <span class="math notranslate nohighlight">\(100\)</span>. Show the number of support vectors and AUROC of this trained model on the test set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svm = SVC(C=100, kernel=&quot;rbf&quot;, gamma=0.01, probability=True)
+svm.fit(X_train, y_train)
+print(&quot;Number of Support vectors: &quot;, len(svm.support_vectors_))
+
+y_test_score = svm.decision_function(X_test)
+
+fpr, tpr, _ = roc_curve(y_test, y_test_score)
+roc_auc = auc(fpr, tpr)
+
+plt.plot(fpr, tpr, label=&quot;AUC=&quot; + str(roc_auc))
+plt.ylabel(&quot;True Positive Rate&quot;)
+plt.xlabel(&quot;False Positive Rate&quot;)
+plt.legend(loc=4)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of Support vectors:  233
+</pre></div>
+</div>
+<img alt="../_images/svm_47_1.png" src="../_images/svm_47_1.png" />
+</div>
+</div>
+<p><strong>4.</strong> Using <strong>GridSearchCV</strong>, fine-tune the SVM hyperparameters (<span class="math notranslate nohighlight">\(C\)</span> and <span class="math notranslate nohighlight">\(gamma\)</span>) on the training dataset (using <span class="math notranslate nohighlight">\(10\)</span>-fold cross-validation) for <span class="math notranslate nohighlight">\(C\)</span> values of <span class="math notranslate nohighlight">\(0.001\)</span>, <span class="math notranslate nohighlight">\(0.01\)</span>, <span class="math notranslate nohighlight">\(0.1\)</span>, <span class="math notranslate nohighlight">\(5\)</span> and <span class="math notranslate nohighlight">\(gamma\)</span> values of <span class="math notranslate nohighlight">\(0.001\)</span>, <span class="math notranslate nohighlight">\(0.01\)</span>, <span class="math notranslate nohighlight">\(0.1\)</span>, <span class="math notranslate nohighlight">\(0.5\)</span>, <span class="math notranslate nohighlight">\(1\)</span>.Display the best hyperparameters value for <span class="math notranslate nohighlight">\(C\)</span> and <span class="math notranslate nohighlight">\(gamma\)</span>. (Use the roc_auc scoring for choosing the best model and it’s hyperparameters).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.model_selection import GridSearchCV
+
+tuned_parameters = {&quot;C&quot;: [0.01, 0.1, 1, 10, 100], &quot;gamma&quot;: [0.001, 0.01, 0.1, 0.5, 1]}
+clf = GridSearchCV(
+    SVC(kernel=&quot;rbf&quot;, probability=True),
+    tuned_parameters,
+    cv=10,
+    scoring=&quot;roc_auc&quot;,
+    return_train_score=True,
+)
+clf.fit(X_train, y_train)
+print(&quot;\nOptimal parameters : &quot;, clf.best_params_)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimal parameters :  {&#39;C&#39;: 1, &#39;gamma&#39;: 0.001}
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>5.</strong> Finally, using the best hyperparameters from <strong>Exercise 4</strong>, train another SVM model on the training dataset and display the AUROC of this trained model on the test set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svm = SVC(C=1, kernel=&quot;rbf&quot;, gamma=0.001, probability=True)
+svm.fit(X_train, y_train)
+print(&quot;Number of Support vectors: &quot;, len(svm.support_vectors_))
+
+y_test_score = svm.decision_function(X_test)
+
+fpr, tpr, _ = roc_curve(y_test, y_test_score)
+roc_auc = auc(fpr, tpr)
+
+plt.plot(fpr, tpr, label=&quot;AUC=&quot; + str(roc_auc))
+plt.ylabel(&quot;True Positive Rate&quot;)
+plt.xlabel(&quot;False Positive Rate&quot;)
+plt.legend(loc=4)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of Support vectors:  189
+</pre></div>
+</div>
+<img alt="../_images/svm_55_1.png" src="../_images/svm_55_1.png" />
+</div>
 </div>
 </div>
 </div>

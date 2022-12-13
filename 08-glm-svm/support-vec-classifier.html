@@ -1020,7 +1020,7 @@ print(&quot;Prediction: &quot;, svc.predict(X[5, :].reshape(1, -1))[0])
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Input:  [-1.19276461 -0.20487651]
 Intercept:  0.5729441305210916  Coefficients:  [-0.73273926 -0.70326681]
-Prediction score:  1.5910124372951466
+Prediction score:  1.5910124372951457
 Prediction:  1
 </pre></div>
 </div>
@@ -1033,8 +1033,8 @@ Prediction:  1
 <li><p>For the data point <span class="math notranslate nohighlight">\([-1.19276461, -0.20487651]\)</span> marked by a black circle, its prediction score is <span class="math notranslate nohighlight">\( -0.7327 \times -1.19276461 + -0.7033 \times -0.20487651 + 0.5729 \approx 1.5910 \)</span>, which is positive. So the predicted label is <span class="math notranslate nohighlight">\( 1 \)</span>.</p></li>
 <li><p>According to the definition, the data points on the hyperplane satisfies <span class="math notranslate nohighlight">\( \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} = 0 \)</span>, i.e. <span class="math notranslate nohighlight">\( 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 = 0 \)</span>. To get a data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> of class <span class="math notranslate nohighlight">\( 1 \)</span>, the relationship between <span class="math notranslate nohighlight">\( x_1 \)</span> and <span class="math notranslate nohighlight">\( x_2 \)</span> should satisfy:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-284083c1-e81e-4a10-be56-290b78d6f2a0">
-<span class="eqno">(8.6)<a class="headerlink" href="#equation-284083c1-e81e-4a10-be56-290b78d6f2a0" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e765981e-85c6-4a75-b5a3-e88f6a74ac7c">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-e765981e-85c6-4a75-b5a3-e88f6a74ac7c" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} &amp; &gt; 0 \\
 \beta_1 x_{1} &amp; &gt; - \beta_0 - \beta_2 x_{2} \\
@@ -1078,14 +1078,14 @@ clf.cv_results_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00073762, 0.00072165, 0.00073028, 0.00071762, 0.00073714,
-        0.00078857, 0.00086961]),
- &#39;std_fit_time&#39;: array([4.73299974e-05, 1.25263043e-05, 2.47124049e-05, 3.81238689e-06,
-        1.14633478e-05, 1.26879426e-04, 4.82352310e-05]),
- &#39;mean_score_time&#39;: array([0.00040584, 0.00039709, 0.00039558, 0.00040028, 0.0003979 ,
-        0.00039957, 0.00039909]),
- &#39;std_score_time&#39;: array([2.33050472e-05, 7.70962521e-06, 1.93339681e-06, 1.04955368e-05,
-        7.73112453e-06, 1.23382248e-05, 2.50384917e-06]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00102847, 0.00096552, 0.0009665 , 0.00093937, 0.00095949,
+        0.00118148, 0.00114164]),
+ &#39;std_fit_time&#39;: array([1.12639901e-04, 6.68985752e-05, 6.92418454e-05, 1.90125924e-05,
+        3.51118937e-05, 4.72331158e-04, 7.02980081e-05]),
+ &#39;mean_score_time&#39;: array([0.00058553, 0.0005702 , 0.00054595, 0.00055883, 0.00054312,
+        0.00057616, 0.00056219]),
+ &#39;std_score_time&#39;: array([8.01101646e-05, 7.43204061e-05, 1.20548593e-05, 4.71371620e-05,
+        9.99084799e-06, 5.18748863e-05, 1.16503526e-05]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,
@@ -1265,7 +1265,301 @@ plot_svc(svc5, X_test, y_test)
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">8.2.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p>min 3 max 5</p>
+<p><strong>1.</strong> All the following exercises use the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Heart.csv">Heart</a>.</p>
+<p>Load the <strong>Heart</strong> dataset, convert the values of variables (predictors) from category to numbers, and inspect the first five rows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import pandas as pd
+
+np.random.seed(2022)
+
+heart_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Heart.csv&quot;
+
+heart_df = pd.read_csv(heart_url, index_col=0).dropna()
+# converting categories
+heart_df[&quot;ChestPain&quot;] = heart_df[&quot;ChestPain&quot;].factorize()[0]
+heart_df[&quot;Thal&quot;] = heart_df[&quot;Thal&quot;].factorize()[0]
+heart_df[&quot;AHD&quot;] = heart_df[&quot;AHD&quot;].factorize()[0]
+
+heart_df.head(5)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Sex</th>
+      <th>ChestPain</th>
+      <th>RestBP</th>
+      <th>Chol</th>
+      <th>Fbs</th>
+      <th>RestECG</th>
+      <th>MaxHR</th>
+      <th>ExAng</th>
+      <th>Oldpeak</th>
+      <th>Slope</th>
+      <th>Ca</th>
+      <th>Thal</th>
+      <th>AHD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>63</td>
+      <td>1</td>
+      <td>0</td>
+      <td>145</td>
+      <td>233</td>
+      <td>1</td>
+      <td>2</td>
+      <td>150</td>
+      <td>0</td>
+      <td>2.3</td>
+      <td>3</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>67</td>
+      <td>1</td>
+      <td>1</td>
+      <td>160</td>
+      <td>286</td>
+      <td>0</td>
+      <td>2</td>
+      <td>108</td>
+      <td>1</td>
+      <td>1.5</td>
+      <td>2</td>
+      <td>3.0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>67</td>
+      <td>1</td>
+      <td>1</td>
+      <td>120</td>
+      <td>229</td>
+      <td>0</td>
+      <td>2</td>
+      <td>129</td>
+      <td>1</td>
+      <td>2.6</td>
+      <td>2</td>
+      <td>2.0</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>37</td>
+      <td>1</td>
+      <td>2</td>
+      <td>130</td>
+      <td>250</td>
+      <td>0</td>
+      <td>0</td>
+      <td>187</td>
+      <td>0</td>
+      <td>3.5</td>
+      <td>3</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>41</td>
+      <td>0</td>
+      <td>3</td>
+      <td>130</td>
+      <td>204</td>
+      <td>0</td>
+      <td>2</td>
+      <td>172</td>
+      <td>0</td>
+      <td>1.4</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>2</strong>. Split the loaded dataset into training and testing sets in an <span class="math notranslate nohighlight">\(80:20\)</span> ratio, then train a model using SVC using the hyperparameter <span class="math notranslate nohighlight">\(C = 1\)</span>, and show the number of support vectors and AUROC of this trained model on the test set. (Use <span class="math notranslate nohighlight">\(2022\)</span> as the random seed value)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.svm import SVC
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
+np.random.seed(2022)
+
+X = heart_df.drop([&quot;AHD&quot;], axis=1)
+y = heart_df[&quot;AHD&quot;]
+
+
+X_train, X_test, y_train, y_test = train_test_split(X, y.ravel(), test_size=0.2)
+
+svc = SVC(C=1, kernel=&quot;linear&quot;)
+svc.fit(X_train, y_train)
+
+print(&quot;Number of Support vectors: &quot;, len(svc.support_vectors_))
+
+y_pred = svc.predict(X_test)
+accuarcy = accuracy_score(y_test, y_pred)
+
+print(accuarcy)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of Support vectors:  96
+0.7666666666666667
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> Train another model in the same manner as in <strong>Exercise 2</strong>, but with the hyperparameter regularisation strength <span class="math notranslate nohighlight">\(C\)</span> set to <span class="math notranslate nohighlight">\(0.01\)</span>. Show the number of support vectors and AUROC of this trained model on the test set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svc2 = SVC(C=0.01, kernel=&quot;linear&quot;)
+svc2.fit(X_train, y_train)
+print(&quot;Number of Support vectors: &quot;, len(svc2.support_vectors_))
+
+y_pred = svc2.predict(X_test)
+accuarcy = accuracy_score(y_test, y_pred)
+
+print(accuarcy)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of Support vectors:  149
+0.7833333333333333
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>4.</strong> Using GridSearchCV, fine-tune the support vector classifier’s hyperparameter <span class="math notranslate nohighlight">\(C\)</span> on the training dataset (using <span class="math notranslate nohighlight">\(10\)</span>-fold cross-validation) for <span class="math notranslate nohighlight">\(C\)</span> values of <span class="math notranslate nohighlight">\(0.001\)</span>, <span class="math notranslate nohighlight">\(0.01\)</span>, <span class="math notranslate nohighlight">\(0.1\)</span>, and <span class="math notranslate nohighlight">\(5\)</span>, and then display the best hyperparameters. (Use the roc_auc scoring for choosing the best model and its hyperparameters.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.model_selection import GridSearchCV
+
+tuned_parameters = [{&quot;C&quot;: [0.001, 0.01, 0.1, 1, 5]}]
+clf = GridSearchCV(
+    SVC(kernel=&quot;linear&quot;),
+    tuned_parameters,
+    cv=10,
+    scoring=&quot;accuracy&quot;,
+    return_train_score=True,
+)
+clf.fit(X, y)
+print(&quot;\nOptimal value of C : &quot;, clf.best_params_)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimal value of C :  {&#39;C&#39;: 0.1}
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>5.</strong> Finally, using the best hyperparameters from <strong>Exercise 4</strong>, train another SVC model on the training dataset and display the AUROC of this trained model on the test set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, roc_curve, auc
+
+svc_tuned = SVC(C=0.1, kernel=&quot;linear&quot;)
+svc_tuned.fit(X_train, y_train)
+print(&quot;Number of Support vectors: &quot;, len(svc_tuned.support_vectors_))
+
+y_pred = svc_tuned.predict(X_test)
+accuarcy = accuracy_score(y_test, y_pred)
+
+print(accuarcy)
+
+cm = confusion_matrix(y_test, y_pred)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=svc_tuned.classes_)
+disp.plot()
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of Support vectors:  111
+0.8
+</pre></div>
+</div>
+<img alt="../_images/support-vec-classifier_52_1.png" src="../_images/support-vec-classifier_52_1.png" />
+</div>
+</div>
 </div>
 </div>
 
