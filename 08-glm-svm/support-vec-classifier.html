@@ -443,7 +443,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../10-deep-cnn-rnn/overview.html">
-   10. Convolutional &amp; recurrent NN
+   10. Neural nets &amp; deep learning
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
   <label for="toctree-checkbox-11">
@@ -452,8 +452,23 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../10-deep-cnn-rnn/multilayer-nn.html">
+     10.1. Multilayer neural nets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-deep-cnn-rnn/convolutional-nn.html">
+     10.2. Convolutional neural nets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-deep-cnn-rnn/recurrent-nn.html">
+     10.3. Recurrent neural nets
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../10-deep-cnn-rnn/quiz-sum-ref.html">
-     10.1. Quiz &amp; summary
+     10.4. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -1020,7 +1035,7 @@ print(&quot;Prediction: &quot;, svc.predict(X[5, :].reshape(1, -1))[0])
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Input:  [-1.19276461 -0.20487651]
 Intercept:  0.5729441305210916  Coefficients:  [-0.73273926 -0.70326681]
-Prediction score:  1.5910124372951466
+Prediction score:  1.5910124372951457
 Prediction:  1
 </pre></div>
 </div>
@@ -1033,8 +1048,8 @@ Prediction:  1
 <li><p>For the data point <span class="math notranslate nohighlight">\([-1.19276461, -0.20487651]\)</span> marked by a black circle, its prediction score is <span class="math notranslate nohighlight">\( -0.7327 \times -1.19276461 + -0.7033 \times -0.20487651 + 0.5729 \approx 1.5910 \)</span>, which is positive. So the predicted label is <span class="math notranslate nohighlight">\( 1 \)</span>.</p></li>
 <li><p>According to the definition, the data points on the hyperplane satisfies <span class="math notranslate nohighlight">\( \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} = 0 \)</span>, i.e. <span class="math notranslate nohighlight">\( 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 = 0 \)</span>. To get a data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> of class <span class="math notranslate nohighlight">\( 1 \)</span>, the relationship between <span class="math notranslate nohighlight">\( x_1 \)</span> and <span class="math notranslate nohighlight">\( x_2 \)</span> should satisfy:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-2a592620-b9f1-42b5-a90d-e2c948fca2e7">
-<span class="eqno">(8.6)<a class="headerlink" href="#equation-2a592620-b9f1-42b5-a90d-e2c948fca2e7" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5be32eb1-c614-498e-a38d-95cbdab4ddbc">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-5be32eb1-c614-498e-a38d-95cbdab4ddbc" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} &amp; &gt; 0 \\
 \beta_1 x_{1} &amp; &gt; - \beta_0 - \beta_2 x_{2} \\
@@ -1055,10 +1070,13 @@ plot_svc(svc2, X, y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors:  16
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors: 
 </pre></div>
 </div>
-<img alt="../_images/support-vec-classifier_14_1.png" src="../_images/support-vec-classifier_14_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 16
+</pre></div>
+</div>
+<img alt="../_images/support-vec-classifier_14_2.png" src="../_images/support-vec-classifier_14_2.png" />
 </div>
 </div>
 <p>As shown above, when using a smaller <code class="docutils literal notranslate"><span class="pre">C=0.1</span></code>, we have a larger <span class="math notranslate nohighlight">\( \Xi \)</span> and a larger tolerance for observations being on the wrong side of the margin. As a result, the margin is wider, resulting in more support vectors. We can select the optimal hyperparameter <code class="docutils literal notranslate"><span class="pre">C</span></code> in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> (inversely proportional to <span class="math notranslate nohighlight">\( \Xi \)</span>) using cross-validation, as we do below using <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> from <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>.</p>
@@ -1078,14 +1096,14 @@ clf.cv_results_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00084534, 0.00082414, 0.00082207, 0.00084023, 0.00083828,
-        0.00085835, 0.00100584]),
- &#39;std_fit_time&#39;: array([5.56882927e-05, 1.80777419e-05, 1.69793537e-05, 3.72326777e-05,
-        1.39543117e-05, 1.59825118e-05, 5.18443708e-05]),
- &#39;mean_score_time&#39;: array([0.0004925 , 0.00047209, 0.00047419, 0.000471  , 0.00047653,
-        0.00047088, 0.00048358]),
- &#39;std_score_time&#39;: array([4.67499926e-05, 1.09087639e-05, 1.13094124e-05, 1.10134159e-05,
-        1.49957705e-05, 9.19875607e-06, 1.57291406e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00109127, 0.00094163, 0.00096452, 0.00096571, 0.00098815,
+        0.00104227, 0.00117054]),
+ &#39;std_fit_time&#39;: array([3.50779568e-04, 4.20391184e-05, 6.30101334e-05, 1.04193843e-04,
+        5.98334879e-05, 4.91611016e-05, 3.93159683e-05]),
+ &#39;mean_score_time&#39;: array([0.00058041, 0.00054543, 0.0005445 , 0.00054932, 0.00056036,
+        0.0005939 , 0.00061593]),
+ &#39;std_score_time&#39;: array([6.67745874e-05, 2.13995916e-05, 1.50384491e-05, 2.46783385e-05,
+        2.35388213e-05, 4.68433961e-05, 5.70439756e-05]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,

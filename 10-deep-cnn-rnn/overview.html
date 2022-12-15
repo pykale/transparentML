@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>10. Deep Convolutional/Recurrent Neural Networks &#8212; Transparent ML Intro</title>
+    <title>10. Neural Networks and Deep Learning &#8212; Transparent ML Intro</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="10.1. Quiz and summary" href="quiz-sum-ref.html" />
+    <link rel="next" title="10.1. Multilayer neural networks" href="multilayer-nn.html" />
     <link rel="prev" title="9.3. Quiz and summary" href="../09-pca-clustering/quiz-sum-ref.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -441,7 +441,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
-   10. Convolutional &amp; recurrent NN
+   10. Neural nets &amp; deep learning
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
   <label for="toctree-checkbox-11">
@@ -450,8 +450,23 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="multilayer-nn.html">
+     10.1. Multilayer neural nets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="convolutional-nn.html">
+     10.2. Convolutional neural nets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="recurrent-nn.html">
+     10.3. Recurrent neural nets
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="quiz-sum-ref.html">
-     10.1. Quiz &amp; summary
+     10.4. Quiz &amp; summary
     </a>
    </li>
   </ul>
@@ -569,7 +584,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Deep Convolutional/Recurrent Neural Networks</h1>
+                <h1>Neural Networks and Deep Learning</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -580,8 +595,8 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="deep-convolutional-recurrent-neural-networks">
-<h1><span class="section-number">10. </span>Deep Convolutional/Recurrent Neural Networks<a class="headerlink" href="#deep-convolutional-recurrent-neural-networks" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="neural-networks-and-deep-learning">
+<h1><span class="section-number">10. </span>Neural Networks and Deep Learning<a class="headerlink" href="#neural-networks-and-deep-learning" title="Permalink to this headline">¶</a></h1>
 <!-- Capitalise initials. As compact as possible, prefer ONE line. -->
 <!-- We use **UK** English spelling. -->
 <!-- File names should be all lowercase, with words separated by hyphens (-), and no spaces.  Each chapter must include an "overview.md" and "quiz-sum-ref.md"-->
@@ -592,31 +607,37 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="admonition-objectives admonition">
 <p class="admonition-title">Objectives</p>
 <ul class="simple">
-<li><p>Objective 1</p></li>
+<li><p>Understand the concept of neural networks (NNs) and deep learning models.</p></li>
+<li><p>Understand the concept of convolutional NNs (CNNs) and recurrent NNs (RNNs).</p></li>
+<li><p>Apply convolutional NNs to image classification.</p></li>
+<li><p>Apply recurrent NNs to document classification.</p></li>
 </ul>
 </div>
-<p><strong>Expected time to complete</strong>: x hours</p>
-<p>In this chapter, we will [… (intro paragraph)].</p>
-<div class="admonition-ingredients admonition">
-<p class="admonition-title">Ingredients</p>
+<p><strong>Expected time to complete</strong>: 4 hours</p>
+<p>In this chapter, we will give a light introduction to <a class="reference external" href="https://en.wikipedia.org/wiki/Neural_network">neural networks</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Deep_learning">deep learning</a> models including <a class="reference external" href="https://en.wikipedia.org/wiki/Convolutional_neural_network">convolutional neural networks (CNNs)</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Recurrent_neural_network">recurrent neural networks (RNNs)</a>. Neural networks are a class of machine learning models that are inspired by the structure and function of biological neural networks. They are used to learn complex functions from large amounts of data. Deep learning models are neural networks with multiple hidden layers. CNNs are deep learning models that are used for image classification and object detection. RNNs are deep learning models that are used for sequence modelling and time series forecasting.</p>
+<p>Neural networks and deep learning models are commonly considered to be black-box models that are not transparent. However, by examining the three criteria of <a class="reference external" href="https://pykale.github.io/transparentML/01-intro/ml-transp.html#system-transparency">system transparency</a>, we can see that neural networks and deep learning models can often satisfy the first two criteria of system transparency. We can explicitly define how to transform inputs to outputs but the conditions to produce certain outputs are often difficult to explain. Therefore, we consider neural networks and deep learning models to be partially transparent models, or semi-transparent models.</p>
+<p>Neural networks can be used for both supervised and unsupervised learning. We will focus on supervised learning in this chapter.</p>
+<!-- We will also introduce the concept of transfer learning. -->
+<div class="admonition-ingredients-neural-networks admonition">
+<p class="admonition-title">Ingredients: neural networks</p>
 <ul class="simple">
-<li><p>Input: …</p></li>
-<li><p>Output: …</p></li>
-<li><p>Model: …</p>
+<li><p>Input: features of data samples</p></li>
+<li><p>Output: target values (regression) or class labels (classification) of data samples</p></li>
+<li><p>Model: pass the input through multiple layers of “neurons”, where each neuron is a linear function (weighted sum plus bias) followed by a non-linear activation function to produce an output for the next layer of neurons (or the final output after the last layer of neurons)</p>
 <ul>
-<li><p>Hyperparameter(s): …</p></li>
-<li><p>Parameter(s): …</p></li>
+<li><p>Hyperparameter(s): number of layers, number of neurons in each layer, activation function, and/or learning rate</p></li>
+<li><p>Parameter(s): weights and biases of each neuron</p></li>
 </ul>
 </li>
-<li><p>Loss function: …</p></li>
-<li><p>Learning algorithm: …</p></li>
+<li><p>Loss function: mean squared error / residual sum of squares (regression) or cross-entropy (classification), or other loss functions</p></li>
+<li><p>Learning algorithm: gradient descent (or other optimisation algorithms)</p></li>
 </ul>
 </div>
 <div class="admonition-transparency admonition">
 <p class="admonition-title">Transparency</p>
 <p>System logic</p>
 <ul class="simple">
-<li><p>Condition to produce certain output:</p></li>
+<li><p>Condition to produce certain output: due to the complexity of the model, it is difficult to explain the conditions to produce certain output. There are some methods to explain the output of neural networks and deep learning models such as the <a class="reference external" href="https://homes.cs.washington.edu/~marcotcr/blog/lime/">local interpretable model-agnostic explanations (LIME)</a>, such explanations are approximate and may not be accurate.</p></li>
 </ul>
 </div>
 <!-- - What input to produce certain output:
@@ -657,10 +678,10 @@ const thebe_selector_output = ".output, .cell_output"
             <p class="prev-next-title"><span class="section-number">9.3. </span>Quiz and summary</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="quiz-sum-ref.html" title="next page">
+    <a class='right-next' id="next-link" href="multilayer-nn.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10.1. </span>Quiz and summary</p>
+        <p class="prev-next-title"><span class="section-number">10.1. </span>Multilayer neural networks</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
