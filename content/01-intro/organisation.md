@@ -64,7 +64,7 @@ In this course, we will use real-world datasets to introduce machine learning fr
 * - [Khan](https://github.com/pykale/transparentML/blob/main/data/Khan.json)
   - Gene expression measurements for four cancer types.
   - Predict the cancer type for a patient.
-* - [NCI60](https://en.wikipedia.org/wiki/NCI-60)
+* - [NCI60](https://github.com/pykale/transparentML/blob/main/data/NCI60_data.csv)
   - Gene expression measurements for 64 cancer cell lines.
   - Find clusters or groups among the cell lines for personalised treatment.
 * - [OJ](https://github.com/pykale/transparentML/blob/main/data/OJ.csv)
