@@ -1619,66 +1619,309 @@ Explained variance ratio:  [0.93 0.07]
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">9.1.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p>min 3 max 5</p>
-<!-- PCA on the NCI60 Data --><!-- X = pd.read_csv("https://github.com/pykale/transparentML/raw/main/data/NCI60_data.csv")
-y = pd.read_csv("https://github.com/pykale/transparentML/raw/main/data/NCI60_labs.csv") --><!-- pca2 = PCA()
-X_scaled = StandardScaler().fit_transform(X)
-df2_plot = pd.DataFrame(pca2.fit_transform(X_scaled)) --><!-- fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
+<p><strong>1</strong>. Load the <strong>miceprotein dataset</strong> from <strong>sklearn.datasets</strong> using <strong>fetch_openml</strong> where the dataset contains <strong>gene expressions</strong> of <strong>mice brains</strong>. Hint: See <a class="reference external" href="https://scikit-learn.org/stable/datasets/loading_other_datasets.html#:~:text=gene%20expressions%20in%20mice%20brains">here</a> for further help.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.datasets import fetch_openml
 
-color_idx = pd.factorize(y.iloc[:, 0])[0]
-cmap = plt.cm.hsv
+mnist = fetch_openml(&quot;miceprotein&quot;)
+df = mnist.data.dropna()
+df.head()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages/sklearn/datasets/_openml.py:932: FutureWarning: The default value of `parser` will change from `&#39;liac-arff&#39;` to `&#39;auto&#39;` in 1.4. You can set `parser=&#39;auto&#39;` to silence this warning. Therefore, an `ImportError` will be raised from 1.4 if the dataset is dense and pandas is not installed. Note that the pandas parser may return different data types. See the Notes Section in fetch_openml&#39;s API doc for details.
+  warn(
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-# left plot
-ax1.scatter(
-    df2_plot.iloc[:, 0], -df2_plot.iloc[:, 1], c=color_idx, cmap=cmap, alpha=0.5, s=50
-)
-ax1.set_ylabel("Principal Component 2")
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-# right plot
-ax2.scatter(
-    df2_plot.iloc[:, 0], df2_plot.iloc[:, 2], c=color_idx, cmap=cmap, alpha=0.5, s=50
-)
-ax2.set_ylabel("Principal Component 3")
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DYRK1A_N</th>
+      <th>ITSN1_N</th>
+      <th>BDNF_N</th>
+      <th>NR1_N</th>
+      <th>NR2A_N</th>
+      <th>pAKT_N</th>
+      <th>pBRAF_N</th>
+      <th>pCAMKII_N</th>
+      <th>pCREB_N</th>
+      <th>pELK_N</th>
+      <th>...</th>
+      <th>SHH_N</th>
+      <th>BAD_N</th>
+      <th>BCL2_N</th>
+      <th>pS6_N</th>
+      <th>pCFOS_N</th>
+      <th>SYP_N</th>
+      <th>H3AcK18_N</th>
+      <th>EGR1_N</th>
+      <th>H3MeK4_N</th>
+      <th>CaNA_N</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>75</th>
+      <td>0.649781</td>
+      <td>0.828696</td>
+      <td>0.405862</td>
+      <td>2.921435</td>
+      <td>5.167979</td>
+      <td>0.207174</td>
+      <td>0.176640</td>
+      <td>3.728084</td>
+      <td>0.239283</td>
+      <td>1.666579</td>
+      <td>...</td>
+      <td>0.239752</td>
+      <td>0.139052</td>
+      <td>0.112926</td>
+      <td>0.132001</td>
+      <td>0.129363</td>
+      <td>0.486912</td>
+      <td>0.125152</td>
+      <td>0.146865</td>
+      <td>0.143517</td>
+      <td>1.627181</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>0.616481</td>
+      <td>0.841974</td>
+      <td>0.388584</td>
+      <td>2.862575</td>
+      <td>5.194163</td>
+      <td>0.223433</td>
+      <td>0.167725</td>
+      <td>3.648240</td>
+      <td>0.221030</td>
+      <td>1.565150</td>
+      <td>...</td>
+      <td>0.249031</td>
+      <td>0.133787</td>
+      <td>0.121607</td>
+      <td>0.139008</td>
+      <td>0.143084</td>
+      <td>0.467833</td>
+      <td>0.112857</td>
+      <td>0.161132</td>
+      <td>0.145719</td>
+      <td>1.562096</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>0.637424</td>
+      <td>0.852882</td>
+      <td>0.400561</td>
+      <td>2.968155</td>
+      <td>5.350820</td>
+      <td>0.208790</td>
+      <td>0.173261</td>
+      <td>3.814545</td>
+      <td>0.222300</td>
+      <td>1.741732</td>
+      <td>...</td>
+      <td>0.247956</td>
+      <td>0.142324</td>
+      <td>0.130261</td>
+      <td>0.134804</td>
+      <td>0.147673</td>
+      <td>0.462501</td>
+      <td>0.116433</td>
+      <td>0.160594</td>
+      <td>0.142879</td>
+      <td>1.571868</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>0.576815</td>
+      <td>0.755390</td>
+      <td>0.348346</td>
+      <td>2.624901</td>
+      <td>4.727509</td>
+      <td>0.205892</td>
+      <td>0.161192</td>
+      <td>3.778530</td>
+      <td>0.194153</td>
+      <td>1.505475</td>
+      <td>...</td>
+      <td>0.233225</td>
+      <td>0.133637</td>
+      <td>0.107321</td>
+      <td>0.118982</td>
+      <td>0.121290</td>
+      <td>0.479110</td>
+      <td>0.102831</td>
+      <td>0.144238</td>
+      <td>0.141681</td>
+      <td>1.646608</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>0.542545</td>
+      <td>0.757917</td>
+      <td>0.350051</td>
+      <td>2.634509</td>
+      <td>4.735602</td>
+      <td>0.210526</td>
+      <td>0.165671</td>
+      <td>3.871971</td>
+      <td>0.194297</td>
+      <td>1.531613</td>
+      <td>...</td>
+      <td>0.244469</td>
+      <td>0.133358</td>
+      <td>0.112851</td>
+      <td>0.128635</td>
+      <td>0.142617</td>
+      <td>0.438354</td>
+      <td>0.110614</td>
+      <td>0.155667</td>
+      <td>0.146408</td>
+      <td>1.607631</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 77 columns</p>
+</div></div></div>
+</div>
+<p><strong>2.</strong> Using StandardScaler, standardize the loaded mouse protein dataset from <strong>Exercise 1</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.preprocessing import StandardScaler
 
-# custom legend for the classes (y) since we do not create scatter plots per class (which could have their own labels).
-handles = []
-labels = pd.factorize(y.iloc[:, 0].unique())
-norm = mpl.colors.Normalize(vmin=0.0, vmax=14.0)
+scaler = StandardScaler()
 
-for i, v in zip(labels[0], labels[1]):
-    handles.append(mpl.patches.Patch(color=cmap(norm(i)), label=v, alpha=0.5))
+X = scaler.fit_transform(df)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>3.</strong> Now, run <strong>PCA</strong> from <strong>sklearn</strong> on the <strong>standardised mouse protein dataset</strong> to determine the <strong>top ten eigenvalues</strong>. (use <span class="math notranslate nohighlight">\(95\%\)</span> minimum number of principal components).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pca = PCA(n_components=0.95)
+pca.fit(X)
+cov_matrix = np.dot(X.T, X) / len(X)
 
-ax2.legend(handles=handles, bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.0)
+for eigenvector in pca.components_[:10]:
+    print(np.dot(eigenvector.T, np.dot(cov_matrix, eigenvector)))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23.04876913576254
+13.358730172070143
+7.586459786950799
+7.161540399168169
+3.2824168810599
+3.0423396387449575
+2.3673254012982903
+2.255275006285923
+1.830754540428051
+1.2787183994614408
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>4.</strong> Using the <strong>Exercise 3</strong> fitted PCA object, find out the <strong>portion of explained variance (PVE)</strong> and its <strong>ratio</strong> for the top 10 principal components to select the number of principal components.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(pca.explained_variance_[:10])
+print(pca.explained_variance_ratio_[:10])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[23.09059993 13.38297469  7.60022832  7.17453775  3.28837408  3.04786113
+  2.37162182  2.25936806  1.83407714  1.28103912]
+[0.29933466 0.17349    0.09852545 0.09300702 0.04262879 0.0395109
+ 0.03074449 0.02928929 0.02377603 0.01660673]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>5.</strong> After observing the <strong>PVE</strong> from <strong>Exercise 4</strong> carefuly,find out how many <strong>principal components</strong> should we take to preserve <span class="math notranslate nohighlight">\(70\%\)</span> of variance of the data?</p>
+<div class="toggle docutils container">
+<p><strong>First 5 principal components.</strong></p>
+</div>
+<p><strong>6.</strong> Finally, plot the <strong>PVE</strong> of each principal component and the <strong>cumulative PVE</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize=(7, 5))
 
-# xlabel for both plots
-for ax in fig.axes:
-    ax.set_xlabel("Principal Component 1") --><!-- pd.DataFrame(
-    [
-        df2_plot.iloc[:, :5].std(axis=0, ddof=0).array,
-        pca2.explained_variance_ratio_[:5],
-        np.cumsum(pca2.explained_variance_ratio_[:5]),
-    ],
-    index=["Standard Deviation", "Proportion of Variance", "Cumulative Proportion"],
-    columns=["PC1", "PC2", "PC3", "PC4", "PC5"],
-) --><!-- df2_plot.iloc[:, :10].var(axis=0, ddof=0).plot(kind="bar", rot=0)
-plt.ylabel("Variances")
-plt.show() --><!-- fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
+plt.plot(pca.explained_variance_ratio_[:10], &quot;-o&quot;, label=&quot;Individual component&quot;)
+plt.plot(np.cumsum(pca.explained_variance_ratio_[:10]), &quot;-s&quot;, label=&quot;Cumulative&quot;)
 
-# left plot
-ax1.plot(pca2.explained_variance_ratio_, "-o")
-ax1.set_ylabel("Proportion of Variance Explained")
-ax1.set_ylim(ymin=-0.01)
+plt.ylabel(&quot;Proportion of Variance Explained&quot;)
+plt.xlabel(&quot;Principal Component&quot;)
 
-# right plot
-ax2.plot(np.cumsum(pca2.explained_variance_ratio_), "-ro")
-ax2.set_ylabel("Cumulative Proportion of Variance Explained")
-ax2.set_ylim(ymax=1.05)
-
-for ax in fig.axes:
-    ax.set_xlabel("Principal Component")
-    ax.set_xlim(-1, 65) --><!-- For data point $ [-2.77595836 -0.929101]^{\top} $, the score vector of PCA can be obtained by 
-
-$$ \underbrace{\left[\begin{matrix} -0.64402153, -0.76500736 \\ 0.76500736 -0.64402153 \end{matrix}\right]^{\top}}_{\text{Loading}}\left(\underbrace{\left[\begin{matrix} -2.77595836 \\ -0.929101\end{matrix}\right]}_{\text{Input Data}} - \underbrace{\left[\begin{matrix}0.12105555 \\ 0.11655374\end{matrix}\right]}_{\text{Mean of Training Data}}\right) = \left[\begin{matrix}-2.77595836 \\ -0.929101\end{matrix}\right] $$ -->
+plt.legend(loc=2)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/pca_51_0.png" src="../_images/pca_51_0.png" />
+</div>
+</div>
 </div>
 </div>
 

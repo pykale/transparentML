@@ -1204,26 +1204,477 @@ plt.show()
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">9.2.3. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<!-- Clustering the Observations of the NCI60 Data --><!-- $K$-means --><!-- np.random.seed(21)
-km3 = KMeans(n_clusters=4, n_init=50)
-km3.fit(X_scaled) --><!-- km3.labels_ --><!-- Combine with PCA --><!-- pca = PCA()
-X_scaled_ = StandardScaler().fit_transform(X)
-df_plot = pd.DataFrame(pca.fit_transform(X_scaled_)) --><!-- plt.figure(figsize=(10, 20))
-pca_cluster = hierarchy.dendrogram(
-    hierarchy.complete(X_scaled),
-    labels=X_scaled.index,
-    orientation="right",
-    color_threshold=100,
-    leaf_font_size=10,
-) --><!-- # Hierarchy based on Principal Components 1 to 5
-plt.figure(figsize=(10, 20))
-pca_cluster = hierarchy.dendrogram(
-    hierarchy.complete(df_plot.iloc[:, :5]),
-    labels=X_scaled.index,
-    orientation="right",
-    color_threshold=100,
-    leaf_font_size=10,
-) --></div>
+<!-- Clustering the Observations of the NCI60 Data --><p><strong>1.</strong> In this problem, you will generate simulated data and perform PCA and <span class="math notranslate nohighlight">\(K\)</span>-means clustering on the data.</p>
+<p><strong>(a)</strong> Generate a simulated data set with <span class="math notranslate nohighlight">\(20\)</span> observations in each of three classes (i.e <span class="math notranslate nohighlight">\(60\)</span> observations total), and <span class="math notranslate nohighlight">\(50\)</span> variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+
+## Generate the data
+true_cluster_1 = np.random.normal(loc=-5, scale=0.5, size=(20, 50))
+true_cluster_2 = np.random.normal(loc=10, scale=1, size=(20, 50))
+true_cluster_3 = np.random.normal(loc=5, scale=0.9, size=(20, 50))
+
+## Combine the data into a single array
+combined = np.append(
+    true_cluster_1, np.append(true_cluster_2, true_cluster_3, axis=0), axis=0
+)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>(b)</strong> Perform <strong>PCA</strong> on the <span class="math notranslate nohighlight">\(60\)</span> observations and plot the <strong>first two principal component</strong> score vectors. Use a different color to indicate the observations in each of the three classes. If the three classes appear separated in this plot, then continue on to part <strong>(c)</strong>. If not, then return to part <strong>(a)</strong> and modify the simulation so that there is greater separation between the three classes. Do not continue to part <strong>(c)</strong> until the three classes show at least some separation in the first two principal component score vectors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.decomposition import PCA
+
+## Break the data into Principal components
+pca = PCA(n_components=2)
+pca.fit(combined)
+
+X = pca.transform(combined)
+
+fig, ax1 = plt.subplots(nrows=1, ncols=1, figsize=(12, 12))
+sns.scatterplot(x=X[0:20, 0], y=X[0:20, 1], color=&quot;r&quot;, label=&quot;Cluster 1&quot;)
+sns.scatterplot(x=X[20:40, 0], y=X[20:40, 1], color=&quot;b&quot;, label=&quot;Cluster 2&quot;)
+sns.scatterplot(x=X[40:60, 0], y=X[40:60, 1], color=&quot;g&quot;, label=&quot;Cluster 3&quot;)
+
+ax1.set_xlabel(&quot;PC 1&quot;)
+ax1.set_ylabel(&quot;PC 2&quot;)
+
+ax1.set_title(&quot;Principal component plot of three distinct clusters&quot;)
+
+ax1.legend()
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/clustering_40_0.png" src="../_images/clustering_40_0.png" />
+</div>
+</div>
+<p><strong>(c)</strong> Perform <span class="math notranslate nohighlight">\(K\)</span>-means clustering of the observations with <span class="math notranslate nohighlight">\(K = 3\)</span>. How well do the clusters that you obtained in <span class="math notranslate nohighlight">\(K\)</span>-means clustering compare to the true class labels?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.cluster import KMeans
+
+np.random.seed(2022)
+## Break the data into Principal components
+kmeans = KMeans(n_clusters=3)
+
+X = kmeans.fit_predict(combined)
+print(&quot;True Cluster 1 prdictions:&quot;)
+print(X[0:20])
+print(&quot;True Cluster 2 prdictions:&quot;)
+print(X[20:40])
+print(&quot;True Cluster 3 prdictions:&quot;)
+print(X[40:60])
+
+# We see that there is perfect recall of the true clusters. We can not produce a nice plot as in part b) as it is 50 dimensional.
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True Cluster 1 prdictions:
+[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
+True Cluster 2 prdictions:
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+True Cluster 3 prdictions:
+[2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>(d)</strong> Perform <span class="math notranslate nohighlight">\(K\)</span>-means clustering with <span class="math notranslate nohighlight">\(K = 2\)</span>. Describe your results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Break the data into Principal components
+np.random.seed(2022)
+kmeans = KMeans(n_clusters=2)
+
+X = kmeans.fit_predict(combined)
+print(&quot;True Cluster 1 prdictions:&quot;)
+print(X[0:20])
+print(&quot;True Cluster 2 prdictions:&quot;)
+print(X[20:40])
+print(&quot;True Cluster 3 prdictions:&quot;)
+print(X[40:60])
+
+# Here it has clustered the last two clusters into one.
+# This seems intuitive looking at the PCA plot as these two clusters are the most similar on the first two PCs
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True Cluster 1 prdictions:
+[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
+True Cluster 2 prdictions:
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+True Cluster 3 prdictions:
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>(d)</strong> Now perform <span class="math notranslate nohighlight">\(K\)</span>-means clustering with <span class="math notranslate nohighlight">\(K = 4\)</span> , and describe your results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Break the data into Principal components
+np.random.seed(2022)
+
+kmeans = KMeans(n_clusters=4)
+
+X = kmeans.fit_predict(combined)
+print(&quot;True Cluster 1 prdictions:&quot;)
+print(X[0:20])
+print(&quot;True Cluster 2 prdictions:&quot;)
+print(X[20:40])
+print(&quot;True Cluster 3 prdictions:&quot;)
+print(X[40:60])
+
+# Setting the number of desired clusters as more than the true number measn that at least one will have to split up.
+# Seeting n=4 meant that the second cluster was split. This is because it has the most variance compared to the other two clusteres.
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True Cluster 1 prdictions:
+[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
+True Cluster 2 prdictions:
+[2 3 2 2 2 3 3 3 2 2 2 3 3 2 2 3 2 2 3 2]
+True Cluster 3 prdictions:
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>(e)</strong> Using the StandardScaler function, perform <span class="math notranslate nohighlight">\(K\)</span>-means clustering with <span class="math notranslate nohighlight">\(K = 3\)</span> on the data after scaling each variable to have a standard deviation of one.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Break the data into Principal components
+from sklearn.preprocessing import StandardScaler
+
+np.random.seed(2022)
+
+scaler = StandardScaler(with_mean=False)
+scaler.fit(combined)
+data = scaler.transform(combined)
+
+kmeans = KMeans(n_clusters=3)
+
+X = kmeans.fit_predict(combined)
+print(&quot;True Cluster 1 prdictions:&quot;)
+print(X[0:20])
+print(&quot;True Cluster 2 prdictions:&quot;)
+print(X[20:40])
+print(&quot;True Cluster 3 prdictions:&quot;)
+print(X[40:60])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True Cluster 1 prdictions:
+[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
+True Cluster 2 prdictions:
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+True Cluster 3 prdictions:
+[2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>2.</strong> Consider the <a class="reference external" href="https://github.com/pykale/transparentML/raw/main/data/USArrests.csv">USArrests</a> dataset. We will now perform hierarchical clustering on the states.</p>
+<p><strong>(a)</strong> Load the <strong>USArrests</strong> dataset, rename the index of each row to its corresponding state name and finally drop the column of state names from the original data frame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+from sklearn.preprocessing import StandardScaler
+
+
+USArrests = pd.read_csv(
+    &quot;https://github.com/pykale/transparentML/raw/main/data/USArrests.csv&quot;
+)
+
+state_name = USArrests.iloc[:, 0]  # abstract a list of state names
+
+# rename index of each row to its corresponding state name
+USArrests = USArrests.rename(index=lambda x: state_name[x])
+
+# drop the column of state name from the original data frame
+USArrests.drop(USArrests.columns[[0]], axis=1, inplace=True)
+scaled_x = StandardScaler().fit_transform(USArrests)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>(b)</strong> Using <strong>hierarchical clustering</strong> with <strong>complete linkage</strong> and <strong>Euclidean distance</strong>, cluster the <strong>states</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from scipy.cluster.hierarchy import linkage
+
+hc_complete1 = linkage(USArrests, &quot;complete&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>(c)</strong> <strong>Cut the dendrogram</strong> at a height that results in <strong>three distinct clusters</strong>. Which states belong to which clusters?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from scipy.cluster.hierarchy import dendrogram, cut_tree
+import matplotlib.pyplot as plt
+
+res1 = pd.DataFrame(cut_tree(hc_complete1, n_clusters=3), index=state_name)
+res1.index.name = &quot;states&quot;
+res1.rename(columns={0: &quot;Clusters&quot;}, inplace=True)
+
+# dendrogram
+plt.figure(2)
+plt.title(&quot;Hierarchical Clustering Dendrogram original data&quot;)
+plt.xlabel(&quot;states&quot;)
+plt.ylabel(&quot;Ecludian distance&quot;)
+dendrogram(hc_complete1, labels=res1.index, leaf_rotation=90, leaf_font_size=8)
+plt.axhline(y=150, c=&quot;k&quot;, ls=&quot;dashed&quot;)
+plt.show()
+
+print(res1)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/clustering_69_0.png" src="../_images/clustering_69_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                Clusters
+states                  
+Alabama                0
+Alaska                 0
+Arizona                0
+Arkansas               1
+California             0
+Colorado               1
+Connecticut            2
+Delaware               0
+Florida                0
+Georgia                1
+Hawaii                 2
+Idaho                  2
+Illinois               0
+Indiana                2
+Iowa                   2
+Kansas                 2
+Kentucky               2
+Louisiana              0
+Maine                  2
+Maryland               0
+Massachusetts          1
+Michigan               0
+Minnesota              2
+Mississippi            0
+Missouri               1
+Montana                2
+Nebraska               2
+Nevada                 0
+New Hampshire          2
+New Jersey             1
+New Mexico             0
+New York               0
+North Carolina         0
+North Dakota           2
+Ohio                   2
+Oklahoma               1
+Oregon                 1
+Pennsylvania           2
+Rhode Island           1
+South Carolina         0
+South Dakota           2
+Tennessee              1
+Texas                  1
+Utah                   2
+Vermont                2
+Virginia               1
+Washington             1
+West Virginia          2
+Wisconsin              2
+Wyoming                1
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>(d)</strong> <strong>Hierarchically cluster</strong> the states using <strong>complete linkage</strong> and <strong>Euclidean distance</strong>, after <strong>scaling</strong> the variables to have a <strong>standard deviation</strong> of one, and then <strong>cut the dendrogram</strong> at a height that results in three distinct clusters. Now, which states belong to which clusters?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Compare your answer with the reference solution below</em></p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>hc_complete2 = linkage(scaled_x, &quot;complete&quot;)
+res2 = pd.DataFrame(cut_tree(hc_complete2, n_clusters=3), index=state_name)
+res2.index.name = &quot;states&quot;
+res2.rename(columns={0: &quot;ID&quot;}, inplace=True)
+
+plt.figure(3)
+plt.title(&quot;Hierarchical Clustering Dendrogram scaled data&quot;)
+plt.xlabel(&quot;states&quot;)
+plt.ylabel(&quot;Ecludian distance&quot;)
+dendrogram(hc_complete2, labels=res2.index, leaf_rotation=90, leaf_font_size=8)
+plt.axhline(y=4.45, c=&quot;k&quot;, ls=&quot;dashed&quot;)
+plt.show()
+
+print(res2)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/clustering_73_0.png" src="../_images/clustering_73_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                ID
+states            
+Alabama          0
+Alaska           0
+Arizona          1
+Arkansas         2
+California       1
+Colorado         1
+Connecticut      2
+Delaware         2
+Florida          1
+Georgia          0
+Hawaii           2
+Idaho            2
+Illinois         1
+Indiana          2
+Iowa             2
+Kansas           2
+Kentucky         2
+Louisiana        0
+Maine            2
+Maryland         1
+Massachusetts    2
+Michigan         1
+Minnesota        2
+Mississippi      0
+Missouri         2
+Montana          2
+Nebraska         2
+Nevada           1
+New Hampshire    2
+New Jersey       2
+New Mexico       1
+New York         1
+North Carolina   0
+North Dakota     2
+Ohio             2
+Oklahoma         2
+Oregon           2
+Pennsylvania     2
+Rhode Island     2
+South Carolina   0
+South Dakota     2
+Tennessee        0
+Texas            1
+Utah             2
+Vermont          2
+Virginia         2
+Washington       2
+West Virginia    2
+Wisconsin        2
+Wyoming          2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
