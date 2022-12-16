@@ -124,8 +124,14 @@ parts:
     - file: 09-pca-clustering/quiz-sum-ref
       title: Quiz & summary
   - file: 10-deep-cnn-rnn/overview
-    title: Convolutional & recurrent NN
+    title: Neural nets & deep learning
     sections:
+    - file: 10-deep-cnn-rnn/multilayer-nn
+      title: Multilayer neural nets
+    - file: 10-deep-cnn-rnn/convolutional-nn
+      title: Convolutional neural nets
+    - file: 10-deep-cnn-rnn/recurrent-nn
+      title: Recurrent neural nets
     - file: 10-deep-cnn-rnn/quiz-sum-ref
       title: Quiz & summary
 - caption: Appendices

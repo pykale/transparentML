@@ -61,7 +61,7 @@ Besides the prerequisites, the 10 chapters can be grouped into two parts: part o
 - [Chapter 8](https://pykale.github.io/transparentML/08-nb-glm-svm/overview.html): [System] Generalised linear models and support vector machines
 <!-- - [Chapter 9](https://pykale.github.io/transparentML/09-pca-kmeans/overview.html): [System] Principal component analysis and $K$-means clustering -->
 - [Chapter 9](https://pykale.github.io/transparentML/09-pca-clustering/overview.html): [System] Principal component analysis and $K$-means/hierarchical clustering
-- [Chapter 10](https://pykale.github.io/transparentML/10-deep-cnn-rnn/overview.html): [System] Deep learning with convolutional/recurrent neural networks
+- [Chapter 10](https://pykale.github.io/transparentML/10-deep-cnn-rnn/overview.html): [System] Neural networks and deep learning
 
 ## Instructors and contributors
 
