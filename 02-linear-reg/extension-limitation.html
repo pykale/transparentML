@@ -994,8 +994,8 @@ est.summary().tables[1]
 y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon.
 \]</div>
 <p>This model can be extended to include an interaction term between <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d28257f5-8a47-4906-8166-af775ac376f9">
-<span class="eqno">(2.22)<a class="headerlink" href="#equation-d28257f5-8a47-4906-8166-af775ac376f9" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-83ca6431-86d1-4acb-b97d-7802d1a25b01">
+<span class="eqno">(2.22)<a class="headerlink" href="#equation-83ca6431-86d1-4acb-b97d-7802d1a25b01" title="Permalink to this equation">¶</a></span>\[\begin{align}
 y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 &amp;= \beta_0 + (\beta_1 + \beta_3 x_2) x_1 + \beta_2 x_2 + \epsilon \\
 &amp;= \beta_0 + \tilde{\beta}_1 x_1 + \beta_2 x_2 + \epsilon,
@@ -1113,7 +1113,7 @@ for ax in fig.axes:
 </div>
 <div class="section" id="non-linear-relationships">
 <h3><span class="section-number">2.3.3.2. </span>Non-linear relationships<a class="headerlink" href="#non-linear-relationships" title="Permalink to this headline">¶</a></h3>
-<p>In some cases, the true relationship between the response and the predictors may be non-linear. Here we present a very simple way to directly extend the linear model to accommodate non-linear relationships, using <a class="reference external" href="https://en.wikipedia.org/wiki/Polynomial_regression">polynomial regression</a>.</p>
+<p>In some cases, the true relationship between the response and the predictors may be nonlinear. Here we present a very simple way to directly extend the linear model to accommodate nonlinear relationships, using <a class="reference external" href="https://en.wikipedia.org/wiki/Polynomial_regression">polynomial regression</a>.</p>
 <p>Run the following code to observe the relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> (gas mileage in miles per gallon) and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1132,9 +1132,9 @@ plt.ylabel(&quot;mpg&quot;)
 <img alt="../_images/extension-limitation_25_1.png" src="../_images/extension-limitation_25_1.png" />
 </div>
 </div>
-<p>The figure shows a strong relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>, but it is clearly not linear. We can use a polynomial regression to fit a non-linear model to the data. We can fit a polynomial regression of degree 2 (quadratic) to the data using the following regression:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e189fa82-fe6b-4179-a1ec-140ca134c75f">
-<span class="eqno">(2.23)<a class="headerlink" href="#equation-e189fa82-fe6b-4179-a1ec-140ca134c75f" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<p>The figure shows a strong relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>, but it is clearly not linear. We can use a polynomial regression to fit a nonlinear model to the data. We can fit a polynomial regression of degree 2 (quadratic) to the data using the following regression:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a161611d-d9bb-4d2d-b485-b5567faf5ea7">
+<span class="eqno">(2.23)<a class="headerlink" href="#equation-a161611d-d9bb-4d2d-b485-b5567faf5ea7" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \textrm{mpg} = \beta_0 + \beta_1 \times \textrm{horsepower} + \beta_2 \times \textrm{horsepower}^2 + \epsilon.
 \end{equation}\]</div>
 <p>Run the following code to display the relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> (gas mileage in miles per gallon) and <span class="math notranslate nohighlight">\(\textrm{horsepower}^2\)</span> as well as <span class="math notranslate nohighlight">\(\textrm{horsepower}^5\)</span> (Figure 3.8 of the textbook) for cars in the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset.</p>
@@ -1372,7 +1372,7 @@ for ax in fig.axes:
 <div class="tip dropdown admonition">
 <p class="admonition-title">How to interpret the plots?</p>
 <ul class="simple">
-<li><p>The left panel displays a residual plot from the linear regression of <code class="docutils literal notranslate"><span class="pre">mpg</span></code> onto <code class="docutils literal notranslate"><span class="pre">horsepower</span></code> on the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset. The red line is a smooth fit to the residuals for identifying any trends in the residuals. Here, the residuals exhibit a clear U-shape, which provides a strong indication of non-linearity in the data.</p></li>
+<li><p>The left panel displays a residual plot from the linear regression of <code class="docutils literal notranslate"><span class="pre">mpg</span></code> onto <code class="docutils literal notranslate"><span class="pre">horsepower</span></code> on the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset. The red line is a smooth fit to the residuals for identifying any trends in the residuals. Here, the residuals exhibit a clear U-shape, which provides a strong indication of nonlinearity in the data.</p></li>
 <li><p>The right panel displays the residual plot that results from the model contains a quadratic term. There appears to be little pattern in the residuals, suggesting that the quadratic term improves the fit to the data.</p></li>
 </ul>
 </div>
@@ -1780,10 +1780,10 @@ model_b.summary()
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   31.47</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Fri, 16 Dec 2022</td> <th>  Prob (F-statistic):</th> <td>1.57e-56</td>
+  <th>Date:</th>             <td>Sat, 24 Dec 2022</td> <th>  Prob (F-statistic):</th> <td>1.57e-56</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>11:02:05</td>     <th>  Log-Likelihood:    </th> <td> -1653.3</td>
+  <th>Time:</th>                 <td>11:40:10</td>     <th>  Log-Likelihood:    </th> <td> -1653.3</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   506</td>      <th>  AIC:               </th> <td>   3335.</td>
@@ -1942,12 +1942,12 @@ medv           -0.363160          -0.198887
 <img alt="../_images/extension-limitation_70_1.png" src="../_images/extension-limitation_70_1.png" />
 </div>
 </div>
-<p><strong>6</strong>. Is there evidence of <strong>non-linear association</strong> between any of the predictors and the response? To answer this question, for each predictor <strong>X</strong>, fit a model of the form</p>
+<p><strong>6</strong>. Is there evidence of <strong>nonlinear association</strong> between any of the predictors and the response? To answer this question, for each predictor <strong>X</strong>, fit a model of the form</p>
 <div class="math notranslate nohighlight">
 \[
 y = \beta_0 + \beta_1 X + \beta_2 X^2 \beta_3 X^3 + \epsilon 
 \]</div>
-<p><strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/extension-limitation.html#non-linear-relationships">2.3.3.2</a>.</p>
+<p><strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/extension-limitation.html#nonlinear-relationships">2.3.3.2</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
@@ -1976,7 +1976,7 @@ sig = pd.concat([model.pvalues[model.pvalues &lt; 0.05] for model in models_d])
 
 print(pd.DataFrame({&quot;P&gt;|t|&quot;: sig.drop(&quot;Intercept&quot;)}))
 
-# There is evidence of a non-linear association between the repsonse and INDUS, NOX, AGE, DIS, PTRATIO, medv
+# There is evidence of a nonlinear association between the repsonse and INDUS, NOX, AGE, DIS, PTRATIO, medv
 # There is evidence of a linear association between the response and ZN
 </pre></div>
 </div>
@@ -2189,7 +2189,7 @@ for ax in fig.axes:
 
 # The left plot displays a residual plot from the linear regression of pratio onto crim on the Boston dataset.
 # The red line is a smooth fit to the residuals for identifying any trends in the residuals.
-# Here, the residuals exhibit a tendency of U-shape, which provides a strong indication of non-linearity in the data.
+# Here, the residuals exhibit a tendency of U-shape, which provides a strong indication of nonlinearity in the data.
 
 
 # The right panel displays the residual plot that results from the model contains a quadratic term.

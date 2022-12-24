@@ -607,8 +607,8 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#classification-with-non-linear-decision-boundaries">
-   8.3.1. Classification with non-linear decision boundaries
+  <a class="reference internal nav-link" href="#classification-with-nonlinear-decision-boundaries">
+   8.3.1. Classification with nonlinear decision boundaries
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -676,8 +676,8 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#classification-with-non-linear-decision-boundaries">
-   8.3.1. Classification with non-linear decision boundaries
+  <a class="reference internal nav-link" href="#classification-with-nonlinear-decision-boundaries">
+   8.3.1. Classification with nonlinear decision boundaries
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -735,34 +735,34 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="support-vector-machines">
 <h1><span class="section-number">8.3. </span>Support vector machines<a class="headerlink" href="#support-vector-machines" title="Permalink to this headline">¶</a></h1>
-<p>This section introduces <a class="reference external" href="https://en.wikipedia.org/wiki/Support_vector_machine">support vector machines (SVMs)</a> for non-linear classification.</p>
-<p>Watch the 9-minute video below for a visual explanation of non-linear (polynomial) kernel and SVM.</p>
+<p>This section introduces <a class="reference external" href="https://en.wikipedia.org/wiki/Support_vector_machine">support vector machines (SVMs)</a> for nonlinear classification.</p>
+<p>Watch the 9-minute video below for a visual explanation of nonlinear (polynomial) kernel and SVM.</p>
 <div class="admonition-video admonition">
 <p class="admonition-title">Video</p>
 <iframe width="700" height="394" src="https://www.youtube.com/embed/efR1C6CvhmE?start=744&end=1205" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<p><a class="reference external" href="https://www.youtube.com/embed/efR1C6CvhmE?start=744&amp;end=1205">Explaining non-linear (polynomial) kernel and SVM, by StatQuest</a></p>
+<p><a class="reference external" href="https://www.youtube.com/embed/efR1C6CvhmE?start=744&amp;end=1205">Explaining nonlinear (polynomial) kernel and SVM, by StatQuest</a></p>
 </div>
 <!-- ## Non-linear boundaries and kernel methods -->
-<div class="section" id="classification-with-non-linear-decision-boundaries">
-<h2><span class="section-number">8.3.1. </span>Classification with non-linear decision boundaries<a class="headerlink" href="#classification-with-non-linear-decision-boundaries" title="Permalink to this headline">¶</a></h2>
-<p>In binary classification, if the boundary between the two classes is linear, the <a class="reference external" href="https://pykale.github.io/transparentML/08-glm-svm/support-vec-classifier.html">support vector classifier</a> is a natural approach. However, in practice, two classes may have non-linear boundaries between them, as the example shown in the left panel of <a class="reference internal" href="#svm8"><span class="std std-numref">Fig. 8.8</span></a> below.</p>
+<div class="section" id="classification-with-nonlinear-decision-boundaries">
+<h2><span class="section-number">8.3.1. </span>Classification with nonlinear decision boundaries<a class="headerlink" href="#classification-with-nonlinear-decision-boundaries" title="Permalink to this headline">¶</a></h2>
+<p>In binary classification, if the boundary between the two classes is linear, the <a class="reference external" href="https://pykale.github.io/transparentML/08-glm-svm/support-vec-classifier.html">support vector classifier</a> is a natural approach. However, in practice, two classes may have nonlinear boundaries between them, as the example shown in the left panel of <a class="reference internal" href="#svm8"><span class="std std-numref">Fig. 8.8</span></a> below.</p>
 <!-- figclass: margin-caption -->
 <div class="figure align-default" id="svm8">
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm8.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm8.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm8.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.8 </span><span class="caption-text">Left: The observations fall into two classes, with a non-linear boundary between them. Right: The support vector classifier seeks a linear boundary, and consequently performs very poorly.</span><a class="headerlink" href="#svm8" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8.8 </span><span class="caption-text">Left: The observations fall into two classes, with a nonlinear boundary between them. Right: The support vector classifier seeks a linear boundary, and consequently performs very poorly.</span><a class="headerlink" href="#svm8" title="Permalink to this image">¶</a></p>
 </div>
-<p>In <a class="reference internal" href="../02-linear-reg/extension-limitation.html"><span class="doc">Linear regression</span></a>, we discussed using higher-order polynomials as a way to fit a non-linear relationship between the input features (predictors) and the output (response). Likewise, rather than fitting a support vector classifier using <span class="math notranslate nohighlight">\(D\)</span> features: <span class="math notranslate nohighlight">\( x_{1}, x_{2}, \cdots, x_{D} \)</span>, we could fit a support vector classifier using <span class="math notranslate nohighlight">\( 2 \times D \)</span> features: <span class="math notranslate nohighlight">\( x_{1}, x_{2}, \cdots, x_{D'}, x_{1}^2, x_{2}^2, \cdots, x_{D'}^2 \)</span>. Then the optimisation problem becomes</p>
+<p>In <a class="reference internal" href="../02-linear-reg/extension-limitation.html"><span class="doc">Linear regression</span></a>, we discussed using higher-order polynomials as a way to fit a nonlinear relationship between the input features (predictors) and the output (response). Likewise, rather than fitting a support vector classifier using <span class="math notranslate nohighlight">\(D\)</span> features: <span class="math notranslate nohighlight">\( x_{1}, x_{2}, \cdots, x_{D} \)</span>, we could fit a support vector classifier using <span class="math notranslate nohighlight">\( 2 \times D \)</span> features: <span class="math notranslate nohighlight">\( x_{1}, x_{2}, \cdots, x_{D'}, x_{1}^2, x_{2}^2, \cdots, x_{D'}^2 \)</span>. Then the optimisation problem becomes</p>
 <div class="math notranslate nohighlight" id="equation-eq-svm-polynomial">
 <span class="eqno">(8.7)<a class="headerlink" href="#equation-eq-svm-polynomial" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
 &amp; \max_{\beta_0, \beta_{1,1}, \cdots, \beta_{D,2}, \epsilon_1, \cdots, \epsilon_N} M \\
 &amp; \text{subject to } y_n \left(\beta_0 + \sum_{d = 1}^{D} \left(\beta_{d,1} x_{nd} + \beta_{d,2} x_{nd}^2\right)\right) \geq M(1 - \epsilon_n), \\
 &amp; \sum_{d = 1}^{D} \left(\beta_{d,1}^2 + \beta_{d,2}^2\right) = 1, \epsilon_n \geq 0, \sum_{n = 1}^N \epsilon_n \leq \Xi, \text{ for } n =  1, \cdots, N.
 \end{aligned}\end{split}\]</div>
-<p>The decision boundary that results from Equation <a class="reference internal" href="#equation-eq-svm-polynomial">(8.7)</a> is in fact linear in the enlarged (augmented) features space of 2D features. But in the original feature space of <span class="math notranslate nohighlight">\(D\)</span> features, the decision boundary is of the form <span class="math notranslate nohighlight">\( q(\mathbf{x}) = 0 \)</span>, where <span class="math notranslate nohighlight">\( q(\cdot) \)</span> is a quadratic polynomial, so its solutions are generally non-linear.</p>
+<p>The decision boundary that results from Equation <a class="reference internal" href="#equation-eq-svm-polynomial">(8.7)</a> is in fact linear in the enlarged (augmented) features space of 2D features. But in the original feature space of <span class="math notranslate nohighlight">\(D\)</span> features, the decision boundary is of the form <span class="math notranslate nohighlight">\( q(\mathbf{x}) = 0 \)</span>, where <span class="math notranslate nohighlight">\( q(\cdot) \)</span> is a quadratic polynomial, so its solutions are generally nonlinear.</p>
 </div>
 <div class="section" id="kernel-methods">
 <h2><span class="section-number">8.3.2. </span>Kernel methods<a class="headerlink" href="#kernel-methods" title="Permalink to this headline">¶</a></h2>
-<p>The <em>support vector machine (SVM)</em> extends the support vector classifier by enlarging the feature space in a specific way, using <em>kernels</em>. As in the above example of using quadratic terms, the main idea is to enlarge the feature space in order to accommodate a non-linear boundary between the classes. The kernel approach is simply a computationally efficient approach for this idea.</p>
+<p>The <em>support vector machine (SVM)</em> extends the support vector classifier by enlarging the feature space in a specific way, using <em>kernels</em>. As in the above example of using quadratic terms, the main idea is to enlarge the feature space in order to accommodate a nonlinear boundary between the classes. The kernel approach is simply a computationally efficient approach for this idea.</p>
 <p>Exactly how the support vector classifier is computed is too technical to cover here. One fact from the solution to support vector classifier problem <a class="reference internal" href="support-vec-classifier.html#equation-eq-soft-margin-classifier">(8.5)</a> is that it involves only the <em>inner products</em> of the input features (observations), as opposed to the features themselves.</p>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
@@ -798,9 +798,9 @@ k(\mathbf{x}_n, \mathbf{x}_{n'}) = \exp\left(-\gamma \sum_{d = 1}^{D} (x_{nd} - 
 <!-- figclass: margin-caption -->
 <div class="figure align-default" id="svm9">
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm9.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm9.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm9.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.9 </span><span class="caption-text">Left: An SVM with a polynomial kernel of degree 3 is applied to the non-linear data from <a class="reference internal" href="#svm8"><span class="std std-numref">Fig. 8.8</span></a>, resulting in a far more appropriate decision rule. Right: An SVM with a radial kernel is applied. In this example, either kernel is capable of capturing the decision boundary.</span><a class="headerlink" href="#svm9" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8.9 </span><span class="caption-text">Left: An SVM with a polynomial kernel of degree 3 is applied to the nonlinear data from <a class="reference internal" href="#svm8"><span class="std std-numref">Fig. 8.8</span></a>, resulting in a far more appropriate decision rule. Right: An SVM with a radial kernel is applied. In this example, either kernel is capable of capturing the decision boundary.</span><a class="headerlink" href="#svm9" title="Permalink to this image">¶</a></p>
 </div>
-<p>When the support vector classifier is combined with a non-linear kernel, the resulting classifier is known as a support vector machine:</p>
+<p>When the support vector classifier is combined with a nonlinear kernel, the resulting classifier is known as a support vector machine:</p>
 <div class="math notranslate nohighlight" id="equation-eq-svm">
 <span class="eqno">(8.9)<a class="headerlink" href="#equation-eq-svm" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 f(\mathbf{x}) = \beta_0 + \sum_{n = 1}^{N} \alpha_n k(\mathbf{x}, \mathbf{x}_n).
@@ -928,30 +928,30 @@ clf.cv_results_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00087461, 0.00085082, 0.00087917, 0.0008976 , 0.000897  ,
-        0.00083098, 0.00088637, 0.00098782, 0.00096374, 0.00096848,
-        0.00083623, 0.00088468, 0.00097325, 0.00099356, 0.0010082 ,
-        0.00084496, 0.0008805 , 0.00100348, 0.0010355 , 0.00104127,
-        0.0009052 , 0.00094044, 0.0010036 , 0.00101981, 0.00101416]),
- &#39;std_fit_time&#39;: array([6.01252896e-05, 1.34114212e-05, 1.83459185e-05, 5.15993991e-05,
-        1.41473053e-05, 1.17756575e-05, 3.86423564e-05, 1.19374295e-04,
-        4.12795865e-05, 1.54278929e-05, 1.83428043e-05, 4.65651933e-05,
-        2.63409805e-05, 1.81746437e-05, 1.81571206e-05, 2.90995712e-05,
-        2.12798299e-05, 2.80501156e-05, 2.33101688e-05, 2.12885764e-05,
-        3.38932032e-05, 4.11896301e-05, 1.59085054e-05, 2.33166057e-05,
-        2.83002050e-05]),
- &#39;mean_score_time&#39;: array([0.000441  , 0.00043249, 0.00045123, 0.00043766, 0.00044479,
-        0.00043347, 0.00045023, 0.00044706, 0.00044873, 0.00044613,
-        0.00042765, 0.00043659, 0.00044205, 0.00044532, 0.00044465,
-        0.0004252 , 0.00042982, 0.00043516, 0.0004401 , 0.00044439,
-        0.0004209 , 0.00042739, 0.0004344 , 0.00044165, 0.00043454]),
- &#39;std_score_time&#39;: array([2.47482734e-05, 8.44755752e-06, 2.63417898e-05, 7.04126397e-06,
-        9.69587128e-06, 8.54886046e-06, 3.37717540e-05, 1.39087972e-05,
-        1.09191805e-05, 6.06708532e-06, 5.70219291e-06, 1.04675260e-05,
-        1.17612878e-05, 1.06510949e-05, 6.74770913e-06, 7.05670664e-06,
-        9.95082720e-06, 4.62163208e-06, 6.36220325e-06, 9.59583690e-06,
-        9.78632034e-06, 1.17679315e-05, 7.79377171e-06, 1.05978064e-05,
-        4.64298376e-06]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00080771, 0.00081189, 0.0008369 , 0.0008522 , 0.00085917,
+        0.00078874, 0.00082946, 0.00088353, 0.00091631, 0.00092583,
+        0.00079522, 0.00083754, 0.00093281, 0.00096178, 0.00097973,
+        0.00081766, 0.00084548, 0.00096371, 0.00099416, 0.00099688,
+        0.00087707, 0.00090396, 0.00096157, 0.00098209, 0.00097661]),
+ &#39;std_fit_time&#39;: array([4.91267022e-05, 1.31649593e-05, 1.14221163e-05, 9.53567022e-06,
+        1.85584630e-05, 1.48133744e-05, 1.35689290e-05, 2.06572329e-05,
+        3.15576599e-05, 1.07000813e-05, 2.05353564e-05, 1.95379480e-05,
+        2.65562874e-05, 2.40809847e-05, 4.81912366e-05, 2.70980835e-05,
+        1.73177251e-05, 3.01901286e-05, 2.72504822e-05, 2.63542164e-05,
+        3.25379872e-05, 3.58198426e-05, 2.08232254e-05, 2.52293274e-05,
+        2.27113689e-05]),
+ &#39;mean_score_time&#39;: array([0.00040374, 0.00040329, 0.00040801, 0.00040905, 0.00041008,
+        0.00039711, 0.00041478, 0.00043359, 0.00042474, 0.00041792,
+        0.00040805, 0.00041444, 0.000418  , 0.00042527, 0.00042858,
+        0.0004065 , 0.00040531, 0.00041811, 0.00041664, 0.0004205 ,
+        0.00040224, 0.0003999 , 0.00040889, 0.00041645, 0.00041778]),
+ &#39;std_score_time&#39;: array([2.43738428e-05, 1.59559753e-05, 1.50037287e-05, 1.46715789e-05,
+        8.85364753e-06, 1.60004270e-05, 1.71681410e-05, 2.73503003e-05,
+        1.09149109e-05, 1.39886705e-05, 7.70741298e-06, 1.69957667e-05,
+        7.49089777e-06, 8.32900215e-06, 6.94219880e-06, 5.50948143e-06,
+        3.33956266e-06, 9.17155710e-06, 1.09570134e-05, 1.05001935e-05,
+        1.06722345e-05, 9.82912220e-06, 6.82143846e-06, 7.36327518e-06,
+        6.70804135e-06]),
  &#39;param_C&#39;: masked_array(data=[0.01, 0.01, 0.01, 0.01, 0.01, 0.1, 0.1, 0.1, 0.1, 0.1,
                     1, 1, 1, 1, 1, 10, 10, 10, 10, 10, 100, 100, 100, 100,
                     100],
