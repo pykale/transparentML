@@ -28,7 +28,7 @@ Neural networks can be used for both supervised and unsupervised learning. We wi
 ```{admonition} Ingredients: neural networks
 - Input: features of data samples
 - Output: target values (regression) or class labels (classification) of data samples
-- Model: pass the input through multiple layers of "neurons", where each neuron is a linear function (weighted sum plus bias) followed by a non-linear activation function to produce an output for the next layer of neurons (or the final output after the last layer of neurons)
+- Model: pass the input through multiple layers of "neurons", where each neuron is a linear function (weighted sum plus bias) followed by a nonlinear activation function to produce an output for the next layer of neurons (or the final output after the last layer of neurons)
   - Hyperparameter(s): number of layers, number of neurons in each layer, activation function, and/or learning rate
   - Parameter(s): weights and biases of each neuron
 - Loss function: mean squared error / residual sum of squares (regression) or cross-entropy (classification), or other loss functions
@@ -37,7 +37,7 @@ Neural networks can be used for both supervised and unsupervised learning. We wi
 
 ```{admonition} Transparency
 System logic
-- Condition to produce certain output: due to the complexity of the model, it is difficult to explain the conditions to produce certain output. There are some methods to explain the output of neural networks and deep learning models such as the [local interpretable model-agnostic explanations (LIME)](https://homes.cs.washington.edu/~marcotcr/blog/lime/), such explanations are approximate and may not be accurate.
+- Condition to produce certain output: due to the complexity of the model, it is difficult to explain the conditions to produce certain output. Although there are some methods to explain the output of neural networks and deep learning models such as the [local interpretable model-agnostic explanations (LIME)](https://homes.cs.washington.edu/~marcotcr/blog/lime/), such explanations are approximate and may not be accurate.
 ```
 
 <!-- - What input to produce certain output:

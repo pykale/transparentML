@@ -104,7 +104,7 @@ Summary of the three key questions of transparency {cite}`ostmann2021ai` (maybe 
 
 ### Interpretability-flexibility trade-off
 
-In general, linear models allow for a more interpretable (but less flexible) model, while non-linear models allow for a more flexible (but less interpretable) model.
+In general, linear models allow for a more interpretable (but less flexible) model, while nonlinear models allow for a more flexible (but less interpretable) model.
 
 A trade-off between model flexibility and interpretability is shown in the figure below.
 
