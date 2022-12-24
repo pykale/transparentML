@@ -756,7 +756,6 @@ bootstrapped_stats = pd.DataFrame()
 
 # Each loop iteration is a single bootstrap resample and model fit
 for i in range(n_iterations):
-
     # Sampling n_samples from data, with replacement, as train
     # Defining test to be all observations not in train
     train = resample(auto_df, replace=True, n_samples=len(auto_df))
@@ -1023,7 +1022,6 @@ bootstrapped_stats = pd.DataFrame()
 
 # Each loop iteration is a single bootstrap resample and model fit
 for i in range(n_iterations):
-
     # Sampling n_samples from data, with replacement, as train
     # Defining test to be all observations not in train
     train = resample(ad_df, replace=True, n_samples=len(ad_df))
