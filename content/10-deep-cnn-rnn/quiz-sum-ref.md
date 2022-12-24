@@ -12,4 +12,4 @@ In this topic, you learnt how to:
 ## References and further reading
 
 This material is based on the following resources:
-- Reference 1
+- [The hundred-page machine learning book](http://themlbook.com/wiki/doku.php) by Andriy Burkov {cite}`burkov2019hundred`.
