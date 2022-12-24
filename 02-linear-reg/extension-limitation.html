@@ -634,8 +634,8 @@ const thebe_selector_output = ".output, .cell_output"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#non-linear-relationships">
-     2.3.3.2. Non-linear relationships
+    <a class="reference internal nav-link" href="#nonlinear-relationships">
+     2.3.3.2. Nonlinear relationships
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -644,8 +644,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#non-linearity-of-the-data">
-       2.3.3.3.1. Non-linearity of the Data
+      <a class="reference internal nav-link" href="#nonlinearity-of-the-data">
+       2.3.3.3.1. Nonlinearity of the Data
       </a>
      </li>
     </ul>
@@ -710,8 +710,8 @@ const thebe_selector_output = ".output, .cell_output"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#non-linear-relationships">
-     2.3.3.2. Non-linear relationships
+    <a class="reference internal nav-link" href="#nonlinear-relationships">
+     2.3.3.2. Nonlinear relationships
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -720,8 +720,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#non-linearity-of-the-data">
-       2.3.3.3.1. Non-linearity of the Data
+      <a class="reference internal nav-link" href="#nonlinearity-of-the-data">
+       2.3.3.3.1. Nonlinearity of the Data
       </a>
      </li>
     </ul>
@@ -994,8 +994,8 @@ est.summary().tables[1]
 y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon.
 \]</div>
 <p>This model can be extended to include an interaction term between <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-83ca6431-86d1-4acb-b97d-7802d1a25b01">
-<span class="eqno">(2.22)<a class="headerlink" href="#equation-83ca6431-86d1-4acb-b97d-7802d1a25b01" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-419c5c9c-cf6b-4333-a7b6-25a2f1d1da3e">
+<span class="eqno">(2.22)<a class="headerlink" href="#equation-419c5c9c-cf6b-4333-a7b6-25a2f1d1da3e" title="Permalink to this equation">¶</a></span>\[\begin{align}
 y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 &amp;= \beta_0 + (\beta_1 + \beta_3 x_2) x_1 + \beta_2 x_2 + \epsilon \\
 &amp;= \beta_0 + \tilde{\beta}_1 x_1 + \beta_2 x_2 + \epsilon,
@@ -1111,8 +1111,8 @@ for ax in fig.axes:
 <p>In the right figure with the interaction term between <code class="docutils literal notranslate"><span class="pre">Income</span></code> and <code class="docutils literal notranslate"><span class="pre">Student</span></code>, the two (dashed) lines are no longer parallel. We see that the slope of the line for students is flatter than that for non-students, indicating that a one-unit increase in <code class="docutils literal notranslate"><span class="pre">Income</span></code> will have a much smaller effect on credit card <code class="docutils literal notranslate"><span class="pre">Balance</span></code> for students than for non-students. This is consistent with our intuition.</p>
 </div>
 </div>
-<div class="section" id="non-linear-relationships">
-<h3><span class="section-number">2.3.3.2. </span>Non-linear relationships<a class="headerlink" href="#non-linear-relationships" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="nonlinear-relationships">
+<h3><span class="section-number">2.3.3.2. </span>Nonlinear relationships<a class="headerlink" href="#nonlinear-relationships" title="Permalink to this headline">¶</a></h3>
 <p>In some cases, the true relationship between the response and the predictors may be nonlinear. Here we present a very simple way to directly extend the linear model to accommodate nonlinear relationships, using <a class="reference external" href="https://en.wikipedia.org/wiki/Polynomial_regression">polynomial regression</a>.</p>
 <p>Run the following code to observe the relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> (gas mileage in miles per gallon) and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>.</p>
 <div class="cell docutils container">
@@ -1133,8 +1133,8 @@ plt.ylabel(&quot;mpg&quot;)
 </div>
 </div>
 <p>The figure shows a strong relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>, but it is clearly not linear. We can use a polynomial regression to fit a nonlinear model to the data. We can fit a polynomial regression of degree 2 (quadratic) to the data using the following regression:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a161611d-d9bb-4d2d-b485-b5567faf5ea7">
-<span class="eqno">(2.23)<a class="headerlink" href="#equation-a161611d-d9bb-4d2d-b485-b5567faf5ea7" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ea819f48-547f-4944-9c81-db9575716160">
+<span class="eqno">(2.23)<a class="headerlink" href="#equation-ea819f48-547f-4944-9c81-db9575716160" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \textrm{mpg} = \beta_0 + \beta_1 \times \textrm{horsepower} + \beta_2 \times \textrm{horsepower}^2 + \epsilon.
 \end{equation}\]</div>
 <p>Run the following code to display the relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> (gas mileage in miles per gallon) and <span class="math notranslate nohighlight">\(\textrm{horsepower}^2\)</span> as well as <span class="math notranslate nohighlight">\(\textrm{horsepower}^5\)</span> (Figure 3.8 of the textbook) for cars in the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset.</p>
@@ -1293,8 +1293,8 @@ est.summary().tables[1]
 <div class="section" id="limitations-of-linear-regression">
 <h3><span class="section-number">2.3.3.3. </span>Limitations of linear regression<a class="headerlink" href="#limitations-of-linear-regression" title="Permalink to this headline">¶</a></h3>
 <p>Every model will have some limitations, and linear regression is no exception. Here we briefly study two of the limitations of linear regression to show the possible complexities of real-world data. More limitations can be found in the textbook.</p>
-<div class="section" id="non-linearity-of-the-data">
-<h4><span class="section-number">2.3.3.3.1. </span>Non-linearity of the Data<a class="headerlink" href="#non-linearity-of-the-data" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="nonlinearity-of-the-data">
+<h4><span class="section-number">2.3.3.3.1. </span>Nonlinearity of the Data<a class="headerlink" href="#nonlinearity-of-the-data" title="Permalink to this headline">¶</a></h4>
 <p>The linear regression model assumes that there is a “straight-line” relationship between the predictors and the response. If the true relationship is far from linear, then virtually all of the conclusions that we draw from the fit are questionable. In addition, the prediction accuracy of the model can be significantly reduced.</p>
 <p>Run the following code to compare the differences in accuracy between a linear regression model and a quadratic regression model for regressing <code class="docutils literal notranslate"><span class="pre">mpg</span></code> onto <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>.</p>
 <p>Firstly, fitting a linear regression model and a quadratic regression model for regressing <code class="docutils literal notranslate"><span class="pre">mpg</span></code> onto <code class="docutils literal notranslate"><span class="pre">horsepower</span></code> and compute the residuals for each model.</p>
@@ -1783,7 +1783,7 @@ model_b.summary()
   <th>Date:</th>             <td>Sat, 24 Dec 2022</td> <th>  Prob (F-statistic):</th> <td>1.57e-56</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>11:40:10</td>     <th>  Log-Likelihood:    </th> <td> -1653.3</td>
+  <th>Time:</th>                 <td>11:42:38</td>     <th>  Log-Likelihood:    </th> <td> -1653.3</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   506</td>      <th>  AIC:               </th> <td>   3335.</td>

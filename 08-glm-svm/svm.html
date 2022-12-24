@@ -742,7 +742,7 @@ const thebe_selector_output = ".output, .cell_output"
 <iframe width="700" height="394" src="https://www.youtube.com/embed/efR1C6CvhmE?start=744&end=1205" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <p><a class="reference external" href="https://www.youtube.com/embed/efR1C6CvhmE?start=744&amp;end=1205">Explaining nonlinear (polynomial) kernel and SVM, by StatQuest</a></p>
 </div>
-<!-- ## Non-linear boundaries and kernel methods -->
+<!-- ## Nonlinear boundaries and kernel methods -->
 <div class="section" id="classification-with-nonlinear-decision-boundaries">
 <h2><span class="section-number">8.3.1. </span>Classification with nonlinear decision boundaries<a class="headerlink" href="#classification-with-nonlinear-decision-boundaries" title="Permalink to this headline">¶</a></h2>
 <p>In binary classification, if the boundary between the two classes is linear, the <a class="reference external" href="https://pykale.github.io/transparentML/08-glm-svm/support-vec-classifier.html">support vector classifier</a> is a natural approach. However, in practice, two classes may have nonlinear boundaries between them, as the example shown in the left panel of <a class="reference internal" href="#svm8"><span class="std std-numref">Fig. 8.8</span></a> below.</p>
@@ -928,30 +928,30 @@ clf.cv_results_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00080771, 0.00081189, 0.0008369 , 0.0008522 , 0.00085917,
-        0.00078874, 0.00082946, 0.00088353, 0.00091631, 0.00092583,
-        0.00079522, 0.00083754, 0.00093281, 0.00096178, 0.00097973,
-        0.00081766, 0.00084548, 0.00096371, 0.00099416, 0.00099688,
-        0.00087707, 0.00090396, 0.00096157, 0.00098209, 0.00097661]),
- &#39;std_fit_time&#39;: array([4.91267022e-05, 1.31649593e-05, 1.14221163e-05, 9.53567022e-06,
-        1.85584630e-05, 1.48133744e-05, 1.35689290e-05, 2.06572329e-05,
-        3.15576599e-05, 1.07000813e-05, 2.05353564e-05, 1.95379480e-05,
-        2.65562874e-05, 2.40809847e-05, 4.81912366e-05, 2.70980835e-05,
-        1.73177251e-05, 3.01901286e-05, 2.72504822e-05, 2.63542164e-05,
-        3.25379872e-05, 3.58198426e-05, 2.08232254e-05, 2.52293274e-05,
-        2.27113689e-05]),
- &#39;mean_score_time&#39;: array([0.00040374, 0.00040329, 0.00040801, 0.00040905, 0.00041008,
-        0.00039711, 0.00041478, 0.00043359, 0.00042474, 0.00041792,
-        0.00040805, 0.00041444, 0.000418  , 0.00042527, 0.00042858,
-        0.0004065 , 0.00040531, 0.00041811, 0.00041664, 0.0004205 ,
-        0.00040224, 0.0003999 , 0.00040889, 0.00041645, 0.00041778]),
- &#39;std_score_time&#39;: array([2.43738428e-05, 1.59559753e-05, 1.50037287e-05, 1.46715789e-05,
-        8.85364753e-06, 1.60004270e-05, 1.71681410e-05, 2.73503003e-05,
-        1.09149109e-05, 1.39886705e-05, 7.70741298e-06, 1.69957667e-05,
-        7.49089777e-06, 8.32900215e-06, 6.94219880e-06, 5.50948143e-06,
-        3.33956266e-06, 9.17155710e-06, 1.09570134e-05, 1.05001935e-05,
-        1.06722345e-05, 9.82912220e-06, 6.82143846e-06, 7.36327518e-06,
-        6.70804135e-06]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00083852, 0.00084536, 0.00086918, 0.00089068, 0.00089436,
+        0.00082438, 0.00086625, 0.00095329, 0.00095639, 0.00096245,
+        0.00083175, 0.00087266, 0.00096574, 0.00098958, 0.00099497,
+        0.00084298, 0.00087588, 0.00099564, 0.00103467, 0.00103464,
+        0.00089505, 0.00093846, 0.00099723, 0.00101902, 0.00101342]),
+ &#39;std_fit_time&#39;: array([3.72194235e-05, 1.37255611e-05, 9.24141906e-06, 2.82917174e-05,
+        1.31726211e-05, 9.43309368e-06, 1.27708929e-05, 8.96353158e-05,
+        4.26368419e-05, 1.14026910e-05, 1.34071821e-05, 1.58525229e-05,
+        2.82598337e-05, 1.43055916e-05, 1.26962315e-05, 2.51533409e-05,
+        1.56962198e-05, 2.93295555e-05, 3.24557750e-05, 2.61362011e-05,
+        3.10117325e-05, 4.15186361e-05, 1.22900326e-05, 2.34779843e-05,
+        3.06883149e-05]),
+ &#39;mean_score_time&#39;: array([0.00043766, 0.00043147, 0.0004353 , 0.00043693, 0.00043702,
+        0.00042825, 0.00045536, 0.00044525, 0.00044076, 0.00044005,
+        0.00042377, 0.00043497, 0.00043957, 0.00044172, 0.00044088,
+        0.00042713, 0.00042813, 0.00043595, 0.00043793, 0.00044568,
+        0.00042112, 0.00042396, 0.00043392, 0.00043552, 0.00043156]),
+ &#39;std_score_time&#39;: array([2.22169915e-05, 7.05336293e-06, 4.11822807e-06, 8.25919950e-06,
+        6.99911840e-06, 7.64710635e-06, 2.55678666e-05, 1.10257960e-05,
+        6.28363010e-06, 4.87803481e-06, 1.87488587e-06, 1.00872193e-05,
+        6.75701136e-06, 5.97099328e-06, 4.90563246e-06, 9.64004478e-06,
+        7.02024306e-06, 7.79832877e-06, 7.13648580e-06, 1.02951837e-05,
+        8.24049250e-06, 8.59418785e-06, 1.01247924e-05, 6.50760444e-06,
+        3.58968447e-06]),
  &#39;param_C&#39;: masked_array(data=[0.01, 0.01, 0.01, 0.01, 0.01, 0.1, 0.1, 0.1, 0.1, 0.1,
                     1, 1, 1, 1, 1, 10, 10, 10, 10, 10, 100, 100, 100, 100,
                     100],
