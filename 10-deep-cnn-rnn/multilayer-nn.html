@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>10.1. Multilayer neural networks &#8212; Transparent ML Intro</title>
+    <title>10.1. Multilayer neural networks and PyTorch &#8212; Transparent ML Intro</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="10.2. Convolutional neural networks" href="convolutional-nn.html" />
@@ -605,8 +607,45 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistic-regression-as-a-neural-network">
+   10.1.1. Logistic regression as a neural network
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shallow-vs-deep-learning">
+   10.1.2. Shallow vs deep learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#single-layer-neural-networks">
+   10.1.3. Single-layer neural networks
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#system-transparency">
+     10.1.3.1. System transparency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#activation-functions">
+     10.1.3.2. Activation functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multi-layer-neural-networks">
+   10.1.4. Multi-layer neural networks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-regression-with-as-a-neural-network-in-pytorch">
+   10.1.5. Linear regression with as a neural network in PyTorch
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   10.1.1. Exercises
+   10.1.6. Exercises
   </a>
  </li>
 </ul>
@@ -619,7 +658,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Multilayer neural networks</h1>
+                <h1>Multilayer neural networks and PyTorch</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -630,8 +669,45 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistic-regression-as-a-neural-network">
+   10.1.1. Logistic regression as a neural network
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shallow-vs-deep-learning">
+   10.1.2. Shallow vs deep learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#single-layer-neural-networks">
+   10.1.3. Single-layer neural networks
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#system-transparency">
+     10.1.3.1. System transparency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#activation-functions">
+     10.1.3.2. Activation functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multi-layer-neural-networks">
+   10.1.4. Multi-layer neural networks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-regression-with-as-a-neural-network-in-pytorch">
+   10.1.5. Linear regression with as a neural network in PyTorch
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   10.1.1. Exercises
+   10.1.6. Exercises
   </a>
  </li>
 </ul>
@@ -643,10 +719,90 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="multilayer-neural-networks">
-<h1><span class="section-number">10.1. </span>Multilayer neural networks<a class="headerlink" href="#multilayer-neural-networks" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="multilayer-neural-networks-and-pytorch">
+<h1><span class="section-number">10.1. </span>Multilayer neural networks and PyTorch<a class="headerlink" href="#multilayer-neural-networks-and-pytorch" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Artificial_neural_network">Neural networks</a> are a class of machine learning models that are inspired by the structure and function of biological neural networks. They can learn complex functions from large amounts of data. We will start our journey of neural networks with the simplest neural network, the <a class="reference external" href="https://en.wikipedia.org/wiki/Logistic_regression">logistic regression</a>, which is a single-layer neural network that we have learned <a class="reference external" href="https://pykale.github.io/transparentML/03-logistic-reg/overview.html">previously</a>. We will then introduce multilayer neural networks and the <a class="reference external" href="https://pytorch.org/">PyTorch</a> library to build our neural networks.</p>
+<p>Watch the 16-minute video below for a visual explanation of neural networks.</p>
+<div class="admonition-video admonition">
+<p class="admonition-title">Video</p>
+<iframe width="700" height="394" src="https://www.youtube.com/embed/CqOfi41LfDw?start=125&end=1090" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p><a class="reference external" href="https://www.youtube.com/embed/CqOfi41LfDw?start=125&amp;end=1090">Explaining main ideas behind neural networks, by StatQuest</a></p>
+</div>
+<div class="section" id="logistic-regression-as-a-neural-network">
+<h2><span class="section-number">10.1.1. </span>Logistic regression as a neural network<a class="headerlink" href="#logistic-regression-as-a-neural-network" title="Permalink to this headline">¶</a></h2>
+<p>Let us consider a simple neural network to classify data points, using the logistic regression model as an example:</p>
+<ul class="simple">
+<li><p>Each data point has one feature/variable, so we need one input node on the input layer.</p></li>
+<li><p>We are not going to use any hidden layer, for simplicity.</p></li>
+<li><p>We have two possible output classes so the output of the network will be a single value between 0 and 1, which is the estimated probability <span class="math notranslate nohighlight">\(\pi\)</span> for a data point to belong to class 1. Then, the probability to belong to class 0 is simply <span class="math notranslate nohighlight">\(1-\pi\)</span>. Therefore, we have one single output neuron, the only neuron in the network.</p></li>
+</ul>
+<p>If we use the <a class="reference external" href="https://en.wikipedia.org/wiki/Logistic_function">logistic (sigmoid) function</a> as the <a class="reference external" href="https://en.wikipedia.org/wiki/Activation_function">activation function</a> in the output neuron, this neuron will generate a value between 0 and 1, which can be used as a classification probability.</p>
+<p>We can represent this simple network visually in the following figure:</p>
+<div class="figure align-default" id="one-neuron">
+<a class="reference internal image-reference" href="https://github.com/cbernet/maldives/raw/master/images/one_neuron.png"><img alt="https://github.com/cbernet/maldives/raw/master/images/one_neuron.png" src="https://github.com/cbernet/maldives/raw/master/images/one_neuron.png" style="height: 250px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.1 </span><span class="caption-text">Neural network with one input node and one neuron, with no hidden layer. The neuron first computes the weighted input <span class="math notranslate nohighlight">\(z = wx + b\)</span>, where <span class="math notranslate nohighlight">\(w\)</span> is the weight and <span class="math notranslate nohighlight">\(b\)</span> is the bias, and then uses the sigmoid function <span class="math notranslate nohighlight">\(\sigma (z) = 1/(1+e^{-z})\)</span> as the activation function to compute the output of the neuron.</span><a class="headerlink" href="#one-neuron" title="Permalink to this image">¶</a></p>
+</div>
+<p>In the output neuron:</p>
+<ul class="simple">
+<li><p>The first box performs a change of variable and computes the <strong>weighted input</strong> <span class="math notranslate nohighlight">\(z\)</span> of the neuron, <span class="math notranslate nohighlight">\(z = wx + b\)</span>, where <span class="math notranslate nohighlight">\(w\)</span> is the weight and <span class="math notranslate nohighlight">\(b\)</span> is the bias.</p></li>
+<li><p>The second box applies the <strong>activation function</strong>, the sigmoid <span class="math notranslate nohighlight">\(\sigma (z) = 1/(1+e^{-z})\)</span>, to the weighted input <span class="math notranslate nohighlight">\(z\)</span>.</p></li>
+<li><p>The output of the neuron is the value of the sigmoid function, which is a value between 0 and 1.</p></li>
+</ul>
+<p>This simple network has only two parameters, the weight <span class="math notranslate nohighlight">\(w\)</span> and the bias <span class="math notranslate nohighlight">\(b\)</span>, both used in the first box. We see in particular that when the bias <span class="math notranslate nohighlight">\(b\)</span> is very large, the neuron will <strong>always be activated</strong>, whatever the input. On the contrary, for very negative biases, the neuron is <strong>dead</strong>.</p>
+<p>We can write the output simply as a function of <span class="math notranslate nohighlight">\(x\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \sigma(z) = \sigma(wx+b).\]</div>
+<p>This is exactly the <strong>logistic regression</strong> classifier. Thus, the logistic regression model can be viewed as a single-layer neural network with a single neuron. The neuron is a linear function of the input feature(s), and the sigmoid function is the activation function. Indeed, the logistic regression model and its multi-class extension, the softmax regression model, are standard units in neural networks.</p>
+</div>
+<div class="section" id="shallow-vs-deep-learning">
+<h2><span class="section-number">10.1.2. </span>Shallow vs deep learning<a class="headerlink" href="#shallow-vs-deep-learning" title="Permalink to this headline">¶</a></h2>
+<p>Shallow learning models learn their parameters directly from the features of the data <span id="id1">[<a class="reference internal" href="../appendix/bibliography.html#id2" title="Andriy Burkov. The hundred-page machine learning book. Volume 1. Andriy Burkov Quebec City, QC, Canada, 2019.">Burkov, 2019</a>]</span>. Most models that we studied in the previous chapters are shallow learning models, such as linear regression, logistic regression, or support vector machines. They are called shallow because they are composed of a single <em>layer</em> of learning units, or a single learning unit. We see a shallow learning model with a single neuron in <a class="reference internal" href="#one-neuron"><span class="std std-numref">Fig. 10.1</span></a>.</p>
+<p>Deep learning models are neural networks with multiple (typically more than two) hidden layers. The parameters for such deep learning models are not learned directly from the features of the data. Instead, the features are used to compute the input of the first hidden layer, which is then used to compute the input of the second hidden layer, and so on. The output of the last hidden layer is used as the input of the output layer. The output layer is typically a single neuron with a sigmoid activation function, which can be used to compute a classification probability.</p>
+</div>
+<div class="section" id="single-layer-neural-networks">
+<h2><span class="section-number">10.1.3. </span>Single-layer neural networks<a class="headerlink" href="#single-layer-neural-networks" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#single-layer-nn"><span class="std std-numref">Fig. 10.2</span></a> shows a single-layer neural network with two (<span class="math notranslate nohighlight">\(D=2\)</span>) input nodes/units (features), one hidden layer with four (<span class="math notranslate nohighlight">\(K=4\)</span>) neurons as the hidden nodes/units (latent features), and one output node/unit (target/label). The input layer is the layer that receives the input data. The hidden layer is the layer that computes the weighted input of the output layer, which can be considered as latent features. The output layer is the layer that computes the output of the network from the weighted input provided by the hidden layer.</p>
+<div class="figure align-default" id="single-layer-nn">
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/9/99/Neural_network_example.svg"><img alt="https://upload.wikimedia.org/wikipedia/commons/9/99/Neural_network_example.svg" height="300px" src="https://upload.wikimedia.org/wikipedia/commons/9/99/Neural_network_example.svg" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.2 </span><span class="caption-text">A simple neural network with a single hidden layer. The hidden layer computes activations <span class="math notranslate nohighlight">\(a_1, \cdots, a_K\)</span> (<span class="math notranslate nohighlight">\(K=4\)</span> here) that are nonlinear transformations of linear combinations of the input features <span class="math notranslate nohighlight">\(x_1, \cdots, x_D\)</span> (<span class="math notranslate nohighlight">\(D=2\)</span> here). The output layer computes the output <span class="math notranslate nohighlight">\(\hat{y}\)</span> from the activations <span class="math notranslate nohighlight">\(a_1, \ldots, a_K\)</span> in a similar way.</span><a class="headerlink" href="#single-layer-nn" title="Permalink to this image">¶</a></p>
+</div>
+<p>As illustrated in <a class="reference internal" href="#one-neuron"><span class="std std-numref">Fig. 10.1</span></a>, the <span class="math notranslate nohighlight">\(k\)</span>th neuron in the hidden layer computes the weighted input <span class="math notranslate nohighlight">\(z_k\)</span> from the input data <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> using the weights <span class="math notranslate nohighlight">\(\mathbf{w}_k\)</span> and bias <span class="math notranslate nohighlight">\(b_k\)</span>, and applies the activation function <span class="math notranslate nohighlight">\(g(z)\)</span> to the weighted input <span class="math notranslate nohighlight">\(z_k\)</span> to compute the output of the neuron as follows:</p>
+<div class="math notranslate nohighlight">
+\[a_k=h_k(z_k)=g\left(w_{k0}+\sum_{d=1}^Dw_{kd}x_d\right).\]</div>
+<p>The output of the hidden layer is the vector of the outputs of the <span class="math notranslate nohighlight">\(K\)</span> neurons in the hidden layer. The output of the network is the output of the output layer, which is computed from the output of the hidden layer, <span class="math notranslate nohighlight">\(a_1, \cdots, a_K\)</span>, in a similar way as the output of a hidden neuron is computed from the input features.</p>
+<div class="section" id="system-transparency">
+<h3><span class="section-number">10.1.3.1. </span>System transparency<a class="headerlink" href="#system-transparency" title="Permalink to this headline">¶</a></h3>
+<p>This simple neural network derives four new features from the original two features by computing four differently weighted sums of the original two features and then squashing the weighted sums with an activation function for the hidden layer. It then uses these four new features to compute the output of the network by computing their weighted sum and then squashing the weighted sum with another activation function for the output layer. As mentioned in the overview, neural networks are semi-transparent systems where we can see the transformation of the input to the output, but it is difficult or too complicated to invert the transformation to obtain the input from the output.</p>
+<div class="important admonition">
+<p class="admonition-title">System transparency</p>
+<ul class="simple">
+<li><p>For any data point <span class="math notranslate nohighlight">\( \mathbf{x} \)</span>, we can transform it through the hidden layer to obtain four latent features <span class="math notranslate nohighlight">\( [a_1 \;\; a_2 \;\; a_3 \;\; a_4]^{\top} \)</span>, and then transform these latent features through the output layer to obtain the output <span class="math notranslate nohighlight">\(\hat{y}\)</span>.</p></li>
+<li><p>Due the the presence of the hidden layer, it is difficult and complicated to invert the transformation from the input to the output for even single-layer neural networks.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="activation-functions">
+<h3><span class="section-number">10.1.3.2. </span>Activation functions<a class="headerlink" href="#activation-functions" title="Permalink to this headline">¶</a></h3>
+<p>The activation function <span class="math notranslate nohighlight">\(g(z)\)</span> is a function that maps the weighted input <span class="math notranslate nohighlight">\(z_k\)</span> to the output of the neuron. It is typically a <strong><em>nonlinear</em></strong> function. Early neural networks often use the sigmoid function or the hyperbolic tangent function as the activation function. In modern neural networks, the ReLU function is often used as the activation function:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}g(z)=\mathtt{ReLU}(z)=\begin{cases}z &amp; \text{if } z&gt;0\\0 &amp; \text{otherwise.}\end{cases}\end{split}\]</div>
+<p>The ReLU function is not differentiable at <span class="math notranslate nohighlight">\(z=0\)</span>, but it is computationally more efficient than the sigmoid function and the hyperbolic tangent function.</p>
+<p>There are many other activation functions, such as the Gaussian Error Linear Unit (GELU). You can refer to the <a class="reference external" href="https://en.wikipedia.org/wiki/Activation_function#Table_of_activation_functions">Table of activation functions</a> in Wikipedia for a list of activation functions. The following figure shows the ReLU and GELU functions.</p>
+<div class="figure align-default" id="id2">
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/4/42/ReLU_and_GELU.svg"><img alt="https://upload.wikimedia.org/wikipedia/commons/4/42/ReLU_and_GELU.svg" height="300px" src="https://upload.wikimedia.org/wikipedia/commons/4/42/ReLU_and_GELU.svg" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.3 </span><span class="caption-text">Activation functions: ReLU (left) and GELU (right).</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>The <em>nonlinearity</em> of the activation function is important for neural networks. Without the nonlinearity, i.e., if all the activation functions of a neural network are linear, this neural network will be equivalent to a simple linear model, no matter how many hidden layers it has (since composition of linear functions is linear). The nonlinearity allows the neural network to learn more complex functions. On the other hand, the nonlinearity also makes the neural network more difficult to train (needs more data), more prone to overfitting, and more difficult to interpret.</p>
+</div>
+</div>
+<div class="section" id="multi-layer-neural-networks">
+<h2><span class="section-number">10.1.4. </span>Multi-layer neural networks<a class="headerlink" href="#multi-layer-neural-networks" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="linear-regression-with-as-a-neural-network-in-pytorch">
+<h2><span class="section-number">10.1.5. </span>Linear regression with as a neural network in PyTorch<a class="headerlink" href="#linear-regression-with-as-a-neural-network-in-pytorch" title="Permalink to this headline">¶</a></h2>
+</div>
 <div class="section" id="exercises">
-<h2><span class="section-number">10.1.1. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.1.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <p>min 3 max 5</p>
 </div>
 </div>
