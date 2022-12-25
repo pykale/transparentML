@@ -658,6 +658,28 @@ const thebe_selector_output = ".output, .cell_output"
      10.1.5.3. Computational Graph
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#autograd-automatic-differentiation">
+     10.1.5.4. Autograd: automatic differentiation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#why-differentiation-is-important">
+       10.1.5.4.1. Why differentiation is important?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-automatic-differentiation-is-done-in-pytorch">
+       10.1.5.4.2. How automatic differentiation is done in PyTorch?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-to-stop-automatic-differentiation-e-g-when-it-is-not-needed">
+       10.1.5.4.3. How to stop automatic differentiation (e.g., when it is not needed)
+      </a>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -769,6 +791,28 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal nav-link" href="#computational-graph">
      10.1.5.3. Computational Graph
     </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#autograd-automatic-differentiation">
+     10.1.5.4. Autograd: automatic differentiation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#why-differentiation-is-important">
+       10.1.5.4.1. Why differentiation is important?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-automatic-differentiation-is-done-in-pytorch">
+       10.1.5.4.2. How automatic differentiation is done in PyTorch?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-to-stop-automatic-differentiation-e-g-when-it-is-not-needed">
+       10.1.5.4.3. How to stop automatic differentiation (e.g., when it is not needed)
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -918,8 +962,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="tensor">
 <h3><span class="section-number">10.1.5.2. </span>Tensor<a class="headerlink" href="#tensor" title="Permalink to this headline">¶</a></h3>
+<p>If you are not familiar with PyTorch yet, you can get more comfortable with it by going over at least the first two modules of the <a class="reference external" href="https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html">PyTorch tutorial</a> on <em>Tensors</em> and <em>A gentle introduction to <code class="docutils literal notranslate"><span class="pre">torch.autograd</span></code></em> to get a basic understanding. In the following, we learn some basics extracted from the tutorial.</p>
 <p><code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> is a multidimensional array data structure. You may check out the full list of <a class="reference external" href="http://pytorch.org/docs/master/tensors.html">tensor types</a> and various <a class="reference external" href="https://pytorch.org/docs/stable/torch.html">tensor operations</a>.</p>
-<p>If you are not familiar with PyTorch yet, you can get more comfortable with it by going over the first two modules of the <a class="reference external" href="https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html">PyTorch tutorial</a> on <em>Tensors</em> and <em>A gentle introduction to torch.autograd</em> to get a basic understanding of PyTorch and tensors.</p>
 </div>
 <div class="section" id="computational-graph">
 <h3><span class="section-number">10.1.5.3. </span>Computational Graph<a class="headerlink" href="#computational-graph" title="Permalink to this headline">¶</a></h3>
@@ -928,6 +972,27 @@ const thebe_selector_output = ".output, .cell_output"
 <p><img alt="Linear Regression Computation Graph" src="https://imgur.com/IcBhTjS.png" /></p>
 <p>PyTorch dynamically build the computational graph, as shown in the animation below.</p>
 <p><img alt="DynamicGraph.gif" src="https://raw.githubusercontent.com/pytorch/pytorch/master/docs/source/_static/img/dynamic_graph.gif" /></p>
+</div>
+<div class="section" id="autograd-automatic-differentiation">
+<h3><span class="section-number">10.1.5.4. </span>Autograd: automatic differentiation<a class="headerlink" href="#autograd-automatic-differentiation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="why-differentiation-is-important">
+<h4><span class="section-number">10.1.5.4.1. </span>Why differentiation is important?<a class="headerlink" href="#why-differentiation-is-important" title="Permalink to this headline">¶</a></h4>
+<p>Differentiation is important because it is a key procedure in <strong>optimisation</strong> to find the optimal solution of a loss function. The process of learning/training aims to minimise a predefined loss, which is a function of the model parameters. We can compute the gradient of the loss function with respect to the model parameters, and then update the model parameters in the direction of the negative gradient. This process is called <strong>gradient descent</strong>. The gradient descent process is repeated until the model parameters converge to the optimal solution.</p>
+</div>
+<div class="section" id="how-automatic-differentiation-is-done-in-pytorch">
+<h4><span class="section-number">10.1.5.4.2. </span>How automatic differentiation is done in PyTorch?<a class="headerlink" href="#how-automatic-differentiation-is-done-in-pytorch" title="Permalink to this headline">¶</a></h4>
+<p>The PyTorch <code class="docutils literal notranslate"><span class="pre">autograd</span></code> package makes differentiation (almost) transparent to you by providing automatic differentiation for all operations on Tensors, unless you do not want it (to save time and space).</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> type variable has an attribute <code class="docutils literal notranslate"><span class="pre">.requires_grad</span></code>. Setting this attribute <code class="docutils literal notranslate"><span class="pre">True</span></code> tracks (but not computes yet) all operations on it. After we define the forward pass, and hence the <em>computational graph</em>, we call <code class="docutils literal notranslate"><span class="pre">.backward()</span></code> and all the gradients will be computed automatically and accumulated into the <code class="docutils literal notranslate"><span class="pre">.grad</span></code> attribute.</p>
+<p>This is made possible by the <a class="reference external" href="https://en.wikipedia.org/wiki/Chain_rule"><strong>chain rule of differentiation</strong></a>.</p>
+</div>
+<div class="section" id="how-to-stop-automatic-differentiation-e-g-when-it-is-not-needed">
+<h4><span class="section-number">10.1.5.4.3. </span>How to stop automatic differentiation (e.g., when it is not needed)<a class="headerlink" href="#how-to-stop-automatic-differentiation-e-g-when-it-is-not-needed" title="Permalink to this headline">¶</a></h4>
+<p>Calling method <code class="docutils literal notranslate"><span class="pre">.detach()</span></code> of a tensor will detach it from the computation history. We can also wrap the code block in <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">torch.no_grad():</span></code> so all tensors in the block do not track the gradients, e.g., in the test/evaluation stage.</p>
+<!-- #### Function
+
+`Tensor`s are connected by `Function` to build an acyclic *computational graph* to encode a complete history of computation. The `.grad_fn` attribute of a tensor references a `Function` created the `Tensor`, i.e., this `Tensor` is the output of its ``.grad_fn`` in the computational graph.
+
+Learn more about autograd by referring to the [documentation on autograd](https://pytorch.org/docs/stable/autograd.html) --></div>
 </div>
 </div>
 <div class="section" id="linear-regression-using-pytorch-nn-module">
@@ -1545,10 +1610,6 @@ test_loader = torch.utils.data.DataLoader(
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>37.0%
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
-Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./data/MNIST/raw/train-images-idx3-ubyte.gz
-</pre></div>
-</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>37.4%
 </pre></div>
 </div>
@@ -1568,6 +1629,10 @@ Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./dat
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>39.3%
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./data/MNIST/raw/train-images-idx3-ubyte.gz
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>39.7%
@@ -2293,6 +2358,7 @@ Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz to ./data
 Extracting ./data/MNIST/raw/t10k-images-idx3-ubyte.gz to ./data/MNIST/raw
 
 Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz to ./data/MNIST/raw/t10k-labels-idx1-ubyte.gz
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0%
@@ -2301,8 +2367,7 @@ Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz to ./data/MNIST/raw/t10k-labels-idx1-ubyte.gz
-Extracting ./data/MNIST/raw/t10k-labels-idx1-ubyte.gz to ./data/MNIST/raw
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./data/MNIST/raw/t10k-labels-idx1-ubyte.gz to ./data/MNIST/raw
 </pre></div>
 </div>
 </div>
@@ -2362,7 +2427,7 @@ for i in range(10):
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/multilayer-nn_40_0.png" src="../_images/multilayer-nn_40_0.png" />
+<img alt="../_images/multilayer-nn_42_0.png" src="../_images/multilayer-nn_42_0.png" />
 </div>
 </div>
 </div>
@@ -2695,8 +2760,8 @@ plt.grid()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/multilayer-nn_48_0.png" src="../_images/multilayer-nn_48_0.png" />
-<img alt="../_images/multilayer-nn_48_1.png" src="../_images/multilayer-nn_48_1.png" />
+<img alt="../_images/multilayer-nn_50_0.png" src="../_images/multilayer-nn_50_0.png" />
+<img alt="../_images/multilayer-nn_50_1.png" src="../_images/multilayer-nn_50_1.png" />
 </div>
 </div>
 <p>We can see the test loss is decreasing and the test accuracy is increasing over time.</p>
