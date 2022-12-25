@@ -1048,8 +1048,8 @@ Prediction:  1
 <li><p>For the data point <span class="math notranslate nohighlight">\([-1.19276461, -0.20487651]\)</span> marked by a black circle, its prediction score is <span class="math notranslate nohighlight">\( -0.7327 \times -1.19276461 + -0.7033 \times -0.20487651 + 0.5729 \approx 1.5910 \)</span>, which is positive. So the predicted label is <span class="math notranslate nohighlight">\( 1 \)</span>.</p></li>
 <li><p>According to the definition, the data points on the hyperplane satisfies <span class="math notranslate nohighlight">\( \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} = 0 \)</span>, i.e. <span class="math notranslate nohighlight">\( 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 = 0 \)</span>. To get a data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> of class <span class="math notranslate nohighlight">\( 1 \)</span>, the relationship between <span class="math notranslate nohighlight">\( x_1 \)</span> and <span class="math notranslate nohighlight">\( x_2 \)</span> should satisfy:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-7fe79ee1-c0cc-4ea4-934b-b22f2d0d1acf">
-<span class="eqno">(8.6)<a class="headerlink" href="#equation-7fe79ee1-c0cc-4ea4-934b-b22f2d0d1acf" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-571fc32f-f3b4-4b43-b1f7-342c57def49c">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-571fc32f-f3b4-4b43-b1f7-342c57def49c" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} &amp; &gt; 0 \\
 \beta_1 x_{1} &amp; &gt; - \beta_0 - \beta_2 x_{2} \\
@@ -1093,14 +1093,14 @@ clf.cv_results_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00075321, 0.00075326, 0.0007225 , 0.00074143, 0.0007443 ,
-        0.00078378, 0.00089176]),
- &#39;std_fit_time&#39;: array([4.69123680e-05, 4.15999361e-05, 5.57532557e-06, 3.38258412e-05,
-        1.01487931e-05, 3.88322609e-05, 4.60121977e-05]),
- &#39;mean_score_time&#39;: array([0.00041721, 0.0004153 , 0.00041304, 0.00041625, 0.00040762,
-        0.00041375, 0.00042045]),
- &#39;std_score_time&#39;: array([2.57281045e-05, 1.33443924e-05, 1.31040022e-05, 1.35666038e-05,
-        9.83314067e-07, 3.43554472e-06, 5.94924825e-06]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00072758, 0.00073972, 0.00069485, 0.00071588, 0.00073891,
+        0.00074625, 0.00085869]),
+ &#39;std_fit_time&#39;: array([5.31680969e-05, 8.68231430e-05, 1.16835808e-05, 1.86354892e-05,
+        6.55672593e-05, 2.27159237e-05, 4.95368404e-05]),
+ &#39;mean_score_time&#39;: array([0.00039048, 0.00040524, 0.00037529, 0.00038576, 0.00038438,
+        0.00038462, 0.00039415]),
+ &#39;std_score_time&#39;: array([3.15031699e-05, 7.63489145e-05, 1.18003710e-05, 2.69798830e-05,
+        1.24356717e-05, 1.67388861e-05, 6.93449772e-06]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,
