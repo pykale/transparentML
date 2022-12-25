@@ -137,3 +137,6 @@ plots/
 
 # pdf files
 *.pdf
+
+# Downloaded data
+content/*/data/
