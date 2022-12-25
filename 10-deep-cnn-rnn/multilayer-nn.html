@@ -1140,7 +1140,9 @@ print(&quot;==&gt; Actual function:\t&quot; + poly_desc(W_target.view(-1), b_tar
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loss: 0.000388 after 346 batches
-==&gt; Learned function:	y = +0.98 x^1 +1.70 x^2 +1.14 x^3 +4.45 x^4 -1.02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Learned function:	y = +0.98 x^1 +1.70 x^2 +1.14 x^3 +4.45 x^4 -1.02
 ==&gt; Actual function:	y = +0.96 x^1 +1.65 x^2 +1.15 x^3 +4.47 x^4 -1.02
 </pre></div>
 </div>
@@ -1187,7 +1189,7 @@ print(&quot;Using PyTorch version:&quot;, torch.__version__, &quot; Device:&quot
 <div class="section" id="load-the-mnist-dataset">
 <h3><span class="section-number">10.1.7.1. </span>Load the MNIST dataset<a class="headerlink" href="#load-the-mnist-dataset" title="Permalink to this headline">¶</a></h3>
 <p>Load the MNIST dataset using the <code class="docutils literal notranslate"><span class="pre">torchvision.datasets.MNIST</span></code> class. The dataset is downloaded automatically if it is not available locally. The dataset is split into training and test sets. The training set is used to train the model, and the test set is used to evaluate the model.</p>
-<!-- Note that we are here using the MNIST test data for validation, instead of for testing the final model. --><div class="cell docutils container">
+<!-- Note that we are here using the MNIST test data for validation, instead of for testing the final model. --><div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>batch_size = 32
 root_dir = &quot;./data&quot;
@@ -1209,6 +1211,9 @@ test_loader = torch.utils.data.DataLoader(
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+</pre></div>
+</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3%
 </pre></div>
 </div>
@@ -1219,10 +1224,6 @@ test_loader = torch.utils.data.DataLoader(
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.3%
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
-Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./data/MNIST/raw/train-images-idx3-ubyte.gz
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.7%
@@ -1277,6 +1278,9 @@ Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./dat
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.3%
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./data/MNIST/raw/train-images-idx3-ubyte.gz
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.6%
@@ -2131,18 +2135,17 @@ Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./dat
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0%
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0%
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.0%
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
 Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz to ./data/MNIST/raw/train-labels-idx1-ubyte.gz
 Extracting ./data/MNIST/raw/train-labels-idx1-ubyte.gz to ./data/MNIST/raw
 
 Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
-Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz to ./data/MNIST/raw/t10k-images-idx3-ubyte.gz
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.0%
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.0%
@@ -2292,16 +2295,14 @@ Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz to ./data
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0%
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0%
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./data/MNIST/raw/t10k-images-idx3-ubyte.gz to ./data/MNIST/raw
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz to ./data/MNIST/raw/t10k-images-idx3-ubyte.gz
+Extracting ./data/MNIST/raw/t10k-images-idx3-ubyte.gz to ./data/MNIST/raw
 
 Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
 Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz to ./data/MNIST/raw/t10k-labels-idx1-ubyte.gz
