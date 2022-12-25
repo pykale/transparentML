@@ -639,13 +639,41 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linear-regression-with-as-a-neural-network-in-pytorch">
-   10.1.5. Linear regression with as a neural network in PyTorch
+  <a class="reference internal nav-link" href="#pytorch-basics">
+   10.1.5. PyTorch basics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pytorch-installation">
+     10.1.5.1. PyTorch installation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tensor">
+     10.1.5.2. Tensor
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computational-graph">
+     10.1.5.3. Computational Graph
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-regression-using-pytorch-nn-module">
+   10.1.6. Linear regression using PyTorch
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     nn
+    </span>
+   </code>
+   module
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   10.1.6. Exercises
+   10.1.7. Exercises
   </a>
  </li>
 </ul>
@@ -701,13 +729,41 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linear-regression-with-as-a-neural-network-in-pytorch">
-   10.1.5. Linear regression with as a neural network in PyTorch
+  <a class="reference internal nav-link" href="#pytorch-basics">
+   10.1.5. PyTorch basics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pytorch-installation">
+     10.1.5.1. PyTorch installation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tensor">
+     10.1.5.2. Tensor
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computational-graph">
+     10.1.5.3. Computational Graph
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-regression-using-pytorch-nn-module">
+   10.1.6. Linear regression using PyTorch
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     nn
+    </span>
+   </code>
+   module
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   10.1.6. Exercises
+   10.1.7. Exercises
   </a>
  </li>
 </ul>
@@ -783,7 +839,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="activation-functions">
 <h3><span class="section-number">10.1.3.2. </span>Activation functions<a class="headerlink" href="#activation-functions" title="Permalink to this headline">¶</a></h3>
-<p>The activation function <span class="math notranslate nohighlight">\(g(z)\)</span> is a function that maps the weighted input <span class="math notranslate nohighlight">\(z_k\)</span> to the output of the neuron. It is typically a <strong><em>nonlinear</em></strong> function. Early neural networks often use the sigmoid function or the hyperbolic tangent function as the activation function. In modern neural networks, the ReLU function is often used as the activation function:</p>
+<p>The activation function <span class="math notranslate nohighlight">\(g(z)\)</span> is a function that maps the weighted input <span class="math notranslate nohighlight">\(z_k\)</span> to the output of the neuron. It is typically a <strong><em>nonlinear</em></strong> function. Early neural networks often use the sigmoid function or the hyperbolic tangent function (<code class="docutils literal notranslate"><span class="pre">tanh(cdot)</span></code>) as the activation function. In modern neural networks, the ReLU function is often used as the activation function:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}g(z)=\mathtt{ReLU}(z)=\begin{cases}z &amp; \text{if } z&gt;0\\0 &amp; \text{otherwise.}\end{cases}\end{split}\]</div>
 <p>The ReLU function is not differentiable at <span class="math notranslate nohighlight">\(z=0\)</span>, but it is computationally more efficient than the sigmoid function and the hyperbolic tangent function.</p>
@@ -797,12 +853,205 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="multi-layer-neural-networks">
 <h2><span class="section-number">10.1.4. </span>Multi-layer neural networks<a class="headerlink" href="#multi-layer-neural-networks" title="Permalink to this headline">¶</a></h2>
+<p>The single-layer neural network in <a class="reference internal" href="#single-layer-nn"><span class="std std-numref">Fig. 10.2</span></a> is a special case of a multi-layer neural network. It is easier to make conceptual connections between single-layer neural networks and our previous shallow learning models. In the following sections, we will study multi-layer neural networks, which have more than one hidden layer and are more powerful than single-layer neural networks. In theory, a single-layer neural network with a large number of hidden units can approximate any function. However, the learning task of discovering a good set of weights for a single-layer neural network is more difficult than that of discovering a good set of weights for a multi-layer neural network.</p>
+<p>In a multi-layer neural network, the input layer is the layer that receives the input features. The hidden layers are the layers that compute the weighted input of the output layer in multiple steps, with each step computing the weighted input of the next layer similar to the above in a single-layer neural network. Therefore, there are multiple levels of transformations of the input features and these multiple levels of latent features represent multiple levels of abstraction of the input features. The output layer is the layer that computes the output of the network from the weighted input provided by the last hidden layer.</p>
+<p>All modern neural networks are multi-layer neural networks, although with various architectures. The popularity of neural networks and deep learning is accelerated by the availability of large datasets, the development of efficient training algorithms and hardware for training and inference. Moreover, the availability of open-source software libraries for neural networks and deep learning has made it easier for researchers and practitioners to use these advanced tools in their applications. PyTorch is one of such open-source software libraries.</p>
 </div>
-<div class="section" id="linear-regression-with-as-a-neural-network-in-pytorch">
-<h2><span class="section-number">10.1.5. </span>Linear regression with as a neural network in PyTorch<a class="headerlink" href="#linear-regression-with-as-a-neural-network-in-pytorch" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pytorch-basics">
+<h2><span class="section-number">10.1.5. </span>PyTorch basics<a class="headerlink" href="#pytorch-basics" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/PyTorch">PyTorch</a> is an open-source software library for machine learning and particularly deep learning. It is originally developed by Facebook (Meta) and is available under the Apache 2.0 license. In September 2022, PyTorch has been donated to the <a class="reference external" href="https://en.wikipedia.org/wiki/Linux_Foundation">Linux Foundation</a> by Facebook (Meta), becoming a fully community-driven open-source project.</p>
+<div class="section" id="pytorch-installation">
+<h3><span class="section-number">10.1.5.1. </span>PyTorch installation<a class="headerlink" href="#pytorch-installation" title="Permalink to this headline">¶</a></h3>
+<p>You should install PyTorch and TorchVision by selecting the appropriate <a class="reference external" href="https://pytorch.org/get-started/locally/">installation option</a> that matches your hardware and software needs. For example, if you have a GPU, you should install PyTorch with GPU support (e.g. <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">pytorch</span> <span class="pre">torchvision</span> <span class="pre">pytorch-cuda=11.6</span> <span class="pre">-c</span> <span class="pre">pytorch</span> <span class="pre">-c</span> <span class="pre">nvidia</span></code> or <code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">torch</span> <span class="pre">torchvision</span> <span class="pre">--extra-index-url</span> <span class="pre">https://download.pytorch.org/whl/cu116</span></code>). If you do not have a GPU, you should install PyTorch with CPU (e.g. <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">pytorch</span> <span class="pre">torchvision</span> <span class="pre">cpuonly</span> <span class="pre">-c</span> <span class="pre">pytorch</span></code> or <code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">torch</span> <span class="pre">torchvision</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip3 install torch torchvision # uncomment to install pytorch and torchvision if you haven&#39;t already.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="tensor">
+<h3><span class="section-number">10.1.5.2. </span>Tensor<a class="headerlink" href="#tensor" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> is a multidimensional array data structure (array). You may check out the full list of <a class="reference external" href="http://pytorch.org/docs/master/tensors.html">tensor types</a> and various <a class="reference external" href="https://pytorch.org/docs/stable/torch.html">tensor operations</a>.</p>
+<p>If you are not familiar with PyTorch yet, you should go over the first two modules of the <a class="reference external" href="https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html">PyTorch tutorial</a> on <em>Tensors</em> and <em>A gentle introduction to torch.autograd</em> to get a basic understanding of PyTorch and tensors.</p>
+</div>
+<div class="section" id="computational-graph">
+<h3><span class="section-number">10.1.5.3. </span>Computational Graph<a class="headerlink" href="#computational-graph" title="Permalink to this headline">¶</a></h3>
+<p>A computational graph defines and visualises a sequence of operations to go from input to model output.</p>
+<p>Consider a linear regression model <span class="math notranslate nohighlight">\(\hat{y} = \mathbf{W}\mathbf{x} + b\)</span>, where <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is the input, <span class="math notranslate nohighlight">\(\mathbf{W}\)</span> is a weight matrix, <span class="math notranslate nohighlight">\(b\)</span> is a bias, and <span class="math notranslate nohighlight">\(\hat{y}\)</span> is the predicted output. As a computational graph, this looks like:</p>
+<p><img alt="Linear Regression Computation Graph" src="https://imgur.com/IcBhTjS.png" /></p>
+<p>PyTorch dynamically build the computational graph, for example
+<img alt="DynamicGraph.gif" src="https://raw.githubusercontent.com/pytorch/pytorch/master/docs/source/_static/img/dynamic_graph.gif" /></p>
+</div>
+</div>
+<div class="section" id="linear-regression-using-pytorch-nn-module">
+<h2><span class="section-number">10.1.6. </span>Linear regression using PyTorch <code class="docutils literal notranslate"><span class="pre">nn</span></code> module<a class="headerlink" href="#linear-regression-using-pytorch-nn-module" title="Permalink to this headline">¶</a></h2>
+<p>In this section, we will implement a basic linear regression model using the PyTorch <code class="docutils literal notranslate"><span class="pre">nn</span></code> module. The <code class="docutils literal notranslate"><span class="pre">nn</span></code> module provides a high-level API to define neural networks. It is based on the <code class="docutils literal notranslate"><span class="pre">autograd</span></code> module to automatically compute the gradients of the model parameters. The <code class="docutils literal notranslate"><span class="pre">nn</span></code> module defines a set of <code class="docutils literal notranslate"><span class="pre">Module</span></code> classes, which you can use to build and compose neural networks. A <code class="docutils literal notranslate"><span class="pre">Module</span></code> is a neural network layer that has parameters that can be optimized during training. The <code class="docutils literal notranslate"><span class="pre">nn</span></code> module also defines a set of useful loss functions that are commonly used when training neural networks.</p>
+<p>Implementing the fundamental linear regression model in PyTorch will help us study PyTorch concepts closely. This part follows the <a class="reference external" href="https://github.com/pytorch/examples/tree/master/regression">PyTorch Linear regression example</a> that trains a <strong>single fully-connected layer</strong> to fit a 4th degree polynomial.</p>
+<p>First, generate model parameters, weight and bias. The weight vector and bias are both tensors, 1D and 0D, respectively. We set a seed (2022) for <strong>reproducibility</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>  <span class="c1"># For reproducibility</span>
+
+<span class="n">POLY_DEGREE</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">W_target</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">POLY_DEGREE</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span>
+<span class="n">b_target</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us inspect the weight and bias tensors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">W_target</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b_target</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see the weight tensor is a 1D tensor with 4 elements, and the bias tensor is a 0D tensor. Both have random values.</p>
+<p>Next, define a number of functions to generate the input (features/variables) and output (target/response).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_features</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Builds features i.e. a matrix with columns [x, x^2, x^3, x^4].&quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">x</span><span class="o">**</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">POLY_DEGREE</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)],</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Approximated function.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">W_target</span><span class="p">)</span> <span class="o">+</span> <span class="n">b_target</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">poly_desc</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Creates a string description of a polynomial.&quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="s2">&quot;y = &quot;</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">W</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="si">{:+.2f}</span><span class="s2"> x^</span><span class="si">{}</span><span class="s2"> &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="si">{:+.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span> <span class="nf">get_batch</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Builds a batch i.e. (x, f(x)) pair.&quot;&quot;&quot;</span>
+    <span class="n">random</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">make_features</span><span class="p">(</span><span class="n">random</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Define a simple neural network, which is a <strong>single fully connected</strong> (<strong>FC</strong>) layer. See <a class="reference external" href="https://pytorch.org/docs/master/nn.html#torch.nn.Linear"><code class="docutils literal notranslate"><span class="pre">torch.nn.Linear</span></code></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fc</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">W_target</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is a <em>network</em> with four input units, one output unit, with a bias term.</p>
+<p>Now generate the data. Let us try to get five pairs of (x,y) first to inspect.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sample_x</span><span class="p">,</span> <span class="n">sample_y</span> <span class="o">=</span> <span class="n">get_batch</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sample_x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sample_y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Take a look at the FC layer weights (randomly initialised)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fc</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Reset the gradients to zero, perform a forward pass to get prediction, and compute the loss.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fc</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">smooth_l1_loss</span><span class="p">(</span><span class="n">fc</span><span class="p">(</span><span class="n">sample_x</span><span class="p">),</span> <span class="n">sample_y</span><span class="p">)</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Not surprisingly, the loss is large and random initialisation did not give a good prediction. Let us do a backpropagation and update model parameters with gradients.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">output</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">fc</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+    <span class="n">param</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">param</span><span class="o">.</span><span class="n">grad</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check the updated weights and respective loss.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fc</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">smooth_l1_loss</span><span class="p">(</span><span class="n">fc</span><span class="p">(</span><span class="n">sample_x</span><span class="p">),</span> <span class="n">sample_y</span><span class="p">)</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see the loss is reduced and the weights are updated.</p>
+<p>Now keep feeding more data until the loss is small enough.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">count</span>
+
+<span class="k">for</span> <span class="n">batch_idx</span> <span class="ow">in</span> <span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># Get data</span>
+    <span class="n">batch_x</span><span class="p">,</span> <span class="n">batch_y</span> <span class="o">=</span> <span class="n">get_batch</span><span class="p">()</span>
+
+    <span class="c1"># Reset gradients</span>
+    <span class="n">fc</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+
+    <span class="c1"># Forward pass</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">smooth_l1_loss</span><span class="p">(</span><span class="n">fc</span><span class="p">(</span><span class="n">batch_x</span><span class="p">),</span> <span class="n">batch_y</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+    <span class="c1"># Backward pass</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+    <span class="c1"># Apply gradients</span>
+    <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">fc</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+        <span class="n">param</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">param</span><span class="o">.</span><span class="n">grad</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="c1"># Stop criterion</span>
+    <span class="k">if</span> <span class="n">loss</span> <span class="o">&lt;</span> <span class="mf">1e-3</span><span class="p">:</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Examine the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loss: </span><span class="si">{:.6f}</span><span class="s2"> after </span><span class="si">{}</span><span class="s2"> batches&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">batch_idx</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;==&gt; Learned function:</span><span class="se">\t</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">poly_desc</span><span class="p">(</span><span class="n">fc</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">fc</span><span class="o">.</span><span class="n">bias</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;==&gt; Actual function:</span><span class="se">\t</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">poly_desc</span><span class="p">(</span><span class="n">W_target</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">b_target</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see the loss is small and the weights are close to the true values.</p>
 </div>
 <div class="section" id="exercises">
-<h2><span class="section-number">10.1.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.1.7. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <p>min 3 max 5</p>
 </div>
 </div>
