@@ -662,23 +662,6 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal nav-link" href="#autograd-automatic-differentiation">
      10.1.5.4. Autograd: automatic differentiation
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#why-differentiation-is-important">
-       10.1.5.4.1. Why differentiation is important?
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-automatic-differentiation-is-done-in-pytorch">
-       10.1.5.4.2. How automatic differentiation is done in PyTorch?
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-to-stop-automatic-differentiation-e-g-when-it-is-not-needed">
-       10.1.5.4.3. How to stop automatic differentiation (e.g., when it is not needed)
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -699,18 +682,28 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#batching-and-epoch">
+     10.1.7.1. Batching and epoch
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pytorch-data-loader-and-transforms">
+     10.1.7.2. PyTorch data loader and transforms
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#load-the-mnist-dataset">
-     10.1.7.1. Load the MNIST dataset
+     10.1.7.3. Load the MNIST dataset
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#define-a-multilayer-neural-network">
-     10.1.7.2. Define a multilayer neural network
+     10.1.7.4. Define a multilayer neural network
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#train-and-evaluate-the-model">
-     10.1.7.3. Train and evaluate the model
+     10.1.7.5. Train and evaluate the model
     </a>
    </li>
   </ul>
@@ -796,23 +789,6 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal nav-link" href="#autograd-automatic-differentiation">
      10.1.5.4. Autograd: automatic differentiation
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#why-differentiation-is-important">
-       10.1.5.4.1. Why differentiation is important?
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-automatic-differentiation-is-done-in-pytorch">
-       10.1.5.4.2. How automatic differentiation is done in PyTorch?
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-to-stop-automatic-differentiation-e-g-when-it-is-not-needed">
-       10.1.5.4.3. How to stop automatic differentiation (e.g., when it is not needed)
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -833,18 +809,28 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#batching-and-epoch">
+     10.1.7.1. Batching and epoch
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pytorch-data-loader-and-transforms">
+     10.1.7.2. PyTorch data loader and transforms
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#load-the-mnist-dataset">
-     10.1.7.1. Load the MNIST dataset
+     10.1.7.3. Load the MNIST dataset
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#define-a-multilayer-neural-network">
-     10.1.7.2. Define a multilayer neural network
+     10.1.7.4. Define a multilayer neural network
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#train-and-evaluate-the-model">
-     10.1.7.3. Train and evaluate the model
+     10.1.7.5. Train and evaluate the model
     </a>
    </li>
   </ul>
@@ -975,25 +961,20 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="autograd-automatic-differentiation">
 <h3><span class="section-number">10.1.5.4. </span>Autograd: automatic differentiation<a class="headerlink" href="#autograd-automatic-differentiation" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="why-differentiation-is-important">
-<h4><span class="section-number">10.1.5.4.1. </span>Why differentiation is important?<a class="headerlink" href="#why-differentiation-is-important" title="Permalink to this headline">¶</a></h4>
+<p><strong>Why differentiation is important?</strong></p>
 <p>Differentiation is important because it is a key procedure in <strong>optimisation</strong> to find the optimal solution of a loss function. The process of learning/training aims to minimise a predefined loss, which is a function of the model parameters. We can compute the gradient of the loss function with respect to the model parameters, and then update the model parameters in the direction of the negative gradient. This process is called <strong>gradient descent</strong>. The gradient descent process is repeated until the model parameters converge to the optimal solution.</p>
-</div>
-<div class="section" id="how-automatic-differentiation-is-done-in-pytorch">
-<h4><span class="section-number">10.1.5.4.2. </span>How automatic differentiation is done in PyTorch?<a class="headerlink" href="#how-automatic-differentiation-is-done-in-pytorch" title="Permalink to this headline">¶</a></h4>
+<p><strong>How automatic differentiation is done in PyTorch?</strong></p>
 <p>The PyTorch <code class="docutils literal notranslate"><span class="pre">autograd</span></code> package makes differentiation (almost) transparent to you by providing automatic differentiation for all operations on Tensors, unless you do not want it (to save time and space).</p>
 <p>A <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> type variable has an attribute <code class="docutils literal notranslate"><span class="pre">.requires_grad</span></code>. Setting this attribute <code class="docutils literal notranslate"><span class="pre">True</span></code> tracks (but not computes yet) all operations on it. After we define the forward pass, and hence the <em>computational graph</em>, we call <code class="docutils literal notranslate"><span class="pre">.backward()</span></code> and all the gradients will be computed automatically and accumulated into the <code class="docutils literal notranslate"><span class="pre">.grad</span></code> attribute.</p>
 <p>This is made possible by the <a class="reference external" href="https://en.wikipedia.org/wiki/Chain_rule"><strong>chain rule of differentiation</strong></a>.</p>
-</div>
-<div class="section" id="how-to-stop-automatic-differentiation-e-g-when-it-is-not-needed">
-<h4><span class="section-number">10.1.5.4.3. </span>How to stop automatic differentiation (e.g., when it is not needed)<a class="headerlink" href="#how-to-stop-automatic-differentiation-e-g-when-it-is-not-needed" title="Permalink to this headline">¶</a></h4>
+<p>**How to stop automatic differentiation (e.g., when it is not needed)
+**</p>
 <p>Calling method <code class="docutils literal notranslate"><span class="pre">.detach()</span></code> of a tensor will detach it from the computation history. We can also wrap the code block in <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">torch.no_grad():</span></code> so all tensors in the block do not track the gradients, e.g., in the test/evaluation stage.</p>
 <!-- #### Function
 
 `Tensor`s are connected by `Function` to build an acyclic *computational graph* to encode a complete history of computation. The `.grad_fn` attribute of a tensor references a `Function` created the `Tensor`, i.e., this `Tensor` is the output of its ``.grad_fn`` in the computational graph.
 
 Learn more about autograd by referring to the [documentation on autograd](https://pytorch.org/docs/stable/autograd.html) --></div>
-</div>
 </div>
 <div class="section" id="linear-regression-using-pytorch-nn-module">
 <h2><span class="section-number">10.1.6. </span>Linear regression using PyTorch <code class="docutils literal notranslate"><span class="pre">nn</span></code> module<a class="headerlink" href="#linear-regression-using-pytorch-nn-module" title="Permalink to this headline">¶</a></h2>
@@ -1249,8 +1230,18 @@ print(&quot;Using PyTorch version:&quot;, torch.__version__, &quot; Device:&quot
 </div>
 </div>
 </div>
+<div class="section" id="batching-and-epoch">
+<h3><span class="section-number">10.1.7.1. </span>Batching and epoch<a class="headerlink" href="#batching-and-epoch" title="Permalink to this headline">¶</a></h3>
+<p>Neural networks are typically trained using <em>mini-batches</em> for time/memory efficiency and better generalisation. For images, we can compute the <em>average</em> loss across a mini-batch of <span class="math notranslate nohighlight">\(B\)</span> <em>multiple</em> images and take a step to minimise their <em>average</em> loss. The number <span class="math notranslate nohighlight">\(B\)</span> is called the <strong>batch size</strong>. The actual batch size that we choose depends on many things. We want our batch size to be large enough to not be too “noisy”, but not so large as to make each iteration too expensive to run. People often choose batch sizes of the form <span class="math notranslate nohighlight">\(B=2^k\)</span> (a power of 2)so that it is easy to half or double the batch size.</p>
+<p>Moreover, neural networks are trained using multiple <em>epochs</em> to further improve generalisation, where each <code class="docutils literal notranslate"><span class="pre">epoch</span></code> is one complete pass through the whole training data to update the parameters. In this way, we use each training data point more than once.</p>
+</div>
+<div class="section" id="pytorch-data-loader-and-transforms">
+<h3><span class="section-number">10.1.7.2. </span>PyTorch data loader and transforms<a class="headerlink" href="#pytorch-data-loader-and-transforms" title="Permalink to this headline">¶</a></h3>
+<p>In PyTorch, we can use the <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> class to create an iterator that provides a stream of mini-batches. The <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> class takes a dataset as input, randomly groups the training data into <strong>mini-batches</strong> with the specified batch size, and returns an iterator over all these mini-batches. Each data point belongs to only one mini-batch. The <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> class also provides a <code class="docutils literal notranslate"><span class="pre">shuffle</span></code> parameter to shuffle the data after every epoch for better generalisation.</p>
+<p>The <a class="reference external" href="https://pytorch.org/vision/stable/transforms.html"><code class="docutils literal notranslate"><span class="pre">torchvision.transforms</span></code></a> module provides a variety of functions to perform common image transformations. We will use the <code class="docutils literal notranslate"><span class="pre">ToTensor</span></code> function to convert the images to PyTorch tensors. The output of <code class="docutils literal notranslate"><span class="pre">torchvision</span></code> <code class="docutils literal notranslate"><span class="pre">datasets</span></code> after loading are PILImage images of range [0, 1]. <code class="docutils literal notranslate"><span class="pre">transforms.ToTensor()</span></code> Convert a <code class="docutils literal notranslate"><span class="pre">PIL</span></code> Image or <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> (<span class="math notranslate nohighlight">\(H \times W \times C\)</span>) in the range [0, 255] to torch.FloatTensor of shape <span class="math notranslate nohighlight">\(C \times H \times W\)</span> in the range [0.0, 1.0].</p>
+</div>
 <div class="section" id="load-the-mnist-dataset">
-<h3><span class="section-number">10.1.7.1. </span>Load the MNIST dataset<a class="headerlink" href="#load-the-mnist-dataset" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.1.7.3. </span>Load the MNIST dataset<a class="headerlink" href="#load-the-mnist-dataset" title="Permalink to this headline">¶</a></h3>
 <p>Load the MNIST dataset using the <code class="docutils literal notranslate"><span class="pre">torchvision.datasets.MNIST</span></code> class. The dataset is downloaded automatically if it is not available locally. The dataset is split into training and test sets. The training set is used to train the model, and the test set is used to evaluate the model. We hide the output of the following cell for brevity.</p>
 <!-- Note that we are here using the MNIST test data for validation, instead of for testing the final model. --><div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
@@ -1610,6 +1601,10 @@ test_loader = torch.utils.data.DataLoader(
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>37.0%
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./data/MNIST/raw/train-images-idx3-ubyte.gz
+</pre></div>
+</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>37.4%
 </pre></div>
 </div>
@@ -1629,10 +1624,6 @@ test_loader = torch.utils.data.DataLoader(
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>39.3%
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
-Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./data/MNIST/raw/train-images-idx3-ubyte.gz
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>39.7%
@@ -2356,9 +2347,9 @@ Extracting ./data/MNIST/raw/train-labels-idx1-ubyte.gz to ./data/MNIST/raw
 Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
 Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz to ./data/MNIST/raw/t10k-images-idx3-ubyte.gz
 Extracting ./data/MNIST/raw/t10k-images-idx3-ubyte.gz to ./data/MNIST/raw
-
-Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
-Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz to ./data/MNIST/raw/t10k-labels-idx1-ubyte.gz
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0%
@@ -2367,13 +2358,14 @@ Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz to ./data
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./data/MNIST/raw/t10k-labels-idx1-ubyte.gz to ./data/MNIST/raw
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz to ./data/MNIST/raw/t10k-labels-idx1-ubyte.gz
+Extracting ./data/MNIST/raw/t10k-labels-idx1-ubyte.gz to ./data/MNIST/raw
 </pre></div>
 </div>
 </div>
 </div>
-<p>Neural networks are typically trained using <em>mini-batches</em> for time/memory efficiency and better generalisation. Moreover, neural networks are trained using multiple <em>epochs</em> to further improve generalisation, where each <code class="docutils literal notranslate"><span class="pre">epoch</span></code> is one complete pass through the whole training data.</p>
-<p>Thus, the train and test data are provided via data loaders that iterate over the datasets in batches and epochs. The <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> parameter specifies the number of samples to be loaded at a time. The <code class="docutils literal notranslate"><span class="pre">shuffle</span></code> parameter specifies whether the data should be shuffled after every <code class="docutils literal notranslate"><span class="pre">epoch</span></code>.</p>
+<p>Here, the train and test data are provided via data loaders that iterate over the datasets in mini-batches (and epochs). The <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> parameter specifies mini-batch size, i.e. the number of samples to be loaded at a time. The <code class="docutils literal notranslate"><span class="pre">shuffle</span></code> parameter specifies whether the data should be shuffled after every <code class="docutils literal notranslate"><span class="pre">epoch</span></code>.</p>
 <p>We can verify the size of each batch.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2432,7 +2424,7 @@ for i in range(10):
 </div>
 </div>
 <div class="section" id="define-a-multilayer-neural-network">
-<h3><span class="section-number">10.1.7.2. </span>Define a multilayer neural network<a class="headerlink" href="#define-a-multilayer-neural-network" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.1.7.4. </span>Define a multilayer neural network<a class="headerlink" href="#define-a-multilayer-neural-network" title="Permalink to this headline">¶</a></h3>
 <p>Let us define a multilayer neural network as a Python class. We need to define the <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> and <code class="docutils literal notranslate"><span class="pre">forward()</span></code> methods, and PyTorch will automatically generate a <code class="docutils literal notranslate"><span class="pre">backward()</span></code> method for computing the gradients for the backward pass. We also need to define an optimizer to update the model parameters based on the computed gradients. Here, we use <em>stochastic gradient descent (with momentum)</em> as the optimization algorithm, and set the <em>learning rate</em> to 0.01 and <em>momentum</em> to 0.5. You can find out other optimizers and their parameters from the <a class="reference external" href="https://pytorch.org/docs/stable/optim.html"><code class="docutils literal notranslate"><span class="pre">torch.optim</span></code> API</a>. Finally, we define a loss function, which is the cross-entropy loss for classification.</p>
 <p>In the following, we use the <em>dropout</em> method to alleviate overfitting. Dropout is a regularization technique where randomly selected neurons are ignored during training. This forces the network to learn features in a distributed way. The <code class="docutils literal notranslate"><span class="pre">nn.Dropout</span></code> module randomly sets input units to 0 with a frequency of <code class="docutils literal notranslate"><span class="pre">p</span></code> at each step during training time.</p>
 <div class="cell docutils container">
@@ -2477,7 +2469,7 @@ print(model)
 </div>
 </div>
 <div class="section" id="train-and-evaluate-the-model">
-<h3><span class="section-number">10.1.7.3. </span>Train and evaluate the model<a class="headerlink" href="#train-and-evaluate-the-model" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.1.7.5. </span>Train and evaluate the model<a class="headerlink" href="#train-and-evaluate-the-model" title="Permalink to this headline">¶</a></h3>
 <p>Let us now define functions to <code class="docutils literal notranslate"><span class="pre">train()</span></code> and <code class="docutils literal notranslate"><span class="pre">test()</span></code> the model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
