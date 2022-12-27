@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="10.4. Quiz and summary" href="quiz-sum-ref.html" />
@@ -605,8 +607,89 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-recurrent-neural-networks">
+   10.3.1. Why recurrent neural networks?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unfolding-a-recurrent-neural-network">
+   10.3.2. Unfolding a recurrent neural network
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-the-data-for-word-classification">
+   10.3.3. Get the data for word classification
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preprocess-the-data">
+   10.3.4. Preprocess the data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#build-a-dictionary-for-names">
+     10.3.4.1. Build a dictionary for names
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#turning-names-into-tensors-using-one-hot-encoding">
+     10.3.4.2. Turning names into Tensors using one-hot encoding
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#define-a-recurrent-neural-network">
+   10.3.5. Define a recurrent neural network
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rnn-with-linear-layers">
+   10.3.6. RNN with linear layers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimisation-training-and-testing">
+   10.3.7. Optimisation, training and testing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-preparation">
+     10.3.7.1. Training preparation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#choose-a-criterion-and-an-optimiser">
+     10.3.7.2. Choose a criterion and an optimiser
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-the-network">
+     10.3.7.3. Training the Network
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-the-results">
+     10.3.7.4. Plotting the results
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluating-the-results">
+   10.3.8. Evaluating the results
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-on-user-input">
+     10.3.8.1. Running on user input
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   10.3.1. Exercises
+   10.3.9. Exercises
   </a>
  </li>
 </ul>
@@ -630,8 +713,89 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-recurrent-neural-networks">
+   10.3.1. Why recurrent neural networks?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unfolding-a-recurrent-neural-network">
+   10.3.2. Unfolding a recurrent neural network
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-the-data-for-word-classification">
+   10.3.3. Get the data for word classification
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preprocess-the-data">
+   10.3.4. Preprocess the data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#build-a-dictionary-for-names">
+     10.3.4.1. Build a dictionary for names
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#turning-names-into-tensors-using-one-hot-encoding">
+     10.3.4.2. Turning names into Tensors using one-hot encoding
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#define-a-recurrent-neural-network">
+   10.3.5. Define a recurrent neural network
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rnn-with-linear-layers">
+   10.3.6. RNN with linear layers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimisation-training-and-testing">
+   10.3.7. Optimisation, training and testing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-preparation">
+     10.3.7.1. Training preparation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#choose-a-criterion-and-an-optimiser">
+     10.3.7.2. Choose a criterion and an optimiser
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-the-network">
+     10.3.7.3. Training the Network
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-the-results">
+     10.3.7.4. Plotting the results
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluating-the-results">
+   10.3.8. Evaluating the results
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-on-user-input">
+     10.3.8.1. Running on user input
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   10.3.1. Exercises
+   10.3.9. Exercises
   </a>
  </li>
 </ul>
@@ -645,8 +809,968 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="recurrent-neural-networks">
 <h1><span class="section-number">10.3. </span>Recurrent neural networks<a class="headerlink" href="#recurrent-neural-networks" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Recurrent_neural_network">Recurrent neural networks (RNNs)</a> are a class of neural networks where connections between nodes (units/neurons) can create a directed cycle so that output from some nodes can affect subsequent input to the same node. RNNs are able to maintain an internal state that captures information about the sequence seen so far and they are able to use this internal state to make predictions about the next element in the sequence. This internal state is updated based on the input at each time step, and is used to make predictions about the next element in the sequence. RNNs are commonly used for processing <em>sequential data</em> such as text, speech, and time series.</p>
+<p>Watch the 15-minute video below for a visual explanation of recurrent neural networks.</p>
+<div class="admonition-video admonition">
+<p class="admonition-title">Video</p>
+<iframe width="700" height="394" src="https://www.youtube.com/embed/AsNTP8Kwu80?start=45&end=953" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p><a class="reference external" href="https://www.youtube.com/embed/AsNTP8Kwu80?start=45&amp;end=953">Explaining main ideas behind recurrent neural networks, by StatQuest</a></p>
+</div>
+<p>Remove or comment off the following installation if you have installed PyTorch and TorchVision already.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!pip3 install -q torch torchvision
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="why-recurrent-neural-networks">
+<h2><span class="section-number">10.3.1. </span>Why recurrent neural networks?<a class="headerlink" href="#why-recurrent-neural-networks" title="Permalink to this headline">¶</a></h2>
+<p>In the previous section, we saw how to use convolutional neural networks (CNNs) to process images. CNNs are a type of neural network that is particularly well suited to processing data that has a grid-like structure, such as images.</p>
+<p>In this section, we will see how to use recurrent neural networks (RNNs) to process sequential data. RNNs are a type of neural network that is particularly well suited to processing data that has a temporal structure, such as text. In particular, they are able to maintain an internal state that captures information about the sequence seen so far. They can process sequences of variable length, unlike CNNs which can only process fixed-size inputs.</p>
+<p>There are two key ideas behind RNNs:</p>
+<ul class="simple">
+<li><p><strong>Recurrent connections</strong>. RNNs have recurrent connections that allow information to flow through the network in a directed cycle. This allows the network to use its internal state to make predictions about the next element in the sequence.</p></li>
+<li><p><strong>Weight sharing</strong>. RNNs share weights across time steps. This means that the same weights are used to process the first element of the sequence, the second element, the third element, and so on. This allows the network to efficiently represent patterns that are consistent across time steps.</p></li>
+</ul>
+</div>
+<div class="section" id="unfolding-a-recurrent-neural-network">
+<h2><span class="section-number">10.3.2. </span>Unfolding a recurrent neural network<a class="headerlink" href="#unfolding-a-recurrent-neural-network" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#rnn-unfold"><span class="std std-numref">Fig. 10.5</span></a> shows a recurrent neural network in the compressed form on the left and the unfolded form for three time steps on the right. At each time step, the network takes an input and produces an output and a hidden state. The hidden state is then fed into the network at the next time step via the recurrent connection (labelled with ‘V’), e.g. from the hidden unit at time step <span class="math notranslate nohighlight">\(t-1\)</span> to the hidden unit at time step <span class="math notranslate nohighlight">\(t\)</span>, and from the hidden unit at time step <span class="math notranslate nohighlight">\(t\)</span> to the hidden unit at time step <span class="math notranslate nohighlight">\(t+1\)</span>. Note the weights and biases are shared across time steps.</p>
+<div class="figure align-default" id="rnn-unfold">
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/b/b5/Recurrent_neural_network_unfold.svg"><img alt="https://upload.wikimedia.org/wikipedia/commons/b/b5/Recurrent_neural_network_unfold.svg" height="300px" src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Recurrent_neural_network_unfold.svg" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.5 </span><span class="caption-text">Unfolding a recurrent neural network across time steps</span><a class="headerlink" href="#rnn-unfold" title="Permalink to this image">¶</a></p>
+</div>
+<p>Let us see how RNNs work by going through an example from the official PyTorch tutorial: <a class="reference external" href="https://pytorch.org/tutorials/intermediate/char_rnn_classification_tutorial.html">Classifying Names with a Character-Level RNN</a>.</p>
+</div>
+<div class="section" id="get-the-data-for-word-classification">
+<h2><span class="section-number">10.3.3. </span>Get the data for word classification<a class="headerlink" href="#get-the-data-for-word-classification" title="Permalink to this headline">¶</a></h2>
+<p>A character-level RNN reads words as a series of characters and outputs a prediction and “hidden state” at each step, feeding its previous hidden state into each next step. We take the final prediction to be the output, i.e. which class the word belongs to. Specifically, we will train on a few thousand surnames from 18 languages of origin, and predict which language a name is from based on the spelling.</p>
+<p>Get ready by importing the APIs needed from respective libraries and setting the random seed for reproducibility.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from __future__ import unicode_literals, print_function, division
+from io import open
+import glob
+import os
+import unicodedata
+import string
+import random
+import time
+import math
+
+import torch
+import torch.nn as nn
+from torchvision.datasets.utils import download_and_extract_archive
+
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+
+torch.manual_seed(2022)
+random.seed(2022)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Download and extract the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>root_dir = &quot;./data/&quot;
+data_url = &quot;https://download.pytorch.org/tutorial/data.zip&quot;
+download_and_extract_archive(data_url, root_dir)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.1%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.4%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.5%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.8%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.0%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.1%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.2%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11.4%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.5%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13.6%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.8%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15.9%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17.1%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18.2%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>19.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20.5%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21.6%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23.9%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25.0%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>26.1%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>28.4%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>29.6%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>31.8%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33.0%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34.1%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35.2%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36.4%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>37.5%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>38.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>39.8%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40.9%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>42.1%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>43.2%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>44.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>45.5%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>46.6%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>47.8%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>48.9%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50.0%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>51.2%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>52.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>53.4%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>54.6%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>55.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>56.8%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>58.0%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>59.1%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>61.4%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>62.5%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>64.8%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>65.9%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>67.1%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>68.2%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>69.4%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>70.5%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>71.6%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>72.8%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>73.9%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>75.0%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>76.2%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>77.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>78.4%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>79.6%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>80.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>81.9%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>83.0%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>84.1%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>85.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>86.4%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>87.5%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>88.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>89.8%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>91.0%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>92.1%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>93.2%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>94.4%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>95.5%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>96.6%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>97.8%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>98.9%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0%
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading https://download.pytorch.org/tutorial/data.zip to ./data/data.zip
+Extracting ./data/data.zip to ./data/
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Under the data/names directory, there are 18 text files named as “[Language].txt”. Each file contains a bunch of names, one name per line, mostly romanized but we still need to convert from Unicode to ASCII.</p>
+<p>Let us examine the extracted files.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def findFiles(path):
+    return glob.glob(path)
+
+
+print(findFiles(root_dir + &quot;data/names/*.txt&quot;))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;./data/data/names/Spanish.txt&#39;, &#39;./data/data/names/Arabic.txt&#39;, &#39;./data/data/names/Italian.txt&#39;, &#39;./data/data/names/Russian.txt&#39;, &#39;./data/data/names/English.txt&#39;, &#39;./data/data/names/Greek.txt&#39;, &#39;./data/data/names/Scottish.txt&#39;, &#39;./data/data/names/Portuguese.txt&#39;, &#39;./data/data/names/Vietnamese.txt&#39;, &#39;./data/data/names/Dutch.txt&#39;, &#39;./data/data/names/Japanese.txt&#39;, &#39;./data/data/names/German.txt&#39;, &#39;./data/data/names/Czech.txt&#39;, &#39;./data/data/names/Polish.txt&#39;, &#39;./data/data/names/Irish.txt&#39;, &#39;./data/data/names/French.txt&#39;, &#39;./data/data/names/Chinese.txt&#39;, &#39;./data/data/names/Korean.txt&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="preprocess-the-data">
+<h2><span class="section-number">10.3.4. </span>Preprocess the data<a class="headerlink" href="#preprocess-the-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="build-a-dictionary-for-names">
+<h3><span class="section-number">10.3.4.1. </span>Build a dictionary for names<a class="headerlink" href="#build-a-dictionary-for-names" title="Permalink to this headline">¶</a></h3>
+<p>Turn a Unicode string to plain ASCII based on <a class="reference external" href="https://stackoverflow.com/a/518232/2809427">a Stack Overflow post</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>all_letters = string.ascii_letters + &quot; .,;&#39;&quot;
+n_letters = len(all_letters)
+
+
+def unicodeToAscii(s):
+    return &quot;&quot;.join(
+        c
+        for c in unicodedata.normalize(&quot;NFD&quot;, s)
+        if unicodedata.category(c) != &quot;Mn&quot; and c in all_letters
+    )
+
+
+print(unicodeToAscii(&quot;Ślusàrski&quot;))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Slusarski
+</pre></div>
+</div>
+</div>
+</div>
+<p>Build the <code class="docutils literal notranslate"><span class="pre">category_lines</span> <span class="pre">dictionary</span></code>, which contains a list of names per language <code class="docutils literal notranslate"><span class="pre">{language:</span> <span class="pre">[names</span> <span class="pre">...]}</span></code>, by reading the files and splitting into lines.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>category_lines = {}
+all_categories = []
+
+# Read a file and split into lines
+def readLines(filename):
+    lines = open(filename, encoding=&quot;utf-8&quot;).read().strip().split(&quot;\n&quot;)
+    return [unicodeToAscii(line) for line in lines]
+
+
+for filename in findFiles(root_dir + &quot;data/names/*.txt&quot;):
+    category = os.path.splitext(os.path.basename(filename))[0]
+    all_categories.append(category)
+    lines = readLines(filename)
+    category_lines[category] = lines
+
+n_categories = len(all_categories)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us examine the dictionary by printing a few names for Italian.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(category_lines[&quot;Italian&quot;][:5])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Abandonato&#39;, &#39;Abatangelo&#39;, &#39;Abatantuono&#39;, &#39;Abate&#39;, &#39;Abategiovanni&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="turning-names-into-tensors-using-one-hot-encoding">
+<h3><span class="section-number">10.3.4.2. </span>Turning names into Tensors using one-hot encoding<a class="headerlink" href="#turning-names-into-tensors-using-one-hot-encoding" title="Permalink to this headline">¶</a></h3>
+<p>Next, we need to represent each letter in a name by a <a class="reference external" href="https://en.wikipedia.org/wiki/One-hot">one-hot</a> vector. To represent a single letter, we use a “one-hot vector” of size <code class="docutils literal notranslate"><span class="pre">&lt;1</span> <span class="pre">x</span> <span class="pre">n_letters&gt;</span></code>. A one-hot vector is filled with 0s except for a 1 at index of the current letter, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;b&quot;</span> <span class="pre">=</span> <span class="pre">&lt;0</span> <span class="pre">1</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">...&gt;</span></code>.</p>
+<p>To make a word we join a bunch of those into a 2D matrix <code class="docutils literal notranslate"><span class="pre">&lt;line_length</span> <span class="pre">x</span> <span class="pre">1</span> <span class="pre">x</span> <span class="pre">n_letters&gt;</span></code>. That extra 1 dimension is because PyTorch assumes everything is in batches - we’re just using a batch size of 1 here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Find the letter index from all_letters, e.g. &quot;a&quot; = 0
+def letterToIndex(letter):
+    return all_letters.find(letter)
+
+
+# Turn a letter into a &lt;1 x n_letters&gt; Tensor
+def letterToTensor(letter):
+    tensor = torch.zeros(1, n_letters)
+    tensor[0][letterToIndex(letter)] = 1
+    return tensor
+
+
+# Turn a line into a &lt;line_length x 1 x n_letters&gt; tensor
+def lineToTensor(line):
+    tensor = torch.zeros(len(line), 1, n_letters)
+    for li, letter in enumerate(line):
+        tensor[li][0][letterToIndex(letter)] = 1
+    return tensor
+
+
+print(letterToTensor(&quot;J&quot;))
+print(lineToTensor(&quot;Jones&quot;).size())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.,
+         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+         0., 0., 0.]])
+torch.Size([5, 1, 57])
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following is how a single name is represented as a tensor.</p>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(lineToTensor(&quot;Jones&quot;))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+          0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+          0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+          0., 0., 0., 0., 0., 0.]],
+
+        [[0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.,
+          0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+          0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+          0., 0., 0., 0., 0., 0.]],
+
+        [[0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0.,
+          0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+          0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+          0., 0., 0., 0., 0., 0.]],
+
+        [[0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+          0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+          0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+          0., 0., 0., 0., 0., 0.]],
+
+        [[0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+          0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+          0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+          0., 0., 0., 0., 0., 0.]]])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="define-a-recurrent-neural-network">
+<h2><span class="section-number">10.3.5. </span>Define a recurrent neural network<a class="headerlink" href="#define-a-recurrent-neural-network" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="rnn-with-linear-layers">
+<h2><span class="section-number">10.3.6. </span>RNN with linear layers<a class="headerlink" href="#rnn-with-linear-layers" title="Permalink to this headline">¶</a></h2>
+<p>We can implement a simple recurrent neural network (RNN) in PyTorch using regular feed-forward layers below, with two linear (fully-connected) layers operating on an input and hidden state and a LogSoftmax layer before the final output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class RNN(nn.Module):
+    def __init__(self, input_size, hidden_size, output_size):
+        super(RNN, self).__init__()
+
+        self.hidden_size = hidden_size
+
+        self.i2h = nn.Linear(input_size + hidden_size, hidden_size)  # input to hidden
+        self.i2o = nn.Linear(input_size + hidden_size, output_size)  # input to output
+        self.softmax = nn.LogSoftmax(dim=1)
+
+    def forward(self, input, hidden):
+        combined = torch.cat((input, hidden), 1)
+        hidden = self.i2h(combined)
+        output = self.i2o(combined)
+        output = self.softmax(output)
+        return output, hidden
+
+    def initHidden(self):
+        return torch.zeros(1, self.hidden_size)
+
+
+n_hidden = 128
+rnn = RNN(n_letters, n_hidden, n_categories)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This RNN is illustrated in <a class="reference internal" href="#rnn-module"><span class="std std-numref">Fig. 10.6</span></a> below.</p>
+<div class="figure align-default" id="rnn-module">
+<a class="reference internal image-reference" href="https://i.imgur.com/Z2xbySO.png"><img alt="https://i.imgur.com/Z2xbySO.png" src="https://i.imgur.com/Z2xbySO.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.6 </span><span class="caption-text">A recurrent neural network module with two linear (fully-connected) layers.</span><a class="headerlink" href="#rnn-module" title="Permalink to this image">¶</a></p>
+</div>
+<p>To run a step of this RNN, we need to provide an input (the Tensor for the current letter in this example) and a previous hidden state (with initialisation to zeros). At each step, we get the output as the probability of each language and a next hidden state for the next
+step.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>input = letterToTensor(&quot;A&quot;)
+hidden = torch.zeros(1, n_hidden)
+
+output, next_hidden = rnn(input, hidden)
+</pre></div>
+</div>
+</div>
+</div>
+<p>For efficiency, we will not create a new Tensor for every step. Instead, we will use <code class="docutils literal notranslate"><span class="pre">lineToTensor</span></code> rather than <code class="docutils literal notranslate"><span class="pre">letterToTensor</span></code> and use slices of <code class="docutils literal notranslate"><span class="pre">lineTensor</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>input = lineToTensor(&quot;Albert&quot;)
+hidden = torch.zeros(1, n_hidden)
+
+output, next_hidden = rnn(input[0], hidden)
+print(output)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-2.8592, -2.8253, -2.8707, -2.8112, -2.9611, -2.9083, -2.9330, -2.9325,
+         -2.9786, -2.9515, -2.8053, -2.8357, -2.9486, -2.9308, -2.8328, -2.8497,
+         -2.9542, -2.8667]], grad_fn=&lt;LogSoftmaxBackward0&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, the output is a <code class="docutils literal notranslate"><span class="pre">&lt;1</span> <span class="pre">x</span> <span class="pre">18&gt;</span></code> Tensor (<span class="math notranslate nohighlight">\(n_categories=18\)</span>), where every item is the likelihood of that category (higher is more likely).</p>
+</div>
+<div class="section" id="optimisation-training-and-testing">
+<h2><span class="section-number">10.3.7. </span>Optimisation, training and testing<a class="headerlink" href="#optimisation-training-and-testing" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="training-preparation">
+<h3><span class="section-number">10.3.7.1. </span>Training preparation<a class="headerlink" href="#training-preparation" title="Permalink to this headline">¶</a></h3>
+<p>Before training, we make a few helper functions ready. The first is to interpret the output of the network, which we know to be a likelihood of each category. We can use <code class="docutils literal notranslate"><span class="pre">Tensor.topk</span></code> to get the index of the greatest value:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def categoryFromOutput(output):
+    top_n, top_i = output.topk(1)
+    category_i = top_i[0].item()
+    return all_categories[category_i], category_i
+
+
+print(categoryFromOutput(output))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;Japanese&#39;, 10)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We also need a quick way to get a training example (a name and its language) randomly. We show 10 such random examples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def randomChoice(list):
+    return list[random.randint(0, len(list) - 1)]
+
+
+def randomTrainingExample():
+    category = randomChoice(all_categories)
+    line = randomChoice(category_lines[category])
+    category_tensor = torch.tensor([all_categories.index(category)], dtype=torch.long)
+    line_tensor = lineToTensor(line)
+    return category, line, category_tensor, line_tensor
+
+
+for i in range(10):
+    category, line, category_tensor, line_tensor = randomTrainingExample()
+    print(&quot;category =&quot;, category, &quot;/ line =&quot;, line)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>category = Korean / line = Ko
+category = Irish / line = O&#39;Donnell
+category = Dutch / line = Buggenum
+category = Chinese / line = Feng
+category = Japanese / line = Takishita
+category = Spanish / line = Robles
+category = Dutch / line = Rumpade
+category = Korean / line = Shim
+category = Arabic / line = Gerges
+category = Vietnamese / line = Hoang
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="choose-a-criterion-and-an-optimiser">
+<h3><span class="section-number">10.3.7.2. </span>Choose a criterion and an optimiser<a class="headerlink" href="#choose-a-criterion-and-an-optimiser" title="Permalink to this headline">¶</a></h3>
+<p>We choose the loss function <code class="docutils literal notranslate"><span class="pre">nn.NLLLoss</span></code> since the last layer of the RNN is <code class="docutils literal notranslate"><span class="pre">nn.LogSoftmax</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>learning_rate = 0.005  # A higher value may explode and a lower value may not learn.
+
+criterion = nn.NLLLoss()
+optimizer = torch.optim.SGD(rnn.parameters(), lr=learning_rate)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="training-the-network">
+<h3><span class="section-number">10.3.7.3. </span>Training the Network<a class="headerlink" href="#training-the-network" title="Permalink to this headline">¶</a></h3>
+<p>Now, we are ready to train this RNN by showing it a bunch of examples, having it make predictions, and computing the loss for gradient descent.</p>
+<p>Each loop of training will:</p>
+<ul class="simple">
+<li><p>Create input and target tensors</p></li>
+<li><p>Create a zeroed initial hidden state</p></li>
+<li><p>Read each letter in and keep hidden state for next letter</p></li>
+<li><p>Compare final output to target</p></li>
+<li><p>Backpropagate</p></li>
+<li><p>Return the output and loss</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def train(category_tensor, line_tensor):
+    hidden = rnn.initHidden()
+
+    rnn.zero_grad()  # Clear the gradients
+
+    for i in range(line_tensor.size()[0]):
+        output, hidden = rnn(line_tensor[i], hidden)
+
+    loss = criterion(output, category_tensor)
+    loss.backward()
+    optimizer.step()
+
+    return output, loss.item()
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we run this RNN with a bunch of examples. Since the <code class="docutils literal notranslate"><span class="pre">train</span></code> function returns both the output and loss we can print its predictions and keep track of loss for plotting. Since there are 1000s of examples, we print only every <code class="docutils literal notranslate"><span class="pre">print_every</span></code> examples and take an average of the loss.</p>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>n_iters = 60000
+print_every = 2000
+plot_every = 500
+
+# Keep track of losses for plotting
+current_loss = 0
+all_losses = []
+
+
+def timeSince(since):
+    now = time.time()
+    s = now - since
+    m = math.floor(s / 60)
+    s -= m * 60
+    return &quot;%dm %ds&quot; % (m, s)
+
+
+start = time.time()
+
+for iter in range(1, n_iters + 1):
+    category, line, category_tensor, line_tensor = randomTrainingExample()
+    output, loss = train(category_tensor, line_tensor)
+    current_loss += loss
+
+    # Print iter number, loss, name and prediction
+    if iter % print_every == 0:
+        predicted, predicted_i = categoryFromOutput(output)
+        correct = &quot;✓&quot; if predicted == category else &quot;✗ (%s)&quot; % category
+        print(
+            &quot;%d %d%% (%s) %.4f %s / %s %s&quot;
+            % (
+                iter,
+                iter / n_iters * 100,
+                timeSince(start),
+                loss,
+                line,
+                predicted,
+                correct,
+            )
+        )
+
+    # Add current loss avg to list of losses
+    if iter % plot_every == 0:
+        all_losses.append(current_loss / plot_every)
+        current_loss = 0
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2000 3% (0m 2s) 2.8376 Aucciello / Spanish ✗ (Italian)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4000 6% (0m 4s) 2.4606 Corraidhin / Irish ✓
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6000 10% (0m 6s) 2.4083 Whitelaw / Greek ✗ (English)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8000 13% (0m 8s) 2.3917 Tsapov / Arabic ✗ (Russian)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10000 16% (0m 10s) 1.9699 Mendez / Dutch ✗ (Spanish)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12000 20% (0m 12s) 3.1747 Guirguis / Greek ✗ (Arabic)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14000 23% (0m 14s) 2.3025 Samuel / Arabic ✗ (Irish)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16000 26% (0m 16s) 2.1423 Mustafa / Japanese ✗ (Arabic)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18000 30% (0m 19s) 3.2822 Jatsyk / Polish ✗ (Russian)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20000 33% (0m 21s) 0.4617 Kikkawa / Japanese ✓
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22000 36% (0m 23s) 1.2303 Mnogogreshny / Russian ✓
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>24000 40% (0m 25s) 2.5458 Fonseca / Spanish ✗ (Portuguese)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>26000 43% (0m 27s) 2.1870 Pae / Chinese ✗ (Korean)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>28000 46% (0m 29s) 2.6836 Nelson / Scottish ✗ (English)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30000 50% (0m 31s) 0.2027 Horiatis / Greek ✓
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32000 53% (0m 33s) 1.1684 Pho / Vietnamese ✓
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34000 56% (0m 35s) 1.6234 Beringer / German ✗ (French)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36000 60% (0m 37s) 1.4082 Lian / Chinese ✓
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>38000 63% (0m 39s) 3.3484 Ba / Korean ✗ (Arabic)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40000 66% (0m 41s) 1.1253 Rian / Irish ✓
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>42000 70% (0m 44s) 2.1471 Cerney / Portuguese ✗ (Czech)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>44000 73% (0m 46s) 1.4074 Van tonder / German ✓
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>46000 76% (0m 48s) 2.2301 Lawrenz / Scottish ✗ (German)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>48000 80% (0m 50s) 0.4574 Paitakes / Greek ✓
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50000 83% (0m 52s) 0.1720 Quyen / Vietnamese ✓
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>52000 86% (0m 54s) 3.2283 Hoffman / Irish ✗ (German)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>54000 90% (0m 56s) 2.3235 Jagoda / Japanese ✗ (Polish)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>56000 93% (0m 58s) 1.7270 Tuma / Japanese ✗ (Arabic)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>58000 96% (1m 0s) 0.4139 Bazzoli / Italian ✓
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60000 100% (1m 2s) 1.5518 Rana / Korean ✗ (Italian)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plotting-the-results">
+<h3><span class="section-number">10.3.7.4. </span>Plotting the results<a class="headerlink" href="#plotting-the-results" title="Permalink to this headline">¶</a></h3>
+<p>Plotting the historical loss from <code class="docutils literal notranslate"><span class="pre">all_losses</span></code> shows how the network learned over time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure()
+plt.plot(all_losses)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0d34d5b880&gt;]
+</pre></div>
+</div>
+<img alt="../_images/recurrent-nn_37_1.png" src="../_images/recurrent-nn_37_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="evaluating-the-results">
+<h2><span class="section-number">10.3.8. </span>Evaluating the results<a class="headerlink" href="#evaluating-the-results" title="Permalink to this headline">¶</a></h2>
+<p>To see how well the network performs on different categories, we will create a confusion matrix, indicating for every actual language (rows) which language the network has predicted to be (columns). To calculate the confusion matrix, a bunch of samples are run through the network with <code class="docutils literal notranslate"><span class="pre">evaluate()</span></code>, which is the same as <code class="docutils literal notranslate"><span class="pre">train()</span></code> minus the backprop.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Keep track of correct predictions in a confusion matrix
+confusion = torch.zeros(n_categories, n_categories)
+n_confusion = 10000
+
+# Just return an output given a line
+def evaluate(line_tensor):
+    hidden = rnn.initHidden()
+
+    for i in range(line_tensor.size()[0]):
+        output, hidden = rnn(line_tensor[i], hidden)
+
+    return output
+
+
+# Go through a bunch of examples and record which are correctly predicted
+for i in range(n_confusion):
+    category, line, category_tensor, line_tensor = randomTrainingExample()
+    output = evaluate(line_tensor)
+    predicted, predicted_i = categoryFromOutput(output)
+    category_i = all_categories.index(category)
+    confusion[category_i][predicted_i] += 1
+
+# Normalize by dividing every row by its sum
+for i in range(n_categories):
+    confusion[i] = confusion[i] / confusion[i].sum()
+
+# Set up plot
+fig = plt.figure()
+ax = fig.add_subplot(111)
+cax = ax.matshow(confusion.numpy())
+fig.colorbar(cax)
+
+# Set up axes
+ax.set_xticklabels([&quot;&quot;] + all_categories, rotation=90)
+ax.set_yticklabels([&quot;&quot;] + all_categories)
+
+# Force label at every tick
+ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
+ax.yaxis.set_major_locator(ticker.MultipleLocator(1))
+
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2627/1587328324.py:34: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels([&quot;&quot;] + all_categories, rotation=90)
+/tmp/ipykernel_2627/1587328324.py:35: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_yticklabels([&quot;&quot;] + all_categories)
+</pre></div>
+</div>
+<img alt="../_images/recurrent-nn_39_1.png" src="../_images/recurrent-nn_39_1.png" />
+</div>
+</div>
+<p>We can pick out bright spots off the main axis that show which languages it has most confusion with, e.g. Chinese for Korean, and Spanish for Italian. It seems to do very well with Greek, and very poorly with English (perhaps because of overlap with other languages).</p>
+<div class="section" id="running-on-user-input">
+<h3><span class="section-number">10.3.8.1. </span>Running on user input<a class="headerlink" href="#running-on-user-input" title="Permalink to this headline">¶</a></h3>
+<p>We can also run the network on user input to see what it predicts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def predict(input_line, n_predictions=3):
+    print(&quot;\n&gt; %s&quot; % input_line)
+    with torch.no_grad():
+        output = evaluate(lineToTensor(input_line))
+
+        # Get top N categories
+        topv, topi = output.topk(n_predictions, 1, True)
+        predictions = []
+
+        for i in range(n_predictions):
+            value = topv[0][i].item()
+            category_index = topi[0][i].item()
+            print(&quot;(%.2f) %s&quot; % (value, all_categories[category_index]))
+            predictions.append([value, all_categories[category_index]])
+
+
+predict(&quot;Dovesky&quot;)
+predict(&quot;Jackson&quot;)
+predict(&quot;Zhou&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&gt; Dovesky
+(-0.79) Russian
+(-0.81) Czech
+(-3.13) Polish
+
+&gt; Jackson
+(-0.35) Scottish
+(-1.81) English
+(-2.82) Russian
+
+&gt; Zhou
+(-0.84) Korean
+(-1.16) Chinese
+(-2.32) Vietnamese
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="exercises">
-<h2><span class="section-number">10.3.1. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.3.9. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <p>min 3 max 5</p>
 </div>
 </div>
