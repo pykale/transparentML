@@ -1237,7 +1237,7 @@ print(&quot;Using PyTorch version:&quot;, torch.__version__, &quot; Device:&quot
 </div>
 <div class="section" id="pytorch-data-loader-and-transforms">
 <h3><span class="section-number">10.1.7.2. </span>PyTorch data loader and transforms<a class="headerlink" href="#pytorch-data-loader-and-transforms" title="Permalink to this headline">¶</a></h3>
-<p>In PyTorch, we can use the <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> class to create an iterator that provides a stream of mini-batches. The <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> class takes a dataset as input, randomly groups the training data into <strong>mini-batches</strong> with the specified batch size, and returns an iterator over all these mini-batches. Each data point belongs to only one mini-batch. The <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> class also provides a <code class="docutils literal notranslate"><span class="pre">shuffle</span></code> parameter to shuffle the data after every epoch for better generalisation.</p>
+<p><a class="reference external" href="https://pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader"><code class="docutils literal notranslate"><span class="pre">torch.utils.data.DataLoader</span></code></a> combines a dataset and a sampler to iterate over the dataset. Thus, we use the <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> to create an iterator that provides a stream of mini-batches. The <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> class takes a dataset as input, randomly groups the training data into <strong>mini-batches</strong> with the specified batch size, and returns an iterator over all these mini-batches. Each data point belongs to only one mini-batch. The <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> class also provides a <code class="docutils literal notranslate"><span class="pre">shuffle</span></code> parameter to shuffle the data after every epoch for better generalisation.</p>
 <p>The <a class="reference external" href="https://pytorch.org/vision/stable/transforms.html"><code class="docutils literal notranslate"><span class="pre">torchvision.transforms</span></code></a> module provides a variety of functions to perform common image transformations. We will use the <code class="docutils literal notranslate"><span class="pre">ToTensor</span></code> function to convert the images to PyTorch tensors. The output of <code class="docutils literal notranslate"><span class="pre">torchvision</span></code> <code class="docutils literal notranslate"><span class="pre">datasets</span></code> after loading are PILImage images of range [0, 1]. <code class="docutils literal notranslate"><span class="pre">transforms.ToTensor()</span></code> Convert a <code class="docutils literal notranslate"><span class="pre">PIL</span></code> Image or <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> (<span class="math notranslate nohighlight">\(H \times W \times C\)</span>) in the range [0, 255] to torch.FloatTensor of shape <span class="math notranslate nohighlight">\(C \times H \times W\)</span> in the range [0.0, 1.0].</p>
 </div>
 <div class="section" id="load-the-mnist-dataset">
@@ -1601,10 +1601,6 @@ test_loader = torch.utils.data.DataLoader(
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>37.0%
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
-Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./data/MNIST/raw/train-images-idx3-ubyte.gz
-</pre></div>
-</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>37.4%
 </pre></div>
 </div>
@@ -1804,6 +1800,10 @@ Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./dat
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>59.2%
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./data/MNIST/raw/train-images-idx3-ubyte.gz
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>59.5%
@@ -2347,9 +2347,6 @@ Extracting ./data/MNIST/raw/train-labels-idx1-ubyte.gz to ./data/MNIST/raw
 Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
 Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz to ./data/MNIST/raw/t10k-images-idx3-ubyte.gz
 Extracting ./data/MNIST/raw/t10k-images-idx3-ubyte.gz to ./data/MNIST/raw
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0%
