@@ -688,8 +688,13 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#advanced-rnns">
+   10.3.9. Advanced RNNs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   10.3.9. Exercises
+   10.3.10. Exercises
   </a>
  </li>
 </ul>
@@ -794,8 +799,13 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#advanced-rnns">
+   10.3.9. Advanced RNNs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   10.3.9. Exercises
+   10.3.10. Exercises
   </a>
  </li>
 </ul>
@@ -841,7 +851,7 @@ const thebe_selector_output = ".output, .cell_output"
 <a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/b/b5/Recurrent_neural_network_unfold.svg"><img alt="https://upload.wikimedia.org/wikipedia/commons/b/b5/Recurrent_neural_network_unfold.svg" height="300px" src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Recurrent_neural_network_unfold.svg" /></a>
 <p class="caption"><span class="caption-number">Fig. 10.5 </span><span class="caption-text">Unfolding a recurrent neural network across time steps</span><a class="headerlink" href="#rnn-unfold" title="Permalink to this image">¶</a></p>
 </div>
-<p>Let us see how RNNs work by going through an example from the official PyTorch tutorial: <a class="reference external" href="https://pytorch.org/tutorials/intermediate/char_rnn_classification_tutorial.html">Classifying Names with a Character-Level RNN</a>.</p>
+<p>Let us see how RNNs work by going through an example adapted from the official PyTorch tutorial <a class="reference external" href="https://pytorch.org/tutorials/intermediate/char_rnn_classification_tutorial.html">Classifying Names with a Character-Level RNN</a> with some modifications.</p>
 </div>
 <div class="section" id="get-the-data-for-word-classification">
 <h2><span class="section-number">10.3.3. </span>Get the data for word classification<a class="headerlink" href="#get-the-data-for-word-classification" title="Permalink to this headline">¶</a></h2>
@@ -873,7 +883,7 @@ random.seed(2022)
 </div>
 </div>
 <p>Download and extract the data.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>root_dir = &quot;./data/&quot;
 data_url = &quot;https://download.pytorch.org/tutorial/data.zip&quot;
@@ -910,6 +920,9 @@ download_and_extract_archive(data_url, root_dir)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11.4%
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading https://download.pytorch.org/tutorial/data.zip to ./data/data.zip
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.5%
@@ -1146,8 +1159,7 @@ download_and_extract_archive(data_url, root_dir)
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0%
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading https://download.pytorch.org/tutorial/data.zip to ./data/data.zip
-Extracting ./data/data.zip to ./data/
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./data/data.zip to ./data/
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -1208,6 +1220,7 @@ print(unicodeToAscii(&quot;Ślusàrski&quot;))
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>category_lines = {}
 all_categories = []
+
 
 # Read a file and split into lines
 def readLines(filename):
@@ -1552,91 +1565,91 @@ for iter in range(1, n_iters + 1):
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2000 3% (0m 2s) 2.8376 Aucciello / Spanish ✗ (Italian)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4000 6% (0m 4s) 2.4606 Corraidhin / Irish ✓
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4000 6% (0m 5s) 2.4606 Corraidhin / Irish ✓
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6000 10% (0m 6s) 2.4083 Whitelaw / Greek ✗ (English)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6000 10% (0m 7s) 2.4083 Whitelaw / Greek ✗ (English)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8000 13% (0m 8s) 2.3917 Tsapov / Arabic ✗ (Russian)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8000 13% (0m 10s) 2.3917 Tsapov / Arabic ✗ (Russian)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10000 16% (0m 10s) 1.9699 Mendez / Dutch ✗ (Spanish)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10000 16% (0m 12s) 1.9699 Mendez / Dutch ✗ (Spanish)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12000 20% (0m 12s) 3.1747 Guirguis / Greek ✗ (Arabic)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12000 20% (0m 15s) 3.1747 Guirguis / Greek ✗ (Arabic)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14000 23% (0m 14s) 2.3025 Samuel / Arabic ✗ (Irish)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14000 23% (0m 17s) 2.3025 Samuel / Arabic ✗ (Irish)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16000 26% (0m 16s) 2.1423 Mustafa / Japanese ✗ (Arabic)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16000 26% (0m 20s) 2.1423 Mustafa / Japanese ✗ (Arabic)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18000 30% (0m 19s) 3.2822 Jatsyk / Polish ✗ (Russian)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18000 30% (0m 22s) 3.2822 Jatsyk / Polish ✗ (Russian)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20000 33% (0m 21s) 0.4617 Kikkawa / Japanese ✓
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20000 33% (0m 25s) 0.4617 Kikkawa / Japanese ✓
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22000 36% (0m 23s) 1.2303 Mnogogreshny / Russian ✓
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22000 36% (0m 28s) 1.2303 Mnogogreshny / Russian ✓
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>24000 40% (0m 25s) 2.5458 Fonseca / Spanish ✗ (Portuguese)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>24000 40% (0m 30s) 2.5458 Fonseca / Spanish ✗ (Portuguese)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>26000 43% (0m 27s) 2.1870 Pae / Chinese ✗ (Korean)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>26000 43% (0m 33s) 2.1870 Pae / Chinese ✗ (Korean)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>28000 46% (0m 29s) 2.6836 Nelson / Scottish ✗ (English)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>28000 46% (0m 35s) 2.6836 Nelson / Scottish ✗ (English)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30000 50% (0m 31s) 0.2027 Horiatis / Greek ✓
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30000 50% (0m 38s) 0.2027 Horiatis / Greek ✓
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32000 53% (0m 33s) 1.1684 Pho / Vietnamese ✓
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32000 53% (0m 40s) 1.1684 Pho / Vietnamese ✓
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34000 56% (0m 35s) 1.6234 Beringer / German ✗ (French)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34000 56% (0m 43s) 1.6234 Beringer / German ✗ (French)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36000 60% (0m 37s) 1.4082 Lian / Chinese ✓
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36000 60% (0m 45s) 1.4082 Lian / Chinese ✓
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>38000 63% (0m 39s) 3.3484 Ba / Korean ✗ (Arabic)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>38000 63% (0m 48s) 3.3484 Ba / Korean ✗ (Arabic)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40000 66% (0m 41s) 1.1253 Rian / Irish ✓
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40000 66% (0m 50s) 1.1253 Rian / Irish ✓
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>42000 70% (0m 44s) 2.1471 Cerney / Portuguese ✗ (Czech)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>42000 70% (0m 53s) 2.1471 Cerney / Portuguese ✗ (Czech)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>44000 73% (0m 46s) 1.4074 Van tonder / German ✓
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>44000 73% (0m 55s) 1.4074 Van tonder / German ✓
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>46000 76% (0m 48s) 2.2301 Lawrenz / Scottish ✗ (German)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>46000 76% (0m 58s) 2.2301 Lawrenz / Scottish ✗ (German)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>48000 80% (0m 50s) 0.4574 Paitakes / Greek ✓
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>48000 80% (1m 0s) 0.4574 Paitakes / Greek ✓
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50000 83% (0m 52s) 0.1720 Quyen / Vietnamese ✓
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50000 83% (1m 3s) 0.1720 Quyen / Vietnamese ✓
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>52000 86% (0m 54s) 3.2283 Hoffman / Irish ✗ (German)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>52000 86% (1m 5s) 3.2283 Hoffman / Irish ✗ (German)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>54000 90% (0m 56s) 2.3235 Jagoda / Japanese ✗ (Polish)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>54000 90% (1m 8s) 2.3235 Jagoda / Japanese ✗ (Polish)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>56000 93% (0m 58s) 1.7270 Tuma / Japanese ✗ (Arabic)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>56000 93% (1m 10s) 1.7270 Tuma / Japanese ✗ (Arabic)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>58000 96% (1m 0s) 0.4139 Bazzoli / Italian ✓
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>58000 96% (1m 13s) 0.4139 Bazzoli / Italian ✓
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60000 100% (1m 2s) 1.5518 Rana / Korean ✗ (Italian)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60000 100% (1m 15s) 1.5518 Rana / Korean ✗ (Italian)
 </pre></div>
 </div>
 </div>
@@ -1653,7 +1666,7 @@ plt.plot(all_losses)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0d34d5b880&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb051ebfb50&gt;]
 </pre></div>
 </div>
 <img alt="../_images/recurrent-nn_37_1.png" src="../_images/recurrent-nn_37_1.png" />
@@ -1669,6 +1682,7 @@ plt.plot(all_losses)
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Keep track of correct predictions in a confusion matrix
 confusion = torch.zeros(n_categories, n_categories)
 n_confusion = 10000
+
 
 # Just return an output given a line
 def evaluate(line_tensor):
@@ -1711,16 +1725,16 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2627/1587328324.py:34: UserWarning: FixedFormatter should only be used together with FixedLocator
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2169/1638848402.py:35: UserWarning: FixedFormatter should only be used together with FixedLocator
   ax.set_xticklabels([&quot;&quot;] + all_categories, rotation=90)
-/tmp/ipykernel_2627/1587328324.py:35: UserWarning: FixedFormatter should only be used together with FixedLocator
+/tmp/ipykernel_2169/1638848402.py:36: UserWarning: FixedFormatter should only be used together with FixedLocator
   ax.set_yticklabels([&quot;&quot;] + all_categories)
 </pre></div>
 </div>
 <img alt="../_images/recurrent-nn_39_1.png" src="../_images/recurrent-nn_39_1.png" />
 </div>
 </div>
-<p>We can pick out bright spots off the main axis that show which languages it has most confusion with, e.g. Chinese for Korean, and Spanish for Italian. It seems to do very well with Greek, and very poorly with English (perhaps because of overlap with other languages).</p>
+<p>We can pick out bright spots off the main axis that show which languages it has most confusion with, e.g. Chinese for Korean. It seems to do very well with Greek, and very poorly with English (perhaps because of overlap with other languages).</p>
 <div class="section" id="running-on-user-input">
 <h3><span class="section-number">10.3.8.1. </span>Running on user input<a class="headerlink" href="#running-on-user-input" title="Permalink to this headline">¶</a></h3>
 <p>We can also run the network on user input to see what it predicts.</p>
@@ -1742,22 +1756,22 @@ plt.show()
             predictions.append([value, all_categories[category_index]])
 
 
-predict(&quot;Dovesky&quot;)
-predict(&quot;Jackson&quot;)
+predict(&quot;Hinton&quot;)
+predict(&quot;Schmidhuber&quot;)
 predict(&quot;Zhou&quot;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&gt; Dovesky
-(-0.79) Russian
-(-0.81) Czech
-(-3.13) Polish
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&gt; Hinton
+(-0.96) Scottish
+(-1.27) English
+(-2.34) Russian
 
-&gt; Jackson
-(-0.35) Scottish
-(-1.81) English
-(-2.82) Russian
+&gt; Schmidhuber
+(-0.26) German
+(-2.62) Czech
+(-3.11) English
 
 &gt; Zhou
 (-0.84) Korean
@@ -1767,10 +1781,15 @@ predict(&quot;Zhou&quot;)
 </div>
 </div>
 </div>
+<p>Do you think the predictions are reasonable?</p>
 </div>
+</div>
+<div class="section" id="advanced-rnns">
+<h2><span class="section-number">10.3.9. </span>Advanced RNNs<a class="headerlink" href="#advanced-rnns" title="Permalink to this headline">¶</a></h2>
+<p>There are more advanced RNNs that can be used for sequence modelling, such as the <a class="reference external" href="https://en.wikipedia.org/wiki/Long_short-term_memory">Long Short-Term Memory (LSTM)</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Gated_recurrent_unit">Gated Recurrent Unit (GRU)</a>, and [Transformer](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model). These networks are more complex and are beyond the scope of this course. However, you can find more information about them in the <a class="reference external" href="https://pytorch.org/docs/stable/nn.html#recurrent-layers">PyTorch documentation</a>.</p>
 </div>
 <div class="section" id="exercises">
-<h2><span class="section-number">10.3.9. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.3.10. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <p>min 3 max 5</p>
 </div>
 </div>

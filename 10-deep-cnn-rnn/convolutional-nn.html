@@ -915,9 +915,6 @@ test_loader = torch.utils.data.DataLoader(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to ./data/cifar-10-python.tar.gz
-</pre></div>
-</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0%
 </pre></div>
 </div>
@@ -958,6 +955,9 @@ test_loader = torch.utils.data.DataLoader(
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3%
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to ./data/cifar-10-python.tar.gz
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3%
@@ -17112,8 +17112,8 @@ print(loss.grad_fn.next_functions[0][0])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;NllLossBackward0 object at 0x7fb812706760&gt;
-&lt;LogSoftmaxBackward0 object at 0x7fb812706a60&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;NllLossBackward0 object at 0x7f4ea89bcf70&gt;
+&lt;LogSoftmaxBackward0 object at 0x7f4ea89bc9a0&gt;
 </pre></div>
 </div>
 </div>
