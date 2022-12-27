@@ -915,52 +915,52 @@ test_loader = torch.utils.data.DataLoader(
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3%
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to ./data/cifar-10-python.tar.gz
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0%
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0%
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1%
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1%
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1%
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1%
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1%
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2%
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2%
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2%
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2%
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2%
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2%
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3%
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3%
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3%
@@ -17041,10 +17041,10 @@ optimizer = optim.SGD(myCNN.parameters(), lr=0.001, momentum=0.9)
 </ul>
 </li>
 </ul>
-<p>Now, we loop over our data iterator, and feed the inputs to the network and optimize. Here, I set <code class="docutils literal notranslate"><span class="pre">max_epochs</span></code> to 2 for quick testing. In practice, more epochs typically lead to better performance.</p>
+<p>Now, we loop over our data iterator, and feed the inputs to the network and optimize. Here, we set <code class="docutils literal notranslate"><span class="pre">max_epochs</span></code> to 3 for quick testing. In practice, more epochs typically lead to better performance.</p>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>max_epochs = 2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>max_epochs = 3
 for epoch in range(max_epochs):  # loop over the dataset multiple times
     running_loss = 0.0
     for i, data in enumerate(train_loader, 0):
@@ -17107,6 +17107,24 @@ print(&quot;Finished Training!&quot;)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 12000] loss: 1.289
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3,  2000] loss: 1.229
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3,  4000] loss: 1.221
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3,  6000] loss: 1.200
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3,  8000] loss: 1.201
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3, 10000] loss: 1.189
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3, 12000] loss: 1.184
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Finished Training!
 </pre></div>
 </div>
@@ -17121,8 +17139,8 @@ print(loss.grad_fn.next_functions[0][0])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;NllLossBackward0 object at 0x7f05ecf4efd0&gt;
-&lt;LogSoftmaxBackward0 object at 0x7f05ecf4e820&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;NllLossBackward0 object at 0x7f8a5ceb6100&gt;
+&lt;LogSoftmaxBackward0 object at 0x7f8a5ceb69d0&gt;
 </pre></div>
 </div>
 </div>
@@ -17200,12 +17218,12 @@ print(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicted:    cat automobile  ship  ship
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicted:    cat automobile automobile airplane
 </pre></div>
 </div>
 </div>
 </div>
-<p>We should get three correct and one wrong.</p>
+<p>We should get at least two correct.</p>
 <p>Let us look at how the network performs on the whole dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -17226,12 +17244,12 @@ print(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy of the network on the 10000 test images: 55 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy of the network on the 10000 test images: 57 %
 </pre></div>
 </div>
 </div>
 </div>
-<p>We should get something around 50%, which is much better than random guessing.</p>
+<p>We should get something above 50%, which is much better than random guessing.</p>
 <p>Let us examine what are the classes that performed well, and the classes that did not perform well:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -17257,21 +17275,21 @@ for i in range(10):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy of airplane : 63 %
-Accuracy of automobile : 67 %
-Accuracy of  bird : 30 %
-Accuracy of   cat : 46 %
-Accuracy of  deer : 41 %
-Accuracy of   dog : 39 %
-Accuracy of  frog : 56 %
-Accuracy of horse : 70 %
-Accuracy of  ship : 71 %
-Accuracy of truck : 62 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy of airplane : 67 %
+Accuracy of automobile : 68 %
+Accuracy of  bird : 35 %
+Accuracy of   cat : 42 %
+Accuracy of  deer : 45 %
+Accuracy of   dog : 56 %
+Accuracy of  frog : 60 %
+Accuracy of horse : 62 %
+Accuracy of  ship : 68 %
+Accuracy of truck : 73 %
 </pre></div>
 </div>
 </div>
 </div>
-<p>We can see that the network performs well on some classes but poorly on others, noting that we only trained it for 2 epochs.</p>
+<p>We can see that the network performs well on some classes but poorly on others, noting that we only trained it for 3 epochs.</p>
 </div>
 </div>
 <div class="section" id="exercises">
