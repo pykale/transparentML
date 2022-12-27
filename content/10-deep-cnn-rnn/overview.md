@@ -5,7 +5,7 @@
 <!-- File names should be all lowercase, with words separated by hyphens (-), and no spaces.  Each chapter must include an "overview.md" and "quiz-sum-ref.md"-->
 
 ```{admonition} Status
-Drafting
+Ready for review and feedback
 ```
 
 ```{admonition} Objectives
@@ -15,7 +15,7 @@ Drafting
 - Apply recurrent NNs to document classification.
 ```
 
-**Expected time to complete**: 4 hours
+**Expected time to complete**: 6 hours
 
 In this chapter, we will give a light introduction to [neural networks](https://en.wikipedia.org/wiki/Neural_network) and [deep learning](https://en.wikipedia.org/wiki/Deep_learning) models including [convolutional neural networks (CNNs)](https://en.wikipedia.org/wiki/Convolutional_neural_network) and [recurrent neural networks (RNNs)](https://en.wikipedia.org/wiki/Recurrent_neural_network). Neural networks are a class of machine learning models that are inspired by the structure and function of biological neural networks. They are used to learn complex functions from large amounts of data. Deep learning models are neural networks with multiple hidden layers. CNNs are deep learning models that are used for image classification and object detection. RNNs are deep learning models that are used for sequence modelling and time series forecasting.
 
