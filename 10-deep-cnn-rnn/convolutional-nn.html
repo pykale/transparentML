@@ -817,6 +817,14 @@ const thebe_selector_output = ".output, .cell_output"
 <iframe width="700" height="394" src="https://www.youtube.com/embed/HGwBXDKFk9I?start=47&end=862" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <p><a class="reference external" href="https://www.youtube.com/embed/HGwBXDKFk9I?start=47&amp;end=862">Explaining main ideas behind convolutional neural networks, by StatQuest</a></p>
 </div>
+<p>Remove or comment off the following installation if you have installed PyTorch and TorchVision already.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip3 install -q torch torchvision
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="why-convolutional-neural-networks">
 <h2><span class="section-number">10.2.1. </span>Why convolutional neural networks?<a class="headerlink" href="#why-convolutional-neural-networks" title="Permalink to this headline">¶</a></h2>
 <p>In the <a class="reference external" href="https://pykale.github.io/transparentML/10-deep-cnn-rnn/multilayer-nn.html">previous section</a>, we used fully connected neural networks to classify digit images, where the input image needs to be <em>flattened</em> into a vector. There are two major drawbacks of using fully connected neural networks for image classification:</p>
