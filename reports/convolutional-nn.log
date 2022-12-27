@@ -17,31 +17,29 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-def imshow(imgs):
-    imgs = imgs / 2 + 0.5  # unnormalise back to [0,1]
-    plt.imshow(np.transpose(torchvision.utils.make_grid(imgs).numpy(), (1, 2, 0)))
-    plt.show()
+import numpy as np
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import torch.optim as optim
+import torchvision
+from torchvision import datasets, transforms
+import matplotlib.pyplot as plt
 
+%matplotlib inline
 
-dataiter = iter(train_loader)
-images, labels = dataiter.next()  # get a batch of images
-imshow(images)  # show images
-print(
-    " ".join("%5s" % train_dataset.classes[labels[j]] for j in range(batch_size))
-)  # print labels
+torch.manual_seed(2022)
+np.random.seed(2022)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mAttributeError[0m                            Traceback (most recent call last)
-Cell [0;32mIn[6], line 8[0m
-[1;32m      4[0m     plt[38;5;241m.[39mshow()
-[1;32m      7[0m dataiter [38;5;241m=[39m [38;5;28miter[39m(train_loader)
-[0;32m----> 8[0m images, labels [38;5;241m=[39m [43mdataiter[49m[38;5;241;43m.[39;49m[43mnext[49m()  [38;5;66;03m# get a batch of images[39;00m
-[1;32m      9[0m imshow(images)  [38;5;66;03m# show images[39;00m
-[1;32m     10[0m [38;5;28mprint[39m(
-[1;32m     11[0m     [38;5;124m"[39m[38;5;124m [39m[38;5;124m"[39m[38;5;241m.[39mjoin([38;5;124m"[39m[38;5;132;01m%5s[39;00m[38;5;124m"[39m [38;5;241m%[39m train_dataset[38;5;241m.[39mclasses[labels[j]] [38;5;28;01mfor[39;00m j [38;5;129;01min[39;00m [38;5;28mrange[39m(batch_size))
-[1;32m     12[0m )  [38;5;66;03m# print labels[39;00m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [0;32mIn[1], line 2[0m
+[1;32m      1[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[0;32m----> 2[0m [38;5;28;01mimport[39;00m [38;5;21;01mtorch[39;00m
+[1;32m      3[0m [38;5;28;01mimport[39;00m [38;5;21;01mtorch[39;00m[38;5;21;01m.[39;00m[38;5;21;01mnn[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnn[39;00m
+[1;32m      4[0m [38;5;28;01mimport[39;00m [38;5;21;01mtorch[39;00m[38;5;21;01m.[39;00m[38;5;21;01mnn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mfunctional[39;00m [38;5;28;01mas[39;00m [38;5;21;01mF[39;00m
 
-[0;31mAttributeError[0m: '_MultiProcessingDataLoaderIter' object has no attribute 'next'
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute 'next'
+[0;31mModuleNotFoundError[0m: No module named 'torch'
+ModuleNotFoundError: No module named 'torch'
 
