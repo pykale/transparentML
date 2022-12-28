@@ -27,7 +27,7 @@ parts:
   numbered: true
   chapters:
   - file: 01-intro/overview
-    title: Intro ML & Transparency
+    title: Intro ML & transparency
     sections:
     - file: 01-intro/what-is-ml
       title: What is ML?
