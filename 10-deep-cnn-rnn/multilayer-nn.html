@@ -1619,6 +1619,10 @@ test_loader = torch.utils.data.DataLoader(
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>39.0%
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./data/MNIST/raw/train-images-idx3-ubyte.gz
+</pre></div>
+</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>39.3%
 </pre></div>
 </div>
@@ -1662,10 +1666,6 @@ test_loader = torch.utils.data.DataLoader(
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>44.0%
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
-Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./data/MNIST/raw/train-images-idx3-ubyte.gz
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>44.3%
@@ -2340,6 +2340,9 @@ Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./dat
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0%
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0%
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
 Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz to ./data/MNIST/raw/train-labels-idx1-ubyte.gz
 Extracting ./data/MNIST/raw/train-labels-idx1-ubyte.gz to ./data/MNIST/raw
@@ -2347,20 +2350,13 @@ Extracting ./data/MNIST/raw/train-labels-idx1-ubyte.gz to ./data/MNIST/raw
 Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
 Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz to ./data/MNIST/raw/t10k-images-idx3-ubyte.gz
 Extracting ./data/MNIST/raw/t10k-images-idx3-ubyte.gz to ./data/MNIST/raw
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0%
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
+
+Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
 Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz to ./data/MNIST/raw/t10k-labels-idx1-ubyte.gz
 Extracting ./data/MNIST/raw/t10k-labels-idx1-ubyte.gz to ./data/MNIST/raw
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -2397,9 +2393,7 @@ print(train_dataset.classes)
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([60000, 28, 28])
 tensor(255, dtype=torch.uint8)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor(0, dtype=torch.uint8)
+tensor(0, dtype=torch.uint8)
 [&#39;0 - zero&#39;, &#39;1 - one&#39;, &#39;2 - two&#39;, &#39;3 - three&#39;, &#39;4 - four&#39;, &#39;5 - five&#39;, &#39;6 - six&#39;, &#39;7 - seven&#39;, &#39;8 - eight&#39;, &#39;9 - nine&#39;]
 </pre></div>
 </div>
@@ -2573,7 +2567,7 @@ for epoch in range(1, epochs + 1):
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation set: Average loss: 0.3709, Accuracy: 8936/10000 (89%)
 
-Train Epoch: 2 [0/60000 (0%)]	Loss: 0.518488
+Train Epoch: 2 [0/60000 (0%)]	Loss: 0.518489
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 2 [6400/60000 (11%)]	Loss: 0.270883
@@ -2588,150 +2582,150 @@ Train Epoch: 2 [0/60000 (0%)]	Loss: 0.518488
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 2 [25600/60000 (43%)]	Loss: 0.568738
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 2 [32000/60000 (53%)]	Loss: 0.162558
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 2 [32000/60000 (53%)]	Loss: 0.162973
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 2 [38400/60000 (64%)]	Loss: 0.412410
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 2 [38400/60000 (64%)]	Loss: 0.413413
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 2 [44800/60000 (75%)]	Loss: 0.191763
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 2 [44800/60000 (75%)]	Loss: 0.192662
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 2 [51200/60000 (85%)]	Loss: 0.331865
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 2 [51200/60000 (85%)]	Loss: 0.333191
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 2 [57600/60000 (96%)]	Loss: 0.445917
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 2 [57600/60000 (96%)]	Loss: 0.445986
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation set: Average loss: 0.2617, Accuracy: 9229/10000 (92%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation set: Average loss: 0.2618, Accuracy: 9232/10000 (92%)
 
-Train Epoch: 3 [0/60000 (0%)]	Loss: 0.481879
+Train Epoch: 3 [0/60000 (0%)]	Loss: 0.481650
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 3 [6400/60000 (11%)]	Loss: 0.461624
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 3 [6400/60000 (11%)]	Loss: 0.463457
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 3 [12800/60000 (21%)]	Loss: 0.273662
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 3 [12800/60000 (21%)]	Loss: 0.275096
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 3 [19200/60000 (32%)]	Loss: 0.163287
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 3 [19200/60000 (32%)]	Loss: 0.161749
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 3 [25600/60000 (43%)]	Loss: 0.274922
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 3 [25600/60000 (43%)]	Loss: 0.272408
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 3 [32000/60000 (53%)]	Loss: 0.540252
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 3 [32000/60000 (53%)]	Loss: 0.540476
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 3 [38400/60000 (64%)]	Loss: 0.283548
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 3 [38400/60000 (64%)]	Loss: 0.283297
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 3 [44800/60000 (75%)]	Loss: 0.445851
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 3 [44800/60000 (75%)]	Loss: 0.446751
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 3 [51200/60000 (85%)]	Loss: 0.289736
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 3 [51200/60000 (85%)]	Loss: 0.292540
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 3 [57600/60000 (96%)]	Loss: 0.437347
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 3 [57600/60000 (96%)]	Loss: 0.435972
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation set: Average loss: 0.2118, Accuracy: 9370/10000 (94%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation set: Average loss: 0.2113, Accuracy: 9374/10000 (94%)
 
-Train Epoch: 4 [0/60000 (0%)]	Loss: 0.260512
+Train Epoch: 4 [0/60000 (0%)]	Loss: 0.264820
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 4 [6400/60000 (11%)]	Loss: 0.445829
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 4 [6400/60000 (11%)]	Loss: 0.443045
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 4 [12800/60000 (21%)]	Loss: 0.217544
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 4 [12800/60000 (21%)]	Loss: 0.215937
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 4 [19200/60000 (32%)]	Loss: 0.264663
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 4 [19200/60000 (32%)]	Loss: 0.265451
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 4 [25600/60000 (43%)]	Loss: 0.303071
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 4 [25600/60000 (43%)]	Loss: 0.305343
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 4 [32000/60000 (53%)]	Loss: 0.138938
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 4 [32000/60000 (53%)]	Loss: 0.136843
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 4 [38400/60000 (64%)]	Loss: 0.342081
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 4 [38400/60000 (64%)]	Loss: 0.343108
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 4 [44800/60000 (75%)]	Loss: 0.618432
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 4 [44800/60000 (75%)]	Loss: 0.620632
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 4 [51200/60000 (85%)]	Loss: 0.254168
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 4 [51200/60000 (85%)]	Loss: 0.255332
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 4 [57600/60000 (96%)]	Loss: 0.204074
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 4 [57600/60000 (96%)]	Loss: 0.203880
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation set: Average loss: 0.1823, Accuracy: 9481/10000 (95%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation set: Average loss: 0.1822, Accuracy: 9483/10000 (95%)
 
-Train Epoch: 5 [0/60000 (0%)]	Loss: 0.356493
+Train Epoch: 5 [0/60000 (0%)]	Loss: 0.353752
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 5 [6400/60000 (11%)]	Loss: 0.309494
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 5 [6400/60000 (11%)]	Loss: 0.311662
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 5 [12800/60000 (21%)]	Loss: 0.311666
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 5 [12800/60000 (21%)]	Loss: 0.318419
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 5 [19200/60000 (32%)]	Loss: 0.283725
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 5 [19200/60000 (32%)]	Loss: 0.288839
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 5 [25600/60000 (43%)]	Loss: 0.144230
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 5 [25600/60000 (43%)]	Loss: 0.145481
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 5 [32000/60000 (53%)]	Loss: 0.447438
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 5 [32000/60000 (53%)]	Loss: 0.451959
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 5 [38400/60000 (64%)]	Loss: 0.299035
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 5 [38400/60000 (64%)]	Loss: 0.299097
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 5 [44800/60000 (75%)]	Loss: 0.616497
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 5 [44800/60000 (75%)]	Loss: 0.612818
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 5 [51200/60000 (85%)]	Loss: 0.620532
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 5 [51200/60000 (85%)]	Loss: 0.626926
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 5 [57600/60000 (96%)]	Loss: 0.368919
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 5 [57600/60000 (96%)]	Loss: 0.368804
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation set: Average loss: 0.1571, Accuracy: 9530/10000 (95%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation set: Average loss: 0.1573, Accuracy: 9526/10000 (95%)
 
-Train Epoch: 6 [0/60000 (0%)]	Loss: 0.290935
+Train Epoch: 6 [0/60000 (0%)]	Loss: 0.293398
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 6 [6400/60000 (11%)]	Loss: 0.184136
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 6 [6400/60000 (11%)]	Loss: 0.183998
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 6 [12800/60000 (21%)]	Loss: 0.264750
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 6 [12800/60000 (21%)]	Loss: 0.268738
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 6 [19200/60000 (32%)]	Loss: 0.184329
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 6 [19200/60000 (32%)]	Loss: 0.179237
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 6 [25600/60000 (43%)]	Loss: 0.176866
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 6 [25600/60000 (43%)]	Loss: 0.184998
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 6 [32000/60000 (53%)]	Loss: 0.334874
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 6 [32000/60000 (53%)]	Loss: 0.332721
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 6 [38400/60000 (64%)]	Loss: 0.087387
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 6 [38400/60000 (64%)]	Loss: 0.088407
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 6 [44800/60000 (75%)]	Loss: 0.176925
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 6 [44800/60000 (75%)]	Loss: 0.174735
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 6 [51200/60000 (85%)]	Loss: 0.342389
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 6 [51200/60000 (85%)]	Loss: 0.337618
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 6 [57600/60000 (96%)]	Loss: 0.253077
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 6 [57600/60000 (96%)]	Loss: 0.253000
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation set: Average loss: 0.1441, Accuracy: 9549/10000 (95%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation set: Average loss: 0.1443, Accuracy: 9554/10000 (96%)
 </pre></div>
 </div>
 </div>
