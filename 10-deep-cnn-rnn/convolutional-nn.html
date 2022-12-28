@@ -809,7 +809,7 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="convolutional-neural-networks">
 <h1><span class="section-number">10.2. </span>Convolutional neural networks<a class="headerlink" href="#convolutional-neural-networks" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Convolutional_neural_network">Convolutional neural networks (CNNs)</a> are a type of neural network that are particularly well-suited for images, in tasks including image classification, object detection, and image segmentation. The main idea behind CNNs is to use a <em>convolutional layer</em> to extract features from the image locally. The convolutional layer is typically followed by a <em>pooling layer</em> to reduce the dimensionality. The convolutional and pooling layers are then followed by one or more <em>fully connected layers</em>, e.g. to classify the image.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Convolutional_neural_network">Convolutional neural networks (CNNs)</a> are a type of neural network that are particularly well-suited for images, in computer vision tasks including image classification, object detection, and image segmentation. The main idea behind CNNs is to use a <em>convolutional layer</em> to extract features from the image locally. The convolutional layer is typically followed by a <em>pooling layer</em> to reduce the dimensionality. The convolutional and pooling layers are then followed by one or more <em>fully connected layers</em>, e.g. to classify the image.</p>
 <p>On 30 September 2012, a CNN called <a class="reference external" href="https://en.wikipedia.org/wiki/AlexNet">AlexNet</a> (click to view the architecture) achieved a top-5 error of 15.3% in the <a class="reference external" href="https://en.wikipedia.org/wiki/ImageNet#ImageNet_Challenge">ImageNet Challenge</a>, more than <strong>10.8 percentage</strong> points lower than that of the runner up. This is considered a breakthrough and has grabbed the attention of increasing number of researchers, practitioners, and the general public. Since then, deep learning has penetrated to many research and application areas. AlexNet contained <strong>eight layers</strong>. In 2015, it was outperformed by a very deep CNN with <strong>over 100 layers</strong> from Microsoft in the ImageNet 2015 contest.</p>
 <p>Watch the 14-minute video below for a visual explanation of convolutional neural networks.</p>
 <div class="admonition-video admonition">
@@ -17077,25 +17077,25 @@ print(&quot;Finished Training!&quot;)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1,  4000] loss: 1.866
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1,  6000] loss: 1.648
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1,  6000] loss: 1.649
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2,  2000] loss: 1.539
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2,  4000] loss: 1.462
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2,  4000] loss: 1.463
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2,  6000] loss: 1.402
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2,  6000] loss: 1.403
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3,  2000] loss: 1.339
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3,  2000] loss: 1.340
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3,  4000] loss: 1.306
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3,  6000] loss: 1.281
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3,  6000] loss: 1.285
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Finished Training!
@@ -17112,8 +17112,8 @@ print(loss.grad_fn.next_functions[0][0])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;NllLossBackward0 object at 0x7f3664639dc0&gt;
-&lt;LogSoftmaxBackward0 object at 0x7f3664639b20&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;NllLossBackward0 object at 0x7fa8b0f84430&gt;
+&lt;LogSoftmaxBackward0 object at 0x7fa8b0f842b0&gt;
 </pre></div>
 </div>
 </div>
@@ -17248,16 +17248,16 @@ for i in range(10):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy of airplane : 60 %
-Accuracy of automobile : 59 %
-Accuracy of  bird : 31 %
-Accuracy of   cat : 35 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy of airplane : 61 %
+Accuracy of automobile : 58 %
+Accuracy of  bird : 32 %
+Accuracy of   cat : 33 %
 Accuracy of  deer : 53 %
-Accuracy of   dog : 52 %
+Accuracy of   dog : 54 %
 Accuracy of  frog : 59 %
 Accuracy of horse : 65 %
-Accuracy of  ship : 74 %
-Accuracy of truck : 63 %
+Accuracy of  ship : 71 %
+Accuracy of truck : 65 %
 </pre></div>
 </div>
 </div>

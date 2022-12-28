@@ -12,7 +12,7 @@ Ready for review and feedback
 - Understand the concept of neural networks (NNs) and deep learning models.
 - Understand the concept of convolutional NNs (CNNs) and recurrent NNs (RNNs).
 - Apply convolutional NNs to image classification.
-- Apply recurrent NNs to document classification.
+- Apply recurrent NNs to text classification.
 ```
 
 **Expected time to complete**: 6 hours
