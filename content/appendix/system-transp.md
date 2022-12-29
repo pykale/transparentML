@@ -107,7 +107,7 @@ relevant stakeholders.
 There are two methodological paths to obtaining information about an ML system’s input-output
 relationships and conditions under which it produces certain outputs:
 - Direct interpretation: Where complexity allows, relevant information can be obtained by analysing
-a formal representation of the system (as illustrated by the [example of the simple linear model](#what-relevant-information)). This will be possible for many ML systems covered in this course, including those that are linear or non-linear but have a relatively simple structure. However, it will not be possible for all ML systems, including those that are non-linear and have a complex structure.
+a formal representation of the system (as illustrated by the [example of the simple linear model](#what-relevant-information)). This will be possible for many ML systems covered in this course, including those that are linear or nonlinear but have a relatively simple structure. However, it will not be possible for all ML systems, including those that are nonlinear and have a complex structure.
 - Indirect analysis using explainability methods: Various auxiliary methods can help shed light
 on system logic. Many of these methods are perturbation-based, including LIME (Local Interpretable
 Model-Agnostic Explanation) {cite}`ribeiro2016should` and SHAP (SHapley Additive exPlanations) {cite}`lundberg2017unified`. They rely on the analysis of changes in system outputs in response to changes in input values and can be used without access to a formal representation of the system. This is out of the scope of this course and hence will _NOT_ be covered.

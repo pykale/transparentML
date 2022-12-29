@@ -116,13 +116,13 @@ This course focuses on machine learning models (or methods) that are most widely
   - A kernel-based model for classification.
   - Predicting whether a customer will default on a credit card payment.
 * - **Decision tree**
-  - A non-linear model for classification and regression.
+  - A nonlinear model for classification and regression.
   - Predicting whether a customer will default on a credit card payment.
 * - **Random forest**
   - An ensemble of decision trees for classification and regression.
   - Predicting whether a customer will default on a credit card payment.
 * - **Neural network**
-  - A non-linear model for classification and regression.
+  - A nonlinear model for classification and regression.
   - Predicting whether a customer will default on a credit card payment.
 * - **$K$-means**
   - A clustering model.
