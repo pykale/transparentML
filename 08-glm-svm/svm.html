@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -812,14 +814,14 @@ f(\mathbf{x}) = \beta_0 + \sum_{n = 1}^{N} \alpha_n k(\mathbf{x}, \mathbf{x}_n).
 <p>Get ready by importing the APIs needed from respective libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
-import matplotlib.pyplot as plt
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, roc_curve, auc
-from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.svm import SVC
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
 
-%matplotlib inline
+<span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
@@ -827,26 +829,26 @@ from sklearn.svm import SVC
 <p>Define a function to plot a classifier with support vectors as in the previous section.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def plot_svc(svc, X, y, h=0.02, pad=0.25):
-    x_min, x_max = X[:, 0].min() - pad, X[:, 0].max() + pad
-    y_min, y_max = X[:, 1].min() - pad, X[:, 1].max() + pad
-    xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
-    Z = svc.predict(np.c_[xx.ravel(), yy.ravel()])
-    Z = Z.reshape(xx.shape)
-    plt.contourf(xx, yy, Z, cmap=plt.cm.Paired, alpha=0.2)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_svc</span><span class="p">(</span><span class="n">svc</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.25</span><span class="p">):</span>
+    <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">pad</span>
+    <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">pad</span>
+    <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">svc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 
-    plt.scatter(X[:, 0], X[:, 1], s=70, c=y, cmap=plt.cm.Paired)
-    # Support vectors indicated in plot by vertical lines
-    sv = svc.support_vectors_
-    plt.scatter(
-        sv[:, 0], sv[:, 1], c=&quot;k&quot;, marker=&quot;x&quot;, s=100, alpha=0.5
-    )  # , linewidths=1)
-    plt.xlim(x_min, x_max)
-    plt.ylim(y_min, y_max)
-    plt.xlabel(&quot;X1&quot;)
-    plt.ylabel(&quot;X2&quot;)
-    plt.show()
-    print(&quot;Number of support vectors: &quot;, svc.support_.size)
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
+    <span class="c1"># Support vectors indicated in plot by vertical lines</span>
+    <span class="n">sv</span> <span class="o">=</span> <span class="n">svc</span><span class="o">.</span><span class="n">support_vectors_</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+        <span class="n">sv</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">sv</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+    <span class="p">)</span>  <span class="c1"># , linewidths=1)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X1&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;X2&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of support vectors: &quot;</span><span class="p">,</span> <span class="n">svc</span><span class="o">.</span><span class="n">support_</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -856,18 +858,18 @@ from sklearn.svm import SVC
 <p>Generate synthetic data randomly. Set a seed for reproducibility.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.random.seed(8)
-X = np.random.randn(200, 2)
-X[:100] = X[:100] + 2
-X[101:150] = X[101:150] - 2
-y = np.concatenate([np.repeat(-1, 150), np.repeat(1, 50)])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">X</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="n">X</span><span class="p">[</span><span class="mi">101</span><span class="p">:</span><span class="mi">150</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">101</span><span class="p">:</span><span class="mi">150</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)])</span>
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.5, random_state=2)
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
-plt.scatter(X[:, 0], X[:, 1], s=70, c=y, cmap=plt.cm.Paired)
-plt.xlabel(&quot;X1&quot;)
-plt.ylabel(&quot;X2&quot;)
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;X2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -878,9 +880,9 @@ plt.show()
 <p>Use the <code class="docutils literal notranslate"><span class="pre">SVC</span></code> class from <code class="docutils literal notranslate"><span class="pre">sklearn.svm</span></code> to train a support vector machine with a radial kernel. The <code class="docutils literal notranslate"><span class="pre">C</span></code> parameter is the inverse of the regularisation strength <span class="math notranslate nohighlight">\( \Xi \)</span>, and the <code class="docutils literal notranslate"><span class="pre">gamma</span></code> parameter is the inverse of the kernel width. The <code class="docutils literal notranslate"><span class="pre">fit</span></code> method trains the model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svm = SVC(C=1.0, kernel=&quot;rbf&quot;, gamma=1)
-svm.fit(X_train, y_train)
-plot_svc(svm, X_train, y_train)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">svm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">plot_svc</span><span class="p">(</span><span class="n">svm</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -894,9 +896,9 @@ plot_svc(svm, X_train, y_train)
 <p>Let us reduce the regularisation strength <span class="math notranslate nohighlight">\( \Xi \)</span> by increasing the value of <code class="docutils literal notranslate"><span class="pre">C</span></code>. This results in a more flexible decision boundary, and will likely overfit the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svm2 = SVC(C=100, kernel=&quot;rbf&quot;, gamma=1)
-svm2.fit(X_train, y_train)
-plot_svc(svm2, X_train, y_train)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm2</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">svm2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">plot_svc</span><span class="p">(</span><span class="n">svm2</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -914,44 +916,44 @@ plot_svc(svm2, X_train, y_train)
 <p>Choose (tune) the (hyper)parameters <code class="docutils literal notranslate"><span class="pre">C</span></code> and <code class="docutils literal notranslate"><span class="pre">gamma</span></code> using cross-validation. The <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> class from <code class="docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code> performs a grid search over the specified parameter values. The <code class="docutils literal notranslate"><span class="pre">cv</span></code> parameter specifies the number of folds in the cross-validation. The <code class="docutils literal notranslate"><span class="pre">fit</span></code> method trains the model.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tuned_parameters = {&quot;C&quot;: [0.01, 0.1, 1, 10, 100], &quot;gamma&quot;: [0.5, 1, 2, 3, 4]}
-clf = GridSearchCV(
-    SVC(kernel=&quot;rbf&quot;),
-    tuned_parameters,
-    cv=10,
-    scoring=&quot;accuracy&quot;,
-    return_train_score=True,
-)
-clf.fit(X_train, y_train)
-clf.cv_results_
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tuned_parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]}</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">),</span>
+    <span class="n">tuned_parameters</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
+    <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">cv_results_</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00088334, 0.00085473, 0.00087323, 0.00088978, 0.00089471,
-        0.00083683, 0.00087137, 0.00091188, 0.00094578, 0.00096903,
-        0.00083933, 0.00087516, 0.0009717 , 0.00100322, 0.00100946,
-        0.0008502 , 0.00087731, 0.00100691, 0.00103531, 0.00103383,
-        0.00092149, 0.00094054, 0.00101631, 0.00102034, 0.00101328]),
- &#39;std_fit_time&#39;: array([1.35474799e-04, 3.34753610e-05, 1.13844310e-05, 1.36166025e-05,
-        9.31057368e-06, 1.18886750e-05, 1.22315005e-05, 1.03579360e-05,
-        2.28507635e-05, 9.29844685e-06, 2.09211997e-05, 1.36853303e-05,
-        2.30572339e-05, 1.41009221e-05, 1.10658074e-05, 2.94280391e-05,
-        1.95369588e-05, 3.11307568e-05, 3.08466470e-05, 1.95080603e-05,
-        6.61418002e-05, 3.43061802e-05, 2.43215115e-05, 2.36217832e-05,
-        2.53101283e-05]),
- &#39;mean_score_time&#39;: array([0.00044713, 0.000436  , 0.00043855, 0.00044141, 0.00043933,
-        0.00042884, 0.00043631, 0.00043762, 0.00044279, 0.00044703,
-        0.00042789, 0.00043392, 0.00044141, 0.00044327, 0.00044444,
-        0.00042598, 0.00042942, 0.00044014, 0.00044262, 0.00044169,
-        0.00044088, 0.00042706, 0.00043371, 0.0004353 , 0.00043514]),
- &#39;std_score_time&#39;: array([3.43992983e-05, 6.18515880e-06, 6.97731880e-06, 1.02759237e-05,
-        8.07324176e-06, 2.06214843e-06, 8.37592667e-06, 7.00419251e-06,
-        8.79037370e-06, 1.05746099e-05, 6.47432664e-06, 8.05770147e-06,
-        6.92580324e-06, 7.18016066e-06, 7.60061827e-06, 7.20801313e-06,
-        9.50536932e-06, 1.06183027e-05, 8.18178784e-06, 8.17549788e-06,
-        3.76086397e-05, 9.03716496e-06, 4.26422810e-06, 4.69000313e-06,
-        6.56881046e-06]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00103018, 0.00100899, 0.00103068, 0.00105524, 0.00107143,
+        0.00099461, 0.00102038, 0.00108666, 0.00113695, 0.00116444,
+        0.00099707, 0.00104258, 0.00117238, 0.00119793, 0.00120106,
+        0.00100653, 0.00105848, 0.00121119, 0.00124168, 0.00124245,
+        0.00108614, 0.00111196, 0.00117912, 0.00117557, 0.0011802 ]),
+ &#39;std_fit_time&#39;: array([9.31287782e-05, 1.54803257e-05, 3.46990373e-05, 3.23740476e-05,
+        3.50427381e-05, 7.67058229e-05, 3.21742847e-05, 4.45709872e-05,
+        4.66840442e-05, 1.69008337e-05, 1.97153569e-05, 1.62315432e-05,
+        4.18031540e-05, 3.09061205e-05, 2.04998944e-05, 2.68044520e-05,
+        3.27615584e-05, 3.45893431e-05, 3.68723409e-05, 2.68563052e-05,
+        4.01001623e-05, 5.61356481e-05, 4.06383332e-05, 3.80765817e-05,
+        7.54411880e-05]),
+ &#39;mean_score_time&#39;: array([0.00053105, 0.0005301 , 0.00052135, 0.00051799, 0.00052462,
+        0.00051076, 0.00050066, 0.0005136 , 0.00053232, 0.0005307 ,
+        0.00051157, 0.00052049, 0.00053101, 0.00054562, 0.00053554,
+        0.00050888, 0.00052867, 0.00052676, 0.00053072, 0.00053101,
+        0.00050774, 0.00050263, 0.00050523, 0.00050571, 0.00049088]),
+ &#39;std_score_time&#39;: array([3.35496877e-05, 1.47462228e-05, 2.05228547e-05, 1.29363557e-05,
+        1.84737325e-05, 2.07968934e-05, 2.39796116e-05, 2.17721465e-05,
+        9.28122219e-06, 7.17354715e-06, 1.48015700e-05, 2.03438118e-05,
+        2.42802840e-05, 2.43834144e-05, 1.40835774e-05, 1.82268470e-05,
+        2.46091865e-05, 1.24065661e-05, 1.06810459e-05, 1.54842910e-05,
+        1.22725139e-05, 2.24085055e-05, 3.85978179e-05, 1.92442196e-05,
+        3.04329806e-05]),
  &#39;param_C&#39;: masked_array(data=[0.01, 0.01, 0.01, 0.01, 0.01, 0.1, 0.1, 0.1, 0.1, 0.1,
                     1, 1, 1, 1, 1, 10, 10, 10, 10, 10, 100, 100, 100, 100,
                     100],
@@ -1091,7 +1093,7 @@ clf.cv_results_
 <p>Display the best combination of (hyper)parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>clf.best_params_
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span><span class="o">.</span><span class="n">best_params_</span>
 </pre></div>
 </div>
 </div>
@@ -1104,10 +1106,10 @@ clf.cv_results_
 <p>Show the prediction accuracy on the test set using the respective best model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cm = confusion_matrix(y_test, clf.best_estimator_.predict(X_test))
-disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=clf.classes_)
-disp.plot()
-plt.show()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">clf</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1118,7 +1120,7 @@ plt.show()
 <p>Compute the classification accuracy on the test set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>clf.best_estimator_.score(X_test, y_test)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1136,8 +1138,8 @@ plt.show()
 <!-- One model is more flexible than the other. --><p>Let us use a lightly larger value of <code class="docutils literal notranslate"><span class="pre">gamma</span></code> for the first model to compare.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svm3 = SVC(C=1, kernel=&quot;rbf&quot;, gamma=2, probability=True)
-svm3.fit(X_train, y_train)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm3</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">svm3</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1147,8 +1149,8 @@ svm3.fit(X_train, y_train)
 <p>Let us use a larger value of <code class="docutils literal notranslate"><span class="pre">gamma</span></code> for the second model to compare. This will result in a more flexible decision boundary, and will likely overfit the data more.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svm4 = SVC(C=1, kernel=&quot;rbf&quot;, gamma=50, probability=True)
-svm4.fit(X_train, y_train)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm4</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">svm4</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1158,66 +1160,66 @@ svm4.fit(X_train, y_train)
 <p>Let us plot the ROC curves of the two models on the training dataset and then on the test dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>y_train_score3 = svm3.decision_function(X_train)
-y_train_score4 = svm4.decision_function(X_train)
-# comment the above two lines uncomment the following two lines to plot the ROC curves using probabilities
-# y_train_score3 = svm3.predict_proba(X_train)[:, 1]
-# y_train_score4 = svm4.predict_proba(X_train)[:, 1]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_train_score3</span> <span class="o">=</span> <span class="n">svm3</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">y_train_score4</span> <span class="o">=</span> <span class="n">svm4</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="c1"># comment the above two lines uncomment the following two lines to plot the ROC curves using probabilities</span>
+<span class="c1"># y_train_score3 = svm3.predict_proba(X_train)[:, 1]</span>
+<span class="c1"># y_train_score4 = svm4.predict_proba(X_train)[:, 1]</span>
 
-false_pos_rate3, true_pos_rate3, _ = roc_curve(y_train, y_train_score3)
-roc_auc3 = auc(false_pos_rate3, true_pos_rate3)
+<span class="n">false_pos_rate3</span><span class="p">,</span> <span class="n">true_pos_rate3</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_train_score3</span><span class="p">)</span>
+<span class="n">roc_auc3</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">false_pos_rate3</span><span class="p">,</span> <span class="n">true_pos_rate3</span><span class="p">)</span>
 
-false_pos_rate4, true_pos_rate4, _ = roc_curve(y_train, y_train_score4)
-roc_auc4 = auc(false_pos_rate4, true_pos_rate4)
+<span class="n">false_pos_rate4</span><span class="p">,</span> <span class="n">true_pos_rate4</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_train_score4</span><span class="p">)</span>
+<span class="n">roc_auc4</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">false_pos_rate4</span><span class="p">,</span> <span class="n">true_pos_rate4</span><span class="p">)</span>
 
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
-ax1.plot(
-    false_pos_rate3,
-    true_pos_rate3,
-    label=&quot;SVM $\gamma = 1$ ROC curve (area = %0.2f)&quot; % roc_auc3,
-    color=&quot;b&quot;,
-)
-ax1.plot(
-    false_pos_rate4,
-    true_pos_rate4,
-    label=&quot;SVM $\gamma = 50$ ROC curve (area = %0.2f)&quot; % roc_auc4,
-    color=&quot;r&quot;,
-)
-ax1.set_title(&quot;Training Data&quot;)
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">false_pos_rate3</span><span class="p">,</span>
+    <span class="n">true_pos_rate3</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;SVM $\gamma = 1$ ROC curve (area = </span><span class="si">%0.2f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">roc_auc3</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">false_pos_rate4</span><span class="p">,</span>
+    <span class="n">true_pos_rate4</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;SVM $\gamma = 50$ ROC curve (area = </span><span class="si">%0.2f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">roc_auc4</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Training Data&quot;</span><span class="p">)</span>
 
-y_test_score3 = svm3.decision_function(X_test)
-y_test_score4 = svm4.decision_function(X_test)
-# comment the above two lines uncomment the following two lines to plot the ROC curves using probabilities
-# y_test_score3 = svm3.predict_proba(X_test)[:, 1]
-# y_test_score4 = svm4.predict_proba(X_test)[:, 1]
+<span class="n">y_test_score3</span> <span class="o">=</span> <span class="n">svm3</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_test_score4</span> <span class="o">=</span> <span class="n">svm4</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="c1"># comment the above two lines uncomment the following two lines to plot the ROC curves using probabilities</span>
+<span class="c1"># y_test_score3 = svm3.predict_proba(X_test)[:, 1]</span>
+<span class="c1"># y_test_score4 = svm4.predict_proba(X_test)[:, 1]</span>
 
-false_pos_rate3, true_pos_rate3, _ = roc_curve(y_test, y_test_score3)
-roc_auc3 = auc(false_pos_rate3, true_pos_rate3)
+<span class="n">false_pos_rate3</span><span class="p">,</span> <span class="n">true_pos_rate3</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_score3</span><span class="p">)</span>
+<span class="n">roc_auc3</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">false_pos_rate3</span><span class="p">,</span> <span class="n">true_pos_rate3</span><span class="p">)</span>
 
-false_pos_rate4, true_pos_rate4, _ = roc_curve(y_test, y_test_score4)
-roc_auc4 = auc(false_pos_rate4, true_pos_rate4)
+<span class="n">false_pos_rate4</span><span class="p">,</span> <span class="n">true_pos_rate4</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_score4</span><span class="p">)</span>
+<span class="n">roc_auc4</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">false_pos_rate4</span><span class="p">,</span> <span class="n">true_pos_rate4</span><span class="p">)</span>
 
-ax2.plot(
-    false_pos_rate3,
-    true_pos_rate3,
-    label=&quot;SVM $\gamma = 1$ ROC curve (area = %0.2f)&quot; % roc_auc3,
-    color=&quot;b&quot;,
-)
-ax2.plot(
-    false_pos_rate4,
-    true_pos_rate4,
-    label=&quot;SVM $\gamma = 50$ ROC curve (area = %0.2f)&quot; % roc_auc4,
-    color=&quot;r&quot;,
-)
-ax2.set_title(&quot;Test Data&quot;)
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">false_pos_rate3</span><span class="p">,</span>
+    <span class="n">true_pos_rate3</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;SVM $\gamma = 1$ ROC curve (area = </span><span class="si">%0.2f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">roc_auc3</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">false_pos_rate4</span><span class="p">,</span>
+    <span class="n">true_pos_rate4</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;SVM $\gamma = 50$ ROC curve (area = </span><span class="si">%0.2f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">roc_auc4</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Test Data&quot;</span><span class="p">)</span>
 
-for ax in fig.axes:
-    ax.plot([0, 1], [0, 1], &quot;k--&quot;)
-    ax.set_xlim([-0.05, 1.0])
-    ax.set_ylim([0.0, 1.05])
-    ax.set_xlabel(&quot;False Positive Rate&quot;)
-    ax.set_ylabel(&quot;True Positive Rate&quot;)
-    ax.legend(loc=&quot;lower right&quot;)
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;k--&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;False Positive Rate&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;True Positive Rate&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1242,13 +1244,13 @@ for ax in fig.axes:
 <p>Add a third class of observations</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>XX = np.vstack([X, np.random.randn(50, 2)])
-yy = np.hstack([y, np.repeat(0, 50)])
-XX[yy == 0] = XX[yy == 0] + 4
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">XX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
+<span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">y</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)])</span>
+<span class="n">XX</span><span class="p">[</span><span class="n">yy</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">XX</span><span class="p">[</span><span class="n">yy</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">4</span>
 
-plt.scatter(XX[:, 0], XX[:, 1], s=70, c=yy, cmap=plt.cm.Paired)
-plt.xlabel(&quot;XX1&quot;)
-plt.ylabel(&quot;XX2&quot;);
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">XX</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">XX</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">yy</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;XX1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;XX2&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1259,9 +1261,9 @@ plt.ylabel(&quot;XX2&quot;);
 <p>Use SVM with an RBF kernel to fit a three-class classifier and plot the decision boundaries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svm5 = SVC(C=1, kernel=&quot;rbf&quot;)
-svm5.fit(XX, yy)
-plot_svc(svm5, XX, yy)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm5</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">)</span>
+<span class="n">svm5</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">XX</span><span class="p">,</span> <span class="n">yy</span><span class="p">)</span>
+<span class="n">plot_svc</span><span class="p">(</span><span class="n">svm5</span><span class="p">,</span> <span class="n">XX</span><span class="p">,</span> <span class="n">yy</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1277,11 +1279,11 @@ plot_svc(svm5, XX, yy)
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">8.3.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p><strong>1.</strong> All the following exercises use the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Heart.csv">Heart</a>.</p>
-<p>Load the <strong>Heart</strong> dataset, convert the values of variables (predictors) from category to numbers, and inspect the first five rows.</p>
+<p><strong>1.</strong> All the following exercises use the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Heart.csv">Heart</a> dataset.</p>
+<p>Load the <strong>Heart</strong> dataset, convert the values of variables (predictors) from categorical values to numerical values, and inspect the first five rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1289,20 +1291,20 @@ plot_svc(svm5, XX, yy)
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
-import pandas as pd
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-np.random.seed(2022)
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
 
-heart_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Heart.csv&quot;
+<span class="n">heart_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Heart.csv&quot;</span>
 
-heart_df = pd.read_csv(heart_url, index_col=0).dropna()
-# converting categories
-heart_df[&quot;ChestPain&quot;] = heart_df[&quot;ChestPain&quot;].factorize()[0]
-heart_df[&quot;Thal&quot;] = heart_df[&quot;Thal&quot;].factorize()[0]
-heart_df[&quot;AHD&quot;] = heart_df[&quot;AHD&quot;].factorize()[0]
+<span class="n">heart_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">heart_url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="c1"># converting categories</span>
+<span class="n">heart_df</span><span class="p">[</span><span class="s2">&quot;ChestPain&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">heart_df</span><span class="p">[</span><span class="s2">&quot;ChestPain&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">factorize</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">heart_df</span><span class="p">[</span><span class="s2">&quot;Thal&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">heart_df</span><span class="p">[</span><span class="s2">&quot;Thal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">factorize</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">heart_df</span><span class="p">[</span><span class="s2">&quot;AHD&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">heart_df</span><span class="p">[</span><span class="s2">&quot;AHD&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">factorize</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
-heart_df.head(5)
+<span class="n">heart_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1431,10 +1433,10 @@ heart_df.head(5)
 </table>
 </div></div></div>
 </div>
-<p><strong>2</strong>. Split the loaded dataset into training and testing sets in an <span class="math notranslate nohighlight">\(80:20\)</span> ratio, then train a model using SVC using these hyperparameters <em>(C = 1, kernel = “rbf, gamma = 0.01, probability = true)</em> where kernel =”rbf” means it is a support vector machine (SVM) extend the SVC by enlarging the feature space in a specific way, using rbf kernel.Finally, show the number of support vectors and AUROC of this trained model on the test set. (Use <span class="math notranslate nohighlight">\(2022\)</span> as the random seed value)</p>
+<p><strong>2</strong>. Split the loaded dataset into training and testing sets in an <span class="math notranslate nohighlight">\(80:20\)</span> ratio, then train a model using SVC using these hyperparameters <em>(C = 1, kernel = “rbf, gamma = 0.01, probability = true)</em>. Here, kernel =”rbf” means we are using the RBF kernel to increase the dimensionality of the feature space, extending SVC into an SVM. Finally, show the number of support vectors and AUROC of this trained model on the test set. (Use <span class="math notranslate nohighlight">\(2022\)</span> as the random seed value)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1442,33 +1444,35 @@ heart_df.head(5)
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.svm import SVC
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import roc_curve, auc
-import matplotlib.pyplot as plt
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-np.random.seed(2022)
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
 
-X = heart_df.drop([&quot;AHD&quot;], axis=1)
-y = heart_df[&quot;AHD&quot;]
+<span class="n">X</span> <span class="o">=</span> <span class="n">heart_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;AHD&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">heart_df</span><span class="p">[</span><span class="s2">&quot;AHD&quot;</span><span class="p">]</span>
 
 
-X_train, X_test, y_train, y_test = train_test_split(X, y.ravel(), test_size=0.2)
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2022</span>
+<span class="p">)</span>
 
-svm = SVC(C=1, kernel=&quot;rbf&quot;, gamma=0.01, probability=True)
-svm.fit(X_train, y_train)
-print(&quot;Number of Support vectors: &quot;, len(svm.support_vectors_))
+<span class="n">svm</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2022</span><span class="p">)</span>
+<span class="n">svm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of Support vectors: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">svm</span><span class="o">.</span><span class="n">support_vectors_</span><span class="p">))</span>
 
-y_test_score = svm.decision_function(X_test)
+<span class="n">y_test_score</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-fpr, tpr, _ = roc_curve(y_test, y_test_score)
-roc_auc = auc(fpr, tpr)
+<span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_score</span><span class="p">)</span>
+<span class="n">roc_auc</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">)</span>
 
-plt.plot(fpr, tpr, label=&quot;AUC=&quot; + str(roc_auc))
-plt.ylabel(&quot;True Positive Rate&quot;)
-plt.xlabel(&quot;False Positive Rate&quot;)
-plt.legend(loc=4)
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;AUC=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">roc_auc</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;True Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;False Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1482,7 +1486,7 @@ plt.show()
 <p><strong>3.</strong> Train another model in the same manner as in <strong>Exercise 2</strong>, but with the hyperparameter regularisation strength <span class="math notranslate nohighlight">\(C\)</span> set to <span class="math notranslate nohighlight">\(100\)</span>. Show the number of support vectors and AUROC of this trained model on the test set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1490,20 +1494,20 @@ plt.show()
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svm = SVC(C=100, kernel=&quot;rbf&quot;, gamma=0.01, probability=True)
-svm.fit(X_train, y_train)
-print(&quot;Number of Support vectors: &quot;, len(svm.support_vectors_))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2022</span><span class="p">)</span>
+<span class="n">svm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of Support vectors: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">svm</span><span class="o">.</span><span class="n">support_vectors_</span><span class="p">))</span>
 
-y_test_score = svm.decision_function(X_test)
+<span class="n">y_test_score</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-fpr, tpr, _ = roc_curve(y_test, y_test_score)
-roc_auc = auc(fpr, tpr)
+<span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_score</span><span class="p">)</span>
+<span class="n">roc_auc</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">)</span>
 
-plt.plot(fpr, tpr, label=&quot;AUC=&quot; + str(roc_auc))
-plt.ylabel(&quot;True Positive Rate&quot;)
-plt.xlabel(&quot;False Positive Rate&quot;)
-plt.legend(loc=4)
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;AUC=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">roc_auc</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;True Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;False Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1517,7 +1521,7 @@ plt.show()
 <p><strong>4.</strong> Using <strong>GridSearchCV</strong>, fine-tune the SVM hyperparameters (<span class="math notranslate nohighlight">\(C\)</span> and <span class="math notranslate nohighlight">\(gamma\)</span>) on the training dataset (using <span class="math notranslate nohighlight">\(10\)</span>-fold cross-validation) for <span class="math notranslate nohighlight">\(C\)</span> values of <span class="math notranslate nohighlight">\(0.001\)</span>, <span class="math notranslate nohighlight">\(0.01\)</span>, <span class="math notranslate nohighlight">\(0.1\)</span>, <span class="math notranslate nohighlight">\(5\)</span> and <span class="math notranslate nohighlight">\(gamma\)</span> values of <span class="math notranslate nohighlight">\(0.001\)</span>, <span class="math notranslate nohighlight">\(0.01\)</span>, <span class="math notranslate nohighlight">\(0.1\)</span>, <span class="math notranslate nohighlight">\(0.5\)</span>, <span class="math notranslate nohighlight">\(1\)</span>.Display the best hyperparameters value for <span class="math notranslate nohighlight">\(C\)</span> and <span class="math notranslate nohighlight">\(gamma\)</span>. (Use the roc_auc scoring for choosing the best model and it’s hyperparameters).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1525,18 +1529,18 @@ plt.show()
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.model_selection import GridSearchCV
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
 
-tuned_parameters = {&quot;C&quot;: [0.01, 0.1, 1, 10, 100], &quot;gamma&quot;: [0.001, 0.01, 0.1, 0.5, 1]}
-clf = GridSearchCV(
-    SVC(kernel=&quot;rbf&quot;, probability=True),
-    tuned_parameters,
-    cv=10,
-    scoring=&quot;roc_auc&quot;,
-    return_train_score=True,
-)
-clf.fit(X_train, y_train)
-print(&quot;\nOptimal parameters : &quot;, clf.best_params_)
+<span class="n">tuned_parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]}</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2022</span><span class="p">),</span>
+    <span class="n">tuned_parameters</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;roc_auc&quot;</span><span class="p">,</span>
+    <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Optimal parameters : &quot;</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1549,7 +1553,7 @@ print(&quot;\nOptimal parameters : &quot;, clf.best_params_)
 <p><strong>5.</strong> Finally, using the best hyperparameters from <strong>Exercise 4</strong>, train another SVM model on the training dataset and display the AUROC of this trained model on the test set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1557,20 +1561,20 @@ print(&quot;\nOptimal parameters : &quot;, clf.best_params_)
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svm = SVC(C=1, kernel=&quot;rbf&quot;, gamma=0.001, probability=True)
-svm.fit(X_train, y_train)
-print(&quot;Number of Support vectors: &quot;, len(svm.support_vectors_))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2022</span><span class="p">)</span>
+<span class="n">svm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of Support vectors: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">svm</span><span class="o">.</span><span class="n">support_vectors_</span><span class="p">))</span>
 
-y_test_score = svm.decision_function(X_test)
+<span class="n">y_test_score</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-fpr, tpr, _ = roc_curve(y_test, y_test_score)
-roc_auc = auc(fpr, tpr)
+<span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_score</span><span class="p">)</span>
+<span class="n">roc_auc</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">)</span>
 
-plt.plot(fpr, tpr, label=&quot;AUC=&quot; + str(roc_auc))
-plt.ylabel(&quot;True Positive Rate&quot;)
-plt.xlabel(&quot;False Positive Rate&quot;)
-plt.legend(loc=4)
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;AUC=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">roc_auc</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;True Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;False Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

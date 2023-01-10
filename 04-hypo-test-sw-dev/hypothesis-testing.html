@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -957,15 +959,15 @@ rate will be less than or equal to <span class="math notranslate nohighlight">\(
 <p>Get ready by importing the APIs needed from respective libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-from scipy import stats as st
-from sklearn.metrics import confusion_matrix
-from statsmodels.sandbox.stats.multicomp import multipletests
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> <span class="k">as</span> <span class="n">st</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+<span class="kn">from</span> <span class="nn">statsmodels.sandbox.stats.multicomp</span> <span class="kn">import</span> <span class="n">multipletests</span>
 
-%matplotlib inline
+<span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
@@ -973,7 +975,7 @@ from statsmodels.sandbox.stats.multicomp import multipletests
 <p>Set a random seed for reproducibility (more on this later in the next section).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.random.seed(2022)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -981,9 +983,9 @@ from statsmodels.sandbox.stats.multicomp import multipletests
 <p>Let us create 100 variables, each with 10 observations (samples). We make the first 50 variables to have mean 0.5 (the <code class="docutils literal notranslate"><span class="pre">offset</span></code>) and variance 1, and the last 50 variables to have mean 0 and variance 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X = np.random.normal(loc=0.0, scale=1.0, size=(10, 100))
-offset = 0.5
-X[:, :50] = X[:, :50] + offset
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">offset</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">X</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">50</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">50</span><span class="p">]</span> <span class="o">+</span> <span class="n">offset</span>
 </pre></div>
 </div>
 </div>
@@ -991,7 +993,7 @@ X[:, :50] = X[:, :50] + offset
 <p>We then perform one-sample <span class="math notranslate nohighlight">\(t\)</span>-tests of the null hypothesis that the population mean (<code class="docutils literal notranslate"><span class="pre">popmean</span></code>) is zero <span class="math notranslate nohighlight">\(H_0: \mu_i = 0\)</span> for all variables <span class="math notranslate nohighlight">\(i=1, \cdots, 100\)</span> using the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_1samp.html"><code class="docutils literal notranslate"><span class="pre">ttest_1samp</span></code></a> function from the <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> module. The function returns the <span class="math notranslate nohighlight">\(t\)</span>-statistic and the <span class="math notranslate nohighlight">\(p\)</span>-value for each variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>results = st.ttest_1samp(a=X, popmean=0)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">popmean</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -999,10 +1001,10 @@ X[:, :50] = X[:, :50] + offset
 <p>Let us inspect the <span class="math notranslate nohighlight">\(t\)</span>-statistic and <span class="math notranslate nohighlight">\(p\)</span>-value for the first and the 60th variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;Variable 0 t-statistic: &quot;, results.statistic[0])
-print(&quot;Variable 0 p-value: &quot;, results.pvalue[0])
-print(&quot;Variable 59 t-statistic: &quot;, results.statistic[59])
-print(&quot;Variable 59 p-value: &quot;, results.pvalue[59])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variable 0 t-statistic: &quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">statistic</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variable 0 p-value: &quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">pvalue</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variable 59 t-statistic: &quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">statistic</span><span class="p">[</span><span class="mi">59</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variable 59 p-value: &quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">pvalue</span><span class="p">[</span><span class="mi">59</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1020,7 +1022,7 @@ Variable 59 p-value:  0.9970817828876111
 <p>We can plot the <span class="math notranslate nohighlight">\(p\)</span>-values of the <span class="math notranslate nohighlight">\(t\)</span>-tests as a histogram to see the distribution of the <span class="math notranslate nohighlight">\(p\)</span>-values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.histplot(results.pvalue, bins=50)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1034,13 +1036,13 @@ Variable 59 p-value:  0.9970817828876111
 <p>We set the significance level <span class="math notranslate nohighlight">\(\alpha\)</span> to 0.05 to make a decision on whether to reject <span class="math notranslate nohighlight">\(H_0\)</span> or not.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p_values = results.pvalue
-decisions = []
-for i in range(len(p_values)):
-    if p_values[i] &lt; 0.05:
-        decisions.append(&quot;Reject H0&quot;)
-    else:
-        decisions.append(&quot;Fail to reject H0&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_values</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">pvalue</span>
+<span class="n">decisions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p_values</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">p_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
+        <span class="n">decisions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Reject H0&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">decisions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Fail to reject H0&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1048,10 +1050,10 @@ for i in range(len(p_values)):
 <p>Let us use the ground truth to evaluate the performance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ground_truth = np.repeat([&quot;Reject H0&quot;, &quot;Fail to reject H0&quot;], [50, 50], axis=0)
-labels = [&quot;Reject H0&quot;, &quot;Fail to reject H0&quot;]
-cm = confusion_matrix(ground_truth, decisions, labels=labels)
-print(cm)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ground_truth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="s2">&quot;Reject H0&quot;</span><span class="p">,</span> <span class="s2">&quot;Fail to reject H0&quot;</span><span class="p">],</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Reject H0&quot;</span><span class="p">,</span> <span class="s2">&quot;Fail to reject H0&quot;</span><span class="p">]</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">,</span> <span class="n">decisions</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1065,10 +1067,10 @@ print(cm)
 <p>We can visualise this confusion matrix using the <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.heatmap.html"><code class="docutils literal notranslate"><span class="pre">heatmap</span></code></a> function from the <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> module.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ground_truth_labels = [&quot;H0 is False&quot;, &quot;H0 is True&quot;]
-sns.heatmap(
-    cm, annot=True, fmt=&quot;d&quot;, xticklabels=labels, yticklabels=ground_truth_labels
-)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ground_truth_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;H0 is False&quot;</span><span class="p">,</span> <span class="s2">&quot;H0 is True&quot;</span><span class="p">]</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">ground_truth_labels</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1082,20 +1084,20 @@ sns.heatmap(
 <p>There are quite some errors made. We can make the offset larger (from 0.5 to 1) to see the change to the confusion matrix and the total number of errors.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>offset = 1
-decisions = []
-X[:, :50] = X[:, :50] + offset
-results = st.ttest_1samp(a=X, popmean=0)
-p_values = results.pvalue
-for i in range(len(p_values)):
-    if p_values[i] &lt; 0.05:
-        decisions.append(&quot;Reject H0&quot;)
-    else:
-        decisions.append(&quot;Fail to reject H0&quot;)
-cm = confusion_matrix(ground_truth, decisions, labels=labels)
-sns.heatmap(
-    cm, annot=True, fmt=&quot;d&quot;, xticklabels=labels, yticklabels=ground_truth_labels
-)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">offset</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">decisions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">X</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">50</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">50</span><span class="p">]</span> <span class="o">+</span> <span class="n">offset</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">popmean</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">p_values</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">pvalue</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p_values</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">p_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
+        <span class="n">decisions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Reject H0&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">decisions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Fail to reject H0&quot;</span><span class="p">)</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">ground_truth</span><span class="p">,</span> <span class="n">decisions</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">ground_truth_labels</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1108,7 +1110,7 @@ sns.heatmap(
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>len(decisions)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">decisions</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1143,19 +1145,19 @@ sns.heatmap(
 <p>Let us see this visually. We will plot the chance of getting a false positive for <em>at least one</em> of the <span class="math notranslate nohighlight">\(M\)</span> null hypotheses as a function of <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(M\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>m = range(500)
-fwe1 = list(map(lambda x: 1 - pow(1 - 0.05, x), m))
-fwe2 = list(map(lambda x: 1 - pow(1 - 0.01, x), m))
-fwe3 = list(map(lambda x: 1 - pow(1 - 0.001, x), m))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">fwe1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="o">-</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">m</span><span class="p">))</span>
+<span class="n">fwe2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="o">-</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">m</span><span class="p">))</span>
+<span class="n">fwe3</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="o">-</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">m</span><span class="p">))</span>
 
-plt.plot(m, fwe1, label=&quot;alpha=0.05&quot;)
-plt.plot(m, fwe2, label=&quot;alpha=0.01&quot;)
-plt.plot(m, fwe3, label=&quot;alpha=0.001&quot;)
-plt.xlabel(&quot;M: Number of tests in log scale&quot;)
-plt.ylabel(&quot;Family-wise error rate&quot;)
-plt.xscale(&quot;log&quot;)
-plt.legend()
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">fwe1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;alpha=0.05&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">fwe2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;alpha=0.01&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">fwe3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;alpha=0.001&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;M: Number of tests in log scale&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Family-wise error rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1171,10 +1173,10 @@ plt.show()
 <p>Load the data first and display some essential information first.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fund_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Fund.csv&quot;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fund_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Fund.csv&quot;</span>
 
-fund_df = pd.read_csv(fund_url, na_values=&quot;?&quot;).dropna()
-fund_df.info()
+<span class="n">fund_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">fund_url</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">fund_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1191,7 +1193,7 @@ memory usage: 781.4 KB
 <p>Inspect the first few rows of the data, as usual.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fund_df.head()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fund_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1366,8 +1368,8 @@ memory usage: 781.4 KB
 <p>Let us do a one-sample <span class="math notranslate nohighlight">\(t\)</span>-test for the first manager.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>result = st.ttest_1samp(a=fund_df[&quot;Manager1&quot;], popmean=0)
-print(result.pvalue)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">fund_df</span><span class="p">[</span><span class="s2">&quot;Manager1&quot;</span><span class="p">],</span> <span class="n">popmean</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">pvalue</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1380,14 +1382,14 @@ print(result.pvalue)
 <p>Let’s do a one-sample <span class="math notranslate nohighlight">\(t\)</span>-test for five managers instead.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p_values = []
-manager_number = 5
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_values</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">manager_number</span> <span class="o">=</span> <span class="mi">5</span>
 
-for i in range(manager_number):
-    result = st.ttest_1samp(a=fund_df.iloc[:, i], popmean=0)
-    p_values.append(result.pvalue)
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">manager_number</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">fund_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">popmean</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">p_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">pvalue</span><span class="p">)</span>
 
-print(p_values)
+<span class="nb">print</span><span class="p">(</span><span class="n">p_values</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1400,10 +1402,10 @@ print(p_values)
 <p>The <span class="math notranslate nohighlight">\(p\)</span>-values are low for Managers One and Three, and high for the other three managers. However, we cannot simply reject <span class="math notranslate nohighlight">\(H_0^1\)</span> and <span class="math notranslate nohighlight">\(H_0^3\)</span>, since this would fail to account for the multiple testing that we have performed. Instead, we can use the Bonferroni correction to adjust the significance level <span class="math notranslate nohighlight">\(\alpha\)</span> for multiple testing, using the <code class="docutils literal notranslate"><span class="pre">multipletests</span></code> function from the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> module.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>reject, p_values_corrected, alphacSidak, alphacBonf = multipletests(
-    p_values, method=&quot;bonferroni&quot;
-)
-print(p_values_corrected)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reject</span><span class="p">,</span> <span class="n">p_values_corrected</span><span class="p">,</span> <span class="n">alphacSidak</span><span class="p">,</span> <span class="n">alphacBonf</span> <span class="o">=</span> <span class="n">multipletests</span><span class="p">(</span>
+    <span class="n">p_values</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;bonferroni&quot;</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p_values_corrected</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1416,7 +1418,7 @@ print(p_values_corrected)
 <p>Therefore, using the Bonferroni correction, we will reject the null hypothesis only for Manager One while controlling the FWER at 0.05. This information is also available in the variable reject.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(reject)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">reject</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1436,14 +1438,14 @@ print(p_values_corrected)
 <p>Let us study the false discovery rate (FDR) on the <a class="reference external" href="https://github.com/pykale/transparentML/raw/main/data/Fund.csv">Fund dataset</a> above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p_values = []
-manager_number = fund_df.shape[1]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_values</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">manager_number</span> <span class="o">=</span> <span class="n">fund_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-for i in range(manager_number):
-    result = st.ttest_1samp(a=fund_df.iloc[:, i], popmean=0)
-    p_values.append(result.pvalue)
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">manager_number</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">fund_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">popmean</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">p_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">pvalue</span><span class="p">)</span>
 
-print(p_values[0:10])
+<span class="nb">print</span><span class="p">(</span><span class="n">p_values</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1456,10 +1458,10 @@ print(p_values[0:10])
 <p>There are far too many managers to consider if we try to control the FWER. Instead, we focus on controlling the FDR: that is, the expected fraction of rejected null hypotheses that are actually false positives. We can use the same <code class="docutils literal notranslate"><span class="pre">multipletests</span></code> function from the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> module to control the FDR.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>reject, p_values_corrected, alphacSidak, alphacBonf = multipletests(
-    p_values, method=&quot;fdr_bh&quot;
-)
-print(p_values_corrected[0:10])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reject</span><span class="p">,</span> <span class="n">p_values_corrected</span><span class="p">,</span> <span class="n">alphacSidak</span><span class="p">,</span> <span class="n">alphacBonf</span> <span class="o">=</span> <span class="n">multipletests</span><span class="p">(</span>
+    <span class="n">p_values</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;fdr_bh&quot;</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p_values_corrected</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1474,7 +1476,7 @@ print(p_values_corrected[0:10])
 <p>We would find that 146 of the 2,000 fund managers have a corrected <span class="math notranslate nohighlight">\(p\)</span>-value below 0.1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sum(p_values_corrected &lt;= 0.1)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">p_values_corrected</span> <span class="o">&lt;=</span> <span class="mf">0.1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1487,7 +1489,7 @@ print(p_values_corrected[0:10])
 <p>If we use bonferroni method, we will find None.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sum(np.array(p_values) &lt;= 0.1 / fund_df.shape[1])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">p_values</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">0.1</span> <span class="o">/</span> <span class="n">fund_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1556,7 +1558,7 @@ print(p_values_corrected[0:10])
 <p><strong>a</strong>. Load the dataset and inspect the first few rows of the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1564,11 +1566,11 @@ print(p_values_corrected[0:10])
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-data_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Weekly.csv&quot;
-df = pd.read_csv(data_url)
-df.head()
+<span class="n">data_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Weekly.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1671,7 +1673,7 @@ df.head()
 The <span class="math notranslate nohighlight">\(t\)</span>-test is calculated for the mean of one set of values. The null hypothesis is that the expected mean of a sample of independent observations is equal to the specified population mean, popmean = <span class="math notranslate nohighlight">\(0.5\)</span>. <strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/04-hypo-test-sw-dev/hypothesis-testing.html#hypothesis-testing-on-synthetic-data">4.1.4</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1679,14 +1681,14 @@ The <span class="math notranslate nohighlight">\(t\)</span>-test is calculated f
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from scipy import stats as st
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> <span class="k">as</span> <span class="n">st</span>
 
-results = st.ttest_1samp(a=df[&quot;Today&quot;], popmean=0.5)
-print(&quot;Variable Volume t-statistic: &quot;, results.statistic)
-print(&quot;Variable Volume p-value: &quot;, results.pvalue)
+<span class="n">results</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Today&quot;</span><span class="p">],</span> <span class="n">popmean</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variable Volume t-statistic: &quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">statistic</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variable Volume p-value: &quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">pvalue</span><span class="p">)</span>
 
-# The p-value for the Today variable is 1.09e-06, which is smaller than the significance level alpha= 0.05.
-# Therefore, we can reject the null hypothesis and accept the alternative hypothesis for the Today variable.
+<span class="c1"># The p-value for the Today variable is 1.09e-06, which is smaller than the significance level alpha= 0.05.</span>
+<span class="c1"># Therefore, we can reject the null hypothesis and accept the alternative hypothesis for the Today variable.</span>
 </pre></div>
 </div>
 </div>
@@ -1700,7 +1702,7 @@ Variable Volume p-value:  1.0936150729006281e-06
 <p><strong>c</strong>. Now, do another one-sample <span class="math notranslate nohighlight">\(t\)</span>-test of the null hypothesis that the population mean (popmean) is <span class="math notranslate nohighlight">\(0.05\)</span>, <span class="math notranslate nohighlight">\(H_0: \mu_i = 0.5\)</span> for all the <strong>lagging indicator</strong> variables <strong>(Lag1, Lag2, Lag3, Lag4, Lag5)</strong> from the <strong>Weekly</strong> dataset and show all the <strong><span class="math notranslate nohighlight">\(p\)</span>-values</strong>. <strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/04-hypo-test-sw-dev/hypothesis-testing.html#multiple-hypothesis-testing">4.1.5</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1708,13 +1710,13 @@ Variable Volume p-value:  1.0936150729006281e-06
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p_values = []
-lag_number = 6
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_values</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">lag_number</span> <span class="o">=</span> <span class="mi">6</span>
 
-for i in range(1, lag_number):
-    result = st.ttest_1samp(a=df[&quot;Lag&quot; + str(i)], popmean=0.5)
-    p_values.append(result.pvalue)
-print(p_values)
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">lag_number</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Lag&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)],</span> <span class="n">popmean</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">p_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">pvalue</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p_values</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1732,7 +1734,7 @@ print(p_values)
 <p><strong>e</strong>. Now, use the <strong>Bonferroni correction</strong> to adjust the significance level <span class="math notranslate nohighlight">\(\alpha\)</span> for multiple testing performed in <strong>Exercise 6(c)</strong> using the <strong>multipletests</strong> function from the <strong>statsmodels</strong> module and state which null hypothesis we can reject. <strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/04-hypo-test-sw-dev/hypothesis-testing.html#family-wise-error-rate-fwer">4.1.5.2</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1740,15 +1742,15 @@ print(p_values)
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from statsmodels.sandbox.stats.multicomp import multipletests
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.sandbox.stats.multicomp</span> <span class="kn">import</span> <span class="n">multipletests</span>
 
-reject, p_values_corrected, alphacSidak, alphacBonf = multipletests(
-    p_values, method=&quot;bonferroni&quot;
-)
-print(p_values_corrected)
-print(reject)
+<span class="n">reject</span><span class="p">,</span> <span class="n">p_values_corrected</span><span class="p">,</span> <span class="n">alphacSidak</span><span class="p">,</span> <span class="n">alphacBonf</span> <span class="o">=</span> <span class="n">multipletests</span><span class="p">(</span>
+    <span class="n">p_values</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;bonferroni&quot;</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p_values_corrected</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reject</span><span class="p">)</span>
 
-# Therefore, using the Bonferroni correction, we will reject all the null hypothesis while controlling the FWER at 0.05.
+<span class="c1"># Therefore, using the Bonferroni correction, we will reject all the null hypothesis while controlling the FWER at 0.05.</span>
 </pre></div>
 </div>
 </div>

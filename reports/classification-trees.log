@@ -29,7 +29,7 @@ y2 = caravan_df.Purchase
 
 X_train, X_test, y_train, y_test = train_test_split(X2, y2, test_size=0.20)
 
-clf = DecisionTreeClassifier(max_leaf_nodes=8, max_features=6)
+clf = DecisionTreeClassifier(max_leaf_nodes=8, max_features=6, random_state=2022)
 
 clf.fit(X_train, y_train)
 

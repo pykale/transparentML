@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -752,8 +754,8 @@ https://youtu.be/seKOq-VMJgY?t=1082 -->
   \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\\vdots\\ x_n \end{bmatrix}.
 $$ --><div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 1
-string_variable = &quot;Hello world&quot;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">string_variable</span> <span class="o">=</span> <span class="s2">&quot;Hello world&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -769,9 +771,9 @@ string_variable = &quot;Hello world&quot;
 <p>Run the following code to see the full list of reserved words in Python:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import keyword
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">keyword</span>
 
-keyword.kwlist
+<span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span>
 </pre></div>
 </div>
 </div>
@@ -824,8 +826,8 @@ keyword.kwlist
 <p>Display the characters in the string <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">world&quot;</span></code>:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for character in string_variable:
-    print(character)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">character</span> <span class="ow">in</span> <span class="n">string_variable</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">character</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -856,18 +858,18 @@ d
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># check an input number is non-negative or negative
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check an input number is non-negative or negative</span>
 
-num = 3
+<span class="n">num</span> <span class="o">=</span> <span class="mi">3</span>
 
-# Try these two variations as well.
-# num = -5
-# num = 0
+<span class="c1"># Try these two variations as well.</span>
+<span class="c1"># num = -5</span>
+<span class="c1"># num = 0</span>
 
-if num &gt;= 0:
-    print(&quot;{} is a non-negative number&quot;.format(num))
-else:
-    print(&quot;{} is a negative number&quot;.format(num))
+<span class="k">if</span> <span class="n">num</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> is a non-negative number&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> is a negative number&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -882,20 +884,20 @@ else:
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># check an input number is positive, negative, or zero
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check an input number is positive, negative, or zero</span>
 
-num = 3.14
+<span class="n">num</span> <span class="o">=</span> <span class="mf">3.14</span>
 
-# Try these two variations as well:
-# num = 0
-# num = -2.5
+<span class="c1"># Try these two variations as well:</span>
+<span class="c1"># num = 0</span>
+<span class="c1"># num = -2.5</span>
 
-if num &gt; 0:
-    print(&quot;{} is a positive number&quot;.format(num))
-elif num == 0:
-    print(&quot;The input number is zero&quot;)
-else:
-    print(&quot;{} is a negative number&quot;.format(num))
+<span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> is a positive number&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>
+<span class="k">elif</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The input number is zero&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> is a negative number&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -917,10 +919,10 @@ else:
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;Value of the string variable is &quot;, string_variable)
-print(&quot;The first character of the string variable is &quot;, string_variable[0])
-print(&quot;The first five characters of the string variable are &quot;, string_variable[:5])
-print(x, &quot;+ 1 =&quot;, x + 1)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Value of the string variable is &quot;</span><span class="p">,</span> <span class="n">string_variable</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The first character of the string variable is &quot;</span><span class="p">,</span> <span class="n">string_variable</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The first five characters of the string variable are &quot;</span><span class="p">,</span> <span class="n">string_variable</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;+ 1 =&quot;</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -939,7 +941,7 @@ The first five characters of the string variable are  Hello
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(string_variable)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">string_variable</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -951,7 +953,7 @@ The first five characters of the string variable are  Hello
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(x)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -967,7 +969,7 @@ The first five characters of the string variable are  Hello
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(len(string_variable))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">string_variable</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -983,8 +985,8 @@ The first five characters of the string variable are  Hello
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for i in range(3):
-    print(&quot;loop: &quot;, i)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;loop: &quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1008,10 +1010,10 @@ loop:  2
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>y = 1
-z = 3.14
-print(type(y))
-print(type(z))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">z</span> <span class="o">=</span> <span class="mf">3.14</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1033,7 +1035,7 @@ print(type(z))
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(string_variable + &quot; &quot; + &quot;Python is fun!&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">string_variable</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="s2">&quot;Python is fun!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1045,7 +1047,7 @@ print(type(z))
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(3 * string_variable)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">string_variable</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1065,11 +1067,11 @@ print(type(z))
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>create_int_variable = True
-if create_int_variable:
-    new_int_variable = 123
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_int_variable</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">if</span> <span class="n">create_int_variable</span><span class="p">:</span>
+    <span class="n">new_int_variable</span> <span class="o">=</span> <span class="mi">123</span>
 
-print(new_int_variable)
+<span class="nb">print</span><span class="p">(</span><span class="n">new_int_variable</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1094,10 +1096,10 @@ print(new_int_variable)
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>none_variable = None
-print(none_variable is None)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">none_variable</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">none_variable</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span>
 
-print(type(none_variable))
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">none_variable</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1121,7 +1123,7 @@ print(type(none_variable))
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>new_list = [1, 2, 3, 4, 5, None]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1129,8 +1131,8 @@ print(type(none_variable))
 <p>Using the <code class="docutils literal notranslate"><span class="pre">append()</span></code> method can append an element to the end of the list.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>new_list.append(&quot;Hello world&quot;)
-print(new_list)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_list</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1166,9 +1168,9 @@ print(new_list)
 <p>In this course, tuples are usually used to represent the shapes of vectors and matrices.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>new_tuple = (3, 4)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 
-type(new_tuple)
+<span class="nb">type</span><span class="p">(</span><span class="n">new_tuple</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1191,13 +1193,13 @@ type(new_tuple)
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = 1
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
 
-print(a, type(a))
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
 
-print(float(a), type(float(a)))
+<span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">)))</span>
 
-print(str(a), type(str(a)))
+<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -1220,7 +1222,7 @@ print(str(a), type(str(a)))
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(string_variable[0])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">string_variable</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1233,7 +1235,7 @@ print(str(a), type(str(a)))
 <p>Index value can be negative, which counts from the right. For example, the index value <code class="docutils literal notranslate"><span class="pre">-1</span></code> refers to the last character in the string, <code class="docutils literal notranslate"><span class="pre">-2</span></code> refers to the second-last character, and so on. See the following example to get the last element of a list:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(new_list[-1])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">new_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1258,8 +1260,8 @@ print(str(a), type(str(a)))
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># elements beginning to index 5 (not included)
-string_variable[:5]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># elements beginning to index 5 (not included)</span>
+<span class="n">string_variable</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1271,8 +1273,8 @@ string_variable[:5]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># elements from index 3 to 5 (not included)
-string_variable[3:5]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># elements from index 3 to 5 (not included)</span>
+<span class="n">string_variable</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1284,8 +1286,8 @@ string_variable[3:5]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># elements from index index 6 to end
-string_variable[6:]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># elements from index index 6 to end</span>
+<span class="n">string_variable</span><span class="p">[</span><span class="mi">6</span><span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -1302,7 +1304,7 @@ string_variable[6:]
 <p>Variables can be used in calculations as if they were values</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x + 1
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </div>
@@ -1318,7 +1320,7 @@ string_variable[6:]
 <p><strong>1</strong>. Create a <strong>list</strong> with values <span class="math notranslate nohighlight">\(22\)</span>, <span class="math notranslate nohighlight">\(55\)</span>, <span class="math notranslate nohighlight">\(30\)</span>, <span class="math notranslate nohighlight">\(126\)</span>, <span class="math notranslate nohighlight">\(198\)</span>, and <span class="math notranslate nohighlight">\(225\)</span>. Write code to only print the numbers which are <strong>divisible</strong> by <span class="math notranslate nohighlight">\(5\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1326,10 +1328,10 @@ string_variable[6:]
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>list_num = [22, 55, 30, 126, 198, 225]
-for num in list_num:
-    if num % 5 == 0:
-        print(num)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_num</span> <span class="o">=</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">126</span><span class="p">,</span> <span class="mi">198</span><span class="p">,</span> <span class="mi">225</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">list_num</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1344,7 +1346,7 @@ for num in list_num:
 <p><strong>2</strong>. <strong>Add</strong> the values <span class="math notranslate nohighlight">\(33\)</span> and <span class="math notranslate nohighlight">\(65\)</span> to the list and <strong>print</strong> all the list values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1352,10 +1354,10 @@ for num in list_num:
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>list_num.append(33)
-list_num.append(65)
-for num in list_num:
-    print(num)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_num</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">33</span><span class="p">)</span>
+<span class="n">list_num</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">65</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">list_num</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1383,7 +1385,7 @@ for num in list_num:
 <p>Find out each variable types.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1391,17 +1393,17 @@ for num in list_num:
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = 13
-b = 4.76
-c = &quot;TransparentML&quot;
-d = (2, 5, 9, 14)
-e = [3, 4, 2]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">13</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">4.76</span>
+<span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;TransparentML&quot;</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
+<span class="n">e</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 
-print(a, type(a))
-print(b, type(b))
-print(c, type(c))
-print(d, type(d))
-print(e, type(e))
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1425,7 +1427,7 @@ TransparentML &lt;class &#39;str&#39;&gt;
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1433,10 +1435,10 @@ TransparentML &lt;class &#39;str&#39;&gt;
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for i in range(6):
-    for j in range(i):
-        print(i, end=&quot; &quot;)
-    print(&quot;&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

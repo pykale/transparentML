@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -687,7 +689,7 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="classification-trees">
 <h1><span class="section-number">7.2. </span>Classification trees<a class="headerlink" href="#classification-trees" title="Permalink to this headline">¶</a></h1>
-<p>Classification trees are very similar to regression trees, except that the target variable is categorical. In regression trees, we used the mean of the target variable in each region as the prediction. In classification trees, we use the most common class in each region as the prediction. Besides the most common class, we are also interesting in the proportion of each class in each region. This is because the proportion of each class in each region is a measure of the <strong>purity</strong> of the region. A region is pure if it contains only one class. A region is impure if it contains multiple classes.</p>
+<p>Classification trees are very similar to regression trees, except that the target variable is categorical. In regression trees, we used the mean of the target variable in each region as the prediction. In classification trees, we use the most common class in each region as the prediction. Besides the most common class, we are also interested in the proportion of each class in each region. This is because the proportion of each class in each region is a measure of the <strong>purity</strong> of the region. A region is pure if it contains only one class. A region is impure if it contains multiple classes.</p>
 <div class="section" id="gini-index">
 <h2><span class="section-number">7.2.1. </span>Gini index<a class="headerlink" href="#gini-index" title="Permalink to this headline">¶</a></h2>
 <p>Although classification accuracy is a good measure for classification performance, a popular cost function (splitting criterion) for classification trees is the <a class="reference external" href="https://en.wikipedia.org/wiki/Gini_coefficient"><strong>Gini index</strong></a>, a measure of the impurity of a region (not just feature regions in machine learning, but also regions in society often heard in news). This is because classification accuracy is not sufficiently sensitive for building classification trees.</p>
@@ -771,7 +773,7 @@ H = - \sum_{c=1}^C p_c \log_2 p_c,
 </div>
 </div>
 </div>
-<p>Fit a classification tree to the data using the <code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code> class from the <code class="docutils literal notranslate"><span class="pre">sklearn.tree</span></code> module. Set the <code class="docutils literal notranslate"><span class="pre">max_leaf_nodes</span></code> parameter to 6. This will limit the number of leaf nodes to 6. Set the <code class="docutils literal notranslate"><span class="pre">max_features</span></code> parameter to 3. This will limit the number of features to consider when looking for the best split to 3.</p>
+<p>Fit a classification tree to the data using the <code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code> class from the <code class="docutils literal notranslate"><span class="pre">sklearn.tree</span></code> module. Set the <code class="docutils literal notranslate"><span class="pre">max_leaf_nodes</span></code> parameter to 6. This will limit the number of leaf nodes to 6. Set the <code class="docutils literal notranslate"><span class="pre">max_features</span></code> parameter to 3. This will limit the number of features to consider when looking for the best split to 3. It will randomly select these 3 features at each split.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_leaf_nodes</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -908,7 +910,7 @@ H = - \sum_{c=1}^C p_c \log_2 p_c,
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">7.2.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p><strong>1.</strong> All the following exercises use the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Caravan.csv">Caravan</a>.</p>
+<p><strong>1.</strong> All the following exercises use the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Caravan.csv">Caravan</a> dataset.</p>
 <p>Load the <strong>Caravan</strong> dataset and inspect the first five rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -952,7 +954,7 @@ H = - \sum_{c=1}^C p_c \log_2 p_c,
 
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.20</span><span class="p">)</span>
 
-<span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_leaf_nodes</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_leaf_nodes</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2022</span><span class="p">)</span>
 
 <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 

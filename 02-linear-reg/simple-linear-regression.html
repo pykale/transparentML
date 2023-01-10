@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -769,7 +771,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>If you are using Google Colab, you can skip this section. If you are running the code locally on your own computer, you will need to install the following libraries unless they are already installed:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!pip install -q statsmodels seaborn
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>statsmodels<span class="w"> </span>seaborn
 </pre></div>
 </div>
 </div>
@@ -780,18 +782,18 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Get ready by importing the APIs needed from respective libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
 
-from statsmodels.formula.api import ols
+<span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
 
-%matplotlib inline
+<span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
@@ -799,10 +801,10 @@ from statsmodels.formula.api import ols
 <p>Load the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Advertising.csv">Advertising dataset</a> and display the column names, counts and data types.</p>
 <!-- Datasets available on https://www.statlearning.com/resources-first-edition --><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Advertising.csv&quot;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Advertising.csv&quot;</span>
 
-advertising_df = pd.read_csv(data_url, header=0, index_col=0)
-advertising_df.info()
+<span class="n">advertising_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">advertising_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -825,7 +827,7 @@ memory usage: 7.8 KB
 <p>Display the first 5 rows for inspection. You can also click <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Advertising.csv">Advertising dataset</a> to inspect the full data on GitHub, since this dataset is small. It is a good habit to inspect the data before using it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>advertising_df.head()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">advertising_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -901,8 +903,8 @@ memory usage: 7.8 KB
 <div class="math notranslate nohighlight" id="equation-eq-y-approx-x">
 <span class="eqno">(2.1)<a class="headerlink" href="#equation-eq-y-approx-x" title="Permalink to this equation">¶</a></span>\[y \approx \beta_0 + \beta_1 x\]</div>
 <p>where <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are two unknown constants that represent the <em>bias</em> and <em>weight</em> of this linear model, which are also known as <em>intercept</em> and <em>slope</em>, respectively. Together, <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are called the <em>model coefficients</em>, or <em>parameters</em>. We can describe the linear relationship as <em>regressing</em> <span class="math notranslate nohighlight">\(y\)</span> onto <span class="math notranslate nohighlight">\(x\)</span>. For example, <span class="math notranslate nohighlight">\(x\)</span> may represent <code class="docutils literal notranslate"><span class="pre">TV</span></code> advertising budget (in thousands of dollars) and <span class="math notranslate nohighlight">\(y\)</span> may represent <code class="docutils literal notranslate"><span class="pre">sales</span></code> (in thousands of dollars) in the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Advertising.csv">Advertising dataset</a>. Then we can regress sales onto TV by fitting the model:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-55e894ed-1b1e-4507-9fe6-a805f8875133">
-<span class="eqno">(2.2)<a class="headerlink" href="#equation-55e894ed-1b1e-4507-9fe6-a805f8875133" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-39f58541-d5d8-4f90-a498-225b8fea740c">
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-39f58541-d5d8-4f90-a498-225b8fea740c" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \textrm{sales} \approx \beta_0 + \beta_1 \times \textrm{TV}
 \end{equation}\]</div>
 </div>
@@ -917,33 +919,33 @@ memory usage: 7.8 KB
 <div class="math notranslate nohighlight" id="equation-rssdef">
 <span class="eqno">(2.3)<a class="headerlink" href="#equation-rssdef" title="Permalink to this equation">¶</a></span>\[\text{RSS} = \sum_{i=1}^N (y_i - \hat{y}_i)^2 = \sum_{i=1}^N (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i)^2,\]</div>
 <p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the response <span class="math notranslate nohighlight">\(y\)</span>, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predicted response <span class="math notranslate nohighlight">\(\hat{y}\)</span>, and <span class="math notranslate nohighlight">\(x_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predictor <span class="math notranslate nohighlight">\(x\)</span>. The least squares estimates of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are given as a <a class="reference external" href="https://mathworld.wolfram.com/Closed-FormSolution.html">closed-form solution</a> by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9efc7572-90e3-4969-bf4d-4ed1be2f03cd">
-<span class="eqno">(2.4)<a class="headerlink" href="#equation-9efc7572-90e3-4969-bf4d-4ed1be2f03cd" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e5a7eeba-ef59-4ad1-93a4-b26a21810a77">
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-e5a7eeba-ef59-4ad1-93a4-b26a21810a77" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{\beta}_1 = \frac{\sum_{i=1}^N (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^N (x_i - \bar{x})^2},
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-e620a2ca-01b0-4190-a9cb-1134b98cab8f">
-<span class="eqno">(2.5)<a class="headerlink" href="#equation-e620a2ca-01b0-4190-a9cb-1134b98cab8f" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-834ae60a-61a2-48de-a45b-712bf45feb57">
+<span class="eqno">(2.5)<a class="headerlink" href="#equation-834ae60a-61a2-48de-a45b-712bf45feb57" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}.
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\bar{y}\)</span> are the sample means of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> respectively. The least squares estimates of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> are obtained by minimising the RSS. The least squares line is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e029fff6-d99c-4981-9b5f-3c2960d3f2d8">
-<span class="eqno">(2.6)<a class="headerlink" href="#equation-e029fff6-d99c-4981-9b5f-3c2960d3f2d8" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-bb94de23-fb67-4a37-b8e2-d9e58ac4e770">
+<span class="eqno">(2.6)<a class="headerlink" href="#equation-bb94de23-fb67-4a37-b8e2-d9e58ac4e770" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x.
 \end{equation}\]</div>
 <p>The least squares line, also known as the <em>regression line</em>, is the straight line that minimises the sum of squared residuals.</p>
 <p>Run the code below to fit <code class="docutils literal notranslate"><span class="pre">sales</span></code> onto <code class="docutils literal notranslate"><span class="pre">TV</span></code> for the <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> dataset using the API <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.regplot.html"><code class="docutils literal notranslate"><span class="pre">seaborn.regplot</span></code></a> from the library <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>, which plots data and a linear regression model fit. You are encouraged to click the hyperlink to the API to learn more about its usage. The data are shown as red dots and the regression line is shown in blue.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.regplot(
-    x=advertising_df.TV,
-    y=advertising_df.Sales,
-    order=1,
-    x_ci=&quot;ci&quot;,
-    scatter_kws={&quot;color&quot;: &quot;r&quot;, &quot;s&quot;: 9},
-)
-plt.xlim(-10, 310)
-plt.ylim(ymin=0)
-plt.show()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">advertising_df</span><span class="o">.</span><span class="n">TV</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">advertising_df</span><span class="o">.</span><span class="n">Sales</span><span class="p">,</span>
+    <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">x_ci</span><span class="o">=</span><span class="s2">&quot;ci&quot;</span><span class="p">,</span>
+    <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">310</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -959,25 +961,25 @@ plt.show()
 <p>Firstly, fit a linear regression model. Before fitting, we centre the data by subtracting the mean of each variable from each observation via a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html"><code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code></a>. This is a common practice in machine learning called <a class="reference external" href="https://en.wikipedia.org/wiki/Feature_scaling">data normalization</a>, and essentially makes it easier for our model to learn from the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Regression coefficients (Ordinary Least Squares)
-regr = LinearRegression()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Regression coefficients (Ordinary Least Squares)</span>
+<span class="n">regr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 
-scale = StandardScaler(with_mean=True, with_std=False)
-X = scale.fit_transform(advertising_df.TV.values.reshape(-1, 1))
-y = advertising_df.Sales
+<span class="n">scale</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">(</span><span class="n">with_mean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">with_std</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">scale</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">advertising_df</span><span class="o">.</span><span class="n">TV</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">advertising_df</span><span class="o">.</span><span class="n">Sales</span>
 
-regr.fit(X, y)
-print(&quot;Mean removed from input features: &quot;, scale.mean_)
-print(&quot;Regression model intercept (bias): &quot;, regr.intercept_)
-print(&quot;Regression model slop (weight): &quot;, regr.coef_)
+<span class="n">regr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean removed from input features: &quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">.</span><span class="n">mean_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Regression model intercept (bias): &quot;</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Regression model slop (weight): &quot;</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
 
-# Plot the data and the regression line
-axes = plt.gca()
+<span class="c1"># Plot the data and the regression line</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
 
-plt.scatter(X, y, color=&quot;r&quot;, s=9)
-x_vals = np.array(axes.get_xlim())
-y_vals = regr.intercept_ + regr.coef_ * x_vals
-plt.plot(x_vals, y_vals, &quot;-&quot;, linewidth=3, color=&quot;blue&quot;)
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">())</span>
+<span class="n">y_vals</span> <span class="o">=</span> <span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span> <span class="o">*</span> <span class="n">x_vals</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -987,7 +989,7 @@ Regression model intercept (bias):  14.0225
 Regression model slop (weight):  [0.04753664]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f3a7bbbba30&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fcb34a8cc10&gt;]
 </pre></div>
 </div>
 <img alt="../_images/simple-linear-regression_13_2.png" src="../_images/simple-linear-regression_13_2.png" />
@@ -996,7 +998,7 @@ Regression model slop (weight):  [0.04753664]
 <p>Check the input data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X.shape
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -1010,21 +1012,21 @@ Regression model slop (weight):  [0.04753664]
 <p>First, create grid coordinates for plotting and computing the minimum of RSS.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>beta_0 = np.linspace(regr.intercept_ - 2, regr.intercept_ + 2, 50)
-beta_1 = np.linspace(regr.coef_ - 0.02, regr.coef_ + 0.02, 50)
-xx, yy = np.meshgrid(beta_0, beta_1, indexing=&quot;xy&quot;)
-Z = np.zeros((beta_0.size, beta_1.size))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beta_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">beta_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">coef_</span> <span class="o">-</span> <span class="mf">0.02</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span> <span class="o">+</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">beta_0</span><span class="p">,</span> <span class="n">beta_1</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s2">&quot;xy&quot;</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">beta_0</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">beta_1</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
 
-# Calculate Z-values (RSS) based on grid of coefficients
-for (i, j), v in np.ndenumerate(Z):
-    Z[i, j] = ((y - (xx[i, j] + X.ravel() * yy[i, j])) ** 2).sum() / 1000
+<span class="c1"># Calculate Z-values (RSS) based on grid of coefficients</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">ndenumerate</span><span class="p">(</span><span class="n">Z</span><span class="p">):</span>
+    <span class="n">Z</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">xx</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">X</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">*</span> <span class="n">yy</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]))</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000</span>
 
-# minimised RSS
-min_RSS = r&quot;$\beta_0$, $\beta_1$ for minimised RSS&quot;
-min_rss = (
-    np.sum((regr.intercept_ + regr.coef_ * X - y.values.reshape(-1, 1)) ** 2) / 1000
-)
-min_rss
+<span class="c1"># minimised RSS</span>
+<span class="n">min_RSS</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$\beta_0$, $\beta_1$ for minimised RSS&quot;</span>
+<span class="n">min_rss</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span> <span class="o">*</span> <span class="n">X</span> <span class="o">-</span> <span class="n">y</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000</span>
+<span class="p">)</span>
+<span class="n">min_rss</span>
 </pre></div>
 </div>
 </div>
@@ -1037,40 +1039,40 @@ min_rss
 <p>Plot the RSS with corresponding <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> in 2D and 3D.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig = plt.figure(figsize=(15, 6))
-fig.suptitle(&quot;RSS - Regression coefficients&quot;, fontsize=20)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;RSS - Regression coefficients&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 
-ax1 = fig.add_subplot(121)
-ax2 = fig.add_subplot(122, projection=&quot;3d&quot;)
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
 
-# Left plot
-CS = ax1.contour(xx, yy, Z, cmap=plt.cm.Set1, levels=[2.15, 2.2, 2.3, 2.5, 3])
-ax1.scatter(regr.intercept_, regr.coef_[0], c=&quot;r&quot;, label=min_RSS)
-ax1.clabel(CS, inline=True, fontsize=10, fmt=&quot;%1.1f&quot;)
+<span class="c1"># Left plot</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Set1</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mf">2.15</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">min_RSS</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%1.1f</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Right plot
-ax2.plot_surface(xx, yy, Z, rstride=3, cstride=3, alpha=0.3)
-ax2.contour(
-    xx,
-    yy,
-    Z,
-    zdir=&quot;z&quot;,
-    offset=Z.min(),
-    cmap=plt.cm.Set1,
-    alpha=0.4,
-    levels=[2.15, 2.2, 2.3, 2.5, 3],
-)
-ax2.scatter3D(regr.intercept_, regr.coef_[0], min_rss, c=&quot;r&quot;, label=min_RSS)
-ax2.set_zlabel(&quot;RSS&quot;)
-ax2.set_zlim(Z.min(), Z.max())
-ax2.set_ylim(0.02, 0.07)
+<span class="c1"># Right plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">rstride</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span>
+    <span class="n">xx</span><span class="p">,</span>
+    <span class="n">yy</span><span class="p">,</span>
+    <span class="n">Z</span><span class="p">,</span>
+    <span class="n">zdir</span><span class="o">=</span><span class="s2">&quot;z&quot;</span><span class="p">,</span>
+    <span class="n">offset</span><span class="o">=</span><span class="n">Z</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Set1</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mf">2.15</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">scatter3D</span><span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">min_rss</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">min_RSS</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;RSS&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">(</span><span class="n">Z</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">Z</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.07</span><span class="p">)</span>
 
-# settings common to both plots
-for ax in fig.axes:
-    ax.set_xlabel(r&quot;$\beta_0$&quot;, fontsize=17)
-    ax.set_ylabel(r&quot;$\beta_1$&quot;, fontsize=17)
-    ax.set_yticks([0.03, 0.04, 0.05, 0.06])
-    ax.legend()
+<span class="c1"># settings common to both plots</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\beta_0$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\beta_1$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1085,35 +1087,35 @@ for ax in fig.axes:
 <p>Run the cell below for understanding the system transparency for linear regression models.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.regplot(
-    x=advertising_df.TV,
-    y=advertising_df.Sales,
-    order=1,
-    x_ci=&quot;ci&quot;,
-    scatter_kws={&quot;color&quot;: &quot;r&quot;, &quot;s&quot;: 9},
-)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">advertising_df</span><span class="o">.</span><span class="n">TV</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">advertising_df</span><span class="o">.</span><span class="n">Sales</span><span class="p">,</span>
+    <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">x_ci</span><span class="o">=</span><span class="s2">&quot;ci&quot;</span><span class="p">,</span>
+    <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">},</span>
+<span class="p">)</span>
 
-x1 = 100
-y1 = (regr.intercept_ + regr.coef_ * (x1 - scale.mean_))[0]
-print(&quot;Predicted sales for TV = 100: &quot;, y1)
-plt.plot((x1, x1), (0, y1), &quot;k--&quot;, lw=1)
-plt.plot((-10, x1), (y1, y1), &quot;k--&quot;, lw=1)
+<span class="n">x1</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span> <span class="o">*</span> <span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">scale</span><span class="o">.</span><span class="n">mean_</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted sales for TV = 100: &quot;</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">x1</span><span class="p">,</span> <span class="n">x1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="s2">&quot;k--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">x1</span><span class="p">),</span> <span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="s2">&quot;k--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-x_mean = scale.mean_[0]
-y_ = (regr.intercept_ + regr.coef_ * (x_mean - scale.mean_))[0]
-print(&quot;Predicted sales for TV = %s (mean): &quot; % x_mean, y_)
-plt.plot((x_mean, x_mean), (0, y_), &quot;k--&quot;, lw=1)
-plt.plot((-10, x_mean), (y_, y_), &quot;k--&quot;, lw=1)
+<span class="n">x_mean</span> <span class="o">=</span> <span class="n">scale</span><span class="o">.</span><span class="n">mean_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y_</span> <span class="o">=</span> <span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span> <span class="o">*</span> <span class="p">(</span><span class="n">x_mean</span> <span class="o">-</span> <span class="n">scale</span><span class="o">.</span><span class="n">mean_</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted sales for TV = </span><span class="si">%s</span><span class="s2"> (mean): &quot;</span> <span class="o">%</span> <span class="n">x_mean</span><span class="p">,</span> <span class="n">y_</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">x_mean</span><span class="p">,</span> <span class="n">x_mean</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_</span><span class="p">),</span> <span class="s2">&quot;k--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">x_mean</span><span class="p">),</span> <span class="p">(</span><span class="n">y_</span><span class="p">,</span> <span class="n">y_</span><span class="p">),</span> <span class="s2">&quot;k--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-x2 = 200
-y2 = (regr.intercept_ + regr.coef_ * (x2 - scale.mean_))[0]
-print(&quot;Predicted sales for TV = 200: &quot;, y2)
-plt.plot((x2, x2), (0, y2), &quot;k--&quot;, lw=1)
-plt.plot((-10, x2), (y2, y2), &quot;k--&quot;, lw=1)
+<span class="n">x2</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span> <span class="o">*</span> <span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="n">scale</span><span class="o">.</span><span class="n">mean_</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted sales for TV = 200: &quot;</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">x2</span><span class="p">,</span> <span class="n">x2</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="s2">&quot;k--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">x2</span><span class="p">),</span> <span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="s2">&quot;k--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-plt.xlim(-10, 310)
-plt.ylim(ymin=0)
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">310</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1143,8 +1145,8 @@ Predicted sales for TV = 200:  16.539921635731645
 <div class="section" id="assessing-model-accuracy-via-r-2">
 <h2><span class="section-number">2.1.7. </span>Assessing model accuracy via <span class="math notranslate nohighlight">\(R^2\)</span><a class="headerlink" href="#assessing-model-accuracy-via-r-2" title="Permalink to this headline">¶</a></h2>
 <p>The accuracy of the linear model is dependent on the variability of the response <span class="math notranslate nohighlight">\(y\)</span> and the predictor <span class="math notranslate nohighlight">\(x\)</span>. The variability of <span class="math notranslate nohighlight">\(y\)</span> is measured by the variance of <span class="math notranslate nohighlight">\(y\)</span>, denoted by <span class="math notranslate nohighlight">\(\sigma_y^2\)</span>. The variability of <span class="math notranslate nohighlight">\(x\)</span> is measured by the variance of <span class="math notranslate nohighlight">\(x\)</span>, denoted by <span class="math notranslate nohighlight">\(\sigma_x^2\)</span>. The <a class="reference external" href="https://en.wikipedia.org/wiki/Coefficient_of_determination">coefficient of determination</a>, denoted by <span class="math notranslate nohighlight">\(R^2\)</span>, is defined as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-48b1e8da-117d-44f3-b7d8-df9869ef836f">
-<span class="eqno">(2.7)<a class="headerlink" href="#equation-48b1e8da-117d-44f3-b7d8-df9869ef836f" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-86108e0a-bcc2-4974-883c-20855482e606">
+<span class="eqno">(2.7)<a class="headerlink" href="#equation-86108e0a-bcc2-4974-883c-20855482e606" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 R^2 = \frac{\text{TSS} - \text{RSS}}{\text{TSS}} = 1 - \frac{\text{RSS}}{\text{TSS}}
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\text{TSS} = \sum_{i=1}^N (y_i - \bar{y})^2\)</span> <em>is the total sum of squares</em>. Dividing the RSS by the total number of training samples gives the <em>mean squared error</em> (MSE) of the model. The MSE is the average squared distance between the observed response values and the response values predicted by the model. The MSE is also known as the <em>mean squared prediction error</em> (MSPE). The MSE is defined as</p>
@@ -1160,14 +1162,14 @@ R^2 = \frac{\text{TSS} - \text{RSS}}{\text{TSS}} = 1 - \frac{\text{RSS}}{\text{T
 <p>Run the following code to fit a simple linear regression model using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>regr = LinearRegression()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 
-X = advertising_df.TV.values.reshape(-1, 1)
-y = advertising_df.Sales
+<span class="n">X</span> <span class="o">=</span> <span class="n">advertising_df</span><span class="o">.</span><span class="n">TV</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">advertising_df</span><span class="o">.</span><span class="n">Sales</span>
 
-regr.fit(X, y)
-print(regr.intercept_)
-print(regr.coef_)
+<span class="n">regr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1181,9 +1183,9 @@ print(regr.coef_)
 <p>Then evaluate the learnt model with <span class="math notranslate nohighlight">\(R^2\)</span> via <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html"><code class="docutils literal notranslate"><span class="pre">r2_score</span></code></a> (Table 3.1 &amp; 3.2 of the text book).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sales_pred = regr.predict(X)
-print(&quot;R2 score:&quot;, r2_score(y, sales_pred))
-print(&quot;Mean squared error: &quot;, mean_squared_error(y, sales_pred))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sales_pred</span> <span class="o">=</span> <span class="n">regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R2 score:&quot;</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">sales_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean squared error: &quot;</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">sales_pred</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1199,19 +1201,19 @@ Mean squared error:  10.512652915656757
 <div class="section" id="standard-errors-and-residual-standard-error">
 <h2><span class="section-number">2.1.8. </span>Standard errors and residual standard error<a class="headerlink" href="#standard-errors-and-residual-standard-error" title="Permalink to this headline">¶</a></h2>
 <p>The linear relationship between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> can be written in an equation, rather than an approximation earlier in Equation <a class="reference internal" href="#equation-eq-y-approx-x">(2.1)</a>, as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-331ab2e9-930a-4fe8-a065-fff06970bbb6">
-<span class="eqno">(2.9)<a class="headerlink" href="#equation-331ab2e9-930a-4fe8-a065-fff06970bbb6" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-07f1c50e-5f7d-4c07-a39a-5acb1e4f1507">
+<span class="eqno">(2.9)<a class="headerlink" href="#equation-07f1c50e-5f7d-4c07-a39a-5acb1e4f1507" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 y = \beta_0 + \beta_1 x + \epsilon,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\epsilon\)</span> is a random error term that represents the difference (i.e. the error, unexplained part) between the observed response <span class="math notranslate nohighlight">\(y\)</span> and the true response <span class="math notranslate nohighlight">\(\beta_0 + \beta_1 x\)</span>. The error term <span class="math notranslate nohighlight">\(\epsilon\)</span> is assumed to be normally distributed with mean zero and constant variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. The coefficient estimates <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> are only estimates of the true coefficients <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>. We can quantify the accuracy of the estimates by computing the <a class="reference external" href="https://en.wikipedia.org/wiki/Standard_error"><em>standard error</em></a> of the estimates. The following formulas can be used to compute the standard error associated with <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> and <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e49abb0f-2318-428f-b03c-a383f4a219d9">
-<span class="eqno">(2.10)<a class="headerlink" href="#equation-e49abb0f-2318-428f-b03c-a383f4a219d9" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b559c469-3e3b-4e44-9451-e79303c6bdc6">
+<span class="eqno">(2.10)<a class="headerlink" href="#equation-b559c469-3e3b-4e44-9451-e79303c6bdc6" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{SE}(\hat{\beta}_{1})^2 = \frac{\sigma^2}{\sum_{i=1}^N (x_i - \bar{x})^2}, \quad \text{SE}(\hat{\beta}_0)^2 = \sigma^2 \left[\frac{1}{N} + \frac{\bar{x}^2}{\sum_{i=1}^N (x_i - \bar{x})^2} \right],
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\sigma^2\)</span> is an estimate of the variance of the error term <span class="math notranslate nohighlight">\(\epsilon= y - (\beta_0 + \beta_1 x) \)</span>, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predicted response <span class="math notranslate nohighlight">\(\hat{y}\)</span>, and <span class="math notranslate nohighlight">\(x_i\)</span> is the <span class="math notranslate nohighlight">\(i\text{th}\)</span> observation of the predictor <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\bar{y}\)</span> are the sample means of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> respectively.</p>
 <p>In general, <span class="math notranslate nohighlight">\(\sigma^2\)</span> is unknown, so we need to estimate it from the <em>residual standard error</em> (RSE) below</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f6e94cbd-ef26-489c-a05c-9b93f5cc2e1f">
-<span class="eqno">(2.11)<a class="headerlink" href="#equation-f6e94cbd-ef26-489c-a05c-9b93f5cc2e1f" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1610019d-ca4b-471e-bd5a-17076ecfc19d">
+<span class="eqno">(2.11)<a class="headerlink" href="#equation-1610019d-ca4b-471e-bd5a-17076ecfc19d" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{RSE} = \sqrt{\frac{1}{N-2}\text{RSS}} = \sqrt{\frac{1}{N-2} \sum_{i=1}^N (y_i - \hat{y}_i)^2}.
 \end{equation}\]</div>
 <p>RSE is also <em>another way to assess the quality of a linear regression fit</em> (in terms of error). Due to the presence of the error term <span class="math notranslate nohighlight">\(\epsilon\)</span>, perfect prediction is not possible even if we know the true regression line (unless <span class="math notranslate nohighlight">\(\epsilon\)</span> is zero, rarely the case in practice). The RSE is an estimate of the standard deviation of <span class="math notranslate nohighlight">\(\epsilon\)</span>. It is the average amount that the response will deviate from the true regression line, measuring the lack of fit of the model to the data. The smaller the RSE, the better the model fits the data.</p>
@@ -1220,8 +1222,8 @@ y = \beta_0 + \beta_1 x + \epsilon,
 <h2><span class="section-number">2.1.9. </span>Confidence intervals<a class="headerlink" href="#confidence-intervals" title="Permalink to this headline">¶</a></h2>
 <p>The standard error indicates the average amount that an estimate differs from its actual value. Thus, the standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> is a measure of the average amount that <span class="math notranslate nohighlight">\(\hat{\beta}_1\)</span> will deviate from the its true value <span class="math notranslate nohighlight">\(\beta_1\)</span>. The standard error of <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> is a measure of the average amount that <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> will deviate from the its true value <span class="math notranslate nohighlight">\(\beta_0\)</span>.</p>
 <p>Standard errors can be used to compute <a class="reference external" href="https://en.wikipedia.org/wiki/Confidence_interval">confidence intervals</a>. A 95% is defined as a range of values such that with 95 % probability, the range (interval) will contain the true unknown value of the parameter. The range is defined in terms of lower and upper limits computed from the sample of data. For linear regression, the 95% confidence intervals for <span class="math notranslate nohighlight">\(\beta_1\)</span> and <span class="math notranslate nohighlight">\(\beta_0\)</span> approximately takes the form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-45ba9659-6cbe-410c-b492-c2a69477551b">
-<span class="eqno">(2.12)<a class="headerlink" href="#equation-45ba9659-6cbe-410c-b492-c2a69477551b" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-51b606e2-c6c1-475f-9a3a-eb3c874b203a">
+<span class="eqno">(2.12)<a class="headerlink" href="#equation-51b606e2-c6c1-475f-9a3a-eb3c874b203a" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \hat{\beta}_1 \pm 2 \times \text{SE}(\hat{\beta}_1),\:\: \hat{\beta}_0 \pm 2 \times \text{SE}(\hat{\beta}_0).
 \end{equation}\]</div>
 <p>The above can be interpreted as there is an approximately 95% chance that the interview <span class="math notranslate nohighlight">\([\hat{\beta}_1 - 2 \times \text{SE}(\hat{\beta}_1), \hat{\beta}_1 + 2 \times \text{SE}(\hat{\beta}_1)]\)</span> will contain the true value of <span class="math notranslate nohighlight">\(\beta_1\)</span>, and the interval <span class="math notranslate nohighlight">\([\hat{\beta}_0 - 2 \times \text{SE}(\hat{\beta}_0), \hat{\beta}_0 + 2 \times \text{SE}(\hat{\beta}_0)]\)</span> will contain the true value of <span class="math notranslate nohighlight">\(\beta_0\)</span>.</p>
@@ -1232,8 +1234,8 @@ y = \beta_0 + \beta_1 x + \epsilon,
 <p>Run the following code to compute the statistics, including the confidence intervals, of the learnt model using <code class="docutils literal notranslate"><span class="pre">statesmodels</span></code> (page 67 &amp; Table 3.1 &amp; 3.2 of the textbook).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>est = ols(&quot;Sales ~ TV&quot;, advertising_df).fit()
-est.summary().tables[1]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Sales ~ TV&quot;</span><span class="p">,</span> <span class="n">advertising_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">est</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1256,10 +1258,10 @@ est.summary().tables[1]
 <!-- The 5th column is the $p$-values of the coefficients, which are used to test the significance of the coefficients. The $p$-values are computed using the [$t$-test](https://en.wikipedia.org/wiki/Student%27s_t-test) for the [null hypothesis](https://en.wikipedia.org/wiki/Null_hypothesis) that the coefficient is zero.  The 4th column is the $t$ statistic value. The $p$-values are used to determine whether the coefficient is statistically significant. The smaller the $p$-value, the more likely it is that the coefficient is statistically significant. The $p$-values are also used to determine whether the model is statistically significant. The model is statistically significant if the $p$-value is less than the significance level (e.g. 0.05). --><p>We can verify that the RSS computed via <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> is the same as that obtained via <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># RSS with regression coefficients
-(
-    (advertising_df.Sales - (est.params[0] + est.params[1] * advertising_df.TV)) ** 2
-).sum() / 1000
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># RSS with regression coefficients</span>
+<span class="p">(</span>
+    <span class="p">(</span><span class="n">advertising_df</span><span class="o">.</span><span class="n">Sales</span> <span class="o">-</span> <span class="p">(</span><span class="n">est</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">est</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">advertising_df</span><span class="o">.</span><span class="n">TV</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000</span>
 </pre></div>
 </div>
 </div>
@@ -1276,7 +1278,7 @@ est.summary().tables[1]
 <p>Use the <strong>LinearRegression()</strong> function to perform a simple linear regression with <strong>Sales</strong> as the response and <strong>Price</strong> as the predictor. Find out the <strong>weight</strong> and <strong>bias</strong> of the regression model. Don’t forget to use <strong>StandardScaler</strong> to preprocess the data before fitting. <strong>Hint</strong>: See Section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/simple-linear-regression.html#example-model-fitting-and-visualisation-using-scikit-learn">2.1.5</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1284,24 +1286,24 @@ est.summary().tables[1]
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
-import numpy as np
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LinearRegression
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 
-carseats_df = pd.read_csv(
-    &quot;https://github.com/pykale/transparentML/raw/main/data/Carseats.csv&quot;
-)
+<span class="n">carseats_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Carseats.csv&quot;</span>
+<span class="p">)</span>
 
-regr = LinearRegression()
+<span class="n">regr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 
-scale = StandardScaler(with_mean=True, with_std=False)
-X = scale.fit_transform(carseats_df.Price.values.reshape(-1, 1))
-y = carseats_df.Sales
+<span class="n">scale</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">(</span><span class="n">with_mean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">with_std</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">scale</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">carseats_df</span><span class="o">.</span><span class="n">Price</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">carseats_df</span><span class="o">.</span><span class="n">Sales</span>
 
-regr.fit(X, y)
-print(&quot;Regression model intercept (bias): &quot;, regr.intercept_)
-print(&quot;Regression model slop (weight): &quot;, regr.coef_)
+<span class="n">regr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Regression model intercept (bias): &quot;</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Regression model slop (weight): &quot;</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1315,7 +1317,7 @@ Regression model slop (weight):  [-0.05307302]
 <p><strong>2</strong>. Plot the response <strong>Sales</strong> and predictor <strong>Price</strong>. Use the <strong>regplot()</strong> function to display the least-squared regression line. <strong>Hint</strong>: See Section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/simple-linear-regression.html#linear-relationship-modelling-for-regression">2.1.4</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1323,18 +1325,18 @@ Regression model slop (weight):  [-0.05307302]
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Let&#39;s plot our predicted regression
-import seaborn as sns
-import matplotlib.pyplot as plt
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s plot our predicted regression</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-sns.regplot(
-    x=carseats_df.Price,
-    y=carseats_df.Sales,
-    order=1,
-    x_ci=&quot;ci&quot;,
-    scatter_kws={&quot;color&quot;: &quot;r&quot;, &quot;s&quot;: 9},
-)
-plt.show()
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">carseats_df</span><span class="o">.</span><span class="n">Price</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">carseats_df</span><span class="o">.</span><span class="n">Sales</span><span class="p">,</span>
+    <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">x_ci</span><span class="o">=</span><span class="s2">&quot;ci&quot;</span><span class="p">,</span>
+    <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1349,7 +1351,7 @@ f(x) = \beta_1 \times (x - \bar{x}) + \beta_0
 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1357,28 +1359,28 @@ f(x) = \beta_1 \times (x - \bar{x}) + \beta_0
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.regplot(
-    x=carseats_df.Price,
-    y=carseats_df.Sales,
-    order=1,
-    x_ci=&quot;ci&quot;,
-    scatter_kws={&quot;color&quot;: &quot;r&quot;, &quot;s&quot;: 9},
-)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">carseats_df</span><span class="o">.</span><span class="n">Price</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">carseats_df</span><span class="o">.</span><span class="n">Sales</span><span class="p">,</span>
+    <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">x_ci</span><span class="o">=</span><span class="s2">&quot;ci&quot;</span><span class="p">,</span>
+    <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">},</span>
+<span class="p">)</span>
 
-x1 = 77
-y1 = (regr.intercept_ + regr.coef_ * (x1 - scale.mean_))[0]
-print(&quot;Predicted sales for Price = 77: &quot;, y1)
-plt.plot((x1, x1), (0, y1), &quot;k--&quot;, lw=1)
-plt.plot((-10, x1), (y1, y1), &quot;k--&quot;, lw=1)
+<span class="n">x1</span> <span class="o">=</span> <span class="mi">77</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span> <span class="o">*</span> <span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">scale</span><span class="o">.</span><span class="n">mean_</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted sales for Price = 77: &quot;</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">x1</span><span class="p">,</span> <span class="n">x1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="s2">&quot;k--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">x1</span><span class="p">),</span> <span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="s2">&quot;k--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-x2 = 134
-y2 = (regr.intercept_ + regr.coef_ * (x2 - scale.mean_))[0]
-print(&quot;Predicted sales for Price = 134: &quot;, y2)
-plt.plot((x2, x2), (0, y2), &quot;k--&quot;, lw=1)
-plt.plot((-10, x2), (y2, y2), &quot;k--&quot;, lw=1)
-plt.xlim(20, 200)
-plt.ylim(ymin=0)
-plt.show()
+<span class="n">x2</span> <span class="o">=</span> <span class="mi">134</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span> <span class="o">*</span> <span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="n">scale</span><span class="o">.</span><span class="n">mean_</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted sales for Price = 134: &quot;</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">x2</span><span class="p">,</span> <span class="n">x2</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="s2">&quot;k--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">x2</span><span class="p">),</span> <span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="s2">&quot;k--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1393,7 +1395,7 @@ Predicted sales for Price = 134:  6.530130698274568
 <p><strong>4</strong>. Create the grid coordinates for plotting and compute the minimum RSS of the trained model from <strong>Exercise 1</strong>. <strong>Hint</strong>: See Section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/simple-linear-regression.html#example-model-fitting-and-visualisation-using-scikit-learn">2.1.5</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1401,21 +1403,21 @@ Predicted sales for Price = 134:  6.530130698274568
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>beta_0 = np.linspace(regr.intercept_ - 2, regr.intercept_ + 2, 50)
-beta_1 = np.linspace(regr.coef_ - 0.02, regr.coef_ + 0.02, 50)
-xx, yy = np.meshgrid(beta_0, beta_1, indexing=&quot;xy&quot;)
-Z = np.zeros((beta_0.size, beta_1.size))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beta_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">beta_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">coef_</span> <span class="o">-</span> <span class="mf">0.02</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span> <span class="o">+</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">beta_0</span><span class="p">,</span> <span class="n">beta_1</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s2">&quot;xy&quot;</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">beta_0</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">beta_1</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
 
-# Calculate Z-values (RSS) based on grid of coefficients
-for (i, j), v in np.ndenumerate(Z):
-    Z[i, j] = ((y - (xx[i, j] + X.ravel() * yy[i, j])) ** 2).sum() / 1000
+<span class="c1"># Calculate Z-values (RSS) based on grid of coefficients</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">ndenumerate</span><span class="p">(</span><span class="n">Z</span><span class="p">):</span>
+    <span class="n">Z</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">xx</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">X</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">*</span> <span class="n">yy</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]))</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000</span>
 
-# minimised RSS
-min_RSS = r&quot;$\beta_0$, $\beta_1$ for minimised RSS&quot;
-min_rss = (
-    np.sum((regr.intercept_ + regr.coef_ * X - y.values.reshape(-1, 1)) ** 2) / 1000
-)
-print(&quot;Minimum of RSS is %f&quot; % min_rss)
+<span class="c1"># minimised RSS</span>
+<span class="n">min_RSS</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$\beta_0$, $\beta_1$ for minimised RSS&quot;</span>
+<span class="n">min_rss</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span> <span class="o">*</span> <span class="n">X</span> <span class="o">-</span> <span class="n">y</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Minimum of RSS is </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">min_rss</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1428,7 +1430,7 @@ print(&quot;Minimum of RSS is %f&quot; % min_rss)
 <p><strong>5.</strong> Use the <strong>grid coordinates</strong> from <strong>Exercise 4</strong> and plot the <strong>RS</strong>S with the corresponding bias and weight from <strong>Exercise 1</strong> in 2D and 3D. <strong>Hint</strong>: See Section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/simple-linear-regression.html#example-model-fitting-and-visualisation-using-scikit-learn">2.1.5</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1436,39 +1438,39 @@ print(&quot;Minimum of RSS is %f&quot; % min_rss)
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig = plt.figure(figsize=(15, 6))
-fig.suptitle(&quot;RSS - Regression coefficients&quot;, fontsize=20)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;RSS - Regression coefficients&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 
-ax1 = fig.add_subplot(121)
-ax2 = fig.add_subplot(122, projection=&quot;3d&quot;)
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
 
-# Left plot
-CS = ax1.contour(xx, yy, Z, cmap=plt.cm.Set1, levels=[2.60, 2.65, 2.75, 2.9, 3])
-ax1.scatter(regr.intercept_, regr.coef_[0], c=&quot;r&quot;, label=min_RSS)
-ax1.clabel(CS, inline=True, fontsize=10, fmt=&quot;%1.1f&quot;)
+<span class="c1"># Left plot</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Set1</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mf">2.60</span><span class="p">,</span> <span class="mf">2.65</span><span class="p">,</span> <span class="mf">2.75</span><span class="p">,</span> <span class="mf">2.9</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">min_RSS</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%1.1f</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Right plot
-ax2.plot_surface(xx, yy, Z, rstride=3, cstride=3, alpha=0.3)
-ax2.contour(
-    xx,
-    yy,
-    Z,
-    zdir=&quot;z&quot;,
-    offset=Z.min(),
-    cmap=plt.cm.Set1,
-    alpha=0.4,
-    levels=[2.60, 2.65, 2.75, 2.9, 3],
-)
-ax2.scatter3D(regr.intercept_, regr.coef_[0], min_rss, c=&quot;r&quot;, label=min_RSS)
-ax2.set_zlabel(&quot;RSS&quot;)
-ax2.set_zlim(Z.min(), Z.max())
+<span class="c1"># Right plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">rstride</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span>
+    <span class="n">xx</span><span class="p">,</span>
+    <span class="n">yy</span><span class="p">,</span>
+    <span class="n">Z</span><span class="p">,</span>
+    <span class="n">zdir</span><span class="o">=</span><span class="s2">&quot;z&quot;</span><span class="p">,</span>
+    <span class="n">offset</span><span class="o">=</span><span class="n">Z</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Set1</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mf">2.60</span><span class="p">,</span> <span class="mf">2.65</span><span class="p">,</span> <span class="mf">2.75</span><span class="p">,</span> <span class="mf">2.9</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">scatter3D</span><span class="p">(</span><span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">min_rss</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">min_RSS</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;RSS&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">(</span><span class="n">Z</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">Z</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
 
 
-# settings common to both plots
-for ax in fig.axes:
-    ax.set_xlabel(r&quot;$\beta_0$&quot;, fontsize=17)
-    ax.set_ylabel(r&quot;$\beta_1$&quot;, fontsize=17)
-    ax.legend()
+<span class="c1"># settings common to both plots</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\beta_0$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\beta_1$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1479,7 +1481,7 @@ for ax in fig.axes:
 <p><strong>6.</strong> Evaluate the learnt model from <strong>Exercise 1</strong> accuracy using <strong><span class="math notranslate nohighlight">\(R^2\)</span> score</strong> and <strong>Means Squared Error (MSE)</strong>. <strong>Hint</strong>: See Section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/simple-linear-regression.html#assessing-model-accuracy-via-r-2">2.1.7</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1487,11 +1489,11 @@ for ax in fig.axes:
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.metrics import mean_squared_error, r2_score
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
 
-y_pred = regr.predict(X)
-print(&quot;R2 score:&quot;, r2_score(y, y_pred))
-print(&quot;Mean squared error: &quot;, mean_squared_error(y, y_pred))
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R2 score:&quot;</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean squared error: &quot;</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1520,7 +1522,7 @@ Mean squared error:  6.3806107320036825
 <p><strong>7.</strong> Use the <strong>statsmodels</strong> library to learn a model for the same predictor and response from <strong>Exercise 1</strong> and compute the statistics, including the confidence intervals. <strong>Hint</strong>: See Section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/simple-linear-regression.html#confidence-intervals">2.1.9</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1528,10 +1530,10 @@ Mean squared error:  6.3806107320036825
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from statsmodels.formula.api import ols
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
 
-est = ols(&quot;Sales ~ Price&quot;, carseats_df).fit()
-est.summary().tables[1]
+<span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Sales ~ Price&quot;</span><span class="p">,</span> <span class="n">carseats_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">est</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1571,7 +1573,7 @@ est.summary().tables[1]
 <p><strong>8.</strong> Compute the RSS value for the new model and verify that the RSS computed via <strong>statsmodels</strong> is the same as that obtained via <strong>scikit-learn</strong>. <strong>Hint</strong>: See Section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/simple-linear-regression.html#confidence-intervals">2.1.9</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1579,10 +1581,10 @@ est.summary().tables[1]
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># RSS with regression coefficients
-(
-    (carseats_df.Sales - (est.params[0] + est.params[1] * carseats_df.Price)) ** 2
-).sum() / 1000
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># RSS with regression coefficients</span>
+<span class="p">(</span>
+    <span class="p">(</span><span class="n">carseats_df</span><span class="o">.</span><span class="n">Sales</span> <span class="o">-</span> <span class="p">(</span><span class="n">est</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">est</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">carseats_df</span><span class="o">.</span><span class="n">Price</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000</span>
 </pre></div>
 </div>
 </div>

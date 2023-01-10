@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -681,19 +683,19 @@ const thebe_selector_output = ".output, .cell_output"
 <p>The following code loads libraries needed for this section and shows how to read the csv file “Auto.csv” in the text book into a data frame <code class="docutils literal notranslate"><span class="pre">auto_df</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
-import urllib
-from matplotlib import pyplot as plt
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
-%matplotlib inline
+<span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Auto.csv&quot;
-auto_df = pd.read_csv(data_url, header=0, na_values=&quot;?&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Auto.csv&quot;</span>
+<span class="n">auto_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -701,7 +703,7 @@ auto_df = pd.read_csv(data_url, header=0, na_values=&quot;?&quot;)
 <p>The <code class="docutils literal notranslate"><span class="pre">.head()</span></code> method can be used to get the first 5 (by default) rows of the data frame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>auto_df.head()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -803,7 +805,7 @@ auto_df = pd.read_csv(data_url, header=0, na_values=&quot;?&quot;)
 <p>The <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> method can get the summary statistics of the data frame. Specify the argument <code class="docutils literal notranslate"><span class="pre">include</span></code> to get the summary statistics of certain variables, e.g. <code class="docutils literal notranslate"><span class="pre">include</span> <span class="pre">=</span> <span class="pre">&quot;all&quot;</span></code> for mix types, <code class="docutils literal notranslate"><span class="pre">include</span> <span class="pre">=</span> <span class="pre">[np.number]</span></code> for numerical columns, and <code class="docutils literal notranslate"><span class="pre">include</span> <span class="pre">=</span> <span class="pre">[&quot;O&quot;]</span></code> for objects.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>auto_df.describe()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -931,7 +933,7 @@ auto_df = pd.read_csv(data_url, header=0, na_values=&quot;?&quot;)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>auto_df.describe(include=&quot;all&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1105,7 +1107,7 @@ auto_df = pd.read_csv(data_url, header=0, na_values=&quot;?&quot;)
 <p>The dimension of a data frame can be found out by the same <code class="docutils literal notranslate"><span class="pre">.shape()</span></code> method as in <code class="docutils literal notranslate"><span class="pre">Numpy</span></code> arrays.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>auto_df.shape
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -1118,7 +1120,7 @@ auto_df = pd.read_csv(data_url, header=0, na_values=&quot;?&quot;)
 <p>Indexing in Pandas data frame is similar to indexing in <code class="docutils literal notranslate"><span class="pre">Numpy</span></code> arrays. A row, a column, or a submatrix can be accessed by the <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code> or <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> method. <code class="docutils literal notranslate"><span class="pre">iloc</span></code> is used to index by position, and <code class="docutils literal notranslate"><span class="pre">loc</span></code> is used to index by labels (row and column names).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>auto_df.iloc[:4, :2]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">4</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1172,7 +1174,7 @@ auto_df = pd.read_csv(data_url, header=0, na_values=&quot;?&quot;)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>auto_df.loc[[0, 1, 2, 3], [&quot;mpg&quot;, &quot;cylinders&quot;]]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="s2">&quot;cylinders&quot;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -1227,7 +1229,7 @@ auto_df = pd.read_csv(data_url, header=0, na_values=&quot;?&quot;)
 <p>An alternative way to select the first 4 rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>auto_df[:4]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1317,8 +1319,8 @@ auto_df = pd.read_csv(data_url, header=0, na_values=&quot;?&quot;)
 <p>The column names can be found out by <code class="docutils literal notranslate"><span class="pre">list</span></code> function or the <code class="docutils literal notranslate"><span class="pre">.columns</span></code> attribute.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(list(auto_df))
-print(auto_df.columns)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">auto_df</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">auto_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1334,7 +1336,7 @@ Index([&#39;mpg&#39;, &#39;cylinders&#39;, &#39;displacement&#39;, &#39;horsepow
 <p><code class="docutils literal notranslate"><span class="pre">.isnull()</span></code> and <code class="docutils literal notranslate"><span class="pre">.sum()</span></code> methods can be used to find out how many NaNs in each variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>auto_df.isnull().sum()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1355,10 +1357,10 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># after the previous steps, there are 397 obs in the data and only 5 with missing values. We can just drop the ones with missing values
-print(auto_df.shape)
-auto_df = auto_df.dropna()
-print(auto_df.shape)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># after the previous steps, there are 397 obs in the data and only 5 with missing values. We can just drop the ones with missing values</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">auto_df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">auto_df</span> <span class="o">=</span> <span class="n">auto_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">auto_df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1372,7 +1374,7 @@ print(auto_df.shape)
 <p>The type of variable(s) can be changed. The following example will change the cylinders into categorical variable</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>auto_df[&quot;cylinders&quot;] = auto_df[&quot;cylinders&quot;].astype(&quot;category&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="p">[</span><span class="s2">&quot;cylinders&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">auto_df</span><span class="p">[</span><span class="s2">&quot;cylinders&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1382,8 +1384,8 @@ print(auto_df.shape)
 <p>Refer a column of data frame by name, by using a <code class="docutils literal notranslate"><span class="pre">.column_name</span></code>. See the options in plt.plot for more.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.plot(auto_df.cylinders, auto_df.mpg, &quot;ro&quot;)
-plt.show()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">auto_df</span><span class="o">.</span><span class="n">cylinders</span><span class="p">,</span> <span class="n">auto_df</span><span class="o">.</span><span class="n">mpg</span><span class="p">,</span> <span class="s2">&quot;ro&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1394,8 +1396,8 @@ plt.show()
 <p>The <code class="docutils literal notranslate"><span class="pre">.hist()</span></code> method can get the histogram of certain variables. Specify the argument <code class="docutils literal notranslate"><span class="pre">column</span></code> to get the histogram of a certain variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>auto_df.hist(column=[&quot;cylinders&quot;, &quot;mpg&quot;])
-plt.show()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cylinders&quot;</span><span class="p">,</span> <span class="s2">&quot;mpg&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1411,7 +1413,7 @@ plt.show()
 <p><strong>a</strong>. Use the <strong>read_csv()</strong> function to read the data and print the first <span class="math notranslate nohighlight">\(20\)</span> rows of the loaded data. Make sure that you have the directory set to the correct <strong>location</strong> for the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1419,11 +1421,11 @@ plt.show()
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-data_url = &quot;https://github.com/pykale/transparentML/raw/main/data/College.csv&quot;
-college_df = pd.read_csv(data_url, header=0)
-college_df.head(20)
+<span class="n">data_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/College.csv&quot;</span>
+<span class="n">college_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">college_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1894,7 +1896,7 @@ college_df.head(20)
 <p><strong>b</strong>. Find the number of <strong>variables/features</strong> in the dataset and print them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1902,8 +1904,8 @@ college_df.head(20)
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;Number of features in this dataset is &quot;, college_df.shape[1])
-print(&quot;The list of the features = &quot;, list(college_df))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of features in this dataset is &quot;</span><span class="p">,</span> <span class="n">college_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The list of the features = &quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">college_df</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1917,7 +1919,7 @@ The list of the features =  [&#39;Private&#39;, &#39;Apps&#39;, &#39;Accept&#39;
 <p><strong>c</strong>. Use the <strong>describe()</strong> function to get a statistical summary of the <strong>variables/features</strong> of the dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1925,9 +1927,9 @@ The list of the features =  [&#39;Private&#39;, &#39;Apps&#39;, &#39;Accept&#39;
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>college_df.describe()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 
-# From the statistical summary, we know how much data is present for each feature, each feature&#39;s mean and standard deviation, and the maximum and minimum value of each feature.
+<span class="c1"># From the statistical summary, we know how much data is present for each feature, each feature&#39;s mean and standard deviation, and the maximum and minimum value of each feature.</span>
 </pre></div>
 </div>
 </div>
@@ -2137,7 +2139,7 @@ The list of the features =  [&#39;Private&#39;, &#39;Apps&#39;, &#39;Accept&#39;
 <p><strong>d.</strong> Now, produce a side-by-side <strong>boxplots</strong> of <strong>Outstate</strong> versus <strong>Private</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -2145,11 +2147,11 @@ The list of the features =  [&#39;Private&#39;, &#39;Apps&#39;, &#39;Accept&#39;
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import seaborn as sns
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
-sns.boxplot(x=college_df[&quot;Private&quot;], y=college_df[&quot;Outstate&quot;])
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">college_df</span><span class="p">[</span><span class="s2">&quot;Private&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">college_df</span><span class="p">[</span><span class="s2">&quot;Outstate&quot;</span><span class="p">])</span>
 
-# From the box plot, we can state that for an outstate range of 9000 to 13500, we can get Private = Yes, and for the range from 5500 to 7500, we get Private = No.
+<span class="c1"># From the box plot, we can state that for an outstate range of 9000 to 13500, we can get Private = Yes, and for the range from 5500 to 7500, we get Private = No.</span>
 </pre></div>
 </div>
 </div>
@@ -2163,7 +2165,7 @@ sns.boxplot(x=college_df[&quot;Private&quot;], y=college_df[&quot;Outstate&quot;
 <p><strong>e</strong>. How many <strong>quantitative</strong> and <strong>qualitative</strong> featuress are there in this dataset?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -2171,15 +2173,15 @@ sns.boxplot(x=college_df[&quot;Private&quot;], y=college_df[&quot;Outstate&quot;
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-print(
-    &quot;Number of quantitative features in this dataset is %d and the number of qualitative features in this dataset is %d.&quot;
-    % (
-        college_df.select_dtypes(include=np.number).shape[1],
-        college_df.select_dtypes(include=object).shape[1],
-    )
-)
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">&quot;Number of quantitative features in this dataset is </span><span class="si">%d</span><span class="s2"> and the number of qualitative features in this dataset is </span><span class="si">%d</span><span class="s2">.&quot;</span>
+    <span class="o">%</span> <span class="p">(</span>
+        <span class="n">college_df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="n">college_df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2192,7 +2194,7 @@ print(
 <p><strong>f</strong>. Create a new <strong>qualitative</strong> variable, called <strong>Elite</strong>, by binning the <strong>Top10perc</strong> variable. We are going to divide universities into <strong>two groups</strong> based on whether or not the proportion of students coming from the top <span class="math notranslate nohighlight">\(10\)</span>% of their high school classes exceeds <span class="math notranslate nohighlight">\(50\)</span>%. Now see how many <strong>elite universities</strong> there are.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -2200,8 +2202,8 @@ print(
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>college_df[&quot;Elite&quot;] = college_df[&quot;Top10perc&quot;] &gt; 50
-college_df[&quot;Elite&quot;].sum()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college_df</span><span class="p">[</span><span class="s2">&quot;Elite&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">college_df</span><span class="p">[</span><span class="s2">&quot;Top10perc&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">50</span>
+<span class="n">college_df</span><span class="p">[</span><span class="s2">&quot;Elite&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2214,7 +2216,7 @@ college_df[&quot;Elite&quot;].sum()
 <p><strong>e</strong>. Use the <strong>hist()</strong> function to produce <strong>histogram</strong> of any <span class="math notranslate nohighlight">\(4\)</span> <strong>variables/features</strong> from the dataset chosen by you.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -2222,12 +2224,12 @@ college_df[&quot;Elite&quot;].sum()
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from matplotlib import pyplot as plt
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
-college_df.hist(column=[&quot;Accept&quot;, &quot;Books&quot;, &quot;Grad.Rate&quot;, &quot;Enroll&quot;])
-plt.show()
+<span class="n">college_df</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Accept&quot;</span><span class="p">,</span> <span class="s2">&quot;Books&quot;</span><span class="p">,</span> <span class="s2">&quot;Grad.Rate&quot;</span><span class="p">,</span> <span class="s2">&quot;Enroll&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-# We chose Accept, Books, Grad.Rate and Enroll features where the count for every features value is shown with a histogram which indicates the most frequent values for every feature.
+<span class="c1"># We chose Accept, Books, Grad.Rate and Enroll features where the count for every features value is shown with a histogram which indicates the most frequent values for every feature.</span>
 </pre></div>
 </div>
 </div>
@@ -2238,7 +2240,7 @@ plt.show()
 <p><strong>f</strong>. Continue exploring the data, and provide a <strong>brief summary</strong> of what you discover.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to continue exploring the data
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to continue exploring the data</span>
 </pre></div>
 </div>
 </div>

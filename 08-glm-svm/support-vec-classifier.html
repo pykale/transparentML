@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -874,7 +876,7 @@ y_n(\beta_0 + \beta_1 x_{n1} + \beta_2 x_{n2} + \cdots + \beta_D x_{nD}) &gt; 0,
 <h2><span class="section-number">8.2.2. </span>Support vector classifier (soft margin)<a class="headerlink" href="#support-vector-classifier-soft-margin" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="the-non-separable-case">
 <h3><span class="section-number">8.2.2.1. </span>The non-separable case<a class="headerlink" href="#the-non-separable-case" title="Permalink to this headline">¶</a></h3>
-<p>The maximal margin classifier is a very natural way to perform classification, if a separating hyperplane exists. However, in many cases, no separating hyperplane exists, and so there is no maximal margin classifier. For the example in<a class="reference internal" href="#svm4"><span class="std std-numref">Fig. 8.4</span></a> below, the observations that belong to two classes are not separable by a hyperplane.</p>
+<p>The maximal margin classifier is a very natural way to perform classification, if a separating hyperplane exists. However, in many cases, no separating hyperplane exists, and so there is no maximal margin classifier. For the example in <a class="reference internal" href="#svm4"><span class="std std-numref">Fig. 8.4</span></a> below, the observations that belong to two classes are not separable by a hyperplane.</p>
 <div class="figure align-default" id="svm4">
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm4.png"><img alt="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm4.png" src="https://raw.githubusercontent.com/pykale/transparentML/main/content/images/svm/svm4.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.4 </span><span class="caption-text">Two classes of observations are shown in blue and in purple, respectively. The two classes are not separable by a hyperplane, and so the maximal margin classifier cannot be used.</span><a class="headerlink" href="#svm4" title="Permalink to this image">¶</a></p>
@@ -917,24 +919,24 @@ y_n(\beta_0 + \beta_1 x_{n1} + \beta_2 x_{n2} + \cdots + \beta_D x_{nD}) &gt; 0,
 <p>Get ready by importing the APIs needed from respective libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
-from sklearn.preprocessing import label_binarize
-from sklearn.model_selection import GridSearchCV
-from sklearn.svm import SVC, LinearSVC
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-from sklearn.metrics import (
-    confusion_matrix,
-    ConfusionMatrixDisplay,
-    roc_curve,
-    auc,
-    classification_report,
-)
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">label_binarize</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span><span class="p">,</span> <span class="n">LinearSVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.discriminant_analysis</span> <span class="kn">import</span> <span class="n">LinearDiscriminantAnalysis</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">confusion_matrix</span><span class="p">,</span>
+    <span class="n">ConfusionMatrixDisplay</span><span class="p">,</span>
+    <span class="n">roc_curve</span><span class="p">,</span>
+    <span class="n">auc</span><span class="p">,</span>
+    <span class="n">classification_report</span><span class="p">,</span>
+<span class="p">)</span>
 
-%matplotlib inline
+<span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
@@ -942,27 +944,27 @@ from sklearn.metrics import (
 <p>Define a function to plot a classifier with support vectors.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def plot_svc(svc, X, y, h=0.02, pad=0.25, show=True):
-    x_min, x_max = X[:, 0].min() - pad, X[:, 0].max() + pad
-    y_min, y_max = X[:, 1].min() - pad, X[:, 1].max() + pad
-    xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
-    Z = svc.predict(np.c_[xx.ravel(), yy.ravel()])
-    Z = Z.reshape(xx.shape)
-    plt.contourf(xx, yy, Z, cmap=plt.cm.Paired, alpha=0.2)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_svc</span><span class="p">(</span><span class="n">svc</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">pad</span>
+    <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">pad</span>
+    <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">svc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 
-    plt.scatter(X[:, 0], X[:, 1], s=70, c=y, cmap=plt.cm.Paired)
-    # Support vectors indicated in plot by vertical lines
-    sv = svc.support_vectors_
-    plt.scatter(
-        sv[:, 0], sv[:, 1], c=&quot;k&quot;, marker=&quot;x&quot;, s=100, alpha=0.5
-    )  # , linewidths=1)
-    plt.xlim(x_min, x_max)
-    plt.ylim(y_min, y_max)
-    plt.xlabel(&quot;X1&quot;)
-    plt.ylabel(&quot;X2&quot;)
-    print(&quot;Number of support vectors: &quot;, svc.support_.size)
-    if show:
-        plt.show()
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
+    <span class="c1"># Support vectors indicated in plot by vertical lines</span>
+    <span class="n">sv</span> <span class="o">=</span> <span class="n">svc</span><span class="o">.</span><span class="n">support_vectors_</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+        <span class="n">sv</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">sv</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+    <span class="p">)</span>  <span class="c1"># , linewidths=1)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X1&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;X2&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of support vectors: &quot;</span><span class="p">,</span> <span class="n">svc</span><span class="o">.</span><span class="n">support_</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -970,15 +972,15 @@ from sklearn.metrics import (
 <p>Generate synthetic data randomly: 20 observations of 2 features and divide into two classes. Set a seed for reproducibility.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.random.seed(5)
-X = np.random.randn(20, 2)
-y = np.repeat([1, -1], 10)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span>
 
-X[y == -1] = X[y == -1] + 1
-plt.scatter(X[:, 0], X[:, 1], s=70, c=y, cmap=plt.cm.Paired)
-plt.xlabel(&quot;X1&quot;)
-plt.ylabel(&quot;X2&quot;)
-plt.show()
+<span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;X2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -988,7 +990,7 @@ plt.show()
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>y
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span>
 </pre></div>
 </div>
 </div>
@@ -1005,14 +1007,14 @@ plt.show()
 <p><strong>Note:</strong> The <code class="docutils literal notranslate"><span class="pre">C</span></code> setting of the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html"><code class="docutils literal notranslate"><span class="pre">SVC</span></code> class</a> in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> is inversely proportional to <span class="math notranslate nohighlight">\( \Xi \)</span>. The larger the value of <code class="docutils literal notranslate"><span class="pre">C</span></code>, the smaller the value of <span class="math notranslate nohighlight">\( \Xi \)</span> (the less tolerance for observations being on the wrong side of the margin). The smaller the value of <code class="docutils literal notranslate"><span class="pre">C</span></code>, the larger the value of <span class="math notranslate nohighlight">\( \Xi \)</span> (the more tolerance for observations being on the wrong side of the margin).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svc = SVC(C=1.0, kernel=&quot;linear&quot;)
-svc.fit(X, y)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svc</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+<span class="n">svc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-plot_svc(svc, X, y, show=False)
-plt.scatter(
-    X[5, 0], X[5, 1], s=70, facecolors=&quot;none&quot;, marker=&quot;o&quot;, edgecolors=&quot;k&quot;, linewidths=3
-)
-plt.show()
+<span class="n">plot_svc</span><span class="p">(</span><span class="n">svc</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">3</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1025,10 +1027,10 @@ plt.show()
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;Input: &quot;, X[5, :])
-print(&quot;Intercept: &quot;, svc.intercept_[0], &quot; Coefficients: &quot;, svc.coef_[0])
-print(&quot;Prediction score: &quot;, svc.decision_function(X[5, :].reshape(1, -1))[0])
-print(&quot;Prediction: &quot;, svc.predict(X[5, :].reshape(1, -1))[0])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Input: &quot;</span><span class="p">,</span> <span class="n">X</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="p">:])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Intercept: &quot;</span><span class="p">,</span> <span class="n">svc</span><span class="o">.</span><span class="n">intercept_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot; Coefficients: &quot;</span><span class="p">,</span> <span class="n">svc</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prediction score: &quot;</span><span class="p">,</span> <span class="n">svc</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prediction: &quot;</span><span class="p">,</span> <span class="n">svc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1048,8 +1050,8 @@ Prediction:  1
 <li><p>For the data point <span class="math notranslate nohighlight">\([-1.19276461, -0.20487651]\)</span> marked by a black circle, its prediction score is <span class="math notranslate nohighlight">\( -0.7327 \times -1.19276461 + -0.7033 \times -0.20487651 + 0.5729 \approx 1.5910 \)</span>, which is positive. So the predicted label is <span class="math notranslate nohighlight">\( 1 \)</span>.</p></li>
 <li><p>According to the definition, the data points on the hyperplane satisfies <span class="math notranslate nohighlight">\( \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} = 0 \)</span>, i.e. <span class="math notranslate nohighlight">\( 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 = 0 \)</span>. To get a data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> of class <span class="math notranslate nohighlight">\( 1 \)</span>, the relationship between <span class="math notranslate nohighlight">\( x_1 \)</span> and <span class="math notranslate nohighlight">\( x_2 \)</span> should satisfy:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-c05b6d86-4e6b-4f7f-9491-096a67c5bb8a">
-<span class="eqno">(8.6)<a class="headerlink" href="#equation-c05b6d86-4e6b-4f7f-9491-096a67c5bb8a" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-94010898-6ecd-4a77-a835-f1fe57d5e88b">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-94010898-6ecd-4a77-a835-f1fe57d5e88b" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} &amp; &gt; 0 \\
 \beta_1 x_{1} &amp; &gt; - \beta_0 - \beta_2 x_{2} \\
@@ -1063,9 +1065,9 @@ x_1 &amp; &gt; 0.7819 - 0.9598 \times x_2.
 <p>Let us use a smaller value of <span class="math notranslate nohighlight">\( \Xi \)</span> (<code class="docutils literal notranslate"><span class="pre">C=0.1</span></code>) to see how the decision boundary changes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svc2 = SVC(C=0.1, kernel=&quot;linear&quot;)
-svc2.fit(X, y)
-plot_svc(svc2, X, y)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svc2</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+<span class="n">svc2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plot_svc</span><span class="p">(</span><span class="n">svc2</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1079,28 +1081,28 @@ plot_svc(svc2, X, y)
 <p>As shown above, when using a smaller <code class="docutils literal notranslate"><span class="pre">C=0.1</span></code>, we have a larger <span class="math notranslate nohighlight">\( \Xi \)</span> and a larger tolerance for observations being on the wrong side of the margin. As a result, the margin is wider, resulting in more support vectors. We can select the optimal hyperparameter <code class="docutils literal notranslate"><span class="pre">C</span></code> in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> (inversely proportional to <span class="math notranslate nohighlight">\( \Xi \)</span>) using cross-validation, as we do below using <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> from <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tuned_parameters = [{&quot;C&quot;: [0.001, 0.01, 0.1, 1, 5, 10, 100]}]
-clf = GridSearchCV(
-    SVC(kernel=&quot;linear&quot;),
-    tuned_parameters,
-    cv=10,
-    scoring=&quot;accuracy&quot;,
-    return_train_score=True,
-)
-clf.fit(X, y)
-clf.cv_results_
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tuned_parameters</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]}]</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">),</span>
+    <span class="n">tuned_parameters</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
+    <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">cv_results_</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00076547, 0.00080748, 0.00078077, 0.00073173, 0.00074422,
-        0.00076768, 0.00088124]),
- &#39;std_fit_time&#39;: array([6.54946035e-05, 1.29677432e-04, 1.34100979e-04, 9.30165574e-06,
-        1.39046279e-05, 3.45855632e-05, 5.16094230e-05]),
- &#39;mean_score_time&#39;: array([0.00042343, 0.00045791, 0.00040977, 0.00042217, 0.00040917,
-        0.00041752, 0.00043287]),
- &#39;std_score_time&#39;: array([2.59900311e-05, 9.30586045e-05, 6.66212503e-06, 2.92142157e-05,
-        4.63881932e-06, 1.20432302e-05, 3.64557834e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00087891, 0.00084457, 0.00084181, 0.00087497, 0.00085473,
+        0.00087724, 0.0010107 ]),
+ &#39;std_fit_time&#39;: array([8.88171258e-05, 4.86558758e-05, 2.56148116e-05, 6.16700384e-05,
+        3.51031180e-05, 3.28679187e-05, 7.25642760e-05]),
+ &#39;mean_score_time&#39;: array([0.00048842, 0.00047047, 0.00047667, 0.00049756, 0.00046978,
+        0.0004741 , 0.00048621]),
+ &#39;std_score_time&#39;: array([3.21303337e-05, 2.34880541e-05, 1.63444761e-05, 3.77104715e-05,
+        1.54458442e-05, 1.42817505e-05, 2.73159549e-05]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,
@@ -1157,7 +1159,7 @@ clf.cv_results_
 <p>Display the optimal hyperparameter <code class="docutils literal notranslate"><span class="pre">C</span></code> in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> (inversely proportional to <span class="math notranslate nohighlight">\( \Xi \)</span>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>clf.best_params_
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span><span class="o">.</span><span class="n">best_params_</span>
 </pre></div>
 </div>
 </div>
@@ -1173,15 +1175,15 @@ clf.cv_results_
 <p>Generate a test dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.random.seed(1)
-X_test = np.random.randn(20, 2)
-y_test = np.random.choice([-1, 1], 20)
-X_test[y_test == 1] = X_test[y_test == 1] - 1
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">X_test</span><span class="p">[</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
 
-plt.scatter(X_test[:, 0], X_test[:, 1], s=70, c=y_test, cmap=plt.cm.Paired)
-plt.xlabel(&quot;X1&quot;)
-plt.ylabel(&quot;X2&quot;)
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_test</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;X2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1192,12 +1194,12 @@ plt.show()
 <p>Predict the class labels for the test dataset and display the confusion matrix.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># svc2 : C = 0.1
-y_pred = svc2.predict(X_test)
-cm = confusion_matrix(y_test, y_pred)
-disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=svc.classes_)
-disp.plot()
-plt.show()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># svc2 : C = 0.1</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">svc2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">svc</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1208,14 +1210,14 @@ plt.show()
 <p>Repeat with a smaller value of <code class="docutils literal notranslate"><span class="pre">C</span></code> (larger <span class="math notranslate nohighlight">\( \Xi \)</span> and larger tolerance) to see how the confusion matrix changes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svc3 = SVC(C=0.001, kernel=&quot;linear&quot;)
-svc3.fit(X, y)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svc3</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+<span class="n">svc3</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-y_pred = svc3.predict(X_test)
-cm = confusion_matrix(y_test, y_pred)
-disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=svc.classes_)
-disp.plot()
-plt.show()
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">svc3</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">svc</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1230,11 +1232,11 @@ plt.show()
 <p>Let us modify the test dataset so that the classes are linearly separable with a hyperplane.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_test[y_test == 1] = X_test[y_test == 1] - 1
-plt.scatter(X_test[:, 0], X_test[:, 1], s=70, c=y_test, cmap=plt.cm.Paired)
-plt.xlabel(&quot;X1&quot;)
-plt.ylabel(&quot;X2&quot;)
-plt.show()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_test</span><span class="p">[</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_test</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;X2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1245,9 +1247,9 @@ plt.show()
 <p>Set <code class="docutils literal notranslate"><span class="pre">C</span></code> to be very large (meaning small <span class="math notranslate nohighlight">\( \Xi \)</span> and small tolerance) to see whether the decision boundary can separate the two classes perfectly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svc4 = SVC(C=10.0, kernel=&quot;linear&quot;)
-svc4.fit(X_test, y_test)
-plot_svc(svc4, X_test, y_test)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svc4</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+<span class="n">svc4</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="n">plot_svc</span><span class="p">(</span><span class="n">svc4</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1262,9 +1264,9 @@ plot_svc(svc4, X_test, y_test)
 <p>Let us increase the margin tolerance (reduce <code class="docutils literal notranslate"><span class="pre">C</span></code> in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>) to see how the decision boundary changes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svc5 = SVC(C=1, kernel=&quot;linear&quot;)
-svc5.fit(X_test, y_test)
-plot_svc(svc5, X_test, y_test)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svc5</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+<span class="n">svc5</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="n">plot_svc</span><span class="p">(</span><span class="n">svc5</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1280,11 +1282,11 @@ plot_svc(svc5, X_test, y_test)
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">8.2.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p><strong>1.</strong> All the following exercises use the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Heart.csv">Heart</a>.</p>
-<p>Load the <strong>Heart</strong> dataset, convert the values of variables (predictors) from category to numbers, and inspect the first five rows.</p>
+<p><strong>1.</strong> All the following exercises use the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Heart.csv">Heart</a> dataset.</p>
+<p>Load the <strong>Heart</strong> dataset, convert the values of variables (predictors) from categorical values to numerical values, and inspect the first five rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1292,20 +1294,20 @@ plot_svc(svc5, X_test, y_test)
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
-import pandas as pd
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-np.random.seed(2022)
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
 
-heart_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Heart.csv&quot;
+<span class="n">heart_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Heart.csv&quot;</span>
 
-heart_df = pd.read_csv(heart_url, index_col=0).dropna()
-# converting categories
-heart_df[&quot;ChestPain&quot;] = heart_df[&quot;ChestPain&quot;].factorize()[0]
-heart_df[&quot;Thal&quot;] = heart_df[&quot;Thal&quot;].factorize()[0]
-heart_df[&quot;AHD&quot;] = heart_df[&quot;AHD&quot;].factorize()[0]
+<span class="n">heart_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">heart_url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="c1"># converting categories</span>
+<span class="n">heart_df</span><span class="p">[</span><span class="s2">&quot;ChestPain&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">heart_df</span><span class="p">[</span><span class="s2">&quot;ChestPain&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">factorize</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">heart_df</span><span class="p">[</span><span class="s2">&quot;Thal&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">heart_df</span><span class="p">[</span><span class="s2">&quot;Thal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">factorize</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">heart_df</span><span class="p">[</span><span class="s2">&quot;AHD&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">heart_df</span><span class="p">[</span><span class="s2">&quot;AHD&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">factorize</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
-heart_df.head(5)
+<span class="n">heart_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1437,7 +1439,7 @@ heart_df.head(5)
 <p><strong>2</strong>. Split the loaded dataset into training and testing sets in an <span class="math notranslate nohighlight">\(80:20\)</span> ratio, then train a model using SVC using the hyperparameter <span class="math notranslate nohighlight">\(C = 1\)</span>, and show the number of support vectors and AUROC of this trained model on the test set. (Use <span class="math notranslate nohighlight">\(2022\)</span> as the random seed value)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1445,27 +1447,29 @@ heart_df.head(5)
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.svm import SVC
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
 
-np.random.seed(2022)
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
 
-X = heart_df.drop([&quot;AHD&quot;], axis=1)
-y = heart_df[&quot;AHD&quot;]
+<span class="n">X</span> <span class="o">=</span> <span class="n">heart_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;AHD&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">heart_df</span><span class="p">[</span><span class="s2">&quot;AHD&quot;</span><span class="p">]</span>
 
 
-X_train, X_test, y_train, y_test = train_test_split(X, y.ravel(), test_size=0.2)
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2022</span>
+<span class="p">)</span>
 
-svc = SVC(C=1, kernel=&quot;linear&quot;)
-svc.fit(X_train, y_train)
+<span class="n">svc</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2022</span><span class="p">)</span>
+<span class="n">svc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
-print(&quot;Number of Support vectors: &quot;, len(svc.support_vectors_))
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of Support vectors: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">svc</span><span class="o">.</span><span class="n">support_vectors_</span><span class="p">))</span>
 
-y_pred = svc.predict(X_test)
-accuarcy = accuracy_score(y_test, y_pred)
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">svc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">accuarcy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 
-print(accuarcy)
+<span class="nb">print</span><span class="p">(</span><span class="n">accuarcy</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1479,7 +1483,7 @@ print(accuarcy)
 <p><strong>3.</strong> Train another model in the same manner as in <strong>Exercise 2</strong>, but with the hyperparameter regularisation strength <span class="math notranslate nohighlight">\(C\)</span> set to <span class="math notranslate nohighlight">\(0.01\)</span>. Show the number of support vectors and AUROC of this trained model on the test set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1487,14 +1491,14 @@ print(accuarcy)
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svc2 = SVC(C=0.01, kernel=&quot;linear&quot;)
-svc2.fit(X_train, y_train)
-print(&quot;Number of Support vectors: &quot;, len(svc2.support_vectors_))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svc2</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2022</span><span class="p">)</span>
+<span class="n">svc2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of Support vectors: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">svc2</span><span class="o">.</span><span class="n">support_vectors_</span><span class="p">))</span>
 
-y_pred = svc2.predict(X_test)
-accuarcy = accuracy_score(y_test, y_pred)
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">svc2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">accuarcy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 
-print(accuarcy)
+<span class="nb">print</span><span class="p">(</span><span class="n">accuarcy</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1508,7 +1512,7 @@ print(accuarcy)
 <p><strong>4.</strong> Using GridSearchCV, fine-tune the support vector classifier’s hyperparameter <span class="math notranslate nohighlight">\(C\)</span> on the training dataset (using <span class="math notranslate nohighlight">\(10\)</span>-fold cross-validation) for <span class="math notranslate nohighlight">\(C\)</span> values of <span class="math notranslate nohighlight">\(0.001\)</span>, <span class="math notranslate nohighlight">\(0.01\)</span>, <span class="math notranslate nohighlight">\(0.1\)</span>, and <span class="math notranslate nohighlight">\(5\)</span>, and then display the best hyperparameters. (Use the roc_auc scoring for choosing the best model and its hyperparameters.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1516,18 +1520,18 @@ print(accuarcy)
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.model_selection import GridSearchCV
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
 
-tuned_parameters = [{&quot;C&quot;: [0.001, 0.01, 0.1, 1, 5]}]
-clf = GridSearchCV(
-    SVC(kernel=&quot;linear&quot;),
-    tuned_parameters,
-    cv=10,
-    scoring=&quot;accuracy&quot;,
-    return_train_score=True,
-)
-clf.fit(X, y)
-print(&quot;\nOptimal value of C : &quot;, clf.best_params_)
+<span class="n">tuned_parameters</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]}]</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">),</span>
+    <span class="n">tuned_parameters</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
+    <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Optimal value of C : &quot;</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1540,7 +1544,7 @@ print(&quot;\nOptimal value of C : &quot;, clf.best_params_)
 <p><strong>5.</strong> Finally, using the best hyperparameters from <strong>Exercise 4</strong>, train another SVC model on the training dataset and display the AUROC of this trained model on the test set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1548,22 +1552,22 @@ print(&quot;\nOptimal value of C : &quot;, clf.best_params_)
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, roc_curve, auc
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
 
-svc_tuned = SVC(C=0.1, kernel=&quot;linear&quot;)
-svc_tuned.fit(X_train, y_train)
-print(&quot;Number of Support vectors: &quot;, len(svc_tuned.support_vectors_))
+<span class="n">svc_tuned</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+<span class="n">svc_tuned</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of Support vectors: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">svc_tuned</span><span class="o">.</span><span class="n">support_vectors_</span><span class="p">))</span>
 
-y_pred = svc_tuned.predict(X_test)
-accuarcy = accuracy_score(y_test, y_pred)
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">svc_tuned</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">accuarcy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 
-print(accuarcy)
+<span class="nb">print</span><span class="p">(</span><span class="n">accuarcy</span><span class="p">)</span>
 
-cm = confusion_matrix(y_test, y_pred)
-disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=svc_tuned.classes_)
-disp.plot()
-plt.show()
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">svc_tuned</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

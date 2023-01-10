@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -765,17 +767,17 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Get ready by importing the APIs needed from respective libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
-from sklearn.preprocessing import scale
-from sklearn.linear_model import LinearRegression
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">scale</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 
-from statsmodels.formula.api import ols
+<span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
 
-%matplotlib inline
+<span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
@@ -783,8 +785,8 @@ from statsmodels.formula.api import ols
 <p>Load the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Advertising.csv">Advertising dataset</a> dataset that we are already familiar with.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Advertising.csv&quot;
-advertising_df = pd.read_csv(data_url, header=0, index_col=0)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Advertising.csv&quot;</span>
+<span class="n">advertising_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -792,11 +794,11 @@ advertising_df = pd.read_csv(data_url, header=0, index_col=0)
 <p>Load the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Credit.csv">Credit dataset</a> dataset, convert the <code class="docutils literal notranslate"><span class="pre">Student2</span></code> category to numbers (‘0’ and ‘1’), and inspect the first three rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>credit_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Credit.csv&quot;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">credit_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Credit.csv&quot;</span>
 
-credit_df = pd.read_csv(credit_url)
-credit_df[&quot;Student2&quot;] = credit_df.Student.map({&quot;No&quot;: 0, &quot;Yes&quot;: 1})
-credit_df.head(3)
+<span class="n">credit_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">credit_url</span><span class="p">)</span>
+<span class="n">credit_df</span><span class="p">[</span><span class="s2">&quot;Student2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">credit_df</span><span class="o">.</span><span class="n">Student</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s2">&quot;No&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="n">credit_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -886,10 +888,10 @@ credit_df.head(3)
 <p>Load the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Auto.csv">Auto dataset</a> datasets, ignore rows with missing values, and inspect the columns, counts and data types.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>auto_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Auto.csv&quot;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Auto.csv&quot;</span>
 
-auto_df = pd.read_csv(auto_url, na_values=&quot;?&quot;).dropna()
-auto_df.info()
+<span class="n">auto_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">auto_url</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">auto_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -920,10 +922,10 @@ memory usage: 30.6+ KB
 <p>In the previous sections, the predictor variables are <em>quantitative</em>. Here, in the <code class="docutils literal notranslate"><span class="pre">Credit</span></code> dataset, the response is <code class="docutils literal notranslate"><span class="pre">Balance</span></code> (average credit card debt for each individual) and there are six quantitative predictors: <code class="docutils literal notranslate"><span class="pre">Age</span></code> , <code class="docutils literal notranslate"><span class="pre">Cards</span></code> (number of credit cards), <code class="docutils literal notranslate"><span class="pre">Education</span></code> (years of education), <code class="docutils literal notranslate"><span class="pre">Income</span></code> (in thousands of dollars), <code class="docutils literal notranslate"><span class="pre">Limit</span></code> (credit limit), and <code class="docutils literal notranslate"><span class="pre">Rating</span></code> (credit rating). The following code displays the pairwise relationships between these variables (Figure 3.6 in the textbook).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.pairplot(
-    credit_df[[&quot;Balance&quot;, &quot;Age&quot;, &quot;Cards&quot;, &quot;Education&quot;, &quot;Income&quot;, &quot;Limit&quot;, &quot;Rating&quot;]]
-)
-plt.show()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span>
+    <span class="n">credit_df</span><span class="p">[[</span><span class="s2">&quot;Balance&quot;</span><span class="p">,</span> <span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="s2">&quot;Cards&quot;</span><span class="p">,</span> <span class="s2">&quot;Education&quot;</span><span class="p">,</span> <span class="s2">&quot;Income&quot;</span><span class="p">,</span> <span class="s2">&quot;Limit&quot;</span><span class="p">,</span> <span class="s2">&quot;Rating&quot;</span><span class="p">]]</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -937,8 +939,8 @@ plt.show()
 <p>Run the following code to get the least squares coefficient estimates associated with the regression of <code class="docutils literal notranslate"><span class="pre">Balance</span></code> onto <code class="docutils literal notranslate"><span class="pre">Own</span></code> in the <code class="docutils literal notranslate"><span class="pre">Credit</span></code> dataset (Table 3.7 in the textbook).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>est = ols(&quot;Balance ~ Own&quot;, credit_df).fit()
-est.summary().tables[1]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Balance ~ Own&quot;</span><span class="p">,</span> <span class="n">credit_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">est</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -961,8 +963,8 @@ est.summary().tables[1]
 <p>Run the following code to get the least squares coefficient estimates associated with the regression of <code class="docutils literal notranslate"><span class="pre">Balance</span></code> onto <code class="docutils literal notranslate"><span class="pre">Region</span></code> in the <code class="docutils literal notranslate"><span class="pre">Credit</span></code> dataset (Table 3.8 in the textbook).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>est = ols(&quot;Balance ~ Region&quot;, credit_df).fit()
-est.summary().tables[1]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Balance ~ Region&quot;</span><span class="p">,</span> <span class="n">credit_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">est</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -994,8 +996,8 @@ est.summary().tables[1]
 y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon.
 \]</div>
 <p>This model can be extended to include an interaction term between <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fa7f3793-39c5-4a7b-bbda-2fc223e5e02f">
-<span class="eqno">(2.22)<a class="headerlink" href="#equation-fa7f3793-39c5-4a7b-bbda-2fc223e5e02f" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d4b6e009-f1cb-4c55-bfa2-6e9338c3d554">
+<span class="eqno">(2.22)<a class="headerlink" href="#equation-d4b6e009-f1cb-4c55-bfa2-6e9338c3d554" title="Permalink to this equation">¶</a></span>\[\begin{align}
 y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 &amp;= \beta_0 + (\beta_1 + \beta_3 x_2) x_1 + \beta_2 x_2 + \epsilon \\
 &amp;= \beta_0 + \tilde{\beta}_1 x_1 + \beta_2 x_2 + \epsilon,
@@ -1004,8 +1006,8 @@ y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 <p>Run the following code for the <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> data to get the least squares coefficient estimates associated with the regression of <code class="docutils literal notranslate"><span class="pre">Sales</span></code> onto <code class="docutils literal notranslate"><span class="pre">TV</span></code> and <code class="docutils literal notranslate"><span class="pre">Radio</span></code>, with an interaction term, <code class="docutils literal notranslate"><span class="pre">TV</span></code> <span class="math notranslate nohighlight">\(\times\)</span> <code class="docutils literal notranslate"><span class="pre">Radio</span></code> (Table 3.9 of the text book).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>est = ols(&quot;Sales ~ TV + Radio + TV*Radio&quot;, advertising_df).fit()
-est.summary().tables[1]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Sales ~ TV + Radio + TV*Radio&quot;</span><span class="p">,</span> <span class="n">advertising_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">est</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1034,13 +1036,13 @@ est.summary().tables[1]
 <p>The concept of interactions also applies to qualitative variables. In fact, sometimes an interaction between a qualitative variable and a quantitative variable has a particularly nice interpretation. For example, run the following code to predict <code class="docutils literal notranslate"><span class="pre">Balance</span></code> using the <code class="docutils literal notranslate"><span class="pre">Income</span></code> (quantitative) and <code class="docutils literal notranslate"><span class="pre">Student</span></code> (qualitative) variables, and compare the differences between including and excluding the interaction term between <code class="docutils literal notranslate"><span class="pre">Income</span></code> and <code class="docutils literal notranslate"><span class="pre">Student</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>est1 = ols(&quot;Balance ~ Income + Student2&quot;, credit_df).fit()
-est2 = ols(&quot;Balance ~ Income + Income*Student2&quot;, credit_df).fit()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est1</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Balance ~ Income + Student2&quot;</span><span class="p">,</span> <span class="n">credit_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">est2</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Balance ~ Income + Income*Student2&quot;</span><span class="p">,</span> <span class="n">credit_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
-print(&quot;Regression 1 - without interaction term&quot;)
-print(est1.params)
-print(&quot;\nRegression 2 - with interaction term&quot;)
-print(est2.params)
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Regression 1 - without interaction term&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">est1</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Regression 2 - with interaction term&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">est2</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1064,42 +1066,42 @@ dtype: float64
 <p>We can see that the interaction term between <code class="docutils literal notranslate"><span class="pre">Income</span></code> and <code class="docutils literal notranslate"><span class="pre">Student</span></code> affects the relationship between <code class="docutils literal notranslate"><span class="pre">Balance</span></code> and <code class="docutils literal notranslate"><span class="pre">Student</span></code> more than the relationship between <code class="docutils literal notranslate"><span class="pre">Balance</span></code> and <code class="docutils literal notranslate"><span class="pre">Income</span></code>. To have a closer look, let us visualise the relationship between <code class="docutils literal notranslate"><span class="pre">Balance</span></code> and <code class="docutils literal notranslate"><span class="pre">Income</span></code> for students and non-students separately (Figure 3.7 of the textbook).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Income (x-axis)
-regr1 = est1.params
-regr2 = est2.params
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Income (x-axis)</span>
+<span class="n">regr1</span> <span class="o">=</span> <span class="n">est1</span><span class="o">.</span><span class="n">params</span>
+<span class="n">regr2</span> <span class="o">=</span> <span class="n">est2</span><span class="o">.</span><span class="n">params</span>
 
-income = np.linspace(0, 150)
+<span class="n">income</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
 
-# Balance without interaction term (y-axis)
-student1 = np.linspace(
-    regr1[&quot;Intercept&quot;] + regr1[&quot;Student2&quot;],
-    regr1[&quot;Intercept&quot;] + regr1[&quot;Student2&quot;] + 150 * regr1[&quot;Income&quot;],
-)
-non_student1 = np.linspace(
-    regr1[&quot;Intercept&quot;], regr1[&quot;Intercept&quot;] + 150 * regr1[&quot;Income&quot;]
-)
+<span class="c1"># Balance without interaction term (y-axis)</span>
+<span class="n">student1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span>
+    <span class="n">regr1</span><span class="p">[</span><span class="s2">&quot;Intercept&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">regr1</span><span class="p">[</span><span class="s2">&quot;Student2&quot;</span><span class="p">],</span>
+    <span class="n">regr1</span><span class="p">[</span><span class="s2">&quot;Intercept&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">regr1</span><span class="p">[</span><span class="s2">&quot;Student2&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">150</span> <span class="o">*</span> <span class="n">regr1</span><span class="p">[</span><span class="s2">&quot;Income&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">non_student1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span>
+    <span class="n">regr1</span><span class="p">[</span><span class="s2">&quot;Intercept&quot;</span><span class="p">],</span> <span class="n">regr1</span><span class="p">[</span><span class="s2">&quot;Intercept&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">150</span> <span class="o">*</span> <span class="n">regr1</span><span class="p">[</span><span class="s2">&quot;Income&quot;</span><span class="p">]</span>
+<span class="p">)</span>
 
-# Balance with interaction term (y-axis)
-student2 = np.linspace(
-    regr2[&quot;Intercept&quot;] + regr2[&quot;Student2&quot;],
-    regr2[&quot;Intercept&quot;]
-    + regr2[&quot;Student2&quot;]
-    + 150 * (regr2[&quot;Income&quot;] + regr2[&quot;Income:Student2&quot;]),
-)
-non_student2 = np.linspace(
-    regr2[&quot;Intercept&quot;], regr2[&quot;Intercept&quot;] + 150 * regr2[&quot;Income&quot;]
-)
+<span class="c1"># Balance with interaction term (y-axis)</span>
+<span class="n">student2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span>
+    <span class="n">regr2</span><span class="p">[</span><span class="s2">&quot;Intercept&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">regr2</span><span class="p">[</span><span class="s2">&quot;Student2&quot;</span><span class="p">],</span>
+    <span class="n">regr2</span><span class="p">[</span><span class="s2">&quot;Intercept&quot;</span><span class="p">]</span>
+    <span class="o">+</span> <span class="n">regr2</span><span class="p">[</span><span class="s2">&quot;Student2&quot;</span><span class="p">]</span>
+    <span class="o">+</span> <span class="mi">150</span> <span class="o">*</span> <span class="p">(</span><span class="n">regr2</span><span class="p">[</span><span class="s2">&quot;Income&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">regr2</span><span class="p">[</span><span class="s2">&quot;Income:Student2&quot;</span><span class="p">]),</span>
+<span class="p">)</span>
+<span class="n">non_student2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span>
+    <span class="n">regr2</span><span class="p">[</span><span class="s2">&quot;Intercept&quot;</span><span class="p">],</span> <span class="n">regr2</span><span class="p">[</span><span class="s2">&quot;Intercept&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">150</span> <span class="o">*</span> <span class="n">regr2</span><span class="p">[</span><span class="s2">&quot;Income&quot;</span><span class="p">]</span>
+<span class="p">)</span>
 
-# Create plot
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
-ax1.plot(income, student1, &quot;r-&quot;, income, non_student1, &quot;k-&quot;)
-ax2.plot(income, student2, &quot;r--&quot;, income, non_student2, &quot;k--&quot;)
+<span class="c1"># Create plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">income</span><span class="p">,</span> <span class="n">student1</span><span class="p">,</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">income</span><span class="p">,</span> <span class="n">non_student1</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">income</span><span class="p">,</span> <span class="n">student2</span><span class="p">,</span> <span class="s2">&quot;r--&quot;</span><span class="p">,</span> <span class="n">income</span><span class="p">,</span> <span class="n">non_student2</span><span class="p">,</span> <span class="s2">&quot;k--&quot;</span><span class="p">)</span>
 
-for ax in fig.axes:
-    ax.legend([&quot;student&quot;, &quot;non-student&quot;], loc=2)
-    ax.set_xlabel(&quot;Income&quot;)
-    ax.set_ylabel(&quot;Balance&quot;)
-    ax.set_ylim(ymax=1550)
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;student&quot;</span><span class="p">,</span> <span class="s2">&quot;non-student&quot;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Income&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Balance&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ymax</span><span class="o">=</span><span class="mi">1550</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1117,11 +1119,11 @@ for ax in fig.axes:
 <p>Run the following code to observe the relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> (gas mileage in miles per gallon) and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.scatter(
-    auto_df.horsepower, auto_df.mpg, facecolors=&quot;None&quot;, edgecolors=&quot;k&quot;, alpha=0.5
-)
-plt.xlabel(&quot;horsepower&quot;)
-plt.ylabel(&quot;mpg&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">auto_df</span><span class="o">.</span><span class="n">horsepower</span><span class="p">,</span> <span class="n">auto_df</span><span class="o">.</span><span class="n">mpg</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;horsepower&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;mpg&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1133,47 +1135,47 @@ plt.ylabel(&quot;mpg&quot;)
 </div>
 </div>
 <p>The figure shows a strong relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>, but it is clearly not linear. We can use a polynomial regression to fit a nonlinear model to the data. We can fit a polynomial regression of degree 2 (quadratic) to the data using the following regression:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-50e8220f-88a0-4aa5-9796-f87a4003b459">
-<span class="eqno">(2.23)<a class="headerlink" href="#equation-50e8220f-88a0-4aa5-9796-f87a4003b459" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7c76bda1-2ff3-4aba-9324-744fa08271ec">
+<span class="eqno">(2.23)<a class="headerlink" href="#equation-7c76bda1-2ff3-4aba-9324-744fa08271ec" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \textrm{mpg} = \beta_0 + \beta_1 \times \textrm{horsepower} + \beta_2 \times \textrm{horsepower}^2 + \epsilon.
 \end{equation}\]</div>
 <p>Run the following code to display the relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> (gas mileage in miles per gallon) and <span class="math notranslate nohighlight">\(\textrm{horsepower}^2\)</span> as well as <span class="math notranslate nohighlight">\(\textrm{horsepower}^5\)</span> (Figure 3.8 of the textbook) for cars in the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># With Seaborn&#39;s regplot() you can easily plot higher order polynomials.
-plt.scatter(
-    auto_df.horsepower, auto_df.mpg, facecolors=&quot;None&quot;, edgecolors=&quot;k&quot;, alpha=0.5
-)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># With Seaborn&#39;s regplot() you can easily plot higher order polynomials.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">auto_df</span><span class="o">.</span><span class="n">horsepower</span><span class="p">,</span> <span class="n">auto_df</span><span class="o">.</span><span class="n">mpg</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
 
-sns.regplot(
-    x=auto_df.horsepower,
-    y=auto_df.mpg,
-    ci=None,
-    label=&quot;Linear&quot;,
-    scatter=False,
-    color=&quot;orange&quot;,
-)
-sns.regplot(
-    x=auto_df.horsepower,
-    y=auto_df.mpg,
-    ci=None,
-    label=&quot;Degree 2&quot;,
-    order=2,
-    scatter=False,
-    color=&quot;lightblue&quot;,
-)
-sns.regplot(
-    x=auto_df.horsepower,
-    y=auto_df.mpg,
-    ci=None,
-    label=&quot;Degree 5&quot;,
-    order=5,
-    scatter=False,
-    color=&quot;g&quot;,
-)
-plt.legend()
-plt.ylim(5, 55)
-plt.xlim(40, 240);
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">auto_df</span><span class="o">.</span><span class="n">horsepower</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">auto_df</span><span class="o">.</span><span class="n">mpg</span><span class="p">,</span>
+    <span class="n">ci</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Linear&quot;</span><span class="p">,</span>
+    <span class="n">scatter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">auto_df</span><span class="o">.</span><span class="n">horsepower</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">auto_df</span><span class="o">.</span><span class="n">mpg</span><span class="p">,</span>
+    <span class="n">ci</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Degree 2&quot;</span><span class="p">,</span>
+    <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">scatter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">auto_df</span><span class="o">.</span><span class="n">horsepower</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">auto_df</span><span class="o">.</span><span class="n">mpg</span><span class="p">,</span>
+    <span class="n">ci</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Degree 5&quot;</span><span class="p">,</span>
+    <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">scatter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">55</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">240</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1185,8 +1187,8 @@ plt.xlim(40, 240);
 <p>In fact, this is still a linear model with <span class="math notranslate nohighlight">\(x_1 = \textrm{horsepower}\)</span> and <span class="math notranslate nohighlight">\(x_2 = \textrm{horsepower}^2\)</span>. Run the following code to create a new predictor <code class="docutils literal notranslate"><span class="pre">horsepower2</span></code> and inspect the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Auto.csv">Auto dataset</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>auto_df[&quot;horsepower2&quot;] = auto_df.horsepower**2
-auto_df.head(3)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auto_df</span><span class="p">[</span><span class="s2">&quot;horsepower2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">auto_df</span><span class="o">.</span><span class="n">horsepower</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">auto_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1268,8 +1270,8 @@ auto_df.head(3)
 <p>Then run the following code to fit a linear regression model with <code class="docutils literal notranslate"><span class="pre">mpg</span></code> as the response and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code> and <code class="docutils literal notranslate"><span class="pre">horsepower2</span></code> as the predictors (Table 3.10 of the textbook).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>est = ols(&quot;mpg ~ horsepower + horsepower2&quot;, auto_df).fit()
-est.summary().tables[1]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;mpg ~ horsepower + horsepower2&quot;</span><span class="p">,</span> <span class="n">auto_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">est</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1300,22 +1302,22 @@ est.summary().tables[1]
 <p>Firstly, fitting a linear regression model and a quadratic regression model for regressing <code class="docutils literal notranslate"><span class="pre">mpg</span></code> onto <code class="docutils literal notranslate"><span class="pre">horsepower</span></code> and compute the residuals for each model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>regr = LinearRegression()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 
-# Linear fit
-X = auto_df.horsepower.values.reshape(-1, 1)
-y = auto_df.mpg
-regr.fit(X, y)
+<span class="c1"># Linear fit</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">auto_df</span><span class="o">.</span><span class="n">horsepower</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">auto_df</span><span class="o">.</span><span class="n">mpg</span>
+<span class="n">regr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-auto_df[&quot;pred1&quot;] = regr.predict(X)
-auto_df[&quot;resid1&quot;] = auto_df.mpg - auto_df.pred1
+<span class="n">auto_df</span><span class="p">[</span><span class="s2">&quot;pred1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">auto_df</span><span class="p">[</span><span class="s2">&quot;resid1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">auto_df</span><span class="o">.</span><span class="n">mpg</span> <span class="o">-</span> <span class="n">auto_df</span><span class="o">.</span><span class="n">pred1</span>
 
-# Quadratic fit
-X2 = auto_df[[&quot;horsepower&quot;, &quot;horsepower2&quot;]].values
-regr.fit(X2, y)
+<span class="c1"># Quadratic fit</span>
+<span class="n">X2</span> <span class="o">=</span> <span class="n">auto_df</span><span class="p">[[</span><span class="s2">&quot;horsepower&quot;</span><span class="p">,</span> <span class="s2">&quot;horsepower2&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">regr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-auto_df[&quot;pred2&quot;] = regr.predict(X2)
-auto_df[&quot;resid2&quot;] = auto_df.mpg - auto_df.pred2
+<span class="n">auto_df</span><span class="p">[</span><span class="s2">&quot;pred2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
+<span class="n">auto_df</span><span class="p">[</span><span class="s2">&quot;resid2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">auto_df</span><span class="o">.</span><span class="n">mpg</span> <span class="o">-</span> <span class="n">auto_df</span><span class="o">.</span><span class="n">pred2</span>
 </pre></div>
 </div>
 </div>
@@ -1323,45 +1325,45 @@ auto_df[&quot;resid2&quot;] = auto_df.mpg - auto_df.pred2
 <p>Create plots of the residuals for each model. What do you observe?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
-# Left plot
-sns.regplot(
-    x=auto_df.pred1,
-    y=auto_df.resid1,
-    lowess=True,
-    ax=ax1,
-    line_kws={&quot;color&quot;: &quot;r&quot;, &quot;lw&quot;: 1},
-    scatter_kws={&quot;facecolors&quot;: &quot;None&quot;, &quot;edgecolors&quot;: &quot;k&quot;, &quot;alpha&quot;: 0.5},
-)
-ax1.hlines(
-    0,
-    xmin=ax1.xaxis.get_data_interval()[0],
-    xmax=ax1.xaxis.get_data_interval()[1],
-    linestyles=&quot;dotted&quot;,
-)
-ax1.set_title(&quot;Residual Plot for Linear Fit&quot;)
+<span class="c1"># Left plot</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">auto_df</span><span class="o">.</span><span class="n">pred1</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">auto_df</span><span class="o">.</span><span class="n">resid1</span><span class="p">,</span>
+    <span class="n">lowess</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span>
+    <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;lw&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;facecolors&quot;</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;edgecolors&quot;</span><span class="p">:</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span>
+    <span class="mi">0</span><span class="p">,</span>
+    <span class="n">xmin</span><span class="o">=</span><span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_data_interval</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">xmax</span><span class="o">=</span><span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_data_interval</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Residual Plot for Linear Fit&quot;</span><span class="p">)</span>
 
-# Right plot
-sns.regplot(
-    x=auto_df.pred2,
-    y=auto_df.resid2,
-    lowess=True,
-    line_kws={&quot;color&quot;: &quot;r&quot;, &quot;lw&quot;: 1},
-    ax=ax2,
-    scatter_kws={&quot;facecolors&quot;: &quot;None&quot;, &quot;edgecolors&quot;: &quot;k&quot;, &quot;alpha&quot;: 0.5},
-)
-ax2.hlines(
-    0,
-    xmin=ax2.xaxis.get_data_interval()[0],
-    xmax=ax2.xaxis.get_data_interval()[1],
-    linestyles=&quot;dotted&quot;,
-)
-ax2.set_title(&quot;Residual Plot for Quadratic Fit&quot;)
+<span class="c1"># Right plot</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">auto_df</span><span class="o">.</span><span class="n">pred2</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">auto_df</span><span class="o">.</span><span class="n">resid2</span><span class="p">,</span>
+    <span class="n">lowess</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;lw&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
+    <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;facecolors&quot;</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;edgecolors&quot;</span><span class="p">:</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span>
+    <span class="mi">0</span><span class="p">,</span>
+    <span class="n">xmin</span><span class="o">=</span><span class="n">ax2</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_data_interval</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">xmax</span><span class="o">=</span><span class="n">ax2</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_data_interval</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Residual Plot for Quadratic Fit&quot;</span><span class="p">)</span>
 
-for ax in fig.axes:
-    ax.set_xlabel(&quot;Fitted values&quot;)
-    ax.set_ylabel(&quot;Residuals&quot;)
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Fitted values&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Residuals&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1384,19 +1386,19 @@ for ax in fig.axes:
 <p>Run the following code to illustrate the problem of collinearity in the <code class="docutils literal notranslate"><span class="pre">Credit</span></code> dataset (Figure 3.14 of the textbook).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
-# Left plot
-ax1.scatter(credit_df.Limit, credit_df.Age, facecolor=&quot;None&quot;, edgecolor=&quot;r&quot;)
-ax1.set_ylabel(&quot;Age&quot;)
+<span class="c1"># Left plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">credit_df</span><span class="o">.</span><span class="n">Limit</span><span class="p">,</span> <span class="n">credit_df</span><span class="o">.</span><span class="n">Age</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Age&quot;</span><span class="p">)</span>
 
-# Right plot
-ax2.scatter(credit_df.Limit, credit_df.Rating, facecolor=&quot;None&quot;, edgecolor=&quot;r&quot;)
-ax2.set_ylabel(&quot;Rating&quot;)
+<span class="c1"># Right plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">credit_df</span><span class="o">.</span><span class="n">Limit</span><span class="p">,</span> <span class="n">credit_df</span><span class="o">.</span><span class="n">Rating</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Rating&quot;</span><span class="p">)</span>
 
-for ax in fig.axes:
-    ax.set_xlabel(&quot;Limit&quot;)
-    ax.set_xticks([2000, 4000, 6000, 8000, 12000])
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Limit&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">4000</span><span class="p">,</span> <span class="mi">6000</span><span class="p">,</span> <span class="mi">8000</span><span class="p">,</span> <span class="mi">12000</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1408,21 +1410,21 @@ for ax in fig.axes:
 <p>Run the following code to learn the difficulties that can result from collinearity in the context of the <code class="docutils literal notranslate"><span class="pre">Credit</span></code> dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>y = credit_df.Balance
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">credit_df</span><span class="o">.</span><span class="n">Balance</span>
 
-# Regression for left plot
-X = credit_df[[&quot;Age&quot;, &quot;Limit&quot;]].values
-regr1 = LinearRegression()
-regr1.fit(scale(X.astype(&quot;float&quot;), with_std=False), y)
-print(&quot;Age/Limit\n&quot;, regr1.intercept_)
-print(regr1.coef_)
+<span class="c1"># Regression for left plot</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">credit_df</span><span class="p">[[</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="s2">&quot;Limit&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">regr1</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">regr1</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">scale</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">),</span> <span class="n">with_std</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Age/Limit</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">regr1</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">regr1</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
 
-# Regression for right plot
-X2 = credit_df[[&quot;Rating&quot;, &quot;Limit&quot;]].values
-regr2 = LinearRegression()
-regr2.fit(scale(X2.astype(&quot;float&quot;), with_std=False), y)
-print(&quot;\nRating/Limit\n&quot;, regr2.intercept_)
-print(regr2.coef_)
+<span class="c1"># Regression for right plot</span>
+<span class="n">X2</span> <span class="o">=</span> <span class="n">credit_df</span><span class="p">[[</span><span class="s2">&quot;Rating&quot;</span><span class="p">,</span> <span class="s2">&quot;Limit&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">regr2</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">regr2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">scale</span><span class="p">(</span><span class="n">X2</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">),</span> <span class="n">with_std</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Rating/Limit</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">regr2</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">regr2</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1441,33 +1443,33 @@ Rating/Limit
 <p>Create grid coordinates for plotting and then calculate RSS based on grid of coefficients</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># grid coordinates
-beta_age = np.linspace(regr1.coef_[0] - 3, regr1.coef_[0] + 3, 100)
-beta_limit = np.linspace(regr1.coef_[1] - 0.02, regr1.coef_[1] + 0.02, 100)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># grid coordinates</span>
+<span class="n">beta_age</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">regr1</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="n">regr1</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">beta_limit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">regr1</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.02</span><span class="p">,</span> <span class="n">regr1</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 
-beta_rating = np.linspace(regr2.coef_[0] - 3, regr2.coef_[0] + 3, 100)
-beta_limit2 = np.linspace(regr2.coef_[1] - 0.2, regr2.coef_[1] + 0.2, 100)
+<span class="n">beta_rating</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">regr2</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="n">regr2</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">beta_limit2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">regr2</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">regr2</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 
-X1, Y1 = np.meshgrid(beta_limit, beta_age, indexing=&quot;xy&quot;)
-X2, Y2 = np.meshgrid(beta_limit2, beta_rating, indexing=&quot;xy&quot;)
-Z1 = np.zeros((beta_age.size, beta_limit.size))
-Z2 = np.zeros((beta_rating.size, beta_limit2.size))
+<span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">beta_limit</span><span class="p">,</span> <span class="n">beta_age</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s2">&quot;xy&quot;</span><span class="p">)</span>
+<span class="n">X2</span><span class="p">,</span> <span class="n">Y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">beta_limit2</span><span class="p">,</span> <span class="n">beta_rating</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s2">&quot;xy&quot;</span><span class="p">)</span>
+<span class="n">Z1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">beta_age</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">beta_limit</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+<span class="n">Z2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">beta_rating</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">beta_limit2</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
 
-limit_scaled = scale(credit_df.Limit.astype(&quot;float&quot;), with_std=False)
-age_scaled = scale(credit_df.Age.astype(&quot;float&quot;), with_std=False)
-rating_scaled = scale(credit_df.Rating.astype(&quot;float&quot;), with_std=False)
+<span class="n">limit_scaled</span> <span class="o">=</span> <span class="n">scale</span><span class="p">(</span><span class="n">credit_df</span><span class="o">.</span><span class="n">Limit</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">),</span> <span class="n">with_std</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">age_scaled</span> <span class="o">=</span> <span class="n">scale</span><span class="p">(</span><span class="n">credit_df</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">),</span> <span class="n">with_std</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">rating_scaled</span> <span class="o">=</span> <span class="n">scale</span><span class="p">(</span><span class="n">credit_df</span><span class="o">.</span><span class="n">Rating</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">),</span> <span class="n">with_std</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-# calculate RSS
-for (i, j), v in np.ndenumerate(Z1):
-    Z1[i, j] = (
-        (y - (regr1.intercept_ + X1[i, j] * limit_scaled + Y1[i, j] * age_scaled)) ** 2
-    ).sum() / 1000000
+<span class="c1"># calculate RSS</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">ndenumerate</span><span class="p">(</span><span class="n">Z1</span><span class="p">):</span>
+    <span class="n">Z1</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">regr1</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="n">X1</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">limit_scaled</span> <span class="o">+</span> <span class="n">Y1</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">age_scaled</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000000</span>
 
-for (i, j), v in np.ndenumerate(Z2):
-    Z2[i, j] = (
-        (y - (regr2.intercept_ + X2[i, j] * limit_scaled + Y2[i, j] * rating_scaled))
-        ** 2
-    ).sum() / 1000000
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">ndenumerate</span><span class="p">(</span><span class="n">Z2</span><span class="p">):</span>
+    <span class="n">Z2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">regr2</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="n">X2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">limit_scaled</span> <span class="o">+</span> <span class="n">Y2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">rating_scaled</span><span class="p">))</span>
+        <span class="o">**</span> <span class="mi">2</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000000</span>
 </pre></div>
 </div>
 </div>
@@ -1475,33 +1477,33 @@ for (i, j), v in np.ndenumerate(Z2):
 <p>Plot the contours of the RSS with respect to the coefficients of the two linear regression models in 2D.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from matplotlib.pyplot import contour
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="n">contour</span>
 
 
-fig = plt.figure(figsize=(12, 5))
-fig.suptitle(&quot;RSS - Regression coefficients&quot;, fontsize=20)
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;RSS - Regression coefficients&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 
-ax1 = fig.add_subplot(121)
-ax2 = fig.add_subplot(122)
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
 
-min_RSS = r&quot;$\beta_0$, $\beta_1$ for minimized RSS&quot;
+<span class="n">min_RSS</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$\beta_0$, $\beta_1$ for minimized RSS&quot;</span>
 
-# Left plot
-contour1 = ax1.contour(X1, Y1, Z1, cmap=plt.cm.Set1, levels=[21.25, 21.5, 21.8])
-ax1.scatter(regr1.coef_[1], regr1.coef_[0], c=&quot;r&quot;, label=min_RSS)
-ax1.clabel(contour1, inline=True, fontsize=10, fmt=&quot;%1.1f&quot;)
-ax1.set_ylabel(r&quot;$\beta_{Age}$&quot;, fontsize=17)
+<span class="c1"># Left plot</span>
+<span class="n">contour1</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span><span class="p">,</span> <span class="n">Z1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Set1</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mf">21.25</span><span class="p">,</span> <span class="mf">21.5</span><span class="p">,</span> <span class="mf">21.8</span><span class="p">])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">regr1</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">regr1</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">min_RSS</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">contour1</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%1.1f</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\beta_</span><span class="si">{Age}</span><span class="s2">$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
 
-# Right plot
-contour2 = ax2.contour(X2, Y2, Z2, cmap=plt.cm.Set1, levels=[21.5, 21.8])
-ax2.scatter(regr2.coef_[1], regr2.coef_[0], c=&quot;r&quot;, label=min_RSS)
-ax2.clabel(contour2, inline=True, fontsize=10, fmt=&quot;%1.1f&quot;)
-ax2.set_ylabel(r&quot;$\beta_{Rating}$&quot;, fontsize=17)
-ax2.set_xticks([-0.1, 0, 0.1, 0.2])
+<span class="c1"># Right plot</span>
+<span class="n">contour2</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="n">Y2</span><span class="p">,</span> <span class="n">Z2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Set1</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mf">21.5</span><span class="p">,</span> <span class="mf">21.8</span><span class="p">])</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">regr2</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">regr2</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">min_RSS</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">contour2</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%1.1f</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\beta_</span><span class="si">{Rating}</span><span class="s2">$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
 
-for ax in fig.axes:
-    ax.set_xlabel(r&quot;$\beta_{Limit}$&quot;, fontsize=17)
-    ax.legend()
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\beta_</span><span class="si">{Limit}</span><span class="s2">$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1515,8 +1517,8 @@ for ax in fig.axes:
 <p>Run the following code to compare the coefficient estimates obtained from two separate multiple regression models using <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code>, where the first model is a regression of <code class="docutils literal notranslate"><span class="pre">balance</span></code> on <code class="docutils literal notranslate"><span class="pre">age</span></code> and <code class="docutils literal notranslate"><span class="pre">limit</span></code>, and the second model is a regression of <code class="docutils literal notranslate"><span class="pre">balance</span></code> on <code class="docutils literal notranslate"><span class="pre">rating</span></code> and <code class="docutils literal notranslate"><span class="pre">limit</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>est_age_limit = ols(&quot;Balance ~ Age + Limit&quot;, credit_df).fit()
-est_age_limit.summary().tables[1]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est_age_limit</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Balance ~ Age + Limit&quot;</span><span class="p">,</span> <span class="n">credit_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">est_age_limit</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1538,8 +1540,8 @@ est_age_limit.summary().tables[1]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>est_rating_limit = ols(&quot;Balance ~ Rating + Limit&quot;, credit_df).fit()
-est_rating_limit.summary().tables[1]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est_rating_limit</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;Balance ~ Rating + Limit&quot;</span><span class="p">,</span> <span class="n">credit_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">est_rating_limit</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1572,7 +1574,7 @@ est_rating_limit.summary().tables[1]
 <p>For <strong>each predictor</strong>, fit a <strong>simple linear regression</strong> model to predict the the response. Dont forget to handle any <strong>NULL values</strong>. <strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/multi-linear-regression.html#import-libraries-and-load-data">2.2.2</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1580,21 +1582,21 @@ est_rating_limit.summary().tables[1]
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from statsmodels.formula.api import ols
-import pandas as pd
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-boston_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Boston.csv&quot;
+<span class="n">boston_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Boston.csv&quot;</span>
 
-boston_df = pd.read_csv(boston_url).dropna()
+<span class="n">boston_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">boston_url</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 
 
-models_a = [
-    ols(formula=&quot;crim ~ {}&quot;.format(f), data=boston_df).fit()
-    for f in boston_df.columns[1:]
-]
+<span class="n">models_a</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s2">&quot;crim ~ </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">boston_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">boston_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="p">]</span>
 
-for model in models_a:
-    print(model.summary().tables[1])
+<span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models_a</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1684,7 +1686,7 @@ medv          -0.3632      0.038     -9.460      0.000      -0.439      -0.288
 <p><strong>2</strong>. In which of the models is there a <strong>statistically significant</strong> association between the predictor and the response? Create some plots to back up your assertions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1692,32 +1694,32 @@ medv          -0.3632      0.038     -9.460      0.000      -0.439      -0.288
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;p &lt; 0.05\n&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p &lt; 0.05</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
-for model in models_a:
-    if model.pvalues[1] &lt; 0.05:
-        print(model.params[1:].index[0])
+<span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models_a</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">pvalues</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-print(&quot;\np &gt; 0.05\n&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">p &gt; 0.05</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
-for model in models_a:
-    if model.pvalues[1] &gt; 0.05:
-        print(model.params[1:].index[0])
+<span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models_a</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">pvalues</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.05</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-#  zn, indu,s nox, rm, ag, dis, rad, tax, ptratio, black, lstat, medv  are higly significant with very small p values.
-
-
-def plot_grid(df, response, cols):
-    variables = df.columns.drop(response)
-    for i in range(0, len(variables), cols):
-        g = sns.pairplot(
-            df, y_vars=[response], x_vars=variables[i : i + cols], height=4
-        )
-        g.map(sns.regplot)
-    return
+<span class="c1">#  zn, indu,s nox, rm, ag, dis, rad, tax, ptratio, black, lstat, medv  are higly significant with very small p values.</span>
 
 
-plot_grid(boston_df, &quot;crim&quot;, 5)
+<span class="k">def</span> <span class="nf">plot_grid</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">cols</span><span class="p">):</span>
+    <span class="n">variables</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">variables</span><span class="p">),</span> <span class="n">cols</span><span class="p">):</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span>
+            <span class="n">df</span><span class="p">,</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="n">response</span><span class="p">],</span> <span class="n">x_vars</span><span class="o">=</span><span class="n">variables</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">cols</span><span class="p">],</span> <span class="n">height</span><span class="o">=</span><span class="mi">4</span>
+        <span class="p">)</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">)</span>
+    <span class="k">return</span>
+
+
+<span class="n">plot_grid</span><span class="p">(</span><span class="n">boston_df</span><span class="p">,</span> <span class="s2">&quot;crim&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1750,7 +1752,7 @@ chas
 <p><strong>3</strong>. Fit a <strong>multiple regression</strong> model to predict the response using all of the predictors. <strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/extension-limitation.html#extensions-of-linear-regression">2.3.3</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1758,12 +1760,12 @@ chas
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>response = &quot;crim&quot;
-predictors = boston_df.columns.drop(response)
-f = &quot;{} ~ {}&quot;.format(response, &quot;+&quot;.join(predictors))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;crim&quot;</span>
+<span class="n">predictors</span> <span class="o">=</span> <span class="n">boston_df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> ~ </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">predictors</span><span class="p">))</span>
 
-model_b = ols(formula=f, data=boston_df).fit()
-model_b.summary()
+<span class="n">model_b</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">boston_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">model_b</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1780,10 +1782,10 @@ model_b.summary()
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   31.47</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Wed, 28 Dec 2022</td> <th>  Prob (F-statistic):</th> <td>1.57e-56</td>
+  <th>Date:</th>             <td>Tue, 10 Jan 2023</td> <th>  Prob (F-statistic):</th> <td>1.57e-56</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>16:35:00</td>     <th>  Log-Likelihood:    </th> <td> -1653.3</td>
+  <th>Time:</th>                 <td>18:04:18</td>     <th>  Log-Likelihood:    </th> <td> -1653.3</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   506</td>      <th>  AIC:               </th> <td>   3335.</td>
@@ -1863,7 +1865,7 @@ model_b.summary()
 <p><strong>4</strong>. Which features seem to be <strong>statistically significant</strong> in this model?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1871,10 +1873,10 @@ model_b.summary()
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;p &lt; 0.05\n&quot;)
-model_b.pvalues[model_b.pvalues &lt; 0.05]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p &lt; 0.05</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">model_b</span><span class="o">.</span><span class="n">pvalues</span><span class="p">[</span><span class="n">model_b</span><span class="o">.</span><span class="n">pvalues</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">]</span>
 
-# Only the resultent features seem to be statistically significant in this model.
+<span class="c1"># Only the resultent features seem to be statistically significant in this model.</span>
 </pre></div>
 </div>
 </div>
@@ -1896,7 +1898,7 @@ dtype: float64
 <p><strong>5</strong>. How do your results from <strong>Exercise 1</strong> compare to your results from <strong>Exercise 3</strong>? Create a plot displaying the univariate regression coefficients from <strong>Exercise 1</strong> on the x-axis, and the multiple regression coefficients from <strong>Exercise 3</strong> on the y-axis. That is, each predictor is displayed as a single point in the plot. Its coefficient in a simple linear regression model is shown on the x-axis, and its coefficient estimate in the multiple linear regression model is shown on the y-axis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1904,21 +1906,21 @@ dtype: float64
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Get coefficients
-univariate_params = pd.concat([m.params[1:] for m in models_a])
-multivariate_params = model_b.params[1:]
-df = pd.DataFrame(
-    {
-        &quot;Univariate_coef&quot;: univariate_params,
-        &quot;Multivariate_coef&quot;: multivariate_params,
-    }
-)
-print(df)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get coefficients</span>
+<span class="n">univariate_params</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">models_a</span><span class="p">])</span>
+<span class="n">multivariate_params</span> <span class="o">=</span> <span class="n">model_b</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Univariate_coef&quot;</span><span class="p">:</span> <span class="n">univariate_params</span><span class="p">,</span>
+        <span class="s2">&quot;Multivariate_coef&quot;</span><span class="p">:</span> <span class="n">multivariate_params</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
-plt.figure(figsize=(20, 10))
-ax = sns.scatterplot(x=&quot;Univariate_coef&quot;, y=&quot;Multivariate_coef&quot;, data=df)
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Univariate_coef&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Multivariate_coef&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
 
-# Multivariate regression found 5 of 13 predictors to be significnat where univariate regression found 12 of 13 significant. Multivariate regression seems to find significanlty less predictors to be significant.
+<span class="c1"># Multivariate regression found 5 of 13 predictors to be significnat where univariate regression found 12 of 13 significant. Multivariate regression seems to find significanlty less predictors to be significant.</span>
 </pre></div>
 </div>
 </div>
@@ -1950,7 +1952,7 @@ y = \beta_0 + \beta_1 X + \beta_2 X^2 \beta_3 X^3 + \epsilon
 <p><strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/extension-limitation.html#nonlinear-relationships">2.3.3.2</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1958,26 +1960,26 @@ y = \beta_0 + \beta_1 X + \beta_2 X^2 \beta_3 X^3 + \epsilon
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>models_d = [
-    ols(
-        formula=&quot;crim ~ {0} + np.power({0}, 2) + np.power({0}, 3)&quot;.format(f),
-        data=boston_df,
-    ).fit()
-    for f in boston_df.columns[1:]
-]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">models_d</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">ols</span><span class="p">(</span>
+        <span class="n">formula</span><span class="o">=</span><span class="s2">&quot;crim ~ </span><span class="si">{0}</span><span class="s2"> + np.power(</span><span class="si">{0}</span><span class="s2">, 2) + np.power(</span><span class="si">{0}</span><span class="s2">, 3)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">),</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">boston_df</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">boston_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="p">]</span>
 
-for model in models_d:
-    print(model.summary().tables[1])
+<span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models_d</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
 
-print(&quot;\nFeatures with p &lt; 0.05\n&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Features with p &lt; 0.05</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
-sig = pd.concat([model.pvalues[model.pvalues &lt; 0.05] for model in models_d])
+<span class="n">sig</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">pvalues</span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">pvalues</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">]</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models_d</span><span class="p">])</span>
 
-print(pd.DataFrame({&quot;P&gt;|t|&quot;: sig.drop(&quot;Intercept&quot;)}))
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;P&gt;|t|&quot;</span><span class="p">:</span> <span class="n">sig</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Intercept&quot;</span><span class="p">)}))</span>
 
-# There is evidence of a nonlinear association between the repsonse and INDUS, NOX, AGE, DIS, PTRATIO, medv
-# There is evidence of a linear association between the response and ZN
+<span class="c1"># There is evidence of a nonlinear association between the repsonse and INDUS, NOX, AGE, DIS, PTRATIO, medv</span>
+<span class="c1"># There is evidence of a linear association between the response and ZN</span>
 </pre></div>
 </div>
 </div>
@@ -2115,7 +2117,7 @@ np.power(medv, 3)     1.046510e-12
 <p><strong>7</strong>. Compare the differences between a linear regression model and a quadratic regression model for regressing <strong>pration</strong> onto <strong>crim</strong>.  Does the quadratic term improves the fit to the data? <strong>Hint</strong>: See section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/extension-limitation.html#limitations-of-linear-regression">2.3.3.3</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -2123,77 +2125,77 @@ np.power(medv, 3)     1.046510e-12
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.linear_model import LinearRegression
-import matplotlib.pyplot as plt
-import seaborn as sns
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
-regr = LinearRegression()
+<span class="n">regr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 
-# Linear fit
-X = boston_df.ptratio.values.reshape(-1, 1)
-y = boston_df.crim
-regr.fit(X, y)
+<span class="c1"># Linear fit</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">boston_df</span><span class="o">.</span><span class="n">ptratio</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">boston_df</span><span class="o">.</span><span class="n">crim</span>
+<span class="n">regr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-boston_df[&quot;pred1&quot;] = regr.predict(X)
-boston_df[&quot;resid1&quot;] = boston_df.crim - boston_df.pred1
-
-
-boston_df[&quot;ptratio2&quot;] = boston_df.nox**3
-# Quadratic fit
-X2 = boston_df[[&quot;ptratio&quot;, &quot;ptratio2&quot;]].values
-regr.fit(X2, y)
-
-boston_df[&quot;pred2&quot;] = regr.predict(X2)
-boston_df[&quot;resid2&quot;] = boston_df.crim - boston_df.pred2
+<span class="n">boston_df</span><span class="p">[</span><span class="s2">&quot;pred1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">boston_df</span><span class="p">[</span><span class="s2">&quot;resid1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">boston_df</span><span class="o">.</span><span class="n">crim</span> <span class="o">-</span> <span class="n">boston_df</span><span class="o">.</span><span class="n">pred1</span>
 
 
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+<span class="n">boston_df</span><span class="p">[</span><span class="s2">&quot;ptratio2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">boston_df</span><span class="o">.</span><span class="n">nox</span><span class="o">**</span><span class="mi">3</span>
+<span class="c1"># Quadratic fit</span>
+<span class="n">X2</span> <span class="o">=</span> <span class="n">boston_df</span><span class="p">[[</span><span class="s2">&quot;ptratio&quot;</span><span class="p">,</span> <span class="s2">&quot;ptratio2&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">regr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-# Left plot
-sns.regplot(
-    x=boston_df.pred1,
-    y=boston_df.resid1,
-    lowess=True,
-    ax=ax1,
-    line_kws={&quot;color&quot;: &quot;r&quot;, &quot;lw&quot;: 1},
-    scatter_kws={&quot;facecolors&quot;: &quot;None&quot;, &quot;edgecolors&quot;: &quot;k&quot;, &quot;alpha&quot;: 0.5},
-)
-ax1.hlines(
-    0,
-    xmin=ax1.xaxis.get_data_interval()[0],
-    xmax=ax1.xaxis.get_data_interval()[1],
-    linestyles=&quot;dotted&quot;,
-)
-ax1.set_title(&quot;Residual Plot for Linear Fit&quot;)
-
-# Right plot
-sns.regplot(
-    x=boston_df.pred2,
-    y=boston_df.resid2,
-    lowess=True,
-    line_kws={&quot;color&quot;: &quot;r&quot;, &quot;lw&quot;: 1},
-    ax=ax2,
-    scatter_kws={&quot;facecolors&quot;: &quot;None&quot;, &quot;edgecolors&quot;: &quot;k&quot;, &quot;alpha&quot;: 0.5},
-)
-ax2.hlines(
-    0,
-    xmin=ax2.xaxis.get_data_interval()[0],
-    xmax=ax2.xaxis.get_data_interval()[1],
-    linestyles=&quot;dotted&quot;,
-)
-ax2.set_title(&quot;Residual Plot for Quadratic Fit&quot;)
-
-for ax in fig.axes:
-    ax.set_xlabel(&quot;Fitted values&quot;)
-    ax.set_ylabel(&quot;Residuals&quot;)
-
-# The left plot displays a residual plot from the linear regression of pratio onto crim on the Boston dataset.
-# The red line is a smooth fit to the residuals for identifying any trends in the residuals.
-# Here, the residuals exhibit a tendency of U-shape, which provides a strong indication of nonlinearity in the data.
+<span class="n">boston_df</span><span class="p">[</span><span class="s2">&quot;pred2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
+<span class="n">boston_df</span><span class="p">[</span><span class="s2">&quot;resid2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">boston_df</span><span class="o">.</span><span class="n">crim</span> <span class="o">-</span> <span class="n">boston_df</span><span class="o">.</span><span class="n">pred2</span>
 
 
-# The right panel displays the residual plot that results from the model contains a quadratic term.
-# There appears to be little pattern in the residuals, suggesting that the quadratic term improves the fit to the data.
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Left plot</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">boston_df</span><span class="o">.</span><span class="n">pred1</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">boston_df</span><span class="o">.</span><span class="n">resid1</span><span class="p">,</span>
+    <span class="n">lowess</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span>
+    <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;lw&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;facecolors&quot;</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;edgecolors&quot;</span><span class="p">:</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span>
+    <span class="mi">0</span><span class="p">,</span>
+    <span class="n">xmin</span><span class="o">=</span><span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_data_interval</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">xmax</span><span class="o">=</span><span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_data_interval</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Residual Plot for Linear Fit&quot;</span><span class="p">)</span>
+
+<span class="c1"># Right plot</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">boston_df</span><span class="o">.</span><span class="n">pred2</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">boston_df</span><span class="o">.</span><span class="n">resid2</span><span class="p">,</span>
+    <span class="n">lowess</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;lw&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
+    <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;facecolors&quot;</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;edgecolors&quot;</span><span class="p">:</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span>
+    <span class="mi">0</span><span class="p">,</span>
+    <span class="n">xmin</span><span class="o">=</span><span class="n">ax2</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_data_interval</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">xmax</span><span class="o">=</span><span class="n">ax2</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_data_interval</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Residual Plot for Quadratic Fit&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Fitted values&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Residuals&quot;</span><span class="p">)</span>
+
+<span class="c1"># The left plot displays a residual plot from the linear regression of pratio onto crim on the Boston dataset.</span>
+<span class="c1"># The red line is a smooth fit to the residuals for identifying any trends in the residuals.</span>
+<span class="c1"># Here, the residuals exhibit a tendency of U-shape, which provides a strong indication of nonlinearity in the data.</span>
+
+
+<span class="c1"># The right panel displays the residual plot that results from the model contains a quadratic term.</span>
+<span class="c1"># There appears to be little pattern in the residuals, suggesting that the quadratic term improves the fit to the data.</span>
 </pre></div>
 </div>
 </div>

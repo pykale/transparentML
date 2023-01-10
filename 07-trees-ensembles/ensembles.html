@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -774,21 +776,21 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Import the APIs and set a random seed for reproducibility.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
-import pandas as pd
-from math import sqrt
-from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeRegressor
-from sklearn.ensemble import (
-    BaggingRegressor,
-    GradientBoostingRegressor,
-    RandomForestRegressor,
-)
-from sklearn.metrics import mean_squared_error
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">BaggingRegressor</span><span class="p">,</span>
+    <span class="n">GradientBoostingRegressor</span><span class="p">,</span>
+    <span class="n">RandomForestRegressor</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
 
-%matplotlib inline
+<span class="o">%</span><span class="k">matplotlib</span> inline
 
-np.random.seed(2022)  # set random seed for reproducibility
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>  <span class="c1"># set random seed for reproducibility</span>
 </pre></div>
 </div>
 </div>
@@ -798,13 +800,13 @@ np.random.seed(2022)  # set random seed for reproducibility
 <p>Load the Boston dataset and split it into training and test sets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>boston_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Boston.csv&quot;
-boston_df = pd.read_csv(boston_url)
-X = boston_df.drop(&quot;medv&quot;, axis=1)
-y = boston_df.medv
-train_size = 0.5
-max_depth = 3
-X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=train_size)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boston_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Boston.csv&quot;</span>
+<span class="n">boston_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">boston_url</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">boston_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;medv&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">boston_df</span><span class="o">.</span><span class="n">medv</span>
+<span class="n">train_size</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">max_depth</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="n">train_size</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -812,37 +814,37 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=train_size)
 <p>Apply bagging, random forests, and boosting to the Boston dataset for regression.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>num_features = X.shape[1]
-regr_bagging = BaggingRegressor(
-    base_estimator=DecisionTreeRegressor(max_depth=max_depth),
-    n_estimators=1000,
-    max_features=num_features,
-    bootstrap=True,
-)
-regr_bagging.fit(X_train, y_train)
-y_pred_bagging = regr_bagging.predict(X_test)
-mse_bagging = mean_squared_error(y_test, y_pred_bagging)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">regr_bagging</span> <span class="o">=</span> <span class="n">BaggingRegressor</span><span class="p">(</span>
+    <span class="n">base_estimator</span><span class="o">=</span><span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">),</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">max_features</span><span class="o">=</span><span class="n">num_features</span><span class="p">,</span>
+    <span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">regr_bagging</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred_bagging</span> <span class="o">=</span> <span class="n">regr_bagging</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">mse_bagging</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_bagging</span><span class="p">)</span>
 
-max_features = int(sqrt(num_features))
-regr_rf = RandomForestRegressor(max_features=max_features)
-regr_rf.fit(X_train, y_train)
-y_pred_rf = regr_rf.predict(X_test)
-mse_rf = mean_squared_error(y_test, y_pred_rf)
+<span class="n">max_features</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">num_features</span><span class="p">))</span>
+<span class="n">regr_rf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">max_features</span><span class="o">=</span><span class="n">max_features</span><span class="p">)</span>
+<span class="n">regr_rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred_rf</span> <span class="o">=</span> <span class="n">regr_rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">mse_rf</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_rf</span><span class="p">)</span>
 
-regr_boosting = GradientBoostingRegressor()
-regr_boosting.fit(X_train, y_train)
-y_pred_boosting = regr_boosting.predict(X_test)
-mse_boosting = mean_squared_error(y_test, y_pred_boosting)
+<span class="n">regr_boosting</span> <span class="o">=</span> <span class="n">GradientBoostingRegressor</span><span class="p">()</span>
+<span class="n">regr_boosting</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred_boosting</span> <span class="o">=</span> <span class="n">regr_boosting</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">mse_boosting</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_boosting</span><span class="p">)</span>
 
-print(&quot;MSE for Bagging: {:.2f}&quot;.format(mse_bagging))
-print(&quot;MSE for Random Forest: {:.2f}&quot;.format(mse_rf))
-print(&quot;MSE for Boosting: {:.2f}&quot;.format(mse_boosting))
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MSE for Bagging: </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mse_bagging</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MSE for Random Forest: </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mse_rf</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MSE for Boosting: </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mse_boosting</span><span class="p">))</span>
 
-mses = pd.DataFrame(
-    {&quot;Bagging&quot;: mse_bagging, &quot;Random Forest&quot;: mse_rf, &quot;Boosting&quot;: mse_boosting},
-    index=[&quot;MSE&quot;],
-)
-mses.plot.bar(rot=0, figsize=(6, 4))
+<span class="n">mses</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;Bagging&quot;</span><span class="p">:</span> <span class="n">mse_bagging</span><span class="p">,</span> <span class="s2">&quot;Random Forest&quot;</span><span class="p">:</span> <span class="n">mse_rf</span><span class="p">,</span> <span class="s2">&quot;Boosting&quot;</span><span class="p">:</span> <span class="n">mse_boosting</span><span class="p">},</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MSE&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">mses</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -868,24 +870,24 @@ MSE for Boosting: 12.58
 <p>Let us examine the feature importance for random forests and boosting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rf_importances = regr_rf.feature_importances_
-rf_indices = np.argsort(rf_importances)[::-1]
-rf_names = [X.columns[i] for i in rf_indices]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rf_importances</span> <span class="o">=</span> <span class="n">regr_rf</span><span class="o">.</span><span class="n">feature_importances_</span>
+<span class="n">rf_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">rf_importances</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">rf_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">rf_indices</span><span class="p">]</span>
 
-boosting_importances = regr_boosting.feature_importances_
-boosting_indices = np.argsort(boosting_importances)[::-1]
-boosting_names = [X.columns[i] for i in boosting_indices]
+<span class="n">boosting_importances</span> <span class="o">=</span> <span class="n">regr_boosting</span><span class="o">.</span><span class="n">feature_importances_</span>
+<span class="n">boosting_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">boosting_importances</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">boosting_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">boosting_indices</span><span class="p">]</span>
 
-importances = pd.DataFrame(
-    {
-        &quot;feature&quot;: X.columns,
-        &quot;Random Forest&quot;: rf_importances,
-        &quot;Boosting&quot;: boosting_importances,
-    }
-)
-importances = importances.set_index(&quot;feature&quot;)
-sorted_importances = importances.sort_values(by=&quot;Random Forest&quot;, ascending=False)
-sorted_importances.plot.bar(rot=30, figsize=(10, 5))
+<span class="n">importances</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;feature&quot;</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+        <span class="s2">&quot;Random Forest&quot;</span><span class="p">:</span> <span class="n">rf_importances</span><span class="p">,</span>
+        <span class="s2">&quot;Boosting&quot;</span><span class="p">:</span> <span class="n">boosting_importances</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">importances</span> <span class="o">=</span> <span class="n">importances</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;feature&quot;</span><span class="p">)</span>
+<span class="n">sorted_importances</span> <span class="o">=</span> <span class="n">importances</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Random Forest&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sorted_importances</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">rot</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -901,11 +903,11 @@ sorted_importances.plot.bar(rot=30, figsize=(10, 5))
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">7.3.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p><strong>1.</strong> All the following exercises use the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Hitters.csv">Hitters</a>.</p>
-<p>Load the <strong>Hitters</strong>s dataset, convert the values of variables (predictors) from category to numbers, and inspect the first five rows.</p>
+<p><strong>1.</strong> All the following exercises use the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Hitters.csv">Hitters</a> dataset.</p>
+<p>Load the <strong>Hitters</strong> dataset, convert the values of variables (predictors) from categorical values to numerical values, and inspect the first five rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -913,19 +915,19 @@ sorted_importances.plot.bar(rot=30, figsize=(10, 5))
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
-import pandas as pd
-from sklearn.model_selection import train_test_split
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
-np.random.seed(2022)  # set random seed for reproducibility
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>  <span class="c1"># set random seed for reproducibility</span>
 
-hitters_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Hitters.csv&quot;
-hitters_df = pd.read_csv(hitters_url).dropna()
-hitters_df[&quot;League&quot;] = hitters_df[&quot;League&quot;].factorize()[0]
-hitters_df[&quot;Division&quot;] = hitters_df[&quot;Division&quot;].factorize()[0]
-hitters_df[&quot;NewLeague&quot;] = hitters_df[&quot;NewLeague&quot;].factorize()[0]
+<span class="n">hitters_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Hitters.csv&quot;</span>
+<span class="n">hitters_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">hitters_url</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">hitters_df</span><span class="p">[</span><span class="s2">&quot;League&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hitters_df</span><span class="p">[</span><span class="s2">&quot;League&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">factorize</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">hitters_df</span><span class="p">[</span><span class="s2">&quot;Division&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hitters_df</span><span class="p">[</span><span class="s2">&quot;Division&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">factorize</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">hitters_df</span><span class="p">[</span><span class="s2">&quot;NewLeague&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hitters_df</span><span class="p">[</span><span class="s2">&quot;NewLeague&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">factorize</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
-hitters_df.head()
+<span class="n">hitters_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1093,7 +1095,7 @@ hitters_df.head()
 <p><strong>2.</strong> Train three models on the dataset loaded in <strong>Exercise 1</strong> using the bagging, random forests, and boosting methods, and compare their performance on the test dataset using MSE as the evaluation metric.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1101,53 +1103,53 @@ hitters_df.head()
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.tree import DecisionTreeRegressor
-from sklearn.ensemble import (
-    BaggingRegressor,
-    GradientBoostingRegressor,
-    RandomForestRegressor,
-)
-from sklearn.metrics import mean_squared_error
-from math import sqrt
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">BaggingRegressor</span><span class="p">,</span>
+    <span class="n">GradientBoostingRegressor</span><span class="p">,</span>
+    <span class="n">RandomForestRegressor</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
 
-X = hitters_df.drop(&quot;Salary&quot;, axis=1)
-y = hitters_df.Salary
-train_size = 0.5
-max_depth = 3
-X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=train_size)
+<span class="n">X</span> <span class="o">=</span> <span class="n">hitters_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Salary&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">hitters_df</span><span class="o">.</span><span class="n">Salary</span>
+<span class="n">train_size</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">max_depth</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="n">train_size</span><span class="p">)</span>
 
 
-num_features = X.shape[1]
-regr_bagging = BaggingRegressor(
-    base_estimator=DecisionTreeRegressor(max_depth=max_depth),
-    n_estimators=1000,
-    max_features=num_features,
-    bootstrap=True,
-)
-regr_bagging.fit(X_train, y_train)
-y_pred_bagging = regr_bagging.predict(X_test)
-mse_bagging = mean_squared_error(y_test, y_pred_bagging)
+<span class="n">num_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">regr_bagging</span> <span class="o">=</span> <span class="n">BaggingRegressor</span><span class="p">(</span>
+    <span class="n">base_estimator</span><span class="o">=</span><span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">),</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">max_features</span><span class="o">=</span><span class="n">num_features</span><span class="p">,</span>
+    <span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">regr_bagging</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred_bagging</span> <span class="o">=</span> <span class="n">regr_bagging</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">mse_bagging</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_bagging</span><span class="p">)</span>
 
-max_features = int(sqrt(num_features))
-regr_rf = RandomForestRegressor(max_features=max_features)
-regr_rf.fit(X_train, y_train)
-y_pred_rf = regr_rf.predict(X_test)
-mse_rf = mean_squared_error(y_test, y_pred_rf)
+<span class="n">max_features</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">num_features</span><span class="p">))</span>
+<span class="n">regr_rf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">max_features</span><span class="o">=</span><span class="n">max_features</span><span class="p">)</span>
+<span class="n">regr_rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred_rf</span> <span class="o">=</span> <span class="n">regr_rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">mse_rf</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_rf</span><span class="p">)</span>
 
-regr_boosting = GradientBoostingRegressor()
-regr_boosting.fit(X_train, y_train)
-y_pred_boosting = regr_boosting.predict(X_test)
-mse_boosting = mean_squared_error(y_test, y_pred_boosting)
+<span class="n">regr_boosting</span> <span class="o">=</span> <span class="n">GradientBoostingRegressor</span><span class="p">()</span>
+<span class="n">regr_boosting</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred_boosting</span> <span class="o">=</span> <span class="n">regr_boosting</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">mse_boosting</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_boosting</span><span class="p">)</span>
 
-print(&quot;MSE for Bagging: {:.2f}&quot;.format(mse_bagging))
-print(&quot;MSE for Random Forest: {:.2f}&quot;.format(mse_rf))
-print(&quot;MSE for Boosting: {:.2f}&quot;.format(mse_boosting))
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MSE for Bagging: </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mse_bagging</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MSE for Random Forest: </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mse_rf</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MSE for Boosting: </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mse_boosting</span><span class="p">))</span>
 
-mses = pd.DataFrame(
-    {&quot;Bagging&quot;: mse_bagging, &quot;Random Forest&quot;: mse_rf, &quot;Boosting&quot;: mse_boosting},
-    index=[&quot;MSE&quot;],
-)
-mses.plot.bar(rot=0, figsize=(6, 4))
+<span class="n">mses</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;Bagging&quot;</span><span class="p">:</span> <span class="n">mse_bagging</span><span class="p">,</span> <span class="s2">&quot;Random Forest&quot;</span><span class="p">:</span> <span class="n">mse_rf</span><span class="p">,</span> <span class="s2">&quot;Boosting&quot;</span><span class="p">:</span> <span class="n">mse_boosting</span><span class="p">},</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MSE&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">mses</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1170,7 +1172,7 @@ MSE for Boosting: 90029.64
 <p><strong>3.</strong> Find and compare the important features of the random forest and boosting models.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Write your code below to answer the question
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1178,22 +1180,22 @@ MSE for Boosting: 90029.64
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rf_importances = regr_rf.feature_importances_
-boosting_importances = regr_boosting.feature_importances_
-boosting_indices = np.argsort(boosting_importances)[::-1]
-boosting_names = [X.columns[i] for i in boosting_indices]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rf_importances</span> <span class="o">=</span> <span class="n">regr_rf</span><span class="o">.</span><span class="n">feature_importances_</span>
+<span class="n">boosting_importances</span> <span class="o">=</span> <span class="n">regr_boosting</span><span class="o">.</span><span class="n">feature_importances_</span>
+<span class="n">boosting_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">boosting_importances</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">boosting_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">boosting_indices</span><span class="p">]</span>
 
 
-importances = pd.DataFrame(
-    {
-        &quot;feature&quot;: X.columns,
-        &quot;Random Forest&quot;: rf_importances,
-        &quot;Boosting&quot;: boosting_importances,
-    }
-)
-importances = importances.set_index(&quot;feature&quot;)
-sorted_importances = importances.sort_values(by=&quot;Random Forest&quot;, ascending=False)
-sorted_importances.plot.bar(rot=30, figsize=(10, 5))
+<span class="n">importances</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;feature&quot;</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+        <span class="s2">&quot;Random Forest&quot;</span><span class="p">:</span> <span class="n">rf_importances</span><span class="p">,</span>
+        <span class="s2">&quot;Boosting&quot;</span><span class="p">:</span> <span class="n">boosting_importances</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">importances</span> <span class="o">=</span> <span class="n">importances</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;feature&quot;</span><span class="p">)</span>
+<span class="n">sorted_importances</span> <span class="o">=</span> <span class="n">importances</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Random Forest&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sorted_importances</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">rot</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>

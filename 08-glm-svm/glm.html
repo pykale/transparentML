@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -730,14 +732,14 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Get ready by importing the APIs needed from respective libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
-from statsmodels.formula.api import ols, poisson
+<span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span><span class="p">,</span> <span class="n">poisson</span>
 
-%matplotlib inline
+<span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
@@ -745,12 +747,12 @@ from statsmodels.formula.api import ols, poisson
 <p>Load the data, indicate the type of the <code class="docutils literal notranslate"><span class="pre">mnth</span></code> and <code class="docutils literal notranslate"><span class="pre">hr</span></code> features, and display the first few rows.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data_url = &quot;https://github.com/pykale/transparentML/raw/main/data/Bikeshare.csv&quot;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Bikeshare.csv&quot;</span>
 
-data_df = pd.read_csv(data_url, header=0, index_col=0)
-data_df[&quot;mnth&quot;] = data_df[&quot;mnth&quot;].astype(&quot;category&quot;)
-data_df[&quot;hr&quot;] = data_df[&quot;hr&quot;].astype(&quot;category&quot;)
-data_df.head(3)
+<span class="n">data_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">data_df</span><span class="p">[</span><span class="s2">&quot;mnth&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_df</span><span class="p">[</span><span class="s2">&quot;mnth&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
+<span class="n">data_df</span><span class="p">[</span><span class="s2">&quot;hr&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_df</span><span class="p">[</span><span class="s2">&quot;hr&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
+<span class="n">data_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -868,8 +870,8 @@ data_df.head(3)
 <p>As in the case of motivating logistic regression, let us predict <code class="docutils literal notranslate"><span class="pre">bikers</span></code> using linear regression first using the <code class="docutils literal notranslate"><span class="pre">ols</span></code> function from the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> library. We will use the <code class="docutils literal notranslate"><span class="pre">mnth</span></code>, <code class="docutils literal notranslate"><span class="pre">hr</span></code>, <code class="docutils literal notranslate"><span class="pre">workingday</span></code>, <code class="docutils literal notranslate"><span class="pre">temp</span></code>, and <code class="docutils literal notranslate"><span class="pre">weathersit</span></code> features as predictors.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>est = ols(&quot;bikers ~ mnth + hr + temp + workingday + weathersit&quot;, data_df).fit()
-est.summary()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s2">&quot;bikers ~ mnth + hr + temp + workingday + weathersit&quot;</span><span class="p">,</span> <span class="n">data_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">est</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -886,10 +888,10 @@ est.summary()
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   457.3</td> 
 </tr>
 <tr>
-  <th>Date:</th>             <td>Wed, 28 Dec 2022</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
+  <th>Date:</th>             <td>Tue, 10 Jan 2023</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
 </tr>
 <tr>
-  <th>Time:</th>                 <td>16:34:37</td>     <th>  Log-Likelihood:    </th> <td> -49743.</td> 
+  <th>Time:</th>                 <td>18:04:28</td>     <th>  Log-Likelihood:    </th> <td> -49743.</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  8645</td>      <th>  AIC:               </th> <td>9.957e+04</td>
@@ -1048,22 +1050,22 @@ est.summary()
 <p>Let us study the coefficients of the <code class="docutils literal notranslate"><span class="pre">mnth</span></code> and <code class="docutils literal notranslate"><span class="pre">hr</span></code> features to understand the effect of these features on the response.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># months = [&quot;Jan&quot;, &quot;Feb&quot;, &quot;March&quot;, &quot;April&quot;, &quot;May&quot;, &quot;June&quot;, &quot;July&quot;, &quot;Aug&quot;, &quot;Sept&quot;, &quot;Oct&quot;, &quot;Nov&quot;, &quot;Dec&quot;]
-months = [
-    &quot;Jan&quot;,
-    &quot;Feb&quot;,
-    &quot;March&quot;,
-    &quot;May&quot;,
-    &quot;June&quot;,
-    &quot;July&quot;,
-    &quot;Aug&quot;,
-    &quot;Sept&quot;,
-    &quot;Oct&quot;,
-    &quot;Nov&quot;,
-    &quot;Dec&quot;,
-]
-coef_mnth = [est.params[&quot;mnth[T.%s]&quot; % _m] for _m in months]
-coef_hr = [est.params[&quot;hr[T.%d]&quot; % _h] for _h in range(1, 24)]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># months = [&quot;Jan&quot;, &quot;Feb&quot;, &quot;March&quot;, &quot;April&quot;, &quot;May&quot;, &quot;June&quot;, &quot;July&quot;, &quot;Aug&quot;, &quot;Sept&quot;, &quot;Oct&quot;, &quot;Nov&quot;, &quot;Dec&quot;]</span>
+<span class="n">months</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Jan&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Feb&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;March&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;May&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;June&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;July&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Aug&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Sept&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Oct&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Nov&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Dec&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">coef_mnth</span> <span class="o">=</span> <span class="p">[</span><span class="n">est</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mnth[T.</span><span class="si">%s</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="n">_m</span><span class="p">]</span> <span class="k">for</span> <span class="n">_m</span> <span class="ow">in</span> <span class="n">months</span><span class="p">]</span>
+<span class="n">coef_hr</span> <span class="o">=</span> <span class="p">[</span><span class="n">est</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;hr[T.</span><span class="si">%d</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="n">_h</span><span class="p">]</span> <span class="k">for</span> <span class="n">_h</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">24</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -1071,18 +1073,18 @@ coef_hr = [est.params[&quot;hr[T.%d]&quot; % _h] for _h in range(1, 24)]
 <p>Visualise the coefficients of the <code class="docutils literal notranslate"><span class="pre">mnth</span></code> and <code class="docutils literal notranslate"><span class="pre">hr</span></code> features using plots.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
-ax1.plot(months, coef_mnth, &quot;bo-&quot;)
-ax1.grid()
-ax1.set_xlabel(&quot;Month&quot;)
-ax2.plot(np.arange(1, 24), coef_hr, &quot;bo-&quot;)
-ax2.grid()
-ax2.set_xlabel(&quot;Hour&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">months</span><span class="p">,</span> <span class="n">coef_mnth</span><span class="p">,</span> <span class="s2">&quot;bo-&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Month&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">24</span><span class="p">),</span> <span class="n">coef_hr</span><span class="p">,</span> <span class="s2">&quot;bo-&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Hour&quot;</span><span class="p">)</span>
 
-for ax in fig.axes:
-    ax.set_ylabel(&quot;Coefficient&quot;)
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Coefficient&quot;</span><span class="p">)</span>
 
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1094,10 +1096,10 @@ plt.show()
 <p>Let us examine the distribution of the estimated response values. We will use the <code class="docutils literal notranslate"><span class="pre">predict</span></code> function from the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> library to obtain the predicted values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig = plt.figure(figsize=(12, 7))
-y_pred = est.predict(data_df.loc[:, [&quot;mnth&quot;, &quot;hr&quot;, &quot;temp&quot;, &quot;workingday&quot;, &quot;weathersit&quot;]])
-sns.histplot(y_pred, kde=True)
-plt.show()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">est</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;mnth&quot;</span><span class="p">,</span> <span class="s2">&quot;hr&quot;</span><span class="p">,</span> <span class="s2">&quot;temp&quot;</span><span class="p">,</span> <span class="s2">&quot;workingday&quot;</span><span class="p">,</span> <span class="s2">&quot;weathersit&quot;</span><span class="p">]])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1110,37 +1112,37 @@ plt.show()
 <p>Let us further examine the distribution of the response variable <code class="docutils literal notranslate"><span class="pre">bikers</span></code> against the <code class="docutils literal notranslate"><span class="pre">hr</span></code> feature using the original scale and the log scale.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(25, 7))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 
-sns.stripplot(data=data_df, x=&quot;hr&quot;, y=&quot;bikers&quot;, ax=ax1, alpha=0.1, color=&quot;.2&quot;)
-sns.boxplot(
-    data=data_df,
-    x=&quot;hr&quot;,
-    y=&quot;bikers&quot;,
-    ax=ax1,
-    width=0.9,
-    palette=&quot;vlag&quot;,
-    meanline=True,
-    showmeans=True,
-)
-ax1.set_ylabel(&quot;Number of Bikers&quot;)
+<span class="n">sns</span><span class="o">.</span><span class="n">stripplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;hr&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;bikers&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;.2&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">data_df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;hr&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;bikers&quot;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+    <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;vlag&quot;</span><span class="p">,</span>
+    <span class="n">meanline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Number of Bikers&quot;</span><span class="p">)</span>
 
-sns.stripplot(data=data_df, x=&quot;hr&quot;, y=&quot;bikers&quot;, ax=ax2, alpha=0.1, color=&quot;.2&quot;)
-sns.boxplot(
-    data=data_df,
-    x=&quot;hr&quot;,
-    y=&quot;bikers&quot;,
-    ax=ax2,
-    width=0.9,
-    palette=&quot;vlag&quot;,
-    meanline=True,
-    showmeans=True,
-)
-ax2.set_yscale(&quot;log&quot;)
-ax2.set_ylabel(&quot;log(Number of Bikers)&quot;)
-for ax in fig.axes:
-    ax.set_xlabel(&quot;Hour&quot;)
-plt.show()
+<span class="n">sns</span><span class="o">.</span><span class="n">stripplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;hr&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;bikers&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;.2&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">data_df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;hr&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;bikers&quot;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+    <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;vlag&quot;</span><span class="p">,</span>
+    <span class="n">meanline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;log(Number of Bikers)&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Hour&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1193,8 +1195,8 @@ plt.show()
 <p>We now fit a Poisson regression model to the <code class="docutils literal notranslate"><span class="pre">Bikeshare</span></code> dataset using the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> package.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>est = poisson(&quot;bikers ~ mnth + hr + temp + workingday + weathersit&quot;, data_df).fit()
-est.summary()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">poisson</span><span class="p">(</span><span class="s2">&quot;bikers ~ mnth + hr + temp + workingday + weathersit&quot;</span><span class="p">,</span> <span class="n">data_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">est</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1216,10 +1218,10 @@ est.summary()
   <th>Method:</th>                 <td>MLE</td>       <th>  Df Model:          </th>   <td>    39</td>   
 </tr>
 <tr>
-  <th>Date:</th>            <td>Wed, 28 Dec 2022</td> <th>  Pseudo R-squ.:     </th>   <td>0.7459</td>   
+  <th>Date:</th>            <td>Tue, 10 Jan 2023</td> <th>  Pseudo R-squ.:     </th>   <td>0.7459</td>   
 </tr>
 <tr>
-  <th>Time:</th>                <td>16:34:39</td>     <th>  Log-Likelihood:    </th> <td>-1.4054e+05</td>
+  <th>Time:</th>                <td>18:04:31</td>     <th>  Log-Likelihood:    </th> <td>-1.4054e+05</td>
 </tr>
 <tr>
   <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th> <td>-5.5298e+05</td>
@@ -1357,18 +1359,18 @@ est.summary()
 <p>Let us do the same plots as before to visualise the relationship between the number of bikers and the features <code class="docutils literal notranslate"><span class="pre">mnth</span></code> and <code class="docutils literal notranslate"><span class="pre">hr</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
-ax1.plot(months, coef_mnth, &quot;bo-&quot;)
-ax1.grid()
-ax1.set_xlabel(&quot;Month&quot;)
-ax2.plot(np.arange(1, 24), coef_hr, &quot;bo-&quot;)
-ax2.grid()
-ax2.set_xlabel(&quot;Hour&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">months</span><span class="p">,</span> <span class="n">coef_mnth</span><span class="p">,</span> <span class="s2">&quot;bo-&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Month&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">24</span><span class="p">),</span> <span class="n">coef_hr</span><span class="p">,</span> <span class="s2">&quot;bo-&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Hour&quot;</span><span class="p">)</span>
 
-for ax in fig.axes:
-    ax.set_ylabel(&quot;Coefficient&quot;)
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Coefficient&quot;</span><span class="p">)</span>
 
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
