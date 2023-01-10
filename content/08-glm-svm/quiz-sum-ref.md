@@ -7,9 +7,9 @@ Complete [**Quiz 8**](https://docs.google.com/forms/d/e/1FAIpQLSdCmpkgtHfTdlEumA
 ## Summary
 
 In this topic, you learnt how to:
-- Use ...
+- Generalised the concept of Linear Models, learning how to use Poisson Regression.
+- Learned the concept of Support Vector Classifiers, and how to use kernel functions to model non-linear relationships using Support Vector Machines.
 
 ## References and further reading
-
 This material is based on the following resources:
-- Reference 1
+ - **The Textbook:** James G, Witten D, Hastie T, Tibshirani R., [An Introduction to Statistical Learning](https://www.statlearning.com/), Second Edition,  Springer, 2021. [PDF](https://hastie.su.domains/ISLR2/ISLRv2_website.pdf) {cite}`james2021statistical`
