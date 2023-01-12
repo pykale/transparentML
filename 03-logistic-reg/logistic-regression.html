@@ -773,7 +773,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Get ready by importing the APIs needed from respective libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">matplotlib.gridspec</span> <span class="kn">import</span> <span class="n">GridSpec</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -784,7 +784,21 @@ const thebe_selector_output = ".output, .cell_output"
 
 <span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">logit</span>
 
-<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">plot_roc_curve</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">logit</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">)</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;plot_roc_curve&#39; from &#39;sklearn.metrics&#39; (/opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages/sklearn/metrics/__init__.py)
 </pre></div>
 </div>
 </div>
@@ -792,7 +806,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Load the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Default.csv">Default dataset</a> and inspect the first three rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Default.csv&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/pykale/transparentML/raw/main/data/Default.csv&quot;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="p">)</span>
 
 <span class="c1"># Note: factorize() returns two objects: a label array and an array with the unique values. We are only interested in the first object.</span>
@@ -871,7 +885,7 @@ $$ --></div>
 <p>Let us to see the curve of the logistic function on the <a class="reference external" href="https://github.com/pykale/transparentML/blob/main/data/Default.csv">Default dataset</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;balance&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;default2&quot;</span><span class="p">,</span> <span class="n">logistic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;balance&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;default2&quot;</span><span class="p">,</span> <span class="n">logistic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Probability of default&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Balance&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -884,7 +898,7 @@ $$ --></div>
 <p>Let us fit a logistic regression model using the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html"><code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> API for logistic regression</a> first.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s2">&quot;newton-cg&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s2">&quot;newton-cg&quot;</span><span class="p">)</span>
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">default2</span>
@@ -900,7 +914,7 @@ $$ --></div>
 <p>Let us plot the fitted logistic regression model and study the system transparency.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prob</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prob</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">prob</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">)</span>
@@ -977,8 +991,8 @@ $$ --></div>
 <ul class="simple">
 <li><p>When the probability of <code class="docutils literal notranslate"><span class="pre">default</span></code> 0.5 (the commonly used threshold for binary classification), the corresponding balance can be calculated using the <em>log odds</em> equation above:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-c8e714c1-192d-4439-9f52-446c745ba5a7">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-c8e714c1-192d-4439-9f52-446c745ba5a7" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a51ccfbe-cd7f-4a62-8806-39c71d9a5ef8">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-a51ccfbe-cd7f-4a62-8806-39c71d9a5ef8" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \ln \left(\frac{\pi}{1-\pi}\right) &amp;= \beta_0 + \beta_1 \times x \\
 \ln \left(\frac{0.5}{1-0.5}\right) &amp;= \beta_0 + \beta_1 \times x \\
@@ -992,7 +1006,7 @@ x &amp; = 1936.9858426745614.
 <p>Let us fit a logistic regression model using the [<code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> API for logistic regression] next.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">logit</span><span class="p">(</span><span class="s2">&quot;default2 ~ balance&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">logit</span><span class="p">(</span><span class="s2">&quot;default2 ~ balance&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">est</span><span class="o">.</span><span class="n">summary2</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1001,7 +1015,7 @@ x &amp; = 1936.9858426745614.
 <p>We can see that the estimated parameters are the same as those from the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> API. Note the two last columns, “[0.025” and “0.975]”. These are Confidence Intervals, the very concept we covered in the last chapter on Linear Regression! Now, let us fit a logistic regression model using <code class="docutils literal notranslate"><span class="pre">student</span></code> status as the input variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">logit</span><span class="p">(</span><span class="s2">&quot;default2 ~ student&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">logit</span><span class="p">(</span><span class="s2">&quot;default2 ~ student&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">est</span><span class="o">.</span><span class="n">summary2</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1021,7 +1035,7 @@ x &amp; = 1936.9858426745614.
 <p>Let us plot the fitted multiple logistic regression model and study the system transparency.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 
@@ -1041,7 +1055,7 @@ x &amp; = 1936.9858426745614.
 <p>Let us fit a multiple logistic regression model using the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> API next.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">logit</span><span class="p">(</span><span class="s2">&quot;default2 ~ balance + income + student&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">logit</span><span class="p">(</span><span class="s2">&quot;default2 ~ balance + income + student&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">est</span><span class="o">.</span><span class="n">summary2</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1062,7 +1076,7 @@ x &amp; = 1936.9858426745614.
 <p>Let us compute the training accuracy of the multiple logistic regression model trained using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> API above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 <span class="n">accuarcy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy: &quot;</span><span class="p">,</span> <span class="n">accuarcy</span><span class="p">)</span>
 </pre></div>
@@ -1084,7 +1098,7 @@ x &amp; = 1936.9858426745614.
 <p>Let us plot the ROC curve of the multiple logistic regression model trained using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> API above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y_prob</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_prob</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
 
 <span class="n">roc_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AUC: &quot;</span><span class="p">,</span> <span class="n">roc_auc</span><span class="p">)</span>
@@ -1114,7 +1128,7 @@ x &amp; = 1936.9858426745614.
 <p>Load the dataset, convert the categories to numerical values, and fit a logistic regression model using <strong>Volume</strong> variable as a predictor and <strong>Direction</strong> variable as the response using <strong>scikit-learn or statsmodel</strong>. Find out the fitted model’s <strong>weight</strong> and <strong>bias</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1122,7 +1136,7 @@ x &amp; = 1936.9858426745614.
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">matplotlib.gridspec</span> <span class="kn">import</span> <span class="n">GridSpec</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1148,7 +1162,7 @@ x &amp; = 1936.9858426745614.
 <p><strong>3</strong>. Plot the <strong>ROC curve</strong> and find out the <strong>training accuracy</strong> and <strong>AUC</strong> of the fitted model from <strong>Exercise 2</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1156,7 +1170,7 @@ x &amp; = 1936.9858426745614.
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">plot_roc_curve</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">plot_roc_curve</span>
 
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 <span class="n">accuarcy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
@@ -1178,7 +1192,7 @@ x &amp; = 1936.9858426745614.
 <p><strong>4</strong>. Train another logistic regression model using <strong>Direction</strong> as a response and all the other features as predictors. Print out all the <strong>parameter values</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1186,7 +1200,7 @@ x &amp; = 1936.9858426745614.
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Direction&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Direction&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Direction</span>
 
@@ -1201,7 +1215,7 @@ x &amp; = 1936.9858426745614.
 <p><strong>5</strong>. Plot the <strong>ROC curve</strong> and find out the <strong>training accuracy</strong> and <strong>AUC</strong> metrics of the fitted model from <strong>Exercise 6</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1209,7 +1223,7 @@ x &amp; = 1936.9858426745614.
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 <span class="n">accuarcy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training Accuracy: &quot;</span><span class="p">,</span> <span class="n">accuarcy</span><span class="p">)</span>
 
@@ -1228,7 +1242,7 @@ x &amp; = 1936.9858426745614.
 <p><strong>6</strong>. You might notice that the model with all variables is much better than the model from <strong>Exercise 2</strong>. Use the skills you have learnt to explain why. <strong>Hint</strong>: Correlation matrix (See section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/multi-linear-regression.html#interpreting-the-results">2.2.4</a>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
 </pre></div>
 </div>
 </div>
@@ -1236,7 +1250,7 @@ x &amp; = 1936.9858426745614.
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">)</span>
 <span class="c1"># Here from the correlation result we can see that, &quot;Today&quot; has a 0.72 correlation with &quot;Direction&quot;</span>
 <span class="c1"># which is the main reason for getting high performance</span>
