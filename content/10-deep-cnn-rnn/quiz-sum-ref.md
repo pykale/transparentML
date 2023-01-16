@@ -11,7 +11,7 @@ In this topic, you learnt :
 - The concept of deep learning and how it is different from traditional machine learning.
 - How to understand and build Multilayer neural networks using PyTorch.
 - How to build inductive biases into your deep neural networks, using convolutional neural networks (CNNs) and recurrent neural networks (RNNs).
-  
+
 ## References and further reading
 
 This material is based on the following resources:
