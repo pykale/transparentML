@@ -4,10 +4,13 @@
 
 _Not for now. To finish in the next cycle._ Complete [Quiz](https://forms.gle/8Q5Z7Z7Z7Z7Z7Z7Z7) to check your understanding of this topic. You are advised to score at least 50% to proceed to the next topic.
 
+
 ## Summary
 
-In this topic, you learnt how to:
-- Use ...
+In this topic, you learnt :
+- The concept of deep learning and how it is different from traditional machine learning.
+- How to understand and build Multilayer neural networks using PyTorch.
+- How to build inductive biases into your deep neural networks, using convolutional neural networks (CNNs) and recurrent neural networks (RNNs).
 
 ## References and further reading
 
