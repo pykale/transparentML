@@ -1206,8 +1206,8 @@ Distance of sample point from each cluster centre:
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">9.2.3. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<!-- Clustering the Observations of the NCI60 Data --><p><strong>1.</strong> In this problem, you will generate simulated data and perform PCA and <span class="math notranslate nohighlight">\(K\)</span>-means clustering on the data.</p>
-<p><strong>(a)</strong> Generate a simulated data set with <span class="math notranslate nohighlight">\(20\)</span> observations in each of three classes (i.e <span class="math notranslate nohighlight">\(60\)</span> observations total), and <span class="math notranslate nohighlight">\(50\)</span> variables.</p>
+<!-- Clustering the Observations of the NCI60 Data --><p><strong>1.</strong> In this half of the exercise, you will generate your own simulated data and perform PCA and <span class="math notranslate nohighlight">\(K\)</span>-means clustering.</p>
+<p><strong>(a)</strong> Generate a simulated 50-dimensional dataset consisting of 3 classes, with each class containing <span class="math notranslate nohighlight">\(20\)</span> observations. Your dataset shape should return a shape of [60,50] i.e <span class="math notranslate nohighlight">\(60\)</span> observations total each with <span class="math notranslate nohighlight">\(50\)</span> variables. Think carefully about how you define your 3 classes. For example, you could use the np.random.normal() function to create your 3 classes, changing the mean and standard deviation of each class using the loc &amp; scale parameters!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1291,11 +1291,11 @@ Distance of sample point from each cluster centre:
 <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">combined</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True Cluster 1 prdictions:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True Cluster 1 predictions:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True Cluster 2 prdictions:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True Cluster 2 predictions:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">20</span><span class="p">:</span><span class="mi">40</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True Cluster 3 prdictions:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True Cluster 3 predictions:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">40</span><span class="p">:</span><span class="mi">60</span><span class="p">])</span>
 
 <span class="c1"># We see that there is perfect recall of the true clusters. We can not produce a nice plot as in part b) as it is 50 dimensional.</span>
@@ -1303,11 +1303,11 @@ Distance of sample point from each cluster centre:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True Cluster 1 prdictions:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True Cluster 1 predictions:
 [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
-True Cluster 2 prdictions:
+True Cluster 2 predictions:
 [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
-True Cluster 3 prdictions:
+True Cluster 3 predictions:
 [2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2]
 </pre></div>
 </div>
@@ -1333,11 +1333,11 @@ True Cluster 3 prdictions:
 <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">combined</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True Cluster 1 prdictions:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True Cluster 1 predictions:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True Cluster 2 prdictions:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True Cluster 2 predictions:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">20</span><span class="p">:</span><span class="mi">40</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True Cluster 3 prdictions:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True Cluster 3 predictions:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">40</span><span class="p">:</span><span class="mi">60</span><span class="p">])</span>
 
 <span class="c1"># Here it has clustered the last two clusters into one.</span>
@@ -1346,11 +1346,11 @@ True Cluster 3 prdictions:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True Cluster 1 prdictions:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True Cluster 1 predictions:
 [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
-True Cluster 2 prdictions:
+True Cluster 2 predictions:
 [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
-True Cluster 3 prdictions:
+True Cluster 3 predictions:
 [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
 </pre></div>
 </div>
