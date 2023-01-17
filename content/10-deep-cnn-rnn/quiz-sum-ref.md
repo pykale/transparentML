@@ -2,7 +2,7 @@
 
 ## Quiz
 
-Complete [**Quiz 10**](https://docs.google.com/forms/d/e/1FAIpQLScI3FgQe80af8F14wc3DtDf20syzQ4S-vx3Zh2EcyKEL4AbYA/viewform?usp=sf_link) to check your understanding of this topic. You are advised to score at least 50% to proceed to the next topic.
+Complete [**Quiz 10**](https://docs.google.com/forms/d/e/1FAIpQLScI3FgQe80af8F14wc3DtDf20syzQ4S-vx3Zh2EcyKEL4AbYA/viewform?usp=sf_link) to check your understanding of this topic. If you can score at least 50%, you are considered as having passed.
 
 
 ## Summary
