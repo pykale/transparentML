@@ -2,7 +2,7 @@
 
 ## Quiz
 
-_Not for now. To finish in the next cycle._ Complete [Quiz](https://forms.gle/8Q5Z7Z7Z7Z7Z7Z7Z7) to check your understanding of this topic. You are advised to score at least 50% to proceed to the next topic.
+Complete [**Quiz 10**](https://docs.google.com/forms/d/e/1FAIpQLScI3FgQe80af8F14wc3DtDf20syzQ4S-vx3Zh2EcyKEL4AbYA/viewform?usp=sf_link) to check your understanding of this topic. You are advised to score at least 50% to proceed to the next topic.
 
 
 ## Summary
