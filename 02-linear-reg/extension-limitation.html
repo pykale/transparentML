@@ -996,8 +996,8 @@ memory usage: 30.6+ KB
 y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon.
 \]</div>
 <p>This model can be extended to include an interaction term between <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e5451dca-ecc2-4cce-8738-9ce228e4ca76">
-<span class="eqno">(2.22)<a class="headerlink" href="#equation-e5451dca-ecc2-4cce-8738-9ce228e4ca76" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-65b4bfe5-e07d-4e2a-900a-1eeb5674ebc9">
+<span class="eqno">(2.22)<a class="headerlink" href="#equation-65b4bfe5-e07d-4e2a-900a-1eeb5674ebc9" title="Permalink to this equation">¶</a></span>\[\begin{align}
 y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \epsilon \\
 &amp;= \beta_0 + (\beta_1 + \beta_3 x_2) x_1 + \beta_2 x_2 + \epsilon \\
 &amp;= \beta_0 + \tilde{\beta}_1 x_1 + \beta_2 x_2 + \epsilon,
@@ -1135,8 +1135,8 @@ dtype: float64
 </div>
 </div>
 <p>The figure shows a strong relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> and <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>, but it is clearly not linear. We can use a polynomial regression to fit a nonlinear model to the data. We can fit a polynomial regression of degree 2 (quadratic) to the data using the following regression:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-55acdffc-af03-4ef0-8fa7-e7b7a0c4b98f">
-<span class="eqno">(2.23)<a class="headerlink" href="#equation-55acdffc-af03-4ef0-8fa7-e7b7a0c4b98f" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f5291fd1-8e18-49f0-9f2f-ff9212ef66cc">
+<span class="eqno">(2.23)<a class="headerlink" href="#equation-f5291fd1-8e18-49f0-9f2f-ff9212ef66cc" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \textrm{mpg} = \beta_0 + \beta_1 \times \textrm{horsepower} + \beta_2 \times \textrm{horsepower}^2 + \epsilon.
 \end{equation}\]</div>
 <p>Run the following code to display the relationship between <code class="docutils literal notranslate"><span class="pre">mpg</span></code> (gas mileage in miles per gallon) and <span class="math notranslate nohighlight">\(\textrm{horsepower}^2\)</span> as well as <span class="math notranslate nohighlight">\(\textrm{horsepower}^5\)</span> (Figure 3.8 of the textbook) for cars in the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset.</p>
@@ -1782,10 +1782,10 @@ chas
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   31.47</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Tue, 17 Jan 2023</td> <th>  Prob (F-statistic):</th> <td>1.57e-56</td>
+  <th>Date:</th>             <td>Thu, 26 Jan 2023</td> <th>  Prob (F-statistic):</th> <td>1.57e-56</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>18:10:56</td>     <th>  Log-Likelihood:    </th> <td> -1653.3</td>
+  <th>Time:</th>                 <td>21:27:27</td>     <th>  Log-Likelihood:    </th> <td> -1653.3</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   506</td>      <th>  AIC:               </th> <td>   3335.</td>
