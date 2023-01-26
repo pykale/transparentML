@@ -109,3 +109,5 @@ We design this course based on the following key references.
 ## Acknowledgements
 
 This development is supported by the [Funding call for online learning courses in responsible AI](https://www.turing.ac.uk/funding-call-online-learning-courses-responsible-ai) from the [Alan Turing Institute](https://www.turing.ac.uk/).
+
+We have used [GitHub Copilot](https://copilot.github.com/) to generate some of the teaching materials.
