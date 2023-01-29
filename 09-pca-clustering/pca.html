@@ -1641,176 +1641,50 @@ Explained variance ratio:  [0.93 0.07]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/sklearn/datasets/_openml.py:932: FutureWarning: The default value of `parser` will change from `&#39;liac-arff&#39;` to `&#39;auto&#39;` in 1.4. You can set `parser=&#39;auto&#39;` to silence this warning. Therefore, an `ImportError` will be raised from 1.4 if the dataset is dense and pandas is not installed. Note that the pandas parser may return different data types. See the Notes Section in fetch_openml&#39;s API doc for details.
-  warn(
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">OpenMLError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">mnist</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="s2">&quot;miceprotein&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">df</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/sklearn/datasets/_openml.py:882,</span> in <span class="ni">fetch_openml</span><span class="nt">(name, version, data_id, data_home, target_column, cache, return_X_y, as_frame, n_retries, delay, parser)</span>
+<span class="g g-Whitespace">    </span><span class="mi">876</span>     <span class="k">if</span> <span class="n">data_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">877</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">878</span>             <span class="s2">&quot;Dataset data_id=</span><span class="si">{}</span><span class="s2"> and name=</span><span class="si">{}</span><span class="s2"> passed, but you can only &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">879</span>             <span class="s2">&quot;specify a numeric data_id or a name, not &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">880</span>             <span class="s2">&quot;both.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data_id</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">881</span>         <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">882</span>     <span class="n">data_info</span> <span class="o">=</span> <span class="n">_get_data_info_by_name</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">883</span>         <span class="n">name</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">data_home</span><span class="p">,</span> <span class="n">n_retries</span><span class="o">=</span><span class="n">n_retries</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delay</span>
+<span class="g g-Whitespace">    </span><span class="mi">884</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">885</span>     <span class="n">data_id</span> <span class="o">=</span> <span class="n">data_info</span><span class="p">[</span><span class="s2">&quot;did&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">886</span> <span class="k">elif</span> <span class="n">data_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">887</span>     <span class="c1"># from the previous if statement, it is given that name is None</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/sklearn/datasets/_openml.py:283,</span> in <span class="ni">_get_data_info_by_name</span><span class="nt">(name, version, data_home, n_retries, delay)</span>
+<span class="g g-Whitespace">    </span><span class="mi">281</span> <span class="n">url</span> <span class="o">=</span> <span class="n">_SEARCH_NAME</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/status/active/&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">282</span> <span class="n">error_msg</span> <span class="o">=</span> <span class="s2">&quot;No active dataset </span><span class="si">{}</span><span class="s2"> found.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">283</span> <span class="n">json_data</span> <span class="o">=</span> <span class="n">_get_json_content_from_openml_api</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">284</span>     <span class="n">url</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">285</span>     <span class="n">error_msg</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">286</span>     <span class="n">data_home</span><span class="o">=</span><span class="n">data_home</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">287</span>     <span class="n">n_retries</span><span class="o">=</span><span class="n">n_retries</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">288</span>     <span class="n">delay</span><span class="o">=</span><span class="n">delay</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">289</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">290</span> <span class="n">res</span> <span class="o">=</span> <span class="n">json_data</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;dataset&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">291</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/sklearn/datasets/_openml.py:235,</span> in <span class="ni">_get_json_content_from_openml_api</span><span class="nt">(url, error_message, data_home, n_retries, delay)</span>
+<span class="g g-Whitespace">    </span><span class="mi">232</span>         <span class="k">raise</span> <span class="n">error</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span> <span class="c1"># 412 error, not in except for nicer traceback</span>
+<span class="ne">--&gt; </span><span class="mi">235</span> <span class="k">raise</span> <span class="n">OpenMLError</span><span class="p">(</span><span class="n">error_message</span><span class="p">)</span>
+
+<span class="ne">OpenMLError</span>: No active dataset miceprotein found.
 </pre></div>
 </div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>DYRK1A_N</th>
-      <th>ITSN1_N</th>
-      <th>BDNF_N</th>
-      <th>NR1_N</th>
-      <th>NR2A_N</th>
-      <th>pAKT_N</th>
-      <th>pBRAF_N</th>
-      <th>pCAMKII_N</th>
-      <th>pCREB_N</th>
-      <th>pELK_N</th>
-      <th>...</th>
-      <th>SHH_N</th>
-      <th>BAD_N</th>
-      <th>BCL2_N</th>
-      <th>pS6_N</th>
-      <th>pCFOS_N</th>
-      <th>SYP_N</th>
-      <th>H3AcK18_N</th>
-      <th>EGR1_N</th>
-      <th>H3MeK4_N</th>
-      <th>CaNA_N</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>75</th>
-      <td>0.649781</td>
-      <td>0.828696</td>
-      <td>0.405862</td>
-      <td>2.921435</td>
-      <td>5.167979</td>
-      <td>0.207174</td>
-      <td>0.176640</td>
-      <td>3.728084</td>
-      <td>0.239283</td>
-      <td>1.666579</td>
-      <td>...</td>
-      <td>0.239752</td>
-      <td>0.139052</td>
-      <td>0.112926</td>
-      <td>0.132001</td>
-      <td>0.129363</td>
-      <td>0.486912</td>
-      <td>0.125152</td>
-      <td>0.146865</td>
-      <td>0.143517</td>
-      <td>1.627181</td>
-    </tr>
-    <tr>
-      <th>76</th>
-      <td>0.616481</td>
-      <td>0.841974</td>
-      <td>0.388584</td>
-      <td>2.862575</td>
-      <td>5.194163</td>
-      <td>0.223433</td>
-      <td>0.167725</td>
-      <td>3.648240</td>
-      <td>0.221030</td>
-      <td>1.565150</td>
-      <td>...</td>
-      <td>0.249031</td>
-      <td>0.133787</td>
-      <td>0.121607</td>
-      <td>0.139008</td>
-      <td>0.143084</td>
-      <td>0.467833</td>
-      <td>0.112857</td>
-      <td>0.161132</td>
-      <td>0.145719</td>
-      <td>1.562096</td>
-    </tr>
-    <tr>
-      <th>77</th>
-      <td>0.637424</td>
-      <td>0.852882</td>
-      <td>0.400561</td>
-      <td>2.968155</td>
-      <td>5.350820</td>
-      <td>0.208790</td>
-      <td>0.173261</td>
-      <td>3.814545</td>
-      <td>0.222300</td>
-      <td>1.741732</td>
-      <td>...</td>
-      <td>0.247956</td>
-      <td>0.142324</td>
-      <td>0.130261</td>
-      <td>0.134804</td>
-      <td>0.147673</td>
-      <td>0.462501</td>
-      <td>0.116433</td>
-      <td>0.160594</td>
-      <td>0.142879</td>
-      <td>1.571868</td>
-    </tr>
-    <tr>
-      <th>78</th>
-      <td>0.576815</td>
-      <td>0.755390</td>
-      <td>0.348346</td>
-      <td>2.624901</td>
-      <td>4.727509</td>
-      <td>0.205892</td>
-      <td>0.161192</td>
-      <td>3.778530</td>
-      <td>0.194153</td>
-      <td>1.505475</td>
-      <td>...</td>
-      <td>0.233225</td>
-      <td>0.133637</td>
-      <td>0.107321</td>
-      <td>0.118982</td>
-      <td>0.121290</td>
-      <td>0.479110</td>
-      <td>0.102831</td>
-      <td>0.144238</td>
-      <td>0.141681</td>
-      <td>1.646608</td>
-    </tr>
-    <tr>
-      <th>79</th>
-      <td>0.542545</td>
-      <td>0.757917</td>
-      <td>0.350051</td>
-      <td>2.634509</td>
-      <td>4.735602</td>
-      <td>0.210526</td>
-      <td>0.165671</td>
-      <td>3.871971</td>
-      <td>0.194297</td>
-      <td>1.531613</td>
-      <td>...</td>
-      <td>0.244469</td>
-      <td>0.133358</td>
-      <td>0.112851</td>
-      <td>0.128635</td>
-      <td>0.142617</td>
-      <td>0.438354</td>
-      <td>0.110614</td>
-      <td>0.155667</td>
-      <td>0.146408</td>
-      <td>1.607631</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 77 columns</p>
-</div></div></div>
+</div>
 </div>
 <p><strong>2.</strong> Using StandardScaler, standardize the loaded mouse protein dataset from <strong>Exercise 1</strong>.</p>
 <div class="cell docutils container">
@@ -1852,20 +1726,6 @@ Explained variance ratio:  [0.93 0.07]
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23.04876913576254
-13.358730172070146
-7.586459786950799
-7.161540399168171
-3.2824168810598997
-3.042339638744958
-2.36732540129829
-2.2552750062859226
-1.830754540428051
-1.2787183994614408
-</pre></div>
-</div>
-</div>
 </div>
 <p><strong>4.</strong> Using the <strong>Exercise 3</strong> fitted PCA object, find out the <strong>proportion of explained variance (PVE)</strong> and its <strong>ratio</strong> for the top 10 principal components to select the number of principal components.</p>
 <div class="cell docutils container">
@@ -1880,14 +1740,6 @@ Explained variance ratio:  [0.93 0.07]
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[23.09059993 13.38297469  7.60022832  7.17453775  3.28837408  3.04786113
-  2.37162182  2.25936806  1.83407714  1.28103912]
-[0.29933466 0.17349    0.09852545 0.09300702 0.04262879 0.0395109
- 0.03074449 0.02928929 0.02377603 0.01660673]
 </pre></div>
 </div>
 </div>
@@ -1919,9 +1771,6 @@ Explained variance ratio:  [0.93 0.07]
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/pca_51_0.png" src="../_images/pca_51_0.png" />
 </div>
 </div>
 </div>
