@@ -786,7 +786,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="admonition-video admonition">
 <p class="admonition-title">Video</p>
 <iframe width="700" height="394" src="https://www.youtube.com/embed/efR1C6CvhmE?start=40&end=743" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<p><a class="reference external" href="https://www.youtube.com/embed/efR1C6CvhmE?start=40&amp;end=743">Explaining maximal margin, soft margin, and support vector classifier, by StatQuest</a></p>
+<p><a class="reference external" href="https://www.youtube.com/embed/efR1C6CvhmE?start=40&amp;end=743">Explaining maximal margin, soft margin, and support vector classifier by StatQuest</a>, embedded according to <a class="reference external" href="https://www.youtube.com/static?gl=CA&amp;template=terms">YouTube’s Terms of Service</a>.</p>
 </div>
 <div class="section" id="hyperplane-for-classification">
 <h2><span class="section-number">8.2.1. </span>Hyperplane for classification<a class="headerlink" href="#hyperplane-for-classification" title="Permalink to this headline">¶</a></h2>
@@ -1050,8 +1050,8 @@ Prediction:  1
 <li><p>For the data point <span class="math notranslate nohighlight">\([-1.19276461, -0.20487651]\)</span> marked by a black circle, its prediction score is <span class="math notranslate nohighlight">\( -0.7327 \times -1.19276461 + -0.7033 \times -0.20487651 + 0.5729 \approx 1.5910 \)</span>, which is positive. So the predicted label is <span class="math notranslate nohighlight">\( 1 \)</span>.</p></li>
 <li><p>According to the definition, the data points on the hyperplane satisfies <span class="math notranslate nohighlight">\( \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} = 0 \)</span>, i.e. <span class="math notranslate nohighlight">\( 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 = 0 \)</span>. To get a data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> of class <span class="math notranslate nohighlight">\( 1 \)</span>, the relationship between <span class="math notranslate nohighlight">\( x_1 \)</span> and <span class="math notranslate nohighlight">\( x_2 \)</span> should satisfy:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-38f3aa1e-51d6-49df-859e-852889ea44f3">
-<span class="eqno">(8.6)<a class="headerlink" href="#equation-38f3aa1e-51d6-49df-859e-852889ea44f3" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d63c34bb-fe46-4ea8-ad29-bd35fc66d27a">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-d63c34bb-fe46-4ea8-ad29-bd35fc66d27a" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} &amp; &gt; 0 \\
 \beta_1 x_{1} &amp; &gt; - \beta_0 - \beta_2 x_{2} \\
@@ -1095,14 +1095,14 @@ x_1 &amp; &gt; 0.7819 - 0.9598 \times x_2.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00076103, 0.00073328, 0.00074365, 0.00075629, 0.00089464,
-        0.00077956, 0.00090158]),
- &#39;std_fit_time&#39;: array([4.02419204e-05, 1.23964823e-05, 1.10315687e-05, 2.11767376e-05,
-        4.06123179e-04, 1.92358290e-05, 4.58341038e-05]),
- &#39;mean_score_time&#39;: array([0.00041432, 0.00040376, 0.000407  , 0.00040617, 0.00041518,
-        0.00041471, 0.00042274]),
- &#39;std_score_time&#39;: array([2.58962091e-05, 1.44687866e-05, 1.61529071e-05, 1.43654663e-05,
-        1.56759808e-05, 1.01125459e-05, 8.93382762e-06]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00074162, 0.00073643, 0.00073583, 0.00073793, 0.000875  ,
+        0.00076046, 0.00088987]),
+ &#39;std_fit_time&#39;: array([2.78740177e-05, 8.76706321e-06, 1.13383264e-05, 4.66405488e-06,
+        3.55940797e-04, 7.16462706e-06, 4.69302249e-05]),
+ &#39;mean_score_time&#39;: array([0.00043545, 0.00042148, 0.00042636, 0.00042133, 0.00042272,
+        0.00042369, 0.00043757]),
+ &#39;std_score_time&#39;: array([2.35526183e-05, 2.74709525e-06, 9.08875265e-06, 8.90805325e-07,
+        2.50736557e-06, 2.03551389e-06, 2.08580286e-05]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,
