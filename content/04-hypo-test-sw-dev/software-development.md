@@ -12,7 +12,7 @@ Watch the 9-minute video below for a visual explanation of the software developm
 
 <iframe width="700" height="394" src="https://www.youtube.com/embed/i-QyW8D3ei0?start=00" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-[Software Development Life Cycle, by Testaholic](https://www.youtube.com/embed/i-QyW8D3ei0?start=00)
+[Software Development Life Cycle by Testaholic](https://www.youtube.com/embed/i-QyW8D3ei0?start=00), embedded according to [YouTube's Terms of Service](https://www.youtube.com/static?gl=CA&template=terms).
 ```
 
 The [software development life cycle (SDLC)](https://en.wikipedia.org/wiki/Systems_development_life_cycle) is a process used by the software industry to design, develop, and test high quality software. The SDLC aims to produce a high-quality software that meets or exceeds customer expectations, reaches completion within times and cost estimates. The SDLC describes the stages from an initial feasibility study through maintenance of the completed application, and can be mapped to more general management control processes as shown in {numref}`SDLC-to-management` below.
@@ -78,7 +78,7 @@ Watch the 8-minute video below for a visual explanation of how to use GitHub for
 
 <iframe width="700" height="394" src="https://www.youtube.com/embed/iv8rSLsi1xo?start=01" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-[GitHub Tutorial - Beginner's Training Guide, by Anson Alexander](https://www.youtube.com/embed/iv8rSLsi1xo?start=01)
+[GitHub Tutorial - Beginner's Training Guide by Anson Alexander](https://www.youtube.com/embed/iv8rSLsi1xo?start=01), embedded according to [YouTube's Terms of Service](https://www.youtube.com/static?gl=CA&template=terms).
 
 ```
 
