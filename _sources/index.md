@@ -110,3 +110,7 @@ We design this course based on the following key references.
 
 - This development is supported by the [Funding call for online learning courses in responsible AI](https://www.turing.ac.uk/funding-call-online-learning-courses-responsible-ai) from the [Alan Turing Institute](https://www.turing.ac.uk/).
 - We have used [GitHub Copilot](https://copilot.github.com/) to generate some of the teaching materials.
+
+## License
+
+All content except for YouTube videos is released under the [MIT License](https://github.com/pykale/transparentML/blob/main/LICENSE). YouTube videos are embedded according to [YouTube's Terms of Service](https://www.youtube.com/static?gl=CA&template=terms).
