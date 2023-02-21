@@ -1445,7 +1445,7 @@ weighted avg       0.71      0.71      0.71        97
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">plot_tree</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">plot_roc_curve</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
 
@@ -1471,16 +1471,8 @@ weighted avg       0.71      0.71      0.71        97
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">plot_tree</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">plot_roc_curve</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">X2</span> <span class="o">=</span> <span class="n">caravan_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Purchase&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="ne">ImportError</span>: cannot import name &#39;plot_roc_curve&#39; from &#39;sklearn.metrics&#39; (/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/sklearn/metrics/__init__.py)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy:  0.9399141630901288
+AUC:  0.5891454664057404
 </pre></div>
 </div>
 </div>
@@ -1521,6 +1513,12 @@ weighted avg       0.71      0.71      0.71        97
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy:  0.9399141630901288
+AUC:  0.7402804957599478
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>4.</strong> Compare the performance of the trained model in <strong>Exercise 3</strong> with <strong>Exercise 2</strong>.</p>
 <p><em>Compare your answer with the solution below</em></p>
@@ -1547,6 +1545,22 @@ weighted avg       0.71      0.71      0.71        97
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confusion matrix</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">cm</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confusion matrix
+        No  Yes
+No   1093   68
+Yes     2    2
+              precision    recall  f1-score   support
+
+          No       0.94      1.00      0.97      1095
+         Yes       0.50      0.03      0.05        70
+
+    accuracy                           0.94      1165
+   macro avg       0.72      0.51      0.51      1165
+weighted avg       0.91      0.94      0.91      1165
 </pre></div>
 </div>
 </div>

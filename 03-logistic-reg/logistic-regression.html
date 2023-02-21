@@ -780,25 +780,11 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">plot_roc_curve</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">RocCurveDisplay</span>
 
 <span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">logit</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">plot_roc_curve</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">logit</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">)</span>
-
-<span class="ne">ImportError</span>: cannot import name &#39;plot_roc_curve&#39; from &#39;sklearn.metrics&#39; (/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/sklearn/metrics/__init__.py)
 </pre></div>
 </div>
 </div>
@@ -816,6 +802,64 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>default</th>
+      <th>student</th>
+      <th>balance</th>
+      <th>income</th>
+      <th>default2</th>
+      <th>student2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>No</td>
+      <td>No</td>
+      <td>729.526495</td>
+      <td>44361.625074</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>No</td>
+      <td>Yes</td>
+      <td>817.180407</td>
+      <td>12106.134700</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>No</td>
+      <td>No</td>
+      <td>1073.549164</td>
+      <td>31767.138947</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </div>
 <div class="section" id="logistic-model">
@@ -892,6 +936,9 @@ $$ --></div>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/logistic-regression_7_0.png" src="../_images/logistic-regression_7_0.png" />
+</div>
 </div>
 <p>We can see an S-shaped curve with the vertical axis ranging from 0 to 1, indicating the probability of a positive outcome (<code class="docutils literal notranslate"><span class="pre">default</span></code>) with respect to the horizontal axis <span class="math notranslate nohighlight">\(x\)</span> (<code class="docutils literal notranslate"><span class="pre">balance</span></code>).</p>
 <p>In practice, we can use the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> or <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> package to fit a logistic regression model and make predictions.</p>
@@ -907,6 +954,14 @@ $$ --></div>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;classes: &quot;</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;coefficients: &quot;</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;intercept :&quot;</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LogisticRegression(solver=&#39;newton-cg&#39;)
+classes:  [0 1]
+coefficients:  [[0.00549891]]
+intercept : [-10.65132548]
 </pre></div>
 </div>
 </div>
@@ -974,6 +1029,9 @@ $$ --></div>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/logistic-regression_11_0.png" src="../_images/logistic-regression_11_0.png" />
+</div>
 </div>
 <p>In the above example, we learnt a logistic regression model <span class="math notranslate nohighlight">\(f(x)\)</span> with two parameters, <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>, from the data, where</p>
 <ul class="simple">
@@ -991,8 +1049,8 @@ $$ --></div>
 <ul class="simple">
 <li><p>When the probability of <code class="docutils literal notranslate"><span class="pre">default</span></code> 0.5 (the commonly used threshold for binary classification), the corresponding balance can be calculated using the <em>log odds</em> equation above:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-8bc97e4f-0d44-4070-a66f-8fed3f232e46">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-8bc97e4f-0d44-4070-a66f-8fed3f232e46" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-081d34b0-3465-434c-a5cb-ee33846ee7db">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-081d34b0-3465-434c-a5cb-ee33846ee7db" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \ln \left(\frac{\pi}{1-\pi}\right) &amp;= \beta_0 + \beta_1 \times x \\
 \ln \left(\frac{0.5}{1-0.5}\right) &amp;= \beta_0 + \beta_1 \times x \\
@@ -1011,6 +1069,60 @@ x &amp; = 1936.9858426745614.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: 0.079823
+         Iterations 10
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Coef.</th>
+      <th>Std.Err.</th>
+      <th>z</th>
+      <th>P&gt;|z|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>-10.651331</td>
+      <td>0.361169</td>
+      <td>-29.491287</td>
+      <td>3.723665e-191</td>
+      <td>-11.359208</td>
+      <td>-9.943453</td>
+    </tr>
+    <tr>
+      <th>balance</th>
+      <td>0.005499</td>
+      <td>0.000220</td>
+      <td>24.952404</td>
+      <td>2.010855e-137</td>
+      <td>0.005067</td>
+      <td>0.005931</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>We can see that the estimated parameters are the same as those from the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> API. Note the two last columns, “[0.025” and “0.975]”. These are Confidence Intervals, the very concept we covered in the last chapter on Linear Regression! Now, let us fit a logistic regression model using <code class="docutils literal notranslate"><span class="pre">student</span></code> status as the input variable.</p>
 <div class="cell docutils container">
@@ -1020,6 +1132,60 @@ x &amp; = 1936.9858426745614.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: 0.145434
+         Iterations 7
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Coef.</th>
+      <th>Std.Err.</th>
+      <th>z</th>
+      <th>P&gt;|z|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>-3.504128</td>
+      <td>0.070713</td>
+      <td>-49.554094</td>
+      <td>0.000000</td>
+      <td>-3.642723</td>
+      <td>-3.365532</td>
+    </tr>
+    <tr>
+      <th>student[T.Yes]</th>
+      <td>0.404887</td>
+      <td>0.115019</td>
+      <td>3.520177</td>
+      <td>0.000431</td>
+      <td>0.179454</td>
+      <td>0.630320</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>The coefficient associated with <code class="docutils literal notranslate"><span class="pre">student</span></code> is positive, indicating that the probability of <code class="docutils literal notranslate"><span class="pre">default</span></code> is higher for students than non-students.</p>
 </div>
@@ -1051,6 +1217,14 @@ x &amp; = 1936.9858426745614.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LogisticRegression(max_iter=1000, penalty=&#39;none&#39;, solver=&#39;newton-cg&#39;)
+classes:  [0 1]
+coefficients:  [[ 5.73593136e-03  3.01131944e-06 -6.47265842e-01]]
+intercept : [-10.86719778]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Let us fit a multiple logistic regression model using the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> API next.</p>
 <div class="cell docutils container">
@@ -1060,6 +1234,78 @@ x &amp; = 1936.9858426745614.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: 0.078577
+         Iterations 10
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Coef.</th>
+      <th>Std.Err.</th>
+      <th>z</th>
+      <th>P&gt;|z|</th>
+      <th>[0.025</th>
+      <th>0.975]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intercept</th>
+      <td>-10.869045</td>
+      <td>0.492273</td>
+      <td>-22.079320</td>
+      <td>4.995499e-108</td>
+      <td>-11.833882</td>
+      <td>-9.904209</td>
+    </tr>
+    <tr>
+      <th>student[T.Yes]</th>
+      <td>-0.646776</td>
+      <td>0.236257</td>
+      <td>-2.737595</td>
+      <td>6.189022e-03</td>
+      <td>-1.109831</td>
+      <td>-0.183721</td>
+    </tr>
+    <tr>
+      <th>balance</th>
+      <td>0.005737</td>
+      <td>0.000232</td>
+      <td>24.736506</td>
+      <td>4.331521e-135</td>
+      <td>0.005282</td>
+      <td>0.006191</td>
+    </tr>
+    <tr>
+      <th>income</th>
+      <td>0.000003</td>
+      <td>0.000008</td>
+      <td>0.369808</td>
+      <td>7.115254e-01</td>
+      <td>-0.000013</td>
+      <td>0.000019</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Similar parameters are estimated as using the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> API.</p>
 </div>
@@ -1079,6 +1325,11 @@ x &amp; = 1936.9858426745614.
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 <span class="n">accuarcy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy: &quot;</span><span class="p">,</span> <span class="n">accuarcy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy:  0.9732
 </pre></div>
 </div>
 </div>
@@ -1103,10 +1354,16 @@ x &amp; = 1936.9858426745614.
 <span class="n">roc_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AUC: &quot;</span><span class="p">,</span> <span class="n">roc_auc</span><span class="p">)</span>
 
-<span class="n">clf_disp</span> <span class="o">=</span> <span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">clf_disp</span> <span class="o">=</span> <span class="n">RocCurveDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AUC:  0.9495528423841241
+</pre></div>
+</div>
+<img alt="../_images/logistic-regression_26_1.png" src="../_images/logistic-regression_26_1.png" />
 </div>
 </div>
 <p>We can see clearly the trade-off between TPR and FPR. The AUC is 0.95, indicating that the model is good.</p>
@@ -1158,6 +1415,12 @@ x &amp; = 1936.9858426745614.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>coefficients:  [[-0.0213956]]
+intercept : [0.25689958]
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>3</strong>. Plot the <strong>ROC curve</strong> and find out the <strong>training accuracy</strong> and <strong>AUC</strong> of the fitted model from <strong>Exercise 2</strong>.</p>
 <div class="cell docutils container">
@@ -1170,7 +1433,7 @@ x &amp; = 1936.9858426745614.
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">plot_roc_curve</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">RocCurveDisplay</span>
 
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 <span class="n">accuarcy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
@@ -1180,13 +1443,20 @@ x &amp; = 1936.9858426745614.
 <span class="n">roc_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AUC: &quot;</span><span class="p">,</span> <span class="n">roc_auc</span><span class="p">)</span>
 
-<span class="n">clf_disp</span> <span class="o">=</span> <span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">clf_disp</span> <span class="o">=</span> <span class="n">RocCurveDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># From the ROC curve we can say that the result is almost random as it is almost close to 50%.</span>
 <span class="c1"># The model from Exercise-2 has not learnt anything at all.</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training Accuracy:  0.5555555555555556
+AUC:  0.5142783962844069
+</pre></div>
+</div>
+<img alt="../_images/logistic-regression_39_1.png" src="../_images/logistic-regression_39_1.png" />
 </div>
 </div>
 <p><strong>4</strong>. Train another logistic regression model using <strong>Direction</strong> as a response and all the other features as predictors. Print out all the <strong>parameter values</strong>.</p>
@@ -1211,6 +1481,13 @@ x &amp; = 1936.9858426745614.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>coefficients:  [[ 3.68499531e-03 -8.79798988e-02  4.30642927e-02  1.39939415e-02
+  -1.71848458e-02  6.21529052e-02  7.95810174e-02  7.22163008e+00]]
+intercept : [-7.36798384]
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>5</strong>. Plot the <strong>ROC curve</strong> and find out the <strong>training accuracy</strong> and <strong>AUC</strong> metrics of the fitted model from <strong>Exercise 6</strong>.</p>
 <div class="cell docutils container">
@@ -1231,12 +1508,19 @@ x &amp; = 1936.9858426745614.
 <span class="n">roc_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AUC: &quot;</span><span class="p">,</span> <span class="n">roc_auc</span><span class="p">)</span>
 
-<span class="n">clf_disp</span> <span class="o">=</span> <span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">clf_disp</span> <span class="o">=</span> <span class="n">RocCurveDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># The model from Exercise 4 learnt very well on the training dataset.</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training Accuracy:  0.9972451790633609
+AUC:  0.9999931698654464
+</pre></div>
+</div>
+<img alt="../_images/logistic-regression_47_1.png" src="../_images/logistic-regression_47_1.png" />
 </div>
 </div>
 <p><strong>6</strong>. You might notice that the model with all variables is much better than the model from <strong>Exercise 2</strong>. Use the skills you have learnt to explain why. <strong>Hint</strong>: Correlation matrix (See section <a class="reference external" href="https://pykale.github.io/transparentML/02-linear-reg/multi-linear-regression.html#interpreting-the-results">2.2.4</a>)</p>
@@ -1260,17 +1544,44 @@ x &amp; = 1936.9858426745614.
 <span class="c1"># model with out &quot;Today&quot;</span>
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Direction&quot;</span><span class="p">,</span> <span class="s2">&quot;Today&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">clf_disp</span> <span class="o">=</span> <span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">clf_disp</span> <span class="o">=</span> <span class="n">RocCurveDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="c1"># Without today feature the model performed very bad</span>
 
 <span class="c1"># model with only &quot;Today&quot;</span>
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Today&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">clf_disp</span> <span class="o">=</span> <span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">clf_disp</span> <span class="o">=</span> <span class="n">RocCurveDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="c1"># with today feature the model performed very well</span>
 <span class="c1"># from this experiment we analyzed the important of correlation between feature and target variable</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>               Year      Lag1      Lag2      Lag3      Lag4      Lag5  \
+Year       1.000000 -0.032289 -0.033390 -0.030006 -0.031128 -0.030519   
+Lag1      -0.032289  1.000000 -0.074853  0.058636 -0.071274 -0.008183   
+Lag2      -0.033390 -0.074853  1.000000 -0.075721  0.058382 -0.072499   
+Lag3      -0.030006  0.058636 -0.075721  1.000000 -0.075396  0.060657   
+Lag4      -0.031128 -0.071274  0.058382 -0.075396  1.000000 -0.075675   
+Lag5      -0.030519 -0.008183 -0.072499  0.060657 -0.075675  1.000000   
+Volume     0.841942 -0.064951 -0.085513 -0.069288 -0.061075 -0.058517   
+Today     -0.032460 -0.075032  0.059167 -0.071244 -0.007826  0.011013   
+Direction -0.022200 -0.050004  0.072696 -0.022913 -0.020549 -0.018168   
+
+             Volume     Today  Direction  
+Year       0.841942 -0.032460  -0.022200  
+Lag1      -0.064951 -0.075032  -0.050004  
+Lag2      -0.085513  0.059167   0.072696  
+Lag3      -0.069288 -0.071244  -0.022913  
+Lag4      -0.061075 -0.007826  -0.020549  
+Lag5      -0.058517  0.011013  -0.018168  
+Volume     1.000000 -0.033078  -0.017995  
+Today     -0.033078  1.000000   0.720025  
+Direction -0.017995  0.720025   1.000000  
+</pre></div>
+</div>
+<img alt="../_images/logistic-regression_51_1.png" src="../_images/logistic-regression_51_1.png" />
+<img alt="../_images/logistic-regression_51_2.png" src="../_images/logistic-regression_51_2.png" />
 </div>
 </div>
 </div>
