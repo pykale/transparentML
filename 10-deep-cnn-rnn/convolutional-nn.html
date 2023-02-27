@@ -826,12 +826,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> A new release of pip is available: <span class=" -Color -Color-Red">23.0</span> -&gt; <span class=" -Color -Color-Green">23.0.1</span>
-<span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> To update, run: <span class=" -Color -Color-Green">pip install --upgrade pip</span>
-</pre></div>
-</div>
-</div>
 </div>
 <div class="section" id="why-convolutional-neural-networks">
 <h2><span class="section-number">10.2.1. </span>Why convolutional neural networks?<a class="headerlink" href="#why-convolutional-neural-networks" title="Permalink to this headline">¶</a></h2>
@@ -923,9 +917,6 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to ./data/cifar-10-python.tar.gz
-</pre></div>
-</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0%
 </pre></div>
 </div>
@@ -1230,6 +1221,9 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0%
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to ./data/cifar-10-python.tar.gz
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0%
@@ -17120,8 +17114,8 @@ tensor([[[[ 0.1138,  0.0408,  0.0734,  0.0200, -0.0080],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;NllLossBackward0 object at 0x7f812c4a1220&gt;
-&lt;LogSoftmaxBackward0 object at 0x7f812c4a1df0&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;NllLossBackward0 object at 0x7fd508a9e250&gt;
+&lt;LogSoftmaxBackward0 object at 0x7fd508aa37c0&gt;
 </pre></div>
 </div>
 </div>
@@ -17306,6 +17300,9 @@ answer is <span class="math notranslate nohighlight">\(76 + 17 = 93\)</span>.</p
 <p>Number of Filters = <span class="math notranslate nohighlight">\(100\)</span></p>
 <p>Number of parameters = <span class="math notranslate nohighlight">\((5 × 5 × 3 + 1) × 100 = 7600\)</span></p>
 </div>
+<p><strong>3.</strong>  <strong>OCTMNIST</strong> is based on a prior dataset of 109,309 valid optical coherence tomography (OCT) images for retinal diseases, with 4 different types, leading to a multi-class classification task. The source training set is split with a ratio of 9 : 1 into training and validation sets, and uses its source validation set as the test set.</p>
+<p><strong>Note:</strong> The paragraph above is describing how the authors construct OCTMNIST from the source dataset, provided as background information. You do not have to use this information to complete the follwing exercises. OCTMNIST has fixed training, validation, and test sets with respective APIs so you just need to use the provided API and splits in OCTMNIST.</p>
+<p>Follow instructions at <a class="reference external" href="https://github.com/MedMNIST/MedMNIST">https://github.com/MedMNIST/MedMNIST</a> to download and load the data. Use a similar method to the one you used in <strong>Exercise 1</strong> in Section <a class="reference external" href="https://pykale.github.io/transparentML/10-deep-cnn-rnn/convolutional-nn.html#exercises">10.1.8</a> to fetch the data. Again, use the <code class="docutils literal notranslate"><span class="pre">torchvision</span></code> package to Compose a transformation to convert the data to tensors and normalize it (although this time, don’t flatten the data!). In your training, validation and testing dataloaders, use a batch size of 256.</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install medmnist</span>
@@ -17314,10 +17311,6 @@ answer is <span class="math notranslate nohighlight">\(76 + 17 = 93\)</span>.</p
 </div>
 </div>
 </div>
-<p><strong>OCTMNIST</strong> is based on a prior dataset of 109,309 valid optical coherence tomography (OCT) images for retinal diseases, with 4 different types, leading to a multi-class classification task. The source training set is split with a ratio of 9 : 1 into training and validation sets, and uses its source validation set as the test set.</p>
-<p><strong>Note:</strong> The paragraph above is describing how the authors construct OCTMNIST from the source dataset, provided as background information. You do not have to use this information to complete the follwing exercises. OCTMNIST has fixed training, validation, and test sets with respective APIs so you just need to use the provided API and splits in OCTMNIST.</p>
-<p><strong>3.</strong> Follow instructions at <a class="reference external" href="https://github.com/MedMNIST/MedMNIST">https://github.com/MedMNIST/MedMNIST</a> to download and load the data. Now load the training, validation and testing datasets with pytorch Dataloader.</p>
-<p>Use a similar method to the one you used in Exercise 1 in Section 10.1.8 to fetch the data. Again, use the <code class="docutils literal notranslate"><span class="pre">torchvision</span></code> package to Compose a transformation to convert the data to tensors and normalize it (although this time, don’t flatten the data!). In your training, validation and testing dataloaders, use a batch size of 256.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -17326,7 +17319,7 @@ answer is <span class="math notranslate nohighlight">\(76 + 17 = 93\)</span>.</p
 </div>
 </div>
 <p><em>Compare your answer with the reference solution below</em></p>
-<div class="cell tag_remove-output docutils container">
+<div class="cell tag_hide-cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -17335,7 +17328,6 @@ answer is <span class="math notranslate nohighlight">\(76 + 17 = 93\)</span>.</p
 <span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 <span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
-<span class="kn">import</span> <span class="nn">torchvision</span>
 <span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transforms</span>
 <span class="kn">from</span> <span class="nn">torch.utils</span> <span class="kn">import</span> <span class="n">data</span> <span class="k">as</span> <span class="n">torch_data</span>
 
@@ -17378,7 +17370,7 @@ answer is <span class="math notranslate nohighlight">\(76 + 17 = 93\)</span>.</p
 </div>
 </div>
 </div>
-<p><strong>4.</strong> Display at least <strong>ten images</strong> for <strong>each class</strong>, i.e. at least <span class="math notranslate nohighlight">\(40\)</span> images, from the training set.</p>
+<p><strong>4.</strong> Display at least <strong>ten images</strong> for <strong>each class</strong>, i.e. at least <span class="math notranslate nohighlight">\(40\)</span> images, from the training set loaded in <strong>Exercise 3</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -17423,7 +17415,7 @@ answer is <span class="math notranslate nohighlight">\(76 + 17 = 93\)</span>.</p
 </div>
 </div>
 <p><strong>5.</strong> This question asks you to design convolutional neural networks (CNNs). Only the number of convolutional (Conv) layers and the number of fully connected (FC) layers will be specified below. You are <strong>free to design</strong> other aspects of the network. For example, you can use other types of <strong>operation (e.g. padding)</strong>, <strong>layers (e.g. pooling, or preprocessing (e.g. augmentation)</strong>, and you choose the number of <strong>units/neurons in each layer</strong>. Likewise, you may choose the <strong>number of epochs</strong> and many other settings according to your accessible computational power.</p>
-<p><strong>(a)</strong> Design a CNN with <strong>two Conv layers</strong> and <strong>two FC layers</strong>. Train the model on the training set, and evaluate the trained model on the test set using <strong>accuracy metric</strong>.</p>
+<p><strong>(a)</strong> Design a CNN with <strong>two Conv layers</strong> and <strong>two FC layers</strong>. Train the model on the training set loaded in <strong>Exercise 3</strong>, and evaluate the trained model on the test set loaded in <strong>Exercise 3</strong> using <strong>accuracy metric</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
