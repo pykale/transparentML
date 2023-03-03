@@ -129,7 +129,7 @@ This section introduces the basic concepts of linear algebra and notations used 
 
 **1**. $\begin{bmatrix} 12 & 0 & 0 \\ 0 & 8 & 0 \\ 0 & 0 & 23 \end{bmatrix}$
 
-    What kind of matrices is it? You can choose multiple answers.
+    What kind of matrices is it? There can be multiple answers.
 
         a. Diagonal
 
@@ -150,7 +150,7 @@ This section introduces the basic concepts of linear algebra and notations used 
     **The given matrix has values only in the diagonal; that's why it's a diagonal matrix. The diagonal values are not 1, so it's not an identity matrix. If you transpose the given matrix, it will equal the given matrix, so it's symmetric. We know $XX^-1=I$ for the inverse matrix, this condition is valid for our given matrix, so it's an inverse matrix. For the orthogonal matrix $XX^T=I$, which is not valid for our given matrix, so it's not an orthogonal matrix.**
    ```
 
-**2**. **$A$** = $\begin{bmatrix} 8 & 5 & 9 \\ 7 & 19 & 14 \end{bmatrix}$
+**2**. **$A$** = $\begin{bmatrix} 8 & 5 & 9 \\ 7 & 19 & 14 \end{bmatrix}$;
    **$B$** = $ \begin{bmatrix} 6 & 13 & 15 \\ 17 & 22 & 12 \\ 0 & 3 & 9 \end{bmatrix}$
 
 Calculate the following matrix operations by hand.
