@@ -113,7 +113,7 @@ To make your code reproducible, setting random seeds is only the most basic step
     **b. False. The **SDLC inception phase**** aims it.
    ```
 
-**2**. **Agile model** is an **iterative** and **incremental** approach, where requirements and solutions evolve through collaboration between self-organizing, cross-functional teams.
+**2**. **Agile model** is an **iterative** and **incremental** approach, where requirements and solutions evolve through collaboration between self-organising, cross-functional teams.
 
        a. True
 
