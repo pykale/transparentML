@@ -74,7 +74,7 @@ Besides the prerequisites, the 10 chapters can be grouped into two parts: part o
 
 This course is developed by [Haiping Lu](https://haipinglu.github.io/), a Professor of Machine Learning, and [Shuo Zhou](https://shuo-zhou.github.io/), an Academic Fellow in Machine Learning, both at the [Department of Computer Science](https://www.sheffield.ac.uk/dcs), [The University of Sheffield](https://www.sheffield.ac.uk/). H. Lu has developed and taught two machine learning courses [Machine Learning and Adaptive Intelligence](https://github.com/maalvarezl/MLAI) from 2018 to 2021 and [Scalable Machine Learning](https://github.com/haipinglu/ScalableML) since 2017. S. Zhou was a student and then a head teaching assistant of the [Machine Learning and Adaptive Intelligence](https://github.com/maalvarezl/MLAI) course and earned a PhD in machine learning from the University of Sheffield in 2022.
 
-[Mohammod Naimul Islam Suvon](https://github.com/Mdnaimulislam) contributed all the course exercises and quizzes. [Lawrence Schobs](https://github.com/Schobs) reviewed all teaching materials, provided detailed comments, and refined the materials thoroughly.
+[Mohammod Naimul Islam Suvon](https://github.com/Mdnaimulislam) contributed all the course exercises and quizzes. [Lawrence Schobs](https://github.com/Schobs) reviewed all teaching materials, provided detailed comments, and refined the materials thoroughly. After that, Haiping checked and refined these materials again.
 
 We thank valuable feedback received from
 - [Catherine Inness](https://www.linkedin.com/in/catherineinness/), Data Science Senior Manager, [Accenture](https://www.accenture.com/gb-en)
