@@ -68,7 +68,7 @@ Indeed, some of these activities might not be carried out by human actors, but b
 *Compare your answer with the solution below*
 
    ```{toggle}
-    **b. False. The structure of the lifecycle phases are unaffected by the **automation** of large section of an ML system's development**
+    **b. False. The structure of the lifecycle phases should NOT be affected by the **automation** of large section of an ML system's development**
    ```
 
 **4**. Lifecycle phases for **system deployment** occur **parallel**.

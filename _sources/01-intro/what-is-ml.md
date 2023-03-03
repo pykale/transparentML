@@ -61,7 +61,7 @@ The function $f$ is called the **model** or **predictive function**. The model $
 *Compare your answer with the solution below*
 
    ```{toggle}
-    **profit, number of employees and industry**
+    **profit, number of employees, and industry**
    ```
     b. What is the target variable?
 

@@ -81,7 +81,7 @@ From the above, we can see that reproducibility is a minimal requirement for rep
 *Compare your answer with the solution below*
 
    ```{toggle}
-    **data, model and loss function**
+    **data, model, and loss function**
    ```
 
 **2**. Weight and biases are the **hyperparameters** of a model.
@@ -99,7 +99,7 @@ From the above, we can see that reproducibility is a minimal requirement for rep
 
        a. In regression, the loss function measures the difference between the predicted class label and the true class label.
 
-       b. In dimension reduction, the loss function measures the difference between the predicted real number and the true real number.
+       b. In dimensionality reduction, the loss function measures the difference between the predicted real number and the true real number.
 
        c. In clustering, the loss function measures the coherence and separation of clusters.
 
@@ -118,9 +118,9 @@ We are interested in **predicting** house prices from their **description**. One
 
   **4.1**. What kind of problem is it? You can choose multiple answers.
 
-     a. a supervised problem
+     a. a supervised learning problem
 
-     b. an unsupervised problem
+     b. an unsupervised learning problem
 
      c. a classification problem
 
@@ -133,7 +133,7 @@ We are interested in **predicting** house prices from their **description**. One
 *Compare your answer with the solution below*
 
    ```{toggle}
-    **a, d. As the label is known, so it is a supervised problem, and then we are trying to predict a continuous value which means its a regression problem.**
+    **a, d. As the label is known, so it is a supervised problem, and then we are trying to predict a continuous value which means it is a regression problem.**
    ```
   **4.2**. What are the features? You can choose multiple answers.
 
