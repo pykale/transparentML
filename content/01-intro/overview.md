@@ -1,8 +1,8 @@
 # Intro to Machine Learning & Transparency
 
-```{admonition} Status
+<!-- ```{admonition} Status
 Ready for review and feedback
-```
+``` -->
 
 ```{admonition} Objectives
 - Understand what machine learning is.

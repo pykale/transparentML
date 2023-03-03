@@ -1,6 +1,6 @@
 # Overview
 
-**[Turing Course: An Introduction to Transparent Machine Learning](https://github.com/alan-turing-institute/Intro-to-transparent-ML-course/)**
+**[Turing Course: An Introduction to Transparent Machine Learning](https://learn.turing.ac.uk/course/view.php?id=24)**
 
 ```{admonition} Status
 Ready for use. Welcome your feedback via opening [issues](https://github.com/pykale/transparentML/issues), [discussions](https://github.com/pykale/transparentML/discussions), and/or [pull requests](https://github.com/pykale/transparentML/pulls).

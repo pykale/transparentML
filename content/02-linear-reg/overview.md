@@ -1,8 +1,8 @@
 # Linear Regression
 
-```{admonition} Status
+<!-- ```{admonition} Status
 Ready for review and feedback
-```
+``` -->
 
 ```{admonition} Objectives
 - Understand the basic concepts of linear regression.

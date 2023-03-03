@@ -2,9 +2,9 @@
 
 <!-- **Question**: What do you need to know before starting this course? -->
 
-```{admonition} Status
+<!-- ```{admonition} Status
 Ready for review and feedback
-```
+``` -->
 
 ```{admonition} Objectives
 - Understand basic mathematical concepts required for this course.
