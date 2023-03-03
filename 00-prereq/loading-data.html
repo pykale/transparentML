@@ -2162,7 +2162,7 @@ The list of the features =  [&#39;Private&#39;, &#39;Apps&#39;, &#39;Accept&#39;
 <img alt="../_images/loading-data_42_1.png" src="../_images/loading-data_42_1.png" />
 </div>
 </div>
-<p><strong>e</strong>. How many <strong>quantitative</strong> and <strong>qualitative</strong> featuress are there in this dataset?</p>
+<p><strong>e</strong>. How many <strong>quantitative</strong> and <strong>qualitative</strong> features are there in this dataset?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -2176,7 +2176,7 @@ The list of the features =  [&#39;Private&#39;, &#39;Apps&#39;, &#39;Accept&#39;
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="nb">print</span><span class="p">(</span>
-    <span class="s2">&quot;Number of quantitative features in this dataset is </span><span class="si">%d</span><span class="s2"> and the number of qualitative features in this dataset is </span><span class="si">%d</span><span class="s2">.&quot;</span>
+    <span class="s2">&quot;The number of quantitative features in this dataset is </span><span class="si">%d</span><span class="s2"> and the number of qualitative features in this dataset is </span><span class="si">%d</span><span class="s2">.&quot;</span>
     <span class="o">%</span> <span class="p">(</span>
         <span class="n">college_df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
         <span class="n">college_df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -2186,7 +2186,7 @@ The list of the features =  [&#39;Private&#39;, &#39;Apps&#39;, &#39;Accept&#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of quantitative features in this dataset is 17 and the number of qualitative features in this dataset is 1.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The number of quantitative features in this dataset is 17 and the number of qualitative features in this dataset is 1.
 </pre></div>
 </div>
 </div>
