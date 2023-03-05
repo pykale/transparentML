@@ -45,7 +45,7 @@ System logic
 - Input: features of data samples.
 - Output: binary class labels of data samples.
 - Model: fit a plane/hyperplane to the training data to separate the data points by their class labels with the largest margin.
-  - Hyperparameter(s): a tuning/regularisation parameter $\Xi$ for controlling the trade-off between the margin and the tolerance of misclassification (margin violation). If a kernel is used, other hyperparameters include the kernel type and the kernel parameters.
+  - Hyperparameter(s): a tuning/regularisation parameter $\Omega$ for controlling the trade-off between the margin and the tolerance of misclassification (margin violation). If a kernel is used, other hyperparameters include the kernel type and the kernel parameters.
   - Parameter(s): the intercept ($\beta_0$) and coefficients ($\alpha_1, \alpha_2, \ldots, \alpha_N$) for each training data sample.
 - Loss function: maximises the margin and minimises the misclassification (margin violation).
 - Learning algorithm: quadratic programming.
