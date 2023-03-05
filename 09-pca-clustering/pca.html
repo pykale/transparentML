@@ -1621,7 +1621,7 @@ Explained variance ratio:  [0.93 0.07]
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">9.1.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p><strong>1</strong>. Load the <strong>miceprotein dataset</strong> from <strong>sklearn.datasets</strong> using <strong>fetch_openml</strong> where the dataset contains <strong>gene expressions</strong> of <strong>mice brains</strong>. Hint: See <a class="reference external" href="https://scikit-learn.org/stable/datasets/loading_other_datasets.html#:~:text=gene%20expressions%20in%20mice%20brains">here</a> for further help.</p>
+<p><strong>1</strong>. Load the <strong>miceprotein dataset</strong> from <strong>sklearn.datasets</strong> using <strong>fetch_openml</strong> where the dataset contains <strong>gene expressions</strong> of <strong>mice brains</strong> and show the first 5 rows of the data. Hint: See <a class="reference external" href="https://scikit-learn.org/stable/datasets/loading_other_datasets.html#:~:text=gene%20expressions%20in%20mice%20brains">here</a> for further help.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1812,7 +1812,7 @@ Explained variance ratio:  [0.93 0.07]
 <p>5 rows × 77 columns</p>
 </div></div></div>
 </div>
-<p><strong>2.</strong> Using StandardScaler, standardize the loaded mouse protein dataset from <strong>Exercise 1</strong>.</p>
+<p><strong>2.</strong> Using StandardScaler, standardise the loaded mouse protein dataset from <strong>Exercise 1</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1832,7 +1832,7 @@ Explained variance ratio:  [0.93 0.07]
 </div>
 </div>
 </div>
-<p><strong>3.</strong> Now, run <strong>PCA</strong> from <strong>sklearn</strong> on the <strong>standardised mouse protein dataset</strong> to determine the <strong>top ten eigenvalues</strong>. (use <span class="math notranslate nohighlight">\(95\%\)</span> minimum number of principal components).</p>
+<p><strong>3.</strong> Now, run <strong>PCA</strong> from <strong>sklearn</strong> explaining at least <span class="math notranslate nohighlight">\(95\%\)</span> variance on the <strong>standardised mouse protein dataset</strong> and display the <strong>top ten eigenvalues</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1853,21 +1853,21 @@ Explained variance ratio:  [0.93 0.07]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23.04876913576254
-13.358730172070146
-7.586459786950799
-7.161540399168171
-3.2824168810598997
-3.042339638744958
-2.36732540129829
-2.2552750062859226
-1.830754540428051
-1.2787183994614408
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23.048769135762537
+13.358730172070132
+7.5864597869508
+7.161540399168168
+3.2824168810599006
+3.0423396387449597
+2.367325401298288
+2.2552750062859235
+1.830754540428052
+1.2787183994614417
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>4.</strong> Using the <strong>Exercise 3</strong> fitted PCA object, find out the <strong>proportion of explained variance (PVE)</strong> and its <strong>ratio</strong> for the top 10 principal components to select the number of principal components.</p>
+<p><strong>4.</strong> Using the fitted PCA model in <strong>Exercise 3</strong>, find out the <strong>proportion of explained variance (PVE)</strong> and its <strong>ratio</strong> for the top 10 principal components.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1878,23 +1878,27 @@ Explained variance ratio:  [0.93 0.07]
 <p><em>Compare your answer with the reference solution below</em></p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The first 10 explained variance are: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">&quot;The first 10 explained variance ratio are: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[23.09059993 13.38297469  7.60022832  7.17453775  3.28837408  3.04786113
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The first 10 explained variance are: 
+ [23.09059993 13.38297469  7.60022832  7.17453775  3.28837408  3.04786113
   2.37162182  2.25936806  1.83407714  1.28103912]
-[0.29933466 0.17349    0.09852545 0.09300702 0.04262879 0.0395109
+The first 10 explained variance ratio are: 
+ [0.29933466 0.17349    0.09852545 0.09300702 0.04262879 0.0395109
  0.03074449 0.02928929 0.02377603 0.01660673]
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>5.</strong> After observing the <strong>PVE</strong> from <strong>Exercise 4</strong> carefuly,find out how many <strong>principal components</strong> should we take to preserve <span class="math notranslate nohighlight">\(70\%\)</span> of variance of the data?</p>
+<p><strong>5.</strong> After observing the <strong>PVE</strong> from <strong>Exercise 4</strong> carefuly, find out how many <strong>principal components</strong> should we take to preserve <span class="math notranslate nohighlight">\(70\%\)</span> of variance of the data?</p>
 <div class="toggle docutils container">
-<p><strong>First 5 principal components.</strong></p>
+<p><strong>The first 5 principal components.</strong></p>
 </div>
 <p><strong>6.</strong> Finally, using the top 10 principal components, plot the <strong>PVE</strong> of each principal component and the <strong>cumulative PVE</strong>.</p>
 <div class="cell docutils container">
@@ -1916,6 +1920,7 @@ Explained variance ratio:  [0.93 0.07]
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Principal Component&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>

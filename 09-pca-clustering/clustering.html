@@ -1207,7 +1207,7 @@ Distance of sample point from each cluster centre:
 <div class="section" id="exercises">
 <h2><span class="section-number">9.2.3. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <!-- Clustering the Observations of the NCI60 Data --><p><strong>1.</strong> In this exercise, you will generate your own simulated data and perform PCA and <span class="math notranslate nohighlight">\(K\)</span>-means clustering.</p>
-<p><strong>(a)</strong> Generate a simulated 50-dimensional dataset consisting of 3 classes, with each class containing <span class="math notranslate nohighlight">\(20\)</span> observations. Your dataset shape should return a shape of [60,50] i.e <span class="math notranslate nohighlight">\(60\)</span> observations total each with <span class="math notranslate nohighlight">\(50\)</span> variables. Think carefully about how you define your 3 classes. For example, you could use the np.random.normal() function to create your 3 classes, changing the mean and standard deviation of each class using the loc &amp; scale parameters!</p>
+<p><strong>(a)</strong> Generate a simulated 50-dimensional dataset consisting of 3 classes, with each class containing <span class="math notranslate nohighlight">\(20\)</span> observations. Your dataset should have a shape of [60, 50], i.e <span class="math notranslate nohighlight">\(60\)</span> observations in total, nad each with <span class="math notranslate nohighlight">\(50\)</span> variables. Think carefully about how you can define your 3 classes. For example, you could use the <code class="docutils literal notranslate"><span class="pre">np.random.normal()</span></code> function to create your 3 classes, changing the mean and standard deviation of each class using the loc &amp; scale parameters!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1233,7 +1233,7 @@ Distance of sample point from each cluster centre:
 </div>
 </div>
 </div>
-<p><strong>(b)</strong> Perform <strong>PCA</strong> on the <span class="math notranslate nohighlight">\(60\)</span> observations and plot the <strong>first two principal component</strong> score vectors. Use a different color to indicate the observations in each of the three classes. If the three classes appear separated in this plot, then continue on to part <strong>(c)</strong>. If not, then return to part <strong>(a)</strong> and modify the simulation so that there is greater separation between the three classes. Do not continue to part <strong>(c)</strong> until the three classes show at least some separation in the first two principal component score vectors.</p>
+<p><strong>(b)</strong> Perform <strong>PCA</strong> on the <span class="math notranslate nohighlight">\(60\)</span> observations and plot the <strong>first two principal component</strong> score vectors. Use a different colour to indicate the observations in each of the three classes. If the three classes appear separated in this plot, then continue on to part <strong>(c)</strong>. If not, then return to part <strong>(a)</strong> and modify the simulation so that there is greater separation between the three classes. Do not continue to part <strong>(c)</strong> until the three classes show at least some separation in the first two principal component score vectors.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1288,7 +1288,7 @@ Distance of sample point from each cluster centre:
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
 <span class="c1">## Break the data into Principal components</span>
-<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">combined</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True Cluster 1 predictions:&quot;</span><span class="p">)</span>
@@ -1309,10 +1309,6 @@ True Cluster 2 predictions:
 [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
 True Cluster 3 predictions:
 [2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  warnings.warn(
 </pre></div>
 </div>
 </div>
@@ -1384,8 +1380,8 @@ True Cluster 3 predictions:
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True Cluster 3 prdictions:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">40</span><span class="p">:</span><span class="mi">60</span><span class="p">])</span>
 
-<span class="c1"># Setting the number of desired clusters as more than the true number measn that at least one will have to split up.</span>
-<span class="c1"># Seeting n=4 meant that the second cluster was split. This is because it has the most variance compared to the other two clusteres.</span>
+<span class="c1"># Setting the number of desired clusters as more than the true number means that at least one will have to split up.</span>
+<span class="c1"># In this example, setting n=4 makes the second cluster split into two. This is because it has the most variance compared to the other two clusters.</span>
 </pre></div>
 </div>
 </div>
@@ -1424,7 +1420,7 @@ True Cluster 3 prdictions:
 <span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">combined</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">combined</span><span class="p">)</span>
 
-<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">combined</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True Cluster 1 prdictions:&quot;</span><span class="p">)</span>
@@ -1443,10 +1439,6 @@ True Cluster 2 prdictions:
 [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
 True Cluster 3 prdictions:
 [2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  warnings.warn(
 </pre></div>
 </div>
 </div>
@@ -1521,7 +1513,7 @@ True Cluster 3 prdictions:
 
 <span class="c1"># dendrogram</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Hierarchical Clustering Dendrogram original data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Hierarchical Clustering Dendrogram on original data&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;states&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Ecludian distance&quot;</span><span class="p">)</span>
 <span class="n">dendrogram</span><span class="p">(</span><span class="n">hc_complete1</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">res1</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">leaf_rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">leaf_font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
@@ -1607,7 +1599,7 @@ Wyoming                1
 <span class="n">res2</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;ID&quot;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Hierarchical Clustering Dendrogram scaled data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Hierarchical Clustering Dendrogram on scaled data&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;states&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Ecludian distance&quot;</span><span class="p">)</span>
 <span class="n">dendrogram</span><span class="p">(</span><span class="n">hc_complete2</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">res2</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">leaf_rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">leaf_font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>

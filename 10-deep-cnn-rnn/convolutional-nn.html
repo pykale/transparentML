@@ -917,19 +917,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0%
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0%
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1%
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1%
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to ./data/cifar-10-python.tar.gz
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1%
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1%
@@ -17079,25 +17079,25 @@ tensor([[[[ 0.1138,  0.0408,  0.0734,  0.0200, -0.0080],
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1,  4000] loss: 1.866
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1,  6000] loss: 1.648
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1,  6000] loss: 1.649
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2,  2000] loss: 1.539
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2,  4000] loss: 1.462
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2,  4000] loss: 1.463
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2,  6000] loss: 1.402
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2,  6000] loss: 1.403
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3,  2000] loss: 1.339
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3,  2000] loss: 1.340
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3,  4000] loss: 1.306
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3,  6000] loss: 1.281
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3,  6000] loss: 1.285
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Finished Training!
@@ -17114,8 +17114,8 @@ tensor([[[[ 0.1138,  0.0408,  0.0734,  0.0200, -0.0080],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;NllLossBackward0 object at 0x7f5519fcdd30&gt;
-&lt;LogSoftmaxBackward0 object at 0x7f5519fcd9d0&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;NllLossBackward0 object at 0x7f2d96349790&gt;
+&lt;LogSoftmaxBackward0 object at 0x7f2d96349dc0&gt;
 </pre></div>
 </div>
 </div>
@@ -17250,16 +17250,16 @@ tensor([[[[ 0.1138,  0.0408,  0.0734,  0.0200, -0.0080],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy of airplane : 60 %
-Accuracy of automobile : 59 %
-Accuracy of  bird : 31 %
-Accuracy of   cat : 35 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy of airplane : 61 %
+Accuracy of automobile : 58 %
+Accuracy of  bird : 32 %
+Accuracy of   cat : 33 %
 Accuracy of  deer : 53 %
-Accuracy of   dog : 52 %
+Accuracy of   dog : 54 %
 Accuracy of  frog : 59 %
 Accuracy of horse : 65 %
-Accuracy of  ship : 74 %
-Accuracy of truck : 63 %
+Accuracy of  ship : 71 %
+Accuracy of truck : 65 %
 </pre></div>
 </div>
 </div>
@@ -17274,12 +17274,12 @@ Accuracy of truck : 63 %
 <div class="toggle docutils container">
 <p>Firstly we must count all of the weights which connect the layers of our model,</p>
 <p>Number of weights = <span class="math notranslate nohighlight">\((3 × 4) + (4 × 6) + (6 × 5) + (5 × 2) = 76\)</span></p>
-<p>Next, we count up all of the bias parameters,</p>
+<p>Next, we count all of the bias parameters,</p>
 <p>Number of biases = <span class="math notranslate nohighlight">\(4 + 6 + 5 + 2 = 17\)</span>.</p>
 <p>The sum of these two values is the total number of model parameters, therefore the
 answer is <span class="math notranslate nohighlight">\(76 + 17 = 93\)</span>.</p>
 </div>
-<p><strong>2.</strong> We have a <span class="math notranslate nohighlight">\(512 × 512 × 3\)</span> color image. We apply <span class="math notranslate nohighlight">\(100\)</span> <span class="math notranslate nohighlight">\(5 × 5\)</span> <strong>filters</strong> with <strong>stride</strong> <span class="math notranslate nohighlight">\(7\)</span> and <strong>pad</strong> <span class="math notranslate nohighlight">\(2\)</span> to obtain a <strong>convolution output</strong>. What is the <strong>output volume size</strong>? How many <strong>parameters</strong> are needed for such a layer?</p>
+<p><strong>2.</strong> We have a <span class="math notranslate nohighlight">\(512 × 512 × 3\)</span> colour image. We apply <span class="math notranslate nohighlight">\(100\)</span> <span class="math notranslate nohighlight">\(5 × 5\)</span> <strong>filters</strong> with <strong>stride</strong> <span class="math notranslate nohighlight">\(7\)</span> and <strong>pad</strong> <span class="math notranslate nohighlight">\(2\)</span> to obtain a <strong>convolution output</strong>. What is the <strong>output volume size</strong>? How many <strong>parameters</strong> are needed for such a layer?</p>
 <p><em>Compare your answer with the solution below</em></p>
 <div class="toggle docutils container">
 <p><strong>Size of output:</strong></p>
@@ -17300,9 +17300,9 @@ answer is <span class="math notranslate nohighlight">\(76 + 17 = 93\)</span>.</p
 <p>Number of Filters = <span class="math notranslate nohighlight">\(100\)</span></p>
 <p>Number of parameters = <span class="math notranslate nohighlight">\((5 × 5 × 3 + 1) × 100 = 7600\)</span></p>
 </div>
-<p><strong>3.</strong>  <strong>OCTMNIST</strong> is based on a prior dataset of 109,309 valid optical coherence tomography (OCT) images for retinal diseases, with 4 different types, leading to a multi-class classification task. The source training set is split with a ratio of 9 : 1 into training and validation sets, and uses its source validation set as the test set.</p>
-<p><strong>Note:</strong> The paragraph above is describing how the authors construct OCTMNIST from the source dataset, provided as background information. You do not have to use this information to complete the follwing exercises. OCTMNIST has fixed training, validation, and test sets with respective APIs so you just need to use the provided API and splits in OCTMNIST.</p>
-<p>Follow instructions at <a class="reference external" href="https://github.com/MedMNIST/MedMNIST">https://github.com/MedMNIST/MedMNIST</a> to download and load the data. Use a similar method to the one you used in <strong>Exercise 1</strong> in Section <a class="reference external" href="https://pykale.github.io/transparentML/10-deep-cnn-rnn/convolutional-nn.html#exercises">10.1.8</a> to fetch the data. Again, use the <code class="docutils literal notranslate"><span class="pre">torchvision</span></code> package to Compose a transformation to convert the data to tensors and normalize it (although this time, don’t flatten the data!). In your training, validation and testing dataloaders, use a batch size of 256.</p>
+<p><strong>3.</strong>  <strong>OCTMNIST</strong> is based on an existing dataset of 109,309 valid optical coherence tomography (OCT) images for retinal diseases, with 4 different types, leading to a multi-class classification task. The source training set is split with a ratio of 9 : 1 into training and validation sets, and uses its source validation set as the test set.</p>
+<p><strong>Note:</strong> The paragraph above describes how the authors construct OCTMNIST from the source dataset, provided as background information. You do not have to use this information to complete the follwing exercises. OCTMNIST has fixed training, validation, and test sets with respective APIs so you just need to use the provided API and splits in OCTMNIST.</p>
+<p>Follow the instructions at <a class="reference external" href="https://github.com/MedMNIST/MedMNIST">https://github.com/MedMNIST/MedMNIST</a> to download and load the data. Use a similar method to the one you used in <strong>Exercise 1</strong> in Section <a class="reference external" href="https://pykale.github.io/transparentML/10-deep-cnn-rnn/convolutional-nn.html#exercises">10.1.8</a> to fetch the data. Again, use the <code class="docutils literal notranslate"><span class="pre">torchvision</span></code> package to compose a transformation to convert the data to tensors and normalise it (although this time, don’t flatten the data!). In your training, validation and testing dataloaders, use a batch size of 256.</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install medmnist</span>
@@ -17331,7 +17331,7 @@ answer is <span class="math notranslate nohighlight">\(76 + 17 = 93\)</span>.</p
 <span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transforms</span>
 <span class="kn">from</span> <span class="nn">torch.utils</span> <span class="kn">import</span> <span class="n">data</span> <span class="k">as</span> <span class="n">torch_data</span>
 
-<span class="c1"># For visualizing data</span>
+<span class="c1"># For visualising data</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
@@ -17348,7 +17348,7 @@ answer is <span class="math notranslate nohighlight">\(76 + 17 = 93\)</span>.</p
 <span class="n">DS_INFO</span> <span class="o">=</span> <span class="n">INFO</span><span class="p">[</span><span class="s2">&quot;octmnist&quot;</span><span class="p">]</span>
 <span class="n">data_class</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">medmnist</span><span class="o">.</span><span class="n">dataset</span><span class="p">,</span> <span class="n">DS_INFO</span><span class="p">[</span><span class="s2">&quot;python_class&quot;</span><span class="p">])</span>
 
-<span class="c1"># We need to download and normalise the data. ToTensor() transforms images from 0-255 to 0-1, and Normalize() centers the data around 0, between -1 to 1.</span>
+<span class="c1"># We need to download and normalise the data. ToTensor() transforms images from 0-255 to 0-1, and Normalize() centres the data around 0, between -1 to 1.</span>
 <span class="n">transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">(</span>
     <span class="p">[</span>
         <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
@@ -17398,7 +17398,7 @@ answer is <span class="math notranslate nohighlight">\(76 + 17 = 93\)</span>.</p
             <span class="n">ax</span><span class="p">[</span><span class="n">label</span><span class="p">,</span> <span class="n">ex_idx</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
             <span class="n">ax</span><span class="p">[</span><span class="n">label</span><span class="p">,</span> <span class="n">ex_idx</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
 
-        <span class="c1"># Set the Y axis label</span>
+        <span class="c1"># Set the y axis label</span>
         <span class="n">ax</span><span class="p">[</span><span class="n">label</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span>
             <span class="n">ylabel</span><span class="o">=</span><span class="n">DS_INFO</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">][</span><span class="nb">str</span><span class="p">(</span><span class="n">label</span><span class="p">)]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">30</span>
         <span class="p">)</span>
@@ -17414,8 +17414,8 @@ answer is <span class="math notranslate nohighlight">\(76 + 17 = 93\)</span>.</p
 <img alt="../_images/convolutional-nn_80_0.png" src="../_images/convolutional-nn_80_0.png" />
 </div>
 </div>
-<p><strong>5.</strong> This question asks you to design convolutional neural networks (CNNs). Only the number of convolutional (Conv) layers and the number of fully connected (FC) layers will be specified below. You are <strong>free to design</strong> other aspects of the network. For example, you can use other types of <strong>operation (e.g. padding)</strong>, <strong>layers (e.g. pooling, or preprocessing (e.g. augmentation)</strong>, and you choose the number of <strong>units/neurons in each layer</strong>. Likewise, you may choose the <strong>number of epochs</strong> and many other settings according to your accessible computational power.</p>
-<p><strong>(a)</strong> Design a CNN with <strong>two Conv layers</strong> and <strong>two FC layers</strong>. Train the model on the training set loaded in <strong>Exercise 3</strong>, and evaluate the trained model on the test set loaded in <strong>Exercise 3</strong> using <strong>accuracy metric</strong>.</p>
+<p><strong>5.</strong> This question asks you to design convolutional neural networks (CNNs). Only the number of convolutional (Conv) layers and the number of fully connected (FC) layers will be specified below. You are <strong>free to design</strong> other aspects of the network. For example, you can use other types of <strong>operation (e.g. padding)</strong>, <strong>layers (e.g. pooling, or preprocessing (e.g. augmentation)</strong>, and you will need to choose the number of <strong>units/neurons in each layer</strong>. Likewise, you may need to customise the <strong>number of epochs</strong> and many other settings according to your accessible computational power.</p>
+<p><strong>(a)</strong> Design a CNN with <strong>two Conv layers</strong> and <strong>two FC layers</strong>. Train the model on the training set loaded in <strong>Exercise 3</strong>, and evaluate the trained model on the test set loaded in <strong>Exercise 3</strong> using the <strong>accuracy</strong> metric.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -17502,7 +17502,7 @@ answer is <span class="math notranslate nohighlight">\(76 + 17 = 93\)</span>.</p
     <span class="n">acc</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 
     <span class="nb">print</span><span class="p">(</span>
-        <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Validation set: Average loss: </span><span class="si">{:.4f}</span><span class="s2">, Accuracy: (</span><span class="si">{:.0f}</span><span class="s2">%)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Validation set: Average loss: </span><span class="si">{:.5f}</span><span class="s2">, Accuracy: (</span><span class="si">{:.2f}</span><span class="s2">%)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">test_loss</span><span class="p">,</span> <span class="n">accuracy</span>
         <span class="p">)</span>
     <span class="p">)</span>
@@ -17519,13 +17519,14 @@ answer is <span class="math notranslate nohighlight">\(76 + 17 = 93\)</span>.</p
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 1 	Loss: 0.000144
-
-Validation set: Average loss: 0.0002, Accuracy: (62%)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation set: Average loss: 0.00021, Accuracy: (62.50%)
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>(b)</strong> Design a CNN with <strong>three Conv layers</strong> and <strong>three FC layers</strong>. Train the model on the training set, and evaluate the trained model on the test set using accuracy metric.</p>
+<p><strong>(b)</strong> Design a CNN with <strong>three Conv layers</strong> and <strong>three FC layers</strong>. Train the model on the training set, and evaluate the trained model on the test set using the accuracy metric.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -17580,8 +17581,9 @@ Validation set: Average loss: 0.0002, Accuracy: (62%)
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 1 	Loss: 0.000355
-
-Validation set: Average loss: 0.0003, Accuracy: (62%)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation set: Average loss: 0.00035, Accuracy: (62.50%)
 </pre></div>
 </div>
 </div>
