@@ -12,6 +12,14 @@ We recast selected contents from a popular, award-winning textbook [An Introduct
 
 This course is being developed at [a PyKale repository](https://github.com/pykale/transparentML) and when stable it will be updated at [an Alan Turing Institute repository](https://github.com/alan-turing-institute/Intro-to-transparent-ML-course/).
 
+Watch the 10-minute video below for a conversation on this course between [Lily Clements](https://www.linkedin.com/in/lily-clements-9788a512a/) and [Haiping Lu](https://www.linkedin.com/in/haiping-lu-4821206/).
+
+```{admonition} Video
+<iframe width="700" height="394" src="https://www.youtube.com/embed/e69-0hG0IqM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+[Conversation on Turing Course - An Introduction to Transparent Machine Learning](https://www.youtube.com/embed/e69-0hG0IqM), embedded according to [YouTube's Terms of Service](https://www.youtube.com/static?gl=CA&template=terms).
+```
+
 ## Learning objectives [LOs]
 
 By the end of the course, we expect a learner can demonstrate the ability to:
