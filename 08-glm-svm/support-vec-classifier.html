@@ -1050,8 +1050,8 @@ Prediction:  1
 <li><p>For the data point <span class="math notranslate nohighlight">\([-1.19276461, -0.20487651]\)</span> marked by a black circle, its prediction score is <span class="math notranslate nohighlight">\( -0.7327 \times -1.19276461 + -0.7033 \times -0.20487651 + 0.5729 \approx 1.5910 \)</span>, which is positive. So the predicted label is <span class="math notranslate nohighlight">\( 1 \)</span>.</p></li>
 <li><p>According to the definition, the data points on the hyperplane satisfies <span class="math notranslate nohighlight">\( \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} = 0 \)</span>, i.e. <span class="math notranslate nohighlight">\( 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 = 0 \)</span>. To get a data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> of class <span class="math notranslate nohighlight">\( 1 \)</span>, the relationship between <span class="math notranslate nohighlight">\( x_1 \)</span> and <span class="math notranslate nohighlight">\( x_2 \)</span> should satisfy:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-846e0146-3740-4cd9-8d61-1cc00f4aeaa1">
-<span class="eqno">(8.6)<a class="headerlink" href="#equation-846e0146-3740-4cd9-8d61-1cc00f4aeaa1" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-daa6c4a5-0f8d-4fb6-9152-b4a3abf41c9b">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-daa6c4a5-0f8d-4fb6-9152-b4a3abf41c9b" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} &amp; &gt; 0 \\
 \beta_1 x_{1} &amp; &gt; - \beta_0 - \beta_2 x_{2} \\
@@ -1095,14 +1095,14 @@ x_1 &amp; &gt; 0.7819 - 0.9598 \times x_2.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00082638, 0.00075989, 0.00074916, 0.00074284, 0.00093136,
-        0.00078182, 0.00090287]),
- &#39;std_fit_time&#39;: array([1.75771822e-04, 5.05736107e-05, 2.75132974e-05, 3.08113930e-06,
-        4.86923475e-04, 1.68822578e-05, 5.15144652e-05]),
- &#39;mean_score_time&#39;: array([0.00047042, 0.00044723, 0.00047181, 0.00042796, 0.00044665,
-        0.00043099, 0.00043612]),
- &#39;std_score_time&#39;: array([4.31109909e-05, 1.61442303e-05, 1.03091458e-04, 1.27057196e-06,
-        5.16127712e-05, 2.99507261e-06, 2.15844542e-06]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00077441, 0.00076354, 0.00073874, 0.0007472 , 0.00094481,
+        0.00076146, 0.00089138]),
+ &#39;std_fit_time&#39;: array([8.79355758e-05, 3.39910401e-05, 1.22238068e-05, 1.64391296e-05,
+        5.07835802e-04, 1.18135383e-05, 4.29778240e-05]),
+ &#39;mean_score_time&#39;: array([0.0004559 , 0.00042508, 0.00043688, 0.00042276, 0.0004272 ,
+        0.00043571, 0.00044186]),
+ &#39;std_score_time&#39;: array([8.94923629e-05, 3.12583033e-06, 1.38304150e-05, 2.35250404e-06,
+        4.69968923e-06, 1.19401062e-05, 1.00583540e-05]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,
@@ -1467,15 +1467,15 @@ x_1 &amp; &gt; 0.7819 - 0.9598 \times x_2.
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of Support vectors: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">svc</span><span class="o">.</span><span class="n">support_vectors_</span><span class="p">))</span>
 
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">svc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">accuarcy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">accuarcy</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy: &quot;</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of Support vectors:  96
-0.7666666666666667
+Accuracy:  0.7666666666666667
 </pre></div>
 </div>
 </div>
@@ -1496,15 +1496,15 @@ x_1 &amp; &gt; 0.7819 - 0.9598 \times x_2.
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of Support vectors: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">svc2</span><span class="o">.</span><span class="n">support_vectors_</span><span class="p">))</span>
 
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">svc2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">accuarcy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">accuarcy</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy: &quot;</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of Support vectors:  149
-0.7833333333333333
+Accuracy:  0.7833333333333333
 </pre></div>
 </div>
 </div>
@@ -1541,7 +1541,7 @@ x_1 &amp; &gt; 0.7819 - 0.9598 \times x_2.
 </div>
 </div>
 </div>
-<p><strong>5.</strong> Finally, using the best hyperparameters from <strong>Exercise 4</strong>, train another SVC model on the training dataset and display the accuracy of this trained model on the test set.</p>
+<p><strong>5.</strong> Finally, using the best hyperparameter from <strong>Exercise 4</strong>, train another SVC model on the training dataset and show the accuracy of this trained model on the test set. Also, show the confusion matrix for this trained model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1560,9 +1560,9 @@ x_1 &amp; &gt; 0.7819 - 0.9598 \times x_2.
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of Support vectors: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">svc_tuned</span><span class="o">.</span><span class="n">support_vectors_</span><span class="p">))</span>
 
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">svc_tuned</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">accuarcy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">accuarcy</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy: &quot;</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
 
 <span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 <span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">svc_tuned</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
@@ -1573,7 +1573,7 @@ x_1 &amp; &gt; 0.7819 - 0.9598 \times x_2.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of Support vectors:  111
-0.8
+Accuracy:  0.8
 </pre></div>
 </div>
 <img alt="../_images/support-vec-classifier_52_1.png" src="../_images/support-vec-classifier_52_1.png" />

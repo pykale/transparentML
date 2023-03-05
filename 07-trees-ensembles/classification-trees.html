@@ -1520,12 +1520,12 @@ AUC:  0.7402804957599478
 </div>
 </div>
 </div>
-<p><strong>4.</strong> Compare the performance of the trained model in <strong>Exercise 3</strong> with <strong>Exercise 2</strong>.</p>
+<p><strong>4.</strong> Compare the performance of the trained models in <strong>Exercise 3</strong> with <strong>Exercise 2</strong>.</p>
 <p><em>Compare your answer with the solution below</em></p>
 <div class="toggle docutils container">
-<p>In terms of testing accuracy, the Exercise 2 model outperformed the Exercise 3 model, but accuracy is not the only metric to evaluate the models. When we look at the AUC score, which more comprehensively evaluates a model in imbalanced tasks, the Exercise 3 model outperforms the Exercise 2 model. Therefore, in this case we can see the Exercise 3 model is better than the Exercise 2.</p>
+<p>In terms of testing accuracy, the Exercise 2 model outperformed the Exercise 3 model, but accuracy is not the only metric to evaluate the models. When we look at the AUC score, which more comprehensively evaluates a model in imbalanced tasks, the Exercise 3 model outperforms the Exercise 2 model. Therefore, in this case we can see the Exercise 3 model is better than the Exercise 2 model.</p>
 </div>
-<p><strong>5.</strong> Create a <strong>confusion matrix</strong> and a <strong>classification report</strong> to help you evaluate the model you trained in <strong>Exercise 3</strong>.</p>
+<p><strong>5.</strong> Create a <strong>confusion matrix</strong> and a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html"><strong>classification report</strong></a> to help you evaluate the model you trained in <strong>Exercise 3</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code below to answer the question</span>
@@ -1568,12 +1568,12 @@ weighted avg       0.91      0.94      0.91      1165
 <p><strong>a</strong>. What is the testing accuracy of the model trained in <strong>Exercise 3</strong>?</p>
 <p><em>Compare your answer with the solution below</em></p>
 <div class="toggle docutils container">
-<p>The testing accuracy of the model trained in Exercise is 0.94.</p>
+<p>The testing accuracy of the model trained in Exercise 3 is 0.94.</p>
 </div>
 <p><strong>b</strong>. Does the model predicted well?</p>
 <p><em>Compare your answer with the solution below</em></p>
 <div class="toggle docutils container">
-<p>If we only consider the test accuracy, we may conclude that the model learned the task effectively, but this is not the whole story. In fact, due to the class imbalance in the training data, this model is biased towards the “NO” class. If we look at the confusion matrix, we see that it predicts “NO” for almost all samples, and has a poor recall and precision rate for the “YES” class. Therefore, this shows that accuracy alone is also not a good method for evaluating models. Considering AUC, recall, precision and plotting a confusion matrix,  we get a much better picture.</p>
+<p>If we only consider the test accuracy, we may conclude that the model learned the task effectively, but this is not the whole story. In fact, due to the class imbalance in the training data, this model is biased towards the “NO” class. If we look at the confusion matrix, we see that it predicts “NO” for almost all samples, and has a poor recall and precision rate for the “YES” class. Again, this shows that accuracy alone is also not always a good metric for evaluating models. Considering AUC, recall, and precision as well as showing the confusion matrix, we can get a much better picture.</p>
 </div>
 </div>
 </div>
