@@ -117,7 +117,7 @@ This section introduces the basic concepts of linear algebra and notations used 
     \begin{bmatrix} 1 & 2 & 3 \\ 2 & 4 & 5 \\ 3 & 5 & 6 \end{bmatrix}.
   $$
 
-- **Inverse** matrices are square matrices that can be multiplied with another matrix to yield the identity matrix. The inverse matrix of a matrix $\mathbf{X}$ is denoted as $\mathbf{X}^{-1}$, and according to the definition $\mathbf{X} \mathbf{X}^{-1} = \mathbf{X}^{-1} \mathbf{X} = \mathbf{I}$. The inverse matrix of an identity matrix is itself, e.g.
+- **Invertible** matrices are square matrices that can be multiplied with another matrix to yield the identity matrix. The inverse matrix of a matrix $\mathbf{X}$ is denoted as $\mathbf{X}^{-1}$, and according to the definition $\mathbf{X} \mathbf{X}^{-1} = \mathbf{X}^{-1} \mathbf{X} = \mathbf{I}$. The inverse matrix of an identity matrix is itself, e.g.
 
   $$
     \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}^{-1} = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}.
@@ -137,7 +137,7 @@ This section introduces the basic concepts of linear algebra and notations used 
 
         c. Symmetric
 
-        d. Inverse
+        d. Invertible
 
         e. Orthogonal
 
@@ -147,7 +147,7 @@ This section introduces the basic concepts of linear algebra and notations used 
    ```{toggle}
     **a , c, d.**
 
-    **The given matrix has values only in the diagonal; that's why it's a diagonal matrix. The diagonal values are not 1, so it's not an identity matrix. If you transpose the given matrix, it will equal the given matrix, so it's symmetric. We know $XX^-1=I$ for the inverse matrix, this condition is valid for our given matrix, so it's an inverse matrix. For the orthogonal matrix $XX^T=I$, which is not valid for our given matrix, so it's not an orthogonal matrix.**
+    **The given matrix has values only in the diagonal; that's why it's a diagonal matrix. The diagonal values are not 1, so it's not an identity matrix. If you transpose the given matrix, it will equal the given matrix, so it's symmetric. A diagonal matrix without any zero on its diagonal is always invertible, so this is an invertible matrix. For the orthogonal matrix $XX^T=I$, which is not valid for our given matrix, so it's not an orthogonal matrix.**
    ```
 
 **2**. **$A$** = $\begin{bmatrix} 8 & 5 & 9 \\ 7 & 19 & 14 \end{bmatrix}$;
