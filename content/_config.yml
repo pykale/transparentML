@@ -39,6 +39,7 @@ html:
   use_repository_button: true
   use_edit_page_button: true
   use_multitoc_numbering: true
+  google_analytics_id: G-89ZWPQL897
 
 # Add launch buttons
 # See https://jupyterbook.org/en/stable/interactive/launchbuttons.html
