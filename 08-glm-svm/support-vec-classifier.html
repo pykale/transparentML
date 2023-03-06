@@ -66,6 +66,14 @@ const thebe_selector_output = ".output, .cell_output"
 
     <!-- Google Analytics -->
     
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-89ZWPQL897"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-89ZWPQL897');
+                </script>
+
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
@@ -1037,7 +1045,7 @@ y_n(\beta_0 + \beta_1 x_{n1} + \beta_2 x_{n2} + \cdots + \beta_D x_{nD}) &gt; 0,
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Input:  [-1.19276461 -0.20487651]
 Intercept:  0.5729441305210916  Coefficients:  [-0.73273926 -0.70326681]
-Prediction score:  1.5910124372951457
+Prediction score:  1.5910124372951466
 Prediction:  1
 </pre></div>
 </div>
@@ -1050,8 +1058,8 @@ Prediction:  1
 <li><p>For the data point <span class="math notranslate nohighlight">\([-1.19276461, -0.20487651]\)</span> marked by a black circle, its prediction score is <span class="math notranslate nohighlight">\( -0.7327 \times -1.19276461 + -0.7033 \times -0.20487651 + 0.5729 \approx 1.5910 \)</span>, which is positive. So the predicted label is <span class="math notranslate nohighlight">\( 1 \)</span>.</p></li>
 <li><p>According to the definition, the data points on the hyperplane satisfies <span class="math notranslate nohighlight">\( \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} = 0 \)</span>, i.e. <span class="math notranslate nohighlight">\( 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 = 0 \)</span>. To get a data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> of class <span class="math notranslate nohighlight">\( 1 \)</span>, the relationship between <span class="math notranslate nohighlight">\( x_1 \)</span> and <span class="math notranslate nohighlight">\( x_2 \)</span> should satisfy:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-3793c521-85d1-4012-9933-b11284c1a727">
-<span class="eqno">(8.6)<a class="headerlink" href="#equation-3793c521-85d1-4012-9933-b11284c1a727" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9e0c02b5-32d5-4ae2-adb8-91200ee8baf4">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-9e0c02b5-32d5-4ae2-adb8-91200ee8baf4" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} &amp; &gt; 0 \\
 \beta_1 x_{1} &amp; &gt; - \beta_0 - \beta_2 x_{2} \\
@@ -1095,14 +1103,14 @@ x_1 &amp; &gt; 0.7819 - 0.9598 \times x_2.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00106115, 0.0010323 , 0.00109937, 0.00102203, 0.00103796,
-        0.00103726, 0.00120683]),
- &#39;std_fit_time&#39;: array([1.01491448e-04, 4.87289082e-05, 2.44333157e-04, 2.61257269e-05,
-        4.88922336e-05, 3.74320510e-05, 7.31158533e-05]),
- &#39;mean_score_time&#39;: array([0.00064578, 0.00058744, 0.00060115, 0.00061245, 0.00059664,
-        0.00059564, 0.00062466]),
- &#39;std_score_time&#39;: array([1.28886896e-04, 2.71514696e-06, 2.69788716e-05, 6.77396485e-05,
-        3.62473483e-05, 2.00665886e-05, 4.75221519e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00077939, 0.00075612, 0.0007411 , 0.00075722, 0.00094664,
+        0.0007683 , 0.00090055]),
+ &#39;std_fit_time&#39;: array([8.78291460e-05, 3.87120416e-05, 4.29047465e-06, 1.35722800e-05,
+        4.91731592e-04, 1.02121388e-05, 4.66172404e-05]),
+ &#39;mean_score_time&#39;: array([0.00047612, 0.00043669, 0.0004298 , 0.00042801, 0.0004406 ,
+        0.00043244, 0.00045331]),
+ &#39;std_score_time&#39;: array([9.97863075e-05, 1.28348939e-05, 7.09274236e-06, 1.84308511e-06,
+        1.27730960e-05, 3.21078222e-06, 2.72847226e-05]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,
