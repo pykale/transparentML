@@ -707,12 +707,12 @@ const thebe_selector_output = ".output, .cell_output"
 <p class="admonition-title">Read then Launch </p>
 <p>This content is best viewed in html because jupyter notebook cannot display some content (e.g. figures, equations) properly. You should finish reading this page first and then launch it as an interactive notebook in Google Colab (faster, Google account needed) or Binder by clicking the rocket symbol (<i class="fas fa-rocket"></i>) at the top.</p>
 </div>
-<p>In python we can use the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> package to perform basic matrix operations. The <code class="docutils literal notranslate"><span class="pre">numpy</span></code> package is a fundamental package for scientific computing with Python. It contains among other things:</p>
+<p>In python, we can use the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> package to perform basic matrix operations. The <code class="docutils literal notranslate"><span class="pre">numpy</span></code> package is a fundamental package for scientific computing with Python. It contains among other things:</p>
 <ul class="simple">
-<li><p>A powerful N-dimensional array object.</p></li>
+<li><p>A powerful <span class="math notranslate nohighlight">\(N\)</span>-dimensional array object.</p></li>
 <li><p>Sophisticated (broadcasting) functions.</p></li>
 <li><p>A collection of routines for linear algebra, Fourier transform, and random number generation.</p></li>
-<li><p>A collection of routines for numerical integration and optimization.</p></li>
+<li><p>A collection of routines for numerical integration and optimisation.</p></li>
 <li><p>Key tools for working with numerical data in Python.</p></li>
 <li><p>Support for large, multi-dimensional arrays and matrices.</p></li>
 </ul>
@@ -751,7 +751,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">shape</span></code> attribute of an array object returns a tuple consisting of array dimensions. For a matrix with <code class="docutils literal notranslate"><span class="pre">n</span></code> rows and <code class="docutils literal notranslate"><span class="pre">m</span></code> columns, shape will be <code class="docutils literal notranslate"><span class="pre">(n,m)</span></code>. The length of the shape tuple is therefore the number of axes, <code class="docutils literal notranslate"><span class="pre">ndim</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">shape</span></code> attribute of an array object returns a tuple consisting of array dimensions. For a matrix with <code class="docutils literal notranslate"><span class="pre">n</span></code> rows and <code class="docutils literal notranslate"><span class="pre">m</span></code> columns, its shape will be <code class="docutils literal notranslate"><span class="pre">(n,m)</span></code>. The length of the shape tuple is therefore the number of axes, <code class="docutils literal notranslate"><span class="pre">ndim</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -764,7 +764,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> is used to create a sequence of numbers. It is similar to the built-in <code class="docutils literal notranslate"><span class="pre">range()</span></code> function, but returns an <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> instead of a list. The arguments are <code class="docutils literal notranslate"><span class="pre">(start,</span> <span class="pre">stop,</span> <span class="pre">step)</span></code>, which the same as for <code class="docutils literal notranslate"><span class="pre">range()</span></code>, but it also accepts float arguments. The arguments are . If <code class="docutils literal notranslate"><span class="pre">step</span></code> is not given, it defaults to 1. If <code class="docutils literal notranslate"><span class="pre">start</span></code> is not given, it defaults to 0. If <code class="docutils literal notranslate"><span class="pre">stop</span></code> is not given, it defaults to <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">start</span></code> is set to 0. Note the <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> excludes right end of range specification.</p>
+<p><code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> is used to create a sequence of numbers. It is similar to the built-in <code class="docutils literal notranslate"><span class="pre">range()</span></code> function, but returns an <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> instead of a list. The arguments are <code class="docutils literal notranslate"><span class="pre">(start,</span> <span class="pre">stop,</span> <span class="pre">step)</span></code>, which are the same as for <code class="docutils literal notranslate"><span class="pre">range()</span></code>, but it also accepts float arguments. If <code class="docutils literal notranslate"><span class="pre">step</span></code> is not given, it defaults to 1. If <code class="docutils literal notranslate"><span class="pre">start</span></code> is not given, it defaults to 0. If <code class="docutils literal notranslate"><span class="pre">stop</span></code> is not given, it defaults to <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">start</span></code> is set to 0. Note that <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> excludes the right end of range specification.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
@@ -833,11 +833,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0 7 3 9 1]
-[[0.173239   0.4076411  0.8765942 ]
- [0.74332368 0.0229281  0.58167469]]
-[ 0.78042979  1.47935123  0.78281535 -0.23854584  0.56710188]
-[20.77118334 21.36075351 20.64518236 19.68697192 20.58179185]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4 8 1 7 6]
+[[0.99602418 0.31088155 0.92126007]
+ [0.50168179 0.83090823 0.62307474]]
+[ 1.47275248 -1.52993209 -1.39962483 -1.24594457  0.07284994]
+[21.77942456 18.4220804  18.71660064 18.67304258 20.05776209]
 </pre></div>
 </div>
 </div>
@@ -1038,7 +1038,7 @@ The min value of the array x is:  9
 </div>
 </div>
 </div>
-<p>Get an element from a matrix, for example, get the forth element in the third row (index starts from 0).</p>
+<p>Get an element from a matrix, for example, get the fourth element in the third row (index starts from 0).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
