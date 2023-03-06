@@ -35,11 +35,12 @@ repository:
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
+  favicon: "https://raw.githubusercontent.com/pykale/transparentML/main/content/transparentml-logo.png"
   use_issues_button: true
   use_repository_button: true
   use_edit_page_button: true
   use_multitoc_numbering: true
-  google_analytics_id: G-89ZWPQL897
+  google_analytics_id: "G-89ZWPQL897"
 
 # Add launch buttons
 # See https://jupyterbook.org/en/stable/interactive/launchbuttons.html
