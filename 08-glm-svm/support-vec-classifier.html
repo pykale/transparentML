@@ -56,6 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/pykale/transparentML/main/content/transparentml-logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="8.3. Support vector machines" href="svm.html" />
@@ -1058,8 +1059,8 @@ Prediction:  1
 <li><p>For the data point <span class="math notranslate nohighlight">\([-1.19276461, -0.20487651]\)</span> marked by a black circle, its prediction score is <span class="math notranslate nohighlight">\( -0.7327 \times -1.19276461 + -0.7033 \times -0.20487651 + 0.5729 \approx 1.5910 \)</span>, which is positive. So the predicted label is <span class="math notranslate nohighlight">\( 1 \)</span>.</p></li>
 <li><p>According to the definition, the data points on the hyperplane satisfies <span class="math notranslate nohighlight">\( \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} = 0 \)</span>, i.e. <span class="math notranslate nohighlight">\( 0.5729 -0.7327 \times x_1 -0.7033 \times x_2 = 0 \)</span>. To get a data point <span class="math notranslate nohighlight">\( \mathbf{x} = [x_1, x_2]^\top \)</span> of class <span class="math notranslate nohighlight">\( 1 \)</span>, the relationship between <span class="math notranslate nohighlight">\( x_1 \)</span> and <span class="math notranslate nohighlight">\( x_2 \)</span> should satisfy:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-9e0c02b5-32d5-4ae2-adb8-91200ee8baf4">
-<span class="eqno">(8.6)<a class="headerlink" href="#equation-9e0c02b5-32d5-4ae2-adb8-91200ee8baf4" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7028d35c-ba5d-4195-8998-f85f9822a3b1">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-7028d35c-ba5d-4195-8998-f85f9822a3b1" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{aligned}
 \beta_0 + \beta_1 x_{1} + \beta_2 x_{2} &amp; &gt; 0 \\
 \beta_1 x_{1} &amp; &gt; - \beta_0 - \beta_2 x_{2} \\
@@ -1103,14 +1104,14 @@ x_1 &amp; &gt; 0.7819 - 0.9598 \times x_2.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00077939, 0.00075612, 0.0007411 , 0.00075722, 0.00094664,
-        0.0007683 , 0.00090055]),
- &#39;std_fit_time&#39;: array([8.78291460e-05, 3.87120416e-05, 4.29047465e-06, 1.35722800e-05,
-        4.91731592e-04, 1.02121388e-05, 4.66172404e-05]),
- &#39;mean_score_time&#39;: array([0.00047612, 0.00043669, 0.0004298 , 0.00042801, 0.0004406 ,
-        0.00043244, 0.00045331]),
- &#39;std_score_time&#39;: array([9.97863075e-05, 1.28348939e-05, 7.09274236e-06, 1.84308511e-06,
-        1.27730960e-05, 3.21078222e-06, 2.72847226e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00076501, 0.00074494, 0.00074611, 0.00073748, 0.00090055,
+        0.00076971, 0.00090678]),
+ &#39;std_fit_time&#39;: array([5.41832698e-05, 3.65692833e-05, 1.71234341e-05, 1.59040741e-05,
+        4.21967731e-04, 3.00770873e-05, 4.54353567e-05]),
+ &#39;mean_score_time&#39;: array([0.00041518, 0.00040288, 0.00040841, 0.00040159, 0.00042493,
+        0.00040612, 0.00042522]),
+ &#39;std_score_time&#39;: array([2.48898491e-05, 1.48910679e-05, 1.26010478e-05, 1.68544230e-05,
+        2.35829722e-05, 1.61686473e-05, 1.20604221e-05]),
  &#39;param_C&#39;: masked_array(data=[0.001, 0.01, 0.1, 1, 5, 10, 100],
               mask=[False, False, False, False, False, False, False],
         fill_value=&#39;?&#39;,
