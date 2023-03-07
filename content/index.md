@@ -6,7 +6,7 @@ Welcome to [An Introduction to Transparent Machine Learning](https://www.turing.
 
 We recast selected contents from a popular, award-winning textbook [An Introduction to Statistical Learning with Applications in R](https://www.statlearning.com/) {cite}`james2021statistical` into the perspective of system and process transparency under the AI transparency framework in [AI in Financial Services](https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf) report {cite}`ostmann2021ai` from the Alan Turing Institute, using Python. The chosen textbook is widely used as standard in many university courses on machine learning, written by leading academics, and explains topics in a highly accessible way. Under the chosen [AI transparency framework](https://www.turing.ac.uk/sites/default/files/2021-06/ati_ai_in_financial_services_lores.pdf), transparent machine learning systems will cover fully transparent machine learning models such as linear regression and "semi-transparent" machine learning models such as deep learning, and transparent machine learning processes will cover machine learning model evaluation and software development methodologies such as cross validation and software development life cycle.
 
-This course is developed as [a PyKale repository](https://github.com/pykale/transparentML) for deployment as [an Alan Turing Institute repository](https://github.com/alan-turing-institute/Intro-to-transparent-ML-course/). Welcome your feedback via opening [issues](https://github.com/pykale/transparentML/issues), [discussions](https://github.com/pykale/transparentML/discussions), and/or [pull requests](https://github.com/pykale/transparentML/pulls).
+This course is developed as [a PyKale repository](https://github.com/pykale/transparentML) for deployment as [an Alan Turing Institute repository](https://github.com/alan-turing-institute/Intro-to-transparent-ML-course/). Welcome your feedback/contribution via opening [issues](https://github.com/pykale/transparentML/issues), [discussions](https://github.com/pykale/transparentML/discussions), and/or [pull requests](https://github.com/pykale/transparentML/pulls).
 
 Watch the 10-minute video below for a conversation on this course between [Lily Clements](https://www.linkedin.com/in/lily-clements-9788a512a/) and [Haiping Lu](https://www.linkedin.com/in/haiping-lu-4821206/).
 
@@ -82,7 +82,8 @@ This course is developed by [Haiping Lu](https://haipinglu.github.io/), a Profes
 
 We thank valuable feedback received from
 - [Catherine Inness](https://www.linkedin.com/in/catherineinness/), Data Science Senior Manager, [Accenture](https://www.accenture.com/gb-en)
-<!-- - [Lawrence Schobs](https://www.linkedin.com/in/lawrence-schobs-2497a619b), PhD Student, [University of Sheffield](https://www.sheffield.ac.uk/) -->
+
+We welcome and recognise all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/pykale/transparentML/graphs/contributors).
 
 ## Key references
 

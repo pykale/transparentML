@@ -1,31 +1,43 @@
-# My Book
+# An Introduction to Transparent Machine Learning
 
-This cookiecutter creates a simple boilerplate for a Jupyter Book.
+[![Build Stats](https://github.com/pykale/transparentML/workflows/deploy/badge.svg)](https://github.com/pykale/transparentML/actions)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](https://github.com/pykale/transparentML/graphs/contributors)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-## Usage
+This repository contains a Jupyter book on [An Introduction to Transparent Machine Learning](https://www.turing.ac.uk/introduction-transparent-machine-learning), part of the [Alan Turing Institute](https://www.turing.ac.uk/)'s [online learning courses in responsible AI](https://www.turing.ac.uk/funding-call-online-learning-courses-responsible-ai).
 
-### Building the book
+This course is developed as [a PyKale repository](https://github.com/pykale/transparentML) for deployment as [an Alan Turing Institute repository](https://github.com/alan-turing-institute/Intro-to-transparent-ML-course/).
 
-If you'd like to develop and/or build the My Book book, you should:
+The latest development version of this book is available at [pykale.github.io](https://pykale.github.io/transparentML/) and the latest stable version is deployed at [alan-turing-institute.github.io](https://alan-turing-institute.github.io/Intro-to-transparent-ML-course).
 
-1. Clone this repository
-2. Run `pip install -r requirements.txt` (it is recommended you do this within a virtual environment)
-3. (Optional) Edit the books source files located in the `my_book/` directory
-4. Run `jupyter-book clean my_book/` to remove any existing builds
-5. Run `jupyter-book build my_book/`
+Welcome your feedback and contribution via opening [issues](https://github.com/pykale/transparentML/issues), [discussions](https://github.com/pykale/transparentML/discussions), and/or [pull requests](https://github.com/pykale/transparentML/pulls).
 
-A fully-rendered HTML version of the book will be built in `my_book/_build/html/`.
+&copy; Haiping Lu and Shuo Zhou
 
-### Hosting the book
+## Building the book locally
 
-Please see the [Jupyter Book documentation](https://jupyterbook.org/publish/web.html) to discover options for deploying a book online using services such as GitHub, GitLab, or Netlify.
+If you'd like to develop and/or build this book locally, you should:
 
-For GitHub and GitLab deployment specifically, the [cookiecutter-jupyter-book](https://github.com/executablebooks/cookiecutter-jupyter-book) includes templates for, and information about, optional continuous integration (CI) workflow files to help easily and automatically deploy books online with GitHub or GitLab. For example, if you chose `github` for the `include_ci` cookiecutter option, your book template was created with a GitHub actions workflow file that, once pushed to GitHub, automatically renders and pushes your book to the `gh-pages` branch of your repo and hosts it on GitHub Pages when a push or pull request is made to the main branch.
+1. Clone this repository.
+2. Run `pip install -r requirements.txt` to install the required dependencies for building the book (it is recommended you do this within a virtual environment).
+3. (Optional) Edit the book source files located in the `content` directory.
+4. Run `jupyter-book clean content` from the project directory `transparentML` to clean any existing builds.
+5. Run `jupyter-book build content` from the project directory `transparentML` to build the book.
+
+A fully-rendered HTML version of the book will be built in `content/_build/html/`.
+
+## Contributing
+
+This repository uses [`pre-commit`](https://pre-commit.com/). If you will contribute to this repository (most welcome!), please install `pre-commit` and run `pre-commit install` prior to committing. If you have already committed, but your PR is failing because of a pre-commit error, run pre-commit run --all locally to find and fix the error.
 
 ## Contributors
 
-We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/haipinglu/my_book/graphs/contributors).
+We welcome and recognise all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/pykale/transparentML/graphs/contributors).
 
 ## Credits
 
 This project is created using the excellent open source [Jupyter Book project](https://jupyterbook.org/) and the [executablebooks/cookiecutter-jupyter-book template](https://github.com/executablebooks/cookiecutter-jupyter-book).
+
+## License
+
+All content except for YouTube videos is released under the [MIT License](https://github.com/pykale/transparentML/blob/main/LICENSE). YouTube videos are embedded according to [YouTube's Terms of Service](https://www.youtube.com/static?gl=CA&template=terms).
