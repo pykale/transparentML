@@ -16,7 +16,7 @@ Welcome your feedback and contribution via opening [issues](https://github.com/p
 
 If you'd like to develop and/or build this book locally, you should:
 
-1. Clone this repository.
+1. Clone the [source repository at PyKale](https://github.com/pykale/transparentML): `git clone https://github.com/pykale/transparentML`.
 2. Run `pip install -r requirements.txt` to install the required dependencies for building the book (it is recommended you do this within a virtual environment).
 3. (Optional) Edit the book source files located in the `content` directory.
 4. Run `jupyter-book build content` from the project directory `transparentML` to build the book.

@@ -39,7 +39,7 @@ If you are proposing a feature:
 
 Ready to contribute? Here's how to set up this book for local development.
 
-1. Fork the repo on GitHub.
+1. Fork the [source repository at PyKale](https://github.com/pykale/transparentML) on GitHub.
 2. Clone your fork locally.
 3. Install your local copy into a virtualenv, e.g., using `conda`.
 4. Create a branch for local development and make changes locally.
