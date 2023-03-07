@@ -80,8 +80,7 @@ This course is developed by [Haiping Lu](https://haipinglu.github.io/), a Profes
 
 [Mohammod Naimul Islam Suvon](https://github.com/Mdnaimulislam) contributed all the course exercises and quizzes. [Lawrence Schobs](https://github.com/Schobs) reviewed all teaching materials, provided detailed comments, added summaries and references, and refined the materials. After that, H. Lu and S. Zhou checked and refined these materials again for the beta release.
 
-We thank valuable feedback received from
-- [Catherine Inness](https://www.linkedin.com/in/catherineinness/), Data Science Senior Manager, [Accenture](https://www.accenture.com/gb-en)
+We thank valuable feedback received from [Catherine Inness](https://www.linkedin.com/in/catherineinness/), a Data Science Senior Manager at [Accenture](https://www.accenture.com/gb-en).
 
 We welcome and recognise all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/pykale/transparentML/graphs/contributors).
 
