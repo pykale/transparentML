@@ -29,7 +29,7 @@ This repository uses [`pre-commit`](https://pre-commit.com/). If you will contri
 
 ## Contributors
 
-We welcome and recognise all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/pykale/transparentML/graphs/contributors).
+We welcome and recognise all contributions. Please see our [Contributor Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) for more information. You can see a list of current contributors in the [contributors tab](https://github.com/pykale/transparentML/graphs/contributors).
 
 ## Credits
 
