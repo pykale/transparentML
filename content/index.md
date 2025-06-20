@@ -71,7 +71,7 @@ Besides the prerequisites, the 10 chapters can be grouped into two parts: part o
   <tbody>
     <tr>
       <td align="center"><a href="https://haipinglu.github.io/"><img src="https://raw.githubusercontent.com/haipinglu/hugo-academic/main/content/authors/haiping-lu/avatar.jpg" width="200px;" alt="Haiping Lu"/><br /><sub><b>Haiping Lu</b></sub></a></td>
-      <td align="center"><a href="https://shuo-zhou.github.io/"><img src="https://raw.githubusercontent.com/shuo-zhou/shuo-zhou.github.io/master/assets/img/profile.png" width="200px;" alt="Shuo Zhou"/><br /><sub><b>Shuo Zhou</b></sub></a></td>
+      <td align="center"><a href="https://shuo-zhou.github.io/"><img src="https://shuo-zhou.github.io/assets/img/CS_Headshots_022_square-480.webp" width="200px;" alt="Shuo Zhou"/><br /><sub><b>Shuo Zhou</b></sub></a></td>
     </tr>
   </tbody>
 </table>
