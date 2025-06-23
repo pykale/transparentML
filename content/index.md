@@ -71,12 +71,12 @@ Besides the prerequisites, the 10 chapters can be grouped into two parts: part o
   <tbody>
     <tr>
       <td align="center"><a href="https://haipinglu.github.io/"><img src="https://raw.githubusercontent.com/haipinglu/hugo-academic/main/content/authors/haiping-lu/avatar.jpg" width="200px;" alt="Haiping Lu"/><br /><sub><b>Haiping Lu</b></sub></a></td>
-      <td align="center"><a href="https://shuo-zhou.github.io/"><img src="https://raw.githubusercontent.com/shuo-zhou/shuo-zhou.github.io/master/assets/img/profile.png" width="200px;" alt="Shuo Zhou"/><br /><sub><b>Shuo Zhou</b></sub></a></td>
+      <td align="center"><a href="https://shuo-zhou.github.io/"><img src="https://shuo-zhou.github.io/assets/img/CS_Headshots_022_square-480.webp" width="200px;" alt="Shuo Zhou"/><br /><sub><b>Shuo Zhou</b></sub></a></td>
     </tr>
   </tbody>
 </table>
 
-This course is developed by [Haiping Lu](https://haipinglu.github.io/), a Professor of Machine Learning, and [Shuo Zhou](https://shuo-zhou.github.io/), an Academic Fellow in Machine Learning, both at the [Department of Computer Science](https://www.sheffield.ac.uk/dcs), [The University of Sheffield](https://www.sheffield.ac.uk/). H. Lu has developed and taught two machine learning courses [Machine Learning and Adaptive Intelligence](https://github.com/maalvarezl/MLAI) from 2018 to 2021 and [Scalable Machine Learning](https://github.com/haipinglu/ScalableML) since 2017. S. Zhou was a head teaching assistant of the [Machine Learning and Adaptive Intelligence](https://github.com/maalvarezl/MLAI) course in fall 2019 and he has been teaching the [Scalable Machine Learning](https://github.com/haipinglu/ScalableML) course since spring 2023.
+This course is developed by [Haiping Lu](https://haipinglu.github.io/), a Professor of Machine Learning, and [Shuo Zhou](https://shuo-zhou.github.io/), a Lecturer in Machine Learning, both at the [Department of Computer Science](https://www.sheffield.ac.uk/dcs), [The University of Sheffield](https://www.sheffield.ac.uk/). H. Lu has developed and taught two machine learning courses [Machine Learning and Adaptive Intelligence](https://github.com/maalvarezl/MLAI) from 2018 to 2021 and [Scalable Machine Learning](https://github.com/haipinglu/ScalableML) since 2017. S. Zhou was a head teaching assistant of the [Machine Learning and Adaptive Intelligence](https://github.com/maalvarezl/MLAI) course in fall 2019 and he has been teaching the [Scalable Machine Learning](https://github.com/haipinglu/ScalableML) course since spring 2023.
 
 [Mohammod Naimul Islam Suvon](https://github.com/Mdnaimulislam) contributed all the course exercises and quizzes. [Lawrence Schobs](https://github.com/Schobs) reviewed all teaching materials, provided detailed comments, added summaries and references, and refined the materials. After that, H. Lu and S. Zhou checked and refined the materials again for the release.
 
